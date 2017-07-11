@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.UserMapper">
+    <resultMap id="userResult" type="com.fr.lottery.entity.User">
+        <id property="id" column="id" jdbcType="VARCHAR" />
+        <result property="account" column="Account" jdbcType="VARCHAR"></result>
+        <result property="name" column="Name" jdbcType="VARCHAR"></result>
+        <result property="password" column="Password" jdbcType="VARCHAR"></result>
+        <result property="status" column="Status" jdbcType="INTEGER"></result>
+    </resultMap>
+    <sql id="Columns">
+          Id,Account,Name,Password,Status
+    </sql>
+    <sql id="sqlWhere">
+        <where>
+           AND Status =1
+
+        </where>
+    </sql>
+
+    <!-- 查询所有 -->
+    <select id="findAll" resultMap="userResult">
+        select
+        <include refid="Columns" />
+        from USER
+        <include refid="sqlWhere"></include>
+        <if test="limit >0">
+            limit #{start},#{limit}
+        </if>
+    </select>
+
+    <!-- 根据Id获取信息 -->
+    <select id="get" resultMap="userResult">
+        SELECT
+        <include refid="Columns"></include>
+        from USER
+        <include refid="sqlWhere"></include>
+
+    </select>
+    <!-- 根据账号获取信息 -->
+    <select id="getByAccount" resultMap="userResult">
+        SELECT
+        <include refid="Columns"></include>
+        from USER
+        <include refid="sqlWhere"></include>
+        AND Account=#{account,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 插入用户 -->
+    <insert id="insert" parameterType="com.fr.lottery.entity.User">
+        INSERT INTO USER (Id,Account,Name,Password,Status)
+        VALUES (#{id,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{status,jdbcType=INTEGER})
+    </insert>
+
+    <update id="update" >
+        UPDATE USER SET name = #{name,jdbcType=VARCHAR}   WHERE Id =#{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updatePassword">
+        UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete" parameterType="String">
+        UPDATE USER SET Status =0 WHERE Id =#{id,jdbcType=VARCHAR}
+    </delete>
+</mapper>

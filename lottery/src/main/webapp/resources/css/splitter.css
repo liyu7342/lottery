@@ -1,0 +1,8 @@
+.btnbartitle{border-bottom:#ccc 1px solid;padding-bottom:1px;background-color:#F2F2F2;background:-webkit-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+    background:-moz-linear-gradient(top,#ffffff 0,#F2F2F2 100%);background:-o-linear-gradient(top,#ffffff 0,#F2F2F2 100%);
+    background:linear-gradient(to bottom,#ffffff 0,#F2F2F2 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
+    height:26px; line-height:26px; padding-left:5px; padding-right:5px; color:#666;font-weight:bold;}
+.layoutPanel{width:100%; overflow:hidden; margin:0px; padding:0px;}
+.layout{margin:0; border: 0 solid #bbb; min-height: 300px;}
+.ScrollBar{overflow:auto;background:#fff;}
+.layoutResize{width: 1px; background: #fff url("../images/vgrabber.gif") no-repeat center; border-left: 1px solid #bbb; border-right: 1px solid #bbb;}

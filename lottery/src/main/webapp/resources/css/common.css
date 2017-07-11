@@ -1,0 +1,69 @@
+/*html{color:#1B1D1D;}*/
+
+.sider{
+    width:237px;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+
+.sider .logo{
+    height:68px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.red{color:red !important;}
+.green{color:green !important;}
+.blue{color:blue !important;}
+
+.n0{display:none;}
+.n2{background-position:-25px 0;}
+.n3{background-position:-50px  0;}
+.n4{background-position:0  -25px;}
+.n5{background-position:-25px  -25px;}
+.n6{background-position:-50px  -25px;}
+.n7{background-position:0  -50px;}
+.n8{background-position:-25px  -50px;}
+.n9{background-position:-50px  -50px;}
+.n10{background-position:0  -75px;}
+.n11{background-position:-25px  -75px;}
+.n12{background-position:-50px  -75px;}
+.n13{background-position:0  -100px;}
+.n14{background-position:-25px  -100px;}
+.n15{background-position:-50px  -100px;}
+.n16{background-position:0  -125px;}
+.n17{background-position:-25px  -125px;}
+.n18{background-position:-50px  -125px;}
+.n19{background-position:0  -150px;}
+.n20{background-position:-25px  -150px;}
+.n21{background-position:-50px  -150px;}
+.n22{background-position:0  -175px;}
+.n23{background-position:-25px  -175px;}
+.n24{background-position:-50px  -175px;}
+.n25{background-position:0  -200px;}
+.n26{background-position:-25px  -200px;}
+.n27{background-position:-50px  -200px;}
+.n28{background-position:0  -225px;}
+.n29{background-position:-25px  -225px;}
+.n30{background-position:-50px  -225px;}
+.n31{background-position:0  -250px;}
+.n32{background-position:-25px  -250px;}
+.n33{background-position:-50px  -250px;}
+.n34{background-position:0  -275px;}
+.n35{background-position:-25px  -275px;}
+.n36{background-position:-50px  -275px;}
+.n37{background-position:0  -300px;}
+.n38{background-position:-25px  -300px;}
+.n39{background-position:-50px  -300px;}
+.n40{background-position:0  -325px;}
+.n41{background-position:-25px  -325px;}
+.n42{background-position:-50px  -325px;}
+.n43{background-position:0  -350px;}
+.n44{background-position:-25px  -350px;}
+.n45{background-position:-50px  -350px;}
+.n46{background-position:0  -375px;}
+.n47{background-position:-25px  -375px;}
+.n48{background-position:-50px  -375px;}
+.n49{background-position:0  -400px;}

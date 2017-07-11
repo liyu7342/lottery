@@ -1,0 +1,184 @@
+/*
+ *  @项目 : 前端开发规范
+ *  @日期 : 2014.04.24
+ *  @说明 : CSS
+ */
+
+/*重置样式*/
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+	margin:0;
+	padding:0;
+}
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details {
+	display:block;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+caption, th {
+	text-align:left;
+	font-weight:normal;
+}
+html, body, fieldset, img, iframe, abbr {
+	border:0;
+}
+i, cite, em, var, address, dfn {
+	font-style:normal;
+}
+[hidefocus], summary {
+outline:0;
+}
+li {
+	list-style:none;
+}
+h1, h2, h3, h4, h5, h6, small {
+	font-size:100%;
+}
+sup, sub {
+	font-size:83%;
+}
+pre, code, kbd, samp {
+	font-family:inherit;
+}
+q:before, q:after {
+	content:none;
+}
+textarea {
+	overflow:auto;
+	resize:none;
+}
+label, summary {
+	cursor:default;
+}
+a, button {
+	cursor:pointer;
+}
+h1, h2, h3, h4, h5, h6, em, strong, b {
+	font-weight:500;
+}
+del, ins, u, s, a, a:hover {
+	text-decoration:none;
+}
+body, textarea, input, button, select, keygen, legend {
+	font:12px/1.14 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color:#333;
+	outline:0;
+}
+body {
+	background:#fff;
+	_line-height: 1;
+	*line-height:1;
+}
+a, a:hover {
+	color:#333;
+}
+/*功能样式*/
+.f-ib {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.f-db {
+	display: block;
+}
+.f-dn {
+	display: none;
+}
+.f-oh {
+	overflow: hidden;
+}
+.f-oh-x{
+	overflow: hidden;
+}
+.f-oa{
+	overflow: auto;
+}
+.f-fl {
+	float: left;
+}
+.f-fr {
+	float: right;
+}
+.f-cf:after {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	content: ""
+}
+.f-cf {
+	zoom: 1;
+}
+.f-pa {
+	position: absolute;
+}
+.f-pr {
+	position: relative;
+}
+.f-prz {
+	position: relative;
+	zoom: 1;
+}
+.f-pf {
+	position:fixed;
+}
+.f-fwn {
+	font-weight: 500;
+}
+.f-fwb {
+	font-weight: 700;
+}
+.f-tl {
+	text-align: left;
+}
+.f-tc {
+	text-align: center;
+}
+.f-tr {
+	text-align: right;
+}
+.f-tj {
+	text-align: justify;
+	text-justify: inter-ideograph;
+}
+.f-csp {
+	cursor: pointer;
+}
+.f-csd {
+	cursor: default;
+}
+.f-csh {
+	cursor: help;
+}
+.f-csm {
+	cursor: move;
+}
+.f-m0 {
+	margin: 0 auto !important;
+}
+.f-bw {
+	background: #fff;
+}
+.f-bb {
+	background: #000;
+}
+.f-ba {
+	background: #f2f1df;
+}
+.f-be{
+	background: #eee;
+}
+.f-cw {
+	color: #fff;
+}
+.f-cb {
+	color: #000;
+}
+.f-im {
+	color: #f00;
+}
+.wrap {
+	width: 100%;
+}

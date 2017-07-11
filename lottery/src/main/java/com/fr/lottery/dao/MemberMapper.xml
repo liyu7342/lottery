@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.MemberMapper">
+  <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Member">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result property="account" column="Account" jdbcType="VARCHAR"></result>
+    <result property="name" column="Name" jdbcType="VARCHAR"></result>
+    <result property="password" column="Password" jdbcType="VARCHAR"></result>
+    <result property="status" column="Status" jdbcType="INTEGER"></result>
+    <result column="AgentId" jdbcType="VARCHAR" property="agentid" />
+    <result column="Credits" jdbcType="BIGINT" property="credits" />
+    <result column="Proportional" jdbcType="INTEGER" property="proportional" />
+    <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
+    <result column="T_SingleMin" jdbcType="INTEGER" property="tSinglemin" />
+    <result column="T_SingleMax" jdbcType="INTEGER" property="tSinglemax" />
+    <result column="T_SingleHighest" jdbcType="INTEGER" property="tSinglehighest" />
+    <result column="Z_SingleMin" jdbcType="INTEGER" property="zSinglemin" />
+    <result column="Z_SingleMax" jdbcType="INTEGER" property="zSinglemax" />
+    <result column="Z_SingleHighest" jdbcType="INTEGER" property="zSinglehighest" />
+    <result column="ZT_SingleMin" jdbcType="INTEGER" property="ztSinglemin" />
+    <result column="ZT_SingleMax" jdbcType="INTEGER" property="ztSinglemax" />
+    <result column="ZT_SingleHighest" jdbcType="INTEGER" property="ztSinglehighest" />
+    <result column="L2_SingleMin" jdbcType="INTEGER" property="l2Singlemin" />
+    <result column="L2_SingleMax" jdbcType="INTEGER" property="l2Singlemax" />
+    <result column="L2_SingleHighest" jdbcType="INTEGER" property="l2Singlehighest" />
+    <result column="L3_SingleMin" jdbcType="INTEGER" property="l3Singlemin" />
+    <result column="L3_SingleMax" jdbcType="INTEGER" property="l3Singlemax" />
+    <result column="L3_SingleHighest" jdbcType="INTEGER" property="l3Singlehighest" />
+    <result column="GG_SingleMin" jdbcType="INTEGER" property="ggSinglemin" />
+    <result column="GG_SingleMax" jdbcType="INTEGER" property="ggSinglemax" />
+    <result column="GG_SingleHighest" jdbcType="INTEGER" property="ggSinglehighest" />
+    <result column="BB_SingleMin" jdbcType="INTEGER" property="bbSinglemin" />
+    <result column="BB_SingleMax" jdbcType="INTEGER" property="bbSinglemax" />
+    <result column="BB_SingleHighest" jdbcType="INTEGER" property="bbSinglehighest" />
+    <result column="LX_SingleMin" jdbcType="INTEGER" property="lxSinglemin" />
+    <result column="LX_SingleMax" jdbcType="INTEGER" property="lxSinglemax" />
+    <result column="LX_SingleHighest" jdbcType="INTEGER" property="lxSinglehighest" />
+    <result column="LM_SingleMin" jdbcType="INTEGER" property="lmSinglemin" />
+    <result column="LM_SingleMax" jdbcType="INTEGER" property="lmSinglemax" />
+    <result column="LM_SingleHighest" jdbcType="INTEGER" property="lmSinglehighest" />
+    <result column="TX_SingleMin" jdbcType="INTEGER" property="txSinglemin" />
+    <result column="TX_SingleMax" jdbcType="INTEGER" property="txSinglemax" />
+    <result column="TX_SingleHighest" jdbcType="INTEGER" property="txSinglehighest" />
+    <result column="SXL_SingleMin" jdbcType="INTEGER" property="sxlSinglemin" />
+    <result column="SXL_SingleMax" jdbcType="INTEGER" property="sxlSinglemax" />
+    <result column="SXL_SingleHighest" jdbcType="INTEGER" property="sxlSinglehighest" />
+    <result column="WSL_SingleMin" jdbcType="INTEGER" property="wslSinglemin" />
+    <result column="WSL_SingleMax" jdbcType="INTEGER" property="wslSinglemax" />
+    <result column="WSL_SingleHighest" jdbcType="INTEGER" property="wslSinglehighest" />
+    <result column="TA_Retreat" jdbcType="DECIMAL" property="taRetreat" />
+    <result column="TB_Retreat" jdbcType="DECIMAL" property="tbRetreat" />
+    <result column="TC_Retreat" jdbcType="DECIMAL" property="tcRetreat" />
+    <result column="ZA_Retreat" jdbcType="DECIMAL" property="zaRetreat" />
+    <result column="ZB_Retreat" jdbcType="DECIMAL" property="zbRetreat" />
+    <result column="ZC_Retreat" jdbcType="DECIMAL" property="zcRetreat" />
+    <result column="ZTA_Retreat" jdbcType="DECIMAL" property="ztaRetreat" />
+    <result column="ZTB_Retreat" jdbcType="DECIMAL" property="ztbRetreat" />
+    <result column="ZTC_Retreat" jdbcType="DECIMAL" property="ztcRetreat" />
+    <result column="L2A_Retreat" jdbcType="DECIMAL" property="l2aRetreat" />
+    <result column="L2B_Retreat" jdbcType="DECIMAL" property="l2bRetreat" />
+    <result column="L2C_Retreat" jdbcType="DECIMAL" property="l2cRetreat" />
+    <result column="L3A_Retreat" jdbcType="DECIMAL" property="l3aRetreat" />
+    <result column="L3B_Retreat" jdbcType="DECIMAL" property="l3bRetreat" />
+    <result column="L3C_Retreat" jdbcType="DECIMAL" property="l3cRetreat" />
+    <result column="GGA_Retreat" jdbcType="DECIMAL" property="ggaRetreat" />
+    <result column="GGB_Retreat" jdbcType="DECIMAL" property="ggbRetreat" />
+    <result column="GGC_Retreat" jdbcType="DECIMAL" property="ggcRetreat" />
+    <result column="BBA_Retreat" jdbcType="DECIMAL" property="bbaRetreat" />
+    <result column="BBB_Retreat" jdbcType="DECIMAL" property="bbbRetreat" />
+    <result column="BBC_Retreat" jdbcType="DECIMAL" property="bbcRetreat" />
+    <result column="LXA_Retreat" jdbcType="DECIMAL" property="lxaRetreat" />
+    <result column="LXB_Retreat" jdbcType="DECIMAL" property="lxbRetreat" />
+    <result column="LXC_Retreat" jdbcType="DECIMAL" property="lxcRetreat" />
+    <result column="LMA_Retreat" jdbcType="DECIMAL" property="lmaRetreat" />
+    <result column="LMB_Retreat" jdbcType="DECIMAL" property="lmbRetreat" />
+    <result column="LMC_Retreat" jdbcType="DECIMAL" property="lmcRetreat" />
+    <result column="TXA_Retreat" jdbcType="DECIMAL" property="txaRetreat" />
+    <result column="TXB_Retreat" jdbcType="DECIMAL" property="txbRetreat" />
+    <result column="TXC_Retreat" jdbcType="DECIMAL" property="txcRetreat" />
+    <result column="SXLA_Retreat" jdbcType="DECIMAL" property="sxlaRetreat" />
+    <result column="SXLB_Retreat" jdbcType="DECIMAL" property="sxlbRetreat" />
+    <result column="SXLC_Retreat" jdbcType="DECIMAL" property="sxlcRetreat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+        Status=1
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, UserId, AgentId, Credits, Proportional, Handicap, T_SingleMin, T_SingleMax, T_SingleHighest, 
+    Z_SingleMin, Z_SingleMax, Z_SingleHighest, ZT_SingleMin, ZT_SingleMax, ZT_SingleHighest, 
+    L2_SingleMin, L2_SingleMax, L2_SingleHighest, L3_SingleMin, L3_SingleMax, L3_SingleHighest, 
+    GG_SingleMin, GG_SingleMax, GG_SingleHighest, BB_SingleMin, BB_SingleMax, BB_SingleHighest, 
+    LX_SingleMin, LX_SingleMax, LX_SingleHighest, LM_SingleMin, LM_SingleMax, LM_SingleHighest, 
+    TX_SingleMin, TX_SingleMax, TX_SingleHighest, SXL_SingleMin, SXL_SingleMax, SXL_SingleHighest, 
+    WSL_SingleMin, WSL_SingleMax, WSL_SingleHighest, TA_Retreat, TB_Retreat, TC_Retreat, 
+    ZA_Retreat, ZB_Retreat, ZC_Retreat, ZTA_Retreat, ZTB_Retreat, ZTC_Retreat, L2A_Retreat, 
+    L2B_Retreat, L2C_Retreat, L3A_Retreat, L3B_Retreat, L3C_Retreat, GGA_Retreat, GGB_Retreat, 
+    GGC_Retreat, BBA_Retreat, BBB_Retreat, BBC_Retreat, LXA_Retreat, LXB_Retreat, LXC_Retreat, 
+    LMA_Retreat, LMB_Retreat, LMC_Retreat, TXA_Retreat, TXB_Retreat, TXC_Retreat, SXLA_Retreat, 
+    SXLB_Retreat, SXLC_Retreat
+  </sql>
+  <select id="selectByExample" parameterType="com.fr.lottery.entity.MemberExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from member
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fr.lottery.entity.MemberExample">
+    delete from member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fr.lottery.entity.Member">
+    insert into member (Id, UserId, Account,Name,Password,Status,
+      Credits, Proportional, Handicap, 
+      T_SingleMin, T_SingleMax, T_SingleHighest, 
+      Z_SingleMin, Z_SingleMax, Z_SingleHighest, 
+      ZT_SingleMin, ZT_SingleMax, ZT_SingleHighest, 
+      L2_SingleMin, L2_SingleMax, L2_SingleHighest, 
+      L3_SingleMin, L3_SingleMax, L3_SingleHighest, 
+      GG_SingleMin, GG_SingleMax, GG_SingleHighest, 
+      BB_SingleMin, BB_SingleMax, BB_SingleHighest, 
+      LX_SingleMin, LX_SingleMax, LX_SingleHighest, 
+      LM_SingleMin, LM_SingleMax, LM_SingleHighest, 
+      TX_SingleMin, TX_SingleMax, TX_SingleHighest, 
+      SXL_SingleMin, SXL_SingleMax, SXL_SingleHighest, 
+      WSL_SingleMin, WSL_SingleMax, WSL_SingleHighest, 
+      TA_Retreat, TB_Retreat, TC_Retreat, 
+      ZA_Retreat, ZB_Retreat, ZC_Retreat, 
+      ZTA_Retreat, ZTB_Retreat, ZTC_Retreat, 
+      L2A_Retreat, L2B_Retreat, L2C_Retreat, 
+      L3A_Retreat, L3B_Retreat, L3C_Retreat, 
+      GGA_Retreat, GGB_Retreat, GGC_Retreat, 
+      BBA_Retreat, BBB_Retreat, BBC_Retreat, 
+      LXA_Retreat, LXB_Retreat, LXC_Retreat, 
+      LMA_Retreat, LMB_Retreat, LMC_Retreat, 
+      TXA_Retreat, TXB_Retreat, TXC_Retreat, 
+      SXLA_Retreat, SXLB_Retreat, SXLC_Retreat
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+    #{password,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{credits,jdbcType=BIGINT}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR}, 
+      #{tSinglemin,jdbcType=INTEGER}, #{tSinglemax,jdbcType=INTEGER}, #{tSinglehighest,jdbcType=INTEGER}, 
+      #{zSinglemin,jdbcType=INTEGER}, #{zSinglemax,jdbcType=INTEGER}, #{zSinglehighest,jdbcType=INTEGER}, 
+      #{ztSinglemin,jdbcType=INTEGER}, #{ztSinglemax,jdbcType=INTEGER}, #{ztSinglehighest,jdbcType=INTEGER}, 
+      #{l2Singlemin,jdbcType=INTEGER}, #{l2Singlemax,jdbcType=INTEGER}, #{l2Singlehighest,jdbcType=INTEGER}, 
+      #{l3Singlemin,jdbcType=INTEGER}, #{l3Singlemax,jdbcType=INTEGER}, #{l3Singlehighest,jdbcType=INTEGER}, 
+      #{ggSinglemin,jdbcType=INTEGER}, #{ggSinglemax,jdbcType=INTEGER}, #{ggSinglehighest,jdbcType=INTEGER}, 
+      #{bbSinglemin,jdbcType=INTEGER}, #{bbSinglemax,jdbcType=INTEGER}, #{bbSinglehighest,jdbcType=INTEGER}, 
+      #{lxSinglemin,jdbcType=INTEGER}, #{lxSinglemax,jdbcType=INTEGER}, #{lxSinglehighest,jdbcType=INTEGER}, 
+      #{lmSinglemin,jdbcType=INTEGER}, #{lmSinglemax,jdbcType=INTEGER}, #{lmSinglehighest,jdbcType=INTEGER}, 
+      #{txSinglemin,jdbcType=INTEGER}, #{txSinglemax,jdbcType=INTEGER}, #{txSinglehighest,jdbcType=INTEGER}, 
+      #{sxlSinglemin,jdbcType=INTEGER}, #{sxlSinglemax,jdbcType=INTEGER}, #{sxlSinglehighest,jdbcType=INTEGER}, 
+      #{wslSinglemin,jdbcType=INTEGER}, #{wslSinglemax,jdbcType=INTEGER}, #{wslSinglehighest,jdbcType=INTEGER}, 
+      #{taRetreat,jdbcType=DECIMAL}, #{tbRetreat,jdbcType=DECIMAL}, #{tcRetreat,jdbcType=DECIMAL}, 
+      #{zaRetreat,jdbcType=DECIMAL}, #{zbRetreat,jdbcType=DECIMAL}, #{zcRetreat,jdbcType=DECIMAL}, 
+      #{ztaRetreat,jdbcType=DECIMAL}, #{ztbRetreat,jdbcType=DECIMAL}, #{ztcRetreat,jdbcType=DECIMAL}, 
+      #{l2aRetreat,jdbcType=DECIMAL}, #{l2bRetreat,jdbcType=DECIMAL}, #{l2cRetreat,jdbcType=DECIMAL}, 
+      #{l3aRetreat,jdbcType=DECIMAL}, #{l3bRetreat,jdbcType=DECIMAL}, #{l3cRetreat,jdbcType=DECIMAL}, 
+      #{ggaRetreat,jdbcType=DECIMAL}, #{ggbRetreat,jdbcType=DECIMAL}, #{ggcRetreat,jdbcType=DECIMAL}, 
+      #{bbaRetreat,jdbcType=DECIMAL}, #{bbbRetreat,jdbcType=DECIMAL}, #{bbcRetreat,jdbcType=DECIMAL}, 
+      #{lxaRetreat,jdbcType=DECIMAL}, #{lxbRetreat,jdbcType=DECIMAL}, #{lxcRetreat,jdbcType=DECIMAL}, 
+      #{lmaRetreat,jdbcType=DECIMAL}, #{lmbRetreat,jdbcType=DECIMAL}, #{lmcRetreat,jdbcType=DECIMAL}, 
+      #{txaRetreat,jdbcType=DECIMAL}, #{txbRetreat,jdbcType=DECIMAL}, #{txcRetreat,jdbcType=DECIMAL}, 
+      #{sxlaRetreat,jdbcType=DECIMAL}, #{sxlbRetreat,jdbcType=DECIMAL}, #{sxlcRetreat,jdbcType=DECIMAL}
+      )
+  </insert>
+  <select id="countByExample" parameterType="com.fr.lottery.entity.MemberExample" resultType="java.lang.Long">
+    select count(*) from member
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Member">
+    update member
+    set UserId = #{userid,jdbcType=VARCHAR},
+     Account = #{account,jdbcType=VARCHAR},
+     Name = #{name,jdbcType=VARCHAR},
+     Password = #{password,jdbcType=VARCHAR},
+     Status = #{status,jdbcType=INTEGER},
+      Credits = #{credits,jdbcType=BIGINT},
+      Proportional = #{proportional,jdbcType=INTEGER},
+      Handicap = #{handicap,jdbcType=VARCHAR},
+      T_SingleMin = #{tSinglemin,jdbcType=INTEGER},
+      T_SingleMax = #{tSinglemax,jdbcType=INTEGER},
+      T_SingleHighest = #{tSinglehighest,jdbcType=INTEGER},
+      Z_SingleMin = #{zSinglemin,jdbcType=INTEGER},
+      Z_SingleMax = #{zSinglemax,jdbcType=INTEGER},
+      Z_SingleHighest = #{zSinglehighest,jdbcType=INTEGER},
+      ZT_SingleMin = #{ztSinglemin,jdbcType=INTEGER},
+      ZT_SingleMax = #{ztSinglemax,jdbcType=INTEGER},
+      ZT_SingleHighest = #{ztSinglehighest,jdbcType=INTEGER},
+      L2_SingleMin = #{l2Singlemin,jdbcType=INTEGER},
+      L2_SingleMax = #{l2Singlemax,jdbcType=INTEGER},
+      L2_SingleHighest = #{l2Singlehighest,jdbcType=INTEGER},
+      L3_SingleMin = #{l3Singlemin,jdbcType=INTEGER},
+      L3_SingleMax = #{l3Singlemax,jdbcType=INTEGER},
+      L3_SingleHighest = #{l3Singlehighest,jdbcType=INTEGER},
+      GG_SingleMin = #{ggSinglemin,jdbcType=INTEGER},
+      GG_SingleMax = #{ggSinglemax,jdbcType=INTEGER},
+      GG_SingleHighest = #{ggSinglehighest,jdbcType=INTEGER},
+      BB_SingleMin = #{bbSinglemin,jdbcType=INTEGER},
+      BB_SingleMax = #{bbSinglemax,jdbcType=INTEGER},
+      BB_SingleHighest = #{bbSinglehighest,jdbcType=INTEGER},
+      LX_SingleMin = #{lxSinglemin,jdbcType=INTEGER},
+      LX_SingleMax = #{lxSinglemax,jdbcType=INTEGER},
+      LX_SingleHighest = #{lxSinglehighest,jdbcType=INTEGER},
+      LM_SingleMin = #{lmSinglemin,jdbcType=INTEGER},
+      LM_SingleMax = #{lmSinglemax,jdbcType=INTEGER},
+      LM_SingleHighest = #{lmSinglehighest,jdbcType=INTEGER},
+      TX_SingleMin = #{txSinglemin,jdbcType=INTEGER},
+      TX_SingleMax = #{txSinglemax,jdbcType=INTEGER},
+      TX_SingleHighest = #{txSinglehighest,jdbcType=INTEGER},
+      SXL_SingleMin = #{sxlSinglemin,jdbcType=INTEGER},
+      SXL_SingleMax = #{sxlSinglemax,jdbcType=INTEGER},
+      SXL_SingleHighest = #{sxlSinglehighest,jdbcType=INTEGER},
+      WSL_SingleMin = #{wslSinglemin,jdbcType=INTEGER},
+      WSL_SingleMax = #{wslSinglemax,jdbcType=INTEGER},
+      WSL_SingleHighest = #{wslSinglehighest,jdbcType=INTEGER},
+      TA_Retreat = #{taRetreat,jdbcType=DECIMAL},
+      TB_Retreat = #{tbRetreat,jdbcType=DECIMAL},
+      TC_Retreat = #{tcRetreat,jdbcType=DECIMAL},
+      ZA_Retreat = #{zaRetreat,jdbcType=DECIMAL},
+      ZB_Retreat = #{zbRetreat,jdbcType=DECIMAL},
+      ZC_Retreat = #{zcRetreat,jdbcType=DECIMAL},
+      ZTA_Retreat = #{ztaRetreat,jdbcType=DECIMAL},
+      ZTB_Retreat = #{ztbRetreat,jdbcType=DECIMAL},
+      ZTC_Retreat = #{ztcRetreat,jdbcType=DECIMAL},
+      L2A_Retreat = #{l2aRetreat,jdbcType=DECIMAL},
+      L2B_Retreat = #{l2bRetreat,jdbcType=DECIMAL},
+      L2C_Retreat = #{l2cRetreat,jdbcType=DECIMAL},
+      L3A_Retreat = #{l3aRetreat,jdbcType=DECIMAL},
+      L3B_Retreat = #{l3bRetreat,jdbcType=DECIMAL},
+      L3C_Retreat = #{l3cRetreat,jdbcType=DECIMAL},
+      GGA_Retreat = #{ggaRetreat,jdbcType=DECIMAL},
+      GGB_Retreat = #{ggbRetreat,jdbcType=DECIMAL},
+      GGC_Retreat = #{ggcRetreat,jdbcType=DECIMAL},
+      BBA_Retreat = #{bbaRetreat,jdbcType=DECIMAL},
+      BBB_Retreat = #{bbbRetreat,jdbcType=DECIMAL},
+      BBC_Retreat = #{bbcRetreat,jdbcType=DECIMAL},
+      LXA_Retreat = #{lxaRetreat,jdbcType=DECIMAL},
+      LXB_Retreat = #{lxbRetreat,jdbcType=DECIMAL},
+      LXC_Retreat = #{lxcRetreat,jdbcType=DECIMAL},
+      LMA_Retreat = #{lmaRetreat,jdbcType=DECIMAL},
+      LMB_Retreat = #{lmbRetreat,jdbcType=DECIMAL},
+      LMC_Retreat = #{lmcRetreat,jdbcType=DECIMAL},
+      TXA_Retreat = #{txaRetreat,jdbcType=DECIMAL},
+      TXB_Retreat = #{txbRetreat,jdbcType=DECIMAL},
+      TXC_Retreat = #{txcRetreat,jdbcType=DECIMAL},
+      SXLA_Retreat = #{sxlaRetreat,jdbcType=DECIMAL},
+      SXLB_Retreat = #{sxlbRetreat,jdbcType=DECIMAL},
+      SXLC_Retreat = #{sxlcRetreat,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

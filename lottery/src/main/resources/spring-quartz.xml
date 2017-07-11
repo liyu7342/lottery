@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- 要调用的工作类 -->
+   <!-- <bean id="quartzJob" class="com.fr.lottery.quartzs.RacpQuartz"></bean>
+    <bean id="fhquartzJob" class="com.fr.lottery.quartzs.FanhuaXjQuartz"></bean>
+    <bean id="autoReturnPriceJob" class="com.fr.lottery.quartzs.AutoReturnPriceQuartz"></bean>
+
+    &lt;!&ndash; 定义调用对象和调用对象的方法 &ndash;&gt;
+    <bean id="jobtask1"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        &lt;!&ndash; 调用的类 &ndash;&gt;
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        &lt;!&ndash; 调用类中的方法 &ndash;&gt;
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    &lt;!&ndash; 定义调用对象和调用对象的方法 &ndash;&gt;
+    <bean id="jobtask2"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        &lt;!&ndash; 调用的类 &ndash;&gt;
+        <property name="targetObject">
+            <ref bean="autoReturnPriceJob" />
+        </property>
+        &lt;!&ndash; 调用类中的方法 &ndash;&gt;
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+
+    &lt;!&ndash; 定义调用对象和调用对象的方法 &ndash;&gt;
+    <bean id="jobtask3"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        &lt;!&ndash; 调用的类 &ndash;&gt;
+        <property name="targetObject">
+            <ref bean="fhquartzJob" />
+        </property>
+        &lt;!&ndash; 调用类中的方法 &ndash;&gt;
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+
+    &lt;!&ndash; 定义触发时间 &ndash;&gt;
+    <bean id="doTime1"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="jobtask1" />
+        </property>
+        &lt;!&ndash; cron表达式 &ndash;&gt;
+        <property name="cronExpression">
+            <value>0 0/1 *  * * ?</value>
+        </property>
+    </bean>
+    <bean id="doTime2"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="jobtask2" />
+        </property>
+        &lt;!&ndash; cron表达式 &ndash;&gt;
+        <property name="cronExpression">
+            <value>0 0 0/1 * * ?</value>
+        </property>
+    </bean>
+    <bean id="doTime3"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="jobtask3" />
+        </property>
+        &lt;!&ndash; cron表达式 &ndash;&gt;
+        <property name="cronExpression">
+            <value>0 0/1 * * * ?</value>
+        </property>
+    </bean>
+    &lt;!&ndash; 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 &ndash;&gt;
+    <bean id="startQuertz" lazy-init="false" autowire="no"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="doTime1" />
+                <ref bean="doTime2" />
+                <ref bean="doTime3" />
+            </list>
+        </property>
+    </bean>-->
+</beans>
