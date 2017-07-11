@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.lottery.dao.OddsMapper">
-  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.Odds">
+  <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Odds">
     <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="Type" jdbcType="VARCHAR" property="type" />
     <result column="IsDefault" jdbcType="BIT" property="isdefault" />
@@ -81,7 +81,7 @@
     HeShuang, HongBo, Lvbo, LanBo, JiaQin, YeShou, HeDa, HeXiao, WeiDa, WeiXiao, WeiDan, 
     WeiShuang
   </sql>
-  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fr.lottery.entity.OddsExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from odds
@@ -98,7 +98,7 @@
     where Id = #{id,jdbcType=VARCHAR}
   </delete>
 
-  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.Odds">
+  <insert id="insert" parameterType="com.fr.lottery.entity.Odds">
     insert into odds (Id, Type, IsDefault, 
       No1, No2, No3, No4, 
       No5, No6, No7, No8, 
@@ -137,7 +137,7 @@
       #{weidan,jdbcType=REAL}, #{weishuang,jdbcType=REAL})
   </insert>
 
-  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fr.lottery.entity.OddsExample" resultType="java.lang.Long">
     select count(*) from odds
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -145,7 +145,7 @@
   </select>
 
 
-  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.Odds">
+  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Odds">
     update odds
     set Type = #{type,jdbcType=VARCHAR},
       IsDefault = #{isdefault,jdbcType=BIT},

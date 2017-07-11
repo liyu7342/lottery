@@ -1,5 +1,6 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.Odds;
 import com.fr.lottery.service.impl.OddsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,13 @@ public class OddsController {
         return oddsService.selectDefault(type);
     }
 
+    @ResponseBody
+    @RequestMapping("save")
+    public ResultInfo<String> save(Odds entity){
+        ResultInfo<String> resultInfo = new ResultInfo<String>();
+        boolean result =oddsService.update(entity);
+        resultInfo.setSuccess(result);
+        return resultInfo;
+
+    }
 }

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -245,5 +246,10 @@ public class StringUtil {
 			return true;
 		}
 		return false;
+	}
+
+	public static String getUUID(){
+		String uuid = UUID.randomUUID().toString();
+		return uuid.replaceAll("-","");
 	}
 }

@@ -36,4 +36,8 @@ public interface IOddsService {
      * @return
      */
     Odds selectByType(String type);
+
+    boolean update(Odds entity);
+
+    boolean insert (Odds entity);
 }

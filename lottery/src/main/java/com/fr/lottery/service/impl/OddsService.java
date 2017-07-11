@@ -3,6 +3,7 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.OddsMapper;
 import com.fr.lottery.entity.Odds;
 import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 /**
  * Created by Liyu7342 on 2017-7-10.
- * 默认赔率
+ * 赔率
  */
 @Service
 public class OddsService implements IOddsService{
@@ -36,5 +37,16 @@ public class OddsService implements IOddsService{
     @Override
     public Odds selectByType(String type) {
         return oddsMapper.get(type,false);
+    }
+
+    @Override
+    public boolean update(Odds entity) {
+       return oddsMapper.updateByPrimaryKey(entity)>0;
+    }
+
+    @Override
+    public boolean insert(Odds entity) {
+        entity.setId(StringUtil.getUUID());
+        return oddsMapper.insert(entity)>0;
     }
 }
