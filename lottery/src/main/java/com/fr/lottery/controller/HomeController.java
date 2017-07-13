@@ -1,7 +1,9 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
+import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.CookieUtils;
 import com.fr.lottery.utils.MD5Util;
@@ -27,6 +29,9 @@ public class HomeController  {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IMemberService memberService;
+
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("index");
@@ -45,7 +50,7 @@ public class HomeController  {
         ResultInfo<String> result = new ResultInfo<String>();
         try{
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
-            User user=  userService.getByAccount(userAccount);
+            Member user=  memberService.getByAccount(userAccount);
             if(user !=null && md5_pwd.equals( user.getPassword())){
                 result.setSuccess(true);
                 UserHelper.setCurrentUser(request,user);

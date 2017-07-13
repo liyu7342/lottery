@@ -81,7 +81,12 @@
     HeShuang, HongBo, Lvbo, LanBo, JiaQin, YeShou, HeDa, HeXiao, WeiDa, WeiXiao, WeiDan, 
     WeiShuang
   </sql>
-  <select id="selectByExample" parameterType="com.fr.lottery.entity.OddsExample" resultMap="BaseResultMap">
+  <sql id="Example_Where_Clause">
+    <where>
+
+    </where>
+  </sql>
+  <select id="selectByExample" parameterType="com.fr.lottery.entity.Odds" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from odds
@@ -137,7 +142,7 @@
       #{weidan,jdbcType=REAL}, #{weishuang,jdbcType=REAL})
   </insert>
 
-  <select id="countByExample" parameterType="com.fr.lottery.entity.OddsExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fr.lottery.entity.Odds" resultType="java.lang.Long">
     select count(*) from odds
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

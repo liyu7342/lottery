@@ -8,7 +8,6 @@
     <result property="password" column="Password" jdbcType="VARCHAR"></result>
     <result property="status" column="Status" jdbcType="INTEGER"></result>
     <result column="AgentId" jdbcType="VARCHAR" property="agentid" />
-    <result column="Credits" jdbcType="BIGINT" property="credits" />
     <result column="Proportional" jdbcType="INTEGER" property="proportional" />
     <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
     <result column="T_SingleMin" jdbcType="INTEGER" property="tSinglemin" />
@@ -86,37 +85,8 @@
         Status=1
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List">
-    Id, UserId, AgentId, Credits, Proportional, Handicap, T_SingleMin, T_SingleMax, T_SingleHighest, 
+    Id, Account,Name,Password,Status, AgentId, Credits, Proportional, Handicap, T_SingleMin, T_SingleMax, T_SingleHighest,
     Z_SingleMin, Z_SingleMax, Z_SingleHighest, ZT_SingleMin, ZT_SingleMax, ZT_SingleHighest, 
     L2_SingleMin, L2_SingleMax, L2_SingleHighest, L3_SingleMin, L3_SingleMax, L3_SingleHighest, 
     GG_SingleMin, GG_SingleMax, GG_SingleHighest, BB_SingleMin, BB_SingleMax, BB_SingleHighest, 
@@ -129,16 +99,14 @@
     LMA_Retreat, LMB_Retreat, LMC_Retreat, TXA_Retreat, TXB_Retreat, TXC_Retreat, SXLA_Retreat, 
     SXLB_Retreat, SXLC_Retreat
   </sql>
-  <select id="selectByExample" parameterType="com.fr.lottery.entity.MemberExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fr.lottery.entity.Member" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from member
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
+    <include refid="Example_Where_Clause" />
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
@@ -147,17 +115,24 @@
     select 
     <include refid="Base_Column_List" />
     from member
-    where Id = #{id,jdbcType=VARCHAR}
+      <include refid="Example_Where_Clause" />
+    AND Id = #{id,jdbcType=VARCHAR}
   </select>
+    <select id="getByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member
+        <include refid="Example_Where_Clause" />
+        AND Account = #{account,jdbcType=VARCHAR}
+    </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from member
     where Id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fr.lottery.entity.MemberExample">
+  <delete id="deleteByExample" parameterType="com.fr.lottery.entity.Member">
     delete from member
-    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
-    </if>
   </delete>
   <insert id="insert" parameterType="com.fr.lottery.entity.Member">
     insert into member (Id, UserId, Account,Name,Password,Status,
@@ -214,7 +189,7 @@
       #{sxlaRetreat,jdbcType=DECIMAL}, #{sxlbRetreat,jdbcType=DECIMAL}, #{sxlcRetreat,jdbcType=DECIMAL}
       )
   </insert>
-  <select id="countByExample" parameterType="com.fr.lottery.entity.MemberExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fr.lottery.entity.Member" resultType="java.lang.Long">
     select count(*) from member
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

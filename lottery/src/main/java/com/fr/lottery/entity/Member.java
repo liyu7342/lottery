@@ -1,12 +1,10 @@
 package com.fr.lottery.entity;
 
+import org.joda.time.DateTime;
+
 import java.math.BigDecimal;
 
-public class Member {
-    private String id;
-
-    private String userid;
-
+public class Member  extends User{
     private String agentid;
 
     private Long credits;
@@ -152,22 +150,6 @@ public class Member {
     private BigDecimal sxlbRetreat;
 
     private BigDecimal sxlcRetreat;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
-    }
 
     public String getAgentid() {
         return agentid;

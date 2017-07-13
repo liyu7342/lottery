@@ -28,7 +28,6 @@ public class UserHelper {
             return null;
         }
     }
-
     public static void setCurrentUser(HttpServletRequest request,User user){
         User userInfoApiDto = new User();
         userInfoApiDto.setAccount(user.getAccount());
@@ -37,4 +36,5 @@ public class UserHelper {
         HttpSession session = request.getSession();
         session.setAttribute(session_user,userInfoApiDto);
     }
+
 }

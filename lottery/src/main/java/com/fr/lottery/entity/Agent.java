@@ -1,15 +1,12 @@
 package com.fr.lottery.entity;
 
 
-import javax.xml.registry.infomodel.*;
 import java.io.Serializable;
 
 public class Agent extends User implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private String id;
-
-    private String userid;
 
     private String parentid;
 
@@ -167,14 +164,6 @@ public class Agent extends User implements Serializable{
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getParentid() {

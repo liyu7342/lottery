@@ -15,7 +15,6 @@ public class User implements Serializable {
    private String name;
    private String password;
    private Integer status;
-    private Integer userType;
     private DateTime createDate;
 
     public String getId() {
@@ -56,14 +55,6 @@ public class User implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
     }
 
     public DateTime getCreateDate() {
