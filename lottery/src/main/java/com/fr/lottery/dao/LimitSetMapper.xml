@@ -22,7 +22,7 @@
     <include refid="Base_Column_List" />
     from limitset
     where Reftable =#{reftable,jdbcType=VARCHAR} AND RefrecordId =#{refrecordId,jdbcType=VARCHAR}
-    ORDER BY  LimitType
+    ORDER BY  LimitType ASC
   </select>
   <insert id="insert" parameterType="com.fr.lottery.entity.LimitSet">
     insert into limitset (Id, Reftable, RefrecordId,  LimitType, SingleMin, SingleMax,

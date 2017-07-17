@@ -80,7 +80,7 @@ public class HomeController  {
 
     @RequestMapping("/doLogin")
     @ResponseBody
-        public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
+    public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
 
         ResultInfo<String> result = new ResultInfo<String>();
         try{
@@ -99,7 +99,6 @@ public class HomeController  {
             result.setSuccess(false);
             result.setMsg("内部500错误");
         }
-
         return result;
     }
 

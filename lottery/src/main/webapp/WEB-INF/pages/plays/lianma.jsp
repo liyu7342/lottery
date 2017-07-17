@@ -10,7 +10,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>f2211 - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
-    <link rel="stylesheet" href="../../resources/css/new//mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/new//mike.chen.css?ms2.4.7_31064" type="text/css">
 </head>
 <body class="frame_lianma">
 <div id="htmlcover" style="background-color:rgb(255, 255, 255);filter:alpha(opacity=0);opacity:0;position:absolute;top:0pt;left:0pt;z-index:5;display:block;width:100%;height:100%;"></div>
@@ -364,6 +364,6 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
 </body>
 </html>

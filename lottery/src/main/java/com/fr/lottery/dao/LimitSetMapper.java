@@ -1,7 +1,6 @@
 package com.fr.lottery.dao;
 
 import com.fr.lottery.entity.LimitSet;
-import com.yunfang.inquiry.entity1.limitsetExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
