@@ -8,6 +8,7 @@ import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.CookieUtils;
+import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.UserHelper;
 import freemarker.ext.beans.HashAdapter;
@@ -68,7 +69,7 @@ public class HomeController  {
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
         map.put("limit",listMap);
-        mv.addObject("info",map);
+        mv.addObject("info", JsonUtil.toJson( map));
         return mv;
     }
     @RequestMapping("/login")
