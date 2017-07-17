@@ -1,8 +1,10 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
+import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.CookieUtils;
@@ -39,6 +41,9 @@ public class HomeController  {
     @Autowired
     private IMemberService memberService;
 
+    @Autowired
+    private ILimitSetService limitSetService;
+
     @RequestMapping("/index")
     public ModelAndView index() {
 
@@ -54,29 +59,16 @@ public class HomeController  {
         userInfo.put("sum",0);
         userInfo.put("odds_set","B");
         userInfo.put("status",1);
-        Map<String,Object> limitMap= new HashedMap();
-        Map<String,List<Integer>>  listMap = new HashedMap();
-        listMap.put("00", Arrays.asList(member.gettSinglemin(),member.gettSinglemax(),member.gettSinglehighest()));//特码
-        listMap.put("01", Arrays.asList(member.getZSinglemin(),member.getBbSinglemax(),member.getBbSinglehighest()));//正码
-        listMap.put("02", Arrays.asList(member.getzSinglemin(),member.getzSinglemax(),member.getzSinglehighest()));//连码二
-        listMap.put("03", Arrays.asList(member.getZtSinglemin(),member.getZtSinglemax(),member.getZtSinglehighest()));//连码三
-        listMap.put("04", Arrays.asList(member.getLmSinglemin(),member.gettSinglemax(),member.gettSinglehighest()));//过关
-        listMap.put("05", Arrays.asList(member.getLmSinglemin(),member.getLmSinglemax(),member.getLmSinglehighest()));//生肖
-        listMap.put("06", Arrays.asList(member.getGgSinglemin(),member.getGgSinglemax(),member.getGgSinglehighest()));//尾数
-        listMap.put("07", Arrays.asList(member.getSxlSinglemin(),member.getSxlSinglemax(),member.getSxlSinglehighest()));//半波
-        listMap.put("08", Arrays.asList(member.getWslSinglemin(),member.getWslSinglemax(),member.getWslSinglehighest()));//六肖
-        listMap.put("09", Arrays.asList(member.getBbSinglemin(),member.getBbSinglemax(),member.getBbSinglehighest()));//两面
-        listMap.put("10", Arrays.asList(member.getLxSinglemin(),member.getLxSinglemax(),member.getLxSinglehighest()));//色波
-        listMap.put("11", Arrays.asList(member.getTxSinglemin(),member.getTxSinglemax(),member.getTxSinglehighest()));//特肖
-        listMap.put("12", Arrays.asList(member.getSxlSinglemin(),member.getSxlSinglemax(),member.getSxlSinglehighest()));//生肖连
-        listMap.put("13", Arrays.asList(member.getWslSinglemin(),member.getWslSinglemax(),member.getWslSinglehighest()));//尾数连
-        listMap.put("14", Arrays.asList(member.getBSinglemin(),member.gettSinglemax(),member.gettSinglehighest()));//不中
-
-
 
         map.put("user_info",userInfo);
+        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+
+        Map<String,List<Integer>>listMap = new HashedMap();
+        for(LimitSet set : limitSets){
+            listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
+        }
         map.put("limit",listMap);
-        mv.addAllObjects(map);
+        mv.addObject("info",map);
         return mv;
     }
     @RequestMapping("/login")

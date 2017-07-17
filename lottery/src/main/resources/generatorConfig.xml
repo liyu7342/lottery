@@ -107,6 +107,9 @@
         <table tableName="odds" domainObjectName="Odds" >
 
         </table>
+        <table tableName="limitset" domainObjectName="LimitSet" >
+
+        </table>
 
     </context>
 </generatorConfiguration>
