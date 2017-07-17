@@ -30,12 +30,12 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         if (request_Url.matches(reg)) {
             return true;
         }
-        User user = UserHelper.getCurrentUser();
-        if(user ==null){
-            request.getRequestDispatcher("/home/login").forward(request, response);
-            return false;
-        }
-        request.setAttribute("user", user);
+//        User user = UserHelper.getCurrentUser();
+//        if(user ==null){
+//            request.getRequestDispatcher("/home/login").forward(request, response);
+//            return false;
+//        }
+//        request.setAttribute("user", user);
         return super.preHandle(request, response, handler);
     }
 
