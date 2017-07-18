@@ -59,7 +59,7 @@ function doLoginByPwd(){
         data: oData,
         success: function(data) {
             if(data.success){
-                window.location.href = "/home/index";
+                window.location.href = "/home/index1";
             }
             if (!data['success']) {
                 layer.tips(data.msg+ "！","#txt_user_id", {
