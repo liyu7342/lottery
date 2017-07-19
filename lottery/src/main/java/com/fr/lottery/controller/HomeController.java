@@ -45,6 +45,10 @@ public class HomeController  {
     @Autowired
     private ILimitSetService limitSetService;
 
+    /**
+     * 会员首页
+      * @return
+     */
     @RequestMapping("/index")
     public ModelAndView index() {
 
@@ -55,6 +59,70 @@ public class HomeController  {
         Map<String,Object> userInfo=new HashedMap();
         userInfo.put("memberId",member.getId());
         userInfo.put("credit",member.getCredits());
+        userInfo.put("name",member.getName());
+        userInfo.put("account",member.getAccount());
+        userInfo.put("sum",0);
+        userInfo.put("odds_set","B");
+        userInfo.put("status",1);
+
+        map.put("user_info",userInfo);
+        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+
+        Map<String,List<Integer>>listMap = new HashedMap();
+        for(LimitSet set : limitSets){
+            listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
+        }
+        map.put("limit",listMap);
+        mv.addObject("info", JsonUtil.toJson( map));
+        return mv;
+    }
+
+    /**
+     * 代理首页
+     * @return
+     */
+    @RequestMapping("/index1")
+    public ModelAndView index1() {
+
+        ModelAndView mv = new ModelAndView("index1");
+        User user= UserHelper.getCurrentUser();
+        Member member = memberService.get(user.getId());
+        Map<String,Object> map = new HashedMap();
+        Map<String,Object> userInfo=new HashedMap();
+        userInfo.put("memberId",member.getId());
+        userInfo.put("credits",member.getCredits());
+        userInfo.put("name",member.getName());
+        userInfo.put("account",member.getAccount());
+        userInfo.put("sum",0);
+        userInfo.put("odds_set","B");
+        userInfo.put("status",1);
+
+        map.put("user_info",userInfo);
+        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+
+        Map<String,List<Integer>>listMap = new HashedMap();
+        for(LimitSet set : limitSets){
+            listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
+        }
+        map.put("limit",listMap);
+        mv.addObject("info", JsonUtil.toJson( map));
+        return mv;
+    }
+
+    /**
+     * 管理员首页
+     * @return
+     */
+    @RequestMapping("/index2")
+    public ModelAndView index2() {
+
+        ModelAndView mv = new ModelAndView("index2");
+        User user= UserHelper.getCurrentUser();
+        Member member = memberService.get(user.getId());
+        Map<String,Object> map = new HashedMap();
+        Map<String,Object> userInfo=new HashedMap();
+        userInfo.put("memberId",member.getId());
+        userInfo.put("credits",member.getCredits());
         userInfo.put("name",member.getName());
         userInfo.put("account",member.getAccount());
         userInfo.put("sum",0);
