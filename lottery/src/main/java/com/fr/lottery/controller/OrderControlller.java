@@ -15,4 +15,10 @@ public class OrderControlller {
         ModelAndView mv = new ModelAndView("/order/list");
         return mv;
     }
+
+    @RequestMapping("/order")
+    public ModelAndView order() {
+        ModelAndView mv = new ModelAndView("/order/order");
+        return mv;
+    }
 }

@@ -21,6 +21,11 @@ public class UserController {
     @Resource
     private IUserService userService;
 
+    @RequestMapping("/index")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("/user/index");
+        return mv;
+    }
 
     @RequestMapping("/history")
     public ModelAndView history() {
