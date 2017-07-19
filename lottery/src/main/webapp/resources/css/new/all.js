@@ -8157,9 +8157,9 @@ Header.prototype.responses = function(f, b) {
                     if (c.length !== 12) {
                         j = "{#|4e0b|6ce8#}失败".keyComment()
                     } else {
-                        this.user_info.credits = parseInt(f.credits, 10);
+                        this.user_info.credit = parseInt(f.credit, 10);
                         this.user_info.sum = parseInt(f.sum, 10);
-                        this.account[4].innerHTML = this.user_info.credits;
+                        this.account[4].innerHTML = this.user_info.credit;
                         this.account[5].innerHTML = this.user_info.sum;
                         this.account[6].innerHTML = this.user_info.credit - this.user_info.sum;
                         this.analysis_order(h);
@@ -8363,7 +8363,7 @@ Header.prototype.refersh_sum_amount = function(b) {
     var a = parseInt(b, 10) + (!this.account[5].innerHTML ? "" : parseInt(this.account[5].innerHTML, 10));
     this.user_info.sum = a;
     this.account[5].innerHTML = a;
-    this.account[6].innerHTML = parseInt(this.user_info.credits - a, 10)
+    this.account[6].innerHTML = parseInt(this.user_info.credit - a, 10)
 }
 ;
 Header.prototype.get_header_info = function() {
@@ -8398,7 +8398,7 @@ Header.prototype.set_header_info = function(d) {
     $("#account_info .cover_order").remove();
     $("#account_info table").show();
     $("#marquee").html("<a href='#' marquee='1' >" + d.marquee + "</a>");
-    this.user_info.credits = d.credits;
+    this.user_info.credit = d.credit;
     this.account[5].innerHTML = "";
     this.refersh_sum_amount(d.sum);
     this.fail_count = d.fail_count;

@@ -54,7 +54,7 @@ public class HomeController  {
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
         userInfo.put("memberId",member.getId());
-        userInfo.put("credits",member.getCredits());
+        userInfo.put("credit",member.getCredits());
         userInfo.put("name",member.getName());
         userInfo.put("account",member.getAccount());
         userInfo.put("sum",0);
