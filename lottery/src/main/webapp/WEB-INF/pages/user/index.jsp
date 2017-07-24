@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>f2213 - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resource/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -67,17 +67,22 @@
                                     <td class="r">功能</td>
                                 </tr></thead>
                                 <tbody>
+                                <#list user as obj>
                                 <tr level="5">
-                                    <th><input style='display:none;' type='checkbox' name='delAccountAll' value='24657,f2211,8955' /></th>
-                                    <td class="offline" id="24657"></td>
-                                    <td class="bg tl">f2211&nbsp;&nbsp;[22,22]</td>
-                                    <td>500</td>
-                                    <td>B</td><td>0</td>
 
-                                    <td>啟用</td>
+                                    <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
+                                    <td class="offline" id="${obj.id}"></td>
+                                    <td class="bg tl">${obj.name}&nbsp;&nbsp;</td>
+                                    <td>${obj.credits}</td>
+                                    <td>${obj.handicap}</td><td>0</td>
+
+                                    <td>${obj.status}</td>
                                     <td>2017-05-30</td>
-                                    <td><a class='a_btm_line' act='tingyong' pid=8955 tid=24657 page='1' href='member_list.htm'>停用</a>/&nbsp;<a class='a_btm_line' act='tingya' pid=8955 tid=24657 page='1' href='member_list.htm'>停押</a>/&nbsp;<a class='a_btm_line' href='member_create.htm?op=upd&id=24657&pageId=1&keywordstatus=1&keyword=&level=5&parentid=0'>修改</a></td>
-                                </tr></tbody></table>
+                                    <td><a class='a_btm_line' act='tingyong' pid=8955 tid='${obj.id}' page='1' href='member_list.htm'>停用</a>/&nbsp;<a class='a_btm_line' act='tingya' pid=8955 tid=24657 page='1' href='member_list.htm'>停押</a>/&nbsp;<a class='a_btm_line' href='member_create.htm?op=upd&id=24657&pageId=1&keywordstatus=1&keyword=&level=5&parentid=0'>修改</a></td>
+                                </tr>
+                                    </#list>
+                                </tbody></table>
+
                             <input type="hidden" name="drawstatus" value="1" >
                             <input type="hidden" name="delDownLine" value="1" >
                         </div>
@@ -118,7 +123,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 

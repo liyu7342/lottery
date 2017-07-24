@@ -15,7 +15,7 @@ public class User implements Serializable {
    private String name;
    private String password;
    private Integer status;
-    private DateTime createDate;
+    private Date createDate;
 
     public String getId() {
         return id;
@@ -57,11 +57,11 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public DateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(DateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 }

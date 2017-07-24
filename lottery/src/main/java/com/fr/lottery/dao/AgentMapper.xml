@@ -14,6 +14,7 @@
         <result column="Password" jdbcType="VARCHAR" property="password" />
         <result column="Status" jdbcType="TINYINT" property="status" />
         <result column="AgentType" jdbcType="INTEGER" property="agenttype" />
+        <result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
     </resultMap>
     <sql id="Columns">
         Id, Account,Name,Password,Status, ParentId, CompanyId, IsReplenish, ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent
@@ -63,7 +64,7 @@
       #{isreplenish,jdbcType=TINYINT}, #{zhanchenghe,jdbcType=INTEGER}, #{zongdaizhanchengshu,jdbcType=INTEGER},
       #{replenishpercent,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{agenttype,jdbcType=INTEGER},
-      #{createdate,jdbcType=TIMESTAMP})
+      #{createDate,jdbcType=TIMESTAMP})
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Agent">
     update agent
@@ -78,8 +79,19 @@
       Password = #{password,jdbcType=VARCHAR},
       Status = #{status,jdbcType=TINYINT},
       AgentType = #{agenttype,jdbcType=INTEGER},
-      CreateDate = #{createdate,jdbcType=TIMESTAMP}
+      CreateDate = #{createDate,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 
+    <select id="getByAccount" parameterType="java.lang.String" resultMap="baseResult">
+        select
+        <include refid="Columns" />
+        from agent
+        <include refid="sqlWhere"></include>
+        AND Account = #{account,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE agent SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

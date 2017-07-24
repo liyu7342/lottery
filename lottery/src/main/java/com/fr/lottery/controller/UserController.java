@@ -1,8 +1,11 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.Page;
+import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
+import com.fr.lottery.utils.UserHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,11 +23,16 @@ import java.util.List;
 public class UserController {
     @Resource
     private IUserService userService;
+    @Resource
+    private IMemberService memberService;
 
     @RequestMapping("/index")
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("/user/index");
-        return mv;
+    public ModelAndView index(Integer pageId) {
+        ModelAndView modelAndView = new ModelAndView("/user/index");
+        String agentId = UserHelper.getCurrentUser().getId();
+        List<Member> members = memberService.getMembersByAgentId(agentId,pageId);
+        modelAndView.addObject("user",members);
+        return modelAndView;
     }
 
     @RequestMapping("/history")
