@@ -20,5 +20,5 @@ public interface IMemberService {
 
     int updatePassword(String id,String password);
 
-    List<Member> getMembersByAgentId(String agentId, Integer pageId);
+    List<Member> getMembersByAgentId(String agentId,String keyword,Integer status, Integer pageId);
 }

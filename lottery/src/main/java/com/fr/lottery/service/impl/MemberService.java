@@ -71,7 +71,7 @@ public class MemberService implements IMemberService {
     }
 
     @Override
-    public List<Member> getMembersByAgentId(String agentId, Integer pageId) {
-        return memberMapper.getMembersByAgentId(agentId,pageId);
+    public List<Member> getMembersByAgentId(String agentId,String keyword,Integer status,  Integer pageId) {
+        return memberMapper.getMembersByAgentId(agentId,keyword,status,pageId);
     }
 }

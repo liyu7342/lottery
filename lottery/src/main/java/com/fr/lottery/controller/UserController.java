@@ -27,10 +27,10 @@ public class UserController {
     private IMemberService memberService;
 
     @RequestMapping("/index")
-    public ModelAndView index(Integer pageId) {
+    public ModelAndView index(Integer pageId,Integer  keywordstatus,String keyword) {
         ModelAndView modelAndView = new ModelAndView("/user/index");
         String agentId = UserHelper.getCurrentUser().getId();
-        List<Member> members = memberService.getMembersByAgentId(agentId,pageId);
+        List<Member> members = memberService.getMembersByAgentId(agentId,keyword,keywordstatus,pageId);
         modelAndView.addObject("user",members);
         return modelAndView;
     }

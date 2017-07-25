@@ -28,7 +28,7 @@
                     </style>
                     <div id="huiyuan" class="module">
                         <div class="hd g-tm">
-                            <form id="form1" method="GET" action="member_list.htm">
+                            <form id="form1" method="GET" action="/user/index">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
                                     <li><h2 class="g-tit">會員
@@ -44,7 +44,7 @@
                                         <input type="text" name="keyword" size="12" value="請輸入名稱/賬號" class="gray">
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
-                                    <li><h2><a class="btn10 mt red" href='member_create.htm?op=create&add=1&id=8955&pageId=1&keywordstatus=-1&keyword=&level=5&parentid=0'>新增</a>&nbsp;&nbsp;
+                                    <li><h2><a class="btn10 mt red" href='/member/info?op=create&id=8955'>新增</a>&nbsp;&nbsp;
                                         <a id="batchDel" class="btn9 mt red" level="5" href="javascript:void(0)">批量刪除</a>        </h2></li>
                                 </ul></form>
                             <div class="fr">
@@ -97,7 +97,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：0</p>

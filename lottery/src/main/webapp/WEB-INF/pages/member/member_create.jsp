@@ -374,7 +374,8 @@
                     <p>在線經銷商：1</p>
                     <div class="dotbg"></div>
                 </div>
-            </div>        </div>
+            </div>
+        </div>
     </div>
     <div id="ft">
         <div id="footer" class="module">

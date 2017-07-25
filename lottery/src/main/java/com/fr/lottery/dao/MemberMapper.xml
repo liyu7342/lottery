@@ -16,7 +16,7 @@
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
-        Status=1
+        1=1
     </where>
   </sql>
   <sql id="Base_Column_List">
@@ -78,6 +78,15 @@
     <include refid="Base_Column_List" />
     from member
       <include refid="Example_Where_Clause" />
+    <if test="status">
+      AND status=#{status,jdbcType=INTEGER}
+    </if>
+
+    <if test="keyword">
+      AND (account=#{keyword,jdbcType=VARCHAR}
+        OR NAME =#{keyword,jdbcType=VARCHAR}
+      )
+    </if>
     AND agentId = #{agentId,jdbcType=VARCHAR}
     <if test="pageId !=null">
       limit (pageId-1) * 10 ,10
