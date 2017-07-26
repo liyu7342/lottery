@@ -52,7 +52,10 @@ public class Global {
 
     public static final Integer pageSize=10;
 
-
-
+    public static final Integer userStatus_qiyong=1;
+    public static final Integer userStatus_tingyong=0;
+    public static final Integer userStatus_tingya=2;
+    public static final Integer userStatus_jinzhidenglu=3;
+    public static final Integer userStatus_delete=4;
 
 }

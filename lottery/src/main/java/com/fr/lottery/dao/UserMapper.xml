@@ -13,8 +13,12 @@
     </sql>
     <sql id="sqlWhere">
         <where>
-           AND Status =1
-
+            <if test="status !=null">
+                AND Status =#{status}
+            </if>
+            <if test="status==null">
+                AND Status !=4
+            </if>
         </where>
     </sql>
 
@@ -58,7 +62,11 @@
     <update id="updatePassword">
         UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
-    <delete id="delete" parameterType="String">
+    <!--<delete id="delete" parameterType="String">
         UPDATE USER SET Status =0 WHERE Id =#{id,jdbcType=VARCHAR}
-    </delete>
+    </delete>-->
+    <update id="changeStatus">
+        UPDATE USER SET Status=#{status,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
+    </update>
+
 </mapper>

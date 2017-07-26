@@ -16,6 +16,7 @@ public class User implements Serializable {
    private String password;
    private Integer status;
     private Date createDate;
+    private boolean isDefault;
 
     public String getId() {
         return id;
@@ -63,5 +64,13 @@ public class User implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
     }
 }

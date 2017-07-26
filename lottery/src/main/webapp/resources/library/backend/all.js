@@ -6520,14 +6520,14 @@ $.extend({
             var q = f + "[" + k + "]"
         } else {
             f = f.replace(/<.*?>|&nbsp;/g, "");
-            var a = f.split("[");
+           /* var a = f.split("[");
             var c = a[1].split(",");
             if (c[0].indexOf("]") > 0) {
                 c[0] = c[0].replace("]", "")
             }
-            var q = a[0] + "[" + c[0] + "]"
+            var q = a[0] + "[" + c[0] + "]"*/
         }
-        if (g == 4 && !confirm("確認刪除" + r + ":" + q + "嗎？刪除後不可恢復！")) {
+        if (g == 4 && !confirm("確認刪除" + r + ":" + f + "嗎？刪除後不可恢復！")) {
             return false
         }
         $.getJSON($.getChgStatusUrl(b, h, g, l, d), function(s) {
@@ -6612,7 +6612,7 @@ $.extend({
         }
     },
     getChgStatusUrl: function(f, d, c, a, b) {
-        return "ajax_req.htm?act=chang_status&level=" + f + "&pid=" + a + "&id=" + d + "&status=" + c + "&keyword=" + b
+        return "user/changStatus?level=" + f + "&pid=" + a + "&id=" + d + "&status=" + c + "&keyword=" + b
     },
     getStatusUrl: function(h, g, c, d, b) {
         var f = ["admin", "user", "user", "user", "user", "member"];

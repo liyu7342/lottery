@@ -66,4 +66,9 @@ public class UserController {
         return userService.Paging(account,name,index,size);
     }
 
+    @RequestMapping("/changStatus")
+    @ResponseBody
+    public int changeStatus(Integer level,String pid,String id,Integer status){
+       return userService.changeStatus(level,pid,id,status);
+    }
 }

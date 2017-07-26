@@ -83,8 +83,8 @@
     </if>
 
     <if test="keyword">
-      AND (account=#{keyword,jdbcType=VARCHAR}
-        OR NAME =#{keyword,jdbcType=VARCHAR}
+      AND (account like #{keyword,jdbcType=VARCHAR}
+        OR NAME  like #{keyword,jdbcType=VARCHAR}
       )
     </if>
     AND agentId = #{agentId,jdbcType=VARCHAR}

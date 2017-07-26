@@ -3,6 +3,7 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.UserMapper;
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,11 +73,36 @@ public class UserService implements IUserService {
 
     @Override
     public int delete(String id) {
-        return userMapper.delete(id);
+       return  userMapper.changeStatus(id,Global.userStatus_delete);
     }
 
     @Override
     public int updatePassword(String id, String password) {
-        return updatePassword(id,password);
+        return userMapper.updatePassword(id,password);
+    }
+
+    @Override
+    public int changeStatus(Integer level, String pid, String id, Integer status) {
+        User user = userMapper.get(id);
+        if(user ==null) return 10086;
+        //User child = userMapper.get(user.getParentId);
+
+        if(user.isDefault())    //初始账号
+            return 2;
+        User pUser = userMapper.get(pid);
+        if(pUser.getStatus()== Global.userStatus_tingya){//必須先啟用上級賬號
+            return -2;
+        }
+        if(pUser.getStatus()== Global.userStatus_tingyong){//上級賬號已停用
+            return -3;
+        }
+//        if(user.getStatus()==2){                //开盘状态下
+//            return 3;
+//        }
+        if(user.getStatus()==Global.userStatus_tingyong){
+            return -5;
+        }
+         userMapper.changeStatus(id,status);
+        return 0;
     }
 }

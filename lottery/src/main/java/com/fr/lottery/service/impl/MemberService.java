@@ -7,6 +7,7 @@ import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,6 +73,8 @@ public class MemberService implements IMemberService {
 
     @Override
     public List<Member> getMembersByAgentId(String agentId,String keyword,Integer status,  Integer pageId) {
+        if(StringUtils.isNotBlank(keyword))
+            keyword ="%"+keyword+"%";
         return memberMapper.getMembersByAgentId(agentId,keyword,status,pageId);
     }
 }

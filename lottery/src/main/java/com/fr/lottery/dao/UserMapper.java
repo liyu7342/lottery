@@ -26,8 +26,8 @@ public interface UserMapper {
 
     int update(User entity);
 
-    int delete(@Param("id")String id);
 
     int updatePassword(@Param("id") String id,@Param("password") String password);
 
+    int changeStatus (@Param("id") String id,@Param("status") Integer status);
 }

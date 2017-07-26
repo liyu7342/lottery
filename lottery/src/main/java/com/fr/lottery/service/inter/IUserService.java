@@ -23,4 +23,6 @@ public interface IUserService {
 
     int updatePassword( String id, String password);
 
+    int changeStatus(Integer level,String pid,String id,Integer status);
+
 }
