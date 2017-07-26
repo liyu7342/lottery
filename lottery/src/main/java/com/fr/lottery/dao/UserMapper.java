@@ -31,5 +31,5 @@ public interface UserMapper {
 
     int changeStatus (@Param("id") String id,@Param("status") Integer status);
 
-    List<User> getUserByParentId(String parentId,String keyword,Integer status,Integer pageId);
+    List<User> getUserByParentId(@Param("parentId") String parentId,@Param("keyword") String keyword,@Param("status") Integer status,@Param("pageId") Integer pageId);
 }
