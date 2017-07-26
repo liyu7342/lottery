@@ -69,4 +69,9 @@ public class MemberService implements IMemberService {
     public int updatePassword(String id, String password) {
         return  memberMapper.updatePassword(id,password);
     }
+
+    @Override
+    public List<Member> getMembersByAgentId(String agentId,String keyword,Integer status,  Integer pageId) {
+        return memberMapper.getMembersByAgentId(agentId,keyword,status,pageId);
+    }
 }

@@ -1,7 +1,9 @@
 package com.fr.lottery.entity;
 
 
-public class Member  extends User{
+import java.io.Serializable;
+
+public class Member  extends User implements Serializable {
     private String id;
 
     private String agentid;

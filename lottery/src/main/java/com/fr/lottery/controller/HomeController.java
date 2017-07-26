@@ -1,9 +1,11 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
+import com.fr.lottery.entity.Agent;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.IAgentService;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
@@ -43,6 +45,9 @@ public class HomeController  {
     private IMemberService memberService;
 
     @Autowired
+    private IAgentService agentService;
+
+    @Autowired
     private ILimitSetService limitSetService;
 
     /**
@@ -78,11 +83,11 @@ public class HomeController  {
     }
 
     /**
-     * 代理首页
+     * 会员首页
      * @return
      */
-    @RequestMapping("/index1")
-    public ModelAndView index1() {
+    @RequestMapping("/index3")
+    public ModelAndView index3() {
 
         ModelAndView mv = new ModelAndView("index1");
         User user= UserHelper.getCurrentUser();
@@ -106,6 +111,17 @@ public class HomeController  {
         }
         map.put("limit",listMap);
         mv.addObject("info", JsonUtil.toJson( map));
+        return mv;
+    }
+
+    /**
+     * 代理首页
+     * @return
+     */
+    @RequestMapping("/index1")
+    public ModelAndView index1() {
+
+        ModelAndView mv = new ModelAndView("index1");
         return mv;
     }
 
@@ -145,10 +161,33 @@ public class HomeController  {
         ModelAndView mv = new ModelAndView("login");
         return mv;
     }
-
     @RequestMapping("/doLogin")
     @ResponseBody
     public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
+
+        ResultInfo<String> result = new ResultInfo<String>();
+        try{
+            String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
+            Agent user=  agentService.getByAccount(userAccount);
+            if(user !=null && md5_pwd.equals( user.getPassword())){
+                result.setSuccess(true);
+                UserHelper.setCurrentUser(request,user);
+            }
+            else{
+                result.setSuccess(false);
+                result.setMsg("账号或者密码不正确！");
+            }
+        }
+        catch (Exception ex){
+            result.setSuccess(false);
+            result.setMsg("内部500错误");
+        }
+        return result;
+    }
+
+    @RequestMapping("/doLogin2")
+    @ResponseBody
+    public ResultInfo<String> doLogin2(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
 
         ResultInfo<String> result = new ResultInfo<String>();
         try{

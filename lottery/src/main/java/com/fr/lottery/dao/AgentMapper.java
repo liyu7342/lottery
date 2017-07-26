@@ -1,7 +1,7 @@
 package com.fr.lottery.dao;
 
+import com.fr.lottery.entity.Agent;
 import org.apache.ibatis.annotations.Param;
-import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

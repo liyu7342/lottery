@@ -23,4 +23,6 @@ public interface MemberMapper {
     Member getByAccount(String account);
 
     int updatePassword(@Param("id") String id,@Param("password") String password);
+
+    List<Member> getMembersByAgentId(@Param("agentId") String agentId,@Param("keyword") String keyword,@Param("status") Integer status,@Param("pageId") Integer pageId);
 }

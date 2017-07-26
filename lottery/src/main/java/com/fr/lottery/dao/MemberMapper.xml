@@ -11,12 +11,12 @@
     <result column="Name" jdbcType="VARCHAR" property="name" />
     <result column="Password" jdbcType="VARCHAR" property="password" />
     <result column="Status" jdbcType="TINYINT" property="status" />
-    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
 
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
-        Status=1
+        1=1
     </where>
   </sql>
   <sql id="Base_Column_List">
@@ -73,6 +73,26 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <select id="getMembersByAgentId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member
+      <include refid="Example_Where_Clause" />
+    <if test="status">
+      AND status=#{status,jdbcType=INTEGER}
+    </if>
+
+    <if test="keyword">
+      AND (account=#{keyword,jdbcType=VARCHAR}
+        OR NAME =#{keyword,jdbcType=VARCHAR}
+      )
+    </if>
+    AND agentId = #{agentId,jdbcType=VARCHAR}
+    <if test="pageId !=null">
+      limit (pageId-1) * 10 ,10
+    </if>
+  </select>
+
 
 
   <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Member">
@@ -85,7 +105,7 @@
       Name = #{name,jdbcType=VARCHAR},
       Password = #{password,jdbcType=VARCHAR},
       Status = #{status,jdbcType=TINYINT},
-      CreateDate = #{createdate,jdbcType=TIMESTAMP}
+      CreateDate = #{createDate,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

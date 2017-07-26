@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>f2213 - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resource/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -278,10 +278,10 @@
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='../account/member_list.htm'"/></div>
                                 <input type="hidden" name="op" value='create'/>
-                                <input type="hidden" name="member_memberId" value=''/>
-                                <input type="hidden" name="member_parentId" value='8955'/>
+                                <input type="hidden" name="member_memberId" value='${id}'/>
+                                <input type="hidden" name="member_parentId" value='${agentId}'/>
 
-                                <input type="hidden" name="parentcredit" value='0'/>
+                                <input type="hidden" name="parentcredit" value='${parentcredit}'/>
                                 <input type="hidden" name="betting" value='0' />
                                 <input type="hidden" name="parentstatus" value='1'/>
                                 <input type="hidden" name="requestUrl" value='account/member_list.htm'/>
@@ -367,7 +367,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/admin/index'>管理員</a><cite>0</cite></li><li><a curl='5' href='/member/index'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>1</cite></li>        </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：0</p>
@@ -393,7 +393,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 
