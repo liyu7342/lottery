@@ -279,12 +279,12 @@
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='../account/member_list.htm'"/></div>
                                 <input type="hidden" name="op" value='create'/>
                                 <input type="hidden" name="member_memberId" value='${id}'/>
-                                <input type="hidden" name="member_parentId" value='${agentId}'/>
+                                <input type="hidden" name="member_parentId" value='${parentId}'/>
 
-                                <input type="hidden" name="parentcredit" value='${parentcredit}'/>
+                                <input type="hidden" name="parentcredit" value='${parentcredits}'/>
                                 <input type="hidden" name="betting" value='0' />
-                                <input type="hidden" name="parentstatus" value='1'/>
-                                <input type="hidden" name="requestUrl" value='account/member_list.htm'/>
+                                <input type="hidden" name="parentstatus" value='${parentcredits}'/>
+                                <input type="hidden" name="requestUrl" value='member/index'/>
                                 <input type="hidden" name="historyNum" value='1'/>
 
                                 <input type="hidden" name="pordermin0" value="1" />
