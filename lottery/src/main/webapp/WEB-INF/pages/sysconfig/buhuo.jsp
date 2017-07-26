@@ -12,7 +12,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>f2213 - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="../../resource/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -147,7 +147,7 @@
     window.setting = {
         login_path: '/msdid63242a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 20000, //設置開關盤刷新頻率
+        draw_refersh: 200000, //設置開關盤刷新頻率
         log4js_type:  0, //設置log4javascript的類型
         log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼

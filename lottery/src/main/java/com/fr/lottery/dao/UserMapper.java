@@ -30,4 +30,6 @@ public interface UserMapper {
     int updatePassword(@Param("id") String id,@Param("password") String password);
 
     int changeStatus (@Param("id") String id,@Param("status") Integer status);
+
+    List<User> getUserByParentId(String parentId,String keyword,Integer status,Integer pageId);
 }

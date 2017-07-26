@@ -105,4 +105,9 @@ public class UserService implements IUserService {
          userMapper.changeStatus(id,status);
         return 0;
     }
+
+    @Override
+    public List<User> getUserByParentId(String parentId, String keyword, Integer status, Integer pageId) {
+        return userMapper.getUserByParentId(parentId,keyword,status,pageId);
+    }
 }

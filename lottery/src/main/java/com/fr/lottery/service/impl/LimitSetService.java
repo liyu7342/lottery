@@ -18,8 +18,8 @@ public class LimitSetService  implements ILimitSetService{
 
 
     @Override
-    public List<LimitSet> findAll(String reftable, String refrecordId) {
-       return  limitSetMapper.selectByPrimaryKey(reftable,refrecordId);
+    public List<LimitSet> findAll(String userId) {
+       return  limitSetMapper.selectByPrimaryKey(userId);
     }
 
     @Override

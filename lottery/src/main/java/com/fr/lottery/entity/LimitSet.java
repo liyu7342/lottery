@@ -3,9 +3,8 @@ package com.fr.lottery.entity;
 public class LimitSet {
     private String id;
 
-    private String reftable;
+    private String userId;
 
-    private String refrecordid;
 
     private String limitType;
 
@@ -29,20 +28,12 @@ public class LimitSet {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getReftable() {
-        return reftable;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setReftable(String reftable) {
-        this.reftable = reftable == null ? null : reftable.trim();
-    }
-
-    public String getRefrecordid() {
-        return refrecordid;
-    }
-
-    public void setRefrecordid(String refrecordid) {
-        this.refrecordid = refrecordid == null ? null : refrecordid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getLimitType() {

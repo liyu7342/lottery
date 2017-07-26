@@ -1,22 +1,16 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
-import com.fr.lottery.entity.Agent;
 import com.fr.lottery.entity.LimitSet;
-import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
-import com.fr.lottery.service.inter.IAgentService;
 import com.fr.lottery.service.inter.ILimitSetService;
-import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.CookieUtils;
 import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.UserHelper;
-import freemarker.ext.beans.HashAdapter;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -41,11 +33,6 @@ public class HomeController  {
     @Autowired
     private IUserService userService;
 
-    @Autowired
-    private IMemberService memberService;
-
-    @Autowired
-    private IAgentService agentService;
 
     @Autowired
     private ILimitSetService limitSetService;
@@ -59,19 +46,18 @@ public class HomeController  {
 
         ModelAndView mv = new ModelAndView("index");
         User user= UserHelper.getCurrentUser();
-        Member member = memberService.get(user.getId());
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
-        userInfo.put("memberId",member.getId());
-        userInfo.put("credit",member.getCredits());
-        userInfo.put("name",member.getName());
-        userInfo.put("account",member.getAccount());
+        userInfo.put("memberId",user.getId());
+        userInfo.put("credit",user.getCredits());
+        userInfo.put("name",user.getName());
+        userInfo.put("account",user.getAccount());
         userInfo.put("sum",0);
         userInfo.put("odds_set","B");
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);
-        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+        List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
         Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
@@ -91,19 +77,19 @@ public class HomeController  {
 
         ModelAndView mv = new ModelAndView("index1");
         User user= UserHelper.getCurrentUser();
-        Member member = memberService.get(user.getId());
+
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
-        userInfo.put("memberId",member.getId());
-        userInfo.put("credits",member.getCredits());
-        userInfo.put("name",member.getName());
-        userInfo.put("account",member.getAccount());
+        userInfo.put("memberId",user.getId());
+        userInfo.put("credits",user.getCredits());
+        userInfo.put("name",user.getName());
+        userInfo.put("account",user.getAccount());
         userInfo.put("sum",0);
-        userInfo.put("odds_set","B");
+        userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);
-        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+        List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
         Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
@@ -134,19 +120,18 @@ public class HomeController  {
 
         ModelAndView mv = new ModelAndView("index2");
         User user= UserHelper.getCurrentUser();
-        Member member = memberService.get(user.getId());
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
-        userInfo.put("memberId",member.getId());
-        userInfo.put("credits",member.getCredits());
-        userInfo.put("name",member.getName());
-        userInfo.put("account",member.getAccount());
+        userInfo.put("memberId",user.getId());
+        userInfo.put("credits",user.getCredits());
+        userInfo.put("name",user.getName());
+        userInfo.put("account",user.getAccount());
         userInfo.put("sum",0);
         userInfo.put("odds_set","B");
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);
-        List<LimitSet> limitSets = limitSetService.findAll("member",member.getId());
+        List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
         Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
@@ -168,7 +153,7 @@ public class HomeController  {
         ResultInfo<String> result = new ResultInfo<String>();
         try{
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
-            Agent user=  agentService.getByAccount(userAccount);
+            User user=  userService.getByAccount(userAccount);
             if(user !=null && md5_pwd.equals( user.getPassword())){
                 result.setSuccess(true);
                 UserHelper.setCurrentUser(request,user);
@@ -192,7 +177,7 @@ public class HomeController  {
         ResultInfo<String> result = new ResultInfo<String>();
         try{
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
-            Member user=  memberService.getByAccount(userAccount);
+            User user=  userService.getByAccount(userAccount);
             if(user !=null && md5_pwd.equals( user.getPassword())){
                 result.setSuccess(true);
                 UserHelper.setCurrentUser(request,user);

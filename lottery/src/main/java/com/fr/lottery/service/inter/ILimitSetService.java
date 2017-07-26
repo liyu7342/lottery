@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/17.
  */
 public interface ILimitSetService {
-    List<LimitSet>   findAll(String reftable,String refrecordId);
+    List<LimitSet>   findAll(String userId);
 
     boolean insert(List<LimitSet> limitSets);
 

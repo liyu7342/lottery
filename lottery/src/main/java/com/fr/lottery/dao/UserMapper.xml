@@ -7,9 +7,18 @@
         <result property="name" column="Name" jdbcType="VARCHAR"></result>
         <result property="password" column="Password" jdbcType="VARCHAR"></result>
         <result property="status" column="Status" jdbcType="INTEGER"></result>
+        <result column="IsReplenish" jdbcType="TINYINT" property="isreplenish" />
+        <result column="ZhanChengHe" jdbcType="INTEGER" property="zhanchenghe" />
+        <result column="ZongDaiZhanChengShu" jdbcType="INTEGER" property="zongdaizhanchengshu" />
+        <result column="ReplenishPercent" jdbcType="INTEGER" property="replenishpercent" />
+        <result column="UserType" jdbcType="INTEGER" property="userType" />
+        <result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="Credits" jdbcType="BIGINT" property="credits" />
+        <result column="Proportional" jdbcType="INTEGER" property="proportional" />
+        <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
     </resultMap>
     <sql id="Columns">
-          Id,Account,Name,Password,Status
+          Id,Account,Name,Password,Status,IsReplenish, ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent,Credits, Proportional, Handicap,UserType
     </sql>
     <sql id="sqlWhere">
         <where>
@@ -46,8 +55,7 @@
         SELECT
         <include refid="Columns"></include>
         from USER
-        <include refid="sqlWhere"></include>
-        AND Account=#{account,jdbcType=VARCHAR}
+        WHERE Account=#{account,jdbcType=VARCHAR} AND Status=1
     </select>
 
     <!-- 插入用户 -->
@@ -62,11 +70,30 @@
     <update id="updatePassword">
         UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
+
     <!--<delete id="delete" parameterType="String">
         UPDATE USER SET Status =0 WHERE Id =#{id,jdbcType=VARCHAR}
     </delete>-->
+
     <update id="changeStatus">
         UPDATE USER SET Status=#{status,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
 
+    <select id="getUserByParentId" resultMap="userResult">
+    select
+    <include refid="Columns" />
+    from USER
+    <include refid="sqlWhere" />
+
+
+    <if test="keyword">
+        AND (account like #{keyword,jdbcType=VARCHAR}
+        OR NAME  like #{keyword,jdbcType=VARCHAR}
+        )
+    </if>
+    AND parentId = #{parentId,jdbcType=VARCHAR}
+    <if test="pageId !=null">
+        limit (pageId-1) * 10 ,10
+    </if>
+    </select>
 </mapper>

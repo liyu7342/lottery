@@ -25,4 +25,6 @@ public interface IUserService {
 
     int changeStatus(Integer level,String pid,String id,Integer status);
 
+    List<User> getUserByParentId(String parentId,String keyword,Integer status,Integer pageId);
+
 }

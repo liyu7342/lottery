@@ -1,11 +1,10 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.entity.LimitSet;
-import com.fr.lottery.entity.Member;
-import com.fr.lottery.entity.Odds;
+import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.ILimitSetService;
-import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ import java.util.List;
 public class MemberController {
 
     @Autowired
-    private IMemberService memberService;
+    private IUserService userService;
     @Autowired
     private IOddsService oddsService;
     @Autowired
@@ -32,7 +31,7 @@ public class MemberController {
     public ModelAndView index(Integer pageId){
         ModelAndView modelAndView = new ModelAndView("/member/index");
         String agentId = UserHelper.getCurrentUser().getId();
-        List<Member> members = memberService.getMembersByAgentId(agentId,"",1,pageId);
+        List<User> members = userService.getUserByParentId(agentId,"",null,pageId);
         modelAndView.addObject("user",members);
         return modelAndView;
     }
@@ -40,9 +39,9 @@ public class MemberController {
     public ModelAndView info(String id){
         ModelAndView modelAndView = new ModelAndView("/member/info");
         //Odds odds =oddsService.selectByType();
-        List<LimitSet> limitSets= limitSetService.findAll("member",id);
+        List<LimitSet> limitSets= limitSetService.findAll(id);
         if(limitSets.size()==0){
-            limitSets = limitSetService.findAll("agent",UserHelper.getCurrentUser().getId());
+            limitSets = limitSetService.findAll(UserHelper.getCurrentUser().getId());
         }
         modelAndView.addObject("limit",limitSets);
         return modelAndView;

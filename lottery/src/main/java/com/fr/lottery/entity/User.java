@@ -18,6 +18,22 @@ public class User implements Serializable {
     private Date createDate;
     private boolean isDefault;
 
+    private Long credits;
+
+    private Integer proportional;
+
+    private String handicap;
+
+    private Integer isreplenish;
+
+    private Integer zhanchenghe;
+
+    private Integer zongdaizhanchengshu;
+
+    private Integer replenishpercent;
+
+    private Integer userType;
+
     public String getId() {
         return id;
     }
@@ -58,6 +74,14 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -72,5 +96,61 @@ public class User implements Serializable {
 
     public void setDefault(boolean aDefault) {
         isDefault = aDefault;
+    }
+
+    public Long getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Long credits) {
+        this.credits = credits;
+    }
+
+    public Integer getProportional() {
+        return proportional;
+    }
+
+    public void setProportional(Integer proportional) {
+        this.proportional = proportional;
+    }
+
+    public String getHandicap() {
+        return handicap;
+    }
+
+    public void setHandicap(String handicap) {
+        this.handicap = handicap;
+    }
+
+    public Integer getIsreplenish() {
+        return isreplenish;
+    }
+
+    public void setIsreplenish(Integer isreplenish) {
+        this.isreplenish = isreplenish;
+    }
+
+    public Integer getZhanchenghe() {
+        return zhanchenghe;
+    }
+
+    public void setZhanchenghe(Integer zhanchenghe) {
+        this.zhanchenghe = zhanchenghe;
+    }
+
+    public Integer getZongdaizhanchengshu() {
+        return zongdaizhanchengshu;
+    }
+
+    public void setZongdaizhanchengshu(Integer zongdaizhanchengshu) {
+        this.zongdaizhanchengshu = zongdaizhanchengshu;
+    }
+
+    public Integer getReplenishpercent() {
+        return replenishpercent;
+    }
+
+    public void setReplenishpercent(Integer replenishpercent) {
+        this.replenishpercent = replenishpercent;
     }
 }

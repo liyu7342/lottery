@@ -13,5 +13,5 @@ public interface LimitSetMapper {
 
     int insert(LimitSet record);
 
-    List<LimitSet> selectByPrimaryKey(@Param("reftable") String reftable,@Param("refrecordId") String refrecordId);
+    List<LimitSet> selectByPrimaryKey(@Param("userId") String userId);
 }

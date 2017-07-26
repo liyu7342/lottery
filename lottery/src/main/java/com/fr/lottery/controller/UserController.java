@@ -1,9 +1,6 @@
 package com.fr.lottery.controller;
 
-import com.fr.lottery.dto.Page;
-import com.fr.lottery.entity.Member;
 import com.fr.lottery.entity.User;
-import com.fr.lottery.service.inter.IMemberService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.stereotype.Controller;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,15 +19,13 @@ import java.util.List;
 public class UserController {
     @Resource
     private IUserService userService;
-    @Resource
-    private IMemberService memberService;
 
     @RequestMapping("/index")
     public ModelAndView index(Integer pageId,Integer  keywordstatus,String keyword) {
         ModelAndView modelAndView = new ModelAndView("/user/index");
         String agentId = UserHelper.getCurrentUser().getId();
-        List<Member> members = memberService.getMembersByAgentId(agentId,keyword,keywordstatus,pageId);
-        modelAndView.addObject("user",members);
+        List<User> user = userService.getUserByParentId(agentId,keyword,keywordstatus,pageId);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -51,19 +45,6 @@ public class UserController {
     public ModelAndView info() {
         ModelAndView mv = new ModelAndView("/user/info");
         return mv;
-    }
-    /**
-     *
-     * @param account
-     * @param name
-     * @param index
-     * @param size
-     * @return
-     */
-    @RequestMapping("/paging")
-    @ResponseBody
-    public Page<User> Paging(String account,String name, Integer index, Integer size) {
-        return userService.Paging(account,name,index,size);
     }
 
     @RequestMapping("/changStatus")
