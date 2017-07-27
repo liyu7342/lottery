@@ -1,6 +1,8 @@
 package com.fr.lottery.entity;
 
-public class LimitSet {
+import java.io.Serializable;
+
+public class LimitSet  implements Serializable{
     private String id;
 
     private String userId;

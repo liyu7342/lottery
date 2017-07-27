@@ -38,8 +38,9 @@ public class MemberController {
     @RequestMapping("/info")
     public ModelAndView info(String id){
         ModelAndView modelAndView = new ModelAndView("/member/info");
-        User user =
+
         //Odds odds =oddsService.selectByType();
+
         List<LimitSet> limitSets= limitSetService.findAll(id);
         if(limitSets.size()==0){
             limitSets = limitSetService.findAll(UserHelper.getCurrentUser().getId());

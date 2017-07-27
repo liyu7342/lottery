@@ -90,17 +90,11 @@
 
 
         </table>
-        <table tableName="agent" domainObjectName="Agent" >
-
-
-    </table>
         <table tableName="company" domainObjectName="Company" >
 
 
         </table>
-        <table tableName="member" domainObjectName="Member" >
 
-        </table>
         <table tableName="handicap" domainObjectName="Handicap" >
 
         </table>
@@ -110,6 +104,7 @@
         <table tableName="limitset" domainObjectName="LimitSet" >
 
         </table>
-
+        <table tableName="order" domainObjectName="Order" >
+        </table>
     </context>
 </generatorConfiguration>

@@ -1,7 +1,5 @@
 package com.fr.lottery.entity;
 
-import org.joda.time.DateTime;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -153,4 +151,6 @@ public class User implements Serializable {
     public void setReplenishpercent(Integer replenishpercent) {
         this.replenishpercent = replenishpercent;
     }
+
+
 }
