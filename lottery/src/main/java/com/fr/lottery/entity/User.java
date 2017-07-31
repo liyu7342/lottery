@@ -6,21 +6,27 @@ import java.util.Date;
 /**
  * Created by Administrator on 2017/6/16.
  */
-public class User implements Serializable {
+
+public class User implements Serializable{
     private static final long serialVersionUID = 1L;
+
     private String id;
-   private String account;
-   private String name;
-   private String password;
-   private Integer status;
-    private Date createDate;
-    private boolean isDefault;
+
+    private String parentid;
+
+    private String account;
+
+    private String name;
+
+    private String password;
+
+    private Integer status;
+
+    private Integer usertype;
+
+    private Date createdate;
 
     private Long credits;
-
-    private Integer proportional;
-
-    private String handicap;
 
     private Integer isreplenish;
 
@@ -30,14 +36,24 @@ public class User implements Serializable {
 
     private Integer replenishpercent;
 
-    private Integer userType;
+    private Integer proportional;
+
+    private String handicap;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getParentid() {
+        return parentid;
+    }
+
+    public void setParentid(String parentid) {
+        this.parentid = parentid == null ? null : parentid.trim();
     }
 
     public String getAccount() {
@@ -45,7 +61,7 @@ public class User implements Serializable {
     }
 
     public void setAccount(String account) {
-        this.account = account;
+        this.account = account == null ? null : account.trim();
     }
 
     public String getName() {
@@ -53,7 +69,7 @@ public class User implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getPassword() {
@@ -61,7 +77,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getStatus() {
@@ -72,28 +88,20 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public Integer getUserType() {
-        return userType;
+    public Integer getUsertype() {
+        return usertype;
     }
 
-    public void setUserType(Integer userType) {
-        this.userType = userType;
+    public void setUsertype(Integer usertype) {
+        this.usertype = usertype;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedate() {
+        return createdate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 
     public Long getCredits() {
@@ -102,22 +110,6 @@ public class User implements Serializable {
 
     public void setCredits(Long credits) {
         this.credits = credits;
-    }
-
-    public Integer getProportional() {
-        return proportional;
-    }
-
-    public void setProportional(Integer proportional) {
-        this.proportional = proportional;
-    }
-
-    public String getHandicap() {
-        return handicap;
-    }
-
-    public void setHandicap(String handicap) {
-        this.handicap = handicap;
     }
 
     public Integer getIsreplenish() {
@@ -152,5 +144,19 @@ public class User implements Serializable {
         this.replenishpercent = replenishpercent;
     }
 
+    public Integer getProportional() {
+        return proportional;
+    }
 
+    public void setProportional(Integer proportional) {
+        this.proportional = proportional;
+    }
+
+    public String getHandicap() {
+        return handicap;
+    }
+
+    public void setHandicap(String handicap) {
+        this.handicap = handicap == null ? null : handicap.trim();
+    }
 }

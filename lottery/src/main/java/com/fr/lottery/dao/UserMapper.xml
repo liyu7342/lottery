@@ -2,23 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.lottery.dao.UserMapper">
     <resultMap id="userResult" type="com.fr.lottery.entity.User">
-        <id property="id" column="id" jdbcType="VARCHAR" />
-        <result property="account" column="Account" jdbcType="VARCHAR"></result>
-        <result property="name" column="Name" jdbcType="VARCHAR"></result>
-        <result property="password" column="Password" jdbcType="VARCHAR"></result>
-        <result property="status" column="Status" jdbcType="INTEGER"></result>
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="ParentId" jdbcType="VARCHAR" property="parentid" />
+        <result column="Account" jdbcType="VARCHAR" property="account" />
+        <result column="Name" jdbcType="VARCHAR" property="name" />
+        <result column="Password" jdbcType="VARCHAR" property="password" />
+        <result column="Status" jdbcType="TINYINT" property="status" />
+        <result column="UserType" jdbcType="TINYINT" property="usertype" />
+        <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+        <result column="Credits" jdbcType="BIGINT" property="credits" />
         <result column="IsReplenish" jdbcType="TINYINT" property="isreplenish" />
         <result column="ZhanChengHe" jdbcType="INTEGER" property="zhanchenghe" />
         <result column="ZongDaiZhanChengShu" jdbcType="INTEGER" property="zongdaizhanchengshu" />
         <result column="ReplenishPercent" jdbcType="INTEGER" property="replenishpercent" />
-        <result column="UserType" jdbcType="INTEGER" property="userType" />
-        <result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
-        <result column="Credits" jdbcType="BIGINT" property="credits" />
         <result column="Proportional" jdbcType="INTEGER" property="proportional" />
         <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
     </resultMap>
     <sql id="Columns">
-          Id,Account,Name,Password,Status,IsReplenish, ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent,Credits, Proportional, Handicap,UserType
+          Id, ParentId, Account, Name, Password, Status, UserType, CreateDate, Credits, IsReplenish,
+    ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent, Proportional, Handicap
     </sql>
     <sql id="sqlWhere">
         <where>
@@ -47,7 +49,7 @@
         SELECT
         <include refid="Columns"></include>
         from USER
-        <include refid="sqlWhere"></include>
+        WHERE Id=#{id,jdbcType=VARCHAR}
 
     </select>
     <!-- 根据账号获取信息 -->
@@ -60,12 +62,37 @@
 
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.fr.lottery.entity.User">
-        INSERT INTO USER (Id,Account,Name,Password,Status)
-        VALUES (#{id,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{status,jdbcType=INTEGER})
+      insert into user (Id, ParentId, Account,
+      Name, Password, Status,
+      UserType, CreateDate, Credits,
+      IsReplenish, ZhanChengHe, ZongDaiZhanChengShu,
+      ReplenishPercent, Proportional, Handicap
+      )
+    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT},
+      #{usertype,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{credits,jdbcType=BIGINT},
+      #{isreplenish,jdbcType=TINYINT}, #{zhanchenghe,jdbcType=INTEGER}, #{zongdaizhanchengshu,jdbcType=INTEGER},
+      #{replenishpercent,jdbcType=INTEGER}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR}
+      )
     </insert>
 
     <update id="update" >
-        UPDATE USER SET name = #{name,jdbcType=VARCHAR}   WHERE Id =#{id,jdbcType=VARCHAR}
+         update user set
+      ParentId = #{parentid,jdbcType=VARCHAR},
+      Account = #{account,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=TINYINT},
+      UserType = #{usertype,jdbcType=TINYINT},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      Credits = #{credits,jdbcType=BIGINT},
+      IsReplenish = #{isreplenish,jdbcType=TINYINT},
+      ZhanChengHe = #{zhanchenghe,jdbcType=INTEGER},
+      ZongDaiZhanChengShu = #{zongdaizhanchengshu,jdbcType=INTEGER},
+      ReplenishPercent = #{replenishpercent,jdbcType=INTEGER},
+      Proportional = #{proportional,jdbcType=INTEGER},
+      Handicap = #{handicap,jdbcType=VARCHAR}
+      where Id = #{id,jdbcType=VARCHAR}
     </update>
     <update id="updatePassword">
         UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
@@ -86,14 +113,14 @@
     <include refid="sqlWhere" />
 
 
-    <if test="keyword">
+    <if test="keyword!=null and keyword !=''">
         AND (account like #{keyword,jdbcType=VARCHAR}
         OR NAME  like #{keyword,jdbcType=VARCHAR}
         )
     </if>
     AND parentId = #{parentId,jdbcType=VARCHAR}
-    <if test="pageId !=null">
-        limit (pageId-1) * 10 ,10
+    <if test="start !=null">
+        limit #{start ,jdbcType=INTEGER} ,10
     </if>
     </select>
 </mapper>

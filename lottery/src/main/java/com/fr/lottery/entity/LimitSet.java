@@ -1,14 +1,34 @@
 package com.fr.lottery.entity;
 
+import com.fr.lottery.enums.GameTypeEnum;
+import com.fr.lottery.utils.StringUtil;
+
 import java.io.Serializable;
 
 public class LimitSet  implements Serializable{
+
+    public LimitSet(){
+
+    }
+
+    public LimitSet(String userId,GameTypeEnum gameTypeEnum, Integer min, Integer max, Integer itemmax, Float aRetreat, Float bRetreat, Float cRetreat){
+        this.id = StringUtil.getUUID();
+        this.limitType =gameTypeEnum.getValue();
+        this.singlemin =min;
+        this.singlemax = max;
+        this.singlehighest = itemmax;
+        this.aRetreat = aRetreat;
+        this.bRetreat = bRetreat;
+        this.cRetreat = cRetreat;
+        this.userId = userId;
+    }
+
     private String id;
 
     private String userId;
 
 
-    private String limitType;
+    private Integer limitType;
 
     private Integer singlemin;
 
@@ -16,11 +36,11 @@ public class LimitSet  implements Serializable{
 
     private Integer singlehighest;
 
-    private Long aRetreat;
+    private Float aRetreat;
 
-    private Long bRetreat;
+    private Float bRetreat;
 
-    private Long cRetreat;
+    private Float cRetreat;
 
     public String getId() {
         return id;
@@ -38,12 +58,12 @@ public class LimitSet  implements Serializable{
         this.userId = userId;
     }
 
-    public String getLimitType() {
+    public Integer getLimitType() {
         return limitType;
     }
 
-    public void setLimitType(String type) {
-        this.limitType = type == null ? null : type.trim();
+    public void setLimitType(Integer type) {
+        this.limitType = type;
     }
 
     public Integer getSinglemin() {
@@ -70,27 +90,27 @@ public class LimitSet  implements Serializable{
         this.singlehighest = singlehighest;
     }
 
-    public Long getaRetreat() {
+    public Float getaRetreat() {
         return aRetreat;
     }
 
-    public void setaRetreat(Long aRetreat) {
+    public void setaRetreat(Float aRetreat) {
         this.aRetreat = aRetreat;
     }
 
-    public Long getbRetreat() {
+    public Float getbRetreat() {
         return bRetreat;
     }
 
-    public void setbRetreat(Long bRetreat) {
+    public void setbRetreat(Float bRetreat) {
         this.bRetreat = bRetreat;
     }
 
-    public Long getcRetreat() {
+    public Float getcRetreat() {
         return cRetreat;
     }
 
-    public void setcRetreat(Long cRetreat) {
+    public void setcRetreat(Float cRetreat) {
         this.cRetreat = cRetreat;
     }
 }

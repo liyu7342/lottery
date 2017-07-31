@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunfang.inquiry.dao1.LimitSetMapper">
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.LimitSet">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="LimitType" jdbcType="VARCHAR" property="limittype" />
+    <result column="SingleMin" jdbcType="INTEGER" property="singlemin" />
+    <result column="SingleMax" jdbcType="INTEGER" property="singlemax" />
+    <result column="SingleHighest" jdbcType="INTEGER" property="singlehighest" />
+    <result column="A_Retreat" jdbcType="DECIMAL" property="aRetreat" />
+    <result column="B_Retreat" jdbcType="DECIMAL" property="bRetreat" />
+    <result column="C_Retreat" jdbcType="DECIMAL" property="cRetreat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, UserId, LimitType, SingleMin, SingleMax, SingleHighest, A_Retreat, B_Retreat, 
+    C_Retreat
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample">
+    delete from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset (Id, UserId, LimitType, 
+      SingleMin, SingleMax, SingleHighest, 
+      A_Retreat, B_Retreat, C_Retreat
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{limittype,jdbcType=VARCHAR}, 
+      #{singlemin,jdbcType=INTEGER}, #{singlemax,jdbcType=INTEGER}, #{singlehighest,jdbcType=INTEGER}, 
+      #{aRetreat,jdbcType=DECIMAL}, #{bRetreat,jdbcType=DECIMAL}, #{cRetreat,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="limittype != null">
+        LimitType,
+      </if>
+      <if test="singlemin != null">
+        SingleMin,
+      </if>
+      <if test="singlemax != null">
+        SingleMax,
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest,
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat,
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat,
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultType="java.lang.Long">
+    select count(*) from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update limitset
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        UserId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.limittype != null">
+        LimitType = #{record.limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.singlemin != null">
+        SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlemax != null">
+        SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlehighest != null">
+        SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="record.aRetreat != null">
+        A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bRetreat != null">
+        B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cRetreat != null">
+        C_Retreat = #{record.cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update limitset
+    set Id = #{record.id,jdbcType=VARCHAR},
+      UserId = #{record.userid,jdbcType=VARCHAR},
+      LimitType = #{record.limittype,jdbcType=VARCHAR},
+      SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{record.cRetreat,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        LimitType = #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        SingleMin = #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        SingleMax = #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat = #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    set UserId = #{userid,jdbcType=VARCHAR},
+      LimitType = #{limittype,jdbcType=VARCHAR},
+      SingleMin = #{singlemin,jdbcType=INTEGER},
+      SingleMax = #{singlemax,jdbcType=INTEGER},
+      SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{cRetreat,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.LimitSet">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="LimitType" jdbcType="VARCHAR" property="limittype" />
+    <result column="SingleMin" jdbcType="INTEGER" property="singlemin" />
+    <result column="SingleMax" jdbcType="INTEGER" property="singlemax" />
+    <result column="SingleHighest" jdbcType="INTEGER" property="singlehighest" />
+    <result column="A_Retreat" jdbcType="DECIMAL" property="aRetreat" />
+    <result column="B_Retreat" jdbcType="DECIMAL" property="bRetreat" />
+    <result column="C_Retreat" jdbcType="DECIMAL" property="cRetreat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, UserId, LimitType, SingleMin, SingleMax, SingleHighest, A_Retreat, B_Retreat, 
+    C_Retreat
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample">
+    delete from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset (Id, UserId, LimitType, 
+      SingleMin, SingleMax, SingleHighest, 
+      A_Retreat, B_Retreat, C_Retreat
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{limittype,jdbcType=VARCHAR}, 
+      #{singlemin,jdbcType=INTEGER}, #{singlemax,jdbcType=INTEGER}, #{singlehighest,jdbcType=INTEGER}, 
+      #{aRetreat,jdbcType=DECIMAL}, #{bRetreat,jdbcType=DECIMAL}, #{cRetreat,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="limittype != null">
+        LimitType,
+      </if>
+      <if test="singlemin != null">
+        SingleMin,
+      </if>
+      <if test="singlemax != null">
+        SingleMax,
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest,
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat,
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat,
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultType="java.lang.Long">
+    select count(*) from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update limitset
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        UserId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.limittype != null">
+        LimitType = #{record.limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.singlemin != null">
+        SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlemax != null">
+        SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlehighest != null">
+        SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="record.aRetreat != null">
+        A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bRetreat != null">
+        B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cRetreat != null">
+        C_Retreat = #{record.cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update limitset
+    set Id = #{record.id,jdbcType=VARCHAR},
+      UserId = #{record.userid,jdbcType=VARCHAR},
+      LimitType = #{record.limittype,jdbcType=VARCHAR},
+      SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{record.cRetreat,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        LimitType = #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        SingleMin = #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        SingleMax = #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat = #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    set UserId = #{userid,jdbcType=VARCHAR},
+      LimitType = #{limittype,jdbcType=VARCHAR},
+      SingleMin = #{singlemin,jdbcType=INTEGER},
+      SingleMax = #{singlemax,jdbcType=INTEGER},
+      SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{cRetreat,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.LimitSet">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="LimitType" jdbcType="VARCHAR" property="limittype" />
+    <result column="SingleMin" jdbcType="INTEGER" property="singlemin" />
+    <result column="SingleMax" jdbcType="INTEGER" property="singlemax" />
+    <result column="SingleHighest" jdbcType="INTEGER" property="singlehighest" />
+    <result column="A_Retreat" jdbcType="DECIMAL" property="aRetreat" />
+    <result column="B_Retreat" jdbcType="DECIMAL" property="bRetreat" />
+    <result column="C_Retreat" jdbcType="DECIMAL" property="cRetreat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, UserId, LimitType, SingleMin, SingleMax, SingleHighest, A_Retreat, B_Retreat, 
+    C_Retreat
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from limitset
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample">
+    delete from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset (Id, UserId, LimitType, 
+      SingleMin, SingleMax, SingleHighest, 
+      A_Retreat, B_Retreat, C_Retreat
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{limittype,jdbcType=VARCHAR}, 
+      #{singlemin,jdbcType=INTEGER}, #{singlemax,jdbcType=INTEGER}, #{singlehighest,jdbcType=INTEGER}, 
+      #{aRetreat,jdbcType=DECIMAL}, #{bRetreat,jdbcType=DECIMAL}, #{cRetreat,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    insert into limitset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="limittype != null">
+        LimitType,
+      </if>
+      <if test="singlemin != null">
+        SingleMin,
+      </if>
+      <if test="singlemax != null">
+        SingleMax,
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest,
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat,
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat,
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.LimitSetExample" resultType="java.lang.Long">
+    select count(*) from limitset
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update limitset
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        UserId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.limittype != null">
+        LimitType = #{record.limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.singlemin != null">
+        SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlemax != null">
+        SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="record.singlehighest != null">
+        SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="record.aRetreat != null">
+        A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bRetreat != null">
+        B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cRetreat != null">
+        C_Retreat = #{record.cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update limitset
+    set Id = #{record.id,jdbcType=VARCHAR},
+      UserId = #{record.userid,jdbcType=VARCHAR},
+      LimitType = #{record.limittype,jdbcType=VARCHAR},
+      SingleMin = #{record.singlemin,jdbcType=INTEGER},
+      SingleMax = #{record.singlemax,jdbcType=INTEGER},
+      SingleHighest = #{record.singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{record.aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{record.bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{record.cRetreat,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    <set>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="limittype != null">
+        LimitType = #{limittype,jdbcType=VARCHAR},
+      </if>
+      <if test="singlemin != null">
+        SingleMin = #{singlemin,jdbcType=INTEGER},
+      </if>
+      <if test="singlemax != null">
+        SingleMax = #{singlemax,jdbcType=INTEGER},
+      </if>
+      <if test="singlehighest != null">
+        SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      </if>
+      <if test="aRetreat != null">
+        A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="bRetreat != null">
+        B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      </if>
+      <if test="cRetreat != null">
+        C_Retreat = #{cRetreat,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.LimitSet">
+    update limitset
+    set UserId = #{userid,jdbcType=VARCHAR},
+      LimitType = #{limittype,jdbcType=VARCHAR},
+      SingleMin = #{singlemin,jdbcType=INTEGER},
+      SingleMax = #{singlemax,jdbcType=INTEGER},
+      SingleHighest = #{singlehighest,jdbcType=INTEGER},
+      A_Retreat = #{aRetreat,jdbcType=DECIMAL},
+      B_Retreat = #{bRetreat,jdbcType=DECIMAL},
+      C_Retreat = #{cRetreat,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

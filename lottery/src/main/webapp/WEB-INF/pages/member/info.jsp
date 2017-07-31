@@ -24,11 +24,11 @@
             <div class="yui-b">
                 <div class="yui-g">
                     <div id="memcreate" class="module">
-                        <form id="create" method="post">
+                        <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">新增會員</h2></li>
-                                    <li>&nbsp<span>上級代理商：f2213</span></li>
+                                    <li>&nbsp<span>上級代理商：${parentUser.name}</span></li>
                                     <li><a class="btn1 cs"  onclick="location.href='../account/member_list.htm';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>
@@ -37,17 +37,17 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="__member_memberName" value="" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="name" value="${(user.name)!''}" /></td>
                                         <td>賬號</td>
-                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12" name="__member_memberAccount" value="1-12個數字/字母" class="gray"/> </td>
+                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12" name="account" placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
                                         <td> 密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="member_password" value="" valid="password"/></td>
+                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" valid="password"/></td>
                                         <td>確認密碼</td>
                                         <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="member_repassword2" value="" valid="password"/> </td>
                                         <input type="hidden" name="pwd"/>   </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" title="0~0" maxlength="9" size="8" name="member_credit" value="0~0" class="gray"/>
+                                        <td><input type="text" valid="credit" title="0~0" maxlength="9" size="8" name="credits" placeholder="0~0" value="${(user.credits)!''}" class="gray"/>
                                         </td>
                                         <td colspan="2">對此會員佔成比例(<font color='red'>%</font>)
                                             <select class="w2" name="member_shareUp" >
@@ -55,13 +55,13 @@
                                         </td>
 
                                         <td>盤口</td>
-                                        <td><select class="w1" name="member_oddsSet"  >
+                                        <td><select class="w1" name="handicap"  >
                                             <option value="A" selected="selected">A</option>
                                             <option value="B" >B</option>
                                             <option value="C" >C</option>
                                         </select></td>
                                         <td> 狀態</td>
-                                        <td><select class="w4" name="member_status">
+                                        <td><select class="w4" name="status">
                                             <option value="0" >停用</option>
                                             <option value="1" selected="selected">啟用</option>
                                             <option value="2" >停押</option>
@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>倍數投注</td>
                                         <td>
-                                            <select class="w4" name="share_flag">
+                                            <select class="w4" name="orderStatus">
                                                 <option value="0" selected="selected" />不允許</option>
                                                 <option value="1"  />允許</option>
                                             </select>
@@ -85,36 +85,37 @@
                                     </tr>
                                     <tr>
                                         <td>單注最低</td>
-                                        <td><input type="text" valid="amount" name="ordermin0" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin1" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin2" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin3" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin4" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin5" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin6" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin7" value="1"/></td>
+
+                                        <td><input type="text" valid="amount" name="ordermin0" value="${limitSets[0].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin1" value="${limitSets[1].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin2" value="${limitSets[2].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin3" value="${limitSets[3].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin4" value="${limitSets[4].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin5" value="${limitSets[5].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin6" value="${limitSets[6].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin7" value="${limitSets[7].singlemin}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單注最高</td>
-                                        <td><input type="text" valid="amount" name="ordermax0" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax1" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax2" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax3" value="3000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax4" value="2000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax5" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax6" value="50000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax7" value="50000"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax0" value="${limitSets[0].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax1" value="${limitSets[1].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax2" value="${limitSets[2].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax3" value="${limitSets[3].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax4" value="${limitSets[4].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax5" value="${limitSets[5].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax6" value="${limitSets[6].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax7" value="${limitSets[7].singlemax}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單項最高</td>
-                                        <td><input type="text" valid="amount" name="itemmax0" value="300000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax1" value="200000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax2" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax3" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax4" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax5" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax6" value="500000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax7" value="500000"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax0" value="${limitSets[0].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax1" value="${limitSets[1].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax2" value="${limitSets[2].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax3" value="${limitSets[3].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax4" value="${limitSets[4].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax5" value="${limitSets[5].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax6" value="${limitSets[6].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax7" value="${limitSets[7].singlehighest}"/></td>
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
@@ -208,36 +209,36 @@
                                     </tr>
                                     <tr>
                                         <td>單注最低</td>
-                                        <td><input type="text" valid="amount" name="ordermin8" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin9" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin10" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin11" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin12" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin13" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin14" value="1"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin15" value="1"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin8" value="${limitSets[8].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin9" value="${limitSets[9].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin10" value="${limitSets[10].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin11" value="${limitSets[11].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin12" value="${limitSets[12].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin13" value="${limitSets[13].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin14" value="${limitSets[14].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin15" value="${limitSets[15].singlemin}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單注最高</td>
-                                        <td><input type="text" valid="amount" name="ordermax8" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax9" value="50000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax10" value="50000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax11" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax12" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax13" value="10000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax14" value="20000"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax15" value="50000"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax8" value="${limitSets[8].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax9" value="${limitSets[9].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax10" value="${limitSets[10].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax11" value="${limitSets[11].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax12" value="${limitSets[12].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax13" value="${limitSets[13].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax14" value="${limitSets[14].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax15" value="${limitSets[15].singlemax}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單項最高</td>
-                                        <td><input type="text" valid="amount" name="itemmax8" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax9" value="500000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax10" value="1000000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax11" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax12" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax13" value="100000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax14" value="60000"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax15" value="500000"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax8" value="${limitSets[8].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax9" value="${limitSets[9].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax10" value="${limitSets[10].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax11" value="${limitSets[11].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax12" value="${limitSets[12].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax13" value="${limitSets[13].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax14" value="${limitSets[14].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax15" value="${limitSets[15].singlehighest}"/></td>
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
@@ -278,79 +279,19 @@
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='../account/member_list.htm'"/></div>
                                 <input type="hidden" name="op" value='create'/>
-                                <input type="hidden" name="member_memberId" value='${id}'/>
-                                <input type="hidden" name="member_parentId" value='${parentId}'/>
+                                <input type="hidden" name="id" value="${(user.id)!''}"/>
+                                <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
 
-                                <input type="hidden" name="parentcredit" value='${parentcredits}'/>
+                                <input type="hidden" name="parentcredit" value="${(parentUser.credits)!''}"/>
                                 <input type="hidden" name="betting" value='0' />
-                                <input type="hidden" name="parentstatus" value='${parentcredits}'/>
+                                <input type="hidden" name="parentstatus" value="${(parentUser.status)!''}"/>
                                 <input type="hidden" name="requestUrl" value='member/index'/>
                                 <input type="hidden" name="historyNum" value='1'/>
-
-                                <input type="hidden" name="pordermin0" value="1" />
-                                <input type="hidden" name="pordermax0" value="20000" />
-                                <input type="hidden" name="pitemmax0" value="300000" />
-
-                                <input type="hidden" name="pordermin1" value="1" />
-                                <input type="hidden" name="pordermax1" value="20000" />
-                                <input type="hidden" name="pitemmax1" value="200000" />
-
-                                <input type="hidden" name="pordermin2" value="1" />
-                                <input type="hidden" name="pordermax2" value="20000" />
-                                <input type="hidden" name="pitemmax2" value="100000" />
-
-                                <input type="hidden" name="pordermin3" value="1" />
-                                <input type="hidden" name="pordermax3" value="3000" />
-                                <input type="hidden" name="pitemmax3" value="100000" />
-
-                                <input type="hidden" name="pordermin4" value="1" />
-                                <input type="hidden" name="pordermax4" value="2000" />
-                                <input type="hidden" name="pitemmax4" value="100000" />
-
-                                <input type="hidden" name="pordermin5" value="1" />
-                                <input type="hidden" name="pordermax5" value="1" />
-                                <input type="hidden" name="pitemmax5" value="1" />
-
-                                <input type="hidden" name="pordermin6" value="1" />
-                                <input type="hidden" name="pordermax6" value="50000" />
-                                <input type="hidden" name="pitemmax6" value="500000" />
-
-                                <input type="hidden" name="pordermin7" value="1" />
-                                <input type="hidden" name="pordermax7" value="50000" />
-                                <input type="hidden" name="pitemmax7" value="500000" />
-
-                                <input type="hidden" name="pordermin8" value="1" />
-                                <input type="hidden" name="pordermax8" value="20000" />
-                                <input type="hidden" name="pitemmax8" value="100000" />
-
-                                <input type="hidden" name="pordermin9" value="1" />
-                                <input type="hidden" name="pordermax9" value="50000" />
-                                <input type="hidden" name="pitemmax9" value="500000" />
-
-                                <input type="hidden" name="pordermin10" value="1" />
-                                <input type="hidden" name="pordermax10" value="50000" />
-                                <input type="hidden" name="pitemmax10" value="1000000" />
-
-                                <input type="hidden" name="pordermin11" value="1" />
-                                <input type="hidden" name="pordermax11" value="20000" />
-                                <input type="hidden" name="pitemmax11" value="100000" />
-
-                                <input type="hidden" name="pordermin12" value="1" />
-                                <input type="hidden" name="pordermax12" value="20000" />
-                                <input type="hidden" name="pitemmax12" value="100000" />
-
-                                <input type="hidden" name="pordermin13" value="1" />
-                                <input type="hidden" name="pordermax13" value="10000" />
-                                <input type="hidden" name="pitemmax13" value="100000" />
-
-                                <input type="hidden" name="pordermin14" value="1" />
-                                <input type="hidden" name="pordermax14" value="20000" />
-                                <input type="hidden" name="pitemmax14" value="60000" />
-
-                                <input type="hidden" name="pordermin15" value="1" />
-                                <input type="hidden" name="pordermax15" value="50000" />
-                                <input type="hidden" name="pitemmax15" value="500000" />
-
+                                <#list limitSets as limit>
+                                <input type="hidden" name="pordermin${limit.limitType}" value="${limit.singlemin}" />
+                                <input type="hidden" name="pordermax${limit.limitType}" value="${limit.singlemax}" />
+                                <input type="hidden" name="pitemmax${limit.limitType}" value="${limit.singlehighest}" />
+                                </#list>
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />
@@ -367,7 +308,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：0</p>

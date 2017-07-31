@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface LimitSetMapper {
 
-    int deleteByPrimaryKey(@Param("reftable") String reftable,@Param("refrecordId") String refrecordId);
+    int deleteByUserId(@Param("userId") String userId);
 
     int insert(LimitSet record);
 

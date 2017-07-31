@@ -22,10 +22,14 @@ public class UserController {
 
     @RequestMapping("/index")
     public ModelAndView index(Integer pageId,Integer  keywordstatus,String keyword) {
+        if(pageId == null) pageId = 1;
+
         ModelAndView modelAndView = new ModelAndView("/user/index");
-        String agentId = UserHelper.getCurrentUser().getId();
-        List<User> user = userService.getUserByParentId(agentId,keyword,keywordstatus,pageId);
-        modelAndView.addObject("user",user);
+        String userId = UserHelper.getCurrentUser().getId();
+
+        List<User> users = userService.getUserByParentId(userId,keyword,keywordstatus,pageId);
+        modelAndView.addObject("currentUserId",userId);
+        modelAndView.addObject("users",users);
         return modelAndView;
     }
 

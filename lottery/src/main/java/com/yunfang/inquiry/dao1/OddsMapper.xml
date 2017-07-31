@@ -1,0 +1,3616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunfang.inquiry.dao1.OddsMapper">
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.Odds">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="IsDefault" jdbcType="BIT" property="isdefault" />
+    <result column="No1" jdbcType="REAL" property="no1" />
+    <result column="No2" jdbcType="REAL" property="no2" />
+    <result column="No3" jdbcType="REAL" property="no3" />
+    <result column="No4" jdbcType="REAL" property="no4" />
+    <result column="No5" jdbcType="REAL" property="no5" />
+    <result column="No6" jdbcType="REAL" property="no6" />
+    <result column="No7" jdbcType="REAL" property="no7" />
+    <result column="No8" jdbcType="REAL" property="no8" />
+    <result column="No9" jdbcType="REAL" property="no9" />
+    <result column="No10" jdbcType="REAL" property="no10" />
+    <result column="No11" jdbcType="REAL" property="no11" />
+    <result column="No12" jdbcType="REAL" property="no12" />
+    <result column="No13" jdbcType="REAL" property="no13" />
+    <result column="No14" jdbcType="REAL" property="no14" />
+    <result column="No15" jdbcType="REAL" property="no15" />
+    <result column="No16" jdbcType="REAL" property="no16" />
+    <result column="No17" jdbcType="REAL" property="no17" />
+    <result column="No18" jdbcType="REAL" property="no18" />
+    <result column="No19" jdbcType="REAL" property="no19" />
+    <result column="No20" jdbcType="REAL" property="no20" />
+    <result column="No21" jdbcType="REAL" property="no21" />
+    <result column="No22" jdbcType="REAL" property="no22" />
+    <result column="No23" jdbcType="REAL" property="no23" />
+    <result column="No24" jdbcType="REAL" property="no24" />
+    <result column="No25" jdbcType="REAL" property="no25" />
+    <result column="No26" jdbcType="REAL" property="no26" />
+    <result column="No27" jdbcType="REAL" property="no27" />
+    <result column="No28" jdbcType="REAL" property="no28" />
+    <result column="No29" jdbcType="REAL" property="no29" />
+    <result column="No30" jdbcType="REAL" property="no30" />
+    <result column="No31" jdbcType="REAL" property="no31" />
+    <result column="No32" jdbcType="REAL" property="no32" />
+    <result column="No33" jdbcType="REAL" property="no33" />
+    <result column="No34" jdbcType="REAL" property="no34" />
+    <result column="No35" jdbcType="REAL" property="no35" />
+    <result column="No36" jdbcType="REAL" property="no36" />
+    <result column="No37" jdbcType="REAL" property="no37" />
+    <result column="No38" jdbcType="REAL" property="no38" />
+    <result column="No39" jdbcType="REAL" property="no39" />
+    <result column="No40" jdbcType="REAL" property="no40" />
+    <result column="No41" jdbcType="REAL" property="no41" />
+    <result column="No42" jdbcType="REAL" property="no42" />
+    <result column="No43" jdbcType="REAL" property="no43" />
+    <result column="No44" jdbcType="REAL" property="no44" />
+    <result column="No45" jdbcType="REAL" property="no45" />
+    <result column="No46" jdbcType="REAL" property="no46" />
+    <result column="No47" jdbcType="REAL" property="no47" />
+    <result column="No48" jdbcType="REAL" property="no48" />
+    <result column="No49" jdbcType="REAL" property="no49" />
+    <result column="Dan" jdbcType="REAL" property="dan" />
+    <result column="Shuang" jdbcType="REAL" property="shuang" />
+    <result column="Da" jdbcType="REAL" property="da" />
+    <result column="Xiao" jdbcType="REAL" property="xiao" />
+    <result column="HeDan" jdbcType="REAL" property="hedan" />
+    <result column="HeShuang" jdbcType="REAL" property="heshuang" />
+    <result column="HongBo" jdbcType="REAL" property="hongbo" />
+    <result column="Lvbo" jdbcType="REAL" property="lvbo" />
+    <result column="LanBo" jdbcType="REAL" property="lanbo" />
+    <result column="JiaQin" jdbcType="REAL" property="jiaqin" />
+    <result column="YeShou" jdbcType="REAL" property="yeshou" />
+    <result column="HeDa" jdbcType="REAL" property="heda" />
+    <result column="HeXiao" jdbcType="REAL" property="hexiao" />
+    <result column="WeiDa" jdbcType="REAL" property="weida" />
+    <result column="WeiXiao" jdbcType="REAL" property="weixiao" />
+    <result column="WeiDan" jdbcType="REAL" property="weidan" />
+    <result column="WeiShuang" jdbcType="REAL" property="weishuang" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, Type, IsDefault, No1, No2, No3, No4, No5, No6, No7, No8, No9, No10, No11, No12, 
+    No13, No14, No15, No16, No17, No18, No19, No20, No21, No22, No23, No24, No25, No26, 
+    No27, No28, No29, No30, No31, No32, No33, No34, No35, No36, No37, No38, No39, No40, 
+    No41, No42, No43, No44, No45, No46, No47, No48, No49, Dan, Shuang, Da, Xiao, HeDan, 
+    HeShuang, HongBo, Lvbo, LanBo, JiaQin, YeShou, HeDa, HeXiao, WeiDa, WeiXiao, WeiDan, 
+    WeiShuang
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample">
+    delete from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds (Id, Type, IsDefault, 
+      No1, No2, No3, No4, 
+      No5, No6, No7, No8, 
+      No9, No10, No11, No12, 
+      No13, No14, No15, No16, 
+      No17, No18, No19, No20, 
+      No21, No22, No23, No24, 
+      No25, No26, No27, No28, 
+      No29, No30, No31, No32, 
+      No33, No34, No35, No36, 
+      No37, No38, No39, No40, 
+      No41, No42, No43, No44, 
+      No45, No46, No47, No48, 
+      No49, Dan, Shuang, Da, 
+      Xiao, HeDan, HeShuang, HongBo, 
+      Lvbo, LanBo, JiaQin, YeShou, 
+      HeDa, HeXiao, WeiDa, WeiXiao, 
+      WeiDan, WeiShuang)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdefault,jdbcType=BIT}, 
+      #{no1,jdbcType=REAL}, #{no2,jdbcType=REAL}, #{no3,jdbcType=REAL}, #{no4,jdbcType=REAL}, 
+      #{no5,jdbcType=REAL}, #{no6,jdbcType=REAL}, #{no7,jdbcType=REAL}, #{no8,jdbcType=REAL}, 
+      #{no9,jdbcType=REAL}, #{no10,jdbcType=REAL}, #{no11,jdbcType=REAL}, #{no12,jdbcType=REAL}, 
+      #{no13,jdbcType=REAL}, #{no14,jdbcType=REAL}, #{no15,jdbcType=REAL}, #{no16,jdbcType=REAL}, 
+      #{no17,jdbcType=REAL}, #{no18,jdbcType=REAL}, #{no19,jdbcType=REAL}, #{no20,jdbcType=REAL}, 
+      #{no21,jdbcType=REAL}, #{no22,jdbcType=REAL}, #{no23,jdbcType=REAL}, #{no24,jdbcType=REAL}, 
+      #{no25,jdbcType=REAL}, #{no26,jdbcType=REAL}, #{no27,jdbcType=REAL}, #{no28,jdbcType=REAL}, 
+      #{no29,jdbcType=REAL}, #{no30,jdbcType=REAL}, #{no31,jdbcType=REAL}, #{no32,jdbcType=REAL}, 
+      #{no33,jdbcType=REAL}, #{no34,jdbcType=REAL}, #{no35,jdbcType=REAL}, #{no36,jdbcType=REAL}, 
+      #{no37,jdbcType=REAL}, #{no38,jdbcType=REAL}, #{no39,jdbcType=REAL}, #{no40,jdbcType=REAL}, 
+      #{no41,jdbcType=REAL}, #{no42,jdbcType=REAL}, #{no43,jdbcType=REAL}, #{no44,jdbcType=REAL}, 
+      #{no45,jdbcType=REAL}, #{no46,jdbcType=REAL}, #{no47,jdbcType=REAL}, #{no48,jdbcType=REAL}, 
+      #{no49,jdbcType=REAL}, #{dan,jdbcType=REAL}, #{shuang,jdbcType=REAL}, #{da,jdbcType=REAL}, 
+      #{xiao,jdbcType=REAL}, #{hedan,jdbcType=REAL}, #{heshuang,jdbcType=REAL}, #{hongbo,jdbcType=REAL}, 
+      #{lvbo,jdbcType=REAL}, #{lanbo,jdbcType=REAL}, #{jiaqin,jdbcType=REAL}, #{yeshou,jdbcType=REAL}, 
+      #{heda,jdbcType=REAL}, #{hexiao,jdbcType=REAL}, #{weida,jdbcType=REAL}, #{weixiao,jdbcType=REAL}, 
+      #{weidan,jdbcType=REAL}, #{weishuang,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test="isdefault != null">
+        IsDefault,
+      </if>
+      <if test="no1 != null">
+        No1,
+      </if>
+      <if test="no2 != null">
+        No2,
+      </if>
+      <if test="no3 != null">
+        No3,
+      </if>
+      <if test="no4 != null">
+        No4,
+      </if>
+      <if test="no5 != null">
+        No5,
+      </if>
+      <if test="no6 != null">
+        No6,
+      </if>
+      <if test="no7 != null">
+        No7,
+      </if>
+      <if test="no8 != null">
+        No8,
+      </if>
+      <if test="no9 != null">
+        No9,
+      </if>
+      <if test="no10 != null">
+        No10,
+      </if>
+      <if test="no11 != null">
+        No11,
+      </if>
+      <if test="no12 != null">
+        No12,
+      </if>
+      <if test="no13 != null">
+        No13,
+      </if>
+      <if test="no14 != null">
+        No14,
+      </if>
+      <if test="no15 != null">
+        No15,
+      </if>
+      <if test="no16 != null">
+        No16,
+      </if>
+      <if test="no17 != null">
+        No17,
+      </if>
+      <if test="no18 != null">
+        No18,
+      </if>
+      <if test="no19 != null">
+        No19,
+      </if>
+      <if test="no20 != null">
+        No20,
+      </if>
+      <if test="no21 != null">
+        No21,
+      </if>
+      <if test="no22 != null">
+        No22,
+      </if>
+      <if test="no23 != null">
+        No23,
+      </if>
+      <if test="no24 != null">
+        No24,
+      </if>
+      <if test="no25 != null">
+        No25,
+      </if>
+      <if test="no26 != null">
+        No26,
+      </if>
+      <if test="no27 != null">
+        No27,
+      </if>
+      <if test="no28 != null">
+        No28,
+      </if>
+      <if test="no29 != null">
+        No29,
+      </if>
+      <if test="no30 != null">
+        No30,
+      </if>
+      <if test="no31 != null">
+        No31,
+      </if>
+      <if test="no32 != null">
+        No32,
+      </if>
+      <if test="no33 != null">
+        No33,
+      </if>
+      <if test="no34 != null">
+        No34,
+      </if>
+      <if test="no35 != null">
+        No35,
+      </if>
+      <if test="no36 != null">
+        No36,
+      </if>
+      <if test="no37 != null">
+        No37,
+      </if>
+      <if test="no38 != null">
+        No38,
+      </if>
+      <if test="no39 != null">
+        No39,
+      </if>
+      <if test="no40 != null">
+        No40,
+      </if>
+      <if test="no41 != null">
+        No41,
+      </if>
+      <if test="no42 != null">
+        No42,
+      </if>
+      <if test="no43 != null">
+        No43,
+      </if>
+      <if test="no44 != null">
+        No44,
+      </if>
+      <if test="no45 != null">
+        No45,
+      </if>
+      <if test="no46 != null">
+        No46,
+      </if>
+      <if test="no47 != null">
+        No47,
+      </if>
+      <if test="no48 != null">
+        No48,
+      </if>
+      <if test="no49 != null">
+        No49,
+      </if>
+      <if test="dan != null">
+        Dan,
+      </if>
+      <if test="shuang != null">
+        Shuang,
+      </if>
+      <if test="da != null">
+        Da,
+      </if>
+      <if test="xiao != null">
+        Xiao,
+      </if>
+      <if test="hedan != null">
+        HeDan,
+      </if>
+      <if test="heshuang != null">
+        HeShuang,
+      </if>
+      <if test="hongbo != null">
+        HongBo,
+      </if>
+      <if test="lvbo != null">
+        Lvbo,
+      </if>
+      <if test="lanbo != null">
+        LanBo,
+      </if>
+      <if test="jiaqin != null">
+        JiaQin,
+      </if>
+      <if test="yeshou != null">
+        YeShou,
+      </if>
+      <if test="heda != null">
+        HeDa,
+      </if>
+      <if test="hexiao != null">
+        HeXiao,
+      </if>
+      <if test="weida != null">
+        WeiDa,
+      </if>
+      <if test="weixiao != null">
+        WeiXiao,
+      </if>
+      <if test="weidan != null">
+        WeiDan,
+      </if>
+      <if test="weishuang != null">
+        WeiShuang,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        #{weishuang,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultType="java.lang.Long">
+    select count(*) from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update odds
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        Type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdefault != null">
+        IsDefault = #{record.isdefault,jdbcType=BIT},
+      </if>
+      <if test="record.no1 != null">
+        No1 = #{record.no1,jdbcType=REAL},
+      </if>
+      <if test="record.no2 != null">
+        No2 = #{record.no2,jdbcType=REAL},
+      </if>
+      <if test="record.no3 != null">
+        No3 = #{record.no3,jdbcType=REAL},
+      </if>
+      <if test="record.no4 != null">
+        No4 = #{record.no4,jdbcType=REAL},
+      </if>
+      <if test="record.no5 != null">
+        No5 = #{record.no5,jdbcType=REAL},
+      </if>
+      <if test="record.no6 != null">
+        No6 = #{record.no6,jdbcType=REAL},
+      </if>
+      <if test="record.no7 != null">
+        No7 = #{record.no7,jdbcType=REAL},
+      </if>
+      <if test="record.no8 != null">
+        No8 = #{record.no8,jdbcType=REAL},
+      </if>
+      <if test="record.no9 != null">
+        No9 = #{record.no9,jdbcType=REAL},
+      </if>
+      <if test="record.no10 != null">
+        No10 = #{record.no10,jdbcType=REAL},
+      </if>
+      <if test="record.no11 != null">
+        No11 = #{record.no11,jdbcType=REAL},
+      </if>
+      <if test="record.no12 != null">
+        No12 = #{record.no12,jdbcType=REAL},
+      </if>
+      <if test="record.no13 != null">
+        No13 = #{record.no13,jdbcType=REAL},
+      </if>
+      <if test="record.no14 != null">
+        No14 = #{record.no14,jdbcType=REAL},
+      </if>
+      <if test="record.no15 != null">
+        No15 = #{record.no15,jdbcType=REAL},
+      </if>
+      <if test="record.no16 != null">
+        No16 = #{record.no16,jdbcType=REAL},
+      </if>
+      <if test="record.no17 != null">
+        No17 = #{record.no17,jdbcType=REAL},
+      </if>
+      <if test="record.no18 != null">
+        No18 = #{record.no18,jdbcType=REAL},
+      </if>
+      <if test="record.no19 != null">
+        No19 = #{record.no19,jdbcType=REAL},
+      </if>
+      <if test="record.no20 != null">
+        No20 = #{record.no20,jdbcType=REAL},
+      </if>
+      <if test="record.no21 != null">
+        No21 = #{record.no21,jdbcType=REAL},
+      </if>
+      <if test="record.no22 != null">
+        No22 = #{record.no22,jdbcType=REAL},
+      </if>
+      <if test="record.no23 != null">
+        No23 = #{record.no23,jdbcType=REAL},
+      </if>
+      <if test="record.no24 != null">
+        No24 = #{record.no24,jdbcType=REAL},
+      </if>
+      <if test="record.no25 != null">
+        No25 = #{record.no25,jdbcType=REAL},
+      </if>
+      <if test="record.no26 != null">
+        No26 = #{record.no26,jdbcType=REAL},
+      </if>
+      <if test="record.no27 != null">
+        No27 = #{record.no27,jdbcType=REAL},
+      </if>
+      <if test="record.no28 != null">
+        No28 = #{record.no28,jdbcType=REAL},
+      </if>
+      <if test="record.no29 != null">
+        No29 = #{record.no29,jdbcType=REAL},
+      </if>
+      <if test="record.no30 != null">
+        No30 = #{record.no30,jdbcType=REAL},
+      </if>
+      <if test="record.no31 != null">
+        No31 = #{record.no31,jdbcType=REAL},
+      </if>
+      <if test="record.no32 != null">
+        No32 = #{record.no32,jdbcType=REAL},
+      </if>
+      <if test="record.no33 != null">
+        No33 = #{record.no33,jdbcType=REAL},
+      </if>
+      <if test="record.no34 != null">
+        No34 = #{record.no34,jdbcType=REAL},
+      </if>
+      <if test="record.no35 != null">
+        No35 = #{record.no35,jdbcType=REAL},
+      </if>
+      <if test="record.no36 != null">
+        No36 = #{record.no36,jdbcType=REAL},
+      </if>
+      <if test="record.no37 != null">
+        No37 = #{record.no37,jdbcType=REAL},
+      </if>
+      <if test="record.no38 != null">
+        No38 = #{record.no38,jdbcType=REAL},
+      </if>
+      <if test="record.no39 != null">
+        No39 = #{record.no39,jdbcType=REAL},
+      </if>
+      <if test="record.no40 != null">
+        No40 = #{record.no40,jdbcType=REAL},
+      </if>
+      <if test="record.no41 != null">
+        No41 = #{record.no41,jdbcType=REAL},
+      </if>
+      <if test="record.no42 != null">
+        No42 = #{record.no42,jdbcType=REAL},
+      </if>
+      <if test="record.no43 != null">
+        No43 = #{record.no43,jdbcType=REAL},
+      </if>
+      <if test="record.no44 != null">
+        No44 = #{record.no44,jdbcType=REAL},
+      </if>
+      <if test="record.no45 != null">
+        No45 = #{record.no45,jdbcType=REAL},
+      </if>
+      <if test="record.no46 != null">
+        No46 = #{record.no46,jdbcType=REAL},
+      </if>
+      <if test="record.no47 != null">
+        No47 = #{record.no47,jdbcType=REAL},
+      </if>
+      <if test="record.no48 != null">
+        No48 = #{record.no48,jdbcType=REAL},
+      </if>
+      <if test="record.no49 != null">
+        No49 = #{record.no49,jdbcType=REAL},
+      </if>
+      <if test="record.dan != null">
+        Dan = #{record.dan,jdbcType=REAL},
+      </if>
+      <if test="record.shuang != null">
+        Shuang = #{record.shuang,jdbcType=REAL},
+      </if>
+      <if test="record.da != null">
+        Da = #{record.da,jdbcType=REAL},
+      </if>
+      <if test="record.xiao != null">
+        Xiao = #{record.xiao,jdbcType=REAL},
+      </if>
+      <if test="record.hedan != null">
+        HeDan = #{record.hedan,jdbcType=REAL},
+      </if>
+      <if test="record.heshuang != null">
+        HeShuang = #{record.heshuang,jdbcType=REAL},
+      </if>
+      <if test="record.hongbo != null">
+        HongBo = #{record.hongbo,jdbcType=REAL},
+      </if>
+      <if test="record.lvbo != null">
+        Lvbo = #{record.lvbo,jdbcType=REAL},
+      </if>
+      <if test="record.lanbo != null">
+        LanBo = #{record.lanbo,jdbcType=REAL},
+      </if>
+      <if test="record.jiaqin != null">
+        JiaQin = #{record.jiaqin,jdbcType=REAL},
+      </if>
+      <if test="record.yeshou != null">
+        YeShou = #{record.yeshou,jdbcType=REAL},
+      </if>
+      <if test="record.heda != null">
+        HeDa = #{record.heda,jdbcType=REAL},
+      </if>
+      <if test="record.hexiao != null">
+        HeXiao = #{record.hexiao,jdbcType=REAL},
+      </if>
+      <if test="record.weida != null">
+        WeiDa = #{record.weida,jdbcType=REAL},
+      </if>
+      <if test="record.weixiao != null">
+        WeiXiao = #{record.weixiao,jdbcType=REAL},
+      </if>
+      <if test="record.weidan != null">
+        WeiDan = #{record.weidan,jdbcType=REAL},
+      </if>
+      <if test="record.weishuang != null">
+        WeiShuang = #{record.weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update odds
+    set Id = #{record.id,jdbcType=VARCHAR},
+      Type = #{record.type,jdbcType=VARCHAR},
+      IsDefault = #{record.isdefault,jdbcType=BIT},
+      No1 = #{record.no1,jdbcType=REAL},
+      No2 = #{record.no2,jdbcType=REAL},
+      No3 = #{record.no3,jdbcType=REAL},
+      No4 = #{record.no4,jdbcType=REAL},
+      No5 = #{record.no5,jdbcType=REAL},
+      No6 = #{record.no6,jdbcType=REAL},
+      No7 = #{record.no7,jdbcType=REAL},
+      No8 = #{record.no8,jdbcType=REAL},
+      No9 = #{record.no9,jdbcType=REAL},
+      No10 = #{record.no10,jdbcType=REAL},
+      No11 = #{record.no11,jdbcType=REAL},
+      No12 = #{record.no12,jdbcType=REAL},
+      No13 = #{record.no13,jdbcType=REAL},
+      No14 = #{record.no14,jdbcType=REAL},
+      No15 = #{record.no15,jdbcType=REAL},
+      No16 = #{record.no16,jdbcType=REAL},
+      No17 = #{record.no17,jdbcType=REAL},
+      No18 = #{record.no18,jdbcType=REAL},
+      No19 = #{record.no19,jdbcType=REAL},
+      No20 = #{record.no20,jdbcType=REAL},
+      No21 = #{record.no21,jdbcType=REAL},
+      No22 = #{record.no22,jdbcType=REAL},
+      No23 = #{record.no23,jdbcType=REAL},
+      No24 = #{record.no24,jdbcType=REAL},
+      No25 = #{record.no25,jdbcType=REAL},
+      No26 = #{record.no26,jdbcType=REAL},
+      No27 = #{record.no27,jdbcType=REAL},
+      No28 = #{record.no28,jdbcType=REAL},
+      No29 = #{record.no29,jdbcType=REAL},
+      No30 = #{record.no30,jdbcType=REAL},
+      No31 = #{record.no31,jdbcType=REAL},
+      No32 = #{record.no32,jdbcType=REAL},
+      No33 = #{record.no33,jdbcType=REAL},
+      No34 = #{record.no34,jdbcType=REAL},
+      No35 = #{record.no35,jdbcType=REAL},
+      No36 = #{record.no36,jdbcType=REAL},
+      No37 = #{record.no37,jdbcType=REAL},
+      No38 = #{record.no38,jdbcType=REAL},
+      No39 = #{record.no39,jdbcType=REAL},
+      No40 = #{record.no40,jdbcType=REAL},
+      No41 = #{record.no41,jdbcType=REAL},
+      No42 = #{record.no42,jdbcType=REAL},
+      No43 = #{record.no43,jdbcType=REAL},
+      No44 = #{record.no44,jdbcType=REAL},
+      No45 = #{record.no45,jdbcType=REAL},
+      No46 = #{record.no46,jdbcType=REAL},
+      No47 = #{record.no47,jdbcType=REAL},
+      No48 = #{record.no48,jdbcType=REAL},
+      No49 = #{record.no49,jdbcType=REAL},
+      Dan = #{record.dan,jdbcType=REAL},
+      Shuang = #{record.shuang,jdbcType=REAL},
+      Da = #{record.da,jdbcType=REAL},
+      Xiao = #{record.xiao,jdbcType=REAL},
+      HeDan = #{record.hedan,jdbcType=REAL},
+      HeShuang = #{record.heshuang,jdbcType=REAL},
+      HongBo = #{record.hongbo,jdbcType=REAL},
+      Lvbo = #{record.lvbo,jdbcType=REAL},
+      LanBo = #{record.lanbo,jdbcType=REAL},
+      JiaQin = #{record.jiaqin,jdbcType=REAL},
+      YeShou = #{record.yeshou,jdbcType=REAL},
+      HeDa = #{record.heda,jdbcType=REAL},
+      HeXiao = #{record.hexiao,jdbcType=REAL},
+      WeiDa = #{record.weida,jdbcType=REAL},
+      WeiXiao = #{record.weixiao,jdbcType=REAL},
+      WeiDan = #{record.weidan,jdbcType=REAL},
+      WeiShuang = #{record.weishuang,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    <set>
+      <if test="type != null">
+        Type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        IsDefault = #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        No1 = #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        No2 = #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        No3 = #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        No4 = #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        No5 = #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        No6 = #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        No7 = #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        No8 = #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        No9 = #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        No10 = #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        No11 = #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        No12 = #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        No13 = #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        No14 = #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        No15 = #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        No16 = #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        No17 = #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        No18 = #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        No19 = #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        No20 = #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        No21 = #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        No22 = #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        No23 = #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        No24 = #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        No25 = #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        No26 = #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        No27 = #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        No28 = #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        No29 = #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        No30 = #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        No31 = #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        No32 = #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        No33 = #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        No34 = #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        No35 = #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        No36 = #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        No37 = #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        No38 = #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        No39 = #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        No40 = #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        No41 = #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        No42 = #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        No43 = #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        No44 = #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        No45 = #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        No46 = #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        No47 = #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        No48 = #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        No49 = #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        Dan = #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        Shuang = #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        Da = #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        Xiao = #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        HeDan = #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        HeShuang = #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        HongBo = #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        Lvbo = #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        LanBo = #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        JiaQin = #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        YeShou = #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        HeDa = #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        HeXiao = #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        WeiDa = #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        WeiXiao = #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        WeiDan = #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        WeiShuang = #{weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    set Type = #{type,jdbcType=VARCHAR},
+      IsDefault = #{isdefault,jdbcType=BIT},
+      No1 = #{no1,jdbcType=REAL},
+      No2 = #{no2,jdbcType=REAL},
+      No3 = #{no3,jdbcType=REAL},
+      No4 = #{no4,jdbcType=REAL},
+      No5 = #{no5,jdbcType=REAL},
+      No6 = #{no6,jdbcType=REAL},
+      No7 = #{no7,jdbcType=REAL},
+      No8 = #{no8,jdbcType=REAL},
+      No9 = #{no9,jdbcType=REAL},
+      No10 = #{no10,jdbcType=REAL},
+      No11 = #{no11,jdbcType=REAL},
+      No12 = #{no12,jdbcType=REAL},
+      No13 = #{no13,jdbcType=REAL},
+      No14 = #{no14,jdbcType=REAL},
+      No15 = #{no15,jdbcType=REAL},
+      No16 = #{no16,jdbcType=REAL},
+      No17 = #{no17,jdbcType=REAL},
+      No18 = #{no18,jdbcType=REAL},
+      No19 = #{no19,jdbcType=REAL},
+      No20 = #{no20,jdbcType=REAL},
+      No21 = #{no21,jdbcType=REAL},
+      No22 = #{no22,jdbcType=REAL},
+      No23 = #{no23,jdbcType=REAL},
+      No24 = #{no24,jdbcType=REAL},
+      No25 = #{no25,jdbcType=REAL},
+      No26 = #{no26,jdbcType=REAL},
+      No27 = #{no27,jdbcType=REAL},
+      No28 = #{no28,jdbcType=REAL},
+      No29 = #{no29,jdbcType=REAL},
+      No30 = #{no30,jdbcType=REAL},
+      No31 = #{no31,jdbcType=REAL},
+      No32 = #{no32,jdbcType=REAL},
+      No33 = #{no33,jdbcType=REAL},
+      No34 = #{no34,jdbcType=REAL},
+      No35 = #{no35,jdbcType=REAL},
+      No36 = #{no36,jdbcType=REAL},
+      No37 = #{no37,jdbcType=REAL},
+      No38 = #{no38,jdbcType=REAL},
+      No39 = #{no39,jdbcType=REAL},
+      No40 = #{no40,jdbcType=REAL},
+      No41 = #{no41,jdbcType=REAL},
+      No42 = #{no42,jdbcType=REAL},
+      No43 = #{no43,jdbcType=REAL},
+      No44 = #{no44,jdbcType=REAL},
+      No45 = #{no45,jdbcType=REAL},
+      No46 = #{no46,jdbcType=REAL},
+      No47 = #{no47,jdbcType=REAL},
+      No48 = #{no48,jdbcType=REAL},
+      No49 = #{no49,jdbcType=REAL},
+      Dan = #{dan,jdbcType=REAL},
+      Shuang = #{shuang,jdbcType=REAL},
+      Da = #{da,jdbcType=REAL},
+      Xiao = #{xiao,jdbcType=REAL},
+      HeDan = #{hedan,jdbcType=REAL},
+      HeShuang = #{heshuang,jdbcType=REAL},
+      HongBo = #{hongbo,jdbcType=REAL},
+      Lvbo = #{lvbo,jdbcType=REAL},
+      LanBo = #{lanbo,jdbcType=REAL},
+      JiaQin = #{jiaqin,jdbcType=REAL},
+      YeShou = #{yeshou,jdbcType=REAL},
+      HeDa = #{heda,jdbcType=REAL},
+      HeXiao = #{hexiao,jdbcType=REAL},
+      WeiDa = #{weida,jdbcType=REAL},
+      WeiXiao = #{weixiao,jdbcType=REAL},
+      WeiDan = #{weidan,jdbcType=REAL},
+      WeiShuang = #{weishuang,jdbcType=REAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.Odds">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="IsDefault" jdbcType="BIT" property="isdefault" />
+    <result column="No1" jdbcType="REAL" property="no1" />
+    <result column="No2" jdbcType="REAL" property="no2" />
+    <result column="No3" jdbcType="REAL" property="no3" />
+    <result column="No4" jdbcType="REAL" property="no4" />
+    <result column="No5" jdbcType="REAL" property="no5" />
+    <result column="No6" jdbcType="REAL" property="no6" />
+    <result column="No7" jdbcType="REAL" property="no7" />
+    <result column="No8" jdbcType="REAL" property="no8" />
+    <result column="No9" jdbcType="REAL" property="no9" />
+    <result column="No10" jdbcType="REAL" property="no10" />
+    <result column="No11" jdbcType="REAL" property="no11" />
+    <result column="No12" jdbcType="REAL" property="no12" />
+    <result column="No13" jdbcType="REAL" property="no13" />
+    <result column="No14" jdbcType="REAL" property="no14" />
+    <result column="No15" jdbcType="REAL" property="no15" />
+    <result column="No16" jdbcType="REAL" property="no16" />
+    <result column="No17" jdbcType="REAL" property="no17" />
+    <result column="No18" jdbcType="REAL" property="no18" />
+    <result column="No19" jdbcType="REAL" property="no19" />
+    <result column="No20" jdbcType="REAL" property="no20" />
+    <result column="No21" jdbcType="REAL" property="no21" />
+    <result column="No22" jdbcType="REAL" property="no22" />
+    <result column="No23" jdbcType="REAL" property="no23" />
+    <result column="No24" jdbcType="REAL" property="no24" />
+    <result column="No25" jdbcType="REAL" property="no25" />
+    <result column="No26" jdbcType="REAL" property="no26" />
+    <result column="No27" jdbcType="REAL" property="no27" />
+    <result column="No28" jdbcType="REAL" property="no28" />
+    <result column="No29" jdbcType="REAL" property="no29" />
+    <result column="No30" jdbcType="REAL" property="no30" />
+    <result column="No31" jdbcType="REAL" property="no31" />
+    <result column="No32" jdbcType="REAL" property="no32" />
+    <result column="No33" jdbcType="REAL" property="no33" />
+    <result column="No34" jdbcType="REAL" property="no34" />
+    <result column="No35" jdbcType="REAL" property="no35" />
+    <result column="No36" jdbcType="REAL" property="no36" />
+    <result column="No37" jdbcType="REAL" property="no37" />
+    <result column="No38" jdbcType="REAL" property="no38" />
+    <result column="No39" jdbcType="REAL" property="no39" />
+    <result column="No40" jdbcType="REAL" property="no40" />
+    <result column="No41" jdbcType="REAL" property="no41" />
+    <result column="No42" jdbcType="REAL" property="no42" />
+    <result column="No43" jdbcType="REAL" property="no43" />
+    <result column="No44" jdbcType="REAL" property="no44" />
+    <result column="No45" jdbcType="REAL" property="no45" />
+    <result column="No46" jdbcType="REAL" property="no46" />
+    <result column="No47" jdbcType="REAL" property="no47" />
+    <result column="No48" jdbcType="REAL" property="no48" />
+    <result column="No49" jdbcType="REAL" property="no49" />
+    <result column="Dan" jdbcType="REAL" property="dan" />
+    <result column="Shuang" jdbcType="REAL" property="shuang" />
+    <result column="Da" jdbcType="REAL" property="da" />
+    <result column="Xiao" jdbcType="REAL" property="xiao" />
+    <result column="HeDan" jdbcType="REAL" property="hedan" />
+    <result column="HeShuang" jdbcType="REAL" property="heshuang" />
+    <result column="HongBo" jdbcType="REAL" property="hongbo" />
+    <result column="Lvbo" jdbcType="REAL" property="lvbo" />
+    <result column="LanBo" jdbcType="REAL" property="lanbo" />
+    <result column="JiaQin" jdbcType="REAL" property="jiaqin" />
+    <result column="YeShou" jdbcType="REAL" property="yeshou" />
+    <result column="HeDa" jdbcType="REAL" property="heda" />
+    <result column="HeXiao" jdbcType="REAL" property="hexiao" />
+    <result column="WeiDa" jdbcType="REAL" property="weida" />
+    <result column="WeiXiao" jdbcType="REAL" property="weixiao" />
+    <result column="WeiDan" jdbcType="REAL" property="weidan" />
+    <result column="WeiShuang" jdbcType="REAL" property="weishuang" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, Type, IsDefault, No1, No2, No3, No4, No5, No6, No7, No8, No9, No10, No11, No12, 
+    No13, No14, No15, No16, No17, No18, No19, No20, No21, No22, No23, No24, No25, No26, 
+    No27, No28, No29, No30, No31, No32, No33, No34, No35, No36, No37, No38, No39, No40, 
+    No41, No42, No43, No44, No45, No46, No47, No48, No49, Dan, Shuang, Da, Xiao, HeDan, 
+    HeShuang, HongBo, Lvbo, LanBo, JiaQin, YeShou, HeDa, HeXiao, WeiDa, WeiXiao, WeiDan, 
+    WeiShuang
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample">
+    delete from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds (Id, Type, IsDefault, 
+      No1, No2, No3, No4, 
+      No5, No6, No7, No8, 
+      No9, No10, No11, No12, 
+      No13, No14, No15, No16, 
+      No17, No18, No19, No20, 
+      No21, No22, No23, No24, 
+      No25, No26, No27, No28, 
+      No29, No30, No31, No32, 
+      No33, No34, No35, No36, 
+      No37, No38, No39, No40, 
+      No41, No42, No43, No44, 
+      No45, No46, No47, No48, 
+      No49, Dan, Shuang, Da, 
+      Xiao, HeDan, HeShuang, HongBo, 
+      Lvbo, LanBo, JiaQin, YeShou, 
+      HeDa, HeXiao, WeiDa, WeiXiao, 
+      WeiDan, WeiShuang)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdefault,jdbcType=BIT}, 
+      #{no1,jdbcType=REAL}, #{no2,jdbcType=REAL}, #{no3,jdbcType=REAL}, #{no4,jdbcType=REAL}, 
+      #{no5,jdbcType=REAL}, #{no6,jdbcType=REAL}, #{no7,jdbcType=REAL}, #{no8,jdbcType=REAL}, 
+      #{no9,jdbcType=REAL}, #{no10,jdbcType=REAL}, #{no11,jdbcType=REAL}, #{no12,jdbcType=REAL}, 
+      #{no13,jdbcType=REAL}, #{no14,jdbcType=REAL}, #{no15,jdbcType=REAL}, #{no16,jdbcType=REAL}, 
+      #{no17,jdbcType=REAL}, #{no18,jdbcType=REAL}, #{no19,jdbcType=REAL}, #{no20,jdbcType=REAL}, 
+      #{no21,jdbcType=REAL}, #{no22,jdbcType=REAL}, #{no23,jdbcType=REAL}, #{no24,jdbcType=REAL}, 
+      #{no25,jdbcType=REAL}, #{no26,jdbcType=REAL}, #{no27,jdbcType=REAL}, #{no28,jdbcType=REAL}, 
+      #{no29,jdbcType=REAL}, #{no30,jdbcType=REAL}, #{no31,jdbcType=REAL}, #{no32,jdbcType=REAL}, 
+      #{no33,jdbcType=REAL}, #{no34,jdbcType=REAL}, #{no35,jdbcType=REAL}, #{no36,jdbcType=REAL}, 
+      #{no37,jdbcType=REAL}, #{no38,jdbcType=REAL}, #{no39,jdbcType=REAL}, #{no40,jdbcType=REAL}, 
+      #{no41,jdbcType=REAL}, #{no42,jdbcType=REAL}, #{no43,jdbcType=REAL}, #{no44,jdbcType=REAL}, 
+      #{no45,jdbcType=REAL}, #{no46,jdbcType=REAL}, #{no47,jdbcType=REAL}, #{no48,jdbcType=REAL}, 
+      #{no49,jdbcType=REAL}, #{dan,jdbcType=REAL}, #{shuang,jdbcType=REAL}, #{da,jdbcType=REAL}, 
+      #{xiao,jdbcType=REAL}, #{hedan,jdbcType=REAL}, #{heshuang,jdbcType=REAL}, #{hongbo,jdbcType=REAL}, 
+      #{lvbo,jdbcType=REAL}, #{lanbo,jdbcType=REAL}, #{jiaqin,jdbcType=REAL}, #{yeshou,jdbcType=REAL}, 
+      #{heda,jdbcType=REAL}, #{hexiao,jdbcType=REAL}, #{weida,jdbcType=REAL}, #{weixiao,jdbcType=REAL}, 
+      #{weidan,jdbcType=REAL}, #{weishuang,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test="isdefault != null">
+        IsDefault,
+      </if>
+      <if test="no1 != null">
+        No1,
+      </if>
+      <if test="no2 != null">
+        No2,
+      </if>
+      <if test="no3 != null">
+        No3,
+      </if>
+      <if test="no4 != null">
+        No4,
+      </if>
+      <if test="no5 != null">
+        No5,
+      </if>
+      <if test="no6 != null">
+        No6,
+      </if>
+      <if test="no7 != null">
+        No7,
+      </if>
+      <if test="no8 != null">
+        No8,
+      </if>
+      <if test="no9 != null">
+        No9,
+      </if>
+      <if test="no10 != null">
+        No10,
+      </if>
+      <if test="no11 != null">
+        No11,
+      </if>
+      <if test="no12 != null">
+        No12,
+      </if>
+      <if test="no13 != null">
+        No13,
+      </if>
+      <if test="no14 != null">
+        No14,
+      </if>
+      <if test="no15 != null">
+        No15,
+      </if>
+      <if test="no16 != null">
+        No16,
+      </if>
+      <if test="no17 != null">
+        No17,
+      </if>
+      <if test="no18 != null">
+        No18,
+      </if>
+      <if test="no19 != null">
+        No19,
+      </if>
+      <if test="no20 != null">
+        No20,
+      </if>
+      <if test="no21 != null">
+        No21,
+      </if>
+      <if test="no22 != null">
+        No22,
+      </if>
+      <if test="no23 != null">
+        No23,
+      </if>
+      <if test="no24 != null">
+        No24,
+      </if>
+      <if test="no25 != null">
+        No25,
+      </if>
+      <if test="no26 != null">
+        No26,
+      </if>
+      <if test="no27 != null">
+        No27,
+      </if>
+      <if test="no28 != null">
+        No28,
+      </if>
+      <if test="no29 != null">
+        No29,
+      </if>
+      <if test="no30 != null">
+        No30,
+      </if>
+      <if test="no31 != null">
+        No31,
+      </if>
+      <if test="no32 != null">
+        No32,
+      </if>
+      <if test="no33 != null">
+        No33,
+      </if>
+      <if test="no34 != null">
+        No34,
+      </if>
+      <if test="no35 != null">
+        No35,
+      </if>
+      <if test="no36 != null">
+        No36,
+      </if>
+      <if test="no37 != null">
+        No37,
+      </if>
+      <if test="no38 != null">
+        No38,
+      </if>
+      <if test="no39 != null">
+        No39,
+      </if>
+      <if test="no40 != null">
+        No40,
+      </if>
+      <if test="no41 != null">
+        No41,
+      </if>
+      <if test="no42 != null">
+        No42,
+      </if>
+      <if test="no43 != null">
+        No43,
+      </if>
+      <if test="no44 != null">
+        No44,
+      </if>
+      <if test="no45 != null">
+        No45,
+      </if>
+      <if test="no46 != null">
+        No46,
+      </if>
+      <if test="no47 != null">
+        No47,
+      </if>
+      <if test="no48 != null">
+        No48,
+      </if>
+      <if test="no49 != null">
+        No49,
+      </if>
+      <if test="dan != null">
+        Dan,
+      </if>
+      <if test="shuang != null">
+        Shuang,
+      </if>
+      <if test="da != null">
+        Da,
+      </if>
+      <if test="xiao != null">
+        Xiao,
+      </if>
+      <if test="hedan != null">
+        HeDan,
+      </if>
+      <if test="heshuang != null">
+        HeShuang,
+      </if>
+      <if test="hongbo != null">
+        HongBo,
+      </if>
+      <if test="lvbo != null">
+        Lvbo,
+      </if>
+      <if test="lanbo != null">
+        LanBo,
+      </if>
+      <if test="jiaqin != null">
+        JiaQin,
+      </if>
+      <if test="yeshou != null">
+        YeShou,
+      </if>
+      <if test="heda != null">
+        HeDa,
+      </if>
+      <if test="hexiao != null">
+        HeXiao,
+      </if>
+      <if test="weida != null">
+        WeiDa,
+      </if>
+      <if test="weixiao != null">
+        WeiXiao,
+      </if>
+      <if test="weidan != null">
+        WeiDan,
+      </if>
+      <if test="weishuang != null">
+        WeiShuang,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        #{weishuang,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultType="java.lang.Long">
+    select count(*) from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update odds
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        Type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdefault != null">
+        IsDefault = #{record.isdefault,jdbcType=BIT},
+      </if>
+      <if test="record.no1 != null">
+        No1 = #{record.no1,jdbcType=REAL},
+      </if>
+      <if test="record.no2 != null">
+        No2 = #{record.no2,jdbcType=REAL},
+      </if>
+      <if test="record.no3 != null">
+        No3 = #{record.no3,jdbcType=REAL},
+      </if>
+      <if test="record.no4 != null">
+        No4 = #{record.no4,jdbcType=REAL},
+      </if>
+      <if test="record.no5 != null">
+        No5 = #{record.no5,jdbcType=REAL},
+      </if>
+      <if test="record.no6 != null">
+        No6 = #{record.no6,jdbcType=REAL},
+      </if>
+      <if test="record.no7 != null">
+        No7 = #{record.no7,jdbcType=REAL},
+      </if>
+      <if test="record.no8 != null">
+        No8 = #{record.no8,jdbcType=REAL},
+      </if>
+      <if test="record.no9 != null">
+        No9 = #{record.no9,jdbcType=REAL},
+      </if>
+      <if test="record.no10 != null">
+        No10 = #{record.no10,jdbcType=REAL},
+      </if>
+      <if test="record.no11 != null">
+        No11 = #{record.no11,jdbcType=REAL},
+      </if>
+      <if test="record.no12 != null">
+        No12 = #{record.no12,jdbcType=REAL},
+      </if>
+      <if test="record.no13 != null">
+        No13 = #{record.no13,jdbcType=REAL},
+      </if>
+      <if test="record.no14 != null">
+        No14 = #{record.no14,jdbcType=REAL},
+      </if>
+      <if test="record.no15 != null">
+        No15 = #{record.no15,jdbcType=REAL},
+      </if>
+      <if test="record.no16 != null">
+        No16 = #{record.no16,jdbcType=REAL},
+      </if>
+      <if test="record.no17 != null">
+        No17 = #{record.no17,jdbcType=REAL},
+      </if>
+      <if test="record.no18 != null">
+        No18 = #{record.no18,jdbcType=REAL},
+      </if>
+      <if test="record.no19 != null">
+        No19 = #{record.no19,jdbcType=REAL},
+      </if>
+      <if test="record.no20 != null">
+        No20 = #{record.no20,jdbcType=REAL},
+      </if>
+      <if test="record.no21 != null">
+        No21 = #{record.no21,jdbcType=REAL},
+      </if>
+      <if test="record.no22 != null">
+        No22 = #{record.no22,jdbcType=REAL},
+      </if>
+      <if test="record.no23 != null">
+        No23 = #{record.no23,jdbcType=REAL},
+      </if>
+      <if test="record.no24 != null">
+        No24 = #{record.no24,jdbcType=REAL},
+      </if>
+      <if test="record.no25 != null">
+        No25 = #{record.no25,jdbcType=REAL},
+      </if>
+      <if test="record.no26 != null">
+        No26 = #{record.no26,jdbcType=REAL},
+      </if>
+      <if test="record.no27 != null">
+        No27 = #{record.no27,jdbcType=REAL},
+      </if>
+      <if test="record.no28 != null">
+        No28 = #{record.no28,jdbcType=REAL},
+      </if>
+      <if test="record.no29 != null">
+        No29 = #{record.no29,jdbcType=REAL},
+      </if>
+      <if test="record.no30 != null">
+        No30 = #{record.no30,jdbcType=REAL},
+      </if>
+      <if test="record.no31 != null">
+        No31 = #{record.no31,jdbcType=REAL},
+      </if>
+      <if test="record.no32 != null">
+        No32 = #{record.no32,jdbcType=REAL},
+      </if>
+      <if test="record.no33 != null">
+        No33 = #{record.no33,jdbcType=REAL},
+      </if>
+      <if test="record.no34 != null">
+        No34 = #{record.no34,jdbcType=REAL},
+      </if>
+      <if test="record.no35 != null">
+        No35 = #{record.no35,jdbcType=REAL},
+      </if>
+      <if test="record.no36 != null">
+        No36 = #{record.no36,jdbcType=REAL},
+      </if>
+      <if test="record.no37 != null">
+        No37 = #{record.no37,jdbcType=REAL},
+      </if>
+      <if test="record.no38 != null">
+        No38 = #{record.no38,jdbcType=REAL},
+      </if>
+      <if test="record.no39 != null">
+        No39 = #{record.no39,jdbcType=REAL},
+      </if>
+      <if test="record.no40 != null">
+        No40 = #{record.no40,jdbcType=REAL},
+      </if>
+      <if test="record.no41 != null">
+        No41 = #{record.no41,jdbcType=REAL},
+      </if>
+      <if test="record.no42 != null">
+        No42 = #{record.no42,jdbcType=REAL},
+      </if>
+      <if test="record.no43 != null">
+        No43 = #{record.no43,jdbcType=REAL},
+      </if>
+      <if test="record.no44 != null">
+        No44 = #{record.no44,jdbcType=REAL},
+      </if>
+      <if test="record.no45 != null">
+        No45 = #{record.no45,jdbcType=REAL},
+      </if>
+      <if test="record.no46 != null">
+        No46 = #{record.no46,jdbcType=REAL},
+      </if>
+      <if test="record.no47 != null">
+        No47 = #{record.no47,jdbcType=REAL},
+      </if>
+      <if test="record.no48 != null">
+        No48 = #{record.no48,jdbcType=REAL},
+      </if>
+      <if test="record.no49 != null">
+        No49 = #{record.no49,jdbcType=REAL},
+      </if>
+      <if test="record.dan != null">
+        Dan = #{record.dan,jdbcType=REAL},
+      </if>
+      <if test="record.shuang != null">
+        Shuang = #{record.shuang,jdbcType=REAL},
+      </if>
+      <if test="record.da != null">
+        Da = #{record.da,jdbcType=REAL},
+      </if>
+      <if test="record.xiao != null">
+        Xiao = #{record.xiao,jdbcType=REAL},
+      </if>
+      <if test="record.hedan != null">
+        HeDan = #{record.hedan,jdbcType=REAL},
+      </if>
+      <if test="record.heshuang != null">
+        HeShuang = #{record.heshuang,jdbcType=REAL},
+      </if>
+      <if test="record.hongbo != null">
+        HongBo = #{record.hongbo,jdbcType=REAL},
+      </if>
+      <if test="record.lvbo != null">
+        Lvbo = #{record.lvbo,jdbcType=REAL},
+      </if>
+      <if test="record.lanbo != null">
+        LanBo = #{record.lanbo,jdbcType=REAL},
+      </if>
+      <if test="record.jiaqin != null">
+        JiaQin = #{record.jiaqin,jdbcType=REAL},
+      </if>
+      <if test="record.yeshou != null">
+        YeShou = #{record.yeshou,jdbcType=REAL},
+      </if>
+      <if test="record.heda != null">
+        HeDa = #{record.heda,jdbcType=REAL},
+      </if>
+      <if test="record.hexiao != null">
+        HeXiao = #{record.hexiao,jdbcType=REAL},
+      </if>
+      <if test="record.weida != null">
+        WeiDa = #{record.weida,jdbcType=REAL},
+      </if>
+      <if test="record.weixiao != null">
+        WeiXiao = #{record.weixiao,jdbcType=REAL},
+      </if>
+      <if test="record.weidan != null">
+        WeiDan = #{record.weidan,jdbcType=REAL},
+      </if>
+      <if test="record.weishuang != null">
+        WeiShuang = #{record.weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update odds
+    set Id = #{record.id,jdbcType=VARCHAR},
+      Type = #{record.type,jdbcType=VARCHAR},
+      IsDefault = #{record.isdefault,jdbcType=BIT},
+      No1 = #{record.no1,jdbcType=REAL},
+      No2 = #{record.no2,jdbcType=REAL},
+      No3 = #{record.no3,jdbcType=REAL},
+      No4 = #{record.no4,jdbcType=REAL},
+      No5 = #{record.no5,jdbcType=REAL},
+      No6 = #{record.no6,jdbcType=REAL},
+      No7 = #{record.no7,jdbcType=REAL},
+      No8 = #{record.no8,jdbcType=REAL},
+      No9 = #{record.no9,jdbcType=REAL},
+      No10 = #{record.no10,jdbcType=REAL},
+      No11 = #{record.no11,jdbcType=REAL},
+      No12 = #{record.no12,jdbcType=REAL},
+      No13 = #{record.no13,jdbcType=REAL},
+      No14 = #{record.no14,jdbcType=REAL},
+      No15 = #{record.no15,jdbcType=REAL},
+      No16 = #{record.no16,jdbcType=REAL},
+      No17 = #{record.no17,jdbcType=REAL},
+      No18 = #{record.no18,jdbcType=REAL},
+      No19 = #{record.no19,jdbcType=REAL},
+      No20 = #{record.no20,jdbcType=REAL},
+      No21 = #{record.no21,jdbcType=REAL},
+      No22 = #{record.no22,jdbcType=REAL},
+      No23 = #{record.no23,jdbcType=REAL},
+      No24 = #{record.no24,jdbcType=REAL},
+      No25 = #{record.no25,jdbcType=REAL},
+      No26 = #{record.no26,jdbcType=REAL},
+      No27 = #{record.no27,jdbcType=REAL},
+      No28 = #{record.no28,jdbcType=REAL},
+      No29 = #{record.no29,jdbcType=REAL},
+      No30 = #{record.no30,jdbcType=REAL},
+      No31 = #{record.no31,jdbcType=REAL},
+      No32 = #{record.no32,jdbcType=REAL},
+      No33 = #{record.no33,jdbcType=REAL},
+      No34 = #{record.no34,jdbcType=REAL},
+      No35 = #{record.no35,jdbcType=REAL},
+      No36 = #{record.no36,jdbcType=REAL},
+      No37 = #{record.no37,jdbcType=REAL},
+      No38 = #{record.no38,jdbcType=REAL},
+      No39 = #{record.no39,jdbcType=REAL},
+      No40 = #{record.no40,jdbcType=REAL},
+      No41 = #{record.no41,jdbcType=REAL},
+      No42 = #{record.no42,jdbcType=REAL},
+      No43 = #{record.no43,jdbcType=REAL},
+      No44 = #{record.no44,jdbcType=REAL},
+      No45 = #{record.no45,jdbcType=REAL},
+      No46 = #{record.no46,jdbcType=REAL},
+      No47 = #{record.no47,jdbcType=REAL},
+      No48 = #{record.no48,jdbcType=REAL},
+      No49 = #{record.no49,jdbcType=REAL},
+      Dan = #{record.dan,jdbcType=REAL},
+      Shuang = #{record.shuang,jdbcType=REAL},
+      Da = #{record.da,jdbcType=REAL},
+      Xiao = #{record.xiao,jdbcType=REAL},
+      HeDan = #{record.hedan,jdbcType=REAL},
+      HeShuang = #{record.heshuang,jdbcType=REAL},
+      HongBo = #{record.hongbo,jdbcType=REAL},
+      Lvbo = #{record.lvbo,jdbcType=REAL},
+      LanBo = #{record.lanbo,jdbcType=REAL},
+      JiaQin = #{record.jiaqin,jdbcType=REAL},
+      YeShou = #{record.yeshou,jdbcType=REAL},
+      HeDa = #{record.heda,jdbcType=REAL},
+      HeXiao = #{record.hexiao,jdbcType=REAL},
+      WeiDa = #{record.weida,jdbcType=REAL},
+      WeiXiao = #{record.weixiao,jdbcType=REAL},
+      WeiDan = #{record.weidan,jdbcType=REAL},
+      WeiShuang = #{record.weishuang,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    <set>
+      <if test="type != null">
+        Type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        IsDefault = #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        No1 = #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        No2 = #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        No3 = #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        No4 = #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        No5 = #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        No6 = #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        No7 = #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        No8 = #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        No9 = #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        No10 = #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        No11 = #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        No12 = #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        No13 = #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        No14 = #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        No15 = #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        No16 = #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        No17 = #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        No18 = #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        No19 = #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        No20 = #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        No21 = #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        No22 = #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        No23 = #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        No24 = #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        No25 = #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        No26 = #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        No27 = #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        No28 = #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        No29 = #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        No30 = #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        No31 = #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        No32 = #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        No33 = #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        No34 = #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        No35 = #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        No36 = #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        No37 = #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        No38 = #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        No39 = #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        No40 = #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        No41 = #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        No42 = #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        No43 = #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        No44 = #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        No45 = #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        No46 = #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        No47 = #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        No48 = #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        No49 = #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        Dan = #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        Shuang = #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        Da = #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        Xiao = #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        HeDan = #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        HeShuang = #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        HongBo = #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        Lvbo = #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        LanBo = #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        JiaQin = #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        YeShou = #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        HeDa = #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        HeXiao = #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        WeiDa = #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        WeiXiao = #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        WeiDan = #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        WeiShuang = #{weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    set Type = #{type,jdbcType=VARCHAR},
+      IsDefault = #{isdefault,jdbcType=BIT},
+      No1 = #{no1,jdbcType=REAL},
+      No2 = #{no2,jdbcType=REAL},
+      No3 = #{no3,jdbcType=REAL},
+      No4 = #{no4,jdbcType=REAL},
+      No5 = #{no5,jdbcType=REAL},
+      No6 = #{no6,jdbcType=REAL},
+      No7 = #{no7,jdbcType=REAL},
+      No8 = #{no8,jdbcType=REAL},
+      No9 = #{no9,jdbcType=REAL},
+      No10 = #{no10,jdbcType=REAL},
+      No11 = #{no11,jdbcType=REAL},
+      No12 = #{no12,jdbcType=REAL},
+      No13 = #{no13,jdbcType=REAL},
+      No14 = #{no14,jdbcType=REAL},
+      No15 = #{no15,jdbcType=REAL},
+      No16 = #{no16,jdbcType=REAL},
+      No17 = #{no17,jdbcType=REAL},
+      No18 = #{no18,jdbcType=REAL},
+      No19 = #{no19,jdbcType=REAL},
+      No20 = #{no20,jdbcType=REAL},
+      No21 = #{no21,jdbcType=REAL},
+      No22 = #{no22,jdbcType=REAL},
+      No23 = #{no23,jdbcType=REAL},
+      No24 = #{no24,jdbcType=REAL},
+      No25 = #{no25,jdbcType=REAL},
+      No26 = #{no26,jdbcType=REAL},
+      No27 = #{no27,jdbcType=REAL},
+      No28 = #{no28,jdbcType=REAL},
+      No29 = #{no29,jdbcType=REAL},
+      No30 = #{no30,jdbcType=REAL},
+      No31 = #{no31,jdbcType=REAL},
+      No32 = #{no32,jdbcType=REAL},
+      No33 = #{no33,jdbcType=REAL},
+      No34 = #{no34,jdbcType=REAL},
+      No35 = #{no35,jdbcType=REAL},
+      No36 = #{no36,jdbcType=REAL},
+      No37 = #{no37,jdbcType=REAL},
+      No38 = #{no38,jdbcType=REAL},
+      No39 = #{no39,jdbcType=REAL},
+      No40 = #{no40,jdbcType=REAL},
+      No41 = #{no41,jdbcType=REAL},
+      No42 = #{no42,jdbcType=REAL},
+      No43 = #{no43,jdbcType=REAL},
+      No44 = #{no44,jdbcType=REAL},
+      No45 = #{no45,jdbcType=REAL},
+      No46 = #{no46,jdbcType=REAL},
+      No47 = #{no47,jdbcType=REAL},
+      No48 = #{no48,jdbcType=REAL},
+      No49 = #{no49,jdbcType=REAL},
+      Dan = #{dan,jdbcType=REAL},
+      Shuang = #{shuang,jdbcType=REAL},
+      Da = #{da,jdbcType=REAL},
+      Xiao = #{xiao,jdbcType=REAL},
+      HeDan = #{hedan,jdbcType=REAL},
+      HeShuang = #{heshuang,jdbcType=REAL},
+      HongBo = #{hongbo,jdbcType=REAL},
+      Lvbo = #{lvbo,jdbcType=REAL},
+      LanBo = #{lanbo,jdbcType=REAL},
+      JiaQin = #{jiaqin,jdbcType=REAL},
+      YeShou = #{yeshou,jdbcType=REAL},
+      HeDa = #{heda,jdbcType=REAL},
+      HeXiao = #{hexiao,jdbcType=REAL},
+      WeiDa = #{weida,jdbcType=REAL},
+      WeiXiao = #{weixiao,jdbcType=REAL},
+      WeiDan = #{weidan,jdbcType=REAL},
+      WeiShuang = #{weishuang,jdbcType=REAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yunfang.inquiry.entity1.Odds">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="IsDefault" jdbcType="BIT" property="isdefault" />
+    <result column="No1" jdbcType="REAL" property="no1" />
+    <result column="No2" jdbcType="REAL" property="no2" />
+    <result column="No3" jdbcType="REAL" property="no3" />
+    <result column="No4" jdbcType="REAL" property="no4" />
+    <result column="No5" jdbcType="REAL" property="no5" />
+    <result column="No6" jdbcType="REAL" property="no6" />
+    <result column="No7" jdbcType="REAL" property="no7" />
+    <result column="No8" jdbcType="REAL" property="no8" />
+    <result column="No9" jdbcType="REAL" property="no9" />
+    <result column="No10" jdbcType="REAL" property="no10" />
+    <result column="No11" jdbcType="REAL" property="no11" />
+    <result column="No12" jdbcType="REAL" property="no12" />
+    <result column="No13" jdbcType="REAL" property="no13" />
+    <result column="No14" jdbcType="REAL" property="no14" />
+    <result column="No15" jdbcType="REAL" property="no15" />
+    <result column="No16" jdbcType="REAL" property="no16" />
+    <result column="No17" jdbcType="REAL" property="no17" />
+    <result column="No18" jdbcType="REAL" property="no18" />
+    <result column="No19" jdbcType="REAL" property="no19" />
+    <result column="No20" jdbcType="REAL" property="no20" />
+    <result column="No21" jdbcType="REAL" property="no21" />
+    <result column="No22" jdbcType="REAL" property="no22" />
+    <result column="No23" jdbcType="REAL" property="no23" />
+    <result column="No24" jdbcType="REAL" property="no24" />
+    <result column="No25" jdbcType="REAL" property="no25" />
+    <result column="No26" jdbcType="REAL" property="no26" />
+    <result column="No27" jdbcType="REAL" property="no27" />
+    <result column="No28" jdbcType="REAL" property="no28" />
+    <result column="No29" jdbcType="REAL" property="no29" />
+    <result column="No30" jdbcType="REAL" property="no30" />
+    <result column="No31" jdbcType="REAL" property="no31" />
+    <result column="No32" jdbcType="REAL" property="no32" />
+    <result column="No33" jdbcType="REAL" property="no33" />
+    <result column="No34" jdbcType="REAL" property="no34" />
+    <result column="No35" jdbcType="REAL" property="no35" />
+    <result column="No36" jdbcType="REAL" property="no36" />
+    <result column="No37" jdbcType="REAL" property="no37" />
+    <result column="No38" jdbcType="REAL" property="no38" />
+    <result column="No39" jdbcType="REAL" property="no39" />
+    <result column="No40" jdbcType="REAL" property="no40" />
+    <result column="No41" jdbcType="REAL" property="no41" />
+    <result column="No42" jdbcType="REAL" property="no42" />
+    <result column="No43" jdbcType="REAL" property="no43" />
+    <result column="No44" jdbcType="REAL" property="no44" />
+    <result column="No45" jdbcType="REAL" property="no45" />
+    <result column="No46" jdbcType="REAL" property="no46" />
+    <result column="No47" jdbcType="REAL" property="no47" />
+    <result column="No48" jdbcType="REAL" property="no48" />
+    <result column="No49" jdbcType="REAL" property="no49" />
+    <result column="Dan" jdbcType="REAL" property="dan" />
+    <result column="Shuang" jdbcType="REAL" property="shuang" />
+    <result column="Da" jdbcType="REAL" property="da" />
+    <result column="Xiao" jdbcType="REAL" property="xiao" />
+    <result column="HeDan" jdbcType="REAL" property="hedan" />
+    <result column="HeShuang" jdbcType="REAL" property="heshuang" />
+    <result column="HongBo" jdbcType="REAL" property="hongbo" />
+    <result column="Lvbo" jdbcType="REAL" property="lvbo" />
+    <result column="LanBo" jdbcType="REAL" property="lanbo" />
+    <result column="JiaQin" jdbcType="REAL" property="jiaqin" />
+    <result column="YeShou" jdbcType="REAL" property="yeshou" />
+    <result column="HeDa" jdbcType="REAL" property="heda" />
+    <result column="HeXiao" jdbcType="REAL" property="hexiao" />
+    <result column="WeiDa" jdbcType="REAL" property="weida" />
+    <result column="WeiXiao" jdbcType="REAL" property="weixiao" />
+    <result column="WeiDan" jdbcType="REAL" property="weidan" />
+    <result column="WeiShuang" jdbcType="REAL" property="weishuang" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, Type, IsDefault, No1, No2, No3, No4, No5, No6, No7, No8, No9, No10, No11, No12, 
+    No13, No14, No15, No16, No17, No18, No19, No20, No21, No22, No23, No24, No25, No26, 
+    No27, No28, No29, No30, No31, No32, No33, No34, No35, No36, No37, No38, No39, No40, 
+    No41, No42, No43, No44, No45, No46, No47, No48, No49, Dan, Shuang, Da, Xiao, HeDan, 
+    HeShuang, HongBo, Lvbo, LanBo, JiaQin, YeShou, HeDa, HeXiao, WeiDa, WeiXiao, WeiDan, 
+    WeiShuang
+  </sql>
+  <select id="selectByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from odds
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample">
+    delete from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds (Id, Type, IsDefault, 
+      No1, No2, No3, No4, 
+      No5, No6, No7, No8, 
+      No9, No10, No11, No12, 
+      No13, No14, No15, No16, 
+      No17, No18, No19, No20, 
+      No21, No22, No23, No24, 
+      No25, No26, No27, No28, 
+      No29, No30, No31, No32, 
+      No33, No34, No35, No36, 
+      No37, No38, No39, No40, 
+      No41, No42, No43, No44, 
+      No45, No46, No47, No48, 
+      No49, Dan, Shuang, Da, 
+      Xiao, HeDan, HeShuang, HongBo, 
+      Lvbo, LanBo, JiaQin, YeShou, 
+      HeDa, HeXiao, WeiDa, WeiXiao, 
+      WeiDan, WeiShuang)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdefault,jdbcType=BIT}, 
+      #{no1,jdbcType=REAL}, #{no2,jdbcType=REAL}, #{no3,jdbcType=REAL}, #{no4,jdbcType=REAL}, 
+      #{no5,jdbcType=REAL}, #{no6,jdbcType=REAL}, #{no7,jdbcType=REAL}, #{no8,jdbcType=REAL}, 
+      #{no9,jdbcType=REAL}, #{no10,jdbcType=REAL}, #{no11,jdbcType=REAL}, #{no12,jdbcType=REAL}, 
+      #{no13,jdbcType=REAL}, #{no14,jdbcType=REAL}, #{no15,jdbcType=REAL}, #{no16,jdbcType=REAL}, 
+      #{no17,jdbcType=REAL}, #{no18,jdbcType=REAL}, #{no19,jdbcType=REAL}, #{no20,jdbcType=REAL}, 
+      #{no21,jdbcType=REAL}, #{no22,jdbcType=REAL}, #{no23,jdbcType=REAL}, #{no24,jdbcType=REAL}, 
+      #{no25,jdbcType=REAL}, #{no26,jdbcType=REAL}, #{no27,jdbcType=REAL}, #{no28,jdbcType=REAL}, 
+      #{no29,jdbcType=REAL}, #{no30,jdbcType=REAL}, #{no31,jdbcType=REAL}, #{no32,jdbcType=REAL}, 
+      #{no33,jdbcType=REAL}, #{no34,jdbcType=REAL}, #{no35,jdbcType=REAL}, #{no36,jdbcType=REAL}, 
+      #{no37,jdbcType=REAL}, #{no38,jdbcType=REAL}, #{no39,jdbcType=REAL}, #{no40,jdbcType=REAL}, 
+      #{no41,jdbcType=REAL}, #{no42,jdbcType=REAL}, #{no43,jdbcType=REAL}, #{no44,jdbcType=REAL}, 
+      #{no45,jdbcType=REAL}, #{no46,jdbcType=REAL}, #{no47,jdbcType=REAL}, #{no48,jdbcType=REAL}, 
+      #{no49,jdbcType=REAL}, #{dan,jdbcType=REAL}, #{shuang,jdbcType=REAL}, #{da,jdbcType=REAL}, 
+      #{xiao,jdbcType=REAL}, #{hedan,jdbcType=REAL}, #{heshuang,jdbcType=REAL}, #{hongbo,jdbcType=REAL}, 
+      #{lvbo,jdbcType=REAL}, #{lanbo,jdbcType=REAL}, #{jiaqin,jdbcType=REAL}, #{yeshou,jdbcType=REAL}, 
+      #{heda,jdbcType=REAL}, #{hexiao,jdbcType=REAL}, #{weida,jdbcType=REAL}, #{weixiao,jdbcType=REAL}, 
+      #{weidan,jdbcType=REAL}, #{weishuang,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    insert into odds
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test="isdefault != null">
+        IsDefault,
+      </if>
+      <if test="no1 != null">
+        No1,
+      </if>
+      <if test="no2 != null">
+        No2,
+      </if>
+      <if test="no3 != null">
+        No3,
+      </if>
+      <if test="no4 != null">
+        No4,
+      </if>
+      <if test="no5 != null">
+        No5,
+      </if>
+      <if test="no6 != null">
+        No6,
+      </if>
+      <if test="no7 != null">
+        No7,
+      </if>
+      <if test="no8 != null">
+        No8,
+      </if>
+      <if test="no9 != null">
+        No9,
+      </if>
+      <if test="no10 != null">
+        No10,
+      </if>
+      <if test="no11 != null">
+        No11,
+      </if>
+      <if test="no12 != null">
+        No12,
+      </if>
+      <if test="no13 != null">
+        No13,
+      </if>
+      <if test="no14 != null">
+        No14,
+      </if>
+      <if test="no15 != null">
+        No15,
+      </if>
+      <if test="no16 != null">
+        No16,
+      </if>
+      <if test="no17 != null">
+        No17,
+      </if>
+      <if test="no18 != null">
+        No18,
+      </if>
+      <if test="no19 != null">
+        No19,
+      </if>
+      <if test="no20 != null">
+        No20,
+      </if>
+      <if test="no21 != null">
+        No21,
+      </if>
+      <if test="no22 != null">
+        No22,
+      </if>
+      <if test="no23 != null">
+        No23,
+      </if>
+      <if test="no24 != null">
+        No24,
+      </if>
+      <if test="no25 != null">
+        No25,
+      </if>
+      <if test="no26 != null">
+        No26,
+      </if>
+      <if test="no27 != null">
+        No27,
+      </if>
+      <if test="no28 != null">
+        No28,
+      </if>
+      <if test="no29 != null">
+        No29,
+      </if>
+      <if test="no30 != null">
+        No30,
+      </if>
+      <if test="no31 != null">
+        No31,
+      </if>
+      <if test="no32 != null">
+        No32,
+      </if>
+      <if test="no33 != null">
+        No33,
+      </if>
+      <if test="no34 != null">
+        No34,
+      </if>
+      <if test="no35 != null">
+        No35,
+      </if>
+      <if test="no36 != null">
+        No36,
+      </if>
+      <if test="no37 != null">
+        No37,
+      </if>
+      <if test="no38 != null">
+        No38,
+      </if>
+      <if test="no39 != null">
+        No39,
+      </if>
+      <if test="no40 != null">
+        No40,
+      </if>
+      <if test="no41 != null">
+        No41,
+      </if>
+      <if test="no42 != null">
+        No42,
+      </if>
+      <if test="no43 != null">
+        No43,
+      </if>
+      <if test="no44 != null">
+        No44,
+      </if>
+      <if test="no45 != null">
+        No45,
+      </if>
+      <if test="no46 != null">
+        No46,
+      </if>
+      <if test="no47 != null">
+        No47,
+      </if>
+      <if test="no48 != null">
+        No48,
+      </if>
+      <if test="no49 != null">
+        No49,
+      </if>
+      <if test="dan != null">
+        Dan,
+      </if>
+      <if test="shuang != null">
+        Shuang,
+      </if>
+      <if test="da != null">
+        Da,
+      </if>
+      <if test="xiao != null">
+        Xiao,
+      </if>
+      <if test="hedan != null">
+        HeDan,
+      </if>
+      <if test="heshuang != null">
+        HeShuang,
+      </if>
+      <if test="hongbo != null">
+        HongBo,
+      </if>
+      <if test="lvbo != null">
+        Lvbo,
+      </if>
+      <if test="lanbo != null">
+        LanBo,
+      </if>
+      <if test="jiaqin != null">
+        JiaQin,
+      </if>
+      <if test="yeshou != null">
+        YeShou,
+      </if>
+      <if test="heda != null">
+        HeDa,
+      </if>
+      <if test="hexiao != null">
+        HeXiao,
+      </if>
+      <if test="weida != null">
+        WeiDa,
+      </if>
+      <if test="weixiao != null">
+        WeiXiao,
+      </if>
+      <if test="weidan != null">
+        WeiDan,
+      </if>
+      <if test="weishuang != null">
+        WeiShuang,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        #{weishuang,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunfang.inquiry.entity1.OddsExample" resultType="java.lang.Long">
+    select count(*) from odds
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update odds
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        Type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdefault != null">
+        IsDefault = #{record.isdefault,jdbcType=BIT},
+      </if>
+      <if test="record.no1 != null">
+        No1 = #{record.no1,jdbcType=REAL},
+      </if>
+      <if test="record.no2 != null">
+        No2 = #{record.no2,jdbcType=REAL},
+      </if>
+      <if test="record.no3 != null">
+        No3 = #{record.no3,jdbcType=REAL},
+      </if>
+      <if test="record.no4 != null">
+        No4 = #{record.no4,jdbcType=REAL},
+      </if>
+      <if test="record.no5 != null">
+        No5 = #{record.no5,jdbcType=REAL},
+      </if>
+      <if test="record.no6 != null">
+        No6 = #{record.no6,jdbcType=REAL},
+      </if>
+      <if test="record.no7 != null">
+        No7 = #{record.no7,jdbcType=REAL},
+      </if>
+      <if test="record.no8 != null">
+        No8 = #{record.no8,jdbcType=REAL},
+      </if>
+      <if test="record.no9 != null">
+        No9 = #{record.no9,jdbcType=REAL},
+      </if>
+      <if test="record.no10 != null">
+        No10 = #{record.no10,jdbcType=REAL},
+      </if>
+      <if test="record.no11 != null">
+        No11 = #{record.no11,jdbcType=REAL},
+      </if>
+      <if test="record.no12 != null">
+        No12 = #{record.no12,jdbcType=REAL},
+      </if>
+      <if test="record.no13 != null">
+        No13 = #{record.no13,jdbcType=REAL},
+      </if>
+      <if test="record.no14 != null">
+        No14 = #{record.no14,jdbcType=REAL},
+      </if>
+      <if test="record.no15 != null">
+        No15 = #{record.no15,jdbcType=REAL},
+      </if>
+      <if test="record.no16 != null">
+        No16 = #{record.no16,jdbcType=REAL},
+      </if>
+      <if test="record.no17 != null">
+        No17 = #{record.no17,jdbcType=REAL},
+      </if>
+      <if test="record.no18 != null">
+        No18 = #{record.no18,jdbcType=REAL},
+      </if>
+      <if test="record.no19 != null">
+        No19 = #{record.no19,jdbcType=REAL},
+      </if>
+      <if test="record.no20 != null">
+        No20 = #{record.no20,jdbcType=REAL},
+      </if>
+      <if test="record.no21 != null">
+        No21 = #{record.no21,jdbcType=REAL},
+      </if>
+      <if test="record.no22 != null">
+        No22 = #{record.no22,jdbcType=REAL},
+      </if>
+      <if test="record.no23 != null">
+        No23 = #{record.no23,jdbcType=REAL},
+      </if>
+      <if test="record.no24 != null">
+        No24 = #{record.no24,jdbcType=REAL},
+      </if>
+      <if test="record.no25 != null">
+        No25 = #{record.no25,jdbcType=REAL},
+      </if>
+      <if test="record.no26 != null">
+        No26 = #{record.no26,jdbcType=REAL},
+      </if>
+      <if test="record.no27 != null">
+        No27 = #{record.no27,jdbcType=REAL},
+      </if>
+      <if test="record.no28 != null">
+        No28 = #{record.no28,jdbcType=REAL},
+      </if>
+      <if test="record.no29 != null">
+        No29 = #{record.no29,jdbcType=REAL},
+      </if>
+      <if test="record.no30 != null">
+        No30 = #{record.no30,jdbcType=REAL},
+      </if>
+      <if test="record.no31 != null">
+        No31 = #{record.no31,jdbcType=REAL},
+      </if>
+      <if test="record.no32 != null">
+        No32 = #{record.no32,jdbcType=REAL},
+      </if>
+      <if test="record.no33 != null">
+        No33 = #{record.no33,jdbcType=REAL},
+      </if>
+      <if test="record.no34 != null">
+        No34 = #{record.no34,jdbcType=REAL},
+      </if>
+      <if test="record.no35 != null">
+        No35 = #{record.no35,jdbcType=REAL},
+      </if>
+      <if test="record.no36 != null">
+        No36 = #{record.no36,jdbcType=REAL},
+      </if>
+      <if test="record.no37 != null">
+        No37 = #{record.no37,jdbcType=REAL},
+      </if>
+      <if test="record.no38 != null">
+        No38 = #{record.no38,jdbcType=REAL},
+      </if>
+      <if test="record.no39 != null">
+        No39 = #{record.no39,jdbcType=REAL},
+      </if>
+      <if test="record.no40 != null">
+        No40 = #{record.no40,jdbcType=REAL},
+      </if>
+      <if test="record.no41 != null">
+        No41 = #{record.no41,jdbcType=REAL},
+      </if>
+      <if test="record.no42 != null">
+        No42 = #{record.no42,jdbcType=REAL},
+      </if>
+      <if test="record.no43 != null">
+        No43 = #{record.no43,jdbcType=REAL},
+      </if>
+      <if test="record.no44 != null">
+        No44 = #{record.no44,jdbcType=REAL},
+      </if>
+      <if test="record.no45 != null">
+        No45 = #{record.no45,jdbcType=REAL},
+      </if>
+      <if test="record.no46 != null">
+        No46 = #{record.no46,jdbcType=REAL},
+      </if>
+      <if test="record.no47 != null">
+        No47 = #{record.no47,jdbcType=REAL},
+      </if>
+      <if test="record.no48 != null">
+        No48 = #{record.no48,jdbcType=REAL},
+      </if>
+      <if test="record.no49 != null">
+        No49 = #{record.no49,jdbcType=REAL},
+      </if>
+      <if test="record.dan != null">
+        Dan = #{record.dan,jdbcType=REAL},
+      </if>
+      <if test="record.shuang != null">
+        Shuang = #{record.shuang,jdbcType=REAL},
+      </if>
+      <if test="record.da != null">
+        Da = #{record.da,jdbcType=REAL},
+      </if>
+      <if test="record.xiao != null">
+        Xiao = #{record.xiao,jdbcType=REAL},
+      </if>
+      <if test="record.hedan != null">
+        HeDan = #{record.hedan,jdbcType=REAL},
+      </if>
+      <if test="record.heshuang != null">
+        HeShuang = #{record.heshuang,jdbcType=REAL},
+      </if>
+      <if test="record.hongbo != null">
+        HongBo = #{record.hongbo,jdbcType=REAL},
+      </if>
+      <if test="record.lvbo != null">
+        Lvbo = #{record.lvbo,jdbcType=REAL},
+      </if>
+      <if test="record.lanbo != null">
+        LanBo = #{record.lanbo,jdbcType=REAL},
+      </if>
+      <if test="record.jiaqin != null">
+        JiaQin = #{record.jiaqin,jdbcType=REAL},
+      </if>
+      <if test="record.yeshou != null">
+        YeShou = #{record.yeshou,jdbcType=REAL},
+      </if>
+      <if test="record.heda != null">
+        HeDa = #{record.heda,jdbcType=REAL},
+      </if>
+      <if test="record.hexiao != null">
+        HeXiao = #{record.hexiao,jdbcType=REAL},
+      </if>
+      <if test="record.weida != null">
+        WeiDa = #{record.weida,jdbcType=REAL},
+      </if>
+      <if test="record.weixiao != null">
+        WeiXiao = #{record.weixiao,jdbcType=REAL},
+      </if>
+      <if test="record.weidan != null">
+        WeiDan = #{record.weidan,jdbcType=REAL},
+      </if>
+      <if test="record.weishuang != null">
+        WeiShuang = #{record.weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update odds
+    set Id = #{record.id,jdbcType=VARCHAR},
+      Type = #{record.type,jdbcType=VARCHAR},
+      IsDefault = #{record.isdefault,jdbcType=BIT},
+      No1 = #{record.no1,jdbcType=REAL},
+      No2 = #{record.no2,jdbcType=REAL},
+      No3 = #{record.no3,jdbcType=REAL},
+      No4 = #{record.no4,jdbcType=REAL},
+      No5 = #{record.no5,jdbcType=REAL},
+      No6 = #{record.no6,jdbcType=REAL},
+      No7 = #{record.no7,jdbcType=REAL},
+      No8 = #{record.no8,jdbcType=REAL},
+      No9 = #{record.no9,jdbcType=REAL},
+      No10 = #{record.no10,jdbcType=REAL},
+      No11 = #{record.no11,jdbcType=REAL},
+      No12 = #{record.no12,jdbcType=REAL},
+      No13 = #{record.no13,jdbcType=REAL},
+      No14 = #{record.no14,jdbcType=REAL},
+      No15 = #{record.no15,jdbcType=REAL},
+      No16 = #{record.no16,jdbcType=REAL},
+      No17 = #{record.no17,jdbcType=REAL},
+      No18 = #{record.no18,jdbcType=REAL},
+      No19 = #{record.no19,jdbcType=REAL},
+      No20 = #{record.no20,jdbcType=REAL},
+      No21 = #{record.no21,jdbcType=REAL},
+      No22 = #{record.no22,jdbcType=REAL},
+      No23 = #{record.no23,jdbcType=REAL},
+      No24 = #{record.no24,jdbcType=REAL},
+      No25 = #{record.no25,jdbcType=REAL},
+      No26 = #{record.no26,jdbcType=REAL},
+      No27 = #{record.no27,jdbcType=REAL},
+      No28 = #{record.no28,jdbcType=REAL},
+      No29 = #{record.no29,jdbcType=REAL},
+      No30 = #{record.no30,jdbcType=REAL},
+      No31 = #{record.no31,jdbcType=REAL},
+      No32 = #{record.no32,jdbcType=REAL},
+      No33 = #{record.no33,jdbcType=REAL},
+      No34 = #{record.no34,jdbcType=REAL},
+      No35 = #{record.no35,jdbcType=REAL},
+      No36 = #{record.no36,jdbcType=REAL},
+      No37 = #{record.no37,jdbcType=REAL},
+      No38 = #{record.no38,jdbcType=REAL},
+      No39 = #{record.no39,jdbcType=REAL},
+      No40 = #{record.no40,jdbcType=REAL},
+      No41 = #{record.no41,jdbcType=REAL},
+      No42 = #{record.no42,jdbcType=REAL},
+      No43 = #{record.no43,jdbcType=REAL},
+      No44 = #{record.no44,jdbcType=REAL},
+      No45 = #{record.no45,jdbcType=REAL},
+      No46 = #{record.no46,jdbcType=REAL},
+      No47 = #{record.no47,jdbcType=REAL},
+      No48 = #{record.no48,jdbcType=REAL},
+      No49 = #{record.no49,jdbcType=REAL},
+      Dan = #{record.dan,jdbcType=REAL},
+      Shuang = #{record.shuang,jdbcType=REAL},
+      Da = #{record.da,jdbcType=REAL},
+      Xiao = #{record.xiao,jdbcType=REAL},
+      HeDan = #{record.hedan,jdbcType=REAL},
+      HeShuang = #{record.heshuang,jdbcType=REAL},
+      HongBo = #{record.hongbo,jdbcType=REAL},
+      Lvbo = #{record.lvbo,jdbcType=REAL},
+      LanBo = #{record.lanbo,jdbcType=REAL},
+      JiaQin = #{record.jiaqin,jdbcType=REAL},
+      YeShou = #{record.yeshou,jdbcType=REAL},
+      HeDa = #{record.heda,jdbcType=REAL},
+      HeXiao = #{record.hexiao,jdbcType=REAL},
+      WeiDa = #{record.weida,jdbcType=REAL},
+      WeiXiao = #{record.weixiao,jdbcType=REAL},
+      WeiDan = #{record.weidan,jdbcType=REAL},
+      WeiShuang = #{record.weishuang,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    <set>
+      <if test="type != null">
+        Type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        IsDefault = #{isdefault,jdbcType=BIT},
+      </if>
+      <if test="no1 != null">
+        No1 = #{no1,jdbcType=REAL},
+      </if>
+      <if test="no2 != null">
+        No2 = #{no2,jdbcType=REAL},
+      </if>
+      <if test="no3 != null">
+        No3 = #{no3,jdbcType=REAL},
+      </if>
+      <if test="no4 != null">
+        No4 = #{no4,jdbcType=REAL},
+      </if>
+      <if test="no5 != null">
+        No5 = #{no5,jdbcType=REAL},
+      </if>
+      <if test="no6 != null">
+        No6 = #{no6,jdbcType=REAL},
+      </if>
+      <if test="no7 != null">
+        No7 = #{no7,jdbcType=REAL},
+      </if>
+      <if test="no8 != null">
+        No8 = #{no8,jdbcType=REAL},
+      </if>
+      <if test="no9 != null">
+        No9 = #{no9,jdbcType=REAL},
+      </if>
+      <if test="no10 != null">
+        No10 = #{no10,jdbcType=REAL},
+      </if>
+      <if test="no11 != null">
+        No11 = #{no11,jdbcType=REAL},
+      </if>
+      <if test="no12 != null">
+        No12 = #{no12,jdbcType=REAL},
+      </if>
+      <if test="no13 != null">
+        No13 = #{no13,jdbcType=REAL},
+      </if>
+      <if test="no14 != null">
+        No14 = #{no14,jdbcType=REAL},
+      </if>
+      <if test="no15 != null">
+        No15 = #{no15,jdbcType=REAL},
+      </if>
+      <if test="no16 != null">
+        No16 = #{no16,jdbcType=REAL},
+      </if>
+      <if test="no17 != null">
+        No17 = #{no17,jdbcType=REAL},
+      </if>
+      <if test="no18 != null">
+        No18 = #{no18,jdbcType=REAL},
+      </if>
+      <if test="no19 != null">
+        No19 = #{no19,jdbcType=REAL},
+      </if>
+      <if test="no20 != null">
+        No20 = #{no20,jdbcType=REAL},
+      </if>
+      <if test="no21 != null">
+        No21 = #{no21,jdbcType=REAL},
+      </if>
+      <if test="no22 != null">
+        No22 = #{no22,jdbcType=REAL},
+      </if>
+      <if test="no23 != null">
+        No23 = #{no23,jdbcType=REAL},
+      </if>
+      <if test="no24 != null">
+        No24 = #{no24,jdbcType=REAL},
+      </if>
+      <if test="no25 != null">
+        No25 = #{no25,jdbcType=REAL},
+      </if>
+      <if test="no26 != null">
+        No26 = #{no26,jdbcType=REAL},
+      </if>
+      <if test="no27 != null">
+        No27 = #{no27,jdbcType=REAL},
+      </if>
+      <if test="no28 != null">
+        No28 = #{no28,jdbcType=REAL},
+      </if>
+      <if test="no29 != null">
+        No29 = #{no29,jdbcType=REAL},
+      </if>
+      <if test="no30 != null">
+        No30 = #{no30,jdbcType=REAL},
+      </if>
+      <if test="no31 != null">
+        No31 = #{no31,jdbcType=REAL},
+      </if>
+      <if test="no32 != null">
+        No32 = #{no32,jdbcType=REAL},
+      </if>
+      <if test="no33 != null">
+        No33 = #{no33,jdbcType=REAL},
+      </if>
+      <if test="no34 != null">
+        No34 = #{no34,jdbcType=REAL},
+      </if>
+      <if test="no35 != null">
+        No35 = #{no35,jdbcType=REAL},
+      </if>
+      <if test="no36 != null">
+        No36 = #{no36,jdbcType=REAL},
+      </if>
+      <if test="no37 != null">
+        No37 = #{no37,jdbcType=REAL},
+      </if>
+      <if test="no38 != null">
+        No38 = #{no38,jdbcType=REAL},
+      </if>
+      <if test="no39 != null">
+        No39 = #{no39,jdbcType=REAL},
+      </if>
+      <if test="no40 != null">
+        No40 = #{no40,jdbcType=REAL},
+      </if>
+      <if test="no41 != null">
+        No41 = #{no41,jdbcType=REAL},
+      </if>
+      <if test="no42 != null">
+        No42 = #{no42,jdbcType=REAL},
+      </if>
+      <if test="no43 != null">
+        No43 = #{no43,jdbcType=REAL},
+      </if>
+      <if test="no44 != null">
+        No44 = #{no44,jdbcType=REAL},
+      </if>
+      <if test="no45 != null">
+        No45 = #{no45,jdbcType=REAL},
+      </if>
+      <if test="no46 != null">
+        No46 = #{no46,jdbcType=REAL},
+      </if>
+      <if test="no47 != null">
+        No47 = #{no47,jdbcType=REAL},
+      </if>
+      <if test="no48 != null">
+        No48 = #{no48,jdbcType=REAL},
+      </if>
+      <if test="no49 != null">
+        No49 = #{no49,jdbcType=REAL},
+      </if>
+      <if test="dan != null">
+        Dan = #{dan,jdbcType=REAL},
+      </if>
+      <if test="shuang != null">
+        Shuang = #{shuang,jdbcType=REAL},
+      </if>
+      <if test="da != null">
+        Da = #{da,jdbcType=REAL},
+      </if>
+      <if test="xiao != null">
+        Xiao = #{xiao,jdbcType=REAL},
+      </if>
+      <if test="hedan != null">
+        HeDan = #{hedan,jdbcType=REAL},
+      </if>
+      <if test="heshuang != null">
+        HeShuang = #{heshuang,jdbcType=REAL},
+      </if>
+      <if test="hongbo != null">
+        HongBo = #{hongbo,jdbcType=REAL},
+      </if>
+      <if test="lvbo != null">
+        Lvbo = #{lvbo,jdbcType=REAL},
+      </if>
+      <if test="lanbo != null">
+        LanBo = #{lanbo,jdbcType=REAL},
+      </if>
+      <if test="jiaqin != null">
+        JiaQin = #{jiaqin,jdbcType=REAL},
+      </if>
+      <if test="yeshou != null">
+        YeShou = #{yeshou,jdbcType=REAL},
+      </if>
+      <if test="heda != null">
+        HeDa = #{heda,jdbcType=REAL},
+      </if>
+      <if test="hexiao != null">
+        HeXiao = #{hexiao,jdbcType=REAL},
+      </if>
+      <if test="weida != null">
+        WeiDa = #{weida,jdbcType=REAL},
+      </if>
+      <if test="weixiao != null">
+        WeiXiao = #{weixiao,jdbcType=REAL},
+      </if>
+      <if test="weidan != null">
+        WeiDan = #{weidan,jdbcType=REAL},
+      </if>
+      <if test="weishuang != null">
+        WeiShuang = #{weishuang,jdbcType=REAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunfang.inquiry.entity1.Odds">
+    update odds
+    set Type = #{type,jdbcType=VARCHAR},
+      IsDefault = #{isdefault,jdbcType=BIT},
+      No1 = #{no1,jdbcType=REAL},
+      No2 = #{no2,jdbcType=REAL},
+      No3 = #{no3,jdbcType=REAL},
+      No4 = #{no4,jdbcType=REAL},
+      No5 = #{no5,jdbcType=REAL},
+      No6 = #{no6,jdbcType=REAL},
+      No7 = #{no7,jdbcType=REAL},
+      No8 = #{no8,jdbcType=REAL},
+      No9 = #{no9,jdbcType=REAL},
+      No10 = #{no10,jdbcType=REAL},
+      No11 = #{no11,jdbcType=REAL},
+      No12 = #{no12,jdbcType=REAL},
+      No13 = #{no13,jdbcType=REAL},
+      No14 = #{no14,jdbcType=REAL},
+      No15 = #{no15,jdbcType=REAL},
+      No16 = #{no16,jdbcType=REAL},
+      No17 = #{no17,jdbcType=REAL},
+      No18 = #{no18,jdbcType=REAL},
+      No19 = #{no19,jdbcType=REAL},
+      No20 = #{no20,jdbcType=REAL},
+      No21 = #{no21,jdbcType=REAL},
+      No22 = #{no22,jdbcType=REAL},
+      No23 = #{no23,jdbcType=REAL},
+      No24 = #{no24,jdbcType=REAL},
+      No25 = #{no25,jdbcType=REAL},
+      No26 = #{no26,jdbcType=REAL},
+      No27 = #{no27,jdbcType=REAL},
+      No28 = #{no28,jdbcType=REAL},
+      No29 = #{no29,jdbcType=REAL},
+      No30 = #{no30,jdbcType=REAL},
+      No31 = #{no31,jdbcType=REAL},
+      No32 = #{no32,jdbcType=REAL},
+      No33 = #{no33,jdbcType=REAL},
+      No34 = #{no34,jdbcType=REAL},
+      No35 = #{no35,jdbcType=REAL},
+      No36 = #{no36,jdbcType=REAL},
+      No37 = #{no37,jdbcType=REAL},
+      No38 = #{no38,jdbcType=REAL},
+      No39 = #{no39,jdbcType=REAL},
+      No40 = #{no40,jdbcType=REAL},
+      No41 = #{no41,jdbcType=REAL},
+      No42 = #{no42,jdbcType=REAL},
+      No43 = #{no43,jdbcType=REAL},
+      No44 = #{no44,jdbcType=REAL},
+      No45 = #{no45,jdbcType=REAL},
+      No46 = #{no46,jdbcType=REAL},
+      No47 = #{no47,jdbcType=REAL},
+      No48 = #{no48,jdbcType=REAL},
+      No49 = #{no49,jdbcType=REAL},
+      Dan = #{dan,jdbcType=REAL},
+      Shuang = #{shuang,jdbcType=REAL},
+      Da = #{da,jdbcType=REAL},
+      Xiao = #{xiao,jdbcType=REAL},
+      HeDan = #{hedan,jdbcType=REAL},
+      HeShuang = #{heshuang,jdbcType=REAL},
+      HongBo = #{hongbo,jdbcType=REAL},
+      Lvbo = #{lvbo,jdbcType=REAL},
+      LanBo = #{lanbo,jdbcType=REAL},
+      JiaQin = #{jiaqin,jdbcType=REAL},
+      YeShou = #{yeshou,jdbcType=REAL},
+      HeDa = #{heda,jdbcType=REAL},
+      HeXiao = #{hexiao,jdbcType=REAL},
+      WeiDa = #{weida,jdbcType=REAL},
+      WeiXiao = #{weixiao,jdbcType=REAL},
+      WeiDan = #{weidan,jdbcType=REAL},
+      WeiShuang = #{weishuang,jdbcType=REAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

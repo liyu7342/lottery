@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.dto.LimitSetDto;
 import com.fr.lottery.entity.LimitSet;
 
 import java.util.List;
@@ -11,7 +12,8 @@ public interface ILimitSetService {
     List<LimitSet>   findAll(String userId);
 
     boolean insert(List<LimitSet> limitSets);
+    boolean insert(String userId, LimitSetDto limitSetDto);
 
-    boolean delete(String reftable,String refrecordId);
+    boolean delete(String userId);
 
 }

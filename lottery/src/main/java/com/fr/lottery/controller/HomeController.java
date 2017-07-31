@@ -59,7 +59,7 @@ public class HomeController  {
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<String,List<Integer>>listMap = new HashedMap();
+        Map<Integer,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
@@ -91,7 +91,7 @@ public class HomeController  {
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<String,List<Integer>>listMap = new HashedMap();
+        Map<Integer,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
@@ -133,7 +133,7 @@ public class HomeController  {
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<String,List<Integer>>listMap = new HashedMap();
+        Map<Integer,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }

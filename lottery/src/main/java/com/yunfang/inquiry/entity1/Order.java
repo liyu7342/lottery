@@ -1,13 +1,8 @@
-package com.fr.lottery.entity;
+package com.yunfang.inquiry.entity1;
 
 import java.util.Date;
 
-/**
- * Created by Liyu7342 on 2017-7-27.
- */
-public  class Order {
-    private static final long serialVersionUID = 1L;
-
+public class Order {
     private String id;
 
     private String handicapid;

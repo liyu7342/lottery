@@ -87,8 +87,8 @@ public class UserService implements IUserService {
         User user = userMapper.get(id);
         if(user ==null) return 10086;
 
-        if(user.isDefault())    //初始账号
-            return 2;
+     /*   if(user.isDefault())    //初始账号
+            return 2;*//*
         User pUser = userMapper.get(pid);
         if(pUser.getStatus()== StatusEnum.TingYa.ordinal()){//必須先啟用上級賬號
             return -2;
@@ -98,13 +98,14 @@ public class UserService implements IUserService {
         }
         if(user.getStatus()==StatusEnum.TingYong.ordinal()){
             return -5;
-        }
+        }*/
         userMapper.changeStatus(id,status);
         return 0;
     }
 
     @Override
     public List<User> getUserByParentId(String parentId, String keyword, Integer status, Integer pageId) {
-        return userMapper.getUserByParentId(parentId,keyword,status,pageId);
+        Integer start =(pageId -1) * 10;
+        return userMapper.getUserByParentId(parentId,keyword,status,start);
     }
 }

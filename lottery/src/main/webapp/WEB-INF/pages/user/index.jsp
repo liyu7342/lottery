@@ -44,7 +44,7 @@
                                         <input type="text" name="keyword" size="12" value="請輸入名稱/賬號" class="gray">
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
-                                    <li><h2><a class="btn10 mt red" href='/member/info?op=create&id=8955'>新增</a>&nbsp;&nbsp;
+                                    <li><h2><a class="btn10 mt red" href='/member/info?op=create&id=&parentId=${currentUserId}'>新增</a>&nbsp;&nbsp;
                                         <a id="batchDel" class="btn9 mt red" level="5" href="javascript:void(0)">批量刪除</a>        </h2></li>
                                 </ul></form>
                             <div class="fr">
@@ -67,7 +67,7 @@
                                     <td class="r">功能</td>
                                 </tr></thead>
                                 <tbody>
-                                <#list user as obj>
+                                <#list users as obj>
                                 <tr level="5">
 
                                     <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
@@ -76,9 +76,22 @@
                                     <td>${obj.credits}</td>
                                     <td>${obj.handicap}</td><td>0</td>
 
-                                    <td>${obj.status}</td>
-                                    <td>2017-05-30</td>
-                                    <td><a class='a_btm_line' act='tingyong' pid=8955 tid='${obj.id}' page='1' href='member_list.htm'>停用</a>/&nbsp;<a class='a_btm_line' act='tingya' pid=8955 tid=24657 page='1' href='member_list.htm'>停押</a>/&nbsp;<a class='a_btm_line' href='member_create.htm?op=upd&id=24657&pageId=1&keywordstatus=1&keyword=&level=5&parentid=0'>修改</a></td>
+                                    <td>
+                                    <#if obj.status == 0>
+                                        <span class='red'>停用</span>
+                                        <#elseif obj.status == 1>
+                                            <span >启用</span>
+                                            <#elseif obj.status == 2>
+                                                <span >停押</span>
+
+                                    </#if>
+                                    </td>
+                                    <td>
+                                        ${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}
+                                    </td>
+                                    <td><a class='a_btm_line' act='tingyong' pid=8955 tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
+                                        /&nbsp;<a class='a_btm_line' act='tingya' pid=8955 tid=24657 page='1' href='member_list.htm'>停押</a>
+                                        /&nbsp;<a class='a_btm_line' href='/member/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid}'>修改</a></td>
                                 </tr>
                                     </#list>
                                 </tbody></table>
