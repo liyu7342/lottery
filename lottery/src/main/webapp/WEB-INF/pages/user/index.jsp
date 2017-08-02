@@ -89,8 +89,8 @@
                                     <td>
                                         ${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}
                                     </td>
-                                    <td><a class='a_btm_line' act='tingyong' pid=8955 tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
-                                        /&nbsp;<a class='a_btm_line' act='tingya' pid=8955 tid=24657 page='1' href='member_list.htm'>停押</a>
+                                    <td><a class='a_btm_line' act='tingyong' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
+                                        /&nbsp;<a class='a_btm_line' act='tingya' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停押</a>
                                         /&nbsp;<a class='a_btm_line' href='/member/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid}'>修改</a></td>
                                 </tr>
                                     </#list>

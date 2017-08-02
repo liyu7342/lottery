@@ -37,4 +37,9 @@ public class UserHelper {
         session.setAttribute(session_user,userInfoApiDto);
     }
 
+    public static void logout(HttpServletRequest request){
+        if(request.getSession() !=null)
+            request.getSession().invalidate();
+    }
+
 }

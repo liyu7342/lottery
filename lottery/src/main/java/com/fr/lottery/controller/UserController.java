@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -32,6 +35,15 @@ public class UserController {
         modelAndView.addObject("users",users);
         return modelAndView;
     }
+
+    @RequestMapping("/logout")
+    public void  logout(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        UserHelper.logout(request);
+        response.sendRedirect("/home/login");
+    }
+
+
+
 
     @RequestMapping("/history")
     public ModelAndView history() {

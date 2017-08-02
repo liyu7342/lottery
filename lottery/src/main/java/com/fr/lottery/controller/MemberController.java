@@ -69,6 +69,18 @@ public class MemberController {
         user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()) );
         if(StringUtils.isBlank(user.getId())){
             user.setId(StringUtil.getUUID());
+            if(StringUtils.isNoneBlank( user.getParentid())){
+                User parentUser = userService.get(user.getParentid());
+                if(parentUser !=null){
+                    user.setUsertype(parentUser.getUsertype()+1);
+                }
+                else{
+                    user.setUsertype(1);
+                }
+            }
+            else{
+                user.setUsertype(1);
+            }
             user.setCreatedate(new Date());
             userService.insert(user);
         }
