@@ -43,6 +43,17 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    select   <include refid="Base_Column_List" />
+    from handicap
+    <where>
+
+    </where>
+    <if test="start !=null ">
+      limit ${start},${limit}
+    </if>
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

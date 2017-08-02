@@ -2,9 +2,11 @@ package com.fr.lottery.service.impl;
 
 import com.fr.lottery.dao.HandicapMapper;
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.utils.StringUtil;
 import org.apache.commons.lang.StringUtils;
+import org.opensaml.xml.signature.G;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +35,11 @@ public class HandicapService implements IHandicapService {
     }
 
     @Override
-    public List<Handicap> getHandicaps() {
-       return  handicapMapper.selectByExample(new Handicap());
+    public List<Handicap> getHandicaps(Integer pageId) {
+       if(pageId==null)
+           pageId =1;
+        Integer start = (pageId-1) * Global.pageSize;
+        return  handicapMapper.findAll(start, Global.pageSize);
     }
 
     @Override

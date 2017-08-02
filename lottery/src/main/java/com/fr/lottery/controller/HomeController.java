@@ -118,7 +118,7 @@ public class HomeController  {
     @RequestMapping("/index2")
     public ModelAndView index2() {
 
-        ModelAndView mv = new ModelAndView("index2");
+        ModelAndView mv = new ModelAndView("/index2");
         User user= UserHelper.getCurrentUser();
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();

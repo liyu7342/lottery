@@ -12,7 +12,8 @@ public interface IHandicapService {
 
     Handicap selectByPrimaryKey(String id);
 
-    List<Handicap> getHandicaps() ;
+
+    List<Handicap> getHandicaps(Integer pageId) ;
 
     boolean delete(String id);
 }

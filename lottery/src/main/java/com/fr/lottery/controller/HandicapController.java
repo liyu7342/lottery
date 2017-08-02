@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/11.
@@ -21,8 +22,19 @@ public class HandicapController {
     @Autowired
     private IHandicapService handicapService;
     @RequestMapping("index")
-    public ModelAndView index(){
+    public ModelAndView index(Integer pageId){
+        if(pageId== null) pageId =1;
+        List<Handicap> handicaps = handicapService.getHandicaps(pageId);
+
         ModelAndView modelAndView = new ModelAndView("handicap/index");
+        modelAndView.addObject("handicaps",handicaps);
+        return modelAndView;
+    }
+
+    @RequestMapping("/info")
+    public ModelAndView info(String id){
+        ModelAndView modelAndView = new ModelAndView("/info");
+        modelAndView.addObject("entity",handicapService.selectByPrimaryKey(id));
         return modelAndView;
     }
 

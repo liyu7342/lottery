@@ -29,7 +29,7 @@
                                 <ul>
                                     <li><h2 class="g-tit">新增會員</h2></li>
                                     <li>&nbsp<span>上級代理商：${parentUser.name}</span></li>
-                                    <li><a class="btn1 cs"  onclick="location.href='../account/member_list.htm';return false;" href="javascript:void(0)">返回</a></li>
+                                    <li><a class="btn1 cs"  onclick="location.href='/user/index';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>
                             <div class="bd g-new">
