@@ -12,6 +12,9 @@ public interface IHandicapService {
 
     Handicap selectByPrimaryKey(String id);
 
+    boolean openHandicap(Handicap handicap);
+
+
 
     List<Handicap> getHandicaps(Integer pageId) ;
 

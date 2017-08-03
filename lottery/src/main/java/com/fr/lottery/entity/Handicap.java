@@ -1,5 +1,8 @@
 package com.fr.lottery.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Handicap {
@@ -23,6 +26,7 @@ public class Handicap {
 
     private Integer tema;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date opentime;
 
     private Boolean autoopen;
@@ -31,8 +35,9 @@ public class Handicap {
 
     private Boolean zhengmastatus;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date temaclosetime;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date zhengmaclosetime;
 
     private Boolean issettlement;
@@ -117,6 +122,7 @@ public class Handicap {
         this.tema = tema;
     }
 
+
     public Date getOpentime() {
         return opentime;
     }
@@ -149,6 +155,7 @@ public class Handicap {
         this.zhengmastatus = zhengmastatus;
     }
 
+
     public Date getTemaclosetime() {
         return temaclosetime;
     }
@@ -156,6 +163,7 @@ public class Handicap {
     public void setTemaclosetime(Date temaclosetime) {
         this.temaclosetime = temaclosetime;
     }
+
 
     public Date getZhengmaclosetime() {
         return zhengmaclosetime;

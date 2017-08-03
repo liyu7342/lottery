@@ -58,9 +58,7 @@
                                     <td id="batchDelSelectAll"><input type="checkbox" name='checkAllAccount'/></td>
                                     <td>期数</td>
                                     <td>总盘状态</td>
-                                    <td>开奖时间</td>
                                     <td>自动开盘时间</td>
-
                                     <td>特码封盘时间</td>
                                     <td>正码封盘时间</td>
                                     <td class="r">功能</td>
@@ -71,23 +69,13 @@
 
                                         <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                         <td class="bg tl">${obj.qishu}&nbsp;&nbsp;</td>
-                                        <td>${obj.status}</td>
-                                        <td>${obj.opentime ?string("yyyy-MM-dd HH:mm:ss")}</td>
-                                        <td>${obj.temaclosetime?string("yyyy-MM-dd HH:mm:ss")}</td>
-                                        <td>${obj.zhengmaclosetime?string("yyyy-MM-dd HH:mm:ss")}</td>
-                                        <td>
-                                            <#if obj.status == 0>
-                                                <span class='red'>开盘</span>
-                                                <#elseif obj.status == 1>
-                                                    <span >封盘中</span>
-                                                    <#elseif obj.status == 2>
-                                                        <span >封盘</span>
+                                        <td>${(obj.status)!''}</td>
+                                        <td>${(obj.opentime?string("yyyy-MM-dd HH:mm:ss"))!''}</td>
+                                        <td>${(obj.temaclosetime?string("yyyy-MM-dd HH:mm:ss"))!''}</td>
+                                        <td>${(obj.zhengmaclosetime?string("yyyy-MM-dd HH:mm:ss"))!''}</td>
 
-                                            </#if>
-                                        </td>
-                                        <td><a class='a_btm_line' act='tingyong'  tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
-                                            /&nbsp;<a class='a_btm_line' act='tingya'  tid='${obj.id}' page='1' href='member_list.htm'>停押</a>
-                                            /&nbsp;<a class='a_btm_line' href='/member/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid}'>修改</a></td>
+                                        <td>
+                                            <a class='a_btm_line' href='/handicap/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>修改</a></td>
                                     </tr>
                                 </#list>
                                 </tbody></table>

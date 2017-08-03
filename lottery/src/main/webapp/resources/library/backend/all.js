@@ -7040,7 +7040,7 @@ $.extend({
             try {
                 var F = this;
                 var w = $(":text[valid=account]", this), C, d;
-                if (!w.attr("disabled")) {
+                if (w.length>0&& !w.attr("disabled")) {
                     C = w.val().replace(/\s/g, "");
                     d = w.data("old");
                     if (C == d) {

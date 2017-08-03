@@ -20,5 +20,7 @@ public interface HandicapMapper {
 
     Handicap selectByPrimaryKey(String id);
 
+    int openHandicap(Handicap handicap);
+
     int updateByPrimaryKey(Handicap record);
 }

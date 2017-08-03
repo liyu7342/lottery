@@ -277,7 +277,7 @@
                                 </table>
 
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
-                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='../account/member_list.htm'"/></div>
+                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index'"/></div>
                                 <input type="hidden" name="op" value='create'/>
                                 <input type="hidden" name="id" value="${(user.id)!''}"/>
                                 <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>

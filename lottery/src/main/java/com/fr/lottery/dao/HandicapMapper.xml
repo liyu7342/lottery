@@ -112,4 +112,17 @@
       IsSettlement = #{issettlement,jdbcType=BIT}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Handicap">
+    update handicap set
+    Status = #{status,jdbcType=TINYINT},
+    No1 = #{no1,jdbcType=INTEGER},
+    No2 = #{no2,jdbcType=INTEGER},
+    No3 = #{no3,jdbcType=INTEGER},
+    No4 = #{no4,jdbcType=INTEGER},
+    No5 = #{no5,jdbcType=INTEGER},
+    No6 = #{no6,jdbcType=INTEGER},
+    Tema = #{tema,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

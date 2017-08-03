@@ -36,6 +36,7 @@ public class UserController {
         return modelAndView;
     }
 
+
     @RequestMapping("/logout")
     public void  logout(HttpServletRequest request, HttpServletResponse response) throws IOException{
         UserHelper.logout(request);

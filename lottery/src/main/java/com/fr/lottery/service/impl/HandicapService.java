@@ -22,8 +22,10 @@ public class HandicapService implements IHandicapService {
     private HandicapMapper handicapMapper;
     @Override
     public boolean save(Handicap entity) {
-        if(StringUtils.isNotBlank( entity.getId())){
+        entity.setAutoopen(true);
+        if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
             entity.setId(StringUtil.getUUID());
+
             return handicapMapper.insert(entity)>0;
         }
         return handicapMapper.updateByPrimaryKey(entity)>0;
@@ -32,6 +34,11 @@ public class HandicapService implements IHandicapService {
     @Override
     public Handicap selectByPrimaryKey(String id) {
         return  handicapMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean openHandicap(Handicap handicap){
+        return handicapMapper.openHandicap(handicap) >0;
     }
 
     @Override

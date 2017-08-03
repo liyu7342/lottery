@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,7 +21,7 @@ import java.util.List;
  */
 @RequestMapping("/handicap")
 @Controller
-public class HandicapController {
+public class HandicapController extends BaseController {
     @Autowired
     private IHandicapService handicapService;
     @RequestMapping("index")
@@ -31,21 +34,40 @@ public class HandicapController {
         return modelAndView;
     }
 
+    @RequestMapping("handicapopen")
+    public ModelAndView handicapOpenView(){
+        ModelAndView modelAndView = new ModelAndView("handicap/handicapopen");
+        return modelAndView;
+    }
+
+    @RequestMapping("openhandicap")
+    public  void openHandicap(Handicap handicap,HttpServletRequest request, HttpServletResponse response) throws IOException{
+        handicapService.openHandicap(handicap);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().write("<script type=\"text/javascript\"> alert(\"开奖成功！\");location.href =\"/handicap/handicapopen\";</script>");
+
+    }
+
     @RequestMapping("/info")
     public ModelAndView info(String id){
-        ModelAndView modelAndView = new ModelAndView("/info");
+        ModelAndView modelAndView = new ModelAndView("handicap/info");
         modelAndView.addObject("entity",handicapService.selectByPrimaryKey(id));
         return modelAndView;
     }
 
     @RequestMapping("/save")
     @ResponseBody
-    public ResultInfo<String> save(Handicap handicap){
-        ResultInfo<String> resultInfo = new ResultInfo<String>();
+    public void save(Handicap handicap, HttpServletRequest request, HttpServletResponse response) throws IOException{
+
         boolean result = handicapService.save(handicap);
-        resultInfo.setSuccess(result);
-        return resultInfo;
-    }
+        response.setContentType("text/html;charset=UTF-8");
+        if(result){
+            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/handicap/index\";</script>");
+        }
+        else {
+            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存失败！\");</script>");
+        }
+   }
     @ResponseBody
     @RequestMapping("getHandicap")
     public Handicap getHandicap(String id){
@@ -60,4 +82,6 @@ public class HandicapController {
         resultInfo.setSuccess(isTrue);
         return resultInfo;
     }
+
+
 }
