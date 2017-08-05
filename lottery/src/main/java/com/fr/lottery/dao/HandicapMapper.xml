@@ -113,7 +113,7 @@
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Handicap">
+  <update id="openHandicap" parameterType="com.fr.lottery.entity.Handicap">
     update handicap set
     Status = #{status,jdbcType=TINYINT},
     No1 = #{no1,jdbcType=INTEGER},
