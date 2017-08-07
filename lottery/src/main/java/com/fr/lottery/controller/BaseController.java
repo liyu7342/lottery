@@ -18,15 +18,15 @@ import java.util.Date;
 @Controller
 public class BaseController {
 
-         @InitBinder
-public void initBinder(WebDataBinder binder) {
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
 
-                 binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
-                 binder.registerCustomEditor(int.class, new IntEditor());
-                 binder.registerCustomEditor(long.class, new LongEditor());
-                 binder.registerCustomEditor(double.class, new DoubleEditor());
-                 binder.registerCustomEditor(float.class, new FloatEditor());
-             }
+         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
+         binder.registerCustomEditor(int.class, new IntEditor());
+         binder.registerCustomEditor(long.class, new LongEditor());
+         binder.registerCustomEditor(double.class, new DoubleEditor());
+         binder.registerCustomEditor(float.class, new FloatEditor());
+     }
 
 
 

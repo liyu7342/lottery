@@ -28,7 +28,7 @@
                     </style>
                     <div id="huiyuan" class="module">
                         <div class="hd g-tm">
-                            <form id="form1" method="GET" action="/handicap/handicapopen">
+                            <form id="form1" method="GET" action="/handicap/openindex">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
                                     <li><h2 class="g-tit">开奖管理
@@ -40,17 +40,17 @@
                                 頁 &nbsp;&nbsp;共1頁<span class="ico i3">下一頁</span><span class="ico i4">最後一頁</span>        &nbsp;</div>
                         </div>
                         <div class="bd">
-                            <table class="g-t1 g-t2">
+                            <table class="g-t1">
                                 <thead><tr>
                                     <td id="batchDelSelectAll"><input type="checkbox" name='checkAllAccount'/></td>
                                     <td>期数</td>
-                                    <td>正码1</td>
-                                    <td>正码2</td>
-                                    <td>正码3</td>
-                                    <td>正码4</td>
-                                    <td>正码5</td>
-                                    <td>正码6</td>
-                                    <td>特码</td>
+                                    <td>正碼1</td>
+                                    <td>正碼2</td>
+                                    <td>正碼3</td>
+                                    <td>正碼4</td>
+                                    <td>正碼5</td>
+                                    <td>正碼6</td>
+                                    <td>特碼</td>
                                     <td class="r">功能</td>
                                 </tr></thead>
                                 <tbody>
@@ -59,22 +59,21 @@
 
                                         <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                         <td class="bg tl">${obj.qishu}&nbsp;&nbsp;</td>
-                                        <td><em class="ico n${(obj.num1)!''}">${(obj.num2)!''}</em></td>
-                                        <td><em class="ico n${(obj.num2)!''}">${(obj.num2)!''}</em></td>
-                                        <td><em class="ico n${(obj.num3)!''}">${(obj.num3)!''}</em></td>
-                                        <td><em class="ico n${(obj.num4)!''}">${(obj.num4)!''}</em></td>
-                                        <td><em class="ico n${(obj.num5)!''}">${(obj.num5)!''}</em></td>
-                                        <td><em class="ico n${(obj.num6)!''}">${(obj.num6)!''}</em></td>
+                                        <td><em class="ico n${(obj.no1)!''}">${(obj.no1)!''}</em></td>
+                                        <td><em class="ico n${(obj.no2)!''}">${(obj.no2)!''}</em></td>
+                                        <td><em class="ico n${(obj.no3)!''}">${(obj.no3)!''}</em></td>
+                                        <td><em class="ico n${(obj.no4)!''}">${(obj.no4)!''}</em></td>
+                                        <td><em class="ico n${(obj.no5)!''}">${(obj.no5)!''}</em></td>
+                                        <td><em class="ico n${(obj.no6)!''}">${(obj.no6)!''}</em></td>
                                         <td><em class="ico n${(obj.tema)!''}">${(obj.tema)!''}</em></td>
 
                                         <td>
-                                            <a class='a_btm_line' href='/handicap/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>修改</a></td>
+                                            <a class='a_btm_line' href='/handicap/openform?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>開獎</a>
+                                            <a class='a_btm_line' href='/handicap/openform?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>结算</a>
+                                        </td>
                                     </tr>
                                 </#list>
                                 </tbody></table>
-
-                            <input type="hidden" name="drawstatus" value="1" >
-                            <input type="hidden" name="delDownLine" value="1" >
                         </div>
                         <div class="ft"></div>
                     </div>                </div>

@@ -2,6 +2,7 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.service.impl.HandicapService;
 import com.fr.lottery.service.inter.IHandicapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -34,14 +34,24 @@ public class HandicapController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping("handicapopen")
-    public ModelAndView handicapOpenView(){
-        ModelAndView modelAndView = new ModelAndView("handicap/handicapopen");
+    @RequestMapping("openindex")
+    public ModelAndView handicapOpenView(Integer pageId){
+        ModelAndView modelAndView = new ModelAndView("handicap/openindex");
+        List<Handicap> handicaps = handicapService.getHandicaps(pageId);
+        modelAndView.addObject("handicaps",handicaps);
         return modelAndView;
     }
 
-    @RequestMapping("openhandicap")
-    public  void openHandicap(Handicap handicap,HttpServletRequest request, HttpServletResponse response) throws IOException{
+    @RequestMapping("openform")
+    public ModelAndView handicapOpenFormView(String id){
+        ModelAndView modelAndView = new ModelAndView("handicap/openform");
+        Handicap handicap = handicapService.selectByPrimaryKey(id);
+        modelAndView.addObject("entity",handicap);
+        return modelAndView;
+    }
+
+    @RequestMapping("open")
+    public  void open(Handicap handicap,HttpServletRequest request, HttpServletResponse response) throws IOException{
         handicapService.openHandicap(handicap);
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write("<script type=\"text/javascript\"> alert(\"开奖成功！\");location.href =\"/handicap/handicapopen\";</script>");

@@ -65,6 +65,7 @@
             <div class="ft">
                 <ul class="clearfix" id="nav">
                     <li ><a target="main" href="/handicap/index">盘口管理</a></li>
+                    <li ><a target='main' href="/handicap/openindex">開獎管理</a></li>
                     <li ><a target='main' href="/user/index">賬號管理</a></li>
                     <li ><a target='main' href="/statis/statis">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
