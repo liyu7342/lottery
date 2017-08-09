@@ -32,156 +32,65 @@
                             </li>
                         </ul>
 
-                        <table class="g-t1">
+                        <table class="g-t1" id="main_tab">
                             <thead>
-                            <tr>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                            </tr>
+                            <tr><td></td><td colspan="2">單 雙</td><td colspan="2" class="r">大 小</td></tr>
                             </thead>
-                            <tbody id="product_mark" pro="000">
+                            <tbody pro="013">
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no1"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no11"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no21"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no31"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no41"/></td>
+                                <td class="bg">特碼</td>
+                                <th><label><input  type="text" name="013701"/><span>單</span><span id="013701"></span></label></th>
+                                <th><label><input  type="text" name="013702"/><span>雙</span><span id="013702"></span></label></th>
+                                <th><label><input  type="text" name="013703"/><span>大</span><span id="013703"></span></label></th>
+                                <th><label><input  type="text" name="013704"/><span>小</span><span id="013704"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no2"/></td>
-                                <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no12"/></td>
-                                <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no22"/></td>
-                                <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no32"/></td>
-                                <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no42"/></td>
+                                <td class="bg">正一</td>
+                                <th><label><input  type="text" name="013101"/><span>單</span><span id="013101"></span></label></th>
+                                <th><label><input  type="text" name="013102"/><span>雙</span><span id="013102"></span></label></th>
+                                <th><label><input  type="text" name="013103"/><span>大</span><span id="013103"></span></label></th>
+                                <th><label><input  type="text" name="013104"/><span>小</span><span id="013104"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no3"/></td>
-                                <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no13"/></td>
-                                <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no23"/></td>
-                                <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no33"/></td>
-                                <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no43"/></td>
+                                <td class="bg">正二</td>
+                                <th><label><input  type="text" name="013201"/><span>單</span><span id="013201"></span></label></th>
+                                <th><label><input  type="text" name="013202"/><span>雙</span><span id="013202"></span></label></th>
+                                <th><label><input  type="text" name="013203"/><span>大</span><span id="013203"></span></label></th>
+                                <th><label><input  type="text" name="013204"/><span>小</span><span id="013204"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no4"/></td>
-                                <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no14"/></td>
-                                <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no24"/></td>
-                                <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no34"/></td>
-                                <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no44"/></td>
+                                <td class="bg">正三</td>
+                                <th><label><input  type="text" name="013301"/><span>單</span><span id="013301"></span></label></th>
+                                <th><label><input  type="text" name="013302"/><span>雙</span><span id="013302"></span></label></th>
+                                <th><label><input  type="text" name="013303"/><span>大</span><span id="013303"></span></label></th>
+                                <th><label><input  type="text" name="013304"/><span>小</span><span id="013304"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no5"/></td>
-                                <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no15"/></td>
-                                <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no25"/></td>
-                                <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no35"/></td>
-                                <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no45"/></td>
+                                <td class="bg">正四</td>
+                                <th><label><input  type="text" name="013401"/><span>單</span><span id="013401"></span></label></th>
+                                <th><label><input  type="text" name="013402"/><span>雙</span><span id="013402"></span></label></th>
+                                <th><label><input  type="text" name="013403"/><span>大</span><span id="013403"></span></label></th>
+                                <th><label><input  type="text" name="013404"/><span>小</span><span id="013404"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no6"/></td>
-                                <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no16"/></td>
-                                <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no26"/></td>
-                                <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no36"/></td>
-                                <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no46"/></td>
+                                <td class="bg">正五</td>
+                                <th><label><input  type="text" name="013501"/><span>單</span><span id="013501"></span></label></th>
+                                <th><label><input  type="text" name="013502"/><span>雙</span><span id="013502"></span></label></th>
+                                <th><label><input  type="text" name="013503"/><span>大</span><span id="013503"></span></label></th>
+                                <th><label><input  type="text" name="013504"/><span>小</span><span id="013504"></span></label></th>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no7"/></td>
-                                <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no17"/></td>
-                                <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no27"/></td>
-                                <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no37"/></td>
-                                <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no47"/></td>
+                                <td class="bg">正六</td>
+                                <th><label><input  type="text" name="013601"/><span>單</span><span id="013601"></span></label></th>
+                                <th><label><input  type="text" name="013602"/><span>雙</span><span id="013602"></span></label></th>
+                                <th><label><input  type="text" name="013603"/><span>大</span><span id="013603"></span></label></th>
+                                <th><label><input  type="text" name="013604"/><span>小</span><span id="013604"></span></label></th>
                             </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no8"/></td>
-                                <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no18"/></td>
-                                <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no28"/></td>
-                                <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no38"/></td>
-                                <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no48"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n9">09</em></td>
+                            </tbody>
+                        </table>
 
-                                <td class="borderLeftNone"><input type="text"   name="no9"/></td>
-                                <td class="hand borderRightNone"><em class="ico n19">19</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no19"/></td>
-                                <td class="hand borderRightNone"><em class="ico n29">29</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no29"/></td>
-                                <td class="hand borderRightNone"><em class="ico n39">39</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no39"/></td>
-                                <td class="hand borderRightNone"><em class="ico n49">49</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no49"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n10">10</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no10"/></td>
-                                <td class="hand borderRightNone"><em class="ico n20">20</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no20"/></td>
-                                <td class="hand borderRightNone"><em class="ico n30">30</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no30"/></td>
-                                <td class="hand borderRightNone"><em class="ico n40">40</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no40"/></td>
-                                <td colspan="3"></td>
-                            </tr>
-                            </tbody></table>
-                    </div>                </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="yui-b">

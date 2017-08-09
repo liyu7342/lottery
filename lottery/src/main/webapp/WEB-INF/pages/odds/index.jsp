@@ -50,138 +50,196 @@
                             <tbody id="product_mark" pro="000">
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no1"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00001"/></td>
 
                                 <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no11"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00002"/></td>
 
                                 <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no21"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00021"/></td>
 
                                 <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no31"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00031"/></td>
 
                                 <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no41"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00041"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no2"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0002"/></td>
                                 <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no12"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00012"/></td>
                                 <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no22"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00022"/></td>
                                 <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no32"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00032"/></td>
                                 <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no42"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00042"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no3"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0003"/></td>
                                 <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no13"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00013"/></td>
                                 <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no23"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00023"/></td>
                                 <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no33"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00033"/></td>
                                 <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no43"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00043"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no4"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0004"/></td>
                                 <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no14"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00014"/></td>
                                 <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no24"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00024"/></td>
                                 <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no34"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00034"/></td>
                                 <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no44"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00044"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no5"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0005"/></td>
                                 <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no15"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00015"/></td>
                                 <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no25"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00025"/></td>
                                 <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no35"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00035"/></td>
                                 <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no45"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00045"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no6"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0006"/></td>
                                 <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no16"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00016"/></td>
                                 <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no26"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00026"/></td>
                                 <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no36"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00036"/></td>
                                 <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no46"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00046"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no7"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0007"/></td>
                                 <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no17"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00017"/></td>
                                 <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no27"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00027"/></td>
                                 <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no37"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00037"/></td>
                                 <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no47"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00047"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no8"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0008"/></td>
                                 <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no18"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00018"/></td>
                                 <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no28"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00028"/></td>
                                 <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no38"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00038"/></td>
                                 <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no48"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00048"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n9">09</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no9"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="0009"/></td>
                                 <td class="hand borderRightNone"><em class="ico n19">19</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no19"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00019"/></td>
                                 <td class="hand borderRightNone"><em class="ico n29">29</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no29"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00029"/></td>
                                 <td class="hand borderRightNone"><em class="ico n39">39</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no39"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00039"/></td>
                                 <td class="hand borderRightNone"><em class="ico n49">49</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no49"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00049"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n10">10</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no10"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00010"/></td>
                                 <td class="hand borderRightNone"><em class="ico n20">20</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no20"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00020"/></td>
                                 <td class="hand borderRightNone"><em class="ico n30">30</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no30"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00030"/></td>
                                 <td class="hand borderRightNone"><em class="ico n40">40</em></td>
 
-                                <td class="borderLeftNone"><input type="text"  class="dis" name="no40"/></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="00040"/></td>
                                 <td colspan="3"></td>
                             </tr>
-                            </tbody></table>
-                    </div>                </div>
+                            </tbody>
+                        </table>
+
+                        <table class="g-t1 mt">
+                            <thead><tr>
+                                <td class="borderRightNone">類型</td>
+
+                                <td class="borderLeftNone">金額</td>
+                                <td class="borderRightNone">類型</td>
+
+                                <td class="borderLeftNone">金額</td>
+                                <td class="borderRightNone">類型</td>
+
+                                <td class="borderLeftNone">金額</td>
+                                <td class="borderRightNone">類型</td>
+
+                                <td class="borderLeftNone">金額</td>
+                            </tr></thead>
+                            <tbody><tr pro="019">
+                                <td class="borderRightNone"><strong class="deepblue">特單</strong></td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019701"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">特大</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019703"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">合單</strong> </td>
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019705"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">尾大</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019707"/></td>
+                            </tr>
+                            <tr pro="019">
+                                <td class="borderRightNone"><strong class="deepblue">特雙</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019702"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">特小</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019704"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">合雙</strong> </td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019706"/></td>
+                                <td class="borderRightNone"><strong class="deepblue">尾小</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_019708"/></td>
+                            </tr>
+                            <tr pro="027">
+                                <td class="borderRightNone"><strong class="red">紅色</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_02701"/></td>
+                                <td class="borderRightNone"><strong class="blue">藍色</strong></td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_02702"/></td>
+                                <td class="borderRightNone"><strong class="green">綠色</strong> </td>
+
+                                <td class="borderLeftNone"><input type="text"  class="dis" name="pro_02703"/></td>
+                                <td class="borderRightNone"></td>
+                                <td class="borderLeftNone"></td>
+                            </tr></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="yui-b">

@@ -89,6 +89,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                             <div class="g-tn">
                                 <input type="button" name="export" value="導出文件" class="btn2" />
                             </div>

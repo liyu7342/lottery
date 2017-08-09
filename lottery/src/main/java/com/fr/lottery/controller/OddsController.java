@@ -19,11 +19,18 @@ public class OddsController {
     @Autowired
     private OddsService oddsService;
 
-    @RequestMapping("/index")
-    public ModelAndView index(){
-        ModelAndView modelAndView = new ModelAndView("/odds/index");
+    @RequestMapping("/temaa")
+    public ModelAndView temaa(){
+        ModelAndView modelAndView = new ModelAndView("/odds/temaa");
         return modelAndView;
     }
+
+    @RequestMapping("/temab")
+    public ModelAndView temab(){
+        ModelAndView modelAndView = new ModelAndView("/odds/temab");
+        return modelAndView;
+    }
+
     @RequestMapping("/banbo")
     public ModelAndView banbo(){
         ModelAndView modelAndView = new ModelAndView("/odds/banbo");
@@ -90,6 +97,37 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate");
         return modelAndView;
     }
+
+    @RequestMapping("/zhengmate2")
+    public ModelAndView zhengmate2(){
+        ModelAndView modelAndView = new ModelAndView("/odds/zhengmate2");
+        return modelAndView;
+    }
+
+    @RequestMapping("/zhengmate3")
+    public ModelAndView zhengmate3(){
+        ModelAndView modelAndView = new ModelAndView("/odds/zhengmate3");
+        return modelAndView;
+    }
+
+    @RequestMapping("/zhengmate4")
+    public ModelAndView zhengmate4(){
+        ModelAndView modelAndView = new ModelAndView("/odds/zhengmate4");
+        return modelAndView;
+    }
+
+    @RequestMapping("/zhengmate5")
+    public ModelAndView zhengmate5(){
+        ModelAndView modelAndView = new ModelAndView("/odds/zhengmate5");
+        return modelAndView;
+    }
+
+    @RequestMapping("/zhengmate6")
+    public ModelAndView zhengmate6(){
+        ModelAndView modelAndView = new ModelAndView("/odds/zhengmate6");
+        return modelAndView;
+    }
+
     /**
      *@Date 2017/7/11
      * 获取赔率
