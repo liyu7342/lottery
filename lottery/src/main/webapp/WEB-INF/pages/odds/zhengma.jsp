@@ -201,16 +201,16 @@
                             <tbody><tr pro="020">
                                 <td class="borderRightNone"><strong>總單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input disabled="disabled"  class="dis" name="02001" type="text"></td>
+                                <td class="borderLeftNone"><input disabled="disabled"   name="02001" type="text"></td>
                                 <td class="borderRightNone"><strong>總雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input disabled="disabled"  class="dis" name="02002" type="text"></td>
+                                <td class="borderLeftNone"><input disabled="disabled"   name="02002" type="text"></td>
                                 <td class="borderRightNone"><strong>總大</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input disabled="disabled"  class="dis" name="02003" type="text"></td>
+                                <td class="borderLeftNone"><input disabled="disabled"   name="02003" type="text"></td>
                                 <td class="borderRightNone"><strong>總小</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input disabled="disabled"  class="dis" name="02004" type="text"></td>
+                                <td class="borderLeftNone"><input disabled="disabled"   name="02004" type="text"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -226,7 +226,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/tema'>特碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa'>特碼</a><cite></cite></li>
                         <li><a curl='5' href='/odds/zhengma'>正碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zheng16'>正1-6</a><cite></cite></li>

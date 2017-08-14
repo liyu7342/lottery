@@ -316,17 +316,17 @@
                                     </tbody></table>
                                 <table class="g-t1" id="duipeng"><tbody>
                                 <tr>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="front" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="front" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="front" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="front" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="front" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="front" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="front" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="front" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="front" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="front" disabled="disabled"/></td>
                                     <td class="bg">對碰</td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="back" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="back" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="back" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="back" disabled="disabled"/></td>
-                                    <td><input class="dis" type="text" disabled="disabled" class="dis" name="back" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="back" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="back" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="back" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="back" disabled="disabled"/></td>
+                                    <td><input  type="text" disabled="disabled"  name="back" disabled="disabled"/></td>
                                 </tr>
                                 </tbody></table>
                                 <div class="g-tn left">選項:<span id="re_text"></span> 組成:<span id="re_num"></span>單</div>

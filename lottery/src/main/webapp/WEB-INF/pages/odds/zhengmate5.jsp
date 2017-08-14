@@ -197,35 +197,35 @@
                             <tbody><tr pro="025">
                                 <td class="borderRightNone"><strong>單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="025101"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="025101"/></td>
                                 <td class="borderRightNone"><strong>大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="025103"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="025103"/></td>
                                 <td class="borderRightNone"><strong>合單</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="025105"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="025105"/></td>
                             </tr>
                             <tr pro="025">
                                 <td class="borderRightNone"><strong>雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="025102"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="025102"/></td>
                                 <td class="borderRightNone"><strong>小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="025104"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="025104"/></td>
                                 <td class="borderRightNone"><strong>合雙</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="025106"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="025106"/></td>
                             </tr>
                             <tr pro="032">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="03201"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="03201"/></td>
                                 <td class="borderRightNone"><strong class="blue">藍色</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="03202"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="03202"/></td>
                                 <td class="borderRightNone"><strong class="green">綠色</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="03203"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="03203"/></td>
                             </tr></tbody>
                         </table>
 
@@ -240,7 +240,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/tema'>特碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa'>特碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengma'>正碼</a><cite></cite></li>
                         <li><a curl='5' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zheng16'>正1-6</a><cite></cite></li>

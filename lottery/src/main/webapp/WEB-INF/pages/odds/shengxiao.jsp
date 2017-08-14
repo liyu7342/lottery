@@ -191,7 +191,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/tema'>特碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa'>特碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengma'>正碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zheng16'>正1-6</a><cite></cite></li>

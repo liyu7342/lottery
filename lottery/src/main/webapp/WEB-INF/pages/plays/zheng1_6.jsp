@@ -44,68 +44,68 @@
                                     <tr>
                                         <td class="bg"><strong>正一</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_021101" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_021101" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_021102" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_021102" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_021103" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_021103" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_021104" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_021104" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正二</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_022201" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_022201" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_022202" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_022202" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_022203" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_022203" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_022204" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_022204" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正三</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_023301" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_023301" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_023302" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_023302" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_023303" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_023303" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_023304" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_023304" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正四</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_024401" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_024401" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_024402" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_024402" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_024403" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_024403" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_024404" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_024404" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正五</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_025501" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_025501" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_025502" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_025502" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_025503" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_025503" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_025504" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_025504" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正六</strong></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_026601" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_026601" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_026602" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_026602" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_026603" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_026603" type="text"/></td>
                                         <td></td>
-                                        <td><input disabled="disabled"  class="dis" name="pro_026604" type="text"/></td>
+                                        <td><input disabled="disabled"   name="pro_026604" type="text"/></td>
                                     </tr>
                                     </tbody>
                                 </table>

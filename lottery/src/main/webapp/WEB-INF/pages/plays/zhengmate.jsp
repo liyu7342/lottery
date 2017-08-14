@@ -68,169 +68,169 @@
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n1">01</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00201"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00201"/></td>
                                 <td class="hand borderRightNone"><em class="ico n11">11</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00211"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00211"/></td>
                                 <td class="hand borderRightNone"><em class="ico n21">21</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00221"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00221"/></td>
                                 <td class="hand borderRightNone"><em class="ico n31">31</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00231"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00231"/></td>
                                 <td class="hand borderRightNone"><em class="ico n41">41</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00241"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00241"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n2">02</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00202"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00202"/></td>
                                 <td class="hand borderRightNone"><em class="ico n12">12</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00212"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00212"/></td>
                                 <td class="hand borderRightNone"><em class="ico n22">22</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00222"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00222"/></td>
                                 <td class="hand borderRightNone"><em class="ico n32">32</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00232"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00232"/></td>
                                 <td class="hand borderRightNone"><em class="ico n42">42</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00242"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00242"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n3">03</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00203"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00203"/></td>
                                 <td class="hand borderRightNone"><em class="ico n13">13</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00213"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00213"/></td>
                                 <td class="hand borderRightNone"><em class="ico n23">23</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00223"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00223"/></td>
                                 <td class="hand borderRightNone"><em class="ico n33">33</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00233"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00233"/></td>
                                 <td class="hand borderRightNone"><em class="ico n43">43</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00243"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00243"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n4">04</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00204"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00204"/></td>
                                 <td class="hand borderRightNone"><em class="ico n14">14</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00214"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00214"/></td>
                                 <td class="hand borderRightNone"><em class="ico n24">24</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00224"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00224"/></td>
                                 <td class="hand borderRightNone"><em class="ico n34">34</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00234"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00234"/></td>
                                 <td class="hand borderRightNone"><em class="ico n44">44</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00244"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00244"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n5">05</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00205"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00205"/></td>
                                 <td class="hand borderRightNone"><em class="ico n15">15</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00215"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00215"/></td>
                                 <td class="hand borderRightNone"><em class="ico n25">25</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00225"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00225"/></td>
                                 <td class="hand borderRightNone"><em class="ico n35">35</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00235"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00235"/></td>
                                 <td class="hand borderRightNone"><em class="ico n45">45</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00245"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00245"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n6">06</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00206"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00206"/></td>
                                 <td class="hand borderRightNone"><em class="ico n16">16</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00216"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00216"/></td>
                                 <td class="hand borderRightNone"><em class="ico n26">26</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00226"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00226"/></td>
                                 <td class="hand borderRightNone"><em class="ico n36">36</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00236"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00236"/></td>
                                 <td class="hand borderRightNone"><em class="ico n46">46</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00246"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00246"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n7">07</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00207"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00207"/></td>
                                 <td class="hand borderRightNone"><em class="ico n17">17</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00217"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00217"/></td>
                                 <td class="hand borderRightNone"><em class="ico n27">27</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00227"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00227"/></td>
                                 <td class="hand borderRightNone"><em class="ico n37">37</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00237"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00237"/></td>
                                 <td class="hand borderRightNone"><em class="ico n47">47</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00247"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00247"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n8">08</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00208"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00208"/></td>
                                 <td class="hand borderRightNone"><em class="ico n18">18</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00218"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00218"/></td>
                                 <td class="hand borderRightNone"><em class="ico n28">28</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00228"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00228"/></td>
                                 <td class="hand borderRightNone"><em class="ico n38">38</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00238"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00238"/></td>
                                 <td class="hand borderRightNone"><em class="ico n48">48</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00248"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00248"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n9">09</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00209"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00209"/></td>
                                 <td class="hand borderRightNone"><em class="ico n19">19</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00219"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00219"/></td>
                                 <td class="hand borderRightNone"><em class="ico n29">29</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00229"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00229"/></td>
                                 <td class="hand borderRightNone"><em class="ico n39">39</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00239"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00239"/></td>
                                 <td class="hand borderRightNone"><em class="ico n49">49</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00249"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00249"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n10">10</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00210"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00210"/></td>
                                 <td class="hand borderRightNone"><em class="ico n20">20</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00220"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00220"/></td>
                                 <td class="hand borderRightNone"><em class="ico n30">30</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00230"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00230"/></td>
                                 <td class="hand borderRightNone"><em class="ico n40">40</em></td>
                                 <td class="hand borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_00240"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_00240"/></td>
                                 <td colspan="3"></td>
                             </tr>
                             </tbody></table>
@@ -249,35 +249,35 @@
                             <tbody><tr pro="021">
                                 <td class="borderRightNone"><strong>單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis" name="pro_021101"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"   name="pro_021101"/></td>
                                 <td class="borderRightNone"><strong>大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_021103"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_021103"/></td>
                                 <td class="borderRightNone"><strong>合單</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_021105"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_021105"/></td>
                             </tr>
                             <tr pro="021">
                                 <td class="borderRightNone"><strong>雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_021102"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_021102"/></td>
                                 <td class="borderRightNone"><strong>小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_021104"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_021104"/></td>
                                 <td class="borderRightNone"><strong>合雙</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_021106"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_021106"/></td>
                             </tr>
                             <tr pro="028">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_02801"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_02801"/></td>
                                 <td class="borderRightNone"><strong class="blue">藍色</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_02802"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_02802"/></td>
                                 <td class="borderRightNone"><strong class="green">綠色</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" disabled="disabled"  class="dis"  name="pro_02803"/></td>
+                                <td class="borderLeftNone"><input type="text" disabled="disabled"    name="pro_02803"/></td>
                             </tr></tbody>
                         </table>
                         <div class="g-tn">
@@ -290,7 +290,7 @@
             </div>            <div id="popup" class="module g-pp">
                 <form id="pop_form">
                     <div class="hd"></div>
-                    <div class="bd" ><span class="pop_name" id="pop_name"></span> <em id="pop_odds"></em> X <input type="text" id="pop_amount" disabled="disabled"  class="dis"/>
+                    <div class="bd" ><span class="pop_name" id="pop_name"></span> <em id="pop_odds"></em> X <input type="text" id="pop_amount" disabled="disabled"  />
                         <span class="pop_mul hide" id="pop_mul">x<span class="red" id="pop_mul_num">百倍</span></span></div>
                     <div class="ft">
                         <input id="pop_submit"  class="btn13 bds" disabled="disabled" value="確 認" type="submit"  /> <a id="pop_cencel" class="ico btn13" href="?">放 棄</a>

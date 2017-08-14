@@ -48,68 +48,68 @@
                             <tr>
                                 <td class="bg"><strong>正一</strong></td>
                                 <td></td>
-                                <td><input  name="021101" type="text"/></td>
+                                <td><input  name="021101" type="text" value="${(entity.pro_021101)!''}"/></td>
                                 <td></td>
-                                <td><input  name="021102" type="text"/></td>
+                                <td><input  name="021102" type="text" value="${(entity.pro_021102)!''}"/></td>
                                 <td></td>
-                                <td><input  name="021103" type="text"/></td>
+                                <td><input  name="021103" type="text" value="${(entity.pro_021103)!''}"/></td>
                                 <td></td>
-                                <td><input  name="021104" type="text"/></td>
+                                <td><input  name="021104" type="text" value="${(entity.pro_021104)!''}"/></td>
                             </tr>
                             <tr>
                                 <td class="bg"><strong>正二</strong></td>
                                 <td></td>
-                                <td><input  name="022201" type="text"/></td>
+                                <td><input  name="022201" type="text" value="${(entity.pro_022201)!''}"/></td>
                                 <td></td>
-                                <td><input  name="022202" type="text"/></td>
+                                <td><input  name="022202" type="text" value="${(entity.pro_022202)!''}"/></td>
                                 <td></td>
-                                <td><input  name="022203" type="text"/></td>
+                                <td><input  name="022203" type="text" value="${(entity.pro_022203)!''}"/></td>
                                 <td></td>
-                                <td><input  name="022204" type="text"/></td>
+                                <td><input  name="022204" type="text" value="${(entity.pro_022204)!''}"/></td>
                             </tr>
                             <tr>
                                 <td class="bg"><strong>正三</strong></td>
                                 <td></td>
-                                <td><input  name="023301" type="text"/></td>
+                                <td><input  name="023301" type="text" value="${(entity.pro_023301)!''}"/></td>
                                 <td></td>
-                                <td><input  name="023302" type="text"/></td>
+                                <td><input  name="023302" type="text" value="${(entity.pro_023302)!''}"/></td>
                                 <td></td>
-                                <td><input  name="023303" type="text"/></td>
+                                <td><input  name="023303" type="text" value="${(entity.pro_023303)!''}"/></td>
                                 <td></td>
-                                <td><input  name="023304" type="text"/></td>
+                                <td><input  name="023304" type="text" value="${(entity.pro_023304)!''}"/></td>
                             </tr>
                             <tr>
                                 <td class="bg"><strong>正四</strong></td>
                                 <td></td>
-                                <td><input  name="024401" type="text"/></td>
+                                <td><input  name="024401" type="text" value="${(entity.pro_024401)!''}"/></td>
                                 <td></td>
-                                <td><input  name="024402" type="text"/></td>
+                                <td><input  name="024402" type="text" value="${(entity.pro_024402)!''}"/></td>
                                 <td></td>
-                                <td><input  name="024403" type="text"/></td>
+                                <td><input  name="024403" type="text" value="${(entity.pro_024403)!''}"/></td>
                                 <td></td>
-                                <td><input  name="024404" type="text"/></td>
+                                <td><input  name="024404" type="text" value="${(entity.pro_024404)!''}"/></td>
                             </tr>
                             <tr>
                                 <td class="bg"><strong>正五</strong></td>
                                 <td></td>
-                                <td><input  name="025501" type="text"/></td>
+                                <td><input  name="025501" type="text" value="${(entity.pro_025501)!''}"/></td>
                                 <td></td>
-                                <td><input  name="025502" type="text"/></td>
+                                <td><input  name="025502" type="text"  value="${(entity.pro_025502)!''}"/></td>
                                 <td></td>
-                                <td><input  name="025503" type="text"/></td>
+                                <td><input  name="025503" type="text"  value="${(entity.pro_025503)!''}"/></td>
                                 <td></td>
-                                <td><input  name="025504" type="text"/></td>
+                                <td><input  name="025504" type="text"  value="${(entity.pro_025504)!''}"/></td>
                             </tr>
                             <tr>
                                 <td class="bg"><strong>正六</strong></td>
                                 <td></td>
-                                <td><input  name="026601" type="text"/></td>
+                                <td><input  name="026601" type="text" value="${(entity.pro_026601)!''}"/></td>
                                 <td></td>
-                                <td><input  name="026602" type="text"/></td>
+                                <td><input  name="026602" type="text" value="${(entity.pro_026602)!''}"/></td>
                                 <td></td>
-                                <td><input  name="026603" type="text"/></td>
+                                <td><input  name="026603" type="text" value="${(entity.pro_026603)!''}"/></td>
                                 <td></td>
-                                <td><input  name="026604" type="text"/></td>
+                                <td><input  name="026604" type="text" value="${(entity.pro_026604)!''}"/></td>
                             </tr>
                             </tbody>
                         </table>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/tema'>特碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa'>特碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengma'>正碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
                         <li><a curl='5' href='/odds/zheng16'>正1-6</a><cite></cite></li>

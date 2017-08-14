@@ -28,7 +28,7 @@
                         <div class="hd"><h2 class="g-tit"><span id="product_name">特肖</span> 投注
       <span id="w_fast" class="w_fast">
         金額：
-    <input type="text" id="w_fast_input" maxlength="9" autocomplete="off"  class="dis" disabled="disabled" />
+    <input type="text" id="w_fast_input" maxlength="9" autocomplete="off"   disabled="disabled" />
     <input type="radio" id="jiaqin" name="w_fast" value="jiaqin" disabled="disabled" /><label for="jiaqin">家禽</label>
     <input type="radio" id="yeshou" name="w_fast" value="yeshou" disabled="disabled" /><label for="yeshou">野獸</label>
     </span>
@@ -51,61 +51,61 @@
                                         <td class="bg">鼠</td>
                                         <td><strong>10,22,34,46</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03401" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03401" type="text"   disabled="disabled"/></td>
                                         <td class="bg">牛</td>
                                         <td><strong>09,21,33,45</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03402" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03402" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">虎</td>
                                         <td><strong>08,20,32,44</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03403" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03403" type="text"   disabled="disabled"/></td>
                                         <td class="bg">兔</td>
                                         <td><strong>07,19,31,43</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03404" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03404" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">龍</td>
                                         <td><strong>06,18,30,42</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03405" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03405" type="text"   disabled="disabled"/></td>
                                         <td class="bg">蛇</td>
                                         <td><strong>05,17,29,41</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03406" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03406" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">馬</td>
                                         <td><strong>04,16,28,40</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03407" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03407" type="text"   disabled="disabled"/></td>
                                         <td class="bg">羊</td>
                                         <td><strong>03,15,27,39</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03408" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03408" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">猴</td>
                                         <td><strong>02,14,26,38</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03409" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03409" type="text"   disabled="disabled"/></td>
                                         <td class="bg">雞</td>
                                         <td><strong>01,13,25,37,49</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03410" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03410" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">狗</td>
                                         <td><strong>12,24,36,48</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03411" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03411" type="text"   disabled="disabled"/></td>
                                         <td class="bg">豬</td>
                                         <td><strong>11,23,35,47</strong></td>
                                         <td></td>
-                                        <td><input name="pro_03412" type="text"  class="dis" disabled="disabled"/></td>
+                                        <td><input name="pro_03412" type="text"   disabled="disabled"/></td>
                                     </tr>
                                     </tbody></table>
                                 <div class="g-tn">

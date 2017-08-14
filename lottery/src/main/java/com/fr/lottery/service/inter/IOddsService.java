@@ -3,6 +3,7 @@ package com.fr.lottery.service.inter;
 import com.fr.lottery.entity.Odds;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-7-10.
@@ -17,6 +18,7 @@ public interface IOddsService {
      */
     Odds selectByPrimaryKey( String id);
 
+    boolean insert (Map map);
     /**
      * 赔率删除
      * @param id
@@ -28,14 +30,16 @@ public interface IOddsService {
      * 默认赔率
      * @return
      */
-    Odds selectDefault(String type);
+    List<Odds> selectDefault(String type);
 
     /**
      *
-     * @param type 类型
+     * @param oddsType 类型
      * @return
      */
-    Odds selectByType(String type);
+    List<Odds> selectByType(String[] oddsType);
+
+    List<Odds> getOddsList(String[] oddsType,boolean isDefault);
 
     boolean update(Odds entity);
 
