@@ -203,7 +203,7 @@
                                     <td class="borderLeftNone"><input type="text"   name="019701" value="${(entity.pro_019701)!''}"/></td>
                                     <td class="borderRightNone"><strong class="deepblue">特大</strong></td>
 
-                                    <td class="borderLeftNone"><input type="text"   name="019703" value="${(entity.pro_0197013)!''}"/></td>
+                                    <td class="borderLeftNone"><input type="text"   name="019703" value="${(entity.pro_019703)!''}"/></td>
                                     <td class="borderRightNone"><strong class="deepblue">合單</strong> </td>
                                     <td class="borderLeftNone"><input type="text"   name="019705" value="${(entity.pro_019705)!''}"/></td>
                                     <td class="borderRightNone"><strong class="deepblue">尾大</strong></td>
@@ -256,20 +256,21 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='5' href='/odds/temaa'>特碼A</a><cite></cite></li><li><a curl='0' href='/odds/temab'>特碼B</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zhengma'>正碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zheng16'>正1-6</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/lianma'>連碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/guoguan'>過關</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiao'>生肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishu'>尾數</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/banbo'>半波</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/liuxiao'>六肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/texiao'>特肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiaolian'>生肖連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishulian'>尾數連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/buzhong'>不中</a><cite></cite></li>
+                        <li><a curl='5' href='/odds/temaa?isDefault=false'>特碼A</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temab?isDefault=false'>特碼B</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zhengma?isDefault=false'>正碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zhengmate?isDefault=false'>正馬特</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zheng16?isDefault=false'>正1-6</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/lianma?isDefault=false'>連碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/guoguan?isDefault=false'>過關</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiao?isDefault=false'>生肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishu?isDefault=false'>尾數</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/banbo?isDefault=false'>半波</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/liuxiao?isDefault=false'>六肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/texiao?isDefault=false'>特肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiaolian?isDefault=false'>生肖連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishulian?isDefault=false'>尾數連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/buzhong?isDefault=false'>不中</a><cite></cite></li>
                     </ul>
                 </div>
 

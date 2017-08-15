@@ -6466,7 +6466,7 @@ PlaysBall.prototype.get_orders_right = function() {
 ;
 PlaysBall.prototype._refersh = function() {
     var a = this;
-    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + this.gameIds.join("|") + "&odds_set=" + this.odds_set + "&time_stamp=" + this.time_stamp, function(b) {
+    $.getJSON("/odds/getOdds?game_ids=" + this.gameIds.join("|")+"&isDefault=false" + "&odds_set=" + this.odds_set + "&time_stamp=" + this.time_stamp, function(b) {
             a.refersh(b);
             if (b.header.popup) {
                 window.parent.header.notice_popup("one")
@@ -6816,7 +6816,7 @@ Buzhong.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + b.all_game + "&odds_set=" + b.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(c) {
+                    $.getJSON("/odds/getOdds?game_ids=" + b.all_game +"&isDefault=false"+ "&odds_set=" + b.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(c) {
                             b.refersh(c);
                             if (c.header.popup) {
                                 window.parent.header.notice_popup("one")
@@ -8353,7 +8353,7 @@ Header.prototype.change_limit = function(a) {
     if (!this.plays_limit[$.cfg_category_key[this.currGame]]) {
         return
     }
-    this.account[0].innerHTML=this.user_info.name;
+    //this.account[0].innerHTML=this.user_info.name;
     this.account[1].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][0], 10);
     this.account[2].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][1], 10);
     this.account[3].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][2], 10)

@@ -5,7 +5,9 @@ import com.fr.lottery.entity.Odds;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.service.impl.OddsService;
 import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.RequestDataUtils;
+import com.google.gson.reflect.TypeToken;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,11 +33,11 @@ public class OddsController {
     private IOddsService oddsService;
 
     @RequestMapping("/temaa")
-    public ModelAndView temaa(int isDefalut){
+    public ModelAndView temaa(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/temaa");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        boolean isDefaultOdds = isDefalut>0;
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefaultOdds);
+
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -44,7 +47,7 @@ public class OddsController {
     }
 
     @RequestMapping("/temab")
-    public ModelAndView temab(Boolean isDefalut){
+    public ModelAndView temab(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/temab");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
         List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
@@ -57,61 +60,61 @@ public class OddsController {
     }
 
     @RequestMapping("/banbo")
-    public ModelAndView banbo(Boolean isDefalut){
+    public ModelAndView banbo(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/banbo");
         return modelAndView;
     }
     @RequestMapping("/buzhong")
-    public ModelAndView buzhong(Boolean isDefalut){
+    public ModelAndView buzhong(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong");
         return modelAndView;
     }
     @RequestMapping("/guoguan")
-    public ModelAndView guoguan(Boolean isDefalut){
+    public ModelAndView guoguan(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/guoguan");
         return modelAndView;
     }
     @RequestMapping("/lianma")
-    public ModelAndView lianma(Boolean isDefalut){
+    public ModelAndView lianma(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/lianma");
         return modelAndView;
     }
     @RequestMapping("/liuxiao")
-    public ModelAndView liuxiao(Boolean isDefalut){
+    public ModelAndView liuxiao(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/liuxiao");
         return modelAndView;
     }
     @RequestMapping("/shengxiao")
-    public ModelAndView shengxiao(Boolean isDefalut){
+    public ModelAndView shengxiao(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiao");
         return modelAndView;
     }
     @RequestMapping("/shengxiaolian")
-    public ModelAndView shengxiaolian(Boolean isDefalut){
+    public ModelAndView shengxiaolian(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiaolian");
         return modelAndView;
     }
     @RequestMapping("/texiao")
-    public ModelAndView texiao(Boolean isDefalut){
+    public ModelAndView texiao(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/texiao");
         return modelAndView;
     }
     @RequestMapping("/weishu")
-    public ModelAndView weishu(Boolean isDefalut){
+    public ModelAndView weishu(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/weishu");
         return modelAndView;
     }
     @RequestMapping("/weishulian")
-    public ModelAndView weishulian(Boolean isDefalut){
+    public ModelAndView weishulian(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/weishulian");
         return modelAndView;
     }
     @RequestMapping("/zheng16")
-    public ModelAndView zheng16(Boolean isDefalut){
+    public ModelAndView zheng16(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zheng16");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -120,11 +123,11 @@ public class OddsController {
         return modelAndView;
     }
     @RequestMapping("/zhengma")
-    public ModelAndView zhengma(Boolean isDefalut){
+    public ModelAndView zhengma(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengma");
 
         String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -134,10 +137,10 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate")
-    public ModelAndView zhengmate(Boolean isDefalut){
+    public ModelAndView zhengmate(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate");
         String[] oddsTypes= {OddsTypeEnum.zhengmate1.getValue(),OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.sebozhmate1.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -147,10 +150,10 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate2")
-    public ModelAndView zhengmate2(Boolean isDefalut){
+    public ModelAndView zhengmate2(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate2");
         String[] oddsTypes= {OddsTypeEnum.zhengmate2.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.sebozhmate2.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -160,10 +163,10 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate3")
-    public ModelAndView zhengmate3(Boolean isDefalut){
+    public ModelAndView zhengmate3(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate3");
         String[] oddsTypes= {OddsTypeEnum.zhengmate3.getValue(),OddsTypeEnum.lmzhmate3.getValue(),OddsTypeEnum.sebozhmate3.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -173,11 +176,11 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate4")
-    public ModelAndView zhengmate4(Boolean isDefalut){
+    public ModelAndView zhengmate4(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate4");
 
         String[] oddsTypes= {OddsTypeEnum.zhengmate4.getValue(),OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.sebozhmate4.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -187,10 +190,10 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate5")
-    public ModelAndView zhengmate5(Boolean isDefalut){
+    public ModelAndView zhengmate5(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate5");
         String[] oddsTypes= {OddsTypeEnum.zhengmate5.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.sebozhmate5.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -200,10 +203,10 @@ public class OddsController {
     }
 
     @RequestMapping("/zhengmate6")
-    public ModelAndView zhengmate6(Boolean isDefalut){
+    public ModelAndView zhengmate6(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate6");
         String[] oddsTypes= {OddsTypeEnum.zhengmate6.getValue(),OddsTypeEnum.lmzhmate6.getValue(),OddsTypeEnum.sebozhmate6.getValue()};
-        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefalut);
+        List<Odds> oddsList =  oddsService.getOddsList(oddsTypes,isDefault);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
@@ -217,11 +220,28 @@ public class OddsController {
      * 获取赔率
      * * @param type
      */
-    @ResponseBody
     @RequestMapping("/getOdds")
-    public List<Odds> getOdds(String type){
-        String[] types = type.split("\\|");
-        return oddsService.selectByType(types);
+    public void getOdds(String game_ids,HttpServletRequest request, HttpServletResponse response){
+//        String[] gameIds = game_ids.split("\\|");
+//
+//        List<Odds> oddsList= oddsService.selectByType(gameIds);
+//        Map<String,Object> map = new HashedMap();
+//        Map<String,Object> oddsMap = new HashMap<String, Object>();
+//        for(Odds odds : oddsList){
+//            if(!map.containsKey(odds.getType())){
+//                map.put(odds.getType(),odds.getType());
+//            }
+//            map.put(odds.getNumkey(),odds.getNumvalue());
+//        }
+//        Map<String,Object> outMap =new  HashedMap();
+//        outMap.put("status")
+//        response.setContentType("text/html;charset=UTF-8");
+//        response.getWriter().write("{status}");
+//        Map<String,Float> map = new HashedMap();
+//        for(Odds odds : oddsList){
+//            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+//        }
+
     }
 
     /**
@@ -238,11 +258,12 @@ public class OddsController {
     @ResponseBody
     @RequestMapping("save")
     public void save( HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String referer = request.getHeader("Referer");
         Map   map= RequestDataUtils.getParameterMap(request);
         boolean isSuccess=oddsService.insert(map);
         response.setContentType("text/html;charset=UTF-8");
         if(isSuccess){
-            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/Odds/temaa\";</script>");
+            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\""+referer+"\"</script>");
         }
         else{
             response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存失败！\");</script>");

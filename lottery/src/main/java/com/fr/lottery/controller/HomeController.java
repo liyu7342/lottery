@@ -64,7 +64,7 @@ public class HomeController  {
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
         map.put("limit",listMap);
-        mv.addObject("info", JsonUtil.toJson( map));
+        mv.addObject("info",  map);
         return mv;
     }
 
