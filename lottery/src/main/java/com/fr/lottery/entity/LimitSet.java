@@ -14,6 +14,7 @@ public class LimitSet  implements Serializable{
     public LimitSet(String userId,GameTypeEnum gameTypeEnum, Integer min, Integer max, Integer itemmax, Float aRetreat, Float bRetreat, Float cRetreat){
         this.id = StringUtil.getUUID();
         this.limitType =gameTypeEnum.getValue();
+        this.limitOrder = Integer.parseInt(gameTypeEnum.getValue());
         this.singlemin =min;
         this.singlemax = max;
         this.singlehighest = itemmax;
@@ -28,7 +29,9 @@ public class LimitSet  implements Serializable{
     private String userId;
 
 
-    private Integer limitType;
+    private String limitType;
+
+    private Integer limitOrder;
 
     private Integer singlemin;
 
@@ -58,11 +61,11 @@ public class LimitSet  implements Serializable{
         this.userId = userId;
     }
 
-    public Integer getLimitType() {
+    public String getLimitType() {
         return limitType;
     }
 
-    public void setLimitType(Integer type) {
+    public void setLimitType(String type) {
         this.limitType = type;
     }
 
@@ -112,5 +115,13 @@ public class LimitSet  implements Serializable{
 
     public void setcRetreat(Float cRetreat) {
         this.cRetreat = cRetreat;
+    }
+
+    public Integer getLimitOrder() {
+        return limitOrder;
+    }
+
+    public void setLimitOrder(Integer limitOrder) {
+        this.limitOrder = limitOrder;
     }
 }

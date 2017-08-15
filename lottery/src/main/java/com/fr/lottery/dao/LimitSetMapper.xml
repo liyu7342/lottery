@@ -4,7 +4,8 @@
   <resultMap id="BaseResultMap" type="com.fr.lottery.entity.LimitSet">
     <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="UserId" jdbcType="VARCHAR" property="userId" />
-    <result column="LimitType" jdbcType="INTEGER" property="limitType" />
+    <result column="LimitType" jdbcType="VARCHAR" property="limitType" />
+    <result column="LimitOrder" jdbcType="INTEGER" property="limitOrder" />
     <result column="SingleMin" jdbcType="INTEGER" property="singlemin" />
     <result column="SingleMax" jdbcType="INTEGER" property="singlemax" />
     <result column="SingleHighest" jdbcType="INTEGER" property="singlehighest" />
@@ -14,22 +15,22 @@
   </resultMap>
   <sql id="Base_Column_List">
     Id, UserId, LimitType, SingleMin, SingleMax, SingleHighest, A_Retreat,
-    B_Retreat, C_Retreat
+    B_Retreat, C_Retreat,LimitOrder
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from limitset
     where UserId=#{userId}
-    ORDER BY  LimitType ASC
+    ORDER BY  LimitOrder ASC
   </select>
   <insert id="insert" parameterType="com.fr.lottery.entity.LimitSet">
     insert into limitset (Id, userId , LimitType, SingleMin, SingleMax,
-      SingleHighest, A_Retreat, B_Retreat, C_Retreat)
+      SingleHighest, A_Retreat, B_Retreat, C_Retreat,LimitOrder)
     values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
       #{limitType,jdbcType=VARCHAR}, #{singlemin,jdbcType=INTEGER}, #{singlemax,jdbcType=INTEGER},
       #{singlehighest,jdbcType=INTEGER}, #{aRetreat,jdbcType=DECIMAL}, #{bRetreat,jdbcType=DECIMAL}, 
-      #{cRetreat,jdbcType=DECIMAL})
+      #{cRetreat,jdbcType=DECIMAL},#{limitType,jdbcType=INTEGER})
   </insert>
 
   <delete id="deleteByUserId">

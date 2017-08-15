@@ -5,9 +5,11 @@ import com.fr.lottery.entity.Odds;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.service.impl.OddsService;
 import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.RequestDataUtils;
 import com.google.gson.reflect.TypeToken;
+import net.sourceforge.jtds.jdbc.DateTime;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -221,26 +224,37 @@ public class OddsController {
      * * @param type
      */
     @RequestMapping("/getOdds")
-    public void getOdds(String game_ids,HttpServletRequest request, HttpServletResponse response){
-//        String[] gameIds = game_ids.split("\\|");
-//
-//        List<Odds> oddsList= oddsService.selectByType(gameIds);
-//        Map<String,Object> map = new HashedMap();
-//        Map<String,Object> oddsMap = new HashMap<String, Object>();
-//        for(Odds odds : oddsList){
-//            if(!map.containsKey(odds.getType())){
-//                map.put(odds.getType(),odds.getType());
-//            }
-//            map.put(odds.getNumkey(),odds.getNumvalue());
-//        }
-//        Map<String,Object> outMap =new  HashedMap();
-//        outMap.put("status")
-//        response.setContentType("text/html;charset=UTF-8");
-//        response.getWriter().write("{status}");
-//        Map<String,Float> map = new HashedMap();
-//        for(Odds odds : oddsList){
-//            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-//        }
+    public void getOdds(String game_ids,HttpServletRequest request, HttpServletResponse response) throws  IOException{
+        String[] gameIds = game_ids.split("\\|");
+
+        List<Odds> oddsList= oddsService.selectByType(gameIds);
+        Map<String,Object> map = new HashedMap();
+        Map<String,Object> oddsMap = new HashMap<String, Object>();
+        for(Odds odds : oddsList){
+            oddsMap.put(odds.getNumkey(),odds.getNumvalue());
+        }
+        Map<String,Object> outMap =new  HashedMap();
+        for(String gameId : gameIds){
+            map.put(gameId,1);
+        }
+        outMap.put("odds",oddsMap);
+        outMap.put("status",map);
+        Map<String,Object> header = new HashedMap();
+
+        header.put("marquee","欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
+        header.put("draws", DateTimeUtils.Date2String(new Date(),"yyyy-MM-dd"));
+        header.put("sum",0);
+        header.put("credit",0);
+        header.put("fail_count",0);
+        header.put("calc_status",-1);
+        header.put("new_order", new String[]{});
+        header.put("limit", "");
+        header.put("lines",new String[]{});
+
+
+        outMap.put("header",header);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().write(JsonUtil.toJson(outMap));
 
     }
 

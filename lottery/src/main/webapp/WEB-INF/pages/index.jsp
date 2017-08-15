@@ -29,7 +29,7 @@
                     <div class="bd">
                         <table class="g-t1">
                             <tbody>
-                            <tr><td class="t" width="77">會員賬號</td><td>${info.user_info.name}</td></tr>
+                            <tr><td class="t" width="77">會員賬號</td><td>${user.name}</td></tr>
                             <tr><td class="t">單注最低</td><td></td></tr>
                             <tr><td class="t">單注最高</td><td></td></tr>
                             <tr><td class="t">單項最高</td><td></td></tr>

@@ -57,14 +57,16 @@ public class HomeController  {
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);
+
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<Integer,List<Integer>>listMap = new HashedMap();
+        Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
         map.put("limit",listMap);
-        mv.addObject("info",  map);
+        mv.addObject("info",  JsonUtil.toJson(map));
+        mv.addObject("user",user);
         return mv;
     }
 
@@ -91,7 +93,7 @@ public class HomeController  {
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<Integer,List<Integer>>listMap = new HashedMap();
+        Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
@@ -133,7 +135,7 @@ public class HomeController  {
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
-        Map<Integer,List<Integer>>listMap = new HashedMap();
+        Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
