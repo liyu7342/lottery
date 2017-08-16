@@ -247,9 +247,13 @@ public class OddsController {
         header.put("credit",0);
         header.put("fail_count",0);
         header.put("calc_status",-1);
+        header.put("calc_status",-1);
         header.put("new_order", new String[]{});
+        header.put("winnums","04-20-07-03-19-23-27");
         header.put("limit", "");
+        header.put("time_stamp",System.currentTimeMillis());
         header.put("lines",new String[]{});
+        header.put("ustatus",1);
 
 
         outMap.put("header",header);

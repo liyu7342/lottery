@@ -7157,7 +7157,6 @@ Buzhong.prototype.curstop = function(a) {
     this.status = a
 }
 ;
-var cmset={};
 var domainOK=false;
 var Header = function(a) {
         this.id = a;

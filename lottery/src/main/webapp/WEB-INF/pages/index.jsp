@@ -133,6 +133,7 @@
 
 <script type="text/javascript">
     var global_info =${info};
+
     var global_version_num = 6;
     var global_lines = [];
 </script>
@@ -148,5 +149,8 @@
     };
 </script>
 <script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
+<script type="text/javascript">
+     var cmset = {token:"",cometUrl: '',cometAction: 0 ,asname: '',drawStatus:'0',status:1};
+</script>
 </body>
 </html>

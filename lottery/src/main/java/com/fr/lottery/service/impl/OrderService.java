@@ -1,5 +1,6 @@
 package com.fr.lottery.service.impl;
 
+import com.fr.lottery.dto.OrderDto;
 import com.fr.lottery.entity.Order;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.service.inter.IOrderService;
@@ -16,5 +17,9 @@ public class OrderService implements IOrderService {
     public List<Order> getOrderList(String userId){
         return new ArrayList<Order>();
 //        GameTypeEnum.不中.getValue();
+    }
+
+    public boolean save(OrderDto orderDto){
+        return false;
     }
 }
