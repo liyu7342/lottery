@@ -20,7 +20,7 @@
 
 	 <!--自动扫描注入为bean -->
 	<context:component-scan
-			base-package="com.fr.lottery.controller,com.fr.lottery.service,com.fr.lottery.dao,com.fr.lottery.quartzs" />
-	<dwr:annotation-config id="dwrid"/>
-	<dwr:annotation-scan scanRemoteProxy="true" base-package="com.fr.lottery.dwr" />
+			base-package="com.fr.lottery.controller,com.fr.lottery.service,com.fr.lottery.dao" />
+	<!--<dwr:annotation-config id="dwrid"/>-->
+	<!--<dwr:annotation-scan scanRemoteProxy="true" base-package="com.fr.lottery.dwr" />-->
 </beans>

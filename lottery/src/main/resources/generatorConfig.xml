@@ -106,5 +106,7 @@
         </table>
         <table tableName="order" domainObjectName="Order" >
         </table>
+        <table tableName="orderDetail" domainObjectName="OrderDetail" >
+        </table>
     </context>
 </generatorConfiguration>

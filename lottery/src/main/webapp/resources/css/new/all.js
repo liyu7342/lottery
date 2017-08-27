@@ -7827,9 +7827,10 @@ Header.prototype.submit_order = function() {
                 return
             }
             return $.ajax({
-                url: "ajax_req.htm?a=1",
+                url: "/order/saveOrder",
                 type: "POST",
-                data: "act=submit_order&game_ids=" + f + "&order_allamount=" + h + "&odds_set=" + s + "&orderData=" + c + "&detailOdds=" + k + "&timeout=" + a + "&submit_time_msec=" + d + "&version_number=" + global_version_num,
+                cache:false,
+                data: "game_ids=" + f + "&order_allamount=" + h + "&odds_set=" + s + "&orderData=" + c + "&detailOdds=" + k + "&timeout=" + a + "&submit_time_msec=" + d + "&version_number=" + global_version_num,
                 dataType: "json",
                 success: function(i) {
                     g.lock_submit = false;

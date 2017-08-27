@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.fr.lottery.entity.OrderDetail">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="orderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="gameType" jdbcType="VARCHAR" property="gametype" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="odds" jdbcType="DECIMAL" property="odds" />
+    <result column="amout" jdbcType="INTEGER" property="amout" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    Id, orderId, userId, gameType, `no`, odds, amout, createdate
+  </sql>
+  <select id="selectByExample"  resultMap="BaseResultMap">
+    select
+
+    <include refid="Base_Column_List" />
+    from orderdetail
+
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetail
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from orderdetail
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
+    insert into orderdetail (Id, orderId, userId, 
+      gameType, no, odds,amout, createdate)
+    values (#{id,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
+      #{amout,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="countByExample"  resultType="java.lang.Long">
+    select count(*) from orderdetail
+
+  </select>
+
+  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.OrderDetail">
+    update orderdetail
+    set orderId = #{orderid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      gameType = #{gametype,jdbcType=VARCHAR},
+      no = #{no,jdbcType=VARCHAR},
+      odds = #{odds,jdbcType=DECIMAL},
+      amout = #{amout,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

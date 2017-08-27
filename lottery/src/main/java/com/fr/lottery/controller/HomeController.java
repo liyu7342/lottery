@@ -5,10 +5,7 @@ import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IUserService;
-import com.fr.lottery.utils.CookieUtils;
-import com.fr.lottery.utils.JsonUtil;
-import com.fr.lottery.utils.MD5Util;
-import com.fr.lottery.utils.UserHelper;
+import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -148,12 +147,34 @@ public class HomeController  {
         ModelAndView mv = new ModelAndView("login");
         return mv;
     }
+
+    @RequestMapping("/login1")
+    public ModelAndView login1() {
+        ModelAndView mv = new ModelAndView("login1");
+        return mv;
+    }
+
+    @RequestMapping("/login2")
+    public ModelAndView login2() {
+        ModelAndView mv = new ModelAndView("login2");
+        return mv;
+    }
     @RequestMapping("/doLogin")
     @ResponseBody
-    public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
+    public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd,String verifyCode){
 
         ResultInfo<String> result = new ResultInfo<String>();
         try{
+            if(StringUtils.isBlank(verifyCode)){
+                result.setMsg("验证码不能为空");
+                result.setSuccess(false);
+                return result;
+            }
+            if(request.getSession().getAttribute("verCode") ==null || !verifyCode.equals(request.getSession().getAttribute("verCode"))){
+                result.setMsg("验证码不正确");
+                result.setSuccess(false);
+                return result;
+            }
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
             User user=  userService.getByAccount(userAccount);
             if(user !=null && md5_pwd.equals( user.getPassword())){
@@ -162,7 +183,7 @@ public class HomeController  {
             }
             else{
                 result.setSuccess(false);
-                result.setMsg("账号或者密码不正确！");
+                result.setMsg("账号或密码有误！");
             }
         }
         catch (Exception ex){
@@ -207,5 +228,24 @@ public class HomeController  {
             theme = CookieUtils.getCookie(request, "theme");
         }
         return "redirect:"+request.getParameter("url");
+    }
+
+    @RequestMapping(value = "getCodeInfo")
+    public void getCodeInfo(HttpServletRequest request , HttpServletResponse response) throws IOException{
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
+
+        //生成随机字串
+        String verifyCode = VerifyCodeUtils.generateVerifyCode(5);
+        //存入会话session
+        HttpSession session = request.getSession(true);
+        //删除以前的
+        session.removeAttribute("verCode");
+        session.setAttribute("verCode", verifyCode.toLowerCase());
+        //生成图片
+        int w = 120, h = 32;
+        VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
     }
 }

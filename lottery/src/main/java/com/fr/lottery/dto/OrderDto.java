@@ -6,7 +6,7 @@ package com.fr.lottery.dto;
 public class OrderDto {
     private String game_ids;
 
-    private String order_allamount;
+    private Integer order_allamount;
 
     private String odds_set;
 
@@ -28,11 +28,11 @@ public class OrderDto {
         this.game_ids = game_ids;
     }
 
-    public String getOrder_allamount() {
+    public Integer getOrder_allamount() {
         return order_allamount;
     }
 
-    public void setOrder_allamount(String order_allamount) {
+    public void setOrder_allamount(Integer order_allamount) {
         this.order_allamount = order_allamount;
     }
 
