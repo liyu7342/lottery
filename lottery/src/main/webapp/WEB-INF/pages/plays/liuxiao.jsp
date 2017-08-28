@@ -62,8 +62,9 @@
                                     <input type="submit" class="btn2 bds" disabled="disabled" value="訂 單"/>
                                     <input type="reset" class="btn2 bds" disabled="disabled" value="重 設"/>
                                 </div>
+
+                            </form>
                         </div>
-                        </form>
                         <div class="ft"></div>
                     </div>                </div>
             </div>

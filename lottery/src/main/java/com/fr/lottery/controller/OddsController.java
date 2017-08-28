@@ -65,6 +65,13 @@ public class OddsController {
     @RequestMapping("/banbo")
     public ModelAndView banbo(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/banbo");
+        String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map = new HashedMap();
+        for(Odds odds : oddsList){
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/buzhong")

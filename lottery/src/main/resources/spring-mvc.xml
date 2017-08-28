@@ -11,7 +11,7 @@
 		<!--http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd>-->
 
 	<!--自动扫描注入为bean -->
-	<context:component-scan base-package="com.fr.lottery" />
+	<context:component-scan base-package="com.fr.lottery.controller" />
 
 
 	<!-- 文件上传的配置 -->

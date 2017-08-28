@@ -28,160 +28,66 @@
                     </style>
                     <div id="huiyuan" class="module">
                         <ul>
-                            <li><h2 class="g-tit">特碼</h2>
+                            <li><h2 class="g-tit">尾数</h2>
                             </li>
                         </ul>
 
                         <table class="g-t1">
                             <thead>
                             <tr>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
+                                <td>尾數</td>
+                                <td>號碼</td>
+                                <td>賠率</td>
+                                <td>尾數</td>
+                                <td>號碼</td>
+                                <td>賠率</td>
                             </tr>
                             </thead>
-                            <tbody id="product_mark" pro="000">
+                            <tbody pro="015">
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no1"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no11"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no21"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no31"/></td>
-
-                                <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no41"/></td>
+                                <td class="bg">0尾</td>
+                                <td class="bold">10,20,30,40</td>
+                                <td><input name="01500" type="text"  value="${(entity.pro_01500)!''}"/></td>
+                                <td class="bg">1尾</td>
+                                <td class="bold">1,11,21,31,41</td>
+                                <td><input name="01501" type="text"  value="${(entity.pro_01501)!''}"/></td>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no2"/></td>
-                                <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no12"/></td>
-                                <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no22"/></td>
-                                <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no32"/></td>
-                                <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no42"/></td>
+                                <td class="bg">2尾</td>
+                                <td class="bold">2,12,22,32,42</td>
+                                <td><input name="01502" type="text"  value="${(entity.pro_01502)!''}"/></td>
+                                <td class="bg">3尾</td>
+                                <td class="bold">3,13,23,33,43</td>
+                                <td><input name="01503" type="text"  value="${(entity.pro_01503)!''}"/></td>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no3"/></td>
-                                <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no13"/></td>
-                                <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no23"/></td>
-                                <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no33"/></td>
-                                <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no43"/></td>
+                                <td class="bg">4尾</td>
+                                <td class="bold">4,14,24,34,44</td>
+                                <td><input name="01504" type="text"  value="${(entity.pro_01504)!''}"/></td>
+                                <td class="bg">5尾</td>
+                                <td class="bold">5,15,25,35,45</td>
+                                 <td><input name="01505" type="text"  value="${(entity.pro_01505)!''}"/></td>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no4"/></td>
-                                <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no14"/></td>
-                                <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no24"/></td>
-                                <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no34"/></td>
-                                <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no44"/></td>
+                                <td class="bg">6尾</td>
+                                <td class="bold">6,16,26,36,46</td>
+                                <td><input name="01506" type="text"  value="${(entity.pro_01506)!''}"/></td>
+                                <td class="bg">7尾</td>
+                                <td class="bold">7,17,27,37,47</td>
+                                <td><input name="01507" type="text"  value="${(entity.pro_01507)!''}"/></td>
                             </tr>
                             <tr>
-                                <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no5"/></td>
-                                <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no15"/></td>
-                                <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no25"/></td>
-                                <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no35"/></td>
-                                <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no45"/></td>
+                                <td class="bg">8尾</td>
+                                <td class="bold">8,18,28,38,48</td>
+                                <td><input name="01508" type="text"  value="${(entity.pro_01508)!''}"/></td>
+                                <td class="bg">9尾</td>
+                                <td class="bold">9,19,29,39,49</td>
+                                <td><input name="01509" type="text"  value="${(entity.pro_01509)!''}"/></td>
                             </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no6"/></td>
-                                <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no16"/></td>
-                                <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no26"/></td>
-                                <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no36"/></td>
-                                <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no46"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no7"/></td>
-                                <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no17"/></td>
-                                <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no27"/></td>
-                                <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no37"/></td>
-                                <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no47"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no8"/></td>
-                                <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no18"/></td>
-                                <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no28"/></td>
-                                <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no38"/></td>
-                                <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                <td class="borderLeftNone"><input type="text"   name="no48"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n9">09</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no9"/></td>
-                                <td class="hand borderRightNone"><em class="ico n19">19</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no19"/></td>
-                                <td class="hand borderRightNone"><em class="ico n29">29</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no29"/></td>
-                                <td class="hand borderRightNone"><em class="ico n39">39</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no39"/></td>
-                                <td class="hand borderRightNone"><em class="ico n49">49</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no49"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n10">10</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no10"/></td>
-                                <td class="hand borderRightNone"><em class="ico n20">20</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no20"/></td>
-                                <td class="hand borderRightNone"><em class="ico n30">30</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no30"/></td>
-                                <td class="hand borderRightNone"><em class="ico n40">40</em></td>
-
-                                <td class="borderLeftNone"><input type="text"   name="no40"/></td>
-                                <td colspan="3"></td>
-                            </tr>
-                            </tbody></table>
-                    </div>                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="yui-b">

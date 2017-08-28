@@ -27,11 +27,11 @@
                         <input type="hidden" id="cps_time" value="20170621181238"/>
                         <div class="hd"><h2 class="g-tit"><span id="product_name">尾數</span> 投注
     <span id="w_fast" class="w_fast">
-      金額：<input type="text" id="w_fast_input"   disabled="disabled" />
-    <input type="radio" value="13579" name="weidan" id="weidan" disabled="disabled"  /><label for="weidan">尾單</label>
-    <input type="radio" value="02468" name="weishuang" id="weishuang" disabled="disabled" /><label for="weishuang">尾雙</label>
-    <input type="radio" value="56789" name="weida"  id="weida"    disabled="disabled" /><label for="weida">尾大</label>
-    <input type="radio" value="01234" name="weixiao"id="weixiao" disabled="disabled"/><label for="weixiao">尾小</label>
+      金額：<input type="text" id="w_fast_input"    />
+    <input type="radio" value="13579" name="weidan" id="weidan"   /><label for="weidan">尾單</label>
+    <input type="radio" value="02468" name="weishuang" id="weishuang"  /><label for="weishuang">尾雙</label>
+    <input type="radio" value="56789" name="weida"  id="weida"     /><label for="weida">尾大</label>
+    <input type="radio" value="01234" name="weixiao"id="weixiao" /><label for="weixiao">尾小</label>
     </span>
                         </h2></div>
                         <div class="bd">
@@ -52,56 +52,56 @@
                                         <td class="bg">0尾</td>
                                         <td class="bold">10,20,30,40</td>
                                         <td></td>
-                                        <td><input name="pro_01500" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01500" type="text" /></td>
                                         <td class="bg">1尾</td>
                                         <td class="bold">1,11,21,31,41</td>
                                         <td></td>
-                                        <td><input name="pro_01501" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01501" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">2尾</td>
                                         <td class="bold">2,12,22,32,42</td>
                                         <td></td>
-                                        <td><input name="pro_01502" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01502" type="text" /></td>
                                         <td class="bg">3尾</td>
                                         <td class="bold">3,13,23,33,43</td>
                                         <td></td>
-                                        <td><input name="pro_01503" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01503" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">4尾</td>
                                         <td class="bold">4,14,24,34,44</td>
                                         <td></td>
-                                        <td><input name="pro_01504" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01504" type="text" /></td>
                                         <td class="bg">5尾</td>
                                         <td class="bold">5,15,25,35,45</td>
                                         <td></td>
-                                        <td><input name="pro_01505" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01505" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">6尾</td>
                                         <td class="bold">6,16,26,36,46</td>
                                         <td></td>
-                                        <td><input name="pro_01506" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01506" type="text" /></td>
                                         <td class="bg">7尾</td>
                                         <td class="bold">7,17,27,37,47</td>
                                         <td></td>
-                                        <td><input name="pro_01507" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01507" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">8尾</td>
                                         <td class="bold">8,18,28,38,48</td>
                                         <td></td>
-                                        <td><input name="pro_01508" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01508" type="text" /></td>
                                         <td class="bg">9尾</td>
                                         <td class="bold">9,19,29,39,49</td>
                                         <td></td>
-                                        <td><input name="pro_01509" type="text"   disabled="disabled"/></td>
+                                        <td><input name="01509" type="text" /></td>
                                     </tr>
                                     </tbody></table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds" disabled="disabled" value="訂 單"/>
-                                    <input type="reset" class="btn2 bds" disabled="disabled" value="重 設"/>
+                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
+                                    <input type="reset" class="btn2 bds"  value="重 設"/>
                                 </div>
                         </div>
                         </form>

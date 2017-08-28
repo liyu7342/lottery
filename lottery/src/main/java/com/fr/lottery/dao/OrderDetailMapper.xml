@@ -34,7 +34,7 @@
   </delete>
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
-    insert into orderdetail (Id, orderId, userId, 
+    insert into orderdetail (Id, orderId, userId,
       gameType, no, odds,amout, createdate)
     values (#{id,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
