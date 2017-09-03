@@ -33,7 +33,15 @@
                             overflow-y: hidden;
                         }
                     </style>
-                    <div id="huiyuan" class="module">
+                    <div class="play_hd">
+                        <a href="/odds/zhengmate"  class="">正1特</a>&nbsp;|
+                        <a href="/odds/zhengmate2" class="">正2特</a>&nbsp;|
+                        <a href="/odds/zhengmate3" class="on ds d-gray" disabled="disabled">正3特</a>&nbsp;|
+                        <a href="/odds/zhengmate4" class="">正4特</a>&nbsp;|
+                        <a href="/odds/zhengmate5" class="">正5特</a>&nbsp;|
+                        <a href="/odds/zhengmate6" class="">正6特</a>
+                    </div>
+                    <div id=""class="module">
                         <ul>
                             <li><h2 class="g-tit">正3特</h2>
                             </li>

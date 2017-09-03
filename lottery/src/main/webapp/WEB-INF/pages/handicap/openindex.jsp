@@ -26,7 +26,7 @@
                     <style>
                         html{overflow-y:hidden;}
                     </style>
-                    <div id="huiyuan" class="module">
+                    <div id=""class="module">
                         <div class="hd g-tm">
                             <form id="form1" method="GET" action="/handicap/openindex">
                                 <input type='hidden' name='op' value="slt">

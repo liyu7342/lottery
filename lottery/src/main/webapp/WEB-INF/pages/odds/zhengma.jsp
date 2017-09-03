@@ -33,7 +33,7 @@
                             overflow-y: hidden;
                         }
                     </style>
-                    <div id="huiyuan" class="module">
+                    <div id="" class="module">
                         <ul>
                             <li><h2 class="g-tit">正碼</h2>
                             </li>
@@ -244,36 +244,31 @@
                                 <tr>
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
+
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
+
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr pro="020">
                                     <td class="borderRightNone"><strong>總單</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input disabled="disabled" name="02001"
-                                                                      value="${(entity.pro_02001)!''}" type="text"></td>
+                                    <td class="borderLeftNone">
+                                        <input name="02001" value="${(entity.pro_02001)!''}" type="text"></td>
                                     <td class="borderRightNone"><strong>總雙</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input disabled="disabled" name="02002"
-                                                                      value="${(entity.pro_02002)!''}" type="text"></td>
+                                    <td class="borderLeftNone">
+                                        <input name="02002" value="${(entity.pro_02002)!''}" type="text"></td>
                                     <td class="borderRightNone"><strong>總大</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input disabled="disabled" name="02003"
-                                                                      value="${(entity.pro_02003)!''}" type="text"></td>
+                                    <td class="borderLeftNone"><input name="02003" value="${(entity.pro_02003)!''}"
+                                                                      type="text"></td>
                                     <td class="borderRightNone"><strong>總小</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input disabled="disabled" name="02004"
-                                                                      value="${(entity.pro_02004)!''}" type="text"></td>
+                                    <td class="borderLeftNone"><input name="02004" value="${(entity.pro_02004)!''}"
+                                                                      type="text"></td>
                                 </tr>
                                 </tbody>
                             </table>

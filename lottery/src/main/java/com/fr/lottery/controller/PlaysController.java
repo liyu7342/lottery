@@ -27,6 +27,31 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/zhengmate");
         return mv;
     }
+    @RequestMapping("/zhengmate2")
+    public ModelAndView zhengmate2() {
+        ModelAndView mv = new ModelAndView("/plays/zhengmate2");
+        return mv;
+    }
+    @RequestMapping("/zhengmate3")
+    public ModelAndView zhengmate3() {
+        ModelAndView mv = new ModelAndView("/plays/zhengmate3");
+        return mv;
+    }
+    @RequestMapping("/zhengmate4")
+    public ModelAndView zhengmate4() {
+        ModelAndView mv = new ModelAndView("/plays/zhengmate4");
+        return mv;
+    }
+    @RequestMapping("/zhengmate5")
+    public ModelAndView zhengmate5() {
+        ModelAndView mv = new ModelAndView("/plays/zhengmate5");
+        return mv;
+    }
+    @RequestMapping("/zhengmate6")
+    public ModelAndView zhengmate6() {
+        ModelAndView mv = new ModelAndView("/plays/zhengmate6");
+        return mv;
+    }
 
     @RequestMapping("/zheng1_6")
     public ModelAndView zheng1_6() {
