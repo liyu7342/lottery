@@ -33,19 +33,16 @@
                             overflow-y: hidden;
                         }
                     </style>
-                    <div class="play_hd">
-                        <a href="/odds/zhengmate"  class="">正1特</a>&nbsp;|
-                        <a href="/odds/zhengmate2" class="">正2特</a>&nbsp;|
-                        <a href="/odds/zhengmate3" class="on ds d-gray" disabled="disabled">正3特</a>&nbsp;|
-                        <a href="/odds/zhengmate4" class="">正4特</a>&nbsp;|
-                        <a href="/odds/zhengmate5" class="">正5特</a>&nbsp;|
-                        <a href="/odds/zhengmate6" class="">正6特</a>
-                    </div>
+
                     <div id=""class="module">
-                        <ul>
-                            <li><h2 class="g-tit">正3特</h2>
-                            </li>
-                        </ul>
+                        <div class="play_hd">
+                            <a href="/odds/zhengmate?isDefault=false"  class="">正1特</a>&nbsp;|
+                            <a href="/odds/zhengmate2?isDefault=false" class="">正2特</a>&nbsp;|
+                            <a href="/odds/zhengmate3?isDefault=false" class="on ds d-gray" disabled="disabled">正3特</a>&nbsp;|
+                            <a href="/odds/zhengmate4?isDefault=false" class="">正4特</a>&nbsp;|
+                            <a href="/odds/zhengmate5?isDefault=false" class="">正5特</a>&nbsp;|
+                            <a href="/odds/zhengmate6?isDefault=false" class="">正6特</a>
+                        </div>
                         <form id="form1" method="POST" action="/odds/save">
                             <table class="g-t1">
                                 <thead>
@@ -250,52 +247,52 @@
                                 <thead>
                                 <tr>
                                     <td class="borderRightNone">類型</td>
-                                    <td class="borderLeftNone borderRightNone">賠率</td>
+                                    <td class="borderLeftNone">賠率</td>
                                     <td class="borderRightNone">類型</td>
-                                    <td class="borderLeftNone">金額</td>
+                                    <td class="borderLeftNone">賠率</td>
                                     <td class="borderRightNone">類型</td>
-                                    <td class="borderLeftNone">金額</td>
+                                    <td class="borderLeftNone">賠率</td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr pro="023">
                                     <td class="borderRightNone"><strong>單</strong></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023101"
-                                                                      value="${(entity.pro_023101)!''}"/></td>
+                                    <td class="borderLeftNone"><input type="text"  name="02301"
+                                                                      value="${(entity.pro_02301)!''}"/></td>
                                     <td class="borderRightNone"><strong>大</strong></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023103"
-                                                                      value="${(entity.pro023103)!''}"/></td>
+                                    <td class="borderLeftNone"><input type="text"  name="02303"
+                                                                      value="${(entity.pro02303)!''}"/></td>
                                     <td class="borderRightNone"><strong>合單</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023105"
-                                                                      value="${(entity.pro_023105)!''}"/></td>
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="02305"
+                                                                      value="${(entity.pro_02305)!''}"/></td>
                                 </tr>
                                 <tr pro="023">
                                     <td class="borderRightNone"><strong>雙</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023102"
-                                                                      value="${(entity.pro_023102)!''}"/></td>
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="02302"
+                                                                      value="${(entity.pro_02302)!''}"/></td>
                                     <td class="borderRightNone"><strong>小</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023104"
-                                                                      value="${(entity.pro_023104)!''}"/></td>
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="02304"
+                                                                      value="${(entity.pro_02304)!''}"/></td>
                                     <td class="borderRightNone"><strong>合雙</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="023106"
-                                                                      value="${(entity.pro_023106)!''}"/></td>
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="02306"
+                                                                      value="${(entity.pro_02306)!''}"/></td>
                                 </tr>
                                 <tr pro="030">
                                     <td class="borderRightNone"><strong class="red">紅色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="03001"
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="03001"
                                                                       value="${(entity.pro_03001)!''}"/></td>
                                     <td class="borderRightNone"><strong class="blue">藍色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="03002"
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="03002"
                                                                       value="${(entity.pro_03002)!''}"/></td>
                                     <td class="borderRightNone"><strong class="green">綠色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="03003"
+                                    
+                                    <td class="borderLeftNone"><input type="text"  name="03003"
                                                                       value="${(entity.pro_03003)!''}"/></td>
                                 </tr>
                                 </tbody>

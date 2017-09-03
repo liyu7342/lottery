@@ -33,19 +33,16 @@
                             overflow-y: hidden;
                         }
                     </style>
-                    <div class="play_hd">
-                        <a href="/odds/zhengmate" class="on ds d-gray" disabled="disabled">正1特</a>&nbsp;|
-                        <a href="/odds/zhengmate2" class="">正2特</a>&nbsp;|
-                        <a href="/odds/zhengmate3" class="">正3特</a>&nbsp;|
-                        <a href="/odds/zhengmate4" class="">正4特</a>&nbsp;|
-                        <a href="/odds/zhengmate5" class="">正5特</a>&nbsp;|
-                        <a href="/odds/zhengmate6" class="">正6特</a>
-                    </div>
+
                     <div id=""class="module">
-                        <ul>
-                            <li><h2 class="g-tit">正1特</h2>
-                            </li>
-                        </ul>
+                        <div class="play_hd">
+                            <a href="/odds/zhengmate?isDefault=false" class="on ds d-gray" disabled="disabled">正1特</a>&nbsp;|
+                            <a href="/odds/zhengmate2?isDefault=false" class="">正2特</a>&nbsp;|
+                            <a href="/odds/zhengmate3?isDefault=false" class="">正3特</a>&nbsp;|
+                            <a href="/odds/zhengmate4?isDefault=false" class="">正4特</a>&nbsp;|
+                            <a href="/odds/zhengmate5?isDefault=false" class="">正5特</a>&nbsp;|
+                            <a href="/odds/zhengmate6?isDefault=false" class="">正6特</a>
+                        </div>
                         <form id="form1" method="POST" action="/odds/save">
                             <table class="g-t1">
                                 <thead>
@@ -251,57 +248,56 @@
                                 <tr>
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
+
                                     <td class="borderRightNone">類型</td>
                                     <td class="borderLeftNone borderRightNone">賠率</td>
-                                    <td class="borderLeftNone">金額</td>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr pro="021">
                                     <td class="borderRightNone"><strong>單</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021101"
-                                                                      value="${(entity.pro_021101)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02101"
+                                                                      value="${(entity.pro_02101)!''}"/></td>
                                     <td class="borderRightNone"><strong>大</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021103"
-                                                                      value="${(entity.pro_021103)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02103"
+                                                                      value="${(entity.pro_02103)!''}"/></td>
                                     <td class="borderRightNone"><strong>合單</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021105"
-                                                                      value="${(entity.pro_021105)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02105"
+                                                                      value="${(entity.pro_02105)!''}"/></td>
                                 </tr>
                                 <tr pro="021">
                                     <td class="borderRightNone"><strong>雙</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021102"
-                                                                      value="${(entity.pro_021102)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02102"
+                                                                      value="${(entity.pro_02102)!''}"/></td>
                                     <td class="borderRightNone"><strong>小</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021104"
-                                                                      value="${(entity.pro_021104)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02104"
+                                                                      value="${(entity.pro_02104)!''}"/></td>
                                     <td class="borderRightNone"><strong>合雙</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="021106"
-                                                                      value="${(entity.pro_021106)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02106"
+                                                                      value="${(entity.pro_02106)!''}"/></td>
                                 </tr>
                                 <tr pro="028">
                                     <td class="borderRightNone"><strong class="red">紅色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="02801"
-                                                                      value="${(entity.pro_028101)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02801"
+                                                                      value="${(entity.pro_02801)!''}"/></td>
                                     <td class="borderRightNone"><strong class="blue">藍色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="02802"
-                                                                      value="${(entity.pro_028102)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02802"
+                                                                      value="${(entity.pro_02802)!''}"/></td>
                                     <td class="borderRightNone"><strong class="green">綠色</strong></td>
-                                    <td class="borderLeftNone borderRightNone"></td>
-                                    <td class="borderLeftNone"><input type="text" disabled="disabled" name="02803"
-                                                                      value="${(entity.pro_028103)!''}"/></td>
+
+                                    <td class="borderLeftNone"><input type="text"  name="02803"
+                                                                      value="${(entity.pro_02803)!''}"/></td>
                                 </tr>
                                 </tbody>
                             </table>
