@@ -8,9 +8,10 @@
     <result column="orderAmount" jdbcType="INTEGER" property="orderamount" />
     <result column="orderDetail" jdbcType="VARCHAR" property="orderdetail" />
     <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    Id, handicapId, userId, orderAmount, orderDetail, createDate
+    Id, handicapId, userId, orderAmount, orderDetail, createDate,status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
@@ -43,4 +44,18 @@
     createDate = #{createdate,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="getOrders"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from Orders
+    <where>
+      <if test="handicapId==null or handicapId ==''">
+        AND handicapId = #{handicapid,jdbcType=VARCHAR}
+      </if>
+      <if test="userId==null or userId ==''">
+        AND userId = #{userId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
 </mapper>

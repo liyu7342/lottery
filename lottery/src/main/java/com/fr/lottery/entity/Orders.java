@@ -20,6 +20,8 @@ public class Orders implements Serializable{
 
     private Date createdate;
 
+    private Integer status;
+
     public String getId() {
         return id;
     }
@@ -66,6 +68,14 @@ public class Orders implements Serializable{
 
     public void setCreatedate(Date createdate) {
         this.createdate = createdate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
 

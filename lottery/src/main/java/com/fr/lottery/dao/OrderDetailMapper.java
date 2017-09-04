@@ -17,6 +17,8 @@ public interface OrderDetailMapper {
 
     List<OrderDetail> selectByExample(@Param("orderId") String orderId);
 
+    List<OrderDetail> getOrderDetails(@Param("handicapId") String handicapId,@Param("userid") String userId);
+
     OrderDetail selectByPrimaryKey(String id);
 
     int updateByPrimaryKey(OrderDetail record);

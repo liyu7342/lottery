@@ -53,7 +53,7 @@ public class OrderControlller {
         map.put("sum",orderDto.getOrder_allamount());
         map.put("credit", UserHelper.getCurrentUser().getCredits());
         map.put("versionNumber",3);
-        map.put("oddschg","2");
+        map.put("oddschg","");
         return map;
 //        {"credit_error":"","return_str":"0|;1|1;2|;3|;4|;5|;6|;7|;8|;9|;10|;","item_error":[],"fail_count":0,"limit":"","sum":2,"credit":500,"versionNumber":3,"oddschg":""}
 

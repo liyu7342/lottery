@@ -261,10 +261,10 @@
                                                                       value="${(entity.pro_02401)!''}"/></td>
                                     <td class="borderRightNone"><strong>大</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="02403"
-                                                                      value="${(entity.pro_02401)!''}"/></td>
+                                                                      value="${(entity.pro_02403)!''}"/></td>
                                     <td class="borderRightNone"><strong>合單</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="02405"
-                                                                      value="${(entity.pro_02401)!''}"/></td>
+                                                                      value="${(entity.pro_02405)!''}"/></td>
                                 </tr>
                                 <tr pro="024">
                                     <td class="borderRightNone"><strong>雙</strong></td>
@@ -280,13 +280,13 @@
                                 <tr pro="031">
                                     <td class="borderRightNone"><strong class="red">紅色</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="03101"
-                                                                      value="${(entity.pro_031101)!''}"/></td>
+                                                                      value="${(entity.pro_03101)!''}"/></td>
                                     <td class="borderRightNone"><strong class="blue">藍色</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="03102"
-                                                                      value="${(entity.pro_031102)!''}"/></td>
+                                                                      value="${(entity.pro_03102)!''}"/></td>
                                     <td class="borderRightNone"><strong class="green">綠色</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="03103"
-                                                                      value="${(entity.pro_031103)!''}"/></td>
+                                                                      value="${(entity.pro_03103)!''}"/></td>
                                 </tr>
                                 </tbody>
                             </table>

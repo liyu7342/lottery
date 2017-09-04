@@ -1,12 +1,22 @@
 package com.fr.lottery.service.inter;
 
 import com.fr.lottery.dto.OrderDto;
+import com.fr.lottery.entity.OrderDetail;
+import com.fr.lottery.entity.Orders;
+
+import java.util.List;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
  */
 public interface IOrderService {
-    public boolean save(OrderDto orderDto) ;
+    boolean save(OrderDto orderDto) ;
 
-    
+    List<Orders> getOrders(String handicapId,String userId);
+
+    List<OrderDetail> getOrderDetails(String handicapId,String userId);
+
+    List<Orders> getOrders(String handicapId);
+
+    List<OrderDetail> getOrderDetails(String handicapId);
 }

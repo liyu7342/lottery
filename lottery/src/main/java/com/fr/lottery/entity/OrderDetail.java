@@ -9,9 +9,13 @@ public class OrderDetail {
 
     private String userid;
 
+    private String handicapId;
+
     private String gametype;
 
     private Integer no;
+
+    private String description;
 
     private Float  odds;
 
@@ -91,5 +95,21 @@ public class OrderDetail {
 
     public void setRetreat(Float retreat) {
         this.retreat = retreat;
+    }
+
+    public String getHandicapId() {
+        return handicapId;
+    }
+
+    public void setHandicapId(String handicapId) {
+        this.handicapId = handicapId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

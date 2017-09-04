@@ -254,30 +254,30 @@
                             <tbody><tr pro="019">
                                 <td class="borderRightNone"><strong class="deepblue">特單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019701"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01901"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">特大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019703"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01903"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">合單</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019705"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01905"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">尾大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019707"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01907"/></td>
                             </tr>
                             <tr pro="019">
                                 <td class="borderRightNone"><strong class="deepblue">特雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019702"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01902"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">特小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019704"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01904"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">合雙</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019706"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01906"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">尾小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"   name="pro_019708"/></td>
+                                <td class="borderLeftNone"><input type="text"   name="pro_01908"/></td>
                             </tr>
                             <tr pro="027">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>

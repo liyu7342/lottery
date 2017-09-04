@@ -16,7 +16,7 @@ public interface OrdersMapper {
 
     Orders selectByPrimaryKey(String id);
 
-
+    List<Orders> getOrders(@Param("handicapId") String handicapId,@Param("userId") String userId);
 
     int updateByPrimaryKey(Orders record);
 }

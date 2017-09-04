@@ -8353,7 +8353,6 @@ Header.prototype.change_limit = function(a) {
     if (!this.plays_limit[$.cfg_category_key[this.currGame]]) {
         return
     }
-    //this.account[0].innerHTML=this.user_info.name;
     this.account[1].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][0], 10);
     this.account[2].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][1], 10);
     this.account[3].innerHTML = parseInt(this.plays_limit[$.cfg_category_key[this.currGame]][2], 10)
@@ -8399,6 +8398,7 @@ Header.prototype.set_header_info = function(d) {
     $("#account_info table").show();
     $("#marquee").html("<a href='#' marquee='1' >" + d.marquee + "</a>");
     this.user_info.credit = d.credit;
+    this.account[4].innerHTML = this.user_info.credit;
     this.account[5].innerHTML = "";
     this.refersh_sum_amount(d.sum);
     this.fail_count = d.fail_count;

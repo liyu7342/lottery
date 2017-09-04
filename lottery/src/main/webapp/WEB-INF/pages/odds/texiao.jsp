@@ -45,72 +45,59 @@
                                 <td>特肖</td>
                                 <td>號碼</td>
                                 <td>賠率</td>
-                                <td>金額</td>
                                 <td>特肖</td>
                                 <td>號碼</td>
                                 <td>賠率</td>
-                                <td class="r">金額</td>
                             </tr>
                             </thead>
                             <tbody pro="034">
                             <tr>
                                 <td class="bg">鼠</td>
                                 <td><strong>10,22,34,46</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03401" type="text"/></td>
                                 <td class="bg">牛</td>
                                 <td><strong>09,21,33,45</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03402" type="text"/></td>
                             </tr>
                             <tr>
                                 <td class="bg">虎</td>
                                 <td><strong>08,20,32,44</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03403" type="text"/></td>
                                 <td class="bg">兔</td>
                                 <td><strong>07,19,31,43</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03404" type="text"/></td>
                             </tr>
                             <tr>
                                 <td class="bg">龍</td>
                                 <td><strong>06,18,30,42</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03405" type="text"/></td>
                                 <td class="bg">蛇</td>
                                 <td><strong>05,17,29,41</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03406" type="text"/></td>
                             </tr>
                             <tr>
                                 <td class="bg">馬</td>
                                 <td><strong>04,16,28,40</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03407" type="text"/></td>
                                 <td class="bg">羊</td>
                                 <td><strong>03,15,27,39</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03408" type="text"/></td>
                             </tr>
                             <tr>
                                 <td class="bg">猴</td>
                                 <td><strong>02,14,26,38</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03409" type="text"/></td>
                                 <td class="bg">雞</td>
                                 <td><strong>01,13,25,37,49</strong></td>
-                                <td>9.400</td>
+
                                 <td><input name="03410" type="text"/></td>
                             </tr>
                             <tr>
                                 <td class="bg">狗</td>
                                 <td><strong>12,24,36,48</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03411" type="text"/></td>
                                 <td class="bg">豬</td>
                                 <td><strong>11,23,35,47</strong></td>
-                                <td>11.800</td>
                                 <td><input name="03412" type="text"/></td>
                             </tr>
                             </tbody>

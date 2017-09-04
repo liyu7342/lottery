@@ -29,12 +29,14 @@ public class UserHelper {
         }
     }
     public static void setCurrentUser(HttpServletRequest request,User user){
-        User userInfoApiDto = new User();
-        userInfoApiDto.setAccount(user.getAccount());
-        userInfoApiDto.setName(user.getName());
-        userInfoApiDto.setId(user.getId());
+//        User userInfoApiDto = new User();
+//        userInfoApiDto.setAccount(user.getAccount());
+//        userInfoApiDto.setName(user.getName());
+//        userInfoApiDto.setId(user.getId());
+//        userInfoApiDto.setCredits(user.getCredits());
+//
         HttpSession session = request.getSession();
-        session.setAttribute(session_user,userInfoApiDto);
+        session.setAttribute(session_user,user);
     }
 
     public static void logout(HttpServletRequest request){

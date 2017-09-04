@@ -73,4 +73,24 @@ public class OrderService implements IOrderService {
          }
         return true;
     }
+
+    @Override
+    public List<Orders> getOrders(String handicapId, String userId) {
+        return orderMapper.getOrders(handicapId,userId);
+    }
+
+    @Override
+    public List<Orders> getOrders(String handicapId) {
+        return orderMapper.getOrders(handicapId,"");
+    }
+
+    @Override
+    public List<OrderDetail> getOrderDetails(String handicapId, String userId) {
+        return orderDetailMapper.getOrderDetails(handicapId,userId);
+    }
+
+    @Override
+    public List<OrderDetail> getOrderDetails(String handicapId) {
+        return orderDetailMapper.getOrderDetails(handicapId,"");
+    }
 }
