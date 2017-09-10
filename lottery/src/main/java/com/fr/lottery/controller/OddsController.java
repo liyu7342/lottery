@@ -1,18 +1,13 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
-import com.fr.lottery.entity.Odds;
-import com.fr.lottery.entity.OrderDetail;
-import com.fr.lottery.entity.Orders;
-import com.fr.lottery.entity.User;
+import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.impl.OddsService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IOrderService;
-import com.fr.lottery.utils.DateTimeUtils;
-import com.fr.lottery.utils.JsonUtil;
-import com.fr.lottery.utils.RequestDataUtils;
-import com.fr.lottery.utils.UserHelper;
+import com.fr.lottery.utils.*;
 import com.google.gson.reflect.TypeToken;
 import net.sourceforge.jtds.jdbc.DateTime;
 import org.apache.commons.collections.map.HashedMap;
@@ -277,17 +272,23 @@ public class OddsController {
         header.put("credit",user.getCredits());
         header.put("fail_count",0);
         header.put("calc_status",-1);
-        header.put("calc_status",-1);
-        List<OrderDetail> orderDetails = orderService.getOrderDetails("1",user.getId());
+        List<OrderDetail> orderDetails = orderService.getOrderDetails();
         List<List<String>> new_order =new ArrayList<List<String>>();
+//        if(Global.cfg_category_key.size()==0){
+//            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
+//            for(LotConfig lotConfig: lotConfigs)
+//                Global.cfg_category_key.put(lotConfig.getGameNo(),lotConfig);
+//        }
         for(OrderDetail detail : orderDetails){
             List<String> detailArr = new ArrayList<String>();
+            //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());
             detailArr.add(detail.getAmout().toString());
             detailArr.add(detail.getOdds().toString());
 
             new_order.add(detailArr);
         }
+
         header.put("new_order", new_order);
         header.put("winnums","04-20-07-03-19-23-27");
         header.put("limit", "");

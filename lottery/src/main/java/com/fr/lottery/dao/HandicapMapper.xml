@@ -4,14 +4,14 @@
   <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Handicap">
     <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="QiShu" jdbcType="VARCHAR" property="qishu" />
-    <result column="Status" jdbcType="TINYINT" property="status" />
-    <result column="No1" jdbcType="INTEGER" property="no1" />
-    <result column="No2" jdbcType="INTEGER" property="no2" />
-    <result column="No3" jdbcType="INTEGER" property="no3" />
-    <result column="No4" jdbcType="INTEGER" property="no4" />
-    <result column="No5" jdbcType="INTEGER" property="no5" />
-    <result column="No6" jdbcType="INTEGER" property="no6" />
-    <result column="Tema" jdbcType="INTEGER" property="tema" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="No1" jdbcType="VARCHAR" property="no1" />
+    <result column="No2" jdbcType="VARCHAR" property="no2" />
+    <result column="No3" jdbcType="VARCHAR" property="no3" />
+    <result column="No4" jdbcType="VARCHAR" property="no4" />
+    <result column="No5" jdbcType="VARCHAR" property="no5" />
+    <result column="No6" jdbcType="VARCHAR" property="no6" />
+    <result column="Tema" jdbcType="VARCHAR" property="tema" />
     <result column="OpenTime" jdbcType="TIMESTAMP" property="opentime" />
     <result column="AutoOpen" jdbcType="BIT" property="autoopen" />
     <result column="TemaStatus" jdbcType="BIT" property="temastatus" />
@@ -60,6 +60,11 @@
     from handicap
     where Id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="getCurrentHandicaps" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"></include>
+    FROM  handicap
+    WHERE Status in (0,1)
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from handicap
     where Id = #{id,jdbcType=VARCHAR}
@@ -77,9 +82,9 @@
       AutoOpen, TemaStatus, ZhengmaStatus, 
       TemaCloseTime, ZhengmaCloseTime, IsSettlement
       )
-    values (#{id,jdbcType=VARCHAR}, #{qishu,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{no1,jdbcType=INTEGER}, #{no2,jdbcType=INTEGER}, #{no3,jdbcType=INTEGER}, #{no4,jdbcType=INTEGER}, 
-      #{no5,jdbcType=INTEGER}, #{no6,jdbcType=INTEGER}, #{tema,jdbcType=INTEGER}, #{opentime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=VARCHAR}, #{qishu,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{no1,jdbcType=VARCHAR}, #{no2,jdbcType=VARCHAR}, #{no3,jdbcType=VARCHAR}, #{no4,jdbcType=VARCHAR}, 
+      #{no5,jdbcType=VARCHAR}, #{no6,jdbcType=VARCHAR}, #{tema,jdbcType=VARCHAR}, #{opentime,jdbcType=TIMESTAMP}, 
       #{autoopen,jdbcType=BIT}, #{temastatus,jdbcType=BIT}, #{zhengmastatus,jdbcType=BIT}, 
       #{temaclosetime,jdbcType=TIMESTAMP}, #{zhengmaclosetime,jdbcType=TIMESTAMP}, #{issettlement,jdbcType=BIT}
       )
@@ -95,14 +100,14 @@
   <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Handicap">
     update handicap
     set QiShu = #{qishu,jdbcType=VARCHAR},
-      Status = #{status,jdbcType=TINYINT},
-      No1 = #{no1,jdbcType=INTEGER},
-      No2 = #{no2,jdbcType=INTEGER},
-      No3 = #{no3,jdbcType=INTEGER},
-      No4 = #{no4,jdbcType=INTEGER},
-      No5 = #{no5,jdbcType=INTEGER},
-      No6 = #{no6,jdbcType=INTEGER},
-      Tema = #{tema,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      No1 = #{no1,jdbcType=VARCHAR},
+      No2 = #{no2,jdbcType=VARCHAR},
+      No3 = #{no3,jdbcType=VARCHAR},
+      No4 = #{no4,jdbcType=VARCHAR},
+      No5 = #{no5,jdbcType=VARCHAR},
+      No6 = #{no6,jdbcType=VARCHAR},
+      Tema = #{tema,jdbcType=VARCHAR},
       OpenTime = #{opentime,jdbcType=TIMESTAMP},
       AutoOpen = #{autoopen,jdbcType=BIT},
       TemaStatus = #{temastatus,jdbcType=BIT},
@@ -115,14 +120,14 @@
 
   <update id="openHandicap" parameterType="com.fr.lottery.entity.Handicap">
     update handicap set
-    Status = #{status,jdbcType=TINYINT},
-    No1 = #{no1,jdbcType=INTEGER},
-    No2 = #{no2,jdbcType=INTEGER},
-    No3 = #{no3,jdbcType=INTEGER},
-    No4 = #{no4,jdbcType=INTEGER},
-    No5 = #{no5,jdbcType=INTEGER},
-    No6 = #{no6,jdbcType=INTEGER},
-    Tema = #{tema,jdbcType=INTEGER}
+    Status = #{status,jdbcType=INTEGER},
+    No1 = #{no1,jdbcType=VARCHAR},
+    No2 = #{no2,jdbcType=VARCHAR},
+    No3 = #{no3,jdbcType=VARCHAR},
+    No4 = #{no4,jdbcType=VARCHAR},
+    No5 = #{no5,jdbcType=VARCHAR},
+    No6 = #{no6,jdbcType=VARCHAR},
+    Tema = #{tema,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

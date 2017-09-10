@@ -5,6 +5,9 @@ package com.fr.lottery.init;
  */
 
 
+import com.fr.lottery.entity.LotConfig;
+import org.apache.commons.collections.map.HashedMap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,5 +60,9 @@ public class Global {
     public static final Integer userStatus_tingya=2;
     public static final Integer userStatus_jinzhidenglu=3;
     public static final Integer userStatus_delete=4;
+
+    public static final Map<String,LotConfig> cfg_category_key=new HashMap<String, LotConfig>();
+
+
 
 }

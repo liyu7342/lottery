@@ -33,6 +33,16 @@
                                     <td class="r">結果</td>
                                 </tr></thead>
                                 <tbody movod='movod'>
+                                <#list orderList as obj>
+                                <tr>
+                                    <td> ${obj.createdate?string("yyyy-MM-dd")}
+                                    &nbsp;&nbsp;&nbsp; ${(obj.description)!''}
+                                    </td>
+                                    <td>${(obj.amout)!''} X ${(obj.odds)!''}</td>
+                                    <td>${(obj.amout)!''}</td>
+                                    <td></td>
+                                </tr>
+                                </#list>
                                 </tbody>
                                 <tfoot>
                                 <tr class="green">

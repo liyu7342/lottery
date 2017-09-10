@@ -19,4 +19,10 @@ public interface IHandicapService {
     List<Handicap> getHandicaps(Integer pageId) ;
 
     boolean delete(String id);
+
+    /**
+     * 获取最新期数
+     * @return
+     */
+    Handicap getCurrentHandicap();
 }

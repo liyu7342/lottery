@@ -62,7 +62,7 @@
                                 <tbody id="product_mark" pro="007">
                                 <tr>
                                     <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="00601"
+                                    <td class="borderLeftNone"><input type="text" name="00701"
                                                                       value="${(entity.pro_00701)!''}"/></td>
 
                                     <td class="hand borderRightNone"><em class="ico n11">11</em></td>

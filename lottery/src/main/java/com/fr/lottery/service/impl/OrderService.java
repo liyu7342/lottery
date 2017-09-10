@@ -3,10 +3,10 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.OrderDetailMapper;
 import com.fr.lottery.dao.OrdersMapper;
 import com.fr.lottery.dto.OrderDto;
-import com.fr.lottery.entity.LimitSet;
-import com.fr.lottery.entity.Orders;
-import com.fr.lottery.entity.OrderDetail;
-import com.fr.lottery.entity.User;
+import com.fr.lottery.entity.*;
+import com.fr.lottery.enums.HandicapStatusEnum;
+import com.fr.lottery.init.Global;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.StringUtil;
@@ -35,6 +35,8 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private ILimitSetService limitSetService;
+    @Autowired
+    private IHandicapService handicapService;
 
     public List<Orders> getOrderList(String userId){
         return new ArrayList<Orders>();
@@ -42,12 +44,17 @@ public class OrderService implements IOrderService {
     }
 
     public boolean save(OrderDto orderDto) {
+        Handicap handicap = handicapService.getCurrentHandicap();
+        if(handicap==null || handicap.getStatus() != HandicapStatusEnum.Active.ordinal()){
+            return false;
+        }
+
         User user = UserHelper.getCurrentUser();
         Orders order = new Orders();
         order.setId(StringUtil.getUUID());
        order.setOrderamount(orderDto.getOrder_allamount());
         order.setCreatedate(new Date());
-        order.setHandicapid("1");
+        order.setHandicapid(handicap.getId());
         order.setUserid(user.getId());
         order.setOrderdetail(orderDto.getOrderData());
         orderMapper.insert(order);
@@ -65,10 +72,14 @@ public class OrderService implements IOrderService {
              detail.setCreatedate(new Date());
              detail.setUserid(user.getId());
              detail.setAmout(Long.parseLong( details[3]));
-             detail.setOdds(Float.parseFloat(details[2]) );
-             detail.setNo(Integer.parseInt(details[1]));
+             detail.setOdds(details[2]);
+             detail.setNo(details[1]);
+             detail.setWinAmount(2f);
+             detail.setRetreat(1f);
+             detail.setDescription(Global.cfg_category_key.get(details[0]+details[1]).getGameDesc());
              detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
+             detail.setHandicapId(handicap.getId());
              orderDetailMapper.insert(detail);
          }
         return true;
@@ -91,6 +102,14 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<OrderDetail> getOrderDetails(String handicapId) {
-        return orderDetailMapper.getOrderDetails(handicapId,"");
+        return orderDetailMapper.getOrderDetails(handicapId,UserHelper.getCurrentUser().getId());
+    }
+
+    @Override
+    public List<OrderDetail>  getOrderDetails(){
+       Handicap handicap= handicapService.getCurrentHandicap();
+       if(handicap==null || handicap.getStatus()>= HandicapStatusEnum.Closed.ordinal())
+           return new ArrayList<OrderDetail>();
+       return orderDetailMapper.getOrderDetails(handicap.getId(),UserHelper.getCurrentUser().getId());
     }
 }

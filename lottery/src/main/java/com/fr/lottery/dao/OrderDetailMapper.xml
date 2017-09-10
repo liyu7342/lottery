@@ -64,10 +64,10 @@
     <include refid="Base_Column_List" />
     from orderdetail
     <where>
-      <if test="handicapId=='' or handicapId==null" >
+      <if test="handicapId!='' and handicapId!=null" >
         AND handicapId = #{handicapId,jdbcType=VARCHAR}
       </if>
-      <if test="userid=='' or userid==null" >
+      <if test="userid!='' and userid!=null" >
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
     </where>

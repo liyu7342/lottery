@@ -59,7 +59,7 @@
                                     <td class="borderLeftNone">賠率</td>
                                 </tr>
                                 </thead>
-                                <tbody id="product_mark" pro="000">
+                                <tbody id="product_mark" pro="002">
                                 <tr>
                                     <td class="hand borderRightNone"><em class="ico n1">01</em></td>
                                     <td class="borderLeftNone"><input type="text" name="00201"

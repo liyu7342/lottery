@@ -19,4 +19,5 @@ public interface IOrderService {
     List<Orders> getOrders(String handicapId);
 
     List<OrderDetail> getOrderDetails(String handicapId);
+    List<OrderDetail> getOrderDetails();
 }

@@ -23,6 +23,7 @@ public class HandicapService implements IHandicapService {
     @Override
     public boolean save(Handicap entity) {
         entity.setAutoopen(true);
+        entity.setStatus(0);
         if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
             entity.setId(StringUtil.getUUID());
 
@@ -52,5 +53,14 @@ public class HandicapService implements IHandicapService {
     @Override
     public boolean delete(String id) {
         return handicapMapper.deleteByPrimaryKey(id)>0;
+    }
+
+    /**
+     * 获取未结算的最新盘口
+     * @return
+     */
+    @Override
+    public Handicap getCurrentHandicap() {
+        return handicapMapper.getCurrentHandicaps();
     }
 }

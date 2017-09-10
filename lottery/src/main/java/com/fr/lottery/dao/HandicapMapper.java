@@ -23,4 +23,6 @@ public interface HandicapMapper {
     int openHandicap(Handicap handicap);
 
     int updateByPrimaryKey(Handicap record);
+
+    Handicap getCurrentHandicaps();
 }

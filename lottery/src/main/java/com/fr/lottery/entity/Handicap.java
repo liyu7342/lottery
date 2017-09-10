@@ -10,21 +10,21 @@ public class Handicap {
 
     private String qishu;
 
-    private Byte status;
+    private Integer status;
 
-    private Integer no1;
+    private String no1;
 
-    private Integer no2;
+    private String no2;
 
-    private Integer no3;
+    private String no3;
 
-    private Integer no4;
+    private String no4;
 
-    private Integer no5;
+    private String no5;
 
-    private Integer no6;
+    private String no6;
 
-    private Integer tema;
+    private String tema;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date opentime;
@@ -58,67 +58,67 @@ public class Handicap {
         this.qishu = qishu == null ? null : qishu.trim();
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public Integer getNo1() {
+    public String getNo1() {
         return no1;
     }
 
-    public void setNo1(Integer no1) {
+    public void setNo1(String no1) {
         this.no1 = no1;
     }
 
-    public Integer getNo2() {
+    public String getNo2() {
         return no2;
     }
 
-    public void setNo2(Integer no2) {
+    public void setNo2(String no2) {
         this.no2 = no2;
     }
 
-    public Integer getNo3() {
+    public String getNo3() {
         return no3;
     }
 
-    public void setNo3(Integer no3) {
+    public void setNo3(String no3) {
         this.no3 = no3;
     }
 
-    public Integer getNo4() {
+    public String getNo4() {
         return no4;
     }
 
-    public void setNo4(Integer no4) {
+    public void setNo4(String no4) {
         this.no4 = no4;
     }
 
-    public Integer getNo5() {
+    public String getNo5() {
         return no5;
     }
 
-    public void setNo5(Integer no5) {
+    public void setNo5(String no5) {
         this.no5 = no5;
     }
 
-    public Integer getNo6() {
+    public String getNo6() {
         return no6;
     }
 
-    public void setNo6(Integer no6) {
+    public void setNo6(String no6) {
         this.no6 = no6;
     }
 
-    public Integer getTema() {
+    public String getTema() {
         return tema;
     }
 
-    public void setTema(Integer tema) {
+    public void setTema(String tema) {
         this.tema = tema;
     }
 

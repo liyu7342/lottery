@@ -13,17 +13,19 @@ public class OrderDetail {
 
     private String gametype;
 
-    private Integer no;
+    private String no;
 
     private String description;
 
-    private Float  odds;
+    private String  odds;
 
     private Long amout;
 
     private Date createdate;
 
     private  Float retreat;
+
+    private Float winAmount;
 
     public String getId() {
         return id;
@@ -57,19 +59,19 @@ public class OrderDetail {
         this.gametype = gametype == null ? null : gametype.trim();
     }
 
-    public Integer getNo() {
+    public String getNo() {
         return no;
     }
 
-    public void setNo(Integer no) {
+    public void setNo(String no) {
         this.no = no;
     }
 
-    public Float getOdds() {
+    public String getOdds() {
         return odds;
     }
 
-    public void setOdds(Float odds) {
+    public void setOdds(String odds) {
         this.odds = odds;
     }
 
@@ -111,5 +113,13 @@ public class OrderDetail {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Float getWinAmount() {
+        return winAmount;
+    }
+
+    public void setWinAmount(Float winAmount) {
+        this.winAmount = winAmount;
     }
 }
