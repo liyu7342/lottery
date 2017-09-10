@@ -71,5 +71,6 @@
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
     </where>
+    order by createdate ASC
   </select>
 </mapper>

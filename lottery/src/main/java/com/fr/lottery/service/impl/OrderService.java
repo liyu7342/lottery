@@ -14,7 +14,6 @@ import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class OrderService implements IOrderService {
              detail.setNo(details[1]);
              detail.setWinAmount(2f);
              detail.setRetreat(1f);
-             detail.setDescription(Global.cfg_category_key.get(details[0]+details[1]).getGameDesc());
+             detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
              detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());

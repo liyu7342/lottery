@@ -2,6 +2,7 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dao.OrdersMapper;
 import com.fr.lottery.dto.OrderDto;
+import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.service.impl.OrderService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.RequestDataUtils;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,8 +30,10 @@ public class OrderControlller {
     @Autowired
     private IOrderService orderService;
     @RequestMapping("/list")
-    public ModelAndView list() {
+    public ModelAndView list(String categoryId) {
         ModelAndView mv = new ModelAndView("/order/list");
+        List<OrderDetail> orderDetails = orderService.getOrderDetails();
+        mv.addObject("orderList",orderDetails);
         return mv;
     }
 

@@ -8,10 +8,7 @@ package com.fr.lottery.init;
 import com.fr.lottery.entity.LotConfig;
 import org.apache.commons.collections.map.HashedMap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 全局配置类
@@ -61,8 +58,13 @@ public class Global {
     public static final Integer userStatus_jinzhidenglu=3;
     public static final Integer userStatus_delete=4;
 
-    public static final Map<String,LotConfig> cfg_category_key=new HashMap<String, LotConfig>();
+    public static final Map<String,LotConfig> lotConfigDic =new HashMap<String, LotConfig>();
 
+    public static final  Map<String,List<String>> cfg_category_key =new HashMap<String, List<String>>();
 
+    static {
+      cfg_category_key.put("00", Arrays.asList("000","019","027"));//特码
+        cfg_category_key.put("01",Arrays.asList("","",""))
+    };
 
 }
