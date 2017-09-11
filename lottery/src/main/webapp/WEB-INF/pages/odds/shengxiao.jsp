@@ -35,160 +35,92 @@
                     </style>
                     <div id=""class="module">
                         <ul>
-                            <li><h2 class="g-tit">特碼</h2>
+                            <li><h2 class="g-tit">生肖</h2>
                             </li>
                         </ul>
                         <form id="form1" method="POST" action="/odds/save">
-                        <table class="g-t1">
-                            <thead>
-                            <tr>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                                <td class="borderRightNone">號碼</td>
-                                <td class="borderLeftNone">賠率</td>
-                            </tr>
-                            </thead>
-                            <tbody id="product_mark" pro="000">
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no1"/></td>
+                            <table class="g-t1" id="main_tab">
+                                <thead>
+                                <tr>
+                                    <td>生肖</td>
+                                    <td>號碼</td>
+                                    <td>賠率</td>
+                                    <td>生肖</td>
+                                    <td>號碼</td>
+                                    <td>賠率</td>
+                                </tr>
+                                </thead>
+                                <tbody pro="014">
+                                <tr>
+                                    <td class="bg">鼠</td>
+                                    <td><strong>${shengxiao.鼠}</strong></td>
+                                    
+                                    <td><input name="01401" type="text"  value="${(entity.pro_01401)!''}"/>
+                                    </td>
+                                    <td class="bg">牛</td>
+                                    <td><strong>${shengxiao.牛}</strong></td>
+                                    <td><input name="01402" type="text" value="${(entity.pro_01402)!''}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">虎</td>
+                                    <td><strong>${shengxiao.虎}</strong></td>
+                                    
+                                    <td><input name="01403" type="text" value="${(entity.pro_01403)!''}" />
+                                    </td>
+                                    <td class="bg">兔</td>
+                                    <td><strong>${shengxiao.兔}</strong></td>
 
-                                <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no11"/></td>
+                                    <td><input name="01404" type="text"  value="${(entity.pro_01404)!''}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">龍</td>
+                                    <td><strong>${shengxiao.龍}</strong></td>
 
-                                <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no21"/></td>
+                                    <td><input name="01405" type="text"  value="${(entity.pro_01405)!''}"/>
+                                    </td>
+                                    <td class="bg">蛇</td>
+                                    <td><strong>${shengxiao.蛇}</strong></td>
+                                    <td><input name="01406" type="text" value="${(entity.pro_01406)!''}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">馬</td>
+                                    <td><strong>${shengxiao.馬}</strong></td>
 
-                                <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no31"/></td>
+                                    <td><input name="01407" type="text" value="${(entity.pro_01407)!''}" />
+                                    </td>
+                                    <td class="bg">羊</td>
+                                    <td><strong>${shengxiao.羊}</strong></td>
 
-                                <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no41"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no2"/></td>
-                                <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no12"/></td>
-                                <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no22"/></td>
-                                <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no32"/></td>
-                                <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no42"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no3"/></td>
-                                <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no13"/></td>
-                                <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no23"/></td>
-                                <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no33"/></td>
-                                <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no43"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no4"/></td>
-                                <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no14"/></td>
-                                <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no24"/></td>
-                                <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no34"/></td>
-                                <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no44"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no5"/></td>
-                                <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no15"/></td>
-                                <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no25"/></td>
-                                <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no35"/></td>
-                                <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no45"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no6"/></td>
-                                <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no16"/></td>
-                                <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no26"/></td>
-                                <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no36"/></td>
-                                <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no46"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no7"/></td>
-                                <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no17"/></td>
-                                <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no27"/></td>
-                                <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no37"/></td>
-                                <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no47"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no8"/></td>
-                                <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no18"/></td>
-                                <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no28"/></td>
-                                <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no38"/></td>
-                                <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                <td class="borderLeftNone"><input type="text" name="no48"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n9">09</em></td>
+                                    <td><input name="01408" type="text"  value="${(entity.pro_01408)!''}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">猴</td>
+                                    <td><strong>${shengxiao.猴}</strong></td>
+                                    <td><input name="01409" type="text" value="${(entity.pro_01409)!''}" />
+                                    </td>
+                                    <td class="bg">雞</td>
+                                    <td><strong>${shengxiao.雞}</strong></td>
 
-                                <td class="borderLeftNone"><input type="text" name="no9"/></td>
-                                <td class="hand borderRightNone"><em class="ico n19">19</em></td>
+                                    <td><input name="01410" type="text" value="${(entity.pro_01410)!''}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">狗</td>
+                                    <td><strong>${shengxiao.狗}</strong></td>
 
-                                <td class="borderLeftNone"><input type="text" name="no19"/></td>
-                                <td class="hand borderRightNone"><em class="ico n29">29</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no29"/></td>
-                                <td class="hand borderRightNone"><em class="ico n39">39</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no39"/></td>
-                                <td class="hand borderRightNone"><em class="ico n49">49</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no49"/></td>
-                            </tr>
-                            <tr>
-                                <td class="hand borderRightNone"><em class="ico n10">10</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no10"/></td>
-                                <td class="hand borderRightNone"><em class="ico n20">20</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no20"/></td>
-                                <td class="hand borderRightNone"><em class="ico n30">30</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no30"/></td>
-                                <td class="hand borderRightNone"><em class="ico n40">40</em></td>
-
-                                <td class="borderLeftNone"><input type="text" name="no40"/></td>
-                                <td colspan="3"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                    <td><input name="01411" type="text"  value="${(entity.pro_01411)!''}"/>
+                                    </td>
+                                    <td class="bg">豬</td>
+                                    <td><strong>${shengxiao.豬}</strong></td>
+                                    <td><input name="01412" type="text" value="${(entity.pro_01412)!''}" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         <div class="g-tn">
                             <input type="submit" class="btn2" value="保 存"/>
                             <input type="reset" class="btn2" value="重 設"/>

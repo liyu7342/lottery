@@ -7,6 +7,7 @@ import com.fr.lottery.init.Global;
 import com.fr.lottery.service.impl.OddsService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.utils.*;
 import com.google.gson.reflect.TypeToken;
 import net.sourceforge.jtds.jdbc.DateTime;
@@ -35,6 +36,8 @@ public class OddsController {
     @Autowired
     private IOrderService orderService;
 
+    @Autowired
+    private IShengxiaoService shengxiaoService;
 
     @RequestMapping("/temaa")
     public ModelAndView temaa(Boolean isDefault){
@@ -104,6 +107,23 @@ public class OddsController {
     @RequestMapping("/shengxiao")
     public ModelAndView shengxiao(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiao");
+        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
+        Map<String,String> map = new HashMap<String, String>();
+        for(ShengXiao shengXiao :shengXiaos){
+          String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+          if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+              strr+=","+shengXiao.getNo5();
+          }
+          map.put(shengXiao.getName(),strr);
+        }
+        modelAndView.addObject("shengxiao", map);
+        String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/shengxiaolian")

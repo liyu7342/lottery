@@ -64,7 +64,7 @@ public class Global {
 
     static {
       cfg_category_key.put("00", Arrays.asList("000","019","027"));//特码
-        cfg_category_key.put("01",Arrays.asList("","",""))
+        cfg_category_key.put("01",Arrays.asList("","",""));
     };
 
 }

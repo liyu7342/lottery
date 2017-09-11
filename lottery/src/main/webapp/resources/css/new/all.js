@@ -8405,7 +8405,7 @@ Header.prototype.set_header_info = function(d) {
     var a = d.new_order;
     var c = "";
     for (var b = 0; b < a.length; b++) {
-        c += "<li><span>" + a[b][0]+a[b][1] + "</span> " + a[b][2] + " X <em>" + a[b][3] + "</em></li>"
+        c += "<li><span>" + a[b][0] + "</span> " + a[b][1] + " X <em>" + a[b][2] + "</em></li>"
     }
     document.getElementById("new_orders").innerHTML = c;
     str = "<span class='fail_order_span'>失败{#|6ce8|5355#}</span>".keyComment();

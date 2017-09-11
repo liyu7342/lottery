@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.ShengxiaoMapper">
+    <resultMap id="BaseResultMap" type="com.fr.lottery.entity.ShengXiao">
+        <id column="Id" jdbcType="BIGINT" property="id" />
+        <result column="CurrentYear" jdbcType="INTEGER" property="currentYear" />
+        <result column="Name" jdbcType="VARCHAR" property="name" />
+        <result column="No1" jdbcType="VARCHAR" property="no1" />
+        <result column="No2" jdbcType="VARCHAR" property="no2" />
+        <result column="No3" jdbcType="VARCHAR" property="no3" />
+        <result column="No4" jdbcType="VARCHAR" property="no4" />
+        <result column="No5" jdbcType="VARCHAR" property="no5" />
+        <result column="SortNo" jdbcType="BIGINT" property="sortNo" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        Id,CurrentYear,Name,No1,No2,No3,No4,No5,SortNo
+    </sql>
+
+    <select id="findByYear" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM shengxiao
+        WHERE CurrentYear=#{currentYear,jdbcType=INTEGER}
+    </select>
+</mapper>
