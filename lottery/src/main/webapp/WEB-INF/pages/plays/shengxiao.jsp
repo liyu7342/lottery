@@ -35,9 +35,9 @@
                         <div class="hd h25"><h2 class="g-tit"><span id="product_name">生肖中</span> 投注
                             <span id="w_fast" class="w_fast">
         金額：
-    <input type="text" id="w_fast_input" maxlength="9" autocomplete="off" disabled="disabled"/>
-    <input type="radio" id="jiaqin" name="w_fast" value="jiaqin" disabled="disabled"/><label for="jiaqin">家禽</label>
-    <input type="radio" id="yeshou" name="w_fast" value="yeshou" disabled="disabled"/><label for="yeshou">野獸</label>
+    <input type="text" id="w_fast_input" maxlength="9" autocomplete="off" />
+    <input type="radio" id="jiaqin" name="w_fast" value="jiaqin" /><label for="jiaqin">家禽</label>
+    <input type="radio" id="yeshou" name="w_fast" value="yeshou" /><label for="yeshou">野獸</label>
     </span>
                         </h2>
                             <input type="button" class="shengxiao_switch shengxiao_switch_zhong" value="生肖中" disabled/>
@@ -63,80 +63,80 @@
                                     <tr>
                                         <td class="bg">鼠</td>
                                         <td><strong>${shengxiao.鼠}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01401" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01401)!''}</td>
+                                        <td><input name="pro_01401" type="text" />
                                         </td>
                                         <td class="bg">牛</td>
                                         <td><strong>${shengxiao.牛}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01402" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01402)!''}</td>
+                                        <td><input name="pro_01402"  type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">虎</td>
                                         <td><strong>${shengxiao.虎}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01403" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01403)!''}</td>
+                                        <td><input name="pro_01403" type="text" />
                                         </td>
                                         <td class="bg">兔</td>
                                         <td><strong>${shengxiao.兔}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01404" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01404)!''}</td>
+                                        <td><input name="pro_01404" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">龍</td>
                                         <td><strong>${shengxiao.龍}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01405" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01405)!''}</td>
+                                        <td><input name="pro_01405" type="text" />
                                         </td>
                                         <td class="bg">蛇</td>
                                         <td><strong>${shengxiao.蛇}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01406" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01406)!''}</td>
+                                        <td><input name="pro_01406" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">馬</td>
                                         <td><strong>${shengxiao.馬}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01407" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01407)!''}</td>
+                                        <td><input name="pro_01407" type="text" />
                                         </td>
                                         <td class="bg">羊</td>
                                         <td><strong>${shengxiao.羊}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01408" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01408)!''}</td>
+                                        <td><input name="pro_01408" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">猴</td>
                                         <td><strong>${shengxiao.猴}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01409" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01409)!''}</td>
+                                        <td><input name="pro_01409" type="text" />
                                         </td>
                                         <td class="bg">雞</td>
                                         <td><strong>${shengxiao.雞}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01410" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01410)!''}</td>
+                                        <td><input name="pro_01410" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">狗</td>
                                         <td><strong>${shengxiao.狗}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01411" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01411)!''}</td>
+                                        <td><input name="pro_01411" type="text" />
                                         </td>
                                         <td class="bg">豬</td>
                                         <td><strong>${shengxiao.豬}</strong></td>
-                                        <td></td>
-                                        <td><input name="pro_01412" type="text" disabled="disabled"/>
+                                        <td>${(entity.pro_01412)!''}</td>
+                                        <td><input name="pro_01412" type="text" />
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds" disabled="disabled" value="訂 單"/>
-                                    <input type="reset" class="btn2 bds" disabled="disabled" value="重 設"/>
+                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
+                                    <input type="reset" class="btn2 bds"  value="重 設"/>
                                 </div>
 
                             </form>

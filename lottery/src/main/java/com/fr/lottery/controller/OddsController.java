@@ -90,6 +90,13 @@ public class OddsController {
     @RequestMapping("/guoguan")
     public ModelAndView guoguan(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/guoguan");
+        String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map = new HashedMap();
+        for(Odds odds : oddsList){
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/lianma")

@@ -1,8 +1,20 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.entity.Odds;
+import com.fr.lottery.entity.ShengXiao;
+import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.service.inter.IShengxiaoService;
+import com.fr.lottery.utils.StringUtil;
+import org.apache.commons.collections.map.HashedMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/6/21.
@@ -11,6 +23,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/plays")
 public class PlaysController {
 
+    @Autowired
+    private IOddsService oddsService;
+
+    @Autowired
+    private IShengxiaoService shengxiaoService;
     @RequestMapping("/tema")
     public ModelAndView tema() {
         ModelAndView mv = new ModelAndView("/plays/tema");
@@ -68,12 +85,37 @@ public class PlaysController {
     @RequestMapping("/guoguan")
     public ModelAndView guoguan() {
         ModelAndView mv = new ModelAndView("/plays/guoguan");
+        String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map = new HashedMap();
+        for(Odds odds : oddsList){
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map);
         return mv;
     }
 
     @RequestMapping("/shengxiao")
     public ModelAndView shengxiao() {
         ModelAndView mv = new ModelAndView("/plays/shengxiao");
+        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
+        Map<String,String> map = new HashMap<String, String>();
+        for(ShengXiao shengXiao :shengXiaos){
+            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                strr+=","+shengXiao.getNo5();
+            }
+            map.put(shengXiao.getName(),strr);
+        }
+        mv.addObject("shengxiao", map);
+
+        String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map1);
         return mv;
     }
 
