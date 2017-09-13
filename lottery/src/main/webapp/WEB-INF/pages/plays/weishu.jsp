@@ -51,52 +51,52 @@
                                     <tr>
                                         <td class="bg">0尾</td>
                                         <td class="bold">10,20,30,40</td>
-                                        <td></td>
-                                        <td><input name="01500" type="text" /></td>
+                                        <td>${(entity.pro_01500)!''}</td>
+                                        <td><input name="pro_01500" type="text" value="" /></td>
                                         <td class="bg">1尾</td>
                                         <td class="bold">1,11,21,31,41</td>
-                                        <td></td>
-                                        <td><input name="01501" type="text" /></td>
+                                        <td>${(entity.pro_01501)!''}</td>
+                                        <td><input name="pro_01501" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">2尾</td>
                                         <td class="bold">2,12,22,32,42</td>
-                                        <td></td>
-                                        <td><input name="01502" type="text" /></td>
+                                        <td>${(entity.pro_01502)!''}</td>
+                                        <td><input name="pro_01502" type="text" /></td>
                                         <td class="bg">3尾</td>
                                         <td class="bold">3,13,23,33,43</td>
-                                        <td></td>
-                                        <td><input name="01503" type="text" /></td>
+                                        <td>${(entity.pro_01503)!''}</td>
+                                        <td><input name="pro_01503" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">4尾</td>
                                         <td class="bold">4,14,24,34,44</td>
-                                        <td></td>
-                                        <td><input name="01504" type="text" /></td>
+                                        <td>${(entity.pro_01504)!''}</td>
+                                        <td><input name="pro_01504" type="text" /></td>
                                         <td class="bg">5尾</td>
                                         <td class="bold">5,15,25,35,45</td>
-                                        <td></td>
-                                        <td><input name="01505" type="text" /></td>
+                                        <td>${(entity.pro_01505)!''}</td>
+                                        <td><input name="pro_01505" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">6尾</td>
                                         <td class="bold">6,16,26,36,46</td>
-                                        <td></td>
-                                        <td><input name="01506" type="text" /></td>
+                                        <td>${(entity.pro_01506)!''}</td>
+                                        <td><input name="pro_01506" type="text" /></td>
                                         <td class="bg">7尾</td>
                                         <td class="bold">7,17,27,37,47</td>
-                                        <td></td>
-                                        <td><input name="01507" type="text" /></td>
+                                        <td>${(entity.pro_01507)!''}</td>
+                                        <td><input name="pro_01507" type="text" /></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">8尾</td>
                                         <td class="bold">8,18,28,38,48</td>
-                                        <td></td>
-                                        <td><input name="01508" type="text" /></td>
+                                        <td>${(entity.pro_01508)!''}</td>
+                                        <td><input name="pro_01508" type="text" /></td>
                                         <td class="bg">9尾</td>
                                         <td class="bold">9,19,29,39,49</td>
-                                        <td></td>
-                                        <td><input name="01509" type="text" /></td>
+                                        <td>${(entity.pro_01509)!''}</td>
+                                        <td><input name="pro_01509" type="text" /></td>
                                     </tr>
                                     </tbody></table>
                                 <div class="g-tn">

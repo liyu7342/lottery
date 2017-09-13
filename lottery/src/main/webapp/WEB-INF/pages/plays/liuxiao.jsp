@@ -27,8 +27,8 @@
                         <input type="hidden" id="cps_time" value="20170621181310"/>
                         <div class="hd"><h2 class="g-tit"><span id="product_name" class="w_fast">六肖</span> 投注
       <span class="w_fast">
-    <input type="radio" id="jiaqin" name="w_fast" value="jiaqin"   disabled="disabled" /><label for="jiaqin">家禽</label>
-    <input type="radio" id="yeshou" name="w_fast" value="yeshou"  disabled="disabled" /><label for="yeshou">野獸</label>
+    <input type="radio" id="jiaqin" name="w_fast" value="jiaqin"    /><label for="jiaqin">家禽</label>
+    <input type="radio" id="yeshou" name="w_fast" value="yeshou"   /><label for="yeshou">野獸</label>
     </span>
                         </h2>
                         </div>
@@ -44,23 +44,23 @@
                                         <td class="r">選擇</td>
                                     </tr></thead>
                                     <tbody>
-                                    <tr><td class="bg">鼠</td><td><strong>10,22,34,46</strong></td><th><input type="checkbox"  disabled="disabled" value="01"/></th><td class="bg">牛</td><td><strong>09,21,33,45</strong></td><th><input type="checkbox"  disabled="disabled" value="02"/></th></tr>
-                                    <tr><td class="bg">虎</td><td><strong>08,20,32,44</strong></td><th><input type="checkbox"  disabled="disabled" value="03"/></th><td class="bg">兔</td><td><strong>07,19,31,43</strong></td><th><input type="checkbox"  disabled="disabled" value="04"/></th></tr>
-                                    <tr><td class="bg">龍</td><td><strong>06,18,30,42</strong></td><th><input type="checkbox"  disabled="disabled" value="05"/></th><td class="bg">蛇</td><td><strong>05,17,29,41</strong></td><th><input type="checkbox"  disabled="disabled" value="06"/></th></tr>
-                                    <tr><td class="bg">馬</td><td><strong>04,16,28,40</strong></td><th><input type="checkbox"  disabled="disabled" value="07"/></th><td class="bg">羊</td><td><strong>03,15,27,39</strong></td><th><input type="checkbox"  disabled="disabled" value="08"/></th></tr>
-                                    <tr><td class="bg">猴</td><td><strong>02,14,26,38</strong></td><th><input type="checkbox"  disabled="disabled" value="09"/></th><td class="bg">雞</td><td><strong>01,13,25,37</strong></td><th><input type="checkbox"  disabled="disabled" value="10"/></th></tr>
-                                    <tr><td class="bg">狗</td><td><strong>12,24,36,48</strong></td><th><input type="checkbox"  disabled="disabled" value="11"/></th><td class="bg">豬</td><td><strong>11,23,35,47</strong></td><th><input type="checkbox"  disabled="disabled" value="12"/></th></tr>
+                                    <tr><td class="bg">鼠</td><td><strong>10,22,34,46</strong></td><th><input type="checkbox"   value="01"/></th><td class="bg">牛</td><td><strong>09,21,33,45</strong></td><th><input type="checkbox"   value="02"/></th></tr>
+                                    <tr><td class="bg">虎</td><td><strong>08,20,32,44</strong></td><th><input type="checkbox"   value="03"/></th><td class="bg">兔</td><td><strong>07,19,31,43</strong></td><th><input type="checkbox"   value="04"/></th></tr>
+                                    <tr><td class="bg">龍</td><td><strong>06,18,30,42</strong></td><th><input type="checkbox"   value="05"/></th><td class="bg">蛇</td><td><strong>05,17,29,41</strong></td><th><input type="checkbox"   value="06"/></th></tr>
+                                    <tr><td class="bg">馬</td><td><strong>04,16,28,40</strong></td><th><input type="checkbox"   value="07"/></th><td class="bg">羊</td><td><strong>03,15,27,39</strong></td><th><input type="checkbox"   value="08"/></th></tr>
+                                    <tr><td class="bg">猴</td><td><strong>02,14,26,38</strong></td><th><input type="checkbox"   value="09"/></th><td class="bg">雞</td><td><strong>01,13,25,37</strong></td><th><input type="checkbox"   value="10"/></th></tr>
+                                    <tr><td class="bg">狗</td><td><strong>12,24,36,48</strong></td><th><input type="checkbox"   value="11"/></th><td class="bg">豬</td><td><strong>11,23,35,47</strong></td><th><input type="checkbox"   value="12"/></th></tr>
                                     </tbody></table>
                                 <table id="sub_tab" class="g-t1">
                                     <tr>
                                         <td id="pro_odds" class="bg">賠率</td><td id="01701"></td>
-                                        <th  colspan="4"><label><input type="radio" name="achk" value="liuxiaozh" checked="checked"  disabled="disabled"/>中</label>&nbsp;
-                                            <label><input type="radio" name="achk" value="liuxiaobuzh"  disabled="disabled"/>不中</label>；
-                                            &nbsp;金額：<input type="text" class="tx dis" disabled="disabled" name="amount" id="sum" /></th></tr>
+                                        <th  colspan="4"><label><input type="radio" name="achk" value="liuxiaozh" checked="checked"  />中</label>&nbsp;
+                                            <label><input type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
+                                            &nbsp;金額：<input type="text" class="tx dis"  name="amount" id="sum" /></th></tr>
                                 </table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds" disabled="disabled" value="訂 單"/>
-                                    <input type="reset" class="btn2 bds" disabled="disabled" value="重 設"/>
+                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
+                                    <input type="reset" class="btn2 bds"  value="重 設"/>
                                 </div>
 
                             </form>

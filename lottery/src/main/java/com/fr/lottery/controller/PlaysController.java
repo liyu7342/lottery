@@ -122,12 +122,26 @@ public class PlaysController {
     @RequestMapping("/weishu")
     public ModelAndView weishu() {
         ModelAndView mv = new ModelAndView("/plays/weishu");
+        String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map1);
         return mv;
     }
 
     @RequestMapping("/banbo")
     public ModelAndView banbo() {
         ModelAndView mv = new ModelAndView("/plays/banbo");
+        String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map1);
         return mv;
     }
 

@@ -75,7 +75,7 @@ public class OrderService implements IOrderService {
              detail.setNo(details[1]);
              detail.setWinAmount(2f);
              detail.setRetreat(1f);
-             detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
+            // detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
              detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());

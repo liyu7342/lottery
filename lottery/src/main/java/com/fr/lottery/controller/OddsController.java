@@ -148,6 +148,14 @@ public class OddsController {
     @RequestMapping("/weishu")
     public ModelAndView weishu(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/weishu");
+        String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        modelAndView.addObject("entity",map1);
+
         return modelAndView;
     }
     @RequestMapping("/weishulian")
