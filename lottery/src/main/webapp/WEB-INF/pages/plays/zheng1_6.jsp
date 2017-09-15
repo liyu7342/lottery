@@ -43,75 +43,75 @@
                                     <tbody pro="021">
                                     <tr>
                                         <td class="bg"><strong>正一</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_021101" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_021102" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_021103" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_021104" type="text"/></td>
+                                        <td> ${(entity.pro_021101)!''}</td>
+                                        <td><input    name="pro_021101" type="text"/></td>
+                                        <td>${(entity.pro_021102)!''}</td>
+                                        <td><input    name="pro_021102" type="text"/></td>
+                                        <td>${(entity.pro_021103)!''}</td>
+                                        <td><input    name="pro_021103" type="text"/></td>
+                                        <td>${(entity.pro_021104)!''}</td>
+                                        <td><input    name="pro_021104" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正二</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_022201" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_022202" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_022203" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_022204" type="text"/></td>
+                                        <td>${(entity.pro_022201)!''}</td>
+                                        <td><input    name="pro_022201" type="text"/></td>
+                                        <td>${(entity.pro_022202)!''}</td>
+                                        <td><input    name="pro_022202" type="text"/></td>
+                                        <td>${(entity.pro_022203)!''}</td>
+                                        <td><input    name="pro_022203" type="text"/></td>
+                                        <td>${(entity.pro_022204)!''}</td>
+                                        <td><input    name="pro_022204" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正三</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_023301" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_023302" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_023303" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_023304" type="text"/></td>
+                                        <td>${(entity.pro_023301)!''}</td>
+                                        <td><input    name="pro_023301" type="text"/></td>
+                                        <td>${(entity.pro_023302)!''}</td>
+                                        <td><input    name="pro_023302" type="text"/></td>
+                                        <td>${(entity.pro_023303)!''}</td>
+                                        <td><input    name="pro_023303" type="text"/></td>
+                                        <td>${(entity.pro_023304)!''}</td>
+                                        <td><input    name="pro_023304" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正四</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_024401" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_024402" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_024403" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_024404" type="text"/></td>
+                                        <td>${(entity.pro_024401)!''}</td>
+                                        <td><input    name="pro_024401" type="text"/></td>
+                                        <td>${(entity.pro_024402)!''}</td>
+                                        <td><input    name="pro_024402" type="text"/></td>
+                                        <td>${(entity.pro_024403)!''}</td>
+                                        <td><input    name="pro_024403" type="text"/></td>
+                                        <td>${(entity.pro_024404)!''}</td>
+                                        <td><input    name="pro_024404" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正五</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_025501" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_025502" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_025503" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_025504" type="text"/></td>
+                                        <td>${(entity.pro_025501)!''}</td>
+                                        <td><input    name="pro_025501" type="text"/></td>
+                                        <td>${(entity.pro_025502)!''}</td>
+                                        <td><input    name="pro_025502" type="text"/></td>
+                                        <td>${(entity.pro_025503)!''}</td>
+                                        <td><input    name="pro_025503" type="text"/></td>
+                                        <td>${(entity.pro_025504)!''}</td>
+                                        <td><input    name="pro_025504" type="text"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>正六</strong></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_026601" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_026602" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_026603" type="text"/></td>
-                                        <td></td>
-                                        <td><input disabled="disabled"   name="pro_026604" type="text"/></td>
+                                        <td>${(entity.pro_026601)!''}</td>
+                                        <td><input    name="pro_026601" type="text"/></td>
+                                        <td>${(entity.pro_026602)!''}</td>
+                                        <td><input    name="pro_026602" type="text"/></td>
+                                        <td>${(entity.pro_026603)!''}</td>
+                                        <td><input    name="pro_026603" type="text"/></td>
+                                        <td>${(entity.pro_026604)!''}</td>
+                                        <td><input    name="pro_026604" type="text"/></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds" disabled="disabled " value="訂 單" />
-                                    <input type="reset" class="btn2 bds" disabled="disabled " value="重 設" />
+                                    <input type="submit" class="btn2 bds"  value="訂 單" />
+                                    <input type="reset" class="btn2 bds"  value="重 設" />
 
                                 </div>
                             </form>
