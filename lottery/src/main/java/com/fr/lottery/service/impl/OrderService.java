@@ -2,8 +2,12 @@ package com.fr.lottery.service.impl;
 
 import com.fr.lottery.dao.OrderDetailMapper;
 import com.fr.lottery.dao.OrdersMapper;
+import com.fr.lottery.dao.StatisMapper;
 import com.fr.lottery.dto.OrderDto;
+import com.fr.lottery.dto.StatisDto;
+import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.*;
+import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
@@ -36,6 +40,9 @@ public class OrderService implements IOrderService {
     private ILimitSetService limitSetService;
     @Autowired
     private IHandicapService handicapService;
+
+    @Autowired
+    private StatisMapper statisMapper;
 
     public List<Orders> getOrderList(String userId){
         return new ArrayList<Orders>();
@@ -75,7 +82,27 @@ public class OrderService implements IOrderService {
              detail.setNo(details[1]);
              detail.setWinAmount(2f);
              detail.setRetreat(1f);
-            // detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
+             if(details[1].contains(",")){
+                 String[] nos = details[1].split(",");
+                 detail.setDescription("");
+                 int i=0;
+                 for(String no :nos){
+                     if(Global.lotConfigDic.containsKey(details[0]+no)){
+                         if(i==0){
+                             detail.setDescription( Global.lotConfigDic.get(details[0]+no).getGameDesc());
+                         }else{
+                             detail.setDescription(detail.getDescription()+","+ Global.lotConfigDic.get(details[0]+no).getGameNumDesc());
+                         }
+                         i++;
+                     }
+                 }
+
+             }else {
+                 if(Global.lotConfigDic.containsKey(details[0]+details[1])){
+                     detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
+                 }
+             }
+
              detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());
@@ -110,5 +137,17 @@ public class OrderService implements IOrderService {
        if(handicap==null || handicap.getStatus()>= HandicapStatusEnum.Closed.ordinal())
            return new ArrayList<OrderDetail>();
        return orderDetailMapper.getOrderDetails(handicap.getId(),UserHelper.getCurrentUser().getId());
+    }
+
+    @Override
+    public List<UserHistoryDto> getOrderHistory() {
+        String userId =UserHelper.getCurrentUser().getId();
+        return orderDetailMapper.getOrderHistory("",userId);
+    }
+
+    @Override
+    public List<StatisDto> getStatis(String gameType) {
+        Handicap handicap = handicapService.getCurrentHandicap();
+        return statisMapper.getStatis(gameType,handicap.getId());
     }
 }

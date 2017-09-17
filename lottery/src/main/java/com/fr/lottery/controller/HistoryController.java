@@ -1,5 +1,6 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.service.inter.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class HistoryController {
     @RequestMapping("/index")
     public ModelAndView history() {
         ModelAndView mv = new ModelAndView("/history/index");
-        List<OrderDetail> orderDetailList= orderService.getOrderDetails();
-        mv.addObject("orderList",orderDetailList);
+        List<UserHistoryDto> historyDtos= orderService.getOrderHistory();
+        mv.addObject("histories",historyDtos);
         return mv;
     }
 

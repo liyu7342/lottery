@@ -33,14 +33,13 @@
                                     <td class="r">結果</td>
                                 </tr></thead>
                                 <tbody movod='movod'>
-                                <#list orderList as obj>
+                                <#list histories as obj>
                                 <tr>
-                                    <td> ${obj.createdate?string("yyyy-MM-dd")}
-                                    &nbsp;&nbsp;&nbsp; ${(obj.description)!''}
+                                    <td> ${obj.historyDate!''}
                                     </td>
-                                    <td>${(obj.amout)!''} X ${(obj.odds)!''}</td>
-                                    <td>${(obj.amout)!''}</td>
-                                    <td></td>
+                                    <td>${(obj.orderNum)!''}</td>
+                                    <td>${(obj.amount)!''}</td>
+                                    <td>${(obj.winAmount)!''}</td>
                                 </tr>
                                 </#list>
                                 </tbody>

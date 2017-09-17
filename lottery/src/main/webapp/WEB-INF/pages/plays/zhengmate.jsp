@@ -249,24 +249,24 @@
                             <tbody><tr pro="021">
                                 <td class="borderRightNone"><strong>單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text" name="pro_021101"/></td>
+                                <td class="borderLeftNone"><input type="text" name="pro_02101"/></td>
                                 <td class="borderRightNone"><strong>大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"  name="pro_021103"/></td>
+                                <td class="borderLeftNone"><input type="text"  name="pro_02103"/></td>
                                 <td class="borderRightNone"><strong>合單</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"  name="pro_021105"/></td>
+                                <td class="borderLeftNone"><input type="text"  name="pro_02105"/></td>
                             </tr>
                             <tr pro="021">
                                 <td class="borderRightNone"><strong>雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"  name="pro_021102"/></td>
+                                <td class="borderLeftNone"><input type="text"  name="pro_02102"/></td>
                                 <td class="borderRightNone"><strong>小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"  name="pro_021104"/></td>
+                                <td class="borderLeftNone"><input type="text"  name="pro_02104"/></td>
                                 <td class="borderRightNone"><strong>合雙</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input type="text"  name="pro_021106"/></td>
+                                <td class="borderLeftNone"><input type="text"  name="pro_02106"/></td>
                             </tr>
                             <tr pro="028">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>

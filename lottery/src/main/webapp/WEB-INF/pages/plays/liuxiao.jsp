@@ -44,16 +44,16 @@
                                         <td class="r">選擇</td>
                                     </tr></thead>
                                     <tbody>
-                                    <tr><td class="bg">鼠</td><td><strong>10,22,34,46</strong></td><th><input type="checkbox"   value="01"/></th><td class="bg">牛</td><td><strong>09,21,33,45</strong></td><th><input type="checkbox"   value="02"/></th></tr>
-                                    <tr><td class="bg">虎</td><td><strong>08,20,32,44</strong></td><th><input type="checkbox"   value="03"/></th><td class="bg">兔</td><td><strong>07,19,31,43</strong></td><th><input type="checkbox"   value="04"/></th></tr>
-                                    <tr><td class="bg">龍</td><td><strong>06,18,30,42</strong></td><th><input type="checkbox"   value="05"/></th><td class="bg">蛇</td><td><strong>05,17,29,41</strong></td><th><input type="checkbox"   value="06"/></th></tr>
-                                    <tr><td class="bg">馬</td><td><strong>04,16,28,40</strong></td><th><input type="checkbox"   value="07"/></th><td class="bg">羊</td><td><strong>03,15,27,39</strong></td><th><input type="checkbox"   value="08"/></th></tr>
-                                    <tr><td class="bg">猴</td><td><strong>02,14,26,38</strong></td><th><input type="checkbox"   value="09"/></th><td class="bg">雞</td><td><strong>01,13,25,37</strong></td><th><input type="checkbox"   value="10"/></th></tr>
-                                    <tr><td class="bg">狗</td><td><strong>12,24,36,48</strong></td><th><input type="checkbox"   value="11"/></th><td class="bg">豬</td><td><strong>11,23,35,47</strong></td><th><input type="checkbox"   value="12"/></th></tr>
+                                    <tr><td class="bg">鼠</td><td><strong>${(shengxiao.鼠)!''}</strong></td><th><input type="checkbox"   value="01"/></th><td class="bg">牛</td><td><strong>${(shengxiao.牛)!''}</strong></td><th><input type="checkbox"   value="02"/></th></tr>
+                                    <tr><td class="bg">虎</td><td><strong>${(shengxiao.虎)!''}</strong></td><th><input type="checkbox"   value="03"/></th><td class="bg">兔</td><td><strong>${(shengxiao.兔)!''}</strong></td><th><input type="checkbox"   value="04"/></th></tr>
+                                    <tr><td class="bg">龍</td><td><strong>${(shengxiao.龍)!''}</strong></td><th><input type="checkbox"   value="05"/></th><td class="bg">蛇</td><td><strong>${(shengxiao.蛇)!''}</strong></td><th><input type="checkbox"   value="06"/></th></tr>
+                                    <tr><td class="bg">馬</td><td><strong>${(shengxiao.馬)!''}</strong></td><th><input type="checkbox"   value="07"/></th><td class="bg">羊</td><td><strong>${(shengxiao.羊)!''}</strong></td><th><input type="checkbox"   value="08"/></th></tr>
+                                    <tr><td class="bg">猴</td><td><strong>${(shengxiao.猴)!''}</strong></td><th><input type="checkbox"   value="09"/></th><td class="bg">雞</td><td><strong>${(shengxiao.雞)!''}</strong></td><th><input type="checkbox"   value="10"/></th></tr>
+                                    <tr><td class="bg">狗</td><td><strong>${(shengxiao.狗)!''}</strong></td><th><input type="checkbox"   value="11"/></th><td class="bg">豬</td><td><strong>${(shengxiao.豬)!''}</strong></td><th><input type="checkbox"   value="12"/></th></tr>
                                     </tbody></table>
                                 <table id="sub_tab" class="g-t1">
                                     <tr>
-                                        <td id="pro_odds" class="bg">賠率</td><td id="01701"></td>
+                                        <td id="pro_odds" class="bg">賠率</td><td id="01701">${(entity.pro_01701)!''}</td>
                                         <th  colspan="4"><label><input type="radio" name="achk" value="liuxiaozh" checked="checked"  />中</label>&nbsp;
                                             <label><input type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
                                             &nbsp;金額：<input type="text" class="tx dis"  name="amount" id="sum" /></th></tr>

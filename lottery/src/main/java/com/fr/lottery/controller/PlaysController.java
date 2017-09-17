@@ -148,12 +148,46 @@ public class PlaysController {
     @RequestMapping("/liuxiao")
     public ModelAndView liuxiao() {
         ModelAndView mv = new ModelAndView("/plays/liuxiao");
+        String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map1);
+        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
+        Map<String,String> map = new HashMap<String, String>();
+        for(ShengXiao shengXiao :shengXiaos){
+            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                strr+=","+shengXiao.getNo5();
+            }
+            map.put(shengXiao.getName(),strr);
+        }
+         mv.addObject("shengxiao",map);
         return mv;
     }
 
     @RequestMapping("/texiao")
     public ModelAndView texiao() {
         ModelAndView mv = new ModelAndView("/plays/texiao");
+        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
+        Map<String,String> map = new HashMap<String, String>();
+        for(ShengXiao shengXiao :shengXiaos){
+            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                strr+=","+shengXiao.getNo5();
+            }
+            map.put(shengXiao.getName(),strr);
+        }
+        mv.addObject("shengxiao", map);
+        String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map1 = new HashedMap();
+        for(Odds odds : oddsList){
+            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map1);
         return mv;
     }
 

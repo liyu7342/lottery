@@ -26,10 +26,10 @@
                     <div id="shoufutongji" class="module">
                         <div class="hd">
                             <table class="g-jft"><tbody nomovod><tr id="total_plays">
-                                <td id="00" class="on sp wide"><a href="/statis/statis?category_id=00"><span>特碼</span><br/><sup title="總佔成收入">0</sup></a></td>
+                                <td id="00" class="sp wide"><a href="/statis/statis?category_id=00"><span>特碼</span><br/><sup title="總佔成收入">0</sup></a></td>
                                 <td id="01" class="sp"><a href="/statis/tjzhengma?category_id=01"><span>正碼</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="02"  class="sp wide"><a href="/statis/tjzhengmate?category_id=02&game_id=002"><span>正特</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="03" class="sp"><a href="/statis/tjlianma?category_id=03|04"><span>連碼</span><sup title="總佔成收入">0</sup></a></td>
+                                <td id="03" class="on sp"><a href="/statis/tjlianma?category_id=03|04"><span>連碼</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="05" class="sp"><a href="/statis/guoguan?category_id=05"><span>過關</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="06"  class="sp wide"><a href="/statis/shengxiao?category_id=06&game_id=014"><span>生肖</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="07" class="sp"><a href="/statis/weishu?category_id=07"><span>尾數</span><sup title="總佔成收入">0</sup></a></td>
@@ -104,21 +104,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <#list orderDetails as detail>
-                                <tr>
-                                    <td>${detail_index+1!''}</td>
-                                    <td>${detail.description!''}</td>
-                                    <td>${detail.orderNum!''}</td>
-
-                                    <td>${detail.amount!''}</td>
-                                    <td></td>
-                                    <td>${detail.aveOdds!''}</td>
-                                    <td>${detail.winAmount!''}</td>
-                                    <td>${detail.buhuo!''}</td>
-                                    <td>${detail.odds!''}</td>
-                                </tr>
-                            </#list>
-                            <tr></tr>
                             </tbody>
                             <tfoot><tr>
                                 <td></td>

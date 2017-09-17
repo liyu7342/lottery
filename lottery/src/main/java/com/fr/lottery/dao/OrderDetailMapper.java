@@ -1,5 +1,6 @@
 package com.fr.lottery.dao;
 
+import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.OrderDetail;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,8 @@ public interface OrderDetailMapper {
     List<OrderDetail> selectByExample(@Param("orderId") String orderId);
 
     List<OrderDetail> getOrderDetails(@Param("handicapId") String handicapId,@Param("userid") String userId);
+
+    List<UserHistoryDto> getOrderHistory(@Param("handicapId") String handicapId,@Param("userid") String userId);
 
     OrderDetail selectByPrimaryKey(String id);
 

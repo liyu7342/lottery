@@ -123,7 +123,13 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiao");
         List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
         Map<String,String> map = new HashMap<String, String>();
-        for(ShengXiao shengXiao :shengXiaos)
+        for(ShengXiao shengXiao :shengXiaos){
+            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                strr+=","+shengXiao.getNo5();
+            }
+            map.put(shengXiao.getName(),strr);
+        }
         modelAndView.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
         List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
