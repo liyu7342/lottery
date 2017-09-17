@@ -9494,6 +9494,7 @@ var PlaysGroup = function(f) {
             }
         );
         this.refreshCtl = $("#form_mark input,#w_fast_input")
+        //this.act&&this.ath();
     }
     ;
 PlaysGroup.prototype.init = function() {
@@ -9512,7 +9513,7 @@ PlaysGroup.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(g) {
+                $.getJSON("/odds/getOdds?game_ids=" + f.game_ids+"&isDefault=false" + "&odds_set=" + this.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(g) {
                             $.refersh(g);
                             if (g.header.popup) {
                                 window.parent.header.notice_popup("one")

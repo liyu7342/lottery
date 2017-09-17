@@ -73,6 +73,14 @@ public class PlaysController {
     @RequestMapping("/zheng1_6")
     public ModelAndView zheng1_6() {
         ModelAndView mv = new ModelAndView("/plays/zheng1_6");
+        String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
+                OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
+        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
+        Map<String,Float> map = new HashedMap();
+        for(Odds odds : oddsList){
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        mv.addObject("entity",map);
         return mv;
     }
 
