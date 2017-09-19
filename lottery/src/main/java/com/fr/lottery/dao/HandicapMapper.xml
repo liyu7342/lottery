@@ -63,7 +63,7 @@
   <select id="getCurrentHandicaps" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"></include>
     FROM  handicap
-    WHERE Status in (0,1)
+    WHERE Status in (0,1) limit 1
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from handicap

@@ -21,12 +21,6 @@ public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent context) {
-
         context.getServletContext().setAttribute("JSVersion", StringUtil.getVersion());
-        if(Global.lotConfigDic.size()==0){
-            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
-            for(LotConfig lotConfig: lotConfigs)
-                Global.lotConfigDic.put(lotConfig.getGameNo(),lotConfig);
-        }
     }
 }

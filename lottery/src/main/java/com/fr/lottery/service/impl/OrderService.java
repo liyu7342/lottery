@@ -9,6 +9,7 @@ import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
+import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.ILimitSetService;
@@ -80,8 +81,11 @@ public class OrderService implements IOrderService {
              detail.setAmout(Long.parseLong( details[3]));
              detail.setOdds(details[2]);
              detail.setNo(details[1]);
-             detail.setWinAmount(2f);
-             detail.setRetreat(1f);
+            String category= GameCfg.getGameCategory(details[0]);
+            if(map.containsKey(category)){
+                detail.setRetreat(map.get(category));
+            }
+
              if(details[1].contains(",")){
                  String[] nos = details[1].split(",");
                  detail.setDescription("");
@@ -102,10 +106,10 @@ public class OrderService implements IOrderService {
                      detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
                  }
              }
-
              detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());
+             detail.setWinAmount(detail.getAmout() * (Float.parseFloat( detail.getOdds())-1));
              orderDetailMapper.insert(detail);
          }
         return true;

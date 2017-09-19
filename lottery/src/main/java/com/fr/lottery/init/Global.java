@@ -6,6 +6,7 @@ package com.fr.lottery.init;
 
 
 import com.fr.lottery.entity.LotConfig;
+import com.fr.lottery.utils.LotConfigHelper;
 import org.apache.commons.collections.map.HashedMap;
 
 import java.util.*;
@@ -60,11 +61,11 @@ public class Global {
 
     public static final Map<String,LotConfig> lotConfigDic =new HashMap<String, LotConfig>();
 
-    public static final  Map<String,List<String>> cfg_category_key =new HashMap<String, List<String>>();
 
     static {
-      cfg_category_key.put("00", Arrays.asList("000","019","027"));//特码
-        cfg_category_key.put("01",Arrays.asList("","",""));
+        List<LotConfig> lotConfigs= LotConfigHelper.findAll();
+        for(LotConfig lotConfig: lotConfigs)
+            Global.lotConfigDic.put(lotConfig.getGameNo(),lotConfig);
     };
 
 }
