@@ -20,7 +20,6 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
     public MyInterceptor() {
         super();
     }
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         beginTime = new Date().getTime();//请求开始时间
@@ -30,12 +29,13 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         if (request_Url.matches(reg)) {
             return true;
         }
-//        User user = UserHelper.getCurrentUser();
-//        if(user ==null){
-//            request.getRequestDispatcher("/home/login").forward(request, response);
-//            return false;
-//        }
-//        request.setAttribute("user", user);
+        User user = UserHelper.getCurrentUser();
+        String rquestUrl = request.getRequestURI().replace(request.getContextPath(), "");
+        if(user ==null){
+            request.getRequestDispatcher("/home/default").forward(request, response);
+            return false;
+        }
+        //request.setAttribute("user", user);
         return super.preHandle(request, response, handler);
     }
 

@@ -10,12 +10,14 @@
     <result column="no" jdbcType="VARCHAR" property="no" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="odds" jdbcType="DECIMAL" property="odds" />
-    <result column="amout" jdbcType="INTEGER" property="amout" />
+    <result column="retreat" jdbcType="DECIMAL" property="retreat"/>
+    <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
+    <result column="amount" jdbcType="INTEGER" property="amount" />
     <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    Id, orderId, userId,handicapId, gameType, `no`,description, odds, amout, createdate,status
+    Id, orderId, userId,handicapId, gameType, `no`,description, odds, amount,retreat,winAmount, createdate,status
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -36,10 +38,10 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,
-      gameType, no,description, odds,amout, createdate)
+      gameType, no,description, odds,amount,retreat,winAmount, createdate)
     values (#{id,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
-      #{amout,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP})
+      #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail
@@ -55,7 +57,9 @@
       description= #{description,jdbcType=VARCHAR},
       no = #{no,jdbcType=VARCHAR},
       odds = #{odds,jdbcType=DECIMAL},
-      amout = #{amout,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      retreat = #{retreat,jdbcType=DECIMAL},
+      winAmount=#{winAmount,jdbcType=DECIMAL},
       createdate = #{createdate,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
@@ -83,7 +87,7 @@
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-      SELECT userid,QiShu historyDate,COUNT(1) orderNum,sum(amout) amount,0 as winAmount
+      SELECT userid,QiShu historyDate,COUNT(1) orderNum,sum(amount) amount,0 as winAmount
       FROM orderdetail
       INNER  JOIN Handicap on orderdetail.handicapId= Handicap.Id
       <where>

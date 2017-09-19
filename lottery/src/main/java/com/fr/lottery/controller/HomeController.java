@@ -73,6 +73,16 @@ public class HomeController  {
      * 会员首页
      * @return
      */
+    @RequestMapping("/default")
+    public ModelAndView getdefault() {
+        ModelAndView mv = new ModelAndView("default");
+        return mv;
+    }
+
+    /**
+     * 会员首页
+     * @return
+     */
     @RequestMapping("/index3")
     public ModelAndView index3() {
 

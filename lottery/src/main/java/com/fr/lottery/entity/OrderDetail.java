@@ -19,7 +19,7 @@ public class OrderDetail {
 
     private String  odds;
 
-    private Long amout;
+    private Long amount;
 
     private Date createdate;
 
@@ -75,12 +75,12 @@ public class OrderDetail {
         this.odds = odds;
     }
 
-    public Long getAmout() {
-        return amout;
+    public Long getAmount() {
+        return amount;
     }
 
-    public void setAmout(Long amout) {
-        this.amout = amout;
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public Date getCreatedate() {

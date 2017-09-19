@@ -78,13 +78,13 @@ public class OrderService implements IOrderService {
              detail.setId(StringUtil.getUUID());
              detail.setCreatedate(new Date());
              detail.setUserid(user.getId());
-             detail.setAmout(Long.parseLong( details[3]));
+             detail.setAmount(Long.parseLong( details[3]));
              detail.setOdds(details[2]);
              detail.setNo(details[1]);
-            String category= GameCfg.getGameCategory(details[0]);
-            if(map.containsKey(category)){
-                detail.setRetreat(map.get(category));
-            }
+             String category= GameCfg.getGameCategory(details[0]);
+             if(map.containsKey(category)){
+                 detail.setRetreat(map.get(category));
+             }
 
              if(details[1].contains(",")){
                  String[] nos = details[1].split(",");
@@ -106,10 +106,9 @@ public class OrderService implements IOrderService {
                      detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
                  }
              }
-             detail.setRetreat(map.get(detail.getGametype()));
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());
-             detail.setWinAmount(detail.getAmout() * (Float.parseFloat( detail.getOdds())-1));
+             detail.setWinAmount(detail.getAmount() * (Float.parseFloat( detail.getOdds())-1));
              orderDetailMapper.insert(detail);
          }
         return true;

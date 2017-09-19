@@ -82,10 +82,10 @@
                                     <td>B</td>
                                     <td>${(obj.description)!''}</td>
                                     <td>${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>
-                                    <td>${(obj.amout)!''}</td>
+                                    <td>${(obj.amount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.reteat)!''}</td>
-                                    <td>${(obj.winAmout)!''}</td>
+                                    <td>${(obj.winAmount)!''}</td>
                                     <td>下注成功</td>
                                 </tr>
                                 </#list>
