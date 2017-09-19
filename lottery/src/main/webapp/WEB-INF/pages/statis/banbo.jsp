@@ -69,8 +69,8 @@
                     </div>                <div id="tongjitema" class="module g-mt0">
                     <div class="hd"></div>
                     <div class="bd">
-                        <input type="hidden" name="category_id" value='00'>
-                        <input type="hidden" name="game_id" value='000'>
+                        <input type="hidden" name="category_id" value='08'>
+                        <input type="hidden" name="game_id" value='016'>
                         <input type="hidden" name="time_stamp" value='1499779795,0,0'>
                         <input type="hidden" name="fresh" value='0'>
                         <input type="hidden" name="level" value='4'>
@@ -89,7 +89,7 @@
                                 <td class="hid">彩金</td>
                                 <td>平均賠率</td>
                                 <td id="totalwinlos_td">勝出金額</td>
-                                <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=000"  type="button">多補</button> </td>
+                                <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=016"  type="button">多補</button> </td>
                                 <td act="pl">賠率
                                     <select act="qh" class="red">
                                         <option value="S" selected>全部</option>

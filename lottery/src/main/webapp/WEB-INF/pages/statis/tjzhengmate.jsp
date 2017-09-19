@@ -69,8 +69,8 @@
                     </div>                <div id="tongjitema" class="module g-mt0">
                     <div class="hd"></div>
                     <div class="bd">
-                        <input type="hidden" name="category_id" value='00'>
-                        <input type="hidden" name="game_id" value='000'>
+                        <input type="hidden" name="category_id" value='02'>
+                        <input type="hidden" name="game_id" value='002'>
                         <input type="hidden" name="time_stamp" value='1499779795,0,0'>
                         <input type="hidden" name="fresh" value='0'>
                         <input type="hidden" name="level" value='4'>
