@@ -73,7 +73,7 @@
                         <input type="hidden" name="game_id" value='041|042|043|044|045|046'>
                         <input type="hidden" name="time_stamp" value='1499779795,0,0'>
                         <input type="hidden" name="fresh" value='0'>
-                        <input type="hidden" name="level" value='4'>
+                        <input type="hidden" name="level"value="${user.usertype!''}">
                         <input type="hidden" name="odds_set" value='S'>
                         <table class="g-t1 g-t2">
                             <thead>

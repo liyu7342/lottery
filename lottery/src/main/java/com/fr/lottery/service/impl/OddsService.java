@@ -4,6 +4,7 @@ import com.fr.lottery.dao.OddsMapper;
 import com.fr.lottery.entity.Odds;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.utils.StringUtil;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,16 @@ public class OddsService implements IOddsService{
 
     public List<Odds> getOddsList(String[] oddsType,boolean isDefault){
         return oddsMapper.getTypeOddsList(oddsType,false);
+    }
+
+    @Override
+    public Map<String, Float> getOddsMap(String[] oddsType) {
+        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddsType,false);
+        Map<String,Float> map = new HashedMap();
+        for(Odds odds : oddsList){
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+        }
+        return map;
     }
 
     @Override

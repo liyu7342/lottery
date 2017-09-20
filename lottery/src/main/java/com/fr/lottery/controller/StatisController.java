@@ -1,9 +1,11 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.StatisDto;
+import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,8 @@ public class StatisController {
     @RequestMapping("/statis")
     public ModelAndView statis(){
         ModelAndView modelAndView = new ModelAndView("statis/statis");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.tema.getValue());
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
@@ -29,6 +33,8 @@ public class StatisController {
     @RequestMapping("/tjzhengma")
     public ModelAndView tjzhengma(){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengma");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.zhengma.getValue());
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
@@ -36,6 +42,8 @@ public class StatisController {
     @RequestMapping("/tjzhengmate")
     public ModelAndView tjzhengmate(){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengmate");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.zhengmate1.getValue());
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
@@ -49,24 +57,32 @@ public class StatisController {
     @RequestMapping("/guoguan")
     public ModelAndView guoguan(){
         ModelAndView modelAndView = new ModelAndView("statis/guoguan");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/shengxiao")
     public ModelAndView shengxiao(){
         ModelAndView modelAndView = new ModelAndView("statis/shengxiao");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/weishu")
     public ModelAndView weishu(){
         ModelAndView modelAndView = new ModelAndView("statis/weishu");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/banbo")
     public ModelAndView banbo(){
         ModelAndView modelAndView = new ModelAndView("statis/banbo");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -74,18 +90,24 @@ public class StatisController {
     @RequestMapping("/texiao")
     public ModelAndView texiao(){
         ModelAndView modelAndView = new ModelAndView("statis/texiao");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/liuxiao")
     public ModelAndView liuxiao(){
         ModelAndView modelAndView = new ModelAndView("statis/liuxiao");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/liangmian")
     public ModelAndView liangmian(){
         ModelAndView modelAndView = new ModelAndView("statis/liangmian");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -98,17 +120,23 @@ public class StatisController {
     @RequestMapping("/shengxiaolian")
     public ModelAndView shengxiaolian(){
         ModelAndView modelAndView = new ModelAndView("statis/shengxiaolian");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
     @RequestMapping("/weishulian")
     public ModelAndView weishulian(){
         ModelAndView modelAndView = new ModelAndView("statis/weishulian");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
     @RequestMapping("/wubuzhong")
     public ModelAndView wubuzhong(){
         ModelAndView modelAndView = new ModelAndView("statis/wubuzhong");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 

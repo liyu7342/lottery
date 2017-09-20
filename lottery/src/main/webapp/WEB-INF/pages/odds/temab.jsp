@@ -108,7 +108,7 @@
                                                                       value="${(entity.pro_00033)!''}"/></td>
                                     <td class="hand borderRightNone"><em class="ico n43">43</em></td>
                                     <td class="borderLeftNone"><input type="text" name="00043"
-                                                                      value="${(entity.pro_000043)!''}"/></td>
+                                                                      value="${(entity.pro_00043)!''}"/></td>
                                 </tr>
                                 <tr>
                                     <td class="hand borderRightNone"><em class="ico n4">04</em></td>

@@ -41,6 +41,8 @@ public interface IOddsService {
 
     List<Odds> getOddsList(String[] oddsType,boolean isDefault);
 
+    Map<String,Float> getOddsMap(String[] oddsType);
+
     boolean update(Odds entity);
 
     boolean insert (Odds entity);

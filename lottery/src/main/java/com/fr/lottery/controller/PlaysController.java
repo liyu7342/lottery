@@ -75,11 +75,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/zheng1_6");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map = new HashedMap();
-        for(Odds odds : oddsList){
-            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map  =  oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map);
         return mv;
     }
@@ -94,11 +90,7 @@ public class PlaysController {
     public ModelAndView guoguan() {
         ModelAndView mv = new ModelAndView("/plays/guoguan");
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map = new HashedMap();
-        for(Odds odds : oddsList){
-            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map  =  oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map);
         return mv;
     }
@@ -106,23 +98,11 @@ public class PlaysController {
     @RequestMapping("/shengxiao")
     public ModelAndView shengxiao() {
         ModelAndView mv = new ModelAndView("/plays/shengxiao");
-        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
-        Map<String,String> map = new HashMap<String, String>();
-        for(ShengXiao shengXiao :shengXiaos){
-            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
-            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
-                strr+=","+shengXiao.getNo5();
-            }
-            map.put(shengXiao.getName(),strr);
-        }
+        Map<String,String> map =shengxiaoService.findMapByYear();
         mv.addObject("shengxiao", map);
 
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map1 = new HashedMap();
-        for(Odds odds : oddsList){
-            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }
@@ -131,11 +111,7 @@ public class PlaysController {
     public ModelAndView weishu() {
         ModelAndView mv = new ModelAndView("/plays/weishu");
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map1 = new HashedMap();
-        for(Odds odds : oddsList){
-            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }
@@ -144,11 +120,7 @@ public class PlaysController {
     public ModelAndView banbo() {
         ModelAndView mv = new ModelAndView("/plays/banbo");
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map1 = new HashedMap();
-        for(Odds odds : oddsList){
-            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }
@@ -157,21 +129,9 @@ public class PlaysController {
     public ModelAndView liuxiao() {
         ModelAndView mv = new ModelAndView("/plays/liuxiao");
         String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map1 = new HashedMap();
-        for(Odds odds : oddsList){
-            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
-        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
-        Map<String,String> map = new HashMap<String, String>();
-        for(ShengXiao shengXiao :shengXiaos){
-            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
-            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
-                strr+=","+shengXiao.getNo5();
-            }
-            map.put(shengXiao.getName(),strr);
-        }
+        Map<String,String> map=  shengxiaoService.findMapByYear();
          mv.addObject("shengxiao",map);
         return mv;
     }
@@ -179,22 +139,10 @@ public class PlaysController {
     @RequestMapping("/texiao")
     public ModelAndView texiao() {
         ModelAndView mv = new ModelAndView("/plays/texiao");
-        List<ShengXiao> shengXiaos=  shengxiaoService.findByYear();
-        Map<String,String> map = new HashMap<String, String>();
-        for(ShengXiao shengXiao :shengXiaos){
-            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
-            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
-                strr+=","+shengXiao.getNo5();
-            }
-            map.put(shengXiao.getName(),strr);
-        }
+        Map<String,String> map=  shengxiaoService.findMapByYear();
         mv.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
-        List<Odds> oddsList =  oddsService.selectByType(oddsTypes);
-        Map<String,Float> map1 = new HashedMap();
-        for(Odds odds : oddsList){
-            map1.put("pro_"+odds.getNumkey(),odds.getNumvalue());
-        }
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }

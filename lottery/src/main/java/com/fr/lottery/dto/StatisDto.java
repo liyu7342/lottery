@@ -18,6 +18,8 @@ public class StatisDto {
 
     private Float odds;
 
+    private Float winAmount;
+
     public String getGameType() {
         return gameType;
     }
@@ -80,5 +82,13 @@ public class StatisDto {
 
     public void setOdds(Float odds) {
         this.odds = odds;
+    }
+
+    public Float getWinAmount() {
+        return winAmount;
+    }
+
+    public void setWinAmount(Float winAmount) {
+        this.winAmount = winAmount;
     }
 }

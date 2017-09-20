@@ -141,7 +141,7 @@ public class VerifyCodeUtils{
         g2.setColor(Color.GRAY);// 设置边框色
         g2.fillRect(0, 0, w, h);
 
-        Color c = getRandColor(200, 250);
+        Color c = getRandColor(180, 230);
         g2.setColor(c);// 设置背景色
         g2.fillRect(0, 2, w, h-4);
 
@@ -168,14 +168,14 @@ public class VerifyCodeUtils{
 
 //        shear(g2, w, h, c);// 使图片扭曲
 
-        g2.setColor(getRandColor(100, 160));
+        g2.setColor(getRandColor(60, 120));
         int fontSize = h-4;
         Font font = new Font("Algerian", Font.ITALIC, fontSize);
         g2.setFont(font);
                 char[] chars = code.toCharArray();
         for(int i = 0; i < verifySize; i++){
             AffineTransform affine = new AffineTransform();
-            affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize/2, h/2);
+            affine.setToRotation(Math.PI / 8 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize/2, h/2);
             g2.setTransform(affine);
             g2.drawChars(chars, i, 1, ((w-10) / verifySize) * i + 5, h/2 + fontSize/2 - 10);
         }

@@ -71,9 +71,9 @@
                     <div class="bd">
                         <input type="hidden" name="category_id" value='01'>
                         <input type="hidden" name="game_id" value='001'>
-                        <input type="hidden" name="time_stamp" value='1499779795,0,0'>
+                        <input type="hidden" name="time_stamp" value='1505799966,1505827535,0'>
                         <input type="hidden" name="fresh" value='0'>
-                        <input type="hidden" name="level" value='4'>
+                        <input type="hidden" name="level" value='3'>
                         <input type="hidden" name="odds_set" value='S'>
                         <table class="g-t1 g-t2">
                             <thead>
