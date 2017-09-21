@@ -311,7 +311,7 @@
                         <li><a curl='0' href='/odds/zhengma'>正碼</a><cite></cite></li>
                         <li><a curl='5' href='/odds/zhengmate'>正馬特</a><cite></cite></li>
                         <li><a curl='0' href='/odds/zheng16'>正1-6</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/lianma'>連碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/erquanzh'>連碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/guoguan'>過關</a><cite></cite></li>
                         <li><a curl='0' href='/odds/shengxiao'>生肖</a><cite></cite></li>
                         <li><a curl='0' href='/odds/weishu'>尾數</a><cite></cite></li>

@@ -83,6 +83,9 @@ public class PlaysController {
     @RequestMapping("/lianma")
     public ModelAndView lianma() {
         ModelAndView mv = new ModelAndView("/plays/lianma");
+        String[] oddsTypes= {OddsTypeEnum.erquanzh.getValue()};
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        mv.addObject("entity",map1);
         return mv;
     }
 
