@@ -3,6 +3,7 @@ package com.fr.lottery.service.inter;
 import com.fr.lottery.dto.OrderDto;
 import com.fr.lottery.dto.StatisDto;
 import com.fr.lottery.dto.UserHistoryDto;
+import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.entity.Orders;
 
@@ -26,4 +27,6 @@ public interface IOrderService {
     List<UserHistoryDto> getOrderHistory();
 
     List<StatisDto> getStatis(String gameType);
+
+    boolean settlement(String handicapId) ;
 }

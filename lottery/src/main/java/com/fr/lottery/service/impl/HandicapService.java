@@ -63,4 +63,6 @@ public class HandicapService implements IHandicapService {
     public Handicap getCurrentHandicap() {
         return handicapMapper.getCurrentHandicaps();
     }
+
+
 }

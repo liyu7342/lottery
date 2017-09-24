@@ -94,4 +94,14 @@ public class HandicapController extends BaseController {
     }
 
 
+    public void settlement(String handicapId,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        boolean isSuccess = handicapService.settlement(handicapId);
+        String referer = request.getHeader("Referer");
+        if(isSuccess){
+            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\""+referer+"\"</script>");
+        }
+        else{
+            response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存失败！\");</script>");
+        }
+    }
 }

@@ -9,6 +9,7 @@ import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
+import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
@@ -108,7 +109,7 @@ public class OrderService implements IOrderService {
              }
              detail.setGametype(details[0]);
              detail.setHandicapId(handicap.getId());
-             detail.setWinAmount(detail.getAmount() * (Float.parseFloat( detail.getOdds())-1));
+             //Float getMinOdds(detail);
              orderDetailMapper.insert(detail);
          }
         return true;
@@ -152,5 +153,69 @@ public class OrderService implements IOrderService {
     public List<StatisDto> getStatis(String gameType) {
         Handicap handicap = handicapService.getCurrentHandicap();
         return statisMapper.getStatis(gameType,handicap.getId());
+    }
+
+    @Override
+    public boolean settlement(String handicapId) {
+        Handicap handicap= handicapService.selectByPrimaryKey(handicapId);
+        List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"");
+        for(OrderDetail orderDetail: orderDetails){
+            if(orderDetail.getGametype().equals(OddsTypeEnum.tema.getValue())){
+                if(handicap.getTema().equals(orderDetail.getNo())){
+                    Float odds= getMinOdds(orderDetail);
+                    orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
+                }
+                else{
+                    orderDetail.setWinAmount(0F-orderDetail.getAmount());
+                }
+            }
+            else if(orderDetail.getGametype().equals(OddsTypeEnum.zhengma.getValue())){
+                if(handicap.getNo1().equals(orderDetail.getNo()) ||handicap.getNo2().equals(orderDetail.getNo()) || handicap.getNo3().equals(orderDetail.getNo())
+               || handicap.getNo4().equals(orderDetail.getNo())||handicap.getNo5().equals(orderDetail.getNo()) ||handicap.getNo6().equals(orderDetail.getNo())){
+                    Float odds = getMinOdds(orderDetail);
+                    orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
+                }
+                else{
+                    orderDetail.setWinAmount(0F-orderDetail.getAmount());
+                }
+            }
+            else if(orderDetail.getGametype().equals(OddsTypeEnum.zhengmate1.getValue())){
+              if(handicap.getNo1().equals(handicap.getTema()) &&  handicap.getNo1().equals(orderDetail.getNo()) )  {
+                  Float odds= getMinOdds(orderDetail);
+                  orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1);
+              }
+              else{
+                  orderDetail.setWinAmount(0F-orderDetail.getAmount());
+              }
+            }
+            else if(orderDetail.getGametype().equals(OddsTypeEnum.erquanzh.getValue())){
+
+            }
+        }
+        handicap.setIssettlement(true);
+        return false;
+    }
+
+    //获取最小赔率
+    private Float getMinOdds(OrderDetail orderDetail){
+        Float odds = 0f;
+        //查找最小赔率
+        if(orderDetail.getOdds().contains(",")){
+            String oddsArr[]= orderDetail.getOdds().split(",");
+            for (String tempOddsStr :oddsArr)
+            {
+                Float tempOdds=Float.parseFloat( tempOddsStr);
+                if(odds==0 ||  tempOdds<odds){
+                    odds=tempOdds;
+                }
+            }
+        }else{
+            odds=Float.parseFloat( orderDetail.getOdds());
+        }
+        return odds;
+    }
+
+    private  boolean isWin(OrderDetail orderDetail){
+        boolean
     }
 }

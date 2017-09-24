@@ -25,4 +25,6 @@ public interface IHandicapService {
      * @return
      */
     Handicap getCurrentHandicap();
+
+    boolean settlement(String handicapId);
 }

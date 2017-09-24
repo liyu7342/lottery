@@ -23,7 +23,7 @@
             <div class="yui-b">
                 <div class="yui-g">
 
-                    <div id="lianma" class="module" status='{"008":0,"009":0,"010":0,"011":0,"012":0}' info='{"odds":{"00801":"","00802":"","00803":"","00804":"","00805":"","00806":"","00807":"","00808":"","00809":"","00810":"","00811":"","00812":"","00813":"","00814":"","00815":"","00816":"","00817":"","00818":"","00819":"","00820":"","00821":"","00822":"","00823":"","00824":"","00825":"","00826":"","00827":"","00828":"","00829":"","00830":"","00831":"","00832":"","00833":"","00834":"","00835":"","00836":"","00837":"","00838":"","00839":"","00840":"","00841":"","00842":"","00843":"","00844":"","00845":"","00846":"","00847":"","00848":"","00849":"","00901":"","00902":"","00903":"","00904":"","00905":"","00906":"","00907":"","00908":"","00909":"","00910":"","00911":"","00912":"","00913":"","00914":"","00915":"","00916":"","00917":"","00918":"","00919":"","00920":"","00921":"","00922":"","00923":"","00924":"","00925":"","00926":"","00927":"","00928":"","00929":"","00930":"","00931":"","00932":"","00933":"","00934":"","00935":"","00936":"","00937":"","00938":"","00939":"","00940":"","00941":"","00942":"","00943":"","00944":"","00945":"","00946":"","00947":"","00948":"","00949":"","01001":"","01002":"","01003":"","01004":"","01005":"","01006":"","01007":"","01008":"","01009":"","01010":"","01011":"","01012":"","01013":"","01014":"","01015":"","01016":"","01018":"","01019":"","01020":"","01021":"","01022":"","01023":"","01024":"","01025":"","01026":"","01027":"","01028":"","01029":"","01030":"","01031":"","01032":"","01033":"","01034":"","01035":"","01036":"","01037":"","01038":"","01039":"","01040":"","01041":"","01042":"","01043":"","01044":"","01045":"","01046":"","01047":"","01048":"","01049":"","01017":"","01112":"","01130":"","01134":"","01142":"","01145":"","01146":"","01149":"","01139":"","01125":"","01113":"","01104":"","01140":"","01105":"","01123":"","01109":"","01143":"","01120":"","01129":"","01101":"","01106":"","01107":"","01117":"","01118":"","01137":"","01103":"","01122":"","01115":"","01132":"","01126":"","01114":"","01138":"","01144":"","01124":"","01135":"","01147":"","01110":"","01111":"","01121":"","01148":"","01127":"","01133":"","01108":"","01141":"","01136":"","01131":"","01102":"","01116":"","01128":"","01119":"","01201":"","01202":"","01203":"","01204":"","01205":"","01206":"","01207":"","01208":"","01209":"","01210":"","01211":"","01212":"","01213":"","01214":"","01215":"","01216":"","01217":"","01218":"","01219":"","01220":"","01221":"","01222":"","01223":"","01224":"","01225":"","01226":"","01227":"","01228":"","01229":"","01230":"","01231":"","01232":"","01233":"","01234":"","01235":"","01236":"","01237":"","01238":"","01239":"","01240":"","01241":"","01242":"","01243":"","01244":"","01245":"","01246":"","01247":"","01248":"","01249":""},"time_stamp":"1497965137","status":{"008":0,"009":0,"010":0,"011":0,"012":0},"winnums":[]}'>
+                    <div id="lianma" class="module" status='{"008":1,"009":1,"010":1,"011":1,"012":1}' info='${info}'>
                         <input type="hidden" id="time_stamp" value="1497965137"/>
                         <input type="hidden" id="cps_time" value="20170621181138"/>
                         <form id="form_mark">
@@ -47,169 +47,169 @@
                                     <tbody id="balls">
                                     <tr>
                                         <td><em class="ico n1">01</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00801!''}</td>
                                         <th class="bg" width="4%"><input  type="checkbox"  value="01"/></th>
                                         <td><em class="ico n11">11</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00811!''}</td>
                                         <th class="bg" width="4%"><input  type="checkbox"  value="11"/></th>
                                         <td><em class="ico n21">21</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00821!''}</td>
                                         <th class="bg" width="4%"><input  type="checkbox"  value="21"/></th>
                                         <td><em class="ico n31">31</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00831!''}</td>
                                         <th class="bg" width="4%"><input  type="checkbox"  value="31"/></th>
                                         <td><em class="ico n41">41</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00841!''}</td>
                                         <th class="bg" width="4%"><input  type="checkbox"  value="41"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n2">02</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00802!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="02"/></th>
                                         <td><em class="ico n12">12</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00812!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="12"/></th>
                                         <td><em class="ico n22">22</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00822!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="22"/></th>
                                         <td><em class="ico n32">32</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00832!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="32"/></th>
                                         <td><em class="ico n42">42</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00842!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="42"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n3">03</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00803!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="03"/></th>
                                         <td><em class="ico n13">13</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00813!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="13"/></th>
                                         <td><em class="ico n23">23</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00823!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="23"/></th>
                                         <td><em class="ico n33">33</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00833!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="33"/></th>
                                         <td><em class="ico n43">43</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00843!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="43"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n4">04</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00804!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="04"/></th>
                                         <td><em class="ico n14">14</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00814!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="14"/></th>
                                         <td><em class="ico n24">24</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00824!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="24"/></th>
                                         <td><em class="ico n34">34</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00834!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="34"/></th>
                                         <td><em class="ico n44">44</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00844!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="44"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n5">05</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00805!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="05"/></th>
                                         <td><em class="ico n15">15</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00815!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="15"/></th>
                                         <td><em class="ico n25">25</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00825!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="25"/></th>
                                         <td><em class="ico n35">35</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00835!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="35"/></th>
                                         <td><em class="ico n45">45</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00845!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="45"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n6">06</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00806!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="06"/></th>
                                         <td><em class="ico n16">16</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00816!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="16"/></th>
                                         <td><em class="ico n26">26</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00826!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="26"/></th>
                                         <td><em class="ico n36">36</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00836!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="36"/></th>
                                         <td><em class="ico n46">46</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00846!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="46"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n7">07</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00807!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="07"/></th>
                                         <td><em class="ico n17">17</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00817!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="17"/></th>
                                         <td><em class="ico n27">27</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00827!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="27"/></th>
                                         <td><em class="ico n37">37</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00837!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="37"/></th>
                                         <td><em class="ico n47">47</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00847!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="47"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n8">08</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00808!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="08"/></th>
                                         <td><em class="ico n18">18</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00818!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="18"/></th>
                                         <td><em class="ico n28">28</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00828!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="28"/></th>
                                         <td><em class="ico n38">38</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00838!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="38"/></th>
                                         <td><em class="ico n48">48</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00848!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="48"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n9">09</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00809!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="09"/></th>
                                         <td><em class="ico n19">19</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00819!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="19"/></th>
                                         <td><em class="ico n29">29</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00829!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="29"/></th>
                                         <td><em class="ico n39">39</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00839!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="39"/></th>
                                         <td><em class="ico n49">49</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00849!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="49"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n10">10</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00810!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="10"/></th>
                                         <td><em class="ico n20">20</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00820!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="20"/></th>
                                         <td><em class="ico n30">30</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00830!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="30"/></th>
                                         <td><em class="ico n40">40</em></td>
-                                        <td></td>
+                                        <td>${entity.pro_00840!''}</td>
                                         <th class="bg"><input  type="checkbox"  value="40"/></th>
                                         <td colspan="3"></td>
                                     </tr>

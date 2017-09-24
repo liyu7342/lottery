@@ -16,6 +16,7 @@ public class GameCfg {
     private static final Map<String,String> cfg_category_key =new HashMap<String, String>();
 
     private static  final Map<String,String> game_category =new HashMap<String, String>();
+    private static  final Map<String,String> cfg_number_shengxiao =new HashMap<String, String>();
 
     static {
         cfg_weishu.put("0", new String[]{"10", "20", "30", "40"});

@@ -5349,7 +5349,7 @@ Guoguan.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + b.game_ids + "&odds_set=" + b.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(c) {
+                    $.getJSON("/odds/getOdds?game_ids=" + b.game_ids + "&odds_set=" + b.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(c) {
                             b.refersh(c);
                             if (c.header.popup) {
                                 window.parent.header.notice_popup("one")
@@ -5430,7 +5430,7 @@ Guoguan.prototype.cometFresh = function(f, b) {
             if ("drawStatus" == a) {
                 if (c.drawStatus != f[a]) {
                     c.time_stamp = 1;
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + c.game_ids + "&odds_set=" + c.odds_set + "&time_stamp=" + c.time_stamp, function(g) {
+                    $.getJSON("/odds/getOdds?game_ids=" + c.game_ids + "&odds_set=" + c.odds_set + "&time_stamp=" + c.time_stamp, function(g) {
                             c.refersh(g)
                         }
                     );
@@ -5693,7 +5693,7 @@ Liuxiao.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + c.game_ids + "&odds_set=" + c.odds_set + "&time_stamp=" + c.time_stamp, function(f) {
+                    $.getJSON("/odds/getOdds?game_ids=" + c.game_ids + "&odds_set=" + c.odds_set + "&time_stamp=" + c.time_stamp, function(f) {
                             c.set_status(f);
                             if (c.ca) {
                                 parent.$.trigger("cpsset", [{
@@ -5782,7 +5782,7 @@ Liuxiao.prototype.cometFresh = function(g, c) {
             if ("drawStatus" == b) {
                 if (f.drawStatus != g[b]) {
                     f.time_stamp = 1;
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, a);
+                    $.getJSON("/odds/getOdds?game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, a);
                     f.drawStatus = g[b]
                 }
                 if ("2" == g[b]) {
@@ -7114,7 +7114,7 @@ Buzhong.prototype.cometFresh = function(j, f) {
             }
             if ("drawStatus" == c) {
                 if (h.drawStatus != j[c]) {
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + h.all_game + "&odds_set=" + h.odds_set + "&time_stamp=0", b);
+                    $.getJSON("/odds/getOdds?game_ids=" + h.all_game + "&odds_set=" + h.odds_set + "&time_stamp=0", b);
                     h.drawStatus = j[c]
                 }
                 if ("2" == j[c]) {
@@ -8676,7 +8676,7 @@ Lianma.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + b.game_ids + "&odds_set=" + b.odds_set + "&time_stamp=" + b.time_stamp, function(c) {
+                    $.getJSON("/odds/getOdds?game_ids=" + b.game_ids + "&odds_set=" + b.odds_set + "&time_stamp=" + b.time_stamp, function(c) {
                             b.refersh(c);
                             if (c.header.popup) {
                                 window.parent.header.notice_popup("one")
@@ -8814,7 +8814,7 @@ Lianma.prototype.cometFresh = function(g, c) {
             if ("drawStatus" == b) {
                 if (f.drawStatus != g[b]) {
                     f.time_stamp = 1;
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, function(h) {
+                    $.getJSON("/odds/getOdds?game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, function(h) {
                             f.refersh(h)
                         }
                     );
@@ -9671,7 +9671,7 @@ PlaysGroup.prototype.cometFresh = function(g, c) {
                 if (f.drawStatus != g[b]) {
                     f.time_stamp = 1;
                     f.drawStatus = g[b];
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, a)
+                    $.getJSON("/odds/getOdds?game_ids=" + f.game_ids + "&odds_set=" + f.odds_set + "&time_stamp=" + f.time_stamp, a)
                 }
                 if ("2" == g[b]) {
                     g[b] = 0
@@ -9870,7 +9870,7 @@ SWlian.prototype.init = function() {
                     if ($.ontime()) {
                         return
                     }
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + c.all_game + "&odds_set=" + c.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(f) {
+                    $.getJSON("/odds/getOdds?game_ids=" + c.all_game + "&odds_set=" + c.odds_set + "&time_stamp=" + $.last_update.time_stamp, function(f) {
                             c.ajaxRefersh(f);
                             if (f.header.popup) {
                                 window.parent.header.notice_popup("one")
@@ -10007,7 +10007,7 @@ SWlian.prototype.cometFresh = function(j, f) {
             }
             if ("drawStatus" == c) {
                 if (h.drawStatus != j[c]) {
-                    $.getJSON("ajax_req.htm?act=get_odds&game_ids=" + h.all_game + "&odds_set=" + h.odds_set + "&time_stamp=0", b);
+                    $.getJSON("/odds/getOdds?game_ids=" + h.all_game + "&odds_set=" + h.odds_set + "&time_stamp=0", b);
                     h.drawStatus = j[c]
                 }
                 if ("2" == j[c]) {

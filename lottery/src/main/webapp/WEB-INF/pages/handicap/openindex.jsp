@@ -68,8 +68,13 @@
                                         <td><em class="ico n${(obj.tema)!''}">${(obj.tema)!''}</em></td>
 
                                         <td>
+
                                             <a class='a_btm_line' href='/handicap/openform?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>開獎</a>
-                                            <a class='a_btm_line' href='/handicap/openform?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>结算</a>
+
+                                                <a class='a_btm_line' href='/handicap/openform?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5'>结算</a>
+
+
+
                                         </td>
                                     </tr>
                                 </#list>
