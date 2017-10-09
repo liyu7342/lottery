@@ -3,6 +3,8 @@ package com.fr.lottery.entity;
 public class Odds {
     private String id;
 
+    private String oddSet;
+
     private String type;
 
     private Boolean isdefault;
@@ -17,6 +19,14 @@ public class Odds {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getOddSet() {
+        return oddSet;
+    }
+
+    public void setOddSet(String oddSet) {
+        this.oddSet = oddSet;
     }
 
     public String getType() {

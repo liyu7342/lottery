@@ -65,4 +65,8 @@ public class HandicapService implements IHandicapService {
     }
 
 
+    @Override
+    public boolean settlement(String handicapId) {
+        return false;
+    }
 }

@@ -5,6 +5,7 @@ import com.fr.lottery.entity.Odds;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.utils.StringUtil;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,30 +32,32 @@ public class OddsService implements IOddsService{
         return oddsMapper.deleteByPrimaryKey(id)>0;
     }
 
-    @Override
-    public List<Odds> selectDefault(String type) {
-        String[] types = type.split("\\|");
-        return oddsMapper.getTypeOddsList(types,true);
-
-    }
 
     @Override
-    public List<Odds> selectByType(String[] oddsType) {
-        return oddsMapper.getTypeOddsList(oddsType,false);
-    }
-
-    public List<Odds> getOddsList(String[] oddsType,boolean isDefault){
-        return oddsMapper.getTypeOddsList(oddsType,false);
-    }
-
-    @Override
-    public Map<String, Float> getOddsMap(String[] oddsType) {
-        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddsType,false);
+    public Map<String, Float> getOddsMap(String oddSet,String[] oddsType) {
+        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
         Map<String,Float> map = new HashedMap();
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
         }
         return map;
+    }
+
+    @Override
+    public List<Odds> getOddsChange(String oddSet, String[] oddsType) {
+        return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+    }
+
+    @Override
+    public List<Odds> getOddsList(String oddSet, String[] oddsType) {
+        return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+    }
+
+
+
+    @Override
+    public Map<String, Float> getOddsMap(String[] oddsType) {
+        return getOddsMap("",oddsType);
     }
 
     @Override
@@ -72,15 +75,22 @@ public class OddsService implements IOddsService{
     public boolean insert(Map map) {
 
         boolean isDefault=false;
+        String oddSet="";
         if(map.containsKey("isDefault")){
             isDefault=Boolean.parseBoolean( map.get("isDefault").toString());
+            map.remove("isDefault");
         }
+        if(map.containsKey("oddSet")){
+            oddSet= map.get("oddSet").toString();
+            map.remove("oddSet");
+        }
+
         for(Object key :map.keySet()){
-            if("isDefault".equals( key)){
-                continue;
-            }
             Odds odds = new Odds();
             odds.setIsdefault(isDefault);
+            if(StringUtils.isNotBlank(oddSet)){
+                odds.setOddSet(oddSet);
+            }
             odds.setNumkey(key.toString());
             odds.setType(odds.getNumkey().substring(0,3));
             if(map.get(key) ==null || "".equals(map.get(key))){
@@ -91,7 +101,7 @@ public class OddsService implements IOddsService{
                 Float numvalue= Float.parseFloat(keyValue);
                 odds.setNumvalue(numvalue);
             }
-            Odds oddsEntity= oddsMapper.getOdds(odds.getType(),odds.getNumkey(),odds.getIsdefault());
+            Odds oddsEntity= oddsMapper.getOdds(oddSet,odds.getType(),odds.getNumkey(),odds.getIsdefault());
             if(oddsEntity==null){
                 odds.setId(StringUtil.getUUID());
                 oddsMapper.insert(odds);

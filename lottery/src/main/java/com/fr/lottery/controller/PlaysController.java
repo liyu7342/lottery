@@ -90,7 +90,7 @@ public class PlaysController {
         Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
-        List<Odds> oddsList = oddsService.getOddsList(oddsTypes1,false);
+        List<Odds> oddsList = oddsService.getOddsList("",oddsTypes1);
         Map<String,Float> oddsMap = new HashMap<String, Float>();
         for(Odds odds : oddsList){
             oddsMap.put(odds.getNumkey(),odds.getNumvalue());

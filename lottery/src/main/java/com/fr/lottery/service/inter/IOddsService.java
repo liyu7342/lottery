@@ -26,22 +26,14 @@ public interface IOddsService {
      */
     boolean deleteByPrimaryKey(String id);
 
-    /**
-     * 默认赔率
-     * @return
-     */
-    List<Odds> selectDefault(String type);
-
-    /**
-     *
-     * @param oddsType 类型
-     * @return
-     */
-    List<Odds> selectByType(String[] oddsType);
-
-    List<Odds> getOddsList(String[] oddsType,boolean isDefault);
 
     Map<String,Float> getOddsMap(String[] oddsType);
+
+    Map<String,Float> getOddsMap(String oddSet,String[] oddsType);
+
+    List<Odds> getOddsChange(String oddSet,String[] oddsType);
+
+    List<Odds> getOddsList(String oddSet,String[] oddsType);
 
     boolean update(Odds entity);
 

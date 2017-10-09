@@ -182,7 +182,7 @@ public class OrderService implements IOrderService {
             else if(orderDetail.getGametype().equals(OddsTypeEnum.zhengmate1.getValue())){
               if(handicap.getNo1().equals(handicap.getTema()) &&  handicap.getNo1().equals(orderDetail.getNo()) )  {
                   Float odds= getMinOdds(orderDetail);
-                  orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1);
+                  orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
               }
               else{
                   orderDetail.setWinAmount(0F-orderDetail.getAmount());
@@ -215,7 +215,5 @@ public class OrderService implements IOrderService {
         return odds;
     }
 
-    private  boolean isWin(OrderDetail orderDetail){
-        boolean
-    }
+
 }

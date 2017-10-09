@@ -3,6 +3,7 @@
 <mapper namespace="com.fr.lottery.dao.OddsMapper">
   <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Odds">
     <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="oddSet" jdbcType="VARCHAR" property="oddSet" />
     <result column="Type" jdbcType="VARCHAR" property="type" />
     <result column="IsDefault" jdbcType="BIT" property="isdefault" />
     <result column="NumKey" jdbcType="VARCHAR" property="numkey" />
@@ -10,7 +11,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    Id, Type, IsDefault, NumKey, NumValue
+    Id,oddSet, Type, IsDefault, NumKey, NumValue
   </sql>
   <sql id="Example_Where_Clause">
     <where>
@@ -21,7 +22,21 @@
     select
     <include refid="Base_Column_List" />
     from odds
-    WHERE Type=#{type,jdbcType=VARCHAR} AND IsDefault =#{isDefault,jdbcType=BIT} AND Numkey =#{numkey,jdbcType=VARCHAR}
+    <where>
+      <if test="isDefault !=null and isDefault !='' ">
+        AND  IsDefault=#{isDefault,jdbcType=BIT}
+      </if>
+      <if test="type !=null and type !='' ">
+        AND  Type=#{type,jdbcType=VARCHAR}
+      </if>
+
+      <if test="numkey !=null and numkey !='' ">
+        AND Numkey =#{numkey,jdbcType=VARCHAR}
+      </if>
+      <if test="oddSet !=null and oddSet !='' ">
+        AND oddSet =#{oddSet,jdbcType=VARCHAR}
+      </if>
+    </where>
     ORDER  BY Numkey DESC
   </select>
 
@@ -36,12 +51,20 @@
     select
     <include refid="Base_Column_List" />
     from odds
-    WHERE
-    Type in
-    <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
-      #{item}
-    </foreach>
-     AND IsDefault =#{isDefault,jdbcType=BIT}
+    <where>
+      <if test="oddSet !=null and oddSet !='' ">
+        AND oddSet =#{oddSet,jdbcType=VARCHAR}
+      </if>
+      <if test="isDefault !=null and isDefault !='' ">
+        AND  IsDefault=#{isDefault,jdbcType=BIT}
+      </if>
+      <if test="types!=null ">
+        AND Type in
+        <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
     ORDER  BY Numkey DESC
   </select>
 
@@ -65,8 +88,8 @@
   </delete>
 
   <insert id="insert" parameterType="com.fr.lottery.entity.Odds">
-    insert into odds (Id, Type, IsDefault, NumKey, NumValue)
-    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdefault,jdbcType=BIT}, 
+    insert into odds (Id,OddSet, Type, IsDefault, NumKey, NumValue)
+    values (#{id,jdbcType=VARCHAR}, #{oddSet,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdefault,jdbcType=BIT},
       #{numkey,jdbcType=VARCHAR}, #{numvalue,jdbcType=REAL})
   </insert>
 
