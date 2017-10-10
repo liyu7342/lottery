@@ -54,7 +54,7 @@ public class HandicapController extends BaseController {
     public  void open(Handicap handicap,HttpServletRequest request, HttpServletResponse response) throws IOException{
         handicapService.openHandicap(handicap);
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write("<script type=\"text/javascript\"> alert(\"开奖成功！\");location.href =\"/handicap/handicapopen\";</script>");
+        response.getWriter().write("<script type=\"text/javascript\"> alert(\"开奖成功！\");location.href =\"/handicap/openindex\";</script>");
 
     }
 

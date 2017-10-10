@@ -35,21 +35,18 @@
                                     <thead><tr>
                                         <td>二肖連</td>
                                         <td>三肖連</td>
-                                        <td>四肖連</td>
-                                        <td class="r">五肖連</td>
+                                        <td class="r">四肖連</td>
                                     </tr></thead>
                                     <tbody id="plays">
                                     <tr>
                                         <th><label for="default_play"><input name="play" value="2035" type="radio"  disabled="disabled"  checked="checked" id="default_play"/>二肖連(中)</label></th>
                                         <th><label for="sanxiaozhong"><input id="sanxiaozhong" name="play" value="3037" type="radio"  disabled="disabled"/>三肖連(中)</label></th>
                                         <th><label for="sixiaozhong"><input id="sixiaozhong" name="play" value="4039" type="radio"  disabled="disabled"/>四肖連(中)</label></th>
-                                        <th><label for="wuxiaozhong"><input id="wuxiaozhong" name="play" value="5054" type="radio"  disabled="disabled"/>五肖連(中)</label></th>
                                     </tr>
                                     <tr>
                                         <th><label for="erxiaobuzhong"><input id="erxiaobuzhong" name="play" value="2036" type="radio"  disabled="disabled"/>二肖連(不中)</label></th>
                                         <th><label for="sanxiaobuzhong"><input id="sanxiaobuzhong" name="play" value="3038" type="radio"  disabled="disabled"/>三肖連(不中)</label></th>
                                         <th><label for="sixiaobuzhong"><input id="sixiaobuzhong" name="play" value="4040" type="radio"  disabled="disabled"/>四肖連(不中)</label></th>
-                                        <th><label for="wuxiaobuzhong"><input id="wuxiaobuzhong" name="play" value="5055" type="radio"  disabled="disabled"/>五肖連(不中)</label></th>
                                     </tr>
                                     </tbody></table>
                                 <div class="mt g-thd"><h3>請選擇球號</h3></div>

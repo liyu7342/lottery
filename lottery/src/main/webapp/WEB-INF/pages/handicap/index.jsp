@@ -33,6 +33,7 @@
                                 <ul>
                                     <li><h2 class="g-tit">开奖管理
                                     </h2></li>
+                                    <li><h2><a class="btn10 mt red" href='/handicap/info?op=create&id='>新增</a>&nbsp;&nbsp;  </h2></li>
                                 </ul></form>
                             <div class="fr">
                                 <span class="ico">第一頁</span><span class="ico i2">上一頁</span><input type="hidden" value="0" id="buttontype" />
@@ -40,7 +41,7 @@
                                 頁 &nbsp;&nbsp;共1頁<span class="ico i3">下一頁</span><span class="ico i4">最後一頁</span>        &nbsp;</div>
                         </div>
                         <div class="bd">
-                            <table class="g-t1 g-t2">
+                            <table class="g-t1">
                                 <thead><tr>
                                     <td id="batchDelSelectAll"><input type="checkbox" name='checkAllAccount'/></td>
                                     <td>期数</td>
@@ -59,12 +60,12 @@
 
                                         <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                         <td class="bg tl">${obj.qishu}&nbsp;&nbsp;</td>
-                                        <td><em class="ico n${(obj.num1)!''}">${(obj.num2)!''}</em></td>
-                                        <td><em class="ico n${(obj.num2)!''}">${(obj.num2)!''}</em></td>
-                                        <td><em class="ico n${(obj.num3)!''}">${(obj.num3)!''}</em></td>
-                                        <td><em class="ico n${(obj.num4)!''}">${(obj.num4)!''}</em></td>
-                                        <td><em class="ico n${(obj.num5)!''}">${(obj.num5)!''}</em></td>
-                                        <td><em class="ico n${(obj.num6)!''}">${(obj.num6)!''}</em></td>
+                                        <td><em class="ico n${(obj.no1)!''}">${(obj.no1)!''}</em></td>
+                                        <td><em class="ico n${(obj.no2)!''}">${(obj.no2)!''}</em></td>
+                                        <td><em class="ico n${(obj.no3)!''}">${(obj.no3)!''}</em></td>
+                                        <td><em class="ico n${(obj.no4)!''}">${(obj.no4)!''}</em></td>
+                                        <td><em class="ico n${(obj.no5)!''}">${(obj.no5)!''}</em></td>
+                                        <td><em class="ico n${(obj.no6)!''}">${(obj.no6)!''}</em></td>
                                         <td><em class="ico n${(obj.tema)!''}">${(obj.tema)!''}</em></td>
 
                                         <td>

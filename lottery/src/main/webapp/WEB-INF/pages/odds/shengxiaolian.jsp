@@ -35,157 +35,130 @@
                     </style>
                     <div id=""class="module">
                         <ul>
-                            <li><h2 class="g-tit">特碼</h2>
+                            <li><h2 class="g-tit">生肖連</h2>
                             </li>
                         </ul>
                         <form id="form1" method="POST" action="/odds/save">
                             <table class="g-t1">
                                 <thead>
                                 <tr>
-                                    <td class="borderRightNone">號碼</td>
-                                    <td class="borderLeftNone">賠率</td>
-                                    <td class="borderRightNone">號碼</td>
-                                    <td class="borderLeftNone">賠率</td>
-                                    <td class="borderRightNone">號碼</td>
-                                    <td class="borderLeftNone">賠率</td>
-                                    <td class="borderRightNone">號碼</td>
-                                    <td class="borderLeftNone">賠率</td>
-                                    <td class="borderRightNone">號碼</td>
-                                    <td class="borderLeftNone">賠率</td>
+                                    <td>生肖</td>
+                                    <td>二肖連（中）</td>
+                                    <td>二肖連（不中）</td>
+                                    <td>三肖連（中）</td>
+                                    <td>三肖連（不中）</td>
+                                    <td>四肖連（中）</td>
+                                    <td>四肖連（不中）</td>
                                 </tr>
                                 </thead>
-                                <tbody id="product_mark" pro="000">
+                                <tbody id="product_mark" pro="035,036,037,038,039,040">
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no1"/></td>
-
-                                    <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no11"/></td>
-
-                                    <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no21"/></td>
-
-                                    <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no31"/></td>
-
-                                    <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no41"/></td>
+                                    <td>鼠</td>
+                                    <td><input name="03501" type="text" value="${(entity.pro_03501)!''}" />
+                                    <td><input name="03601" type="text" value="${(entity.pro_03601)!''}" />
+                                    <td><input name="03701" type="text" value="${(entity.pro_03701)!''}" />
+                                    <td><input name="03801" type="text" value="${(entity.pro_03801)!''}" />
+                                    <td><input name="03901" type="text" value="${(entity.pro_03901)!''}" />
+                                    <td><input name="04001" type="text" value="${(entity.pro_04001)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no2"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no12"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no22"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no32"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no42"/></td>
+                                    <td>牛</td>
+                                    <td><input name="03502" type="text" value="${(entity.pro_03502)!''}" />
+                                    <td><input name="03602" type="text" value="${(entity.pro_03602)!''}" />
+                                    <td><input name="03702" type="text" value="${(entity.pro_03702)!''}" />
+                                    <td><input name="03802" type="text" value="${(entity.pro_03802)!''}" />
+                                    <td><input name="03902" type="text" value="${(entity.pro_03902)!''}" />
+                                    <td><input name="04002" type="text" value="${(entity.pro_04002)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no3"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no13"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no23"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no33"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no43"/></td>
+                                    <td>虎</td>
+                                    <td><input name="03503" type="text" value="${(entity.pro_03503)!''}" />
+                                    <td><input name="03603" type="text" value="${(entity.pro_03603)!''}" />
+                                    <td><input name="03703" type="text" value="${(entity.pro_03703)!''}" />
+                                    <td><input name="03803" type="text" value="${(entity.pro_03803)!''}" />
+                                    <td><input name="03903" type="text" value="${(entity.pro_03903)!''}" />
+                                    <td><input name="04003" type="text" value="${(entity.pro_04003)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no4"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no14"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no24"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no34"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no44"/></td>
+                                    <td>兔</td>
+                                    <td><input name="03504" type="text" value="${(entity.pro_03504)!''}" />
+                                    <td><input name="03604" type="text" value="${(entity.pro_03604)!''}" />
+                                    <td><input name="03704" type="text" value="${(entity.pro_03704)!''}" />
+                                    <td><input name="03804" type="text" value="${(entity.pro_03804)!''}" />
+                                    <td><input name="03904" type="text" value="${(entity.pro_03904)!''}" />
+                                    <td><input name="04004" type="text" value="${(entity.pro_04004)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no5"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no15"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no25"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no35"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no45"/></td>
+                                    <td>龍</td>
+                                    <td><input name="03505" type="text" value="${(entity.pro_03505)!''}" />
+                                    <td><input name="03605" type="text" value="${(entity.pro_03605)!''}" />
+                                    <td><input name="03705" type="text" value="${(entity.pro_03705)!''}" />
+                                    <td><input name="03805" type="text" value="${(entity.pro_03805)!''}" />
+                                    <td><input name="03905" type="text" value="${(entity.pro_03905)!''}" />
+                                    <td><input name="04005" type="text" value="${(entity.pro_04005)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no6"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no16"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no26"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no36"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no46"/></td>
+                                    <td>蛇</td>
+                                    <td><input name="03506" type="text" value="${(entity.pro_03506)!''}" />
+                                    <td><input name="03606" type="text" value="${(entity.pro_03606)!''}" />
+                                    <td><input name="03706" type="text" value="${(entity.pro_03706)!''}" />
+                                    <td><input name="03806" type="text" value="${(entity.pro_03806)!''}" />
+                                    <td><input name="03906" type="text" value="${(entity.pro_03906)!''}" />
+                                    <td><input name="04006" type="text" value="${(entity.pro_04006)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no7"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no17"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no27"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no37"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no47"/></td>
+                                    <td>馬</td>
+                                    <td><input name="03507" type="text" value="${(entity.pro_03507)!''}" />
+                                    <td><input name="03607" type="text" value="${(entity.pro_03607)!''}" />
+                                    <td><input name="03707" type="text" value="${(entity.pro_03707)!''}" />
+                                    <td><input name="03807" type="text" value="${(entity.pro_03807)!''}" />
+                                    <td><input name="03907" type="text" value="${(entity.pro_03907)!''}" />
+                                    <td><input name="04007" type="text" value="${(entity.pro_04007)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no8"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no18"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no28"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no38"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                    <td class="borderLeftNone"><input type="text" name="no48"/></td>
+                                    <td>羊</td>
+                                    <td><input name="03508" type="text" value="${(entity.pro_03508)!''}" />
+                                    <td><input name="03608" type="text" value="${(entity.pro_03608)!''}" />
+                                    <td><input name="03708" type="text" value="${(entity.pro_03708)!''}" />
+                                    <td><input name="03808" type="text" value="${(entity.pro_03808)!''}" />
+                                    <td><input name="03908" type="text" value="${(entity.pro_03908)!''}" />
+                                    <td><input name="04008" type="text" value="${(entity.pro_04008)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n9">09</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no9"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n19">19</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no19"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n29">29</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no29"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n39">39</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no39"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n49">49</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no49"/></td>
+                                    <td>猴</td>
+                                    <td><input name="03509" type="text" value="${(entity.pro_03509)!''}" />
+                                    <td><input name="03609" type="text" value="${(entity.pro_03609)!''}" />
+                                    <td><input name="03709" type="text" value="${(entity.pro_03709)!''}" />
+                                    <td><input name="03809" type="text" value="${(entity.pro_03809)!''}" />
+                                    <td><input name="03909" type="text" value="${(entity.pro_03909)!''}" />
+                                    <td><input name="04009" type="text" value="${(entity.pro_04009)!''}" />
                                 </tr>
                                 <tr>
-                                    <td class="hand borderRightNone"><em class="ico n10">10</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no10"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n20">20</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no20"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n30">30</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no30"/></td>
-                                    <td class="hand borderRightNone"><em class="ico n40">40</em></td>
-
-                                    <td class="borderLeftNone"><input type="text" name="no40"/></td>
-                                    <td colspan="3"></td>
+                                    <td>雞</td>
+                                    <td><input name="03510" type="text" value="${(entity.pro_03510)!''}" />
+                                    <td><input name="03610" type="text" value="${(entity.pro_03610)!''}" />
+                                    <td><input name="03710" type="text" value="${(entity.pro_03710)!''}" />
+                                    <td><input name="03810" type="text" value="${(entity.pro_03810)!''}" />
+                                    <td><input name="03910" type="text" value="${(entity.pro_03910)!''}" />
+                                    <td><input name="04010" type="text" value="${(entity.pro_04010)!''}" />
+                                </tr>
+                                <tr>
+                                    <td>狗</td>
+                                    <td><input name="03511" type="text" value="${(entity.pro_03511)!''}" />
+                                    <td><input name="03611" type="text" value="${(entity.pro_03611)!''}" />
+                                    <td><input name="03711" type="text" value="${(entity.pro_03711)!''}" />
+                                    <td><input name="03811" type="text" value="${(entity.pro_038111)!''}" />
+                                    <td><input name="03911" type="text" value="${(entity.pro_03911)!''}" />
+                                    <td><input name="04011" type="text" value="${(entity.pro_04011)!''}" />
+                                </tr>
+                                <tr>
+                                    <td>豬</td>
+                                    <td><input name="03512" type="text" value="${(entity.pro_03512)!''}" />
+                                    <td><input name="03612" type="text" value="${(entity.pro_03612)!''}" />
+                                    <td><input name="03712" type="text" value="${(entity.pro_03712)!''}" />
+                                    <td><input name="03812" type="text" value="${(entity.pro_03812)!''}" />
+                                    <td><input name="03912" type="text" value="${(entity.pro_03912)!''}" />
+                                    <td><input name="04012" type="text" value="${(entity.pro_04012)!''}" />
                                 </tr>
                                 </tbody>
                             </table>

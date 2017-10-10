@@ -52,7 +52,7 @@ public class HomeController  {
         userInfo.put("name",user.getName());
         userInfo.put("account",user.getAccount());
         userInfo.put("sum",0);
-        userInfo.put("odds_set","B");
+        userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);
@@ -138,7 +138,7 @@ public class HomeController  {
         userInfo.put("name",user.getName());
         userInfo.put("account",user.getAccount());
         userInfo.put("sum",0);
-        userInfo.put("odds_set","B");
+        userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
 
         map.put("user_info",userInfo);

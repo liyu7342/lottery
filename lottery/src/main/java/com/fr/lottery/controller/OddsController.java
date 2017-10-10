@@ -7,6 +7,7 @@ import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
+import org.opensaml.xml.encryption.P;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/temaa");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
 
-        Map<String,Float> map =  oddsService.getOddsMap("BA",oddsTypes);
+        Map<String,Float> map =  oddsService.getOddsMap("A",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -49,7 +50,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/temab");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap("BB",oddsTypes);
+        Map<String,Float> map =  oddsService.getOddsMap("B",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -152,6 +153,9 @@ public class OddsController {
     public ModelAndView shengxiaolian(Boolean isDefault){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiaolian");
+        String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/texiao")
@@ -271,6 +275,12 @@ public class OddsController {
     public void getOdds(String game_ids,String odds_set,HttpServletRequest request, HttpServletResponse response) throws  IOException{
         String[] gameIds = game_ids.split("\\|");
 
+        if(odds_set.length()==2){
+            odds_set=odds_set.substring(1,2);
+        }
+        else{
+            odds_set="";
+        }
         List<Odds> oddsList= oddsService.getOddsChange(odds_set,gameIds);
         Map<String,Object> map = new HashedMap();
         Map<String,Object> oddsMap = new HashMap<String, Object>();

@@ -311,7 +311,7 @@
                             </table>
 
                             <div class="g-tn">
-                                <input type="hidden" value="BB" name="oddSet" id="hiddenOddSet">
+                                <input type="hidden" value="B" name="oddSet" id="hiddenOddSet">
                                 <input type="submit" class="btn2" value="保 存"/>
                                 <input type="reset" class="btn2" value="重 設"/>
                             </div>

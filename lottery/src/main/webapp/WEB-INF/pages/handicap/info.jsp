@@ -21,8 +21,8 @@
 <div id="doc3" class="yui-t2 fixh">
     <div id="bd">
         <div id="yui-main">
-            <div class="yui-b">
-                <div class="yui-g">
+            <div class="yui-b" style="margin-left:3px;">
+                <div class="yui-g" >
                     <div id="qishu" class="module">
                         <form id="create" method="post" action="/handicap/save">
                             <div class="hd g-tm">
@@ -34,7 +34,7 @@
                             <div class="bd g-new">
                                 <div class="g-tif"><h3>基本資料設定</h3></div>
                                 <table class="g-t1 g-t2 t1">
-                                    <tbody >
+                                    <tbody>
                                     <tr>
                                         <td>期数</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="qishu" value="${(entity.qishu)!''}" /></td>
