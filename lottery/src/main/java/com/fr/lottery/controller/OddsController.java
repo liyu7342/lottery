@@ -285,7 +285,17 @@ public class OddsController {
         Map<String,Object> map = new HashedMap();
         Map<String,Object> oddsMap = new HashMap<String, Object>();
         for(Odds odds : oddsList){
-            oddsMap.put(odds.getNumkey(),odds.getNumvalue());
+            if(!odds.getNumkey().contains("_")){
+                oddsMap.put(odds.getNumkey(),odds.getNumvalue().toString());
+            }
+        }
+        if(game_ids.indexOf("009")>0 ||game_ids.indexOf("012")>0  ){
+            for(Odds odds : oddsList){
+                if(odds.getNumkey().contains("_")){
+                    String key= odds.getNumkey().substring(0,odds.getNumkey().indexOf("_"));
+                    oddsMap.put(key,oddsMap.get(key)+"/"+odds.getNumvalue());
+                }
+            }
         }
         Map<String,Object> outMap =new  HashedMap();
         for(String gameId : gameIds){
