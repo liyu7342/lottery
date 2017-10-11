@@ -26,8 +26,8 @@
                         <input type="hidden" id="time_stamp" value="1497948387"/>
                         <input type="hidden" id="cps_time" value="20170621181353"/>
                         <div class="hd"><h2 class="g-tit"><span id="product_name">尾數連</span> 投注（四尾連一次最多選擇9個尾數）</h2>
-                            <div class="g-pr" id="types"><label for="fushitouzhu"><input type="radio" id="fushitouzhu"  disabled="disabled" name="type" value="fushi" checked="checked"/>複式投注</label>
-                                <label for="tuotoutouzhu"><input type="radio" id="tuotoutouzhu"  disabled="disabled" name="type" value="tuotou"/>拖頭投注</label></div>
+                            <div class="g-pr" id="types"><label for="fushitouzhu"><input type="radio" id="fushitouzhu"   name="type" value="fushi" checked="checked"/>複式投注</label>
+                                <label for="tuotoutouzhu"><input type="radio" id="tuotoutouzhu"   name="type" value="tuotou"/>拖頭投注</label></div>
                         </div>
                         <div class="bd">
                             <form id="form_mark">
@@ -39,54 +39,54 @@
                                     </tr></thead>
                                     <tbody id="plays">
                                     <tr>
-                                        <th><label for="default_play"><input name="play" value="2041" type="radio"  disabled="disabled"  checked="checked" id="default_play"/>二尾連(中) </label></th>
-                                        <th><label for="sanweilian"><input name="play" id="sanweilian" value="3043" type="radio"  disabled="disabled"/>三尾連(中) </label></th>
-                                        <th><label for="siweilian"><input name="play" id="siweilian" value="4045" type="radio"  disabled="disabled"/>四尾連(中) </label></th>
+                                        <th><label for="default_play"><input name="play" value="2041" type="radio"    checked="checked" id="default_play"/>二尾連(中) </label></th>
+                                        <th><label for="sanweilian"><input name="play" id="sanweilian" value="3043" type="radio"  />三尾連(中) </label></th>
+                                        <th><label for="siweilian"><input name="play" id="siweilian" value="4045" type="radio"  />四尾連(中) </label></th>
                                     </tr>
                                     <tr>
-                                        <th><label for="erweilianbu"><input name="play" id="erweilianbu" value="2042" type="radio"  disabled="disabled"/>二尾連(不中) </label></th>
-                                        <th><label for="sanweilianbu"><input name="play" id="sanweilianbu" value="3044" type="radio"  disabled="disabled"/>三尾連(不中) </label></th>
-                                        <th><label for="siweilianbu"><input name="play" id="siweilianbu" value="4046" type="radio"  disabled="disabled"/>四尾連(不中) </label></th>
+                                        <th><label for="erweilianbu"><input name="play" id="erweilianbu" value="2042" type="radio"  />二尾連(不中) </label></th>
+                                        <th><label for="sanweilianbu"><input name="play" id="sanweilianbu" value="3044" type="radio"  />三尾連(不中) </label></th>
+                                        <th><label for="siweilianbu"><input name="play" id="siweilianbu" value="4046" type="radio"  />四尾連(不中) </label></th>
                                     </tr>
                                     </tbody></table>
                                 <div class="mt g-thd"><h3>請選擇球號</h3></div>
                                 <table class="g-t1" id="ball">
                                     <tbody>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="01"/>1尾</th>
-                                        <td><strong>01,11,21,31,41</strong></td><td width="10%" name="pro_01"></td>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="06"/>6尾</th>
-                                        <td><strong>06,16,26,36,46</strong></td><td width='10%' name="pro_06"></td>
+                                        <th class="bg"><label><input type="checkbox"   value="01"/>1尾</label></th>
+                                        <td><strong>01,11,21,31,41</strong></td><td width="10%" name="pro_01">${(entity.pro_04101)!''}</td>
+                                        <th class="bg"><label><input type="checkbox"   value="06"/>6尾</label></th>
+                                        <td><strong>06,16,26,36,46</strong></td><td width='10%' name="pro_06">${(entity.pro_04106)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="02"/>2尾</th>
-                                        <td><strong>02,12,22,32,42</strong></td><td name="pro_02"></td>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="07"/>7尾</th>
-                                        <td><strong>07,17,27,37,47</strong></td><td name="pro_07"></td>
+                                        <th class="bg"><label><input type="checkbox"   value="02"/>2尾</label></th>
+                                        <td><strong>02,12,22,32,42</strong></td><td name="pro_02">${(entity.pro_04102)!''}</td>
+                                        <th class="bg"><label><input type="checkbox"   value="07"/>7尾</label></th>
+                                        <td><strong>07,17,27,37,47</strong></td><td name="pro_07">${(entity.pro_04107)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="03"/>3尾</th>
-                                        <td><strong>03,13,23,33,43</strong></td><td name="pro_03"></td>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="08"/>8尾</th>
-                                        <td><strong>08,18,28,38,48 </strong></td><td name="pro_08"></td>
+                                        <th class="bg"><label><input type="checkbox"   value="03"/>3尾</label></th>
+                                        <td><strong>03,13,23,33,43</strong></td><td name="pro_03">${(entity.pro_04103)!''}</td>
+                                        <th class="bg"><label><input type="checkbox"   value="08"/>8尾</label></th>
+                                        <td><strong>08,18,28,38,48 </strong></td><td name="pro_08">${(entity.pro_04108)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="04"/>4尾</th>
-                                        <td><strong>04,14,24,34,44</strong></td><td name="pro_04"></td>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="09"/>9尾</th>
-                                        <td><strong>09,19,29,39,49</strong></td><td name="pro_09"></td>
+                                        <th class="bg"><label><input type="checkbox"   value="04"/>4尾</label></th>
+                                        <td><strong>04,14,24,34,44</strong></td><td name="pro_04">${(entity.pro_04104)!''}</td>
+                                        <th class="bg"><label><input type="checkbox"   value="09"/>9尾</label></th>
+                                        <td><strong>09,19,29,39,49</strong></td><td name="pro_09">${(entity.pro_04109)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="05"/>5尾</th>
-                                        <td><strong>05,15,25,35,45</strong></td><td name="pro_05"></td>
-                                        <th class="bg"><label><input type="checkbox"  disabled="disabled" value="00"/>0尾</th>
-                                        <td><strong>10,20,30,40 </strong></td><td name="pro_00"></td>
+                                        <th class="bg"><label><input type="checkbox"   value="05"/>5尾</label></th>
+                                        <td><strong>05,15,25,35,45</strong></td><td name="pro_05">${(entity.pro_04105)!''}</td>
+                                        <th class="bg"><label><input type="checkbox"   value="00"/>0尾</label></th>
+                                        <td><strong>10,20,30,40 </strong></td><td name="pro_00">${(entity.pro_04100)!''}</td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div class="g-tn">單注金額&nbsp;<input type="text" class="tx dis" disabled="disabled" id="sum"/>
-                                    <input type="submit" class="btn2 bds" disabled="disabled" value="訂 單"/>
-                                    <input type="reset" class="btn2 bds" disabled="disabled" value="重 設"/>
+                                <div class="g-tn">單注金額&nbsp;<input type="text" class="tx dis"  id="sum"/>
+                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
+                                    <input type="reset" class="btn2 bds"  value="重 設"/>
                                 </div>
                         </div>
                         </form>

@@ -68,6 +68,58 @@ public class OddsController {
     public ModelAndView buzhong(Boolean isDefault){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong");
+        String[] oddsTypes= {OddsTypeEnum.buzhong5.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
+        return modelAndView;
+    }
+
+    @RequestMapping("/buzhong6")
+    public ModelAndView buzhong6(Boolean isDefault){
+        if(isDefault==null) isDefault=false;
+        ModelAndView modelAndView = new ModelAndView("/odds/buzhong6");
+        String[] oddsTypes= {OddsTypeEnum.buzhong6.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
+        return modelAndView;
+    }
+
+    @RequestMapping("/buzhong7")
+    public ModelAndView buzhong7(Boolean isDefault){
+        if(isDefault==null) isDefault=false;
+        ModelAndView modelAndView = new ModelAndView("/odds/buzhong7");
+        String[] oddsTypes= {OddsTypeEnum.buzhong7.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
+        return modelAndView;
+    }
+
+    @RequestMapping("/buzhong8")
+    public ModelAndView buzhong8(Boolean isDefault){
+        if(isDefault==null) isDefault=false;
+        ModelAndView modelAndView = new ModelAndView("/odds/buzhong8");
+        String[] oddsTypes= {OddsTypeEnum.buzhong8.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
+        return modelAndView;
+    }
+
+    @RequestMapping("/buzhong9")
+    public ModelAndView buzhong9(Boolean isDefault){
+        if(isDefault==null) isDefault=false;
+        ModelAndView modelAndView = new ModelAndView("/odds/buzhong9");
+        String[] oddsTypes= {OddsTypeEnum.buzhong9.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
+        return modelAndView;
+    }
+    @RequestMapping("/buzhong10")
+    public ModelAndView buzhong10(Boolean isDefault){
+        if(isDefault==null) isDefault=false;
+        ModelAndView modelAndView = new ModelAndView("/odds/buzhong10");
+        String[] oddsTypes= {OddsTypeEnum.buzhong10.getValue()};
+        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/guoguan")
