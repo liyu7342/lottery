@@ -183,7 +183,7 @@ public class PlaysController {
     public ModelAndView shengxiaolian() {
         ModelAndView mv = new ModelAndView("/plays/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }

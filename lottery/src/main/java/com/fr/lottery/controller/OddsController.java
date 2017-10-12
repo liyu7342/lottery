@@ -236,7 +236,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/weishulian");
         String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
