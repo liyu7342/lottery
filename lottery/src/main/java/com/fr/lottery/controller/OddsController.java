@@ -2,12 +2,12 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
-import org.opensaml.xml.encryption.P;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +30,8 @@ public class OddsController {
     private IOddsService oddsService;
     @Autowired
     private IOrderService orderService;
-
+    @Autowired
+    private IHandicapService handicapService;
     @Autowired
     private IShengxiaoService shengxiaoService;
 
@@ -40,7 +41,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/temaa");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
 
-        Map<String,Float> map =  oddsService.getOddsMap("A",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap("A",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -50,7 +51,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/temab");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap("B",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap("B",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -60,7 +61,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/banbo");
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -69,7 +70,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong");
         String[] oddsTypes= {OddsTypeEnum.buzhong5.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -79,7 +80,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong6");
         String[] oddsTypes= {OddsTypeEnum.buzhong6.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -89,7 +90,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong7");
         String[] oddsTypes= {OddsTypeEnum.buzhong7.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -99,7 +100,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong8");
         String[] oddsTypes= {OddsTypeEnum.buzhong8.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -109,7 +110,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong9");
         String[] oddsTypes= {OddsTypeEnum.buzhong9.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -118,7 +119,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong10");
         String[] oddsTypes= {OddsTypeEnum.buzhong10.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -126,7 +127,7 @@ public class OddsController {
     public ModelAndView guoguan(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/guoguan");
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -136,7 +137,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma");
         String[] oddsTypes= {OddsTypeEnum.erquanzh.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -146,7 +147,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma2_t");
         String[] oddsTypes= {OddsTypeEnum.erzhongte.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -156,7 +157,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianmatec");
         String[] oddsTypes= {OddsTypeEnum.techuan.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -166,7 +167,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma3_3");
         String[] oddsTypes= {OddsTypeEnum.sanquanzh.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -176,7 +177,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma3_2");
         String[] oddsTypes= {OddsTypeEnum.sanzher.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -187,7 +188,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/liuxiao");
         String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
@@ -197,7 +198,7 @@ public class OddsController {
         Map<String,String> map =shengxiaoService.findMapByYear();
         modelAndView.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
@@ -206,7 +207,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
@@ -217,7 +218,7 @@ public class OddsController {
         Map<String,String> map =  shengxiaoService.findMapByYear();
         modelAndView.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
@@ -225,7 +226,7 @@ public class OddsController {
     public ModelAndView weishu(Boolean isDefault){
         ModelAndView modelAndView = new ModelAndView("/odds/weishu");
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
-        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map1);
 
         return modelAndView;
@@ -242,7 +243,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/zheng16");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -252,7 +253,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/zhengma");
 
         String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -262,7 +263,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate");
         String[] oddsTypes= {OddsTypeEnum.zhengmate1.getValue(),OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.sebozhmate1.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -272,7 +273,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate2");
         String[] oddsTypes= {OddsTypeEnum.zhengmate2.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.sebozhmate2.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -282,7 +283,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate3");
         String[] oddsTypes= {OddsTypeEnum.zhengmate3.getValue(),OddsTypeEnum.lmzhmate3.getValue(),OddsTypeEnum.sebozhmate3.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -293,7 +294,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate4");
 
         String[] oddsTypes= {OddsTypeEnum.zhengmate4.getValue(),OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.sebozhmate4.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -303,7 +304,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate5");
         String[] oddsTypes= {OddsTypeEnum.zhengmate5.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.sebozhmate5.getValue()};
-        Map<String,Float> map =  oddsService.getOddsMap("",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap("",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -313,7 +314,7 @@ public class OddsController {
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate6");
         String[] oddsTypes= {OddsTypeEnum.zhengmate6.getValue(),OddsTypeEnum.lmzhmate6.getValue(),OddsTypeEnum.sebozhmate6.getValue()};
-        Map<String,Float> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -333,25 +334,34 @@ public class OddsController {
         else{
             odds_set="";
         }
+
         List<Odds> oddsList= oddsService.getOddsChange(odds_set,gameIds);
         Map<String,Object> map = new HashedMap();
         Map<String,Object> oddsMap = new HashMap<String, Object>();
         for(Odds odds : oddsList){
             if(!odds.getNumkey().contains("_")){
-                oddsMap.put(odds.getNumkey(),odds.getNumvalue().toString());
+                oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
             }
         }
         if(game_ids.indexOf("009")>0 ||game_ids.indexOf("012")>0  ){
             for(Odds odds : oddsList){
                 if(odds.getNumkey().contains("_")){
                     String key= odds.getNumkey().substring(0,odds.getNumkey().indexOf("_"));
-                    oddsMap.put(key,oddsMap.get(key)+"/"+odds.getNumvalue());
+                    oddsMap.put(key,oddsMap.get(key)+"/"+odds.getNumvalue()==null?"":odds.getNumvalue().toString());
                 }
             }
         }
         Map<String,Object> outMap =new  HashedMap();
-        for(String gameId : gameIds){
-            map.put(gameId,1);
+        boolean isOpen =handicapService.IsOpenHandicap();
+        if(isOpen){
+            for(String gameId : gameIds){
+                map.put(gameId,1);
+            }
+        }
+        else{
+            for(String gameId : gameIds){
+                map.put(gameId,0);
+            }
         }
         outMap.put("odds",oddsMap);
         outMap.put("status",map);

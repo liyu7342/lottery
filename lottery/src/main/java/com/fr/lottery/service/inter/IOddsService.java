@@ -27,9 +27,13 @@ public interface IOddsService {
     boolean deleteByPrimaryKey(String id);
 
 
-    Map<String,Float> getOddsMap(String[] oddsType);
+    Map<String,String> getOddsMap(String[] oddsType);
 
-    Map<String,Float> getOddsMap(String oddSet,String[] oddsType);
+    Map<String,String> getOddsMap(String oddSet,String[] oddsType);
+
+    Map<String, String> getOddsChangeMap(String[] oddsType);
+
+    Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType);
 
     List<Odds> getOddsChange(String oddSet,String[] oddsType);
 

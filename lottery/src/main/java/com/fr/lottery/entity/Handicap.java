@@ -10,6 +10,8 @@ public class Handicap {
 
     private String qishu;
 
+    private String riqi;
+
     private Integer status;
 
     private String no1;

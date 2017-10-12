@@ -1,8 +1,11 @@
 package com.fr.lottery.service.impl;
 
 import com.fr.lottery.dao.OddsMapper;
+import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.Odds;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOddsService;
+import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.StringUtil;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +26,10 @@ public class OddsService implements IOddsService{
 
     @Autowired
     private OddsMapper oddsMapper;
+
+    @Autowired
+    private IHandicapService handicapService;
+
     @Override
     public Odds selectByPrimaryKey(String id) {
         return oddsMapper.selectByPrimaryKey(id);
@@ -33,21 +41,53 @@ public class OddsService implements IOddsService{
     }
 
 
+
+
     @Override
-    public Map<String, Float> getOddsMap(String oddSet,String[] oddsType) {
+    public Map<String, String> getOddsMap(String oddSet,String[] oddsType) {
         List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
-        Map<String,Float> map = new HashedMap();
+        Map<String,String> map = new HashedMap();
         for(Odds odds : oddsList){
-            map.put("pro_"+odds.getNumkey(),odds.getNumvalue());
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue().toString());
         }
         return map;
     }
 
     @Override
     public List<Odds> getOddsChange(String oddSet, String[] oddsType) {
-        return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        List<Odds> oddsList=oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        Handicap handicap =handicapService.getCurrentHandicap();
+        Date dt = new Date();
+        boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( DateTimeUtils.Date2StringLong(dt))<0;
+        if(!isOpen){
+            for(Odds odds :oddsList){
+                odds.setNumvalue(null);
+            }
+        }
+        return oddsList;
     }
 
+    @Override
+    public Map<String, String> getOddsChangeMap(String[] oddsType) {
+        return getOddsChangeMap("",oddsType);
+    }
+    @Override
+    public Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType) {
+        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        boolean isOpen =handicapService.IsOpenHandicap();
+        Map<String,String> map = new HashedMap();
+        if(isOpen) {
+            for (Odds odds : oddsList) {
+                map.put("pro_" + odds.getNumkey(),odds.getNumvalue()==null?"": odds.getNumvalue().toString());
+            }
+        }
+        else{
+            for (Odds odds : oddsList) {
+                map.put("pro_" + odds.getNumkey(), "");
+            }
+        }
+        return map;
+    }
     @Override
     public List<Odds> getOddsList(String oddSet, String[] oddsType) {
         return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
@@ -56,7 +96,7 @@ public class OddsService implements IOddsService{
 
 
     @Override
-    public Map<String, Float> getOddsMap(String[] oddsType) {
+    public Map<String, String> getOddsMap(String[] oddsType) {
         return getOddsMap("",oddsType);
     }
 
