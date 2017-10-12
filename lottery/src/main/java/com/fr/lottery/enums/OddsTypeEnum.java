@@ -43,6 +43,12 @@ public enum OddsTypeEnum {
     shengxiaolian("035|036|037|038|039|040"),
     weishulian("041|042|043|044|045|046"),
     buzhong("047|048|049|050|051|052"),
+    buzhong5("047"),
+    buzhong6("048"),
+    buzhong7("049"),
+    buzhong8("050"),
+    buzhong9("051"),
+    buzhong10("052"),
     shengxiaobuzhong("053");
 
     private String value;

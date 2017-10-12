@@ -92,10 +92,19 @@ public class PlaysController {
         mv.addObject("entity",map1);
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
         List<Odds> oddsList = oddsService.getOddsList("",oddsTypes1);
-        Map<String,Float> oddsMap = new HashMap<String, Float>();
+        Map<String,Object> oddsMap = new HashMap<String, Object>();
         for(Odds odds : oddsList){
-            oddsMap.put(odds.getNumkey(),odds.getNumvalue());
+            if(!odds.getNumkey().contains("_")){
+                oddsMap.put(odds.getNumkey(),odds.getNumvalue());
+            }
         }
+        for(Odds odds : oddsList){
+            if(odds.getNumkey().contains("_")){
+                String key= odds.getNumkey().substring(0,odds.getNumkey().indexOf("_"));
+                oddsMap.put(key,oddsMap.get(key)+"/"+odds.getNumvalue());
+            }
+        }
+
         Map<String,Integer> statusMap = new HashMap<String, Integer>();
         for(String oddsType : oddsTypes1){
             statusMap.put(oddsType,1);
@@ -182,7 +191,7 @@ public class PlaysController {
     @RequestMapping("/weishulian")
     public ModelAndView weishulian() {
         ModelAndView mv = new ModelAndView("/plays/weishulian");
-        String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
+        String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
         Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
