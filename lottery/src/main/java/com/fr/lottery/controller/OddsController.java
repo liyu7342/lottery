@@ -182,6 +182,9 @@ public class OddsController {
     public ModelAndView weishulian(Boolean isDefault){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/weishulian");
+        String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
+        Map<String,Float> map1 =oddsService.getOddsMap(oddsTypes);
+        modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/zheng16")

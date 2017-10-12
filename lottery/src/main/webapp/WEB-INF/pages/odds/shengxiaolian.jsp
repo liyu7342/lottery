@@ -147,7 +147,7 @@
                                     <td><input name="03511" type="text" value="${(entity.pro_03511)!''}" />
                                     <td><input name="03611" type="text" value="${(entity.pro_03611)!''}" />
                                     <td><input name="03711" type="text" value="${(entity.pro_03711)!''}" />
-                                    <td><input name="03811" type="text" value="${(entity.pro_038111)!''}" />
+                                    <td><input name="03811" type="text" value="${(entity.pro_03811)!''}" />
                                     <td><input name="03911" type="text" value="${(entity.pro_03911)!''}" />
                                     <td><input name="04011" type="text" value="${(entity.pro_04011)!''}" />
                                 </tr>
