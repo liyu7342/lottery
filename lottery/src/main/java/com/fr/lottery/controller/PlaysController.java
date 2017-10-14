@@ -200,6 +200,9 @@ public class PlaysController {
     @RequestMapping("/buzhong")
     public ModelAndView buzhong() {
         ModelAndView mv = new ModelAndView("/plays/buzhong");
+        String[] oddsTypes= OddsTypeEnum.buzhong.getValue().split("\\|");
+        Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+        mv.addObject("entity",map1);
         return mv;
     }
 }

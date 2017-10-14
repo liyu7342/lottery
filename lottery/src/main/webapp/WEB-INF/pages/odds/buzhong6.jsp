@@ -245,7 +245,7 @@
  
 
                             <div class="g-tn">
-                                <input type="hidden" value="A" name="oddSet" id="hiddenOddSet">
+
                                 <input type="submit" class="btn2" value="保 存"/>
                                 <input type="reset" class="btn2" value="重 設"/>
                             </div>
