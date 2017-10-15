@@ -48,7 +48,7 @@ public class OddsService implements IOddsService{
         List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
         Map<String,String> map = new HashedMap();
         for(Odds odds : oddsList){
-            map.put("pro_"+odds.getNumkey(),odds.getNumvalue().toString());
+            map.put("pro_"+odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
         }
         return map;
     }
@@ -56,9 +56,7 @@ public class OddsService implements IOddsService{
     @Override
     public List<Odds> getOddsChange(String oddSet, String[] oddsType) {
         List<Odds> oddsList=oddsMapper.getTypeOddsList(oddSet,oddsType,false);
-        Handicap handicap =handicapService.getCurrentHandicap();
-        Date dt = new Date();
-        boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( DateTimeUtils.Date2StringLong(dt))<0;
+        boolean isOpen =handicapService.IsOpenHandicap();
         if(!isOpen){
             for(Odds odds :oddsList){
                 odds.setNumvalue(null);

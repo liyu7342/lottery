@@ -21,7 +21,7 @@
     <div id="bd">
         <div id="yui-main">
             <div class="yui-b"><div class="yui-g">
-                <div id="tema" class="module g-ml" status='{"000":0,"019":0,"027":0}'>
+                <div id="tema" class="module g-ml" status='${status}'>
                     <div class="hd"></div>
                     <div class="bd">
                         <h2 class="g-tit"><span id="product_name">特碼</span> 投注

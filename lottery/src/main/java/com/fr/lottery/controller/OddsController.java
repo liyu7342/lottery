@@ -340,7 +340,7 @@ public class OddsController {
 
         List<Odds> oddsList= oddsService.getOddsChange(odds_set,gameIds);
         Map<String,Object> map = new HashedMap();
-        Map<String,Object> oddsMap = new HashMap<String, Object>();
+        Map<String,String> oddsMap = new HashMap<String, String>();
         for(Odds odds : oddsList){
             if(!odds.getNumkey().contains("_")){
                 oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
@@ -350,7 +350,10 @@ public class OddsController {
             for(Odds odds : oddsList){
                 if(odds.getNumkey().contains("_")){
                     String key= odds.getNumkey().substring(0,odds.getNumkey().indexOf("_"));
-                    oddsMap.put(key,oddsMap.get(key)+"/"+odds.getNumvalue()==null?"":odds.getNumvalue().toString());
+                    if(!StringUtil.isNullOrEmpty(oddsMap.get(key))&& odds.getNumvalue()!=null)
+                        oddsMap.put(key,(oddsMap.get(key)+"/"+(odds.getNumvalue()==null?"":odds.getNumvalue().toString())));
+                    else
+                        oddsMap.put(key,"");
                 }
             }
         }
