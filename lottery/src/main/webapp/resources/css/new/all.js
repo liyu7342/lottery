@@ -5967,6 +5967,19 @@ var PlaysBall = function(h) {
             }
         );
         this._refersh()
+        for (var a in this.pros) {
+            this.pro[a] = $('*[pro="' + a + '"] input[type="text"]')
+            if ( this.ustatus == 1) {
+                if (this.pros[a]) {
+                    this.pro[a].removeAttr("disabled");
+                    this.pro[a].removeClass("dis")
+                } else {
+                    this.pro[a].attr("disabled", "disabled");
+                    this.pro[a].addClass("dis")
+                }
+            }
+
+        }
     }
     ;
 PlaysBall.prototype._init = function() {

@@ -102,7 +102,7 @@ public class PlaysController {
        Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
         mv.addObject("entity",map1);
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
-        List<Odds> oddsList = oddsService.getOddsList("",oddsTypes1);
+        List<Odds> oddsList = oddsService.getOddsChange("",oddsTypes1);
         Map<String,String> oddsMap = new HashMap<String, String>();
         for(Odds odds : oddsList){
             if(!odds.getNumkey().contains("_")){
@@ -198,7 +198,7 @@ public class PlaysController {
     public ModelAndView shengxiaolian() {
         ModelAndView mv = new ModelAndView("/plays/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
         mv.addObject("entity",map1);
         return mv;
     }
