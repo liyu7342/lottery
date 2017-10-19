@@ -1,5 +1,6 @@
 package com.fr.lottery.service.impl;
 
+import com.fr.lottery.dao.OddsChangeMapper;
 import com.fr.lottery.dao.OddsMapper;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.Odds;
@@ -29,6 +30,9 @@ public class OddsService implements IOddsService{
 
     @Autowired
     private IHandicapService handicapService;
+
+    @Autowired
+    private OddsChangeMapper oddsChangeMapper;
 
     @Override
     public Odds selectByPrimaryKey(String id) {
@@ -69,17 +73,25 @@ public class OddsService implements IOddsService{
     public Map<String, String> getOddsChangeMap(String[] oddsType) {
         return getOddsChangeMap("",oddsType);
     }
+
+    /***
+     * 赔率变动，封盘时变为空，开盘时获取初始值
+     * @param oddSet
+     * @param oddsType
+     * @return
+     */
     @Override
     public Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType) {
-        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
         boolean isOpen =handicapService.IsOpenHandicap();
         Map<String,String> map = new HashedMap();
         if(isOpen) {
+            List<Odds> oddsList = oddsChangeMapper.getOddsChangesByType(oddSet,oddsType);
             for (Odds odds : oddsList) {
                 map.put("pro_" + odds.getNumkey(),odds.getNumvalue()==null?"": odds.getNumvalue().toString());
             }
         }
         else{
+            List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
             for (Odds odds : oddsList) {
                 map.put("pro_" + odds.getNumkey(), "");
             }

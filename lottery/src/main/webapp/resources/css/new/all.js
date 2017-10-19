@@ -5967,19 +5967,19 @@ var PlaysBall = function(h) {
             }
         );
         this._refersh()
-        for (var a in this.pros) {
-            this.pro[a] = $('*[pro="' + a + '"] input[type="text"]')
-            if ( this.ustatus == 1) {
-                if (this.pros[a]) {
-                    this.pro[a].removeAttr("disabled");
-                    this.pro[a].removeClass("dis")
-                } else {
-                    this.pro[a].attr("disabled", "disabled");
-                    this.pro[a].addClass("dis")
-                }
-            }
-
-        }
+        // for (var a in this.pros) {
+        //     this.pro[a] = $('*[pro="' + a + '"] input[type="text"]')
+        //     if ( this.ustatus == 1) {
+        //         if (this.pros[a]) {
+        //             this.pro[a].removeAttr("disabled");
+        //             this.pro[a].removeClass("dis")
+        //         } else {
+        //             this.pro[a].attr("disabled", "disabled");
+        //             this.pro[a].addClass("dis")
+        //         }
+        //     }
+        //
+        // }
     }
     ;
 PlaysBall.prototype._init = function() {
@@ -6083,7 +6083,7 @@ PlaysBall.prototype.curstop = function(b) {
             if (!this.pro[a]) {
                 this.pro[a] = $('*[pro="' + a + '"] input[type="text"]')
             }
-            if (this.pros[a] !== b[a] && this.ustatus == 1) {
+            if ( this.ustatus == 1) {//this.pros[a] !== b[a] &&
                 if (b[a]) {
                     this.pro[a].removeAttr("disabled");
                     this.pro[a].removeClass("dis")
@@ -10839,7 +10839,7 @@ $.extend({
     refersh: function(c) {
         var b = c.status[$.game_ids]
             , a = play.refreshCtl || $("input");
-        if ($.last_update.status && b != $.last_update.status[$.game_ids]) {
+        //if ($.last_update.status && b != $.last_update.status[$.game_ids]) {
             if (0 === b) {
                 a.attr("disabled", "disabled");
                 $(":text").addClass("dis");
@@ -10851,7 +10851,7 @@ $.extend({
                 $("#w_fast :radio").removeAttr("disabled");
                 $.trigger("renderMul")
             }
-        }
+        //}
         $.last_update = c;
         parent.$.trigger("cpsset", [{
             timestamp: c.time_stamp

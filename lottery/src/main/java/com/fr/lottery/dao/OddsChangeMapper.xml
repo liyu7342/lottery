@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.OddsChangeMapper">
+  <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Odds">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="oddSet" jdbcType="VARCHAR" property="oddSet" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="NumKey" jdbcType="VARCHAR" property="numkey" />
+    <result column="NumValue" jdbcType="DECIMAL" property="numvalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id,oddSet, Type, NumKey, NumValue
+  </sql>
+
+  <select id="getOddsChangesByType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oddsChange
+    <where>
+      <if test="oddSet !=null and oddSet !='' ">
+        AND oddSet =#{oddSet,jdbcType=VARCHAR}
+      </if>
+
+      <if test="types!=null ">
+        AND Type in
+        <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+    ORDER  BY Numkey DESC
+  </select>
+
+  <insert id="insert" parameterType="com.fr.lottery.entity.Odds">
+    insert into oddsChange (Id,OddSet, Type, NumKey, NumValue)
+    values (#{id,jdbcType=VARCHAR}, #{oddSet,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+      #{numkey,jdbcType=VARCHAR}, #{numvalue,jdbcType=REAL})
+  </insert>
+
+  <update id="updateByPrimaryKey" >
+    update oddsChange set NumValue=#{numvalue,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from oddsChange
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+</mapper>

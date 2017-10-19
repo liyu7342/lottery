@@ -127,6 +127,7 @@
                 <div class="ft"></div>
             </div>    </div>
     </div>
+</div>
     <script type="text/javascript">
         window.setting = {
             login_path: '/msdid63242f/user/login.html', //登錄路徑
