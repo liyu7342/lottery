@@ -39,79 +39,79 @@
                                     <tr>
                                         <td class="bg"><strong>紅單</strong></td>
                                         <td>${(entity.pro_01601)!''}</td>
-                                        <td><input name="pro_01601" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01601" type="text"   /></td>
                                         <td><em class="ico n1">1</em><em class="ico n7">7</em><em class="ico n13">13</em><em class="ico n19">19</em><em class="ico n23">23</em><em class="ico n29">29</em><em class="ico n35">35</em><em class="ico n45">45</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>紅雙</strong></td>
                                         <td>${(entity.pro_01602)!''}</td>
-                                        <td><input name="pro_01602" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01602" type="text"   /></td>
                                         <td><em class="ico n2">2</em><em class="ico n8">8</em><em class="ico n12">12</em><em class="ico n18">18</em><em class="ico n24">24</em><em class="ico n30">30</em><em class="ico n34">34</em><em class="ico n40">40</em><em class="ico n46">46</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>紅大</strong></td>
                                         <td>${(entity.pro_01603)!''}</td>
-                                        <td><input name="pro_01603" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01603" type="text"   /></td>
                                         <td><em class="ico n29">29</em><em class="ico n30">30</em><em class="ico n34">34</em><em class="ico n35">35</em><em class="ico n40">40</em><em class="ico n45">45</em><em class="ico n46">46</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>紅小</strong></td>
                                         <td>${(entity.pro_01604)!''}</td>
-                                        <td><input name="pro_01604" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01604" type="text"   /></td>
                                         <td><em class="ico n1">1</em><em class="ico n2">2</em><em class="ico n7">7</em><em class="ico n8">8</em><em class="ico n12">12</em><em class="ico n13">13</em><em class="ico n18">18</em><em class="ico n19">19</em><em class="ico n23">23</em><em class="ico n24">24</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>藍單</strong></td>
                                         <td>${(entity.pro_01605)!''}</td>
-                                        <td><input name="pro_01605" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01605" type="text"   /></td>
                                         <td><em class="ico n3">3</em><em class="ico n9">9</em><em class="ico n15">15</em><em class="ico n25">25</em><em class="ico n31">31</em><em class="ico n37">37</em><em class="ico n41">41</em><em class="ico n47">47</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>藍雙</strong></td>
                                         <td>${(entity.pro_01606)!''}</td>
-                                        <td><input name="pro_01606" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01606" type="text"   /></td>
                                         <td><em class="ico n4">4</em><em class="ico n10">10</em><em class="ico n14">14</em><em class="ico n20">20</em><em class="ico n26">26</em><em class="ico n36">36</em><em class="ico n42">42</em><em class="ico n48">48</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>藍大</strong></td>
                                         <td>${(entity.pro_01607)!''}</td>
-                                        <td><input name="pro_01607" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01607" type="text"   /></td>
                                         <td><em class="ico n25">25</em><em class="ico n26">26</em><em class="ico n31">31</em><em class="ico n36">36</em><em class="ico n37">37</em><em class="ico n41">41</em><em class="ico n42">42</em><em class="ico n47">47</em><em class="ico n48">48</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>藍小</strong></td>
                                         <td>${(entity.pro_01608)!''}</td>
-                                        <td><input name="pro_01608" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01608" type="text"   /></td>
                                         <td><em class="ico n3">3</em><em class="ico n4">4</em><em class="ico n9">9</em><em class="ico n10">10</em><em class="ico n14">14</em><em class="ico n15">15</em><em class="ico n20">20</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>綠單</strong></td>
                                         <td>${(entity.pro_01609)!''}</td>
-                                        <td><input name="pro_01609" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01609" type="text"   /></td>
                                         <td><em class="ico n5">5</em><em class="ico n11">11</em><em class="ico n17">17</em><em class="ico n21">21</em><em class="ico n27">27</em><em class="ico n33">33</em><em class="ico n39">39</em><em class="ico n43">43</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>綠雙</strong></td>
                                         <td>${(entity.pro_01610)!''}</td>
-                                        <td><input name="pro_01610" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01610" type="text"   /></td>
                                         <td><em class="ico n6">6</em><em class="ico n16">16</em><em class="ico n22">22</em><em class="ico n28">28</em><em class="ico n32">32</em><em class="ico n38">38</em><em class="ico n44">44</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>綠大</strong></td>
                                         <td>${(entity.pro_01611)!''}</td>
-                                        <td><input name="pro_01611" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01611" type="text"   /></td>
                                         <td><em class="ico n27">27</em><em class="ico n28">28</em><em class="ico n32">32</em><em class="ico n33">33</em><em class="ico n38">38</em><em class="ico n39">39</em><em class="ico n43">43</em><em class="ico n44">44</em></td>
                                     </tr>
                                     <tr>
                                         <td class="bg"><strong>綠小</strong></td>
                                         <td>${(entity.pro_01612)!''}</td>
-                                        <td><input name="pro_01612" type="text"   /></td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if> name="pro_01612" type="text"   /></td>
                                         <td><em class="ico n5">5</em><em class="ico n6">6</em><em class="ico n11">11</em><em class="ico n16">16</em><em class="ico n17">17</em><em class="ico n21">21</em><em class="ico n22">22</em></td>
                                     </tr>
                                     </tbody></table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
-                                    <input type="reset" class="btn2 bds"  value="重 設"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"   value="重 設"/>
                                 </div>
                         </div>
                         <div class="ft"></div>

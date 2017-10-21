@@ -48,180 +48,180 @@
                                     <tr>
                                         <td><em class="ico n1">01</em></td>
                                         <td>${entity.pro_00801!''}</td>
-                                        <th class="bg" width="4%"><input  type="checkbox"  value="01"/></th>
+                                        <th class="bg" width="4%"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>    type="checkbox"  value="01"/></th>
                                         <td><em class="ico n11">11</em></td>
                                         <td>${entity.pro_00811!''}</td>
-                                        <th class="bg" width="4%"><input  type="checkbox"  value="11"/></th>
+                                        <th class="bg" width="4%"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="11"/></th>
                                         <td><em class="ico n21">21</em></td>
                                         <td>${entity.pro_00821!''}</td>
-                                        <th class="bg" width="4%"><input  type="checkbox"  value="21"/></th>
+                                        <th class="bg" width="4%"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="21"/></th>
                                         <td><em class="ico n31">31</em></td>
                                         <td>${entity.pro_00831!''}</td>
-                                        <th class="bg" width="4%"><input  type="checkbox"  value="31"/></th>
+                                        <th class="bg" width="4%"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="31"/></th>
                                         <td><em class="ico n41">41</em></td>
                                         <td>${entity.pro_00841!''}</td>
-                                        <th class="bg" width="4%"><input  type="checkbox"  value="41"/></th>
+                                        <th class="bg" width="4%"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="41"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n2">02</em></td>
                                         <td>${entity.pro_00802!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="02"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="02"/></th>
                                         <td><em class="ico n12">12</em></td>
                                         <td>${entity.pro_00812!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="12"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="12"/></th>
                                         <td><em class="ico n22">22</em></td>
                                         <td>${entity.pro_00822!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="22"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="22"/></th>
                                         <td><em class="ico n32">32</em></td>
                                         <td>${entity.pro_00832!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="32"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="32"/></th>
                                         <td><em class="ico n42">42</em></td>
                                         <td>${entity.pro_00842!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="42"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="42"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n3">03</em></td>
                                         <td>${entity.pro_00803!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="03"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="03"/></th>
                                         <td><em class="ico n13">13</em></td>
                                         <td>${entity.pro_00813!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="13"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="13"/></th>
                                         <td><em class="ico n23">23</em></td>
                                         <td>${entity.pro_00823!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="23"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="23"/></th>
                                         <td><em class="ico n33">33</em></td>
                                         <td>${entity.pro_00833!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="33"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="33"/></th>
                                         <td><em class="ico n43">43</em></td>
                                         <td>${entity.pro_00843!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="43"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="43"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n4">04</em></td>
                                         <td>${entity.pro_00804!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="04"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="04"/></th>
                                         <td><em class="ico n14">14</em></td>
                                         <td>${entity.pro_00814!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="14"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="14"/></th>
                                         <td><em class="ico n24">24</em></td>
                                         <td>${entity.pro_00824!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="24"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="24"/></th>
                                         <td><em class="ico n34">34</em></td>
                                         <td>${entity.pro_00834!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="34"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="34"/></th>
                                         <td><em class="ico n44">44</em></td>
                                         <td>${entity.pro_00844!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="44"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="44"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n5">05</em></td>
                                         <td>${entity.pro_00805!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="05"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="05"/></th>
                                         <td><em class="ico n15">15</em></td>
                                         <td>${entity.pro_00815!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="15"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="15"/></th>
                                         <td><em class="ico n25">25</em></td>
                                         <td>${entity.pro_00825!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="25"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="25"/></th>
                                         <td><em class="ico n35">35</em></td>
                                         <td>${entity.pro_00835!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="35"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="35"/></th>
                                         <td><em class="ico n45">45</em></td>
                                         <td>${entity.pro_00845!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="45"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="45"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n6">06</em></td>
                                         <td>${entity.pro_00806!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="06"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="06"/></th>
                                         <td><em class="ico n16">16</em></td>
                                         <td>${entity.pro_00816!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="16"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="16"/></th>
                                         <td><em class="ico n26">26</em></td>
                                         <td>${entity.pro_00826!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="26"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="26"/></th>
                                         <td><em class="ico n36">36</em></td>
                                         <td>${entity.pro_00836!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="36"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="36"/></th>
                                         <td><em class="ico n46">46</em></td>
                                         <td>${entity.pro_00846!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="46"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="46"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n7">07</em></td>
                                         <td>${entity.pro_00807!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="07"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="07"/></th>
                                         <td><em class="ico n17">17</em></td>
                                         <td>${entity.pro_00817!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="17"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="17"/></th>
                                         <td><em class="ico n27">27</em></td>
                                         <td>${entity.pro_00827!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="27"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="27"/></th>
                                         <td><em class="ico n37">37</em></td>
                                         <td>${entity.pro_00837!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="37"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="37"/></th>
                                         <td><em class="ico n47">47</em></td>
                                         <td>${entity.pro_00847!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="47"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="47"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n8">08</em></td>
                                         <td>${entity.pro_00808!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="08"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="08"/></th>
                                         <td><em class="ico n18">18</em></td>
                                         <td>${entity.pro_00818!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="18"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="18"/></th>
                                         <td><em class="ico n28">28</em></td>
                                         <td>${entity.pro_00828!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="28"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="28"/></th>
                                         <td><em class="ico n38">38</em></td>
                                         <td>${entity.pro_00838!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="38"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="38"/></th>
                                         <td><em class="ico n48">48</em></td>
                                         <td>${entity.pro_00848!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="48"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="48"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n9">09</em></td>
                                         <td>${entity.pro_00809!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="09"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="09"/></th>
                                         <td><em class="ico n19">19</em></td>
                                         <td>${entity.pro_00819!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="19"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="19"/></th>
                                         <td><em class="ico n29">29</em></td>
                                         <td>${entity.pro_00829!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="29"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="29"/></th>
                                         <td><em class="ico n39">39</em></td>
                                         <td>${entity.pro_00839!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="39"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="39"/></th>
                                         <td><em class="ico n49">49</em></td>
                                         <td>${entity.pro_00849!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="49"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="49"/></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n10">10</em></td>
                                         <td>${entity.pro_00810!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="10"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="10"/></th>
                                         <td><em class="ico n20">20</em></td>
                                         <td>${entity.pro_00820!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="20"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="20"/></th>
                                         <td><em class="ico n30">30</em></td>
                                         <td>${entity.pro_00830!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="30"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="30"/></th>
                                         <td><em class="ico n40">40</em></td>
                                         <td>${entity.pro_00840!''}</td>
-                                        <th class="bg"><input  type="checkbox"  value="40"/></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="checkbox"  value="40"/></th>
                                         <td colspan="3"></td>
                                     </tr>
                                     </tbody></table>
                                 <table class="g-t1 mt">
                                     <thead>
                                     <tr id="plays">
-                                        <td><label><input type="radio"  checked="checked" id="pa" sid="00801" value="pa" name="play">二全中</label></td>
-                                        <td><label><input type="radio"  id="pb" sid="00901/00902" value="pb" name="play">二中特</label></td>
-                                        <td><label><input type="radio"  id="pc" sid="01001" value="pc" name="play">特串</label></td>
-                                        <td><label><input type="radio"  id="pd" sid="01101" value="pd" name="play">三全中</label></td>
-                                        <td class="r"><label><input type="radio"  id="pe" sid="01201/01202" value="pe" name="play">三中二</label></td>
+                                        <td><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio"  checked="checked" id="pa" sid="00801" value="pa" name="play">二全中</label></td>
+                                        <td><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio"  id="pb" sid="00901/00902" value="pb" name="play">二中特</label></td>
+                                        <td><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio"  id="pc" sid="01001" value="pc" name="play">特串</label></td>
+                                        <td><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio"  id="pd" sid="01101" value="pd" name="play">三全中</label></td>
+                                        <td class="r"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio"  id="pe" sid="01201/01202" value="pe" name="play">三中二</label></td>
                                     </tr>
                                     </thead>
                                 </table>
@@ -229,12 +229,12 @@
                                     <colgroup><col width="80%"></col><col width="5%"></col><col width="5%"></col><col width="5%"></col><col width="5%"></col></colgroup>
                                     <tbody>
                                     <tr>
-                                        <th><label><input  type="radio" name="ptype" value="ta" id="ta" theme="1000" checked="checked" id="tabc_default"/>正常</label>
-                                            <label><input  type="radio" name="ptype" value="tb" id="tb" theme="1000"/>膽拖</label>
-                                            <label><input  type="radio" name="ptype" value="tc" id="tc" theme="0100"/>生肖對碰</label>
-                                            <label><input  type="radio" name="ptype" value="ti" id="ti" theme="00001"/>生尾對碰</label>
-                                            <label><input  type="radio" name="ptype" value="td" id="td" theme="0010"/>尾數對碰</label>
-                                            <label><input  type="radio" name="ptype" value="te" id="te" theme="0001"/>隨意對碰</label>
+                                        <th><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="ta" id="ta" theme="1000" checked="checked" id="tabc_default"/>正常</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="tb" id="tb" theme="1000"/>膽拖</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="tc" id="tc" theme="0100"/>生肖對碰</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="ti" id="ti" theme="00001"/>生尾對碰</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="td" id="td" theme="0010"/>尾數對碰</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="te" id="te" theme="0001"/>隨意對碰</label>
                                         </th>
                                         <td >膽</td>
                                         <td id="dan_text"></td>
@@ -248,8 +248,8 @@
                                     <tbody>
                                     <tr>
                                         <th>
-                                            <label><input  type="radio" name="ptype" value="tf" id="tf"/>正常</label>
-                                            <label><input  type="radio" name="ptype" value="tg" id="tg"/>膽拖</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="tf" id="tf"/>正常</label>
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="ptype" value="tg" id="tg"/>膽拖</label>
                                         </th>
                                         <td >膽1</td>
                                         <td id="dan_text1"></td>
@@ -260,83 +260,82 @@
                                 </table>
                                 <table class="g-t1" id="lianma_shengxiao">
                                     <tbody><tr>
-                                        <th><label>鼠<input  type="radio" name="pan1" value="01" /></label></th>
-                                        <th><label>牛<input  type="radio" name="pan1" value="02" /></label></th>
-                                        <th><label>虎<input  type="radio" name="pan1" value="03" /></label></th>
-                                        <th><label>兔<input  type="radio" name="pan1" value="04" /></label></th>
-                                        <th><label>龍<input  type="radio" name="pan1" value="05" /></label></th>
-                                        <th><label>蛇<input  type="radio" name="pan1" value="06" /></label></th>
-                                        <th><label>馬<input  type="radio" name="pan1" value="07" /></label></th>
-                                        <th><label>羊<input  type="radio" name="pan1" value="08" /></label></th>
-                                        <th><label>猴<input  type="radio" name="pan1" value="09" /></label></th>
-                                        <th><label>雞<input  type="radio" name="pan1" value="10" /></label></th>
-                                        <th><label>狗<input  type="radio" name="pan1" value="11" /></label></th>
-                                        <th><label>豬<input  type="radio" name="pan1" value="12" /></label></th>
+                                        <th><label>鼠<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="01" /></label></th>
+                                        <th><label>牛<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="02" /></label></th>
+                                        <th><label>虎<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="03" /></label></th>
+                                        <th><label>兔<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="04" /></label></th>
+                                        <th><label>龍<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="05" /></label></th>
+                                        <th><label>蛇<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="06" /></label></th>
+                                        <th><label>馬<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="07" /></label></th>
+                                        <th><label>羊<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="08" /></label></th>
+                                        <th><label>猴<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="09" /></label></th>
+                                        <th><label>雞<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="10" /></label></th>
+                                        <th><label>狗<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="11" /></label></th>
+                                        <th><label>豬<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan1" value="12" /></label></th>
                                     </tr>
                                     <tr class='shengwei'>
-                                        <th><label>鼠<input  type="radio" name="pan2" value="01" /></label></th>
-                                        <th><label>牛<input  type="radio" name="pan2" value="02" /></label></th>
-                                        <th><label>虎<input  type="radio" name="pan2" value="03" /></label></th>
-                                        <th><label>兔<input  type="radio" name="pan2" value="04" /></label></th>
-                                        <th><label>龍<input  type="radio" name="pan2" value="05" /></label></th>
-                                        <th><label>蛇<input  type="radio" name="pan2" value="06" /></label></th>
-                                        <th><label>馬<input  type="radio" name="pan2" value="07" /></label></th>
-                                        <th><label>羊<input  type="radio" name="pan2" value="08" /></label></th>
-                                        <th><label>猴<input  type="radio" name="pan2" value="09" /></label></th>
-                                        <th><label>雞<input  type="radio" name="pan2" value="10" /></label></th>
-                                        <th><label>狗<input  type="radio" name="pan2" value="11" /></label></th>
-                                        <th><label>豬<input  type="radio" name="pan2" value="12" /></label></th>
+                                        <th><label>鼠<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="01" /></label></th>
+                                        <th><label>牛<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="02" /></label></th>
+                                        <th><label>虎<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="03" /></label></th>
+                                        <th><label>兔<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="04" /></label></th>
+                                        <th><label>龍<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="05" /></label></th>
+                                        <th><label>蛇<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="06" /></label></th>
+                                        <th><label>馬<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="07" /></label></th>
+                                        <th><label>羊<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="08" /></label></th>
+                                        <th><label>猴<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="09" /></label></th>
+                                        <th><label>雞<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="10" /></label></th>
+                                        <th><label>狗<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="11" /></label></th>
+                                        <th><label>豬<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan2" value="12" /></label></th>
                                     </tr>
                                     </tbody></table>
                                 <table class="g-t1" id="lianma_weishu">
                                     <tbody><tr class='shengwei'>
-                                        <th><label>0尾<input  type="radio" name="pan3" value="0尾" /></label></th>
-                                        <th><label>1尾<input  type="radio" name="pan3" value="1尾" /></label></th>
-                                        <th><label>2尾<input  type="radio" name="pan3" value="2尾" /></label></th>
-                                        <th><label>3尾<input  type="radio" name="pan3" value="3尾" /></label></th>
-                                        <th><label>4尾<input  type="radio" name="pan3" value="4尾" /></label></th>
-                                        <th><label>5尾<input  type="radio" name="pan3" value="5尾" /></label></th>
-                                        <th><label>6尾<input  type="radio" name="pan3" value="6尾" /></label></th>
-                                        <th><label>7尾<input  type="radio" name="pan3" value="7尾" /></label></th>
-                                        <th><label>8尾<input  type="radio" name="pan3" value="8尾" /></label></th>
-                                        <th><label>9尾<input  type="radio" name="pan3" value="9尾" /></label></th>
+                                        <th><label>0尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="0尾" /></label></th>
+                                        <th><label>1尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="1尾" /></label></th>
+                                        <th><label>2尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="2尾" /></label></th>
+                                        <th><label>3尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="3尾" /></label></th>
+                                        <th><label>4尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="4尾" /></label></th>
+                                        <th><label>5尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="5尾" /></label></th>
+                                        <th><label>6尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="6尾" /></label></th>
+                                        <th><label>7尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="7尾" /></label></th>
+                                        <th><label>8尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="8尾" /></label></th>
+                                        <th><label>9尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan3" value="9尾" /></label></th>
                                     </tr>
                                     <tr>
-                                        <th><label>0尾<input  type="radio" name="pan4" value="0尾" /></label></th>
-                                        <th><label>1尾<input  type="radio" name="pan4" value="1尾" /></label></th>
-                                        <th><label>2尾<input  type="radio" name="pan4" value="2尾" /></label></th>
-                                        <th><label>3尾<input  type="radio" name="pan4" value="3尾" /></label></th>
-                                        <th><label>4尾<input  type="radio" name="pan4" value="4尾" /></label></th>
-                                        <th><label>5尾<input  type="radio" name="pan4" value="5尾" /></label></th>
-                                        <th><label>6尾<input  type="radio" name="pan4" value="6尾" /></label></th>
-                                        <th><label>7尾<input  type="radio" name="pan4" value="7尾" /></label></th>
-                                        <th><label>8尾<input  type="radio" name="pan4" value="8尾" /></label></th>
-                                        <th><label>9尾<input  type="radio" name="pan4" value="9尾" /></label></th>
+                                        <th><label>0尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="0尾" /></label></th>
+                                        <th><label>1尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="1尾" /></label></th>
+                                        <th><label>2尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="2尾" /></label></th>
+                                        <th><label>3尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="3尾" /></label></th>
+                                        <th><label>4尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="4尾" /></label></th>
+                                        <th><label>5尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="5尾" /></label></th>
+                                        <th><label>6尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="6尾" /></label></th>
+                                        <th><label>7尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="7尾" /></label></th>
+                                        <th><label>8尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="8尾" /></label></th>
+                                        <th><label>9尾<input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="radio" name="pan4" value="9尾" /></label></th>
                                     </tr>
                                     </tbody></table>
                                 <table class="g-t1" id="duipeng"><tbody>
                                 <tr>
-                                    <td><input  type="text"   name="front" /></td>
-                                    <td><input  type="text"   name="front" /></td>
-                                    <td><input  type="text"   name="front" /></td>
-                                    <td><input  type="text"   name="front" /></td>
-                                    <td><input  type="text"   name="front" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="front" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="front" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="front" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="front" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="front" /></td>
                                     <td class="bg">對碰</td>
-                                    <td><input  type="text"   name="back" /></td>
-                                    <td><input  type="text"   name="back" /></td>
-                                    <td><input  type="text"   name="back" /></td>
-                                    <td><input  type="text"   name="back" /></td>
-                                    <td><input  type="text"   name="back" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="back" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="back" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="back" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="back" /></td>
+                                    <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>   type="text"   name="back" /></td>
                                 </tr>
                                 </tbody></table>
                                 <div class="g-tn left">選項:<span id="re_text"></span> 組成:<span id="re_num"></span>單</div>
                                 <div class="g-tn">
 
-                                    金額：<input type="text"  class="txt dis"   id="amount"/>
+                                    金額：<input   <#if isOpen==false> disabled="disabled" class="dis txt" <#else>class="txt"</#if>   type="text"  id="amount"/>
                                     <input type="hidden" value='{"01":["10","22","34","46"],"02":["09","21","33","45"],"03":["08","20","32","44"],"04":["07","19","31","43"],"05":["06","18","30","42"],"06":["05","17","29","41"],"07":["04","16","28","40"],"08":["03","15","27","39"],"09":["02","14","26","38"],"10":["01","13","25","37","49"],"11":["12","24","36","48"],"12":["11","23","35","47"]}' name="am" id="am"/>
-                                    <input type="submit" value="訂 單" class="btn2 bds" />
-                                    <input type="reset" value="重 設" class="btn2 bds" />
-
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
 
                                 </div>
                             </div>

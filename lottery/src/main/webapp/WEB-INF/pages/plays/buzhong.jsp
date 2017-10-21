@@ -55,176 +55,176 @@
                                     <tr>
                                         <td><em class="ico n1">01</em></td>
                                         <td width="8%">${entity.pro_04701!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   /></th>
                                         <td><em class="ico n11">11</em></td>
                                         <td width="8%">${entity.pro_04711!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n21">21</em></td>
                                         <td width="8%">${entity.pro_04721!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n31">31</em></td>
                                         <td width="8%">${entity.pro_04731!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n41">41</em></td>
                                         <td width="8%">${entity.pro_04741!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n2">02</em></td>
                                         <td width="8%">${entity.pro_04702!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n12">12</em></td>
                                         <td width="8%">${entity.pro_04712!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n22">22</em></td>
                                         <td width="8%">${entity.pro_04722!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n32">32</em></td>
                                         <td width="8%">${entity.pro_04732!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n42">42</em></td>
                                         <td width="8%">${entity.pro_04742!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n3">03</em></td>
                                         <td width="8%">${entity.pro_04703!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n13">13</em></td>
                                         <td width="8%">${entity.pro_04713!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n23">23</em></td>
                                         <td width="8%">${entity.pro_04723!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n33">33</em></td>
                                         <td width="8%">${entity.pro_04733!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n43">43</em></td>
                                         <td width="8%">${entity.pro_04743!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n4">04</em></td>
                                         <td width="8%">${entity.pro_04704!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n14">14</em></td>
                                         <td width="8%">${entity.pro_04714!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n24">24</em></td>
                                         <td width="8%">${entity.pro_04724!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n34">34</em></td>
                                         <td width="8%">${entity.pro_04734!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n44">44</em></td>
                                         <td width="8%">${entity.pro_04744!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n5">05</em></td>
                                         <td width="8%">${entity.pro_04705!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n15">15</em></td>
                                         <td width="8%">${entity.pro_04715!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n25">25</em></td>
                                         <td width="8%">${entity.pro_04725!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n35">35</em></td>
                                         <td width="8%">${entity.pro_04735!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n45">45</em></td>
                                         <td width="8%">${entity.pro_04745!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n6">06</em></td>
                                         <td width="8%">${entity.pro_04706!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n16">16</em></td>
                                         <td width="8%">${entity.pro_04716!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n26">26</em></td>
                                         <td width="8%">${entity.pro_04726!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n36">36</em></td>
                                         <td width="8%">${entity.pro_04736!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n46">46</em></td>
                                         <td width="8%">${entity.pro_04746!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n7">07</em></td>
                                         <td width="8%">${entity.pro_04707!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n17">17</em></td>
                                         <td width="8%">${entity.pro_04717!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n27">27</em></td>
                                         <td width="8%">${entity.pro_04727!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n37">37</em></td>
                                         <td width="8%">${entity.pro_04737!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n47">47</em></td>
                                         <td width="8%">${entity.pro_04747!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n8">08</em></td>
                                         <td width="8%">${entity.pro_04708!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n18">18</em></td>
                                         <td width="8%">${entity.pro_04718!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n28">28</em></td>
                                         <td width="8%">${entity.pro_04728!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n38">38</em></td>
                                         <td width="8%">${entity.pro_04738!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n48">48</em></td>
                                         <td width="8%">${entity.pro_04748!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n9">09</em></td>
                                         <td width="8%">${entity.pro_04709!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n19">19</em></td>
                                         <td width="8%">${entity.pro_04719!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n29">29</em></td>
                                         <td width="8%">${entity.pro_04729!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n39">39</em></td>
                                         <td width="8%">${entity.pro_04739!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n49">49</em></td>
                                         <td width="8%">${entity.pro_04749!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                     </tr>
                                     <tr>
                                         <td><em class="ico n10">10</em></td>
                                         <td width="8%">${entity.pro_04710!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n20">20</em></td>
                                         <td width="8%">${entity.pro_04720!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n30">30</em></td>
                                         <td width="8%">${entity.pro_04730!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td><em class="ico n40">40</em></td>
                                         <td width="8%">${entity.pro_04740!''}</td>
-                                        <th class="bg"><input type="checkbox"  /></th>
+                                        <th class="bg"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"  /></th>
                                         <td colspan="3"></td>
                                     </tr>
                                     </tbody></table>
                                 <div class="g-tn left" id='msg'>球號：[]</div>
-                                <div class="g-tn"><strong>&nbsp;金額</strong><input type="text" class="tx dis"  name="sum"/>
-                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
-                                    <input type="reset" class="btn2 bds"  value="重 設"/>
+                                <div class="g-tn"><strong>&nbsp;金額</strong><input <#if isOpen==false> disabled="disabled" class="dis tx" <#else>class="tx"</#if>  type="text"  name="sum"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds"</#if> type="submit"  value="訂 單"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
                                 </div>
                             </form>
                         </div>

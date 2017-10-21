@@ -44,23 +44,23 @@
                                         <td class="r">選擇</td>
                                     </tr></thead>
                                     <tbody>
-                                    <tr><td class="bg">鼠</td><td><strong>${(shengxiao.鼠)!''}</strong></td><th><input type="checkbox"   value="01"/></th><td class="bg">牛</td><td><strong>${(shengxiao.牛)!''}</strong></td><th><input type="checkbox"   value="02"/></th></tr>
-                                    <tr><td class="bg">虎</td><td><strong>${(shengxiao.虎)!''}</strong></td><th><input type="checkbox"   value="03"/></th><td class="bg">兔</td><td><strong>${(shengxiao.兔)!''}</strong></td><th><input type="checkbox"   value="04"/></th></tr>
-                                    <tr><td class="bg">龍</td><td><strong>${(shengxiao.龍)!''}</strong></td><th><input type="checkbox"   value="05"/></th><td class="bg">蛇</td><td><strong>${(shengxiao.蛇)!''}</strong></td><th><input type="checkbox"   value="06"/></th></tr>
-                                    <tr><td class="bg">馬</td><td><strong>${(shengxiao.馬)!''}</strong></td><th><input type="checkbox"   value="07"/></th><td class="bg">羊</td><td><strong>${(shengxiao.羊)!''}</strong></td><th><input type="checkbox"   value="08"/></th></tr>
-                                    <tr><td class="bg">猴</td><td><strong>${(shengxiao.猴)!''}</strong></td><th><input type="checkbox"   value="09"/></th><td class="bg">雞</td><td><strong>${(shengxiao.雞)!''}</strong></td><th><input type="checkbox"   value="10"/></th></tr>
-                                    <tr><td class="bg">狗</td><td><strong>${(shengxiao.狗)!''}</strong></td><th><input type="checkbox"   value="11"/></th><td class="bg">豬</td><td><strong>${(shengxiao.豬)!''}</strong></td><th><input type="checkbox"   value="12"/></th></tr>
+                                    <tr><td class="bg">鼠</td><td><strong>${(shengxiao.鼠)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="01"/></th><td class="bg">牛</td><td><strong>${(shengxiao.牛)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="02"/></th></tr>
+                                    <tr><td class="bg">虎</td><td><strong>${(shengxiao.虎)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="03"/></th><td class="bg">兔</td><td><strong>${(shengxiao.兔)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="04"/></th></tr>
+                                    <tr><td class="bg">龍</td><td><strong>${(shengxiao.龍)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="05"/></th><td class="bg">蛇</td><td><strong>${(shengxiao.蛇)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="06"/></th></tr>
+                                    <tr><td class="bg">馬</td><td><strong>${(shengxiao.馬)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="07"/></th><td class="bg">羊</td><td><strong>${(shengxiao.羊)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="08"/></th></tr>
+                                    <tr><td class="bg">猴</td><td><strong>${(shengxiao.猴)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="09"/></th><td class="bg">雞</td><td><strong>${(shengxiao.雞)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="10"/></th></tr>
+                                    <tr><td class="bg">狗</td><td><strong>${(shengxiao.狗)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="11"/></th><td class="bg">豬</td><td><strong>${(shengxiao.豬)!''}</strong></td><th><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="12"/></th></tr>
                                     </tbody></table>
                                 <table id="sub_tab" class="g-t1">
                                     <tr>
                                         <td id="pro_odds" class="bg">賠率</td><td id="01701">${(entity.pro_01701)!''}</td>
-                                        <th  colspan="4"><label><input type="radio" name="achk" value="liuxiaozh" checked="checked"  />中</label>&nbsp;
-                                            <label><input type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
-                                            &nbsp;金額：<input type="text" class="tx dis"  name="amount" id="sum" /></th></tr>
+                                        <th  colspan="4"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" name="achk" value="liuxiaozh" checked="checked"  />中</label>&nbsp;
+                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
+                                            &nbsp;金額：<input   <#if isOpen==false> disabled="disabled" class="dis tx" <#else>class="tx"</#if>  type="text"  name="amount" id="sum" /></th></tr>
                                 </table>
                                 <div class="g-tn">
-                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
-                                    <input type="reset" class="btn2 bds"  value="重 設"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
                                 </div>
 
                             </form>

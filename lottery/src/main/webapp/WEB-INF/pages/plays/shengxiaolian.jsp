@@ -39,60 +39,60 @@
                                     </tr></thead>
                                     <tbody id="plays">
                                     <tr>
-                                        <th><label for="default_play"><input name="play" value="2035" type="radio"    checked="checked" id="default_play"/>二肖連(中)</label></th>
-                                        <th><label for="sanxiaozhong"><input id="sanxiaozhong" name="play" value="3037" type="radio"  />三肖連(中)</label></th>
-                                        <th><label for="sixiaozhong"><input id="sixiaozhong" name="play" value="4039" type="radio"  />四肖連(中)</label></th>
+                                        <th><label for="default_play"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="play" value="2035" type="radio"    checked="checked" id="default_play"/>二肖連(中)</label></th>
+                                        <th><label for="sanxiaozhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sanxiaozhong" name="play" value="3037" type="radio"  />三肖連(中)</label></th>
+                                        <th><label for="sixiaozhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sixiaozhong" name="play" value="4039" type="radio"  />四肖連(中)</label></th>
                                     </tr>
                                     <tr>
-                                        <th><label for="erxiaobuzhong"><input id="erxiaobuzhong" name="play" value="2036" type="radio"  />二肖連(不中)</label></th>
-                                        <th><label for="sanxiaobuzhong"><input id="sanxiaobuzhong" name="play" value="3038" type="radio"  />三肖連(不中)</label></th>
-                                        <th><label for="sixiaobuzhong"><input id="sixiaobuzhong" name="play" value="4040" type="radio"  />四肖連(不中)</label></th>
+                                        <th><label for="erxiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="erxiaobuzhong" name="play" value="2036" type="radio"  />二肖連(不中)</label></th>
+                                        <th><label for="sanxiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sanxiaobuzhong" name="play" value="3038" type="radio"  />三肖連(不中)</label></th>
+                                        <th><label for="sixiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sixiaobuzhong" name="play" value="4040" type="radio"  />四肖連(不中)</label></th>
                                     </tr>
                                     </tbody></table>
                                 <div class="mt g-thd"><h3>請選擇球號</h3></div>
                                 <table class="g-t1" id="ball">
                                     <tbody>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"    value="01"/>鼠</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"    value="01"/>鼠</label></th>
                                         <td><strong>10,22,34,46</strong></td><td width="10%" name="pro_01">  ${(entity.pro_03501)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="02"/>牛</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="02"/>牛</label></th>
                                         <td><strong>09,21,33,45</strong></td><td width="10%" name="pro_02">${(entity.pro_03502)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"   value="03"/>虎</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="03"/>虎</label></th>
                                         <td><strong>08,20,32,44</strong></td><td name="pro_03">${(entity.pro_03503)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="04"/>兔</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="04"/>兔</label></th>
                                         <td><strong>07,19,31,43</strong></td><td name="pro_04">${(entity.pro_03504)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"   value="05"/>龍</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="05"/>龍</label></th>
                                         <td><strong>06,18,30,42</strong></td><td name="pro_05">${(entity.pro_03505)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="06"/>蛇</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="06"/>蛇</label></th>
                                         <td><strong>05,17,29,41</strong></td><td name="pro_06">${(entity.pro_03506)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"   value="07"/>馬</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="07"/>馬</label></th>
                                         <td><strong>04,16,28,40</strong></td><td name="pro_07">${(entity.pro_03507)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="08"/>羊</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="08"/>羊</label></th>
                                         <td><strong>03,15,27,39</strong></td><td name="pro_08">${(entity.pro_03508)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"   value="09"/>猴</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="09"/>猴</label></th>
                                         <td><strong>02,14,26,38</strong></td><td name="pro_09">${(entity.pro_03509)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="10"/>雞</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="10"/>雞</label></th>
                                         <td><strong>01,13,25,37,49</strong></td><td name="pro_10">${(entity.pro_03510)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input type="checkbox"   value="11"/>狗</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="11"/>狗</label></th>
                                         <td><strong>12,24,36,48</strong></td><td name="pro_11">${(entity.pro_03511)!''}</td>
-                                        <th class="bg"><label><input type="checkbox"   value="12"/>豬</label></th>
+                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="12"/>豬</label></th>
                                         <td><strong>11,23,35,47</strong></td><td name="pro_12">${(entity.pro_03512)!''}</td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div class="g-tn">單注金額&nbsp;<input type="text" class="tx dis"  id="sum"/>
-                                    <input type="submit" class="btn2 bds"  value="訂 單"/>
-                                    <input type="reset" class="btn2 bds"  value="重 設"/>
+                                <div class="g-tn">單注金額&nbsp;<input  <#if isOpen==false> disabled="disabled" class="dis tx" <#else>class="tx"</#if> type="text"  id="sum"/>
+                                    <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
+                                        <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
                                 </div>
                         </div>
                         </form>
