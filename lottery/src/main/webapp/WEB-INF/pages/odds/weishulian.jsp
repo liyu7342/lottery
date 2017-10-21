@@ -135,12 +135,12 @@
                                 </tr>
                                 <tr>
                                     <td>10,20,30,40</td>
-                                    <td><input name="04110" type="text" value="${(entity.pro_04110)!''}" />
-                                    <td><input name="04210" type="text" value="${(entity.pro_04210)!''}" />
-                                    <td><input name="04310" type="text" value="${(entity.pro_04310)!''}" />
-                                    <td><input name="04410" type="text" value="${(entity.pro_04410)!''}" />
-                                    <td><input name="04510" type="text" value="${(entity.pro_04510)!''}" />
-                                    <td><input name="04610" type="text" value="${(entity.pro_04610)!''}" />
+                                    <td><input name="04100" type="text" value="${(entity.pro_04100)!''}" />
+                                    <td><input name="04200" type="text" value="${(entity.pro_04200)!''}" />
+                                    <td><input name="04300" type="text" value="${(entity.pro_04300)!''}" />
+                                    <td><input name="04400" type="text" value="${(entity.pro_04400)!''}" />
+                                    <td><input name="04500" type="text" value="${(entity.pro_04500)!''}" />
+                                    <td><input name="04600" type="text" value="${(entity.pro_04600)!''}" />
                                 </tr>
 
                                 </tbody>

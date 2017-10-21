@@ -261,7 +261,7 @@
                                                                       value="${(entity.pro_02301)!''}"/></td>
                                     <td class="borderRightNone"><strong>大</strong></td>
                                     <td class="borderLeftNone"><input type="text"  name="02303"
-                                                                      value="${(entity.pro02303)!''}"/></td>
+                                                                      value="${(entity.pro_02303)!''}"/></td>
                                     <td class="borderRightNone"><strong>合單</strong></td>
                                     
                                     <td class="borderLeftNone"><input type="text"  name="02305"

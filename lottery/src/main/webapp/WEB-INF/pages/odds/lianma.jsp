@@ -161,7 +161,7 @@
                                 <tr>
                                     <td class="hand borderRightNone"><em class="ico n9">09</em></td>
 
-                                    <td class="borderLeftNone"><input type="text" name="0089" value="${entity.pro_00809!''}"/></td>
+                                    <td class="borderLeftNone"><input type="text" name="00809" value="${entity.pro_00809!''}"/></td>
                                     <td class="hand borderRightNone"><em class="ico n19">19</em></td>
 
                                     <td class="borderLeftNone"><input type="text" name="00819" value="${entity.pro_00819!''}"/></td>

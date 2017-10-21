@@ -290,11 +290,11 @@
                                     <td class="borderRightNone"><strong class="blue">藍色</strong></td>
 
                                     <td class="borderLeftNone"><input type="text"  name="03202"
-                                                                      alue="${(entity.pro_03202)!''}"/></td>
+                                                                      value="${(entity.pro_03202)!''}"/></td>
                                     <td class="borderRightNone"><strong class="green">綠色</strong></td>
 
                                     <td class="borderLeftNone"><input type="text"  name="03203"
-                                                                      alue="${(entity.pro_03203)!''}"/></td>
+                                                                      value="${(entity.pro_03203)!''}"/></td>
                                 </tr>
                                 </tbody>
                             </table>

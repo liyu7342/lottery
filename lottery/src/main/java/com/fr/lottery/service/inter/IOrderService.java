@@ -29,4 +29,6 @@ public interface IOrderService {
     List<StatisDto> getStatis(String gameType);
 
     boolean settlement(String handicapId) ;
+
+    Float getOrderAmount();
 }

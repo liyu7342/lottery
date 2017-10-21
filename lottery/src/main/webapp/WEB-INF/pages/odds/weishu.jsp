@@ -117,12 +117,12 @@
                         <li><a curl='0' href='/odds/erquanzh?isDefault=false'>連碼</a><cite></cite></li>
                         <li><a curl='0' href='/odds/guoguan?isDefault=false'>過關</a><cite></cite></li>
                         <li><a curl='0' href='/odds/shengxiao?isDefault=false'>生肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishu?isDefault=false'>尾數</a><cite></cite></li>
+                        <li><a curl='5' href='/odds/weishu?isDefault=false'>尾數</a><cite></cite></li>
                         <li><a curl='0' href='/odds/banbo?isDefault=false'>半波</a><cite></cite></li>
                         <li><a curl='0' href='/odds/liuxiao?isDefault=false'>六肖</a><cite></cite></li>
                         <li><a curl='0' href='/odds/texiao?isDefault=false'>特肖</a><cite></cite></li>
                         <li><a curl='0' href='/odds/shengxiaolian?isDefault=false'>生肖連</a><cite></cite></li>
-                        <li><a curl='5' href='/odds/weishulian?isDefault=false'>尾數連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishulian?isDefault=false'>尾數連</a><cite></cite></li>
                         <li><a curl='0' href='/odds/buzhong?isDefault=false'>不中</a><cite></cite></li>
                     </ul>
                 </div>

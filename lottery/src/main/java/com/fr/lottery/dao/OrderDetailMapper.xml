@@ -101,4 +101,5 @@
       GROUP  BY userid,handicapId
 
   </select>
+
 </mapper>

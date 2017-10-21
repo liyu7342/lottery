@@ -54,7 +54,7 @@ public class OrderControlller {
         map.put("return_str",isSuccess?"0|;1|1;2|;3|;4|;5|;6|;7|;8|;9|;10|;":"0|1;1|;2|;3|;4|;5|;6|;7|;8|;9|;10|;");
         map.put("item_error",new ArrayList<Integer>());
         map.put("limit","1");
-        map.put("sum",orderDto.getOrder_allamount());
+        map.put("sum",orderService.getOrderAmount());
         map.put("credit", UserHelper.getCurrentUser().getCredits());
         map.put("versionNumber",3);
         map.put("oddschg","");

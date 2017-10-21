@@ -147,7 +147,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/zheng1_6");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        Map<String,String> map  =  oddsService.getOddsChangeMap(oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map);
         boolean isOpen = handicapService.IsOpenHandicap();
 
@@ -165,10 +165,10 @@ public class PlaysController {
     public ModelAndView lianma() {
         ModelAndView mv = new ModelAndView("/plays/lianma");
         String[] oddsTypes= {OddsTypeEnum.erquanzh.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
-        List<Odds> oddsList = oddsService.getOddsChange("",oddsTypes1);
+        List<Odds> oddsList = oddsService.getOddsList("",oddsTypes1);
         Map<String,String> oddsMap = new HashMap<String, String>();
         for(Odds odds : oddsList){
             if(!odds.getNumkey().contains("_")){
@@ -205,7 +205,7 @@ public class PlaysController {
     public ModelAndView guoguan() {
         ModelAndView mv = new ModelAndView("/plays/guoguan");
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
-       Map<String,String> map  =  oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map  =  oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -219,7 +219,7 @@ public class PlaysController {
         mv.addObject("shengxiao", map);
 
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -230,7 +230,7 @@ public class PlaysController {
     public ModelAndView weishu() {
         ModelAndView mv = new ModelAndView("/plays/weishu");
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -241,7 +241,7 @@ public class PlaysController {
     public ModelAndView banbo() {
         ModelAndView mv = new ModelAndView("/plays/banbo");
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -252,7 +252,7 @@ public class PlaysController {
     public ModelAndView liuxiao() {
         ModelAndView mv = new ModelAndView("/plays/liuxiao");
         String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         Map<String,String> map=  shengxiaoService.findMapByYear();
          mv.addObject("shengxiao",map);
@@ -267,7 +267,7 @@ public class PlaysController {
         Map<String,String> map=  shengxiaoService.findMapByYear();
         mv.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -278,7 +278,7 @@ public class PlaysController {
     public ModelAndView shengxiaolian() {
         ModelAndView mv = new ModelAndView("/plays/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
-        Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -289,7 +289,7 @@ public class PlaysController {
     public ModelAndView weishulian() {
         ModelAndView mv = new ModelAndView("/plays/weishulian");
         String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
-       Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -300,10 +300,10 @@ public class PlaysController {
     public ModelAndView buzhong() {
         ModelAndView mv = new ModelAndView("/plays/buzhong");
         String[] oddsTypes= OddsTypeEnum.buzhong.getValue().split("\\|");
-        Map<String,String> map1 =oddsService.getOddsChangeMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
         mv.addObject("entity",map1);
         Map<String,Object> map = new HashMap<String ,Object>();
-        List<Odds> oddsList= oddsService.getOddsChange("",oddsTypes);
+        List<Odds> oddsList= oddsService.getOddsList("",oddsTypes);
         Map<String,String> oddsMap = new HashMap<String, String>();
         for(Odds odds : oddsList){
             if(!odds.getNumkey().contains("_")){

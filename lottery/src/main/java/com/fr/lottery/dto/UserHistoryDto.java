@@ -16,7 +16,7 @@ public class UserHistoryDto {
     /***
      * 注单金额
      */
-    private String amount;
+    private Float amount;
     /**
      * 结果
      */
@@ -46,11 +46,11 @@ public class UserHistoryDto {
         this.orderNum = orderNum;
     }
 
-    public String getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 

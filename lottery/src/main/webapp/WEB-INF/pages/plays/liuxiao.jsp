@@ -55,13 +55,14 @@
                                     <tr>
                                         <td id="pro_odds" class="bg">賠率</td><td id="01701">${(entity.pro_01701)!''}</td>
                                         <th  colspan="4"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" name="achk" value="liuxiaozh" checked="checked"  />中</label>&nbsp;
-                                            <label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
+                                            <label><input  <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" name="achk" value="liuxiaobuzh"  />不中</label>；
                                             &nbsp;金額：<input   <#if isOpen==false> disabled="disabled" class="dis tx" <#else>class="tx"</#if>  type="text"  name="amount" id="sum" /></th></tr>
                                 </table>
                                 <div class="g-tn">
                                     <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
                                     <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
                                 </div>
+
 
                             </form>
                         </div>

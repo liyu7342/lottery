@@ -156,6 +156,16 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public Float getOrderAmount(){
+        Handicap handicap = handicapService.getCurrentHandicap();
+        List<UserHistoryDto> list= orderDetailMapper.getOrderHistory(handicap.getId(),UserHelper.getCurrentUser().getId());
+        if(list.size()>0){
+            return list.get(0).getAmount();
+        }
+        return 0F;
+    }
+
+    @Override
     public boolean settlement(String handicapId) {
         Handicap handicap= handicapService.selectByPrimaryKey(handicapId);
         List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"");
