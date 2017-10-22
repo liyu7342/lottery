@@ -78,7 +78,7 @@
                                 </thead>
                                 <#list orderList as obj>
                                 <tr>
-                                    <td></td>
+                                    <td>${(obj.orderNo)!''}</td>
                                     <td>B</td>
                                     <td>${(obj.description)!''}</td>
                                     <td>${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>

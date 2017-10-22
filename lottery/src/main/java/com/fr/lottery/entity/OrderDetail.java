@@ -7,6 +7,8 @@ public class OrderDetail {
 
     private String orderid;
 
+    private String orderNo;
+
     private String userid;
 
     private String handicapId;
@@ -121,5 +123,13 @@ public class OrderDetail {
 
     public void setWinAmount(Float winAmount) {
         this.winAmount = winAmount;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 }

@@ -17,7 +17,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    Id, orderId, userId,handicapId, gameType, `no`,description, odds, amount,retreat,winAmount, createdate,status
+    Id, orderId, userId,handicapId, gameType, `no`,description, odds, amount,retreat,winAmount, createdate,status,orderNo
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -38,10 +38,11 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,
-      gameType, no,description, odds,amount,retreat,winAmount, createdate)
+      gameType, no,description, odds,amount,retreat,winAmount, createdate,orderNo)
     values (#{id,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
-      #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP})
+      #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
+      #{orderNo,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.SysCodeMapper">
+    <resultMap id="userResult" type="com.fr.lottery.entity.SysCode">
+        <id column="Id" jdbcType="VARCHAR" property="id" />
+        <result column="HandicapId" jdbcType="VARCHAR" property="handicapid" />
+        <result column="seq" jdbcType="BIGINT" property="seq" />
+    </resultMap>
+    <sql id="Columns">
+        id,handicapid,seq
+    </sql>
+
+    <select id="getNextSeq" resultType="java.lang.Long">
+        SELECT  IFNULL(MAX(seq),0) from sys_code where handicapid=#{handicapid,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 插入-->
+    <insert id="insert" parameterType="com.fr.lottery.entity.SysCode">
+        insert into sys_code (Id, handicapid, seq)
+        values (#{id,jdbcType=VARCHAR}, #{handicapid,jdbcType=VARCHAR}, #{seq,jdbcType=BIGINT})
+    </insert>
+
+
+</mapper>

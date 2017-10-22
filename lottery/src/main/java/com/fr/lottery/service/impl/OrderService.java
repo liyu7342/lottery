@@ -15,6 +15,7 @@ import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.service.inter.ISysCodeService;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
@@ -46,6 +47,9 @@ public class OrderService implements IOrderService {
     @Autowired
     private StatisMapper statisMapper;
 
+    @Autowired
+    private ISysCodeService sysCodeService;
+
     public List<Orders> getOrderList(String userId){
         return new ArrayList<Orders>();
 //        GameTypeEnum.不中.getValue();
@@ -75,6 +79,7 @@ public class OrderService implements IOrderService {
          for(String orderDetailStr : orderDetails){
              String[] details= orderDetailStr.split("\\|");
              OrderDetail detail  = new OrderDetail();
+             detail.setOrderNo(sysCodeService.getAutoCode(handicap.getId()));
              detail.setOrderid(order.getId());
              detail.setId(StringUtil.getUUID());
              detail.setCreatedate(new Date());
