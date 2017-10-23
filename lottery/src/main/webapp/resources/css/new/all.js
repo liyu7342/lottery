@@ -6325,9 +6325,11 @@ PlaysBall.prototype.quick_product_show = function(h, g, i) {
                 var n = parseInt(r.val(), 10) * window.x;
                 var l = $.cfg_play_keys[f.id] + "|" + s + "|" + t + "|" + n;
                 $.ajax({
-                    url: "ajax_req.htm",
+                    url: "/order/saveOrder",
                     type: "POST",
-                    data: "act=submit_order&game_ids=" + $.cfg_play_keys[f.id] + "&order_allamount=" + n + "&odds_set=" + f.odds_set + "&orderData=" + l + "&detailOdds=" + u + "&timeout=" + f.timeout + "&submit_time_msec=" + m + "&version_number=" + parent.global_version_num,
+                    cache:false,
+
+                    data: "game_ids=" + $.cfg_play_keys[f.id] + "&order_allamount=" + n + "&odds_set=" + f.odds_set + "&orderData=" + l + "&detailOdds=" + u + "&timeout=" + f.timeout + "&submit_time_msec=" + m + "&version_number=" + parent.global_version_num,
                     dataType: "json",
                     success: function(w) {
                         var v = [];

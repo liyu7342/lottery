@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="ft"></div>
-                </div>            <div id="zhengmate1" class="module betting" status='{"007":0,"026":0,"033":0}'>
+                </div>            <div id="zhengmate6" class="module betting" status='{"007":0,"026":0,"033":0}'>
                 <input type="hidden" id="time_stamp" value="1497948387"/>
                 <input type="hidden" id="cps_time" value="20170621181052"/>
                 <div class="hd"></div>
@@ -249,24 +249,24 @@
                             <tbody><tr pro="026">
                                 <td class="borderRightNone"><strong>單</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_026101"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_02601"/></td>
                                 <td class="borderRightNone"><strong>大</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_026103"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02603"/></td>
                                 <td class="borderRightNone"><strong>合單</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_026105"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02605"/></td>
                             </tr>
                             <tr pro="026">
                                 <td class="borderRightNone"><strong>雙</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_026102"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02602"/></td>
                                 <td class="borderRightNone"><strong>小</strong></td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_026104"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02604"/></td>
                                 <td class="borderRightNone"><strong>合雙</strong> </td>
                                 <td class="borderLeftNone borderRightNone"></td>
-                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_026106"/></td>
+                                <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02606"/></td>
                             </tr>
                             <tr pro="033">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>
