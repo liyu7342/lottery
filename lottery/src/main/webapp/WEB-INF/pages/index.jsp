@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <title>AAA_28_Title</title>
-<meta name="Keywords" content=""/>
-<meta name="Description" content=""/>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-<meta http-equiv="pragma" content="no-cache"/>
-<meta content="0" http-equiv="expires"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-      name="viewport"/>
-<meta content="no-cache,must-revalidate" http-equiv="Cache-Control"/>
-<meta content="telephone=no, address=no" name="format-detection"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+
 <link href="../../resources/css/new/common.css" rel="stylesheet" type="text/css" />
 <link href="../../resources/css/new/mike.chen.css" rel="stylesheet" type="text/css" />
 

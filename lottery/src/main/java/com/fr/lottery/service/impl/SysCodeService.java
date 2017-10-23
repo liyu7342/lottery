@@ -21,7 +21,7 @@ public class SysCodeService implements ISysCodeService {
     SysCodeMapper sysCodeMapper;
 
     @Override
-    public String getAutoCode(String handicapId) {
+    public synchronized String getAutoCode(String handicapId) {
         Long seq = sysCodeMapper.getNextSeq(handicapId);
         if(seq==null)
             seq=1L;
