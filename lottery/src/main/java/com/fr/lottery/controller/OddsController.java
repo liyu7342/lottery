@@ -36,288 +36,289 @@ public class OddsController {
     private IShengxiaoService shengxiaoService;
 
     @RequestMapping("/temaa")
-    public ModelAndView temaa(Boolean isDefault){
+    public ModelAndView temaa(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/temaa");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
 
-        Map<String,String> map =  oddsService.getOddsMap("A",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap+"A",oddsTypes);
         modelAndView.addObject("entity",map);
+        modelAndView.addObject("handicap",handicap);
         return modelAndView;
     }
 
     @RequestMapping("/temab")
-    public ModelAndView temab(Boolean isDefault){
+    public ModelAndView temab(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/temab");
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap("B",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap+"B",oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/banbo")
-    public ModelAndView banbo(Boolean isDefault){
+    public ModelAndView banbo(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/banbo");
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/buzhong")
-    public ModelAndView buzhong(Boolean isDefault){
+    public ModelAndView buzhong(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong");
         String[] oddsTypes= {OddsTypeEnum.buzhong5.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/buzhong6")
-    public ModelAndView buzhong6(Boolean isDefault){
+    public ModelAndView buzhong6(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong6");
         String[] oddsTypes= {OddsTypeEnum.buzhong6.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/buzhong7")
-    public ModelAndView buzhong7(Boolean isDefault){
+    public ModelAndView buzhong7(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong7");
         String[] oddsTypes= {OddsTypeEnum.buzhong7.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/buzhong8")
-    public ModelAndView buzhong8(Boolean isDefault){
+    public ModelAndView buzhong8(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong8");
         String[] oddsTypes= {OddsTypeEnum.buzhong8.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/buzhong9")
-    public ModelAndView buzhong9(Boolean isDefault){
+    public ModelAndView buzhong9(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong9");
         String[] oddsTypes= {OddsTypeEnum.buzhong9.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/buzhong10")
-    public ModelAndView buzhong10(Boolean isDefault){
+    public ModelAndView buzhong10(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong10");
         String[] oddsTypes= {OddsTypeEnum.buzhong10.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/guoguan")
-    public ModelAndView guoguan(Boolean isDefault){
+    public ModelAndView guoguan(Boolean isDefault,String handicap){
         ModelAndView modelAndView = new ModelAndView("/odds/guoguan");
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/erquanzh")
-    public ModelAndView erquanzh(Boolean isDefault){
+    public ModelAndView erquanzh(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma");
         String[] oddsTypes= {OddsTypeEnum.erquanzh.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/erzhongte")
-    public ModelAndView erzhongte(Boolean isDefault){
+    public ModelAndView erzhongte(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma2_t");
         String[] oddsTypes= {OddsTypeEnum.erzhongte.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/techuan")
-    public ModelAndView techuan(Boolean isDefault){
+    public ModelAndView techuan(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianmatec");
         String[] oddsTypes= {OddsTypeEnum.techuan.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/sanquanzh")
-    public ModelAndView sanquanzh(Boolean isDefault){
+    public ModelAndView sanquanzh(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma3_3");
         String[] oddsTypes= {OddsTypeEnum.sanquanzh.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/sanzher")
-    public ModelAndView sanzher(Boolean isDefault){
+    public ModelAndView sanzher(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/lianma3_2");
         String[] oddsTypes= {OddsTypeEnum.sanzher.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
 
     @RequestMapping("/liuxiao")
-    public ModelAndView liuxiao(Boolean isDefault){
+    public ModelAndView liuxiao(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/liuxiao");
         String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/shengxiao")
-    public ModelAndView shengxiao(Boolean isDefault){
+    public ModelAndView shengxiao(Boolean isDefault,String handicap){
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiao");
         Map<String,String> map =shengxiaoService.findMapByYear();
         modelAndView.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/shengxiaolian")
-    public ModelAndView shengxiaolian(Boolean isDefault){
+    public ModelAndView shengxiaolian(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/texiao")
-    public ModelAndView texiao(Boolean isDefault){
+    public ModelAndView texiao(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/texiao");
         Map<String,String> map =  shengxiaoService.findMapByYear();
         modelAndView.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/weishu")
-    public ModelAndView weishu(Boolean isDefault){
+    public ModelAndView weishu(Boolean isDefault,String handicap){
         ModelAndView modelAndView = new ModelAndView("/odds/weishu");
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
 
         return modelAndView;
     }
     @RequestMapping("/weishulian")
-    public ModelAndView weishulian(Boolean isDefault){
+    public ModelAndView weishulian(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/weishulian");
         String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
-        Map<String,String> map1 =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map1);
         return modelAndView;
     }
     @RequestMapping("/zheng16")
-    public ModelAndView zheng16(Boolean isDefault){
+    public ModelAndView zheng16(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zheng16");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
     @RequestMapping("/zhengma")
-    public ModelAndView zhengma(Boolean isDefault){
+    public ModelAndView zhengma(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengma");
 
         String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate")
-    public ModelAndView zhengmate(Boolean isDefault){
+    public ModelAndView zhengmate(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate");
         String[] oddsTypes= {OddsTypeEnum.zhengmate1.getValue(),OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.sebozhmate1.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate2")
-    public ModelAndView zhengmate2(Boolean isDefault){
+    public ModelAndView zhengmate2(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate2");
         String[] oddsTypes= {OddsTypeEnum.zhengmate2.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.sebozhmate2.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate3")
-    public ModelAndView zhengmate3(Boolean isDefault){
+    public ModelAndView zhengmate3(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate3");
         String[] oddsTypes= {OddsTypeEnum.zhengmate3.getValue(),OddsTypeEnum.lmzhmate3.getValue(),OddsTypeEnum.sebozhmate3.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate4")
-    public ModelAndView zhengmate4(Boolean isDefault){
+    public ModelAndView zhengmate4(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate4");
 
         String[] oddsTypes= {OddsTypeEnum.zhengmate4.getValue(),OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.sebozhmate4.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate5")
-    public ModelAndView zhengmate5(Boolean isDefault){
+    public ModelAndView zhengmate5(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate5");
         String[] oddsTypes= {OddsTypeEnum.zhengmate5.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.sebozhmate5.getValue()};
-        Map<String,String> map =  oddsService.getOddsMap("",oddsTypes);
+        Map<String,String> map =  oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
 
     @RequestMapping("/zhengmate6")
-    public ModelAndView zhengmate6(Boolean isDefault){
+    public ModelAndView zhengmate6(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;
         ModelAndView modelAndView = new ModelAndView("/odds/zhengmate6");
         String[] oddsTypes= {OddsTypeEnum.zhengmate6.getValue(),OddsTypeEnum.lmzhmate6.getValue(),OddsTypeEnum.sebozhmate6.getValue()};
-        Map<String,String> map =oddsService.getOddsMap(oddsTypes);
+        Map<String,String> map =oddsService.getOddsMap(handicap,oddsTypes);
         modelAndView.addObject("entity",map);
         return modelAndView;
     }
@@ -331,12 +332,7 @@ public class OddsController {
     public void getOdds(String game_ids,String odds_set,HttpServletRequest request, HttpServletResponse response) throws  IOException{
         String[] gameIds = game_ids.split("\\|");
 
-        if(odds_set.length()==2){
-            odds_set=odds_set.substring(1,2);
-        }
-        else{
-            odds_set="";
-        }
+
 
         List<Odds> oddsList= oddsService.getOddsChange(odds_set,gameIds);
         Map<String,Object> map = new HashedMap();

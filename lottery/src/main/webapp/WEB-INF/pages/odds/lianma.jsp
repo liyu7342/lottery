@@ -35,11 +35,11 @@
                     </style>
                     <div id=""class="module">
                         <div class="play_hd">
-                            <a href="/odds/erquanzh?isDefault=false" class="on ds d-gray" disabled="disabled">二全中</a>&nbsp;|
-                            <a href="/odds/erzhongte?isDefault=false" class="">二中特</a>&nbsp;|
-                            <a href="/odds/techuan?isDefault=false" class="">特串</a>&nbsp;|
-                            <a href="/odds/sanquanzh?isDefault=false" class="">三全中</a>&nbsp;|
-                            <a href="/odds/sanzher?isDefault=false" class="">三中二</a>
+                            <a href="/odds/erquanzh?isDefault=false&handicap=${handicap}" class="on ds d-gray" disabled="disabled">二全中</a>&nbsp;|
+                            <a href="/odds/erzhongte?isDefault=false&handicap=${handicap}" class="">二中特</a>&nbsp;|
+                            <a href="/odds/techuan?isDefault=false&handicap=${handicap}" class="">特串</a>&nbsp;|
+                            <a href="/odds/sanquanzh?isDefault=false&handicap=${handicap}" class="">三全中</a>&nbsp;|
+                            <a href="/odds/sanzher?isDefault=false&handicap=${handicap}" class="">三中二</a>
                         </div>
                         <form id="form1" method="POST" action="/odds/save">
                             <table class="g-t1">
@@ -193,6 +193,7 @@
                                 </tbody>
                             </table>
                             <div class="g-tn">
+                                <input type="hidden" value="${handicap}" name="oddSet" id="hiddenOddSet">
                                 <input type="submit" class="btn2" value="保 存"/>
                                 <input type="reset" class="btn2" value="重 設"/>
                             </div>
@@ -208,21 +209,21 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/temaa?isDefault=false'>特碼A</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/temab?isDefault=false'>特碼B</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zhengma?isDefault=false'>正碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zhengmate?isDefault=false'>正馬特</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zheng16?isDefault=false'>正1-6</a><cite></cite></li>
-                        <li><a curl='5' href='/odds/erquanzh?isDefault=false'>連碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/guoguan?isDefault=false'>過關</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiao?isDefault=false'>生肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishu?isDefault=false'>尾數</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/banbo?isDefault=false'>半波</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/liuxiao?isDefault=false'>六肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/texiao?isDefault=false'>特肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiaolian?isDefault=false'>生肖連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishulian?isDefault=false'>尾數連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/buzhong?isDefault=false'>不中</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa?isDefault=false&handicap=${handicap}'>特碼A</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temab?isDefault=false&handicap=${handicap}'>特碼B</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zhengma?isDefault=false&handicap=${handicap}'>正碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zhengmate?isDefault=false&handicap=${handicap}'>正馬特</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zheng16?isDefault=false&handicap=${handicap}'>正1-6</a><cite></cite></li>
+                        <li><a curl='5' href='/odds/erquanzh?isDefault=false&handicap=${handicap}'>連碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/guoguan?isDefault=false&handicap=${handicap}'>過關</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiao?isDefault=false&handicap=${handicap}'>生肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishu?isDefault=false&handicap=${handicap}'>尾數</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/banbo?isDefault=false&handicap=${handicap}'>半波</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/liuxiao?isDefault=false&handicap=${handicap}'>六肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/texiao?isDefault=false&handicap=${handicap}'>特肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiaolian?isDefault=false&handicap=${handicap}'>生肖連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishulian?isDefault=false&handicap=${handicap}'>尾數連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/buzhong?isDefault=false&handicap=${handicap}'>不中</a><cite></cite></li>
                     </ul>
                 </div>
 
