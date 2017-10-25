@@ -60,7 +60,7 @@
                                         <td><strong>06,16,26,36,46</strong></td><td width='10%' name="pro_06">${(entity.pro_04106)!''}</td>
                                     </tr>
                                     <tr>
-                                        <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="02"/>2尾</label></th>
+                                        <th class="bg"><label><input <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="02"/>2尾</label></th>
                                         <td><strong>02,12,22,32,42</strong></td><td name="pro_02">${(entity.pro_04102)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="07"/>7尾</label></th>
                                         <td><strong>07,17,27,37,47</strong></td><td name="pro_07">${(entity.pro_04107)!''}</td>
@@ -94,8 +94,9 @@
                         <div class="ft"></div>
                     </div>
                     <script type="text/javascript">
-                        var sw_all_info = {"odds":{"04100":"","04101":"","04102":"","04103":"","04104":"","04105":"","04106":"","04107":"","04108":"","04109":"","04200":"","04201":"","04202":"","04203":"","04204":"","04205":"","04206":"","04207":"","04208":"","04209":"","04300":"","04301":"","04302":"","04303":"","04304":"","04305":"","04306":"","04307":"","04308":"","04309":"","04400":"","04401":"","04402":"","04403":"","04404":"","04405":"","04406":"","04407":"","04408":"","04409":"","04500":"","04501":"","04502":"","04503":"","04504":"","04505":"","04506":"","04507":"","04508":"","04509":"","04600":"","04601":"","04602":"","04603":"","04604":"","04605":"","04606":"","04607":"","04608":"","04609":""},"time_stamp":"1497948387","status":{"041":0,"042":0,"043":0,"044":0,"045":0,"046":0},"winnums":[]};
-                    </script>                </div>
+                        var sw_all_info =${info};
+                    </script>
+                </div>
             </div>
         </div>
     </div>

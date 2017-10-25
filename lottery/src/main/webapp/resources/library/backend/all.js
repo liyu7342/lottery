@@ -5732,6 +5732,7 @@ Header.prototype.refersh = function() {
             }
         }
     }
+    return ;
     if (h) {
         $.ajax({
             url: "ajax_req.htm?act=" + h + g,
