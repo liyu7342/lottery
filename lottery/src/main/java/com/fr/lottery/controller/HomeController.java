@@ -4,6 +4,7 @@ import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.ILimitSetService;
+import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
@@ -32,6 +33,8 @@ public class HomeController  {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IOrderService orderService;
 
     @Autowired
     private ILimitSetService limitSetService;
@@ -47,14 +50,20 @@ public class HomeController  {
         User user= UserHelper.getCurrentUser();
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
+        Integer amount =orderService.getOrderAmount();
+        amount =amount==null?0:amount;
         userInfo.put("memberId",user.getId());
         userInfo.put("credit",user.getCredits());
         userInfo.put("name",user.getName());
         userInfo.put("account",user.getAccount());
-        userInfo.put("sum",0);
+        userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
+        if(amount !=user.getAmount()){
+            user.setAmount(amount);
+            UserHelper.setCurrentUser(user);
 
+        }
         map.put("user_info",userInfo);
 
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
@@ -88,17 +97,22 @@ public class HomeController  {
 
         ModelAndView mv = new ModelAndView("index1");
         User user= UserHelper.getCurrentUser();
-
+        Integer amount =orderService.getOrderAmount();
+        amount =amount==null?0:amount;
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
         userInfo.put("memberId",user.getId());
         userInfo.put("credits",user.getCredits());
         userInfo.put("name",user.getName());
         userInfo.put("account",user.getAccount());
-        userInfo.put("sum",0);
+        userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
+        if(amount !=user.getAmount()){
+            user.setAmount(amount);
+            UserHelper.setCurrentUser(user);
 
+        }
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
@@ -133,14 +147,21 @@ public class HomeController  {
         User user= UserHelper.getCurrentUser();
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
+
+        Integer amount =orderService.getOrderAmount();
+        amount =amount==null?0:amount;
         userInfo.put("memberId",user.getId());
         userInfo.put("credits",user.getCredits());
         userInfo.put("name",user.getName());
         userInfo.put("account",user.getAccount());
-        userInfo.put("sum",0);
+        userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());
         userInfo.put("status",1);
+        if(amount !=user.getAmount()){
+            user.setAmount(amount);
+            UserHelper.setCurrentUser(user);
 
+        }
         map.put("user_info",userInfo);
         List<LimitSet> limitSets = limitSetService.findAll(user.getId());
 
@@ -187,9 +208,12 @@ public class HomeController  {
             }
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
             User user=  userService.getByAccount(userAccount);
+
             if(user !=null && md5_pwd.equals( user.getPassword())){
                 result.setSuccess(true);
-                UserHelper.setCurrentUser(request,user);
+
+                UserHelper.setCurrentUser(user);
+
             }
             else{
                 result.setSuccess(false);
@@ -213,7 +237,7 @@ public class HomeController  {
             User user=  userService.getByAccount(userAccount);
             if(user !=null && md5_pwd.equals( user.getPassword())){
                 result.setSuccess(true);
-                UserHelper.setCurrentUser(request,user);
+                UserHelper.setCurrentUser(user);
             }
             else{
                 result.setSuccess(false);

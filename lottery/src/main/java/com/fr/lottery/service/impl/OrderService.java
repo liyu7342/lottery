@@ -62,14 +62,16 @@ public class OrderService implements IOrderService {
         }
 
         User user = UserHelper.getCurrentUser();
-        Orders order = new Orders();
-        order.setId(StringUtil.getUUID());
-       order.setOrderamount(orderDto.getOrder_allamount());
-        order.setCreatedate(new Date());
-        order.setHandicapid(handicap.getId());
-        order.setUserid(user.getId());
-        order.setOrderdetail(orderDto.getOrderData());
-        orderMapper.insert(order);
+        user.setAmount(orderDto.getOrder_allamount()+user.getAmount());
+        UserHelper.setCurrentUser(user);
+//        Orders order = new Orders();
+//        order.setId(StringUtil.getUUID());
+//       order.setOrderamount(orderDto.getOrder_allamount());
+//        order.setCreatedate(new Date());
+//        order.setHandicapid(handicap.getId());
+//        order.setUserid(user.getId());
+//        order.setOrderdetail(orderDto.getOrderData());
+//        orderMapper.insert(order);
         List<LimitSet> limitSetList =limitSetService.findAll(user.getId());
         Map<String,Float> map = new HashedMap();
         for(LimitSet limitSet :limitSetList){
@@ -80,7 +82,7 @@ public class OrderService implements IOrderService {
              String[] details= orderDetailStr.split("\\|");
              OrderDetail detail  = new OrderDetail();
              detail.setOrderNo(sysCodeService.getAutoCode(handicap.getId()));
-             detail.setOrderid(order.getId());
+             //detail.setOrderid(order.getId());
              detail.setId(StringUtil.getUUID());
              detail.setCreatedate(new Date());
              detail.setUserid(user.getId());
@@ -161,13 +163,13 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Float getOrderAmount(){
+    public Integer getOrderAmount(){
         Handicap handicap = handicapService.getCurrentHandicap();
         List<UserHistoryDto> list= orderDetailMapper.getOrderHistory(handicap.getId(),UserHelper.getCurrentUser().getId());
         if(list.size()>0){
             return list.get(0).getAmount();
         }
-        return 0F;
+        return 0;
     }
 
     @Override

@@ -40,6 +40,8 @@ public class User implements Serializable{
 
     private String handicap;
 
+    private Integer amount;
+
     public String getId() {
         return id;
     }
@@ -158,5 +160,13 @@ public class User implements Serializable{
 
     public void setHandicap(String handicap) {
         this.handicap = handicap == null ? null : handicap.trim();
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }

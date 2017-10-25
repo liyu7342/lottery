@@ -28,13 +28,15 @@ public class UserHelper {
             return null;
         }
     }
-    public static void setCurrentUser(HttpServletRequest request,User user){
+    public static void setCurrentUser(User user){
 //        User userInfoApiDto = new User();
 //        userInfoApiDto.setAccount(user.getAccount());
 //        userInfoApiDto.setName(user.getName());
 //        userInfoApiDto.setId(user.getId());
 //        userInfoApiDto.setCredits(user.getCredits());
 //
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+
         HttpSession session = request.getSession();
         session.setAttribute(session_user,user);
     }

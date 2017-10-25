@@ -30,5 +30,5 @@ public interface IOrderService {
 
     boolean settlement(String handicapId) ;
 
-    Float getOrderAmount();
+    Integer getOrderAmount();
 }

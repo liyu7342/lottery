@@ -1,5 +1,7 @@
 package com.fr.lottery.dto;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * Created by Liyu7342 on 2017-9-17.
  */
@@ -16,7 +18,7 @@ public class UserHistoryDto {
     /***
      * 注单金额
      */
-    private Float amount;
+    private Integer amount;
     /**
      * 结果
      */
@@ -46,11 +48,11 @@ public class UserHistoryDto {
         this.orderNum = orderNum;
     }
 
-    public Float getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
