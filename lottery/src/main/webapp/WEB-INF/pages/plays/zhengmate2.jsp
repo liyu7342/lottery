@@ -67,169 +67,169 @@
                             <tbody id="product_mark" pro="003">
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n1">01</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00301)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00301"/></td>
                                 <td class="hand borderRightNone"><em class="ico n11">11</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00311)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00311"/></td>
                                 <td class="hand borderRightNone"><em class="ico n21">21</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00321)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00321"/></td>
                                 <td class="hand borderRightNone"><em class="ico n31">31</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00331)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00331"/></td>
                                 <td class="hand borderRightNone"><em class="ico n41">41</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00341)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00341"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n2">02</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00302)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00302"/></td>
                                 <td class="hand borderRightNone"><em class="ico n12">12</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00312)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00312"/></td>
                                 <td class="hand borderRightNone"><em class="ico n22">22</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00322)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00322"/></td>
                                 <td class="hand borderRightNone"><em class="ico n32">32</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00332)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00332"/></td>
                                 <td class="hand borderRightNone"><em class="ico n42">42</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00342)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00342"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n3">03</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00303)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00303"/></td>
                                 <td class="hand borderRightNone"><em class="ico n13">13</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00313)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00313"/></td>
                                 <td class="hand borderRightNone"><em class="ico n23">23</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00323)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00323"/></td>
                                 <td class="hand borderRightNone"><em class="ico n33">33</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00333)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00333"/></td>
                                 <td class="hand borderRightNone"><em class="ico n43">43</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00343)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00343"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n4">04</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00304)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00304"/></td>
                                 <td class="hand borderRightNone"><em class="ico n14">14</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00314)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00314"/></td>
                                 <td class="hand borderRightNone"><em class="ico n24">24</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00324)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00324"/></td>
                                 <td class="hand borderRightNone"><em class="ico n34">34</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00334)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00334"/></td>
                                 <td class="hand borderRightNone"><em class="ico n44">44</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00344)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00344"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n5">05</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00305)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00305"/></td>
                                 <td class="hand borderRightNone"><em class="ico n15">15</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00315)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00315"/></td>
                                 <td class="hand borderRightNone"><em class="ico n25">25</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00325)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00325"/></td>
                                 <td class="hand borderRightNone"><em class="ico n35">35</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00335)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00335"/></td>
                                 <td class="hand borderRightNone"><em class="ico n45">45</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00345)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00345"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n6">06</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00306)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00306"/></td>
                                 <td class="hand borderRightNone"><em class="ico n16">16</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00316)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00316"/></td>
                                 <td class="hand borderRightNone"><em class="ico n26">26</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00326)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00326"/></td>
                                 <td class="hand borderRightNone"><em class="ico n36">36</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00336)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00336"/></td>
                                 <td class="hand borderRightNone"><em class="ico n46">46</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00346)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00346"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n7">07</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00307)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00307"/></td>
                                 <td class="hand borderRightNone"><em class="ico n17">17</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00317)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00317"/></td>
                                 <td class="hand borderRightNone"><em class="ico n27">27</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00327)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00327"/></td>
                                 <td class="hand borderRightNone"><em class="ico n37">37</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00337)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00337"/></td>
                                 <td class="hand borderRightNone"><em class="ico n47">47</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00347)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00347"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n8">08</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00308)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00308"/></td>
                                 <td class="hand borderRightNone"><em class="ico n18">18</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00318)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00318"/></td>
                                 <td class="hand borderRightNone"><em class="ico n28">28</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00328)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00328"/></td>
                                 <td class="hand borderRightNone"><em class="ico n38">38</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00338)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00338"/></td>
                                 <td class="hand borderRightNone"><em class="ico n48">48</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00348)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00348"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n9">09</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00309)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00309"/></td>
                                 <td class="hand borderRightNone"><em class="ico n19">19</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00319)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00319"/></td>
                                 <td class="hand borderRightNone"><em class="ico n29">29</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00329)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00329"/></td>
                                 <td class="hand borderRightNone"><em class="ico n39">39</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00339)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00339"/></td>
                                 <td class="hand borderRightNone"><em class="ico n49">49</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00349)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00349"/></td>
                             </tr>
                             <tr>
                                 <td class="hand borderRightNone"><em class="ico n10">10</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00310)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00310"/></td>
                                 <td class="hand borderRightNone"><em class="ico n20">20</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00320)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00320"/></td>
                                 <td class="hand borderRightNone"><em class="ico n30">30</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00330)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00330"/></td>
                                 <td class="hand borderRightNone"><em class="ico n40">40</em></td>
-                                <td class="hand borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_00340)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_00340"/></td>
                                 <td colspan="3"></td>
                             </tr>
@@ -248,35 +248,35 @@
                             </tr></thead>
                             <tbody><tr pro="022">
                                 <td class="borderRightNone"><strong>單</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02201)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" name="pro_02201"/></td>
                                 <td class="borderRightNone"><strong>大</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02203)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02203"/></td>
                                 <td class="borderRightNone"><strong>合單</strong> </td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02205)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02205"/></td>
                             </tr>
                             <tr pro="022">
                                 <td class="borderRightNone"><strong>雙</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02202)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02202"/></td>
                                 <td class="borderRightNone"><strong>小</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02204)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02204"/></td>
                                 <td class="borderRightNone"><strong>合雙</strong> </td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02206)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02206"/></td>
                             </tr>
                             <tr pro="029">
                                 <td class="borderRightNone"><strong class="red">紅色</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02901)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02901"/></td>
                                 <td class="borderRightNone"><strong class="blue">藍色</strong></td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02902)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02902"/></td>
                                 <td class="borderRightNone"><strong class="green">綠色</strong> </td>
-                                <td class="borderLeftNone borderRightNone"></td>
+                                <td class="hand borderLeftNone borderRightNone">${(entity.pro_02903)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"  name="pro_02903"/></td>
                             </tr></tbody>
                         </table>

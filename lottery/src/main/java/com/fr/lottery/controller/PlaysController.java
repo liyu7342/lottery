@@ -59,8 +59,8 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/zhengma");
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
-        String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap()+"B",oddsTypes);
+        String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
+        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -245,6 +245,20 @@ public class PlaysController {
 
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
        Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        mv.addObject("entity",map1);
+        boolean isOpen = handicapService.IsOpenHandicap();
+        mv.addObject("isOpen",isOpen);
+        return mv;
+    }
+
+    @RequestMapping("/shengxiaobuzhong")
+    public ModelAndView shengxiaobuzhong() {
+        ModelAndView mv = new ModelAndView("/plays/shengxiaobuzhong");
+        Map<String,String> map =shengxiaoService.findMapByYear();
+        mv.addObject("shengxiao", map);
+
+        String[] oddsTypes= {OddsTypeEnum.shengxiaobuzhong.getValue()};
+        Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);

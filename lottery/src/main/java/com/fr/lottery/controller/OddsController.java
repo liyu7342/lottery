@@ -218,6 +218,20 @@ public class OddsController {
         modelAndView.addObject("handicap",handicap);
         return modelAndView;
     }
+
+    @RequestMapping("/shengxiaobuzhong")
+    public ModelAndView shengxiaobuzhong(Boolean isDefault,String handicap){
+        ModelAndView modelAndView = new ModelAndView("/odds/shengxiaobuzhong");
+        Map<String,String> map =shengxiaoService.findMapByYear();
+        modelAndView.addObject("shengxiao", map);
+        String[] oddsTypes= {OddsTypeEnum.shengxiaobuzhong.getValue()};
+        Map<String,String> map1 =oddsService.getOddsMap(handicap,oddsTypes);
+        modelAndView.addObject("entity",map1);
+        modelAndView.addObject("handicap",handicap);
+        return modelAndView;
+    }
+
+
     @RequestMapping("/shengxiaolian")
     public ModelAndView shengxiaolian(Boolean isDefault,String handicap){
         if(isDefault==null) isDefault=false;

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new//mike.chen.css?ms2.4.7_31064" type="text/css">
 </head>
-<body class="frame_shengxiao">
+<body class="frame_shengxiaobuzhong">
 <div id="htmlcover"
      style="background-color:rgb(255, 255, 255);filter:alpha(opacity=0);opacity:0;position:absolute;top:0pt;left:0pt;z-index:5;display:block;width:100%;height:100%;"></div>
 <div id="doc3" class="yui-t7">
@@ -29,10 +29,10 @@
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="shengxiao" class="module" status='{"014":0}'>
+                    <div id="shengxiaobuzhong" class="module" status='{"053":0}'>
                         <input type="hidden" id="time_stamp" value="1497965073"/>
                         <input type="hidden" id="cps_time" value="20170621181221"/>
-                        <div class="hd h25"><h2 class="g-tit"><span id="product_name">生肖中</span> 投注
+                        <div class="hd h25"><h2 class="g-tit"><span id="product_name">生肖不中</span> 投注
                             <span id="w_fast" class="w_fast">
         金額：
     <input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text" id="w_fast_input" maxlength="9" autocomplete="off" />
@@ -40,9 +40,8 @@
     <input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" id="yeshou" name="w_fast" value="yeshou" /><label for="yeshou">野獸</label>
     </span>
                         </h2>
-                            <input type="button" class="shengxiao_switch shengxiao_switch_zhong" value="生肖中" disabled/>
-                            <input    type="button" class="shengxiao_switch red" value="生肖不中"
-                                   onclick="window.location='/plays/shengxiaobuzhong'"/>
+                            <input type="button" class="shengxiao_switch shengxiao_switch_zhong" value="生肖中" onclick="window.location='/plays/shengxiaobuzhong'"/>
+                            <input    type="button" class="shengxiao_switch red" value="生肖不中"  disabled  />
                         </div>
                         <div class="bd">
                             <form id="form_mark">
@@ -63,73 +62,73 @@
                                     <tr>
                                         <td class="bg">鼠</td>
                                         <td><strong>${shengxiao.鼠}</strong></td>
-                                        <td>${(entity.pro_01401)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01401" type="text" />
+                                        <td>${(entity.pro_05301)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05301" type="text" />
                                         </td>
                                         <td class="bg">牛</td>
                                         <td><strong>${shengxiao.牛}</strong></td>
-                                        <td>${(entity.pro_01402)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01402"  type="text" />
+                                        <td>${(entity.pro_05302)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05302"  type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">虎</td>
                                         <td><strong>${shengxiao.虎}</strong></td>
-                                        <td>${(entity.pro_01403)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01403" type="text" />
+                                        <td>${(entity.pro_05303)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05303" type="text" />
                                         </td>
                                         <td class="bg">兔</td>
                                         <td><strong>${shengxiao.兔}</strong></td>
-                                        <td>${(entity.pro_01404)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01404" type="text" />
+                                        <td>${(entity.pro_05304)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05304" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">龍</td>
                                         <td><strong>${shengxiao.龍}</strong></td>
-                                        <td>${(entity.pro_01405)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01405" type="text" />
+                                        <td>${(entity.pro_05305)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05305" type="text" />
                                         </td>
                                         <td class="bg">蛇</td>
                                         <td><strong>${shengxiao.蛇}</strong></td>
-                                        <td>${(entity.pro_01406)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01406" type="text" />
+                                        <td>${(entity.pro_05306)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05306" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">馬</td>
                                         <td><strong>${shengxiao.馬}</strong></td>
-                                        <td>${(entity.pro_01407)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01407" type="text" />
+                                        <td>${(entity.pro_05307)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05307" type="text" />
                                         </td>
                                         <td class="bg">羊</td>
                                         <td><strong>${shengxiao.羊}</strong></td>
-                                        <td>${(entity.pro_01408)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01408" type="text" />
+                                        <td>${(entity.pro_05308)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05308" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">猴</td>
                                         <td><strong>${shengxiao.猴}</strong></td>
-                                        <td>${(entity.pro_01409)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01409" type="text" />
+                                        <td>${(entity.pro_05309)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05309" type="text" />
                                         </td>
                                         <td class="bg">雞</td>
                                         <td><strong>${shengxiao.雞}</strong></td>
-                                        <td>${(entity.pro_01410)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01410" type="text" />
+                                        <td>${(entity.pro_05310)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05310" type="text" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="bg">狗</td>
                                         <td><strong>${shengxiao.狗}</strong></td>
-                                        <td>${(entity.pro_01411)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01411" type="text" />
+                                        <td>${(entity.pro_05311)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05311" type="text" />
                                         </td>
                                         <td class="bg">豬</td>
                                         <td><strong>${shengxiao.豬}</strong></td>
-                                        <td>${(entity.pro_01412)!''}</td>
-                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_01412" type="text" />
+                                        <td>${(entity.pro_05312)!''}</td>
+                                        <td><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="pro_05312" type="text" />
                                         </td>
                                     </tr>
                                     </tbody>

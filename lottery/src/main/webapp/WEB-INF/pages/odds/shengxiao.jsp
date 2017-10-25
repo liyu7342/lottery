@@ -35,8 +35,10 @@
                     </style>
                     <div id=""class="module">
                         <ul>
-                            <li><h2 class="g-tit">生肖</h2>
-                            </li>
+                            <div class="play_hd">
+                                <a href="/odds/shengxiao?isDefault=false&handicap=${handicap}" disabled="disabled"  class="on ds d-gray" >生肖中</a>&nbsp;|
+                                <a href="/odds/shengxiaobuzhong?isDefault=false&handicap=${handicap}"  >生肖不中</a>
+                            </div>
                         </ul>
                         <form id="form1" method="POST" action="/odds/save">
                             <table class="g-t1" id="main_tab">
