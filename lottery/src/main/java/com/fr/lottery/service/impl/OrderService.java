@@ -134,12 +134,12 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<OrderDetail> getOrderDetails(String handicapId, String userId) {
-        return orderDetailMapper.getOrderDetails(handicapId,userId);
+        return orderDetailMapper.getOrderDetails(handicapId,userId,"");
     }
 
     @Override
     public List<OrderDetail> getOrderDetails(String handicapId) {
-        return orderDetailMapper.getOrderDetails(handicapId,UserHelper.getCurrentUser().getId());
+        return orderDetailMapper.getOrderDetails(handicapId,UserHelper.getCurrentUser().getId(),"");
     }
 
     @Override
@@ -147,7 +147,7 @@ public class OrderService implements IOrderService {
        Handicap handicap= handicapService.getCurrentHandicap();
        if(handicap==null || handicap.getStatus()>= HandicapStatusEnum.Closed.ordinal())
            return new ArrayList<OrderDetail>();
-       return orderDetailMapper.getOrderDetails(handicap.getId(),UserHelper.getCurrentUser().getId());
+       return orderDetailMapper.getOrderDetails(handicap.getId(),UserHelper.getCurrentUser().getId(),"");
     }
 
     @Override
@@ -165,6 +165,7 @@ public class OrderService implements IOrderService {
     @Override
     public Integer getOrderAmount(){
         Handicap handicap = handicapService.getCurrentHandicap();
+        if(handicap==null) return 0;
         List<UserHistoryDto> list= orderDetailMapper.getOrderHistory(handicap.getId(),UserHelper.getCurrentUser().getId());
         if(list.size()>0){
             return list.get(0).getAmount();
@@ -174,9 +175,12 @@ public class OrderService implements IOrderService {
 
     @Override
     public boolean settlement(String handicapId) {
+
         Handicap handicap= handicapService.selectByPrimaryKey(handicapId);
-        List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"");
+        List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"","");
+
         for(OrderDetail orderDetail: orderDetails){
+
             if(orderDetail.getGametype().equals(OddsTypeEnum.tema.getValue())){
                 if(handicap.getTema().equals(orderDetail.getNo())){
                     Float odds= getMinOdds(orderDetail);
@@ -213,6 +217,41 @@ public class OrderService implements IOrderService {
         return false;
     }
 
+    /**
+     * 特码结算
+     * @param handicap
+     * @return
+     */
+    private void temaSettlement(Handicap handicap){
+        List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicap.getId(),"",OddsTypeEnum.tema.getValue());
+        for(OrderDetail orderDetail: orderDetails) {
+            if (handicap.getTema().equals(orderDetail.getNo())) {
+                Float odds = getMinOdds(orderDetail);
+                orderDetail.setWinAmount(orderDetail.getAmount() * (odds + (orderDetail.getRetreat() / 100) - 1));
+            } else {
+                orderDetail.setWinAmount(0F - orderDetail.getAmount());
+            }
+            orderDetailMapper.updateWinAmountByPrimaryKey(orderDetail.getWinAmount(),orderDetail.getId());
+        }
+    }
+
+    /**
+     * 特码结算
+     * @param handicap
+     * @return
+     */
+    private void zhengmaSettlement(Handicap handicap){
+        List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicap.getId(),"",OddsTypeEnum.zhengma.getValue());
+        for(OrderDetail orderDetail: orderDetails) {
+            if (handicap.getTema().equals(orderDetail.getNo())) {
+                Float odds = getMinOdds(orderDetail);
+                orderDetail.setWinAmount(orderDetail.getAmount() * (odds + (orderDetail.getRetreat() / 100) - 1));
+            } else {
+                orderDetail.setWinAmount(0F - orderDetail.getAmount());
+            }
+            orderDetailMapper.updateWinAmountByPrimaryKey(orderDetail.getWinAmount(),orderDetail.getId());
+        }
+    }
     //获取最小赔率
     private Float getMinOdds(OrderDetail orderDetail){
         Float odds = 0f;

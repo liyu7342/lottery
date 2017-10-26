@@ -18,7 +18,8 @@ public interface OrderDetailMapper {
 
     List<OrderDetail> selectByExample(@Param("orderId") String orderId);
 
-    List<OrderDetail> getOrderDetails(@Param("handicapId") String handicapId,@Param("userid") String userId);
+    List<OrderDetail> getOrderDetails(@Param("handicapId") String handicapId,@Param("userid") String userId,@Param("gameType") String gameType);
+
 
     List<UserHistoryDto> getOrderHistory(@Param("handicapId") String handicapId,@Param("userid") String userId);
 
@@ -26,4 +27,5 @@ public interface OrderDetailMapper {
 
     int updateByPrimaryKey(OrderDetail record);
 
+    int updateWinAmountByPrimaryKey(@Param("winAmount") Float winAmount,@Param("id") String id);
 }

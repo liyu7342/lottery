@@ -64,6 +64,37 @@
       createdate = #{createdate,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <update id="updateWinAmountByPrimaryKey">
+    UPDATE orderdetail set winAmount=#{winAmount,jdbcType=DECIMAL} WHERE Id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <update id="settlement">
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no`=c.Tema AND b.gameType='000' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+    UPDATE orderdetail b,handicap c set b.winAmount=- b.amount where b.handicapId = c.Id AND b.`no`!=c.Tema AND b.gameType='000' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` not in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No6 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+  </update>
+
   <select id="getOrderDetails"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
@@ -75,7 +106,11 @@
       <if test="userid!='' and userid!=null" >
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
     </where>
+
     order by createdate ASC
   </select>
 

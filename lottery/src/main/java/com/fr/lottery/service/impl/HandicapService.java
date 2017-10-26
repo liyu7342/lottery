@@ -43,6 +43,9 @@ public class HandicapService implements IHandicapService {
 
     @Override
     public boolean openHandicap(Handicap handicap){
+        handicap.setStatus(2);
+        handicap.setTemastatus(true);
+        handicap.setZhengmastatus(true);
         return handicapMapper.openHandicap(handicap) >0;
     }
 
