@@ -21,13 +21,19 @@ public class OrderDetail {
 
     private String  odds;
 
-    private Long amount;
+    private Integer amount;
+
+    private Integer totalAmount;
 
     private Date createdate;
 
     private  Float retreat;
 
     private Float winAmount;
+
+    private  String lianmatype;
+
+    private String lianmadan;
 
     public String getId() {
         return id;
@@ -77,11 +83,11 @@ public class OrderDetail {
         this.odds = odds;
     }
 
-    public Long getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
@@ -131,5 +137,29 @@ public class OrderDetail {
 
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
+    }
+
+    public Integer getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public String getLianmatype() {
+        return lianmatype;
+    }
+
+    public void setLianmatype(String lianmatype) {
+        this.lianmatype = lianmatype;
+    }
+
+    public String getLianmadan() {
+        return lianmadan;
+    }
+
+    public void setLianmadan(String lianmadan) {
+        this.lianmadan = lianmadan;
     }
 }

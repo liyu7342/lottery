@@ -9,6 +9,7 @@ import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
+import com.fr.lottery.enums.LianMaEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
@@ -86,7 +87,24 @@ public class OrderService implements IOrderService {
              detail.setId(StringUtil.getUUID());
              detail.setCreatedate(new Date());
              detail.setUserid(user.getId());
-             detail.setAmount(Long.parseLong( details[3]));
+             detail.setAmount(Integer.parseInt( details[3]));
+             if(details.length==5){
+                 detail.setTotalAmount(orderDto.getOrder_allamount());
+                 if(!details[4].startsWith("3")){
+                     detail.setLianmatype(details[4].substring(0,1));
+                     detail.setLianmadan(details[4].substring(1));
+                 }
+                 else{
+                     detail.setLianmatype("30");
+                     detail.setLianmadan(details[4].substring(2,3));
+                 }
+
+             }
+             else{
+                 detail.setTotalAmount(detail.getAmount());
+             }
+
+
              detail.setOdds(details[2]);
              detail.setNo(details[1]);
              String category= GameCfg.getGameCategory(details[0]);
@@ -101,7 +119,29 @@ public class OrderService implements IOrderService {
                  for(String no :nos){
                      if(Global.lotConfigDic.containsKey(details[0]+no)){
                          if(i==0){
-                             detail.setDescription( Global.lotConfigDic.get(details[0]+no).getGameDesc());
+
+                             detail.setDescription(Global.lotConfigDic.get(details[0]+ no).getGameDesc());
+                             if(!StringUtil.isNullOrEmpty( detail.getLianmatype())){
+                                if(LianMaEnum.zhengchang.getValue().equals( detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  正常");
+                                }
+                                else if(LianMaEnum.dantuo.getValue().equals(detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  胆拖");
+                                }
+                                else if(LianMaEnum.shengxiaoduipeng.getValue().equals(detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  生肖对碰");
+                                }
+                                else if(LianMaEnum.shengweiduipeng.getValue().equals(detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  生尾对碰");
+                                }
+                                else if(LianMaEnum.weishuduipeng.getValue().equals(detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  尾数对碰");
+                                }
+                                else if(LianMaEnum.suiyipeng.getValue().equals(detail.getLianmatype())){
+                                    detail.setDescription(detail.getDescription() + "  随意对碰");
+                                }
+                             }
+                             detail.setDescription( Global.lotConfigDic.get(details[0]+ no).getGameDesc());
                          }else{
                              detail.setDescription(detail.getDescription()+","+ Global.lotConfigDic.get(details[0]+no).getGameNumDesc());
                          }
