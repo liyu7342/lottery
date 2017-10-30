@@ -117,16 +117,20 @@ public class OrderService implements IOrderService {
                  detail.setDescription("");
                  int i=0;
                  for(String no :nos){
+
                      if(Global.lotConfigDic.containsKey(details[0]+no)){
+                         LotConfig lot =Global.lotConfigDic.get(details[0]+no);
                          if(i==0){
 
-                             detail.setDescription(Global.lotConfigDic.get(details[0]+ no).getGameDesc());
+
                              if(!StringUtil.isNullOrEmpty( detail.getLianmatype())){
+                                 detail.setDescription(lot.getGameTypeDesc());
                                 if(LianMaEnum.zhengchang.getValue().equals( detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  正常");
+
+                                    detail.setDescription(lot.getGameTypeDesc() + "  正常 " +lot.getGameDesc());
                                 }
                                 else if(LianMaEnum.dantuo.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  胆拖");
+                                    detail.setDescription(Global.lotConfigDic.get(details[0]+ no).getGameTypeDesc() +" " +detail.getLianmadan()+ " 拖 " + Global.lotConfigDic.get(details[0]+ no).getGameNumDesc());
                                 }
                                 else if(LianMaEnum.shengxiaoduipeng.getValue().equals(detail.getLianmatype())){
                                     detail.setDescription(detail.getDescription() + "  生肖对碰");
@@ -140,8 +144,9 @@ public class OrderService implements IOrderService {
                                 else if(LianMaEnum.suiyipeng.getValue().equals(detail.getLianmatype())){
                                     detail.setDescription(detail.getDescription() + "  随意对碰");
                                 }
+
                              }
-                             detail.setDescription( Global.lotConfigDic.get(details[0]+ no).getGameDesc());
+
                          }else{
                              detail.setDescription(detail.getDescription()+","+ Global.lotConfigDic.get(details[0]+no).getGameNumDesc());
                          }

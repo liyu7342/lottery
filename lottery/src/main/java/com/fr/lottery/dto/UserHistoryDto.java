@@ -24,6 +24,8 @@ public class UserHistoryDto {
      */
     private String winAmount;
 
+    private Integer totalAmount;
+
     public String getUserId() {
         return userId;
     }
@@ -62,5 +64,13 @@ public class UserHistoryDto {
 
     public void setWinAmount(String winAmount) {
         this.winAmount = winAmount;
+    }
+
+    public Integer getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }
