@@ -65,14 +65,14 @@ public class OrderService implements IOrderService {
         User user = UserHelper.getCurrentUser();
         user.setAmount(orderDto.getOrder_allamount()+user.getAmount());
         UserHelper.setCurrentUser(user);
-//        Orders order = new Orders();
-//        order.setId(StringUtil.getUUID());
-//       order.setOrderamount(orderDto.getOrder_allamount());
-//        order.setCreatedate(new Date());
-//        order.setHandicapid(handicap.getId());
-//        order.setUserid(user.getId());
-//        order.setOrderdetail(orderDto.getOrderData());
-//        orderMapper.insert(order);
+        Orders order = new Orders();
+        order.setId(StringUtil.getUUID());
+       order.setOrderamount(orderDto.getOrder_allamount());
+        order.setCreatedate(new Date());
+        order.setHandicapid(handicap.getId());
+        order.setUserid(user.getId());
+        order.setOrderdetail(orderDto.getOrderData());
+        orderMapper.insert(order);
         List<LimitSet> limitSetList =limitSetService.findAll(user.getId());
         Map<String,Float> map = new HashedMap();
         for(LimitSet limitSet :limitSetList){
@@ -113,6 +113,7 @@ public class OrderService implements IOrderService {
              }
 
              if(details[1].contains(",")){
+
                  String[] nos = details[1].split(",");
                  detail.setDescription("");
                  int i=0;
@@ -121,19 +122,16 @@ public class OrderService implements IOrderService {
                      if(Global.lotConfigDic.containsKey(details[0]+no)){
                          LotConfig lot =Global.lotConfigDic.get(details[0]+no);
                          if(i==0){
-
-
                              if(!StringUtil.isNullOrEmpty( detail.getLianmatype())){
-                                 detail.setDescription(lot.getGameTypeDesc());
                                 if(LianMaEnum.zhengchang.getValue().equals( detail.getLianmatype())){
 
-                                    detail.setDescription(lot.getGameTypeDesc() + "  正常 " +lot.getGameDesc());
+                                    detail.setDescription(lot.getGameDesc());
                                 }
                                 else if(LianMaEnum.dantuo.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(Global.lotConfigDic.get(details[0]+ no).getGameTypeDesc() +" " +detail.getLianmadan()+ " 拖 " + Global.lotConfigDic.get(details[0]+ no).getGameNumDesc());
+                                    detail.setDescription(lot.getGameTypeDesc()+" " +detail.getLianmadan()+ " [拖] " );
                                 }
                                 else if(LianMaEnum.shengxiaoduipeng.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  生肖对碰");
+                                    detail.setDescription(lot.getGameTypeDesc()+ "  生肖对碰");
                                 }
                                 else if(LianMaEnum.shengweiduipeng.getValue().equals(detail.getLianmatype())){
                                     detail.setDescription(detail.getDescription() + "  生尾对碰");
@@ -144,9 +142,7 @@ public class OrderService implements IOrderService {
                                 else if(LianMaEnum.suiyipeng.getValue().equals(detail.getLianmatype())){
                                     detail.setDescription(detail.getDescription() + "  随意对碰");
                                 }
-
                              }
-
                          }else{
                              detail.setDescription(detail.getDescription()+","+ Global.lotConfigDic.get(details[0]+no).getGameNumDesc());
                          }

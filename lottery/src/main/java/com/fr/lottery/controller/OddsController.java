@@ -424,7 +424,7 @@ public class OddsController {
             List<String> detailArr = new ArrayList<String>();
             //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());
-            detailArr.add(detail.getAmount().toString());
+            detailArr.add(detail.getTotalAmount().toString());
             detailArr.add(detail.getOdds().toString());
 
             new_order.add(detailArr);
