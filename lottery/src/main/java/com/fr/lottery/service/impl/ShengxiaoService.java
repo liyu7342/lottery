@@ -43,4 +43,14 @@ public class ShengxiaoService implements IShengxiaoService {
         }
         return map;
     }
+
+    @Override
+    public Map<String, ShengXiao> findMapByYear1() {
+        List<ShengXiao> shengXiaos=  findByYear();
+        Map<String,ShengXiao> map = new HashMap<String, ShengXiao>();
+        for(ShengXiao shengXiao :shengXiaos){
+            map.put(shengXiao.getSortNo()>9?shengXiao.getSortNo().toString():"0"+shengXiao.getSortNo().toString(),shengXiao);
+        }
+        return map;
+    }
 }

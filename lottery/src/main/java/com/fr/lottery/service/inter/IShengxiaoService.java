@@ -14,4 +14,6 @@ public interface IShengxiaoService {
     List<ShengXiao> findByYear();
 
     Map<String,String> findMapByYear();
+
+    Map<String, ShengXiao> findMapByYear1();
 }

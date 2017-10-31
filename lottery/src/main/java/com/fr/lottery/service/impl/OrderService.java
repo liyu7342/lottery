@@ -13,13 +13,11 @@ import com.fr.lottery.enums.LianMaEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
-import com.fr.lottery.service.inter.IHandicapService;
-import com.fr.lottery.service.inter.ILimitSetService;
-import com.fr.lottery.service.inter.IOrderService;
-import com.fr.lottery.service.inter.ISysCodeService;
+import com.fr.lottery.service.inter.*;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
+import org.bouncycastle.asn1.cms.PasswordRecipientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +48,9 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private ISysCodeService sysCodeService;
+
+    @Autowired
+    private IShengxiaoService shengxiaoService;
 
     public List<Orders> getOrderList(String userId){
         return new ArrayList<Orders>();
@@ -111,51 +112,51 @@ public class OrderService implements IOrderService {
              if(map.containsKey(category)){
                  detail.setRetreat(map.get(category));
              }
+             detail.setGametype(details[0]);
 
              if(details[1].contains(",")){
 
                  String[] nos = details[1].split(",");
-                 detail.setDescription("");
-                 int i=0;
-                 for(String no :nos){
 
-                     if(Global.lotConfigDic.containsKey(details[0]+no)){
-                         LotConfig lot =Global.lotConfigDic.get(details[0]+no);
-                         if(i==0){
-                             if(!StringUtil.isNullOrEmpty( detail.getLianmatype())){
-                                if(LianMaEnum.zhengchang.getValue().equals( detail.getLianmatype())){
-
-                                    detail.setDescription(lot.getGameDesc());
-                                }
-                                else if(LianMaEnum.dantuo.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(lot.getGameTypeDesc()+" " +detail.getLianmadan()+ " [拖] " );
-                                }
-                                else if(LianMaEnum.shengxiaoduipeng.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(lot.getGameTypeDesc()+ "  生肖对碰");
-                                }
-                                else if(LianMaEnum.shengweiduipeng.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  生尾对碰");
-                                }
-                                else if(LianMaEnum.weishuduipeng.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  尾数对碰");
-                                }
-                                else if(LianMaEnum.suiyipeng.getValue().equals(detail.getLianmatype())){
-                                    detail.setDescription(detail.getDescription() + "  随意对碰");
-                                }
-                             }
-                         }else{
-                             detail.setDescription(detail.getDescription()+","+ Global.lotConfigDic.get(details[0]+no).getGameNumDesc());
+                 if(Global.lotConfigDic.containsKey(details[0]+nos[0])) {
+                     LotConfig lot = Global.lotConfigDic.get(details[0] +"01");
+                     if(!StringUtil.isNullOrEmpty( detail.getLianmatype())) {
+                         if(LianMaEnum.zhengchang.getValue().equals( detail.getLianmatype())){
+                             detail.setDescription(lot.getGameTypeDesc() +" " +details[1]);
                          }
-                         i++;
+                         else if(LianMaEnum.dantuo.getValue().equals(detail.getLianmatype())){
+
+                             detail.setDescription(lot.getGameTypeDesc()+" " +detail.getLianmadan()+ " [拖] " +details[1].substring(nos[0].length()+1) );
+                         }
+                         else if(LianMaEnum.shengxiaoduipeng.getValue().equals(detail.getLianmatype())){
+                             Map<String,ShengXiao> shengxiaomap= shengxiaoService.findMapByYear1();
+                             String[] xiaonos= details[1].split("#");
+                             String[] detailxiaoNos= xiaonos[0].split(",");
+                             detail.setDescription(lot.getGameTypeDesc()+" "+ shengxiaomap.get(detailxiaoNos[0]).getName()+ " [碰] "+ shengxiaomap.get(detailxiaoNos[1]).getName());
+                         }
+                         else if(LianMaEnum.shengweiduipeng.getValue().equals(detail.getLianmatype())){
+                             Map<String,ShengXiao> shengxiaomap= shengxiaoService.findMapByYear1();
+                             String[] xiaonos= details[1].split("#");
+                             String[] detailxiaoNos= xiaonos[0].split(",");
+                             detail.setDescription(lot.getGameTypeDesc()+" "+ shengxiaomap.get(detailxiaoNos[0]).getName()+ " [碰] "+ Long.valueOf(detailxiaoNos[1]).toString()+"尾");
+                         }
+                         else if(LianMaEnum.weishuduipeng.getValue().equals(detail.getLianmatype())){
+                             String[] xiaonos= details[1].split("#");
+                             String[] detailxiaoNos= xiaonos[0].split(",");
+                             detail.setDescription(lot.getGameTypeDesc()+" "+  Long.valueOf(detailxiaoNos[0]).toString()+"尾" + " [碰] "+ Long.valueOf(detailxiaoNos[1]).toString()+"尾");
+                         }
+                         else if(LianMaEnum.suiyipeng.getValue().equals(detail.getLianmatype())){
+
+                             detail.setDescription(lot.getGameTypeDesc() +" " + detail.getLianmadan()  +"  [碰] "+ details[1].substring(detail.getLianmadan().length()+1));
+                         }
                      }
                  }
-
              }else {
                  if(Global.lotConfigDic.containsKey(details[0]+details[1])){
                      detail.setDescription(Global.lotConfigDic.get(details[0]+details[1]).getGameDesc());
                  }
              }
-             detail.setGametype(details[0]);
+
              detail.setHandicapId(handicap.getId());
              //Float getMinOdds(detail);
              orderDetailMapper.insert(detail);
