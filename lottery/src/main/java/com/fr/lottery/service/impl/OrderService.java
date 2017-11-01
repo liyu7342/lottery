@@ -22,10 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
@@ -115,9 +112,7 @@ public class OrderService implements IOrderService {
              detail.setGametype(details[0]);
 
              if(details[1].contains(",")){
-
                  String[] nos = details[1].split(",");
-
                  if(Global.lotConfigDic.containsKey(details[0]+nos[0])) {
                      LotConfig lot = Global.lotConfigDic.get(details[0] +"01");
                      if(!StringUtil.isNullOrEmpty( detail.getLianmatype())) {
@@ -215,14 +210,33 @@ public class OrderService implements IOrderService {
         return 0;
     }
 
+    public static String[] intersect(String[] arr1, String[] arr2){
+        List<String> l = new LinkedList<String>();
+        Set<String> common = new HashSet<String>();
+        for(String str:arr1){
+            if(!l.contains(str)){
+                l.add(str);
+            }
+        }
+        for(String str:arr2){
+            if(l.contains(str)){
+                common.add(str);
+            }
+        }
+        String[] result={};
+        return common.toArray(result);
+    }
+
     @Override
     public boolean settlement(String handicapId) {
 
         Handicap handicap= handicapService.selectByPrimaryKey(handicapId);
         List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"","");
+        List<OrderDetail> orderDetails1= orderDetailMapper.getOrderDetails(handicapId,"",OddsTypeEnum.erquanzh.getValue());
+        String[] mas={ handicap.getNo1(),handicap.getNo2(),handicap.getNo3(),handicap.getNo4(),handicap.getNo5(),handicap.getNo6(),handicap.getTema()};
 
-        for(OrderDetail orderDetail: orderDetails){
-
+        for(OrderDetail orderDetail: orderDetails1){
+            String[] detailnos = orderDetail.getNo().split(",");
             if(orderDetail.getGametype().equals(OddsTypeEnum.tema.getValue())){
                 if(handicap.getTema().equals(orderDetail.getNo())){
                     Float odds= getMinOdds(orderDetail);
