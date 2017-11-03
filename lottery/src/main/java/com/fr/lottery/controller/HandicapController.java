@@ -4,6 +4,7 @@ import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.service.impl.HandicapService;
 import com.fr.lottery.service.inter.IHandicapService;
+import com.fr.lottery.service.inter.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ import java.util.List;
 public class HandicapController extends BaseController {
     @Autowired
     private IHandicapService handicapService;
+
+    @Autowired
+    private IOrderService orderService;
     @RequestMapping("index")
     public ModelAndView index(Integer pageId){
         if(pageId== null) pageId =1;
@@ -93,9 +97,10 @@ public class HandicapController extends BaseController {
         return resultInfo;
     }
 
-
+    @ResponseBody
+    @RequestMapping("settlement")
     public void settlement(String handicapId,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        boolean isSuccess = handicapService.settlement(handicapId);
+        boolean isSuccess = orderService.settlement(handicapId);
         String referer = request.getHeader("Referer");
         if(isSuccess){
             response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\""+referer+"\"</script>");

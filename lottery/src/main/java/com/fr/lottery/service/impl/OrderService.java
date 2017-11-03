@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -210,6 +211,12 @@ public class OrderService implements IOrderService {
         return 0;
     }
 
+    /**
+     * 取两数组交集
+     * @param arr1
+     * @param arr2
+     * @return
+     */
     public static String[] intersect(String[] arr1, String[] arr2){
         List<String> l = new LinkedList<String>();
         Set<String> common = new HashSet<String>();
@@ -236,38 +243,50 @@ public class OrderService implements IOrderService {
         String[] mas={ handicap.getNo1(),handicap.getNo2(),handicap.getNo3(),handicap.getNo4(),handicap.getNo5(),handicap.getNo6(),handicap.getTema()};
 
         for(OrderDetail orderDetail: orderDetails1){
-            String[] detailnos = orderDetail.getNo().split(",");
-            if(orderDetail.getGametype().equals(OddsTypeEnum.tema.getValue())){
-                if(handicap.getTema().equals(orderDetail.getNo())){
-                    Float odds= getMinOdds(orderDetail);
-                    orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
-                }
-                else{
-                    orderDetail.setWinAmount(0F-orderDetail.getAmount());
-                }
-            }
-            else if(orderDetail.getGametype().equals(OddsTypeEnum.zhengma.getValue())){
-                if(handicap.getNo1().equals(orderDetail.getNo()) ||handicap.getNo2().equals(orderDetail.getNo()) || handicap.getNo3().equals(orderDetail.getNo())
-               || handicap.getNo4().equals(orderDetail.getNo())||handicap.getNo5().equals(orderDetail.getNo()) ||handicap.getNo6().equals(orderDetail.getNo())){
-                    Float odds = getMinOdds(orderDetail);
-                    orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
-                }
-                else{
-                    orderDetail.setWinAmount(0F-orderDetail.getAmount());
-                }
-            }
-            else if(orderDetail.getGametype().equals(OddsTypeEnum.zhengmate1.getValue())){
-              if(handicap.getNo1().equals(handicap.getTema()) &&  handicap.getNo1().equals(orderDetail.getNo()) )  {
-                  Float odds= getMinOdds(orderDetail);
-                  orderDetail.setWinAmount(orderDetail.getAmount() * (odds+ (orderDetail.getRetreat()/100) -1));
-              }
-              else{
-                  orderDetail.setWinAmount(0F-orderDetail.getAmount());
-              }
-            }
-            else if(orderDetail.getGametype().equals(OddsTypeEnum.erquanzh.getValue())){
+            //正常连码
+            if(LianMaEnum.zhengchang.getValue().equals( orderDetail.getLianmatype())){
+                String[] detailnos = orderDetail.getNo().split(",");
+                String[] winNoArray=intersect(mas,detailnos);
 
+                if(winNoArray.length>=2){
+                    String[] oddsArray=orderDetail.getOdds().split(",");
+                    String[] winOdds= new String[winNoArray.length];
+                    int _t=0;
+                    for(String winNo :winNoArray){ //获取中奖赔率
+                       int index = Arrays.binarySearch(detailnos, winNo);
+                        winOdds[_t]= oddsArray[index];
+                        _t++;
+                    }
+
+                    //组合计算公式（C(m,n)） 10*9/2   3*2/2   计算出中奖单数
+                    //int winLeng= winNoArray.length * (winNoArray.length-1)/2;
+                    //赔率排序
+                    Arrays.sort(winOdds);
+
+                    //取最小赔率
+                    Float totalAmount=0f;
+                    for(int index=0, len=winOdds.length;index<winOdds.length-1;index++){
+                        len--;
+                        totalAmount+= (Float.parseFloat(winOdds[index])+(orderDetail.getRetreat() / 100)) * len *orderDetail.getAmount();
+                    }
+                    orderDetail.setWinAmount(totalAmount-orderDetail.getTotalAmount());
+
+                }
+                else{
+                    orderDetail.setWinAmount(0f-orderDetail.getTotalAmount());
+                }
             }
+            else if(LianMaEnum.dantuo.getValue().equals(orderDetail.getLianmatype())){
+                //胆不中，则全不中
+                int index=  Arrays.asList(mas).indexOf(orderDetail.getLianmadan()) ;
+                if(index <0){
+                    orderDetail.setWinAmount(0f-orderDetail.getTotalAmount());
+                }
+                else{
+                    String[] detailnos = orderDetail.getNo().split(",");
+                }
+            }
+            orderDetailMapper.updateWinAmountByPrimaryKey(orderDetail.getWinAmount(),orderDetail.getId());
         }
         handicap.setIssettlement(true);
         return false;
