@@ -86,36 +86,36 @@
                                     <tr>
                                         <td>單注最低</td>
 
-                                        <td><input type="text" valid="amount" name="ordermin0" value="${limitSets[0].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin1" value="${limitSets[1].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin2" value="${limitSets[2].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin3" value="${limitSets[3].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin4" value="${limitSets[4].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin5" value="${limitSets[5].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin6" value="${limitSets[6].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin7" value="${limitSets[7].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin0" value="${limitSets[0].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin1" value="${limitSets[1].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin2" value="${limitSets[2].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin3" value="${limitSets[3].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin4" value="${limitSets[4].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin5" value="${limitSets[5].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin6" value="${limitSets[6].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin7" value="${limitSets[7].singlemin!''}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單注最高</td>
-                                        <td><input type="text" valid="amount" name="ordermax0" value="${limitSets[0].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax1" value="${limitSets[1].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax2" value="${limitSets[2].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax3" value="${limitSets[3].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax4" value="${limitSets[4].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax5" value="${limitSets[5].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax6" value="${limitSets[6].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax7" value="${limitSets[7].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax0" value="${limitSets[0].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax1" value="${limitSets[1].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax2" value="${limitSets[2].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax3" value="${limitSets[3].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax4" value="${limitSets[4].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax5" value="${limitSets[5].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax6" value="${limitSets[6].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax7" value="${limitSets[7].singlemax!''}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單項最高</td>
-                                        <td><input type="text" valid="amount" name="itemmax0" value="${limitSets[0].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax1" value="${limitSets[1].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax2" value="${limitSets[2].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax3" value="${limitSets[3].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax4" value="${limitSets[4].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax5" value="${limitSets[5].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax6" value="${limitSets[6].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax7" value="${limitSets[7].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax0" value="${limitSets[0].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax1" value="${limitSets[1].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax2" value="${limitSets[2].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax3" value="${limitSets[3].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax4" value="${limitSets[4].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax5" value="${limitSets[5].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax6" value="${limitSets[6].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax7" value="${limitSets[7].singlehighest!''}"/></td>
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
@@ -209,36 +209,36 @@
                                     </tr>
                                     <tr>
                                         <td>單注最低</td>
-                                        <td><input type="text" valid="amount" name="ordermin8" value="${limitSets[8].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin9" value="${limitSets[9].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin10" value="${limitSets[10].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin11" value="${limitSets[11].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin12" value="${limitSets[12].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin13" value="${limitSets[13].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin14" value="${limitSets[14].singlemin}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermin15" value="${limitSets[15].singlemin}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin8" value="${limitSets[8].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin9" value="${limitSets[9].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin10" value="${limitSets[10].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin11" value="${limitSets[11].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin12" value="${limitSets[12].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin13" value="${limitSets[13].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin14" value="${limitSets[14].singlemin!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermin15" value="${limitSets[15].singlemin!''}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單注最高</td>
-                                        <td><input type="text" valid="amount" name="ordermax8" value="${limitSets[8].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax9" value="${limitSets[9].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax10" value="${limitSets[10].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax11" value="${limitSets[11].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax12" value="${limitSets[12].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax13" value="${limitSets[13].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax14" value="${limitSets[14].singlemax}"/></td>
-                                        <td><input type="text" valid="amount" name="ordermax15" value="${limitSets[15].singlemax}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax8" value="${limitSets[8].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax9" value="${limitSets[9].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax10" value="${limitSets[10].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax11" value="${limitSets[11].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax12" value="${limitSets[12].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax13" value="${limitSets[13].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax14" value="${limitSets[14].singlemax!''}"/></td>
+                                        <td><input type="text" valid="amount" name="ordermax15" value="${limitSets[15].singlemax!''}"/></td>
                                     </tr>
                                     <tr>
                                         <td>單項最高</td>
-                                        <td><input type="text" valid="amount" name="itemmax8" value="${limitSets[8].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax9" value="${limitSets[9].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax10" value="${limitSets[10].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax11" value="${limitSets[11].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax12" value="${limitSets[12].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax13" value="${limitSets[13].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax14" value="${limitSets[14].singlehighest}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax15" value="${limitSets[15].singlehighest}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax8" value="${limitSets[8].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax9" value="${limitSets[9].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax10" value="${limitSets[10].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax11" value="${limitSets[11].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax12" value="${limitSets[12].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax13" value="${limitSets[13].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax14" value="${limitSets[14].singlehighest!''}"/></td>
+                                        <td><input type="text" valid="amount" name="itemmax15" value="${limitSets[15].singlehighest!''}"/></td>
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>

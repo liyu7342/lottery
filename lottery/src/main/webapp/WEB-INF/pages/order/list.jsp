@@ -38,7 +38,7 @@
                                 <input type='radio' name='to_link' id='to_link' value="list.htm" checked='checked'/>
                                 <font color='red'>成功明細</font>&nbsp;
                                 <input type='radio' name='to_link' id='to_link' value="fail_list.htm"/>
-                                失敗明細 <select name="categoryId">
+                                失敗明細 <select name="categoryId" id="categoryId">
                                 <option selected=selected value='-1'>全部</option>
                                 <option value='00'>特碼</option>
                                 <option value='01'>正碼</option>
@@ -58,8 +58,9 @@
                                 <option value='15'>不中</option>
                             </select>
                             </h2>
-                            <div class="fr">&nbsp;<input type="button" value="打印" class="btn16"
-                                                         onclick="javascript:print();return false;"/></div>
+                            <div class="fr">
+                               <div style="margin-right: 52px;">${page}</div>
+                                &nbsp;<input type="button" value="打印" class="btn16" onclick="javascript:print();return false;"/></div>
                         </div>
                         <div class="bd">
                             <table class="g-t1">
@@ -82,7 +83,7 @@
                                     <td>B</td>
                                     <td>${(obj.description)!''}</td>
                                     <td>${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>
-                                    <td>${(obj.amount)!''}</td>
+                                    <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}</td>
                                     <td>${(obj.winAmount)!''}</td>
@@ -92,18 +93,18 @@
                                 <tfoot>
                                 <tr class="green">
                                     <td colspan="4">小計：</td>
-                                    <td>0</td>
+                                    <td>${subSum}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>0</td>
+                                    <td>${subWinAmount}</td>
                                     <td></td>
                                 </tr>
                                 <tr class="red">
                                     <td colspan="4">總計：</td>
-                                    <td>0</td>
+                                    <td>${totalAmount}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>0</td>
+                                    <td>${winAmount}</td>
                                     <td></td>
                                 </tr>
                                 </tfoot>
@@ -124,6 +125,9 @@
     </div>
 </div>
 <script type="text/javascript">
+    function page(index){
+    location.href="/order/list?pageId="+index+"&categoryId="+$("#categoryId").val()
+    }
     window.setting = {
         login_path: '/msdid63242f/user/login.html', //登錄路徑
         odds_refersh: 60000, //頁面的賠率刷新頻率,默認改為 60秒

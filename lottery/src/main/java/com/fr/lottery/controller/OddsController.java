@@ -413,14 +413,14 @@ public class OddsController {
         header.put("credit",user.getCredits());
         header.put("fail_count",0);
         header.put("calc_status",-1);
-        List<OrderDetail> orderDetails = orderService.getOrderDetails();
+        List<Orders> orderDetails = orderService.getOrders();
         List<List<String>> new_order =new ArrayList<List<String>>();
 //        if(Global.cfg_category_key.size()==0){
 //            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
 //            for(LotConfig lotConfig: lotConfigs)
 //                Global.cfg_category_key.put(lotConfig.getGameNo(),lotConfig);
 //        }
-        for(OrderDetail detail : orderDetails){
+        for(Orders detail : orderDetails){
             List<String> detailArr = new ArrayList<String>();
             //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());

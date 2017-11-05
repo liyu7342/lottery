@@ -50,7 +50,11 @@ public class MemberController {
     public ModelAndView info(String id,String parentId){
         ModelAndView modelAndView = new ModelAndView("/member/info");
         User user = userService.get(id);
-        User parentUser = userService.get(parentId);
+        User parentUser =null;
+        if(StringUtils.isNotBlank(parentId)){
+             parentUser = userService.get(parentId);
+        }
+
 
         List<LimitSet> limitSets= limitSetService.findAll(parentId);
        /* if(limitSets.size()==0){

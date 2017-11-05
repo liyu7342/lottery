@@ -1,7 +1,6 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.UserHistoryDto;
-import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.service.inter.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

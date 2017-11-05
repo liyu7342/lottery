@@ -51,7 +51,7 @@ public class Global {
     public static final String TRUE = "true";
     public static final String FALSE = "false";
 
-    public static final Integer pageSize=10;
+    public static final Integer pageSize=20;
 
     public static final Integer userStatus_qiyong=1;
     public static final Integer userStatus_tingyong=0;

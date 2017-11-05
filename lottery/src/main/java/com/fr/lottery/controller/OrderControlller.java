@@ -1,12 +1,10 @@
 package com.fr.lottery.controller;
 
-import com.fr.lottery.dao.OrdersMapper;
 import com.fr.lottery.dto.OrderDto;
-import com.fr.lottery.entity.OrderDetail;
+import com.fr.lottery.dto.Page;
+import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.User;
-import com.fr.lottery.service.impl.OrderService;
 import com.fr.lottery.service.inter.IOrderService;
-import com.fr.lottery.utils.RequestDataUtils;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,10 +28,23 @@ public class OrderControlller {
     @Autowired
     private IOrderService orderService;
     @RequestMapping("/list")
-    public ModelAndView list(String categoryId) {
+    public ModelAndView list(String categoryId,Integer pageId) {
         ModelAndView mv = new ModelAndView("/order/list");
-        List<OrderDetail> orderDetails = orderService.getOrderDetails();
-        mv.addObject("orderList",orderDetails);
+        Page<Orders> orderDetails = orderService.getOrders(pageId,categoryId);
+        mv.addObject("orderList",orderDetails.getList());
+        mv.addObject("page", orderDetails.toString());
+        Integer subsum=0;
+        Float subWinAmount =0F;
+        for(Orders orderDetail : orderDetails.getList()){
+            subsum +=orderDetail.getTotalAmount();
+            subWinAmount+= (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount());
+        }
+        Orders orderDetail = orderService.getTotal(categoryId);
+
+        mv.addObject("subSum",subsum);
+        mv.addObject("totalAmount",orderDetail.getTotalAmount());
+        mv.addObject("winAmount",orderDetail.getCanWinAmount());
+        mv.addObject("subWinAmount",subWinAmount);
         return mv;
     }
 

@@ -123,10 +123,12 @@ public class Page<T> {
      * @param list 本页数据对象列表
      */
     public Page(int pageNo, int pageSize, long count, List<T> list) {
+
         this.setCount(count);
         this.setPageNo(pageNo);
         this.pageSize = pageSize;
         this.list = list;
+        initialize();
     }
 
     /**
@@ -181,7 +183,7 @@ public class Page<T> {
     }
 
     /**
-     * 默认输出当前分页标签
+      * 默认输出当前分页标签
      * <div class="page">${page}</div>
      */
     @Override
@@ -190,8 +192,10 @@ public class Page<T> {
         StringBuilder sb = new StringBuilder();
 
         if (pageNo == first) {// 如果是首页
-            sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一页</a></li>\n");
+            //sb.append("<span class=\"ico\">第一頁</span>");
+            sb.append("<li class=\"disabled\"><a href=\"javascript:\">&#171; 上一 页</a></li>\n");
         } else {
+            //sb.append("<span class=\"ico i2\">上一頁</span>");
             sb.append("<li><a href=\"javascript:\" onclick=\""+funcName+"("+prev+","+pageSize+",'"+funcParam+"');\">&#171; 上一页</a></li>\n");
         }
 
@@ -250,15 +254,17 @@ public class Page<T> {
         }
 
         sb.append("<li class=\"disabled controls\"><a href=\"javascript:\">当前 ");
-        sb.append("<input type=\"text\" value=\""+pageNo+"\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)");
-        sb.append(funcName+"(this.value,"+pageSize+",'"+funcParam+"');\" onclick=\"this.select();\"/> / ");
-        sb.append("<input type=\"text\" value=\""+pageSize+"\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)");
-        sb.append(funcName+"("+pageNo+",this.value,'"+funcParam+"');\" onclick=\"this.select();\"/> 条，");
+        sb.append("<label >"+((pageNo-1)*pageSize+1)+"</label> / ");
+        sb.append("<label> "+((pageNo-1) * pageSize +this.list.size())+"</label> 条");
+//        sb.append("<input type=\"text\" value=\""+pageNo+"\"   onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)");
+//        sb.append(funcName+"(this.value,"+pageSize+",'"+funcParam+"');\" onclick=\"this.select();\"/> / ");
+//        sb.append("<input type=\"text\" value=\""+pageSize+"\" onkeypress=\"var e=window.event||this;var c=e.keyCode||e.which;if(c==13)");
+//        sb.append(funcName+"("+pageNo+",this.value,'"+funcParam+"');\" onclick=\"this.select();\"/> 条，");
         sb.append("共 " + count + " 条"+(message!=null?message:"")+"</a></li>\n");
 
         sb.insert(0,"<ul>\n").append("</ul>\n");
 
-        sb.append("<div style=\"clear:both;\"></div>");
+       //sb.append("<div style=\"clear:both;\"></div>");
 
 //		sb.insert(0,"<div class=\"page\">\n").append("</div>\n");
 
@@ -523,36 +529,5 @@ public class Page<T> {
         return getPageSize();
     }
 
-//	/**
-//	 * 获取 Spring data JPA 分页对象
-//	 */
-//	public Pageable getSpringPage(){
-//		List<Order> orders = new ArrayList<Order>();
-//		if (orderBy!=null){
-//			for (String order : StringUtils.split(orderBy, ",")){
-//				String[] o = StringUtils.split(order, " ");
-//				if (o.length==1){
-//					orders.add(new Order(Direction.ASC, o[0]));
-//				}else if (o.length==2){
-//					if ("DESC".equals(o[1].toUpperCase())){
-//						orders.add(new Order(Direction.DESC, o[0]));
-//					}else{
-//						orders.add(new Order(Direction.ASC, o[0]));
-//					}
-//				}
-//			}
-//		}
-//		return new PageRequest(this.pageNo - 1, this.pageSize, new Sort(orders));
-//	}
-//
-//	/**
-//	 * 设置 Spring data JPA 分页对象，转换为本系统分页对象
-//	 */
-//	public void setSpringPage(org.springframework.data.domain.Page<T> page){
-//		this.pageNo = page.getNumber();
-//		this.pageSize = page.getSize();
-//		this.count = page.getTotalElements();
-//		this.list = page.getContent();
-//	}
 
 }

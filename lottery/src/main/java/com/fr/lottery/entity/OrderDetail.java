@@ -1,85 +1,84 @@
 package com.fr.lottery.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderDetail {
+/**
+ * Created by Liyu7342 on 2017-7-27.
+ */
+public class OrderDetail implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String id;
-
-    private String orderid;
-
-    private String orderNo;
-
-    private String userid;
-
     private String handicapId;
 
-    private String gametype;
+    private String orderId;
 
-    private String no;
+    private String userId;
 
-    private String description;
-
-    private String  odds;
-
+    private String gameType;
+    private String numbers;
+    private Float odds;
     private Integer amount;
-
-    private Integer totalAmount;
-
-    private Date createdate;
-
-    private  Float retreat;
-
+    private String oddsNumber;
+    private Float canWinAmount;
     private Float winAmount;
 
-    private  String lianmatype;
-
-    private String lianmadan;
+    private Float retreat;
+    private Date createDate;
 
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
-    public String getOrderid() {
-        return orderid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setOrderid(String orderid) {
-        this.orderid = orderid == null ? null : orderid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getHandicapId() {
+        return handicapId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setHandicapId(String handicapId) {
+        this.handicapId = handicapId;
     }
 
-    public String getGametype() {
-        return gametype;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setGametype(String gametype) {
-        this.gametype = gametype == null ? null : gametype.trim();
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public String getNo() {
-        return no;
+    public String getGameType() {
+        return gameType;
     }
 
-    public void setNo(String no) {
-        this.no = no;
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
     }
 
-    public String getOdds() {
+    public String getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(String numbers) {
+        this.numbers = numbers;
+    }
+
+    public Float getOdds() {
         return odds;
     }
 
-    public void setOdds(String odds) {
+    public void setOdds(Float odds) {
         this.odds = odds;
     }
 
@@ -91,36 +90,16 @@ public class OrderDetail {
         this.amount = amount;
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public String getOddsNumber() {
+        return oddsNumber;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public Float getCanWinAmount() {
+        return canWinAmount;
     }
 
-    public Float getRetreat() {
-        return retreat;
-    }
-
-    public void setRetreat(Float retreat) {
-        this.retreat = retreat;
-    }
-
-    public String getHandicapId() {
-        return handicapId;
-    }
-
-    public void setHandicapId(String handicapId) {
-        this.handicapId = handicapId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCanWinAmount(Float canWinAmount) {
+        this.canWinAmount = canWinAmount;
     }
 
     public Float getWinAmount() {
@@ -131,35 +110,24 @@ public class OrderDetail {
         this.winAmount = winAmount;
     }
 
-    public String getOrderNo() {
-        return orderNo;
+    public void setOddsNumber(String oddsNumber) {
+        this.oddsNumber = oddsNumber;
     }
 
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
+    public Float getRetreat() {
+        return retreat;
     }
 
-    public Integer getTotalAmount() {
-        return totalAmount;
+    public void setRetreat(Float reteat) {
+        this.retreat = reteat;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public String getLianmatype() {
-        return lianmatype;
-    }
-
-    public void setLianmatype(String lianmatype) {
-        this.lianmatype = lianmatype;
-    }
-
-    public String getLianmadan() {
-        return lianmadan;
-    }
-
-    public void setLianmadan(String lianmadan) {
-        this.lianmadan = lianmadan;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
+

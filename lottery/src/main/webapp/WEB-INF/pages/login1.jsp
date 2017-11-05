@@ -47,7 +47,7 @@
 
                             <input type="hidden" name="checksum" value=""/>
                             <ul>
-                                <li><label>賬　號：</label><input type="text" maxlength="12" name="__name" valid="account" value=""/></li>
+                                <li><label>賬　號：</label><input type="text" maxlength="13" name="__name" valid="account" value=""/></li>
                                 <li class="ps"><label>密　碼：</label><input type="password" maxlength="16" name="password" valid="password" value=""/></li>
                                 <li class="vimg">
                                     <label>驗證碼：</label>

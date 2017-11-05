@@ -287,7 +287,7 @@
                     <tr>
                         <th>賬&nbsp;&nbsp;&nbsp;号：</th>
                         <td>
-                            <input type="text" maxlength="12" name="__name" valid="account" value="" tabIndex="1" />
+                            <input type="text" maxlength="13" name="__name" valid="account" value="" tabIndex="1" />
                         </td>
                         <td></td>
                     </tr>
