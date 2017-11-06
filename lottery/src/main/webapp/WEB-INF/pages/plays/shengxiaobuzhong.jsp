@@ -40,7 +40,7 @@
     <input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="radio" id="yeshou" name="w_fast" value="yeshou" /><label for="yeshou">野獸</label>
     </span>
                         </h2>
-                            <input type="button" class="shengxiao_switch shengxiao_switch_zhong" value="生肖中" onclick="window.location='/plays/shengxiaobuzhong'"/>
+                            <input type="button" class="shengxiao_switch shengxiao_switch_zhong" value="生肖中" onclick="window.location='/plays/shengxiao'"/>
                             <input    type="button" class="shengxiao_switch red" value="生肖不中"  disabled  />
                         </div>
                         <div class="bd">

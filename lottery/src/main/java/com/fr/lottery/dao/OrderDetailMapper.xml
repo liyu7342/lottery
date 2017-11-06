@@ -30,7 +30,7 @@
 
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from orderdetail
     where Id = #{id,jdbcType=VARCHAR}
@@ -58,31 +58,98 @@
   </update>
 
   <update id="settlement">
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no`=c.Tema AND b.gameType='000' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
-    UPDATE orderdetail b,handicap c set b.winAmount=- b.amount where b.handicapId = c.Id AND b.`no`!=c.Tema AND b.gameType='000' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+    CREATE PROCEDURE P_DB_Settlement
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` not in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#特码
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no`=c.Tema AND b.gameType='000' and b.handicapId= 'e4369384f7384b089689d1e75ec6acf0';
+#正码
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特1
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特2
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特3
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特4
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特5
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#正码特6
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#连码二全中
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND (b.Number1  in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) ) AND b.gameType='008' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#连码二中二
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND (b.Number1  in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) ) AND b.gameType='009' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#连码二中特
+UPDATE orderdetail b,handicap c set b.winAmount=(b.Odds1 + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND ((b.Number1=c.Tema   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)) or (b.Number2=c.Tema   AND b.Number1  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))) AND b.gameType='009' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#特串
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND ((b.Number1=c.Tema   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
+			or (b.Number2=c.Tema   AND b.Number1  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)))
+		AND b.gameType='010' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#三全中
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+    AND b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)
+AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='011' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#连码三中三
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds1 + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)
+		AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)
+    AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#连码三中二
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
+		AND ((b.Number1 not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
+			or (b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
+or (b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2   in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
+AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#生肖中
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 in (c.Texiaono,c.Xiao1,c.Xiao2,c.Xiao3,c.Xiao4,c.Xiao5,c.Xiao6) AND b.gameType='014' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+#生肖不中
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 not in (c.Texiaono,c.Xiao1,c.Xiao2,c.Xiao3,c.Xiao4,c.Xiao5,c.Xiao6) AND b.gameType='053' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#尾数
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 ) * b.amount where  b.handicapId = c.Id
+	AND ( c.Tema like CONCAT('%',right(b.Number1,1)) or c.No1 like CONCAT('%',right(b.Number1,1))
+			or c.No2 like CONCAT('%',right(b.Number1,1))  or c.No3 like CONCAT('%',right(b.Number1,1))
+			or c.No4 like CONCAT('%',right(b.Number1,1)) or c.No5 like CONCAT('%',right(b.Number1,1))
+or c.No6 like CONCAT('%',right(b.Number1,1)) ) AND
+ b.gameType='015' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+#半波
+UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 ) * b.amount where  b.handicapId = c.Id
+	AND ((b.Number1='01' AND c.Tema in ('01', '07', '13', '19', '23', '29', '35', '45'))
+		or (b.Number1='02' AND c.Tema in ('02', '08', '12', '18', '24', '30', '34', '40', '46')
+		or (b.Number1='03' AND c.Tema in ('29', '30', '34', '35', '40', '45', '46'))
+		or (b.Number1='04' AND c.Tema in ('01', '02', '07', '08', '12', '13', '18', '19', '23', '24'))
+		or (b.Number1='05' AND c.Tema in ('03', '09', '15', '25', '31', '37', '41', '47'))
+		or (b.Number1='06' AND c.Tema in ('04', '10', '14', '20', '26', '36', '42', '48'))
+		or (b.Number1='07' AND c.Tema in ('25', '26', '31', '36', '37', '41', '42', '47', '48'))
+		or (b.Number1='08' AND c.Tema in ('03', '04', '09', '10', '14', '15', '20'))
+		or (b.Number1='09' AND c.Tema in ('05', '11', '17', '21', '27', '33', '39', '43', '49'))
+		or (b.Number1='10' AND c.Tema in ('06', '16', '22', '28', '32', '38', '44'))
+		or (b.Number1='11' AND c.Tema in ('27', '28', '32', '33', '38', '39', '43', '44', '49'))
+		or (b.Number1='12' AND c.Tema in ('05', '06', '11', '16', '17', '21', '22'))
+	)
+ b.gameType='016' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
+#49为打平
+UPDATE orderdetail b,handicap c set b.winAmount=0 where  b.handicapId = c.Id
+  AND  c.tema ='49'
+ b.gameType='016' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
 
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.`no` =c.No3 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id AND b.`no` !=c.No6 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+#所有为空的数据皆为不中
+UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id  and b.winAmount is NULL and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+
+
+Go
+
   </update>
-<select id="countByUserId" resultType="java.lang.Long">
+<select id="countByUserId' resultType="java.lang.Long">
    select count(1) from orderdetail
    <where>
      <if test="handicapId!='' and handicapId!=null" >
