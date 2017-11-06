@@ -19,6 +19,7 @@ import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -136,41 +137,59 @@ public class OrderService implements IOrderService {
                     orders.setDescription(Global.lotConfigDic.get(orderStrs[0] + orderStrs[1]).getGameDesc());
                 }
             }
-            orderMapper.insert(orders);
-            if(StringUtil.isNullOrEmpty(orderDto.getDetailOdds())){
+
+            if (StringUtil.isNullOrEmpty(orderDto.getDetailOdds())) {
                 OrderDetail detail = new OrderDetail();
                 detail.setAmount(orders.getAmount());
                 detail.setId(StringUtil.getUUID());
                 detail.setCreateDate(new Date());
                 detail.setGameType(orders.getGametype());
                 detail.setHandicapId(orders.getHandicapId());
-                detail.setNumbers(orders.getNo());
+                detail.setNumber1(orders.getNo());
                 detail.setOdds(Float.parseFloat(orders.getOdds()));
                 detail.setOddsNumber(orders.getNo());
                 detail.setOrderId(orders.getId());
                 detail.setRetreat(orders.getRetreat());
                 detail.setUserId(orders.getUserid());
+                orders.setCanWinAmount(detail.getOdds()* detail.getAmount());
                 orderDetailMapper.insert(detail);
-            }
-            else{
-                String[] detailOdds= orderDto.getDetailOdds().split(";");
-                for(String detailOdd:detailOdds){
-                    String[] detailArr= detailOdd.split("\\|");
+            } else {
+                String[] detailOdds = orderDto.getDetailOdds().split(";");
+                orders.setCanWinAmount(0F);
+                for (String detailOdd : detailOdds) {
+                    String[] detailArr = detailOdd.split("\\|");
                     OrderDetail detail = new OrderDetail();
                     detail.setAmount(orders.getAmount());
                     detail.setId(StringUtil.getUUID());
                     detail.setCreateDate(new Date());
                     detail.setGameType(orders.getGametype());
                     detail.setHandicapId(orders.getHandicapId());
-                    detail.setNumbers(detailArr[0]);
-                    detail.setOdds(Float.parseFloat(detailArr[1]));
+                    if (OddsTypeEnum.erquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.techuan.getValue().equals(orders.getGametype())) {
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                    } else if (OddsTypeEnum.sanquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())) {//三全中、三中二
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                    }
+                    if (OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())) {//两个赔率
+                        String[] oddsArr = detailArr[1].split("/");
+                        detail.setOdds(Float.parseFloat(oddsArr[0]));
+                        detail.setOdds1(Float.parseFloat(oddsArr[1]));
+                    } else {
+                        detail.setOdds(Float.parseFloat(detailArr[1]));
+                    }
                     detail.setOddsNumber(detailArr[2]);
                     detail.setOrderId(orders.getId());
                     detail.setRetreat(orders.getRetreat());
                     detail.setUserId(orders.getUserid());
+                    orders.setCanWinAmount(orders.getCanWinAmount()+detail.getOdds() * detail.getAmount());
                     orderDetailMapper.insert(detail);
                 }
             }
+            orderMapper.insert(orders);
 
 
         }

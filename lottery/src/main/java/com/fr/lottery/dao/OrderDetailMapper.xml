@@ -7,8 +7,12 @@
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="handicapId" jdbcType="VARCHAR" property="handicapId" />
     <result column="gameType" jdbcType="VARCHAR" property="gameType" />
-    <result column="Numbers" jdbcType="VARCHAR" property="numbers" />
+    <result column="Number1" jdbcType="VARCHAR" property="number1" />
+    <result column="Number2" jdbcType="VARCHAR" property="number2" />
+    <result column="Number3" jdbcType="VARCHAR" property="number3" />
     <result column="odds" jdbcType="DECIMAL" property="odds" />
+    <result column="odds1" jdbcType="DECIMAL" property="odds1" />
+
     <result column="retreat" jdbcType="DECIMAL" property="retreat"/>
     <result column="amount" jdbcType="INTEGER" property="amount" />
     <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
@@ -16,7 +20,7 @@
     <result column="createdate" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    Id, orderId, userId,handicapId, gameType, `numbers`, odds, amount,retreat,winAmount, createdate
+    Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, odds,odds1, amount,retreat,winAmount, createdate
     ,canWinAmount
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
@@ -38,9 +42,9 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,
-      gameType, `numbers`, odds,amount,retreat,winAmount, createdate,canWinAmount)
+      gameType, `number1`, `number2`, `number3`, odds,odds1,amount,retreat,winAmount, createdate,canWinAmount)
     values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
-      #{gameType,jdbcType=VARCHAR}, #{numbers,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
+      #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},#{odds1,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP},
       #{canWinAmount,jdbcType=DECIMAL})
   </insert>

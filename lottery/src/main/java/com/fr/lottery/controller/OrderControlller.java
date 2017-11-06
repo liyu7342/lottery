@@ -34,17 +34,17 @@ public class OrderControlller {
         mv.addObject("orderList",orderDetails.getList());
         mv.addObject("page", orderDetails.toString());
         Integer subsum=0;
-        Float subWinAmount =0F;
+        Float subCanWinAmount =0F;
         for(Orders orderDetail : orderDetails.getList()){
             subsum +=orderDetail.getTotalAmount();
-            subWinAmount+= (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount());
+            subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount());
         }
         Orders orderDetail = orderService.getTotal(categoryId);
 
         mv.addObject("subSum",subsum);
-        mv.addObject("totalAmount",orderDetail.getTotalAmount());
-        mv.addObject("winAmount",orderDetail.getCanWinAmount());
-        mv.addObject("subWinAmount",subWinAmount);
+        mv.addObject("totalAmount",orderDetail==null?0:orderDetail.getTotalAmount());
+        mv.addObject("canWinAmount",orderDetail==null?0:orderDetail.getCanWinAmount());
+        mv.addObject("subCanWinAmount",subCanWinAmount);
         return mv;
     }
 

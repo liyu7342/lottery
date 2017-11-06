@@ -16,8 +16,12 @@ public class OrderDetail implements Serializable {
     private String userId;
 
     private String gameType;
-    private String numbers;
+    private String number1;
+    private String number2;
+    private String number3;
     private Float odds;
+
+    private Float odds1;
     private Integer amount;
     private String oddsNumber;
     private Float canWinAmount;
@@ -66,12 +70,28 @@ public class OrderDetail implements Serializable {
         this.gameType = gameType;
     }
 
-    public String getNumbers() {
-        return numbers;
+    public String getNumber1() {
+        return number1;
     }
 
-    public void setNumbers(String numbers) {
-        this.numbers = numbers;
+    public void setNumber1(String number1) {
+        this.number1 = number1;
+    }
+
+    public String getNumber2() {
+        return number2;
+    }
+
+    public void setNumber2(String number2) {
+        this.number2 = number2;
+    }
+
+    public String getNumber3() {
+        return number3;
+    }
+
+    public void setNumber3(String number3) {
+        this.number3 = number3;
     }
 
     public Float getOdds() {
@@ -80,6 +100,14 @@ public class OrderDetail implements Serializable {
 
     public void setOdds(Float odds) {
         this.odds = odds;
+    }
+
+    public Float getOdds1() {
+        return odds1;
+    }
+
+    public void setOdds1(Float odds1) {
+        this.odds1 = odds1;
     }
 
     public Integer getAmount() {

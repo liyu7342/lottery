@@ -86,7 +86,7 @@
                                     <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}</td>
-                                    <td>${(obj.winAmount)!''}</td>
+                                    <td>${(obj.canWinAmount)!''}</td>
                                     <td>下注成功</td>
                                 </tr>
                                 </#list>
@@ -96,7 +96,7 @@
                                     <td>${subSum}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>${subWinAmount}</td>
+                                    <td>${subCanWinAmount}</td>
                                     <td></td>
                                 </tr>
                                 <tr class="red">
@@ -104,7 +104,7 @@
                                     <td>${totalAmount}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>${winAmount}</td>
+                                    <td>${canWinAmount}</td>
                                     <td></td>
                                 </tr>
                                 </tfoot>
