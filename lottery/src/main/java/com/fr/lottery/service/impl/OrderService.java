@@ -151,7 +151,7 @@ public class OrderService implements IOrderService {
                 detail.setOrderId(orders.getId());
                 detail.setRetreat(orders.getRetreat());
                 detail.setUserId(orders.getUserid());
-                orders.setCanWinAmount(detail.getOdds()* detail.getAmount());
+                orders.setCanWinAmount(detail.getOdds() * detail.getAmount());
                 orderDetailMapper.insert(detail);
             } else {
                 String[] detailOdds = orderDto.getDetailOdds().split(";");
@@ -173,7 +173,67 @@ public class OrderService implements IOrderService {
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
                         detail.setNumber3(nos[2]);
+                    } else if ("047".equals(orders.getGametype()))// 五不中
+                    {
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                    }else if("048".equals(orders.getGametype())){  //六不中
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                        detail.setNumber6(nos[5]);
+
+                    }else if("049".equals(orders.getGametype())){  //七不中
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                        detail.setNumber6(nos[5]);
+                        detail.setNumber7(nos[6]);
+                    }else if("050".equals(orders.getGametype())){  //八不中
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                        detail.setNumber6(nos[5]);
+                        detail.setNumber7(nos[6]);
+                        detail.setNumber8(nos[7]);
+                    }else if("051".equals(orders.getGametype())){  //九不中
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                        detail.setNumber6(nos[5]);
+                        detail.setNumber7(nos[6]);
+                        detail.setNumber8(nos[7]);
+                        detail.setNumber9(nos[8]);
+                    }else if("052".equals(orders.getGametype())){  //⑩不中
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                        detail.setNumber5(nos[4]);
+                        detail.setNumber6(nos[5]);
+                        detail.setNumber7(nos[6]);
+                        detail.setNumber8(nos[7]);
+                        detail.setNumber9(nos[8]);
+                        detail.setNumber10(nos[9]);
                     }
+
                     if (OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())) {//两个赔率
                         String[] oddsArr = detailArr[1].split("/");
                         detail.setOdds(Float.parseFloat(oddsArr[0]));
@@ -185,7 +245,7 @@ public class OrderService implements IOrderService {
                     detail.setOrderId(orders.getId());
                     detail.setRetreat(orders.getRetreat());
                     detail.setUserId(orders.getUserid());
-                    orders.setCanWinAmount(orders.getCanWinAmount()+detail.getOdds() * detail.getAmount());
+                    orders.setCanWinAmount(orders.getCanWinAmount() + detail.getOdds() * detail.getAmount());
                     orderDetailMapper.insert(detail);
                 }
             }
@@ -294,77 +354,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public boolean settlement(String handicapId) {
-
-        Handicap handicap = handicapService.selectByPrimaryKey(handicapId);
-        //List<OrderDetail> orderDetails= orderDetailMapper.getOrderDetails(handicapId,"","");
-        List<Orders> orderDetails1 = orderMapper.getOrderDetails(handicapId, "", OddsTypeEnum.erquanzh.getValue(), null, null);
-        String[] mas = {handicap.getNo1(), handicap.getNo2(), handicap.getNo3(), handicap.getNo4(), handicap.getNo5(), handicap.getNo6(), handicap.getTema()};
-
-        for (Orders orderDetail : orderDetails1) {
-            //正常连码
-            if (LianMaEnum.zhengchang.getValue().equals(orderDetail.getLianmatype())) {
-                String[] detailnos = orderDetail.getNo().split(",");
-                String[] winNoArray = intersect(mas, detailnos);
-
-                if (winNoArray.length >= 2) {
-                    String[] oddsArray = orderDetail.getOdds().split(",");
-                    String[] winOdds = new String[winNoArray.length];
-                    int _t = 0;
-                    for (String winNo : winNoArray) { //获取中奖赔率
-                        int index = Arrays.binarySearch(detailnos, winNo);
-                        winOdds[_t] = oddsArray[index];
-                        _t++;
-                    }
-                    Arrays.sort(winOdds);
-
-                    //取最小赔率
-                    Float totalAmount = 0f;
-                    for (int index = 0, len = winOdds.length; index < winOdds.length - 1; index++) {
-                        len--;
-                        totalAmount += (Float.parseFloat(winOdds[index]) + (orderDetail.getRetreat() / 100)) * len * orderDetail.getAmount();
-                    }
-                    orderDetail.setWinAmount(totalAmount - orderDetail.getTotalAmount());
-
-                } else {
-                    orderDetail.setWinAmount(0f - orderDetail.getTotalAmount());
-                }
-            } else if (LianMaEnum.dantuo.getValue().equals(orderDetail.getLianmatype())) {
-                //胆不中，则全不中
-                int _index = Arrays.asList(mas).indexOf(orderDetail.getLianmadan());
-                if (_index < 0) {
-                    orderDetail.setWinAmount(0f - orderDetail.getTotalAmount());
-                } else {//胆中
-                    //移除胆，然后分割数组
-                    String[] detailnos = orderDetail.getNo().substring(orderDetail.getNo().indexOf(",")).split(",");
-                    String[] winNoArray = intersect(mas, detailnos);
-                    if (winNoArray.length >= 1) {
-                        String[] oddsArray = orderDetail.getOdds().split(",");
-                        String[] winOdds = new String[winNoArray.length + 1];//胆包含里面计算
-                        int _t = 0;
-                        winOdds[0] = oddsArray[0];//胆
-                        for (String winNo : winNoArray) { //获取中奖赔率
-                            int index = Arrays.binarySearch(detailnos, winNo);
-                            winOdds[_t] = oddsArray[index];
-                            _t++;
-                        }
-                        //与胆赔率比较，取小赔率计算
-                        Float totalAmount = 0f;
-                        for (int index = 1, len = winOdds.length; index < len; index++) {
-                            String oddsValue = winOdds[0].compareTo(winOdds[index]) < 0 ? winOdds[0] : winOdds[index];
-                            totalAmount += (Float.parseFloat(oddsValue) + (orderDetail.getRetreat() / 100)) * len * orderDetail.getAmount();
-                        }
-                        orderDetail.setWinAmount(totalAmount - orderDetail.getTotalAmount());
-                    } else {
-                        orderDetail.setWinAmount(0f - orderDetail.getTotalAmount());
-                    }
-
-                }
-            } else if (LianMaEnum.shengxiaoduipeng.getValue().equals(orderDetail.getLianmatype())) {
-
-            }
-            orderMapper.updateWinAmountByPrimaryKey(orderDetail.getWinAmount(), orderDetail.getId());
-        }
-        handicap.setIssettlement(true);
-        return false;
+            orderDetailMapper.settlement(handicapId);
+        return true;
     }
 }

@@ -17,4 +17,6 @@ public interface OrderDetailMapper {
                                  @Param("gameType") String gameType, @Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 
     int updateWinAmountByPrimaryKey(@Param("winAmount") Float winAmount, @Param("id") String id);
+
+    void settlement(@Param("handicapId") String handicapId);
 }
