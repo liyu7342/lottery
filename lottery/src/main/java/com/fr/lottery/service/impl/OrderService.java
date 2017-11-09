@@ -164,16 +164,25 @@ public class OrderService implements IOrderService {
                     detail.setCreateDate(new Date());
                     detail.setGameType(orders.getGametype());
                     detail.setHandicapId(orders.getHandicapId());
-                    if (OddsTypeEnum.erquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.techuan.getValue().equals(orders.getGametype())) {
+                    if (OddsTypeEnum.erquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.techuan.getValue().equals(orders.getGametype() )
+                            || "035".equals(orders.getGametype()) || "036".equals(orders.getGametype()) || "041".equals(orders.getGametype()) || "042".equals(orders.getGametype())) {
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
-                    } else if (OddsTypeEnum.sanquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())) {//三全中、三中二
+                    } else if (OddsTypeEnum.sanquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())
+                            || "037".equals(orders.getGametype()) || "038".equals(orders.getGametype() ) || "043".equals(orders.getGametype()) || "044".equals(orders.getGametype())) {//三全中、三中二
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
                         detail.setNumber3(nos[2]);
-                    } else if ("047".equals(orders.getGametype()))// 五不中
+                    }else if("039".equals(orders.getGametype()) || "040".equals(orders.getGametype()) || "045".equals(orders.getGametype()) || "046".equals(orders.getGametype())){
+                        String[] nos = detailArr[0].split(",");
+                        detail.setNumber1(nos[0]);
+                        detail.setNumber2(nos[1]);
+                        detail.setNumber3(nos[2]);
+                        detail.setNumber4(nos[3]);
+                    }
+                    else if ("047".equals(orders.getGametype()))// 五不中
                     {
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
@@ -250,8 +259,6 @@ public class OrderService implements IOrderService {
                 }
             }
             orderMapper.insert(orders);
-
-
         }
         return true;
     }
