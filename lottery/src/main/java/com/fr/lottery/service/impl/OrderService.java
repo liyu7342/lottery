@@ -319,9 +319,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<StatisDto> getStatis(String gameType) {
+    public List<StatisDto> getStatis(String[] gameTypes) {
         Handicap handicap = handicapService.getCurrentHandicap();
-        return statisMapper.getStatis(gameType, handicap.getId());
+        if(handicap == null)
+            return  new ArrayList<StatisDto>();
+        return statisMapper.getStatis(gameTypes, handicap.getId());
     }
 
     @Override

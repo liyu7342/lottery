@@ -14,14 +14,17 @@
 
   <select id="getStatis" resultMap="BaseResultMap">
     select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(amount) amount,SUM(winAmount) winAmount,sum(odds* amount)/SUM(amount) aveOdds,0 buhuo,0 odds
-      FROM orderdetail
-      INNER  JOIN Handicap on orderdetail.handicapId= Handicap.Id
+      FROM orders
+      INNER  JOIN Handicap on orders.handicapId= Handicap.Id
       <where>
         <if test="handicapId!='' and handicapId!=null" >
           AND handicapId = #{handicapId,jdbcType=VARCHAR}
         </if>
-        <if test="gameType!='' and gameType !=null">
-          AND gameType =  #{gameType,jdbcType=VARCHAR}
+        <if test="gameTypes!=null ">
+        AND gameType in
+        <foreach item="item" index="index" collection="gameTypes" open="(" separator="," close=")">
+          #{item}
+        </foreach>
         </if>
       </where>
       GROUP BY handicapId,gameType,`no`

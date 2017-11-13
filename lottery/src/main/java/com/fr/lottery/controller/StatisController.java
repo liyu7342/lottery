@@ -4,6 +4,7 @@ import com.fr.lottery.dto.StatisDto;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,29 +23,31 @@ public class StatisController {
     @Autowired
     private IOrderService orderService;
     @RequestMapping("/statis")
-    public ModelAndView statis(){
+    public ModelAndView statis(String category_id){
         ModelAndView modelAndView = new ModelAndView("statis/statis");
         User user = UserHelper.getCurrentUser();
         modelAndView.addObject("user",user);
-        List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.tema.getValue());
+        String[] oddsTypes=GameCfg.getCategoryGame(category_id);
+        List<StatisDto> statisDtoList= orderService.getStatis(oddsTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
     @RequestMapping("/tjzhengma")
-    public ModelAndView tjzhengma(){
+    public ModelAndView tjzhengma(String category_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengma");
         User user = UserHelper.getCurrentUser();
         modelAndView.addObject("user",user);
-        List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.zhengma.getValue());
+        String[] gameTypes =GameCfg.getCategoryGame(category_id);
+        List<StatisDto> statisDtoList= orderService.getStatis(gameTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
     @RequestMapping("/tjzhengmate")
-    public ModelAndView tjzhengmate(){
+    public ModelAndView tjzhengmate(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengmate");
         User user = UserHelper.getCurrentUser();
         modelAndView.addObject("user",user);
-        List<StatisDto> statisDtoList= orderService.getStatis(OddsTypeEnum.zhengmate1.getValue());
+        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }

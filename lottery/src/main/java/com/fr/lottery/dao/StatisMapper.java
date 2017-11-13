@@ -11,5 +11,5 @@ import java.util.List;
  */
 @Repository
 public interface StatisMapper {
-    List<StatisDto> getStatis(@Param("gameType") String gameType,@Param("handicapId") String handicapId);
+    List<StatisDto> getStatis(@Param("gameTypes") String[] gameTypes,@Param("handicapId") String handicapId);
 }

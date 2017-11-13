@@ -2,7 +2,9 @@ package com.fr.lottery.init;
 
 import com.fr.lottery.enums.OddsTypeEnum;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,6 +18,8 @@ public class GameCfg {
     private static final Map<String,String> cfg_category_key =new HashMap<String, String>();
 
     private static  final Map<String,String> game_category =new HashMap<String, String>();
+
+    private static  final Map<String,String[]> category_game = new HashMap<String, String[]>();
     private static  final Map<String,String> cfg_number_shengxiao =new HashMap<String, String>();
 
     static {
@@ -144,6 +148,25 @@ public class GameCfg {
         game_category.put("051","15");
         game_category.put("052","15");
         game_category.put("053","06");
+
+
+
+        category_game.put("00",new String[]{"000"});
+        category_game.put("01",new String[]{"001"});
+        category_game.put("02",new String[]{"002","003","004","005","006","007"});
+        category_game.put("03",new String[]{"008","009","010"});
+        category_game.put("04",new String[]{"011","012"});
+        category_game.put("05",new String[]{"013"});
+        category_game.put("06",new String[]{"014","053"});
+        category_game.put("07",new String[]{"015"});
+        category_game.put("08",new String[]{"016"});
+        category_game.put("09",new String[]{"017","018"});
+        category_game.put("10",new String[]{"019","020","021","022","023","024","025","026"});
+        category_game.put("11",new String[]{"027","028","029","030","031","032","033"});
+        category_game.put("12",new String[]{"034"});
+        category_game.put("13",new String[]{"035","036","037","038","039","040"});
+        category_game.put("14",new String[]{"041","042","043","044","045","046"});
+        category_game.put("15",new String[]{"047","048","049","050","051","052"});
     }
 
 
@@ -158,5 +181,10 @@ public class GameCfg {
         }
         return "";
 
+    }
+
+    public static String[] getCategoryGame(String categoryId){
+        String[] gameType= category_game.get(categoryId);
+        return gameType;
     }
 }

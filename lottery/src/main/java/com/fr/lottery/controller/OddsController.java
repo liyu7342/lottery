@@ -418,7 +418,7 @@ public class OddsController {
 //        if(Global.cfg_category_key.size()==0){
 //            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
 //            for(LotConfig lotConfig: lotConfigs)
-//                Global.cfg_category_key.put(lotConfig.getGameNo(),lotConfig);
+//                Global..put(lotConfig.getGameNo(),lotConfig);
 //        }
         for(Orders detail : orderDetails){
             List<String> detailArr = new ArrayList<String>();
