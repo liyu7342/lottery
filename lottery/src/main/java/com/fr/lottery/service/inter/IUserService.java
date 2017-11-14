@@ -27,4 +27,6 @@ public interface IUserService {
 
     Page<User> getUsers(String parentId,Integer userType,String keyword,Integer status,Integer pageId);
 
+    Page<User> getDagudongs(Integer userType,String keyword,Integer status,Integer pageId);
+
 }

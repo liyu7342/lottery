@@ -17,7 +17,7 @@ public interface UserMapper {
     List<User> findAll(@Param("account") String  account,@Param("name") String  name,@Param("start") Integer start ,@Param("limit") Integer limit);
 
 
-    Long count(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("status") Integer status);
+    Long count(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status);
     User getByAccount(@Param("account") String  account);
 
     User get(@Param("id")String id);

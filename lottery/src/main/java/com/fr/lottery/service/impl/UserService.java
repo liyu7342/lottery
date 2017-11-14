@@ -4,8 +4,11 @@ import com.fr.lottery.dao.UserMapper;
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.StatusEnum;
+import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IUserService;
+import com.fr.lottery.utils.UserHelper;
+import org.apache.xmlbeans.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -106,10 +109,22 @@ public class UserService implements IUserService {
 
     @Override
     public Page<User> getUsers(String parentId,Integer userType, String keyword, Integer status, Integer pageId) {
-        Integer start =(pageId -1) * 10;
+        Integer start =(pageId -1) * Global.pageSize;
         User user = userMapper.get(parentId);
         List<User> users= userMapper.getUsers(user.getXpath(),userType,keyword,status,start);
-        long total = userMapper.count(user.getXpath(),userType,status);
+        long total = userMapper.count(user.getXpath(),userType,keyword,status);
+        Page<User> page = new Page<User>(pageId,Global.pageSize,total,users);
+        return page;
+    }
+
+    @Override
+    public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
+        Integer start =(pageId -1) * Global.pageSize;
+        User user = UserHelper.getCurrentUser();
+        if(user.getUsertype() != UserTypeEnum.Admin.ordinal())
+            return new Page<User>(0,Global.pageSize);
+        List<User> users= userMapper.getUsers(user.getXpath(),userType,keyword,status,start);
+        long total = userMapper.count("",userType,keyword,status);
         Page<User> page = new Page<User>(pageId,Global.pageSize,total,users);
         return page;
     }
