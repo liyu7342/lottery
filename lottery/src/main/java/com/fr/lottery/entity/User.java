@@ -42,6 +42,8 @@ public class User implements Serializable{
 
     private Integer amount;
 
+    private String xpath;
+
     public String getId() {
         return id;
     }
@@ -168,5 +170,13 @@ public class User implements Serializable{
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public String getXpath() {
+        return xpath;
+    }
+
+    public void setXpath(String xpath) {
+        this.xpath = xpath;
     }
 }

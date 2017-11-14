@@ -7,21 +7,23 @@ public enum UserTypeEnum {
     /**
      * 超级管理员
      */
-    ChaoJiGuanliyuan,
-
     Admin,
     /**
      *大股东
      */
-    User1,
+    DaGudong,
     /**
      * 小股东
      */
-    User2,
+    XiaoGudong,
     /**
      * 代理
      */
-    User3,
+    ZongDaili,
+    /**
+     * 代理
+     */
+    Daili,
     /**
      * 会员
      */

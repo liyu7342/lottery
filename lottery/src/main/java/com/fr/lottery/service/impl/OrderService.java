@@ -337,29 +337,6 @@ public class OrderService implements IOrderService {
         return 0;
     }
 
-    /**
-     * 取两数组交集
-     *
-     * @param arr1
-     * @param arr2
-     * @return
-     */
-    public static String[] intersect(String[] arr1, String[] arr2) {
-        List<String> l = new LinkedList<String>();
-        Set<String> common = new HashSet<String>();
-        for (String str : arr1) {
-            if (!l.contains(str)) {
-                l.add(str);
-            }
-        }
-        for (String str : arr2) {
-            if (l.contains(str)) {
-                common.add(str);
-            }
-        }
-        String[] result = {};
-        return common.toArray(result);
-    }
 
     @Override
     public boolean settlement(String handicapId) {

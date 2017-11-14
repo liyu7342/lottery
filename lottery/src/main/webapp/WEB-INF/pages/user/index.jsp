@@ -48,9 +48,8 @@
                                         <a id="batchDel" class="btn9 mt red" level="5" href="javascript:void(0)">批量刪除</a>        </h2></li>
                                 </ul></form>
                             <div class="fr">
-                                <span class="ico">第一頁</span><span class="ico i2">上一頁</span><input type="hidden" value="0" id="buttontype" />
-                                第<input value="1" id="pageid" type="text" class="pt" onBlur="javascript:var type=document.getElementById('buttontype').value;document.getElementById('buttontype').value=0;if(type == 0){if(event.keyCode==13){return;}if(isNaN(parseInt(this.value)) || parseInt(this.value)>1){alert('您輸入的數字衹能在 1 ～ 1之間，請重新輸入');document.getElementById('pageid').value=1;return false;}if(this.defaultValue != this.value){location.href='http://pm10.x.mmm33.us:80/msdid63242a_8955/account/member_list.htm?pageId='+parseInt(this.value);}}" onkeydown="javascript:if(event.keyCode==13){document.getElementById('buttontype').value=1;if(isNaN(parseInt(this.value)) || parseInt(this.value)>1){alert('您輸入的數字衹能在 1 ～ 1之間，請重新輸入');document.getElementById('pageid').value=1;return false;}location.href='http://pm10.x.mmm33.us:80/msdid63242a_8955/account/member_list.htm?pageId='+parseInt(this.value);return false;}"/>
-                                頁 &nbsp;&nbsp;共1頁<span class="ico i3">下一頁</span><span class="ico i4">最後一頁</span>        &nbsp;</div>
+                                <div style="margin-right: 52px;">${page}</div>
+                               </div>
                         </div>
                         <div class="bd">
                             <table class="g-t1 g-t2">
@@ -93,7 +92,7 @@
                                         /&nbsp;<a class='a_btm_line' act='tingya' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停押</a>
                                         /&nbsp;<a class='a_btm_line' href='/member/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid}'>修改</a></td>
                                 </tr>
-                                    </#list>
+                                </#list>
                                 </tbody></table>
 
                             <input type="hidden" name="drawstatus" value="1" >
@@ -110,7 +109,12 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='/user/index1'>大股东</a><cite>0</cite></li>
+                        <li><a curl='0' href='/user/index2'>小股东</a><cite>0</cite></li>
+                        <li><a curl='0' href='/user/index3'>总代理</a><cite>0</cite></li>
+                        <li><a curl='0' href='/user/index4'>代理</a><cite>0</cite></li>
+                        <li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>
+                    </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：0</p>
@@ -135,6 +139,10 @@
         log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼
     };
+
+    function page(index){
+        location.href="/order/list?pageId="+index;
+    }
 </script>
 <script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>

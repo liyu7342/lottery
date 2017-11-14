@@ -1,9 +1,11 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.LimitSetDto;
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IUserService;
@@ -42,8 +44,9 @@ public class MemberController {
     public ModelAndView index(Integer pageId){
         ModelAndView modelAndView = new ModelAndView("/member/index");
         String agentId = UserHelper.getCurrentUser().getId();
-        List<User> members = userService.getUserByParentId(agentId,"",null,pageId);
-        modelAndView.addObject("user",members);
+        Page<User> members = userService.getUsers(agentId, UserTypeEnum.Member.ordinal(),"",null,pageId);
+        modelAndView.addObject("user",members.getList());
+        modelAndView.addObject("page",members.toString());
         return modelAndView;
     }
     @RequestMapping("/info")

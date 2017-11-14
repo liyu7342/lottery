@@ -50,10 +50,11 @@ public class UserService implements IUserService {
      */
     @Override
     public Page<User> Paging(String account,String name,Integer index,Integer size) {
-        List<User> data = userMapper.findAll(account,name,index,size);
-        Long total = userMapper.count(account,name);
-        Page<User> page = new Page<User>(index,size,total,data);
-        return page;
+//        List<User> data = userMapper.findAll(account,name,index,size);
+//        Long total = userMapper.count(account,name);
+//        Page<User> page = new Page<User>(index,size,total,data);
+//        return page;
+        return null;
         //return userMapper.findAll(account,name,index,size);
     }
 
@@ -104,8 +105,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> getUserByParentId(String parentId, String keyword, Integer status, Integer pageId) {
+    public Page<User> getUsers(String parentId,Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start =(pageId -1) * 10;
-        return userMapper.getUserByParentId(parentId,keyword,status,start);
+        User user = userMapper.get(parentId);
+        List<User> users= userMapper.getUsers(user.getXpath(),userType,keyword,status,start);
+        long total = userMapper.count(user.getXpath(),userType,status);
+        Page<User> page = new Page<User>(pageId,Global.pageSize,total,users);
+        return page;
     }
 }
