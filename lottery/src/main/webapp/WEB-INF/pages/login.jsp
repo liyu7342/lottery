@@ -420,7 +420,7 @@
                         form.password.value = '';
                         alert(tx);
                     }else if(~tx.indexOf('upgrade.png')){
-                        location.href = 'home/logout';
+                        location.href = 'user/logout';
                         return false;
                     }else if(~tx.indexOf('账号已经被停用')){
                         alert(tx);

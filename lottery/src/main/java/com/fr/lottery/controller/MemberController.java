@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
@@ -60,10 +62,15 @@ public class MemberController {
 
 
         List<LimitSet> limitSets= limitSetService.findAll(parentId);
+        Map<String,Object> map = new HashMap<String, Object>();
+        for (LimitSet limitset: limitSets
+             ) {
+            map.put("gameType_"+limitset.getLimitType(),limitset.getaRetreat());
+        }
        /* if(limitSets.size()==0){
             limitSets = limitSetService.findAll(UserHelper.getCurrentUser().getId());
         }*/
-        modelAndView.addObject("limitSets",limitSets);
+        modelAndView.addObject("limitSets",map);
         modelAndView.addObject("user",user);
         modelAndView.addObject("parentUser",parentUser);
         return modelAndView;

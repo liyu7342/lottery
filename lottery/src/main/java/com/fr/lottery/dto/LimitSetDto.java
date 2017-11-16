@@ -55,7 +55,8 @@ public class LimitSetDto {
     private Integer itemmax14;
     private Integer itemmax15;
 
-    private  Float discountA0;
+    private  Float discountAA00;
+    private  Float discountAB00;
     private  Float discountA1;
     private  Float discountA2;
     private  Float discountA3;
@@ -72,7 +73,8 @@ public class LimitSetDto {
     private  Float discountA14;
     private  Float discountA15;
 
-    private  Float discountB0;
+    private  Float discountBA00;
+    private  Float discountBB00;
     private  Float discountB1;
     private  Float discountB2;
     private  Float discountB3;
@@ -89,7 +91,8 @@ public class LimitSetDto {
     private  Float discountB14;
     private  Float discountB15;
 
-    private  Float discountC0;
+    private  Float discountCA00;
+    private  Float discountCB00;
     private  Float discountC1;
     private  Float discountC2;
     private  Float discountC3;
@@ -492,13 +495,7 @@ public class LimitSetDto {
         this.itemmax15 = itemmax15;
     }
 
-    public Float getDiscountA0() {
-        return discountA0;
-    }
 
-    public void setDiscountA0(Float discountA0) {
-        this.discountA0 = discountA0;
-    }
 
     public Float getDiscountA1() {
         return discountA1;
@@ -620,13 +617,6 @@ public class LimitSetDto {
         this.discountA15 = discountA15;
     }
 
-    public Float getDiscountB0() {
-        return discountB0;
-    }
-
-    public void setDiscountB0(Float discountB0) {
-        this.discountB0 = discountB0;
-    }
 
     public Float getDiscountB1() {
         return discountB1;
@@ -748,13 +738,6 @@ public class LimitSetDto {
         this.discountB15 = discountB15;
     }
 
-    public Float getDiscountC0() {
-        return discountC0;
-    }
-
-    public void setDiscountC0(Float discountC0) {
-        this.discountC0 = discountC0;
-    }
 
     public Float getDiscountC1() {
         return discountC1;
@@ -874,5 +857,53 @@ public class LimitSetDto {
 
     public void setDiscountC15(Float discountC15) {
         this.discountC15 = discountC15;
+    }
+
+    public Float getDiscountAA00() {
+        return discountAA00;
+    }
+
+    public void setDiscountAA00(Float discountAA00) {
+        this.discountAA00 = discountAA00;
+    }
+
+    public Float getDiscountAB00() {
+        return discountAB00;
+    }
+
+    public void setDiscountAB00(Float discountAB00) {
+        this.discountAB00 = discountAB00;
+    }
+
+    public Float getDiscountBA00() {
+        return discountBA00;
+    }
+
+    public void setDiscountBA00(Float discountBA00) {
+        this.discountBA00 = discountBA00;
+    }
+
+    public Float getDiscountBB00() {
+        return discountBB00;
+    }
+
+    public void setDiscountBB00(Float discountBB00) {
+        this.discountBB00 = discountBB00;
+    }
+
+    public Float getDiscountCA00() {
+        return discountCA00;
+    }
+
+    public void setDiscountCA00(Float discountCA00) {
+        this.discountCA00 = discountCA00;
+    }
+
+    public Float getDiscountCB00() {
+        return discountCB00;
+    }
+
+    public void setDiscountCB00(Float discountCB00) {
+        this.discountCB00 = discountCB00;
     }
 }

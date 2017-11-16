@@ -142,7 +142,7 @@
                                     form.password.value = '';
                                     alert(tx.msg);
                                 }else if(tx.indexOf('upgrade.png')){
-                                    location.href = '/home/logout';
+                                    location.href = '/user/logout';
                                     return false;
                                 }else if(tx.indexOf('停用')){
                                     alert( '抱歉，公司被停用了！');

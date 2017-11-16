@@ -1,6 +1,5 @@
 package com.fr.lottery.entity;
 
-import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.utils.StringUtil;
 
 import java.io.Serializable;
@@ -11,10 +10,10 @@ public class LimitSet  implements Serializable{
 
     }
 
-    public LimitSet(String userId,GameTypeEnum gameTypeEnum, Integer min, Integer max, Integer itemmax, Float aRetreat, Float bRetreat, Float cRetreat){
+    public LimitSet(String userId,String gameType, Integer min, Integer max, Integer itemmax, Float aRetreat, Float bRetreat, Float cRetreat){
         this.id = StringUtil.getUUID();
-        this.limitType =gameTypeEnum.getValue();
-        this.limitOrder = Integer.parseInt(gameTypeEnum.getValue());
+        this.limitType =gameType;
+        this.limitOrder = Integer.parseInt(gameType);
         this.singlemin =min;
         this.singlemax = max;
         this.singlehighest = itemmax;
@@ -23,6 +22,7 @@ public class LimitSet  implements Serializable{
         this.cRetreat = cRetreat;
         this.userId = userId;
     }
+
 
     private String id;
 
@@ -40,6 +40,7 @@ public class LimitSet  implements Serializable{
     private Integer singlehighest;
 
     private Float aRetreat;
+
 
     private Float bRetreat;
 
@@ -124,4 +125,6 @@ public class LimitSet  implements Serializable{
     public void setLimitOrder(Integer limitOrder) {
         this.limitOrder = limitOrder;
     }
+
+
 }

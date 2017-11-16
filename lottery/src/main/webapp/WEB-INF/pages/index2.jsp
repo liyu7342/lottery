@@ -38,7 +38,7 @@
                     <marquee onmouseout="this.start()" onmouseover="this.stop()" scrollamount="3" behavior="scroll" id="marquee" title="點擊查看更多公告"></marquee>
                 </div>
                     <div class="rt">賬號:f2213,代理</div>
-                    <a act="logout" href="account/logout.htm" class="ico">退 出</a>
+                    <a act="logout" href="/user/logout" class="ico">退 出</a>
                 </div>
 
                 <div class="pm gms_pm">

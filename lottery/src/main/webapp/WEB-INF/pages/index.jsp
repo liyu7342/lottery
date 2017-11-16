@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div id="">
-                    <a name="logout" href="user/logout" class="btnLoginOut">退 出</a>
+                    <a name="logout" href="/user/logout" class="btnLoginOut">退 出</a>
                 </div>
             </div>
             <div id="neworderli" class="module" >
