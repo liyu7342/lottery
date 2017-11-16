@@ -30,7 +30,7 @@
     values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
       #{limitType,jdbcType=VARCHAR}, #{singlemin,jdbcType=INTEGER}, #{singlemax,jdbcType=INTEGER},
       #{singlehighest,jdbcType=INTEGER}, #{aRetreat,jdbcType=DECIMAL}, #{bRetreat,jdbcType=DECIMAL}, 
-      #{cRetreat,jdbcType=DECIMAL},#{limitType,jdbcType=INTEGER})
+      #{cRetreat,jdbcType=DECIMAL},#{limitOrder,jdbcType=INTEGER})
   </insert>
 
   <delete id="deleteByUserId">

@@ -27,9 +27,9 @@
                         <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
-                                    <li><h2 class="g-tit">新增會員</h2></li>
-                                    <li>&nbsp<span>上級代理商：${user.parentName!''}</span></li>
-                                    <li><a class="btn1 cs"  onclick="location.href='/user/index';return false;" href="javascript:void(0)">返回</a></li>
+                                    <li><h2 class="g-tit">新增大股东</h2></li>
+                                    <li>&nbsp<span></span></li>
+                                    <li><a class="btn1 cs"  onclick="location.href='/user/index1';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>
                             <div class="bd g-new">
@@ -279,18 +279,10 @@
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index'"/></div>
                                 <input type="hidden" name="op" value='create'/>
                                 <input type="hidden" name="id" value="${(user.id)!''}"/>
-                                <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
 
-                                <input type="hidden" name="parentcredit" value="${(parentUser.credits)!''}"/>
                                 <input type="hidden" name="betting" value='0' />
-                                <input type="hidden" name="parentstatus" value="${(parentUser.status)!''}"/>
-                                <input type="hidden" name="requestUrl" value='member/index'/>
                                 <input type="hidden" name="historyNum" value='1'/>
-                                <#list limitSets as limit>
-                                <input type="hidden" name="pordermin${limit.limitType}" value="${limit.singlemin}" />
-                                <input type="hidden" name="pordermax${limit.limitType}" value="${limit.singlemax}" />
-                                <input type="hidden" name="pitemmax${limit.limitType}" value="${limit.singlehighest}" />
-                                </#list>
+                                <input type="hidden" name="userType" value='1'/>
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />

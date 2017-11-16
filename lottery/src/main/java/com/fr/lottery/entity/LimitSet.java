@@ -13,7 +13,7 @@ public class LimitSet  implements Serializable{
     public LimitSet(String userId,String gameType, Integer min, Integer max, Integer itemmax, Float aRetreat, Float bRetreat, Float cRetreat){
         this.id = StringUtil.getUUID();
         this.limitType =gameType;
-        this.limitOrder = Integer.parseInt(gameType);
+        this.limitOrder =Integer.parseInt(gameType.length()>2?gameType.substring(1): gameType);
         this.singlemin =min;
         this.singlemax = max;
         this.singlehighest = itemmax;

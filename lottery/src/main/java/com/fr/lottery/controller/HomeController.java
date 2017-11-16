@@ -3,6 +3,7 @@ package com.fr.lottery.controller;
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.service.inter.IUserService;
@@ -70,7 +71,8 @@ public class HomeController  {
 
         Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
-            listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
+
+            listMap.put(set.getLimitType().length()>2?set.getLimitType().substring(1):set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
         map.put("limit",listMap);
         mv.addObject("info",  JsonUtil.toJson(map));
@@ -190,6 +192,16 @@ public class HomeController  {
         ModelAndView mv = new ModelAndView("login2");
         return mv;
     }
+
+    /**
+     * 会员登录
+     * @param request
+     * @param response
+     * @param userAccount
+     * @param userPwd
+     * @param verifyCode
+     * @return
+     */
     @RequestMapping("/doLogin")
     @ResponseBody
     public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd,String verifyCode){
@@ -209,7 +221,43 @@ public class HomeController  {
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
             User user=  userService.getByAccount(userAccount);
 
-            if(user !=null && md5_pwd.equals( user.getPassword())){
+            if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Member.ordinal()){
+                result.setSuccess(true);
+
+                UserHelper.setCurrentUser(user);
+
+            }
+            else{
+                result.setSuccess(false);
+                result.setMsg("账号或密码有误！");
+            }
+        }
+        catch (Exception ex){
+            result.setSuccess(false);
+            result.setMsg("内部500错误");
+        }
+        return result;
+    }
+    @RequestMapping("/doLogin1")
+    @ResponseBody
+    public ResultInfo<String> doLogin1(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd,String verifyCode){
+
+        ResultInfo<String> result = new ResultInfo<String>();
+        try{
+            if(StringUtils.isBlank(verifyCode)){
+                result.setMsg("验证码不能为空");
+                result.setSuccess(false);
+                return result;
+            }
+            if(request.getSession().getAttribute("verCode") ==null || !verifyCode.equals(request.getSession().getAttribute("verCode"))){
+                result.setMsg("验证码不正确");
+                result.setSuccess(false);
+                return result;
+            }
+            String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
+            User user=  userService.getByAccount(userAccount);
+
+            if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() != UserTypeEnum.Admin.ordinal() &&user.getUsertype() != UserTypeEnum.Member.ordinal()){
                 result.setSuccess(true);
 
                 UserHelper.setCurrentUser(user);
@@ -229,19 +277,32 @@ public class HomeController  {
 
     @RequestMapping("/doLogin2")
     @ResponseBody
-    public ResultInfo<String> doLogin2(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd){
+    public ResultInfo<String> doLogin2(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd,String verifyCode){
 
         ResultInfo<String> result = new ResultInfo<String>();
         try{
+            if(StringUtils.isBlank(verifyCode)){
+                result.setMsg("验证码不能为空");
+                result.setSuccess(false);
+                return result;
+            }
+            if(request.getSession().getAttribute("verCode") ==null || !verifyCode.equals(request.getSession().getAttribute("verCode"))){
+                result.setMsg("验证码不正确");
+                result.setSuccess(false);
+                return result;
+            }
             String md5_pwd = new MD5Util().getMD5ofStr(userPwd);
             User user=  userService.getByAccount(userAccount);
-            if(user !=null && md5_pwd.equals( user.getPassword())){
+
+            if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Admin.ordinal()){
                 result.setSuccess(true);
+
                 UserHelper.setCurrentUser(user);
+
             }
             else{
                 result.setSuccess(false);
-                result.setMsg("账号或者密码不正确！");
+                result.setMsg("账号或密码有误！");
             }
         }
         catch (Exception ex){

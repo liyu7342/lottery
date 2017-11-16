@@ -27,8 +27,8 @@
                         <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
-                                    <li><h2 class="g-tit">新增會員</h2></li>
-                                    <li>&nbsp<span>上級代理商：${user.parentName!''}</span></li>
+                                    <li><h2 class="g-tit">新增小股东</h2></li>
+                                    <li>&nbsp<span>上級股东：${user.parentName!''}</span></li>
                                     <li><a class="btn1 cs"  onclick="location.href='/user/index';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>

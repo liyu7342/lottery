@@ -6972,11 +6972,11 @@ $.extend({
             })
         }
         var c = $("tr.discount_A input", f), h = $("tr.discount_B input", f), k = $("tr.discount_C input", f), a;
-        if (f.member_oddsSet) {
-            if (!f.member_oddsSet.disabled) {
+        if (f.handicap) {
+            if (!f.handicap.disabled) {
                 a = function() {
-                    if (!f.member_shareUp.disabled) {
-                        var d = f.member_oddsSet.value;
+                    if (!f.handicap.disabled) {
+                        var d = f.handicap.value;
                         c.attr("disabled", d === "A" ? false : true);
                         h.attr("disabled", d === "B" ? false : true);
                         k.attr("disabled", d === "C" ? false : true)
@@ -6984,7 +6984,7 @@ $.extend({
                 }
                 ;
                 a();
-                $(f.member_oddsSet).change(a)
+                $(f.handicap).change(a)
             }
         }
         if (f.sys_user_oddsSet) {

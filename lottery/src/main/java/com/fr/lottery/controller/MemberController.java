@@ -54,25 +54,150 @@ public class MemberController {
     @RequestMapping("/info")
     public ModelAndView info(String id,String parentId){
         ModelAndView modelAndView = new ModelAndView("/member/info");
-        User user = userService.get(id);
-        User parentUser =null;
-        if(StringUtils.isNotBlank(parentId)){
-             parentUser = userService.get(parentId);
+        User user =null;
+        List<LimitSet> limitSets=null;
+        if(StringUtils.isNotBlank(id)){
+            user = userService.get(id);
+            limitSets = limitSetService.findAll(id);
+        }
+        if(limitSets==null){
+            if(StringUtils.isNotBlank(parentId)){
+                limitSets = limitSetService.findAll(parentId);
+            }
+            else
+            {
+                limitSets = limitSetService.findAll("-1");
+            }
         }
 
-
-        List<LimitSet> limitSets= limitSetService.findAll(parentId);
         Map<String,Object> map = new HashMap<String, Object>();
         for (LimitSet limitset: limitSets
              ) {
-            map.put("gameType_"+limitset.getLimitType(),limitset.getaRetreat());
+            map.put("gameType_"+limitset.getLimitType(),limitset);
         }
-       /* if(limitSets.size()==0){
-            limitSets = limitSetService.findAll(UserHelper.getCurrentUser().getId());
-        }*/
         modelAndView.addObject("limitSets",map);
         modelAndView.addObject("user",user);
-        modelAndView.addObject("parentUser",parentUser);
+//        modelAndView.addObject("parentUser",parentUser);
+        return modelAndView;
+    }
+
+    @RequestMapping("/info1")
+    public ModelAndView info1(String id,String parentId){
+        ModelAndView modelAndView = new ModelAndView("/member/info1");
+        User user =null;
+        List<LimitSet> limitSets=null;
+        if(StringUtils.isNotBlank(id)){
+            user = userService.get(id);
+            limitSets = limitSetService.findAll(id);
+        }
+        if(limitSets==null){
+            if(StringUtils.isNotBlank(parentId)){
+                limitSets = limitSetService.findAll(parentId);
+            }
+            else
+            {
+                limitSets = limitSetService.findAll("-1");
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        for (LimitSet limitset: limitSets
+                ) {
+            map.put("gameType_"+limitset.getLimitType(),limitset);
+        }
+        modelAndView.addObject("limitSets",map);
+        modelAndView.addObject("user",user);
+//        modelAndView.addObject("parentUser",parentUser);
+        return modelAndView;
+    }
+
+    @RequestMapping("/info2")
+    public ModelAndView info2(String id,String parentId){
+        ModelAndView modelAndView = new ModelAndView("/member/info2");
+        User user =null;
+        List<LimitSet> limitSets=null;
+        if(StringUtils.isNotBlank(id)){
+            user = userService.get(id);
+            limitSets = limitSetService.findAll(id);
+        }
+        if(limitSets==null){
+            if(StringUtils.isNotBlank(parentId)){
+                limitSets = limitSetService.findAll(parentId);
+            }
+            else
+            {
+                limitSets = limitSetService.findAll("-1");
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        for (LimitSet limitset: limitSets
+                ) {
+            map.put("gameType_"+limitset.getLimitType(),limitset);
+        }
+        modelAndView.addObject("limitSets",map);
+        modelAndView.addObject("user",user);
+//        modelAndView.addObject("parentUser",parentUser);
+        return modelAndView;
+    }
+
+    @RequestMapping("/info3")
+    public ModelAndView info3(String id,String parentId){
+        ModelAndView modelAndView = new ModelAndView("/member/info3");
+        User user =null;
+        List<LimitSet> limitSets=null;
+        if(StringUtils.isNotBlank(id)){
+            user = userService.get(id);
+            limitSets = limitSetService.findAll(id);
+        }
+        if(limitSets==null){
+            if(StringUtils.isNotBlank(parentId)){
+                limitSets = limitSetService.findAll(parentId);
+            }
+            else
+            {
+                limitSets = limitSetService.findAll("-1");
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        for (LimitSet limitset: limitSets
+                ) {
+            map.put("gameType_"+limitset.getLimitType(),limitset);
+        }
+        modelAndView.addObject("limitSets",map);
+        modelAndView.addObject("user",user);
+//        modelAndView.addObject("parentUser",parentUser);
+        return modelAndView;
+    }
+
+    @RequestMapping("/info4")
+    public ModelAndView info4(String id,String parentId){
+        ModelAndView modelAndView = new ModelAndView("/member/info4");
+        User user =null;
+        List<LimitSet> limitSets=null;
+        if(StringUtils.isNotBlank(id)){
+            user = userService.get(id);
+            limitSets = limitSetService.findAll(id);
+        }
+        if(limitSets==null){
+            if(StringUtils.isNotBlank(parentId)){
+                limitSets = limitSetService.findAll(parentId);
+            }
+            else
+            {
+                limitSets = limitSetService.findAll("-1");
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        for (LimitSet limitset: limitSets
+                ) {
+            map.put("gameType_"+limitset.getLimitType(),limitset);
+        }
+        modelAndView.addObject("limitSets",map);
+        modelAndView.addObject("user",user);
+//        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
 

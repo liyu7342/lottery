@@ -18,6 +18,8 @@ public class User implements Serializable{
 
     private String name;
 
+    private String parentName;
+
     private String password;
 
     private Integer status;
@@ -178,5 +180,13 @@ public class User implements Serializable{
 
     public void setXpath(String xpath) {
         this.xpath = xpath;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 }
