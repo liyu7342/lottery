@@ -124,6 +124,7 @@ public class HomeController  {
         }
         map.put("limit",listMap);
         mv.addObject("info", JsonUtil.toJson( map));
+        mv.addObject("user",user);
         return mv;
     }
 
@@ -135,6 +136,8 @@ public class HomeController  {
     public ModelAndView index1() {
 
         ModelAndView mv = new ModelAndView("index1");
+        User user= UserHelper.getCurrentUser();
+        mv.addObject("user",user);
         return mv;
     }
 
@@ -171,6 +174,7 @@ public class HomeController  {
         for(LimitSet set : limitSets){
             listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
+        mv.addObject("user",user);
         map.put("limit",listMap);
         mv.addObject("info", JsonUtil.toJson( map));
         return mv;
