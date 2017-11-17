@@ -123,25 +123,25 @@
                                             <em class="oddset_em">特B</em><input type="text"  name="discountAB00" valid="dis" value="${limitSets.gameType_B00.aRetreat!''}" minval="0" maxval="3.3" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA01" valid="dis" value="${limitSets.gameType_01.aRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA1" valid="dis" value="${limitSets.gameType_01.aRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA02" valid="dis" value="${limitSets.gameType_02.aRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA2" valid="dis" value="${limitSets.gameType_02.aRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA03" valid="dis" value="${limitSets.gameType_03.aRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA3" valid="dis" value="${limitSets.gameType_03.aRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA04" valid="dis" value="${limitSets.gameType_04.aRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA4" valid="dis" value="${limitSets.gameType_04.aRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA05" valid="dis" value="${limitSets.gameType_05.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA5" valid="dis" value="${limitSets.gameType_05.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA06" valid="dis" value="${limitSets.gameType_06.aRetreat!''}" minval="0" maxval="0.3" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA6" valid="dis" value="${limitSets.gameType_06.aRetreat!''}" minval="0" maxval="0.3" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountA07" valid="dis" value="${limitSets.gameType_07.aRetreat!''}" minval="0" maxval="0.3" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountA7" valid="dis" value="${limitSets.gameType_07.aRetreat!''}" minval="0" maxval="0.3" insval="0.1" alternateval="0.5"/>
                                         </td>
                                     </tr>
                                     <tr class="discount_B">
@@ -151,25 +151,25 @@
                                             <em class="oddset_em">特B</em><input type="text"  name="discountBB00" valid="dis" value="${limitSets.gameType_B00.bRetreat!''}" minval="0" maxval="3.3" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB01" valid="dis" value="${limitSets.gameType_01.bRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB1" valid="dis" value="${limitSets.gameType_01.bRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB02" valid="dis" value="${limitSets.gameType_02.bRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB2" valid="dis" value="${limitSets.gameType_02.bRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB03" valid="dis" value="${limitSets.gameType_03.bRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB3" valid="dis" value="${limitSets.gameType_03.bRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB04" valid="dis" value="${limitSets.gameType_04.bRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB4" valid="dis" value="${limitSets.gameType_04.bRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB05" valid="dis" value="${limitSets.gameType_05.bRetreat!''}"minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB5" valid="dis" value="${limitSets.gameType_05.bRetreat!''}"minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB06" valid="dis" value="${limitSets.gameType_06.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB6" valid="dis" value="${limitSets.gameType_06.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountB07" valid="dis" value="${limitSets.gameType_07.bRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountB7" valid="dis" value="${limitSets.gameType_07.bRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                     </tr>
                                     <tr class="discount_C">
@@ -179,25 +179,25 @@
                                             <em class="oddset_em">特B</em><input type="text"  name="discountCB00" valid="dis" value="${limitSets.gameType_B00.cRetreat!''}" minval="0" maxval="3.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC01" valid="dis" value="${limitSets.gameType_01.cRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC1" valid="dis" value="${limitSets.gameType_01.cRetreat!''}" minval="0" maxval="11.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC02" valid="dis" value="${limitSets.gameType_02.cRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC2" valid="dis" value="${limitSets.gameType_02.cRetreat!''}" minval="0" maxval="13.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC03" valid="dis" value="${limitSets.gameType_03.cRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC3" valid="dis" value="${limitSets.gameType_03.cRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC04" valid="dis" value="${limitSets.gameType_04.cRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC4" valid="dis" value="${limitSets.gameType_04.cRetreat!''}" minval="0" maxval="15.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC05" valid="dis" value="${limitSets.gameType_05.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC5" valid="dis" value="${limitSets.gameType_05.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC06" valid="dis" value="${limitSets.gameType_06.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC6" valid="dis" value="${limitSets.gameType_06.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                         <td>
-                                            <input type="text"  name="discountC07" valid="dis" value="${limitSets.gameType_07.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
+                                            <input type="text"  name="discountC7" valid="dis" value="${limitSets.gameType_07.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -241,8 +241,8 @@
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
-                                        <td><input type="text"  name="discountA08" valid="dis" value="${limitSets.gameType_08.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
-                                        <td><input type="text"  name="discountA09" valid="dis" value="${limitSets.gameType_09.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountA8" valid="dis" value="${limitSets.gameType_08.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountA9" valid="dis" value="${limitSets.gameType_09.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA10" valid="dis" value="${limitSets.gameType_10.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA11" valid="dis" value="${limitSets.gameType_11.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA12" valid="dis" value="${limitSets.gameType_12.aRetreat!''}" minval="0" maxval="0.5" insval="0.1" alternateval="0.5"/></td>
@@ -252,8 +252,8 @@
                                     </tr>
                                     <tr class="discount_B">
                                         <td>B盤退水(<font color='red'>%</font>)</td>
-                                        <td><input type="text"  name="discountB08" valid="dis" value="${limitSets.gameType_08.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
-                                        <td><input type="text"  name="discountB09" valid="dis" value="${limitSets.gameType_09.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountB8" valid="dis" value="${limitSets.gameType_08.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountB9" valid="dis" value="${limitSets.gameType_09.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountB10" valid="dis" value="${limitSets.gameType_10.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountB11" valid="dis" value="${limitSets.gameType_11.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountB12" valid="dis" value="${limitSets.gameType_12.bRetreat!''}" minval="0" maxval="1.5" insval="0.1" alternateval="0.5"/></td>
@@ -263,8 +263,8 @@
                                     </tr>
                                     <tr class="discount_C">
                                         <td>C盤退水(<font color='red'>%</font>)</td>
-                                        <td><input type="text"  name="discountC08" valid="dis" value="${limitSets.gameType_08.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
-                                        <td><input type="text"  name="discountC09" valid="dis" value="${limitSets.gameType_09.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountC8" valid="dis" value="${limitSets.gameType_08.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountC9" valid="dis" value="${limitSets.gameType_09.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC10" valid="dis" value="${limitSets.gameType_10.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC11" valid="dis" value="${limitSets.gameType_11.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC12" valid="dis" value="${limitSets.gameType_12.cRetreat!''}" minval="0" maxval="2.5" insval="0.1" alternateval="0.5"/></td>
@@ -282,7 +282,8 @@
 
                                 <input type="hidden" name="betting" value='0' />
                                 <input type="hidden" name="historyNum" value='1'/>
-                                <input type="hidden" name="userType" value='1'/>
+                                <input type="hidden" name="usertype" value='1'/>
+
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />

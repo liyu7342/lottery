@@ -415,14 +415,14 @@
                 v=JSON.parse(v);
                 if(!v.success){
                     var tx = v.msg;
-                    if (tx.indexOf("账号或密码有误") != -1 || tx.indexOf("密码不正确") != -1 ) {
+                    if (tx.indexOf("賬號或密碼有誤") != -1 || tx.indexOf("密碼不正确") != -1 ) {
                         form.__name.value = '';
                         form.password.value = '';
                         alert(tx);
                     }else if(~tx.indexOf('upgrade.png')){
                         location.href = 'user/logout';
                         return false;
-                    }else if(~tx.indexOf('账号已经被停用')){
+                    }else if(~tx.indexOf('賬號已经被停用')){
                         alert(tx);
                         return false;
                     }

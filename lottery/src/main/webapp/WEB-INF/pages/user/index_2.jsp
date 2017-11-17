@@ -44,7 +44,7 @@
                                         <input type="text" name="keyword" size="12" value="請輸入名稱/賬號" class="gray">
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
-                                    <li><h2><a class="btn10 mt red" href='/member/info?op=create&id=&parentId=${currentUserId}'>新增</a>&nbsp;&nbsp;
+                                    <li><h2><a class="btn10 mt red" href='/member/info2?op=create&id=&parentId=${currentUserId}'>新增</a>&nbsp;&nbsp;
                                         <a id="batchDel" class="btn9 mt red" level="5" href="javascript:void(0)">批量刪除</a>        </h2></li>
                                 </ul></form>
                             <div class="fr">
@@ -90,7 +90,7 @@
                                     </td>
                                     <td><a class='a_btm_line' act='tingyong' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
                                         /&nbsp;<a class='a_btm_line' act='tingya' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停押</a>
-                                        /&nbsp;<a class='a_btm_line' href='/member/info?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid}'>修改</a></td>
+                                        /&nbsp;<a class='a_btm_line' href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a></td>
                                 </tr>
                                     </#list>
                                 </tbody></table>
@@ -113,7 +113,8 @@
                         <li><a curl='5' href='/user/index2'>小股东</a><cite>0</cite></li>
                         <li><a curl='0' href='/user/index3'>总代理</a><cite>0</cite></li>
                         <li><a curl='0' href='/user/index4'>代理</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='/user/index'>會員</a><cite>1</cite></li>
+                    </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：0</p>

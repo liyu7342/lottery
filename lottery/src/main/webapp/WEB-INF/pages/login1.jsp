@@ -140,7 +140,8 @@
                                 if (tx.indexOf("賬號或密碼有誤") != -1 || tx.indexOf("密碼不正確") != -1 ) {
                                     form.__name.value = '';
                                     form.password.value = '';
-                                    alert(tx.msg);
+                                    form.VerifyCode.value='';
+                                    alert(tx);
                                 }else if(tx.indexOf('upgrade.png')){
                                     location.href = '/user/logout';
                                     return false;
@@ -156,7 +157,7 @@
 
                         }
                     }
-                    xmlhttp.open("POST","/home/doLogin",true);
+                    xmlhttp.open("POST","/home/doLogin1",true);
                     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
                     xmlhttp.send(param);
                     return false;

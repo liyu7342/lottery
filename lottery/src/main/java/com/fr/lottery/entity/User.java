@@ -46,6 +46,8 @@ public class User implements Serializable{
 
     private String xpath;
 
+    private Integer xseq;
+
     public String getId() {
         return id;
     }
@@ -188,5 +190,13 @@ public class User implements Serializable{
 
     public void setParentName(String parentName) {
         this.parentName = parentName;
+    }
+
+    public Integer getXseq() {
+        return xseq;
+    }
+
+    public void setXseq(Integer xseq) {
+        this.xseq = xseq;
     }
 }

@@ -156,7 +156,7 @@
 
                         }
                     }
-                    xmlhttp.open("POST","/home/doLogin",true);
+                    xmlhttp.open("POST","/home/doLogin2",true);
                     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
                     xmlhttp.send(param);
                     return false;

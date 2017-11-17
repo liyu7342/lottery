@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.dto.LimitSetDto;
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.User;
 
@@ -15,9 +16,8 @@ public interface IUserService {
 
     User get(String id);
 
-    int insert(User entity);
+    int Save(User entity, LimitSetDto limitSetDto);
 
-    int update(User entity);
 
     int delete(String id);
 

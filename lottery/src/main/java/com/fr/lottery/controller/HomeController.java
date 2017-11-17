@@ -229,7 +229,7 @@ public class HomeController  {
             }
             else{
                 result.setSuccess(false);
-                result.setMsg("账号或密码有误！");
+                result.setMsg("賬號或密碼有誤！");
             }
         }
         catch (Exception ex){
@@ -265,7 +265,7 @@ public class HomeController  {
             }
             else{
                 result.setSuccess(false);
-                result.setMsg("账号或密码有误！");
+                result.setMsg("賬號或密碼有誤！");
             }
         }
         catch (Exception ex){
@@ -302,7 +302,7 @@ public class HomeController  {
             }
             else{
                 result.setSuccess(false);
-                result.setMsg("账号或密码有误！");
+                result.setMsg("賬號或密碼有誤！");
             }
         }
         catch (Exception ex){

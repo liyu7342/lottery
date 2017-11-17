@@ -18,10 +18,11 @@
         <result column="Proportional" jdbcType="INTEGER" property="proportional" />
         <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
         <result column="Xpath" jdbcType="VARCHAR" property="xpath"/>
+        <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
     </resultMap>
     <sql id="Columns">
           Id, ParentId, Account, Name, Password, Status, UserType, CreateDate, Credits, IsReplenish,
-    ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent, Proportional, Handicap,xpath
+    ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent, Proportional, Handicap,xpath,xseq
     </sql>
     <sql id="sqlWhere">
         <where>
@@ -63,17 +64,18 @@
 
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.fr.lottery.entity.User">
-      insert into user (Id, ParentId, Account,
+      insert into user (Id, ParentId,ParentName, Account,
       Name, Password, Status,
       UserType, CreateDate, Credits,
       IsReplenish, ZhanChengHe, ZongDaiZhanChengShu,
-      ReplenishPercent, Proportional, Handicap,xpath
+      ReplenishPercent, Proportional, Handicap,xpath,xseq
       )
-    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR},#{parentName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT},
       #{usertype,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{credits,jdbcType=BIGINT},
       #{isreplenish,jdbcType=TINYINT}, #{zhanchenghe,jdbcType=INTEGER}, #{zongdaizhanchengshu,jdbcType=INTEGER},
       #{replenishpercent,jdbcType=INTEGER}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR},#{xpath,jdbcType=VARCHAR}
+      ,#{xseq,jdbcType=INTEGER}
       )
     </insert>
 
@@ -142,5 +144,9 @@
         <if test="xpath!=null and xpath !=''">
             AND xpath like #{xpath,jdbcType=VARCHAR}
         </if>
+    </select>
+    <select id="getSeq" resultType="java.lang.Integer">
+        SELECT IFNULL(max(xseq),0)+1 from USER
+        WHERE parentId =#{parentID ,jdbcType=VARCHAR}
     </select>
 </mapper>
