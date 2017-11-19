@@ -8371,13 +8371,14 @@ Header.prototype.get_header_info = function() {
     var b = this;
     var a = function() {
             $.ajax({
-                url: "ajax_req.htm?act=get_header_info|refer_version_number",
+                url: "/odds/getHeaderInfo",
                 dataType: "json",
                 success: function(c) {
                     if (c.refer_version_number !== undefined) {
                         global_version_num = c.refer_version_number
                     }
-                    b.set_header_info($.parseJSON(c.get_header_info));
+                    //b.set_header_info($.parseJSON(c.get_header_info));
+                    b.set_header_info(c.get_header_info);
                     b.ref_header_timmer = null
                 },
                 complete: function(d, c) {

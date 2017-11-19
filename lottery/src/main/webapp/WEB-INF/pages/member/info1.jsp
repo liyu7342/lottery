@@ -2,84 +2,111 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <script type="text/javascript">
-        var domainOK = 1, domain = 'pm10.x.mmm33.us';
-        window.gms_fcorp = parseInt("0",10);
-        try{if(domain){document.domain = domain;}}catch(x){domainOK = 0;}
-    </script>
+
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>f2213 - A28</title>
+    <title>${user.name!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
-
-
 </head>
-<body class="member_create" >
+<body class="user2_create" >
 <div id="doc3" class="yui-t2 fixh">
     <div id="bd">
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="memcreate" class="module">
-                        <form id="create" method="post" action="/member/save">
+                    <div id="u2create" class="module">
+
+                        <form id="create" method="post" action="">
                             <div class="hd g-tm">
                                 <ul>
-                                    <li><h2 class="g-tit">新增大股东</h2></li>
-                                    <li>&nbsp<span></span></li>
-                                    <li><a class="btn1 cs"  onclick="location.href='/user/index1';return false;" href="javascript:void(0)">返回</a></li>
+                                    <li><h2 class="g-tit">新增大股東</h2></li>
+                                    <li>&nbsp;&nbsp;<span></span></li>
+                                    <li><a class="btn1 cs" onclick="location.href='/user/index1';return false;" href="javascript:void(0);">返回</a></li>
                                 </ul>
                             </div>
-                            <div class="bd g-new">
+                            <div class="bd g-new" >
                                 <div class="g-tif"><h3>基本資料設定</h3></div>
+
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="name" value="${(user.name)!''}" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="__sys_user_userName" value="" /></td>
                                         <td>賬號</td>
-                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12" name="account" placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
-                                        <td> 密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" valid="password"/></td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" name="__sys_user_userAccount" value="4-12個數字/字母" class="gray"/> </td>
+                                        <td>密碼</td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="member_repassword2" value="" valid="password"/> </td>
-                                        <input type="hidden" name="pwd"/>   </tr>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" valid="password"/></td>
+                                    </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" title="0~0" maxlength="9" size="8" name="credits" placeholder="0~0" value="${(user.credits)!''}" class="gray"/>
+                                        <td><input type="text" valid="credit" maxlength="9" name="sys_user_credit"  title="0~1000000" value="0~1000000" class="gray"/>
                                         </td>
-                                        <td colspan="2">對此會員佔成比例(<font color='red'>%</font>)
-                                            <select class="w2" name="member_shareUp" >
-                                                <option selected="selected" value="0">0</option>      </select><input type="hidden" name="sharecorp" value=""/>
-                                        </td>
-
                                         <td>盤口</td>
-                                        <td><select class="w1" name="handicap"  >
-                                            <option value="A" selected="selected">A</option>
+                                        <td><select class="w1" name="sys_user_oddsSet"  >
+                                            <option value="C" selected="selected">C</option>
                                             <option value="B" >B</option>
-                                            <option value="C" >C</option>
+                                            <option value="A" >A</option>
                                         </select></td>
-                                        <td> 狀態</td>
+                                        <td>補貨設定</td>
+                                        <td><select class="w3" name="sys_user_shortCovering" >
+                                            <option value="0" >不允許</option>
+                                            <option value="1" selected="selected">允許</option>
+                                        </select></td>
+                                        <td>狀態</td>
                                         <td><select class="w4" name="status">
                                             <option value="0" >停用</option>
                                             <option value="1" selected="selected">啟用</option>
                                             <option value="2" >停押</option>
                                         </select></td>
                                     </tr>
+
                                     <tr>
-                                        <td>倍數投注</td>
-                                        <td>
-                                            <select class="w4" name="orderStatus">
-                                                <option value="0" selected="selected" />不允許</option>
-                                                <option value="1"  />允許</option>
+                                        <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
+                                            <select class="w2" name="shareTotal" >
+
+                                            </select>
+                                            <input type="hidden" name="shareParent" value="100"/>
+                                        </td>
+                                        <td colspan="2">股東佔成數(<font color='red'>%</font>)
+                                            <select class="w2" name="shareUp" >
+                                                <option selected="selected" value="0">0</option>
+                                                <option  value="5">5</option>
+                                                <option  value="10">10</option>
+                                                <option  value="15">15</option>
+                                                <option  value="20">20</option>
+                                                <option  value="25">25</option>
+                                                <option  value="30">30</option>
+                                                <option  value="35">35</option>
+                                                <option  value="40">40</option>
+                                                <option  value="45">45</option>
+                                                <option  value="50">50</option>
+                                                <option  value="55">55</option>
+                                                <option  value="60">60</option>
+                                                <option  value="65">65</option>
+                                                <option  value="70">70</option>
+                                                <option  value="75">75</option>
+                                                <option  value="80">80</option>
+                                                <option  value="85">85</option>
+                                                <option  value="90">90</option>
+                                                <option  value="95">95</option>
+                                                <option  value="100">100</option>
                                             </select>
                                         </td>
-                                        <td colspan="10">
+                                        <td colspan="2"> 補貨是否佔成
+                                            <select class="w1" name="sys_user_shareFlag" >
+                                                <option value="1" selected="selected">是</option>
+                                                <option value="0" >否</option>
+                                            </select>
+                                        </td>
+                                        <td colspan="2">
                                         </td>
                                     </tr>
                                     </tbody></table>
-                                <table class="g-t1 g-t2 mt t2 hline">
+                                <table class="g-t1 g-t2 mt t2 hline" id='zdl_discount_body'>
                                     <tbody nomovod><tr class="hline">
                                         <td></td><td>特碼</td><td>正碼</td><td>正碼特</td><td>連碼二</td><td>連碼三</td><td>過關</td><td>生肖</td><td>尾數</td>
                                     </tr>
@@ -104,6 +131,7 @@
                                         <td><input type="text" valid="amount" name="ordermax5" value="${limitSets.gameType_05.singlemax!''}"/></td>
                                         <td><input type="text" valid="amount" name="ordermax6" value="${limitSets.gameType_06.singlemax!''}"/></td>
                                         <td><input type="text" valid="amount" name="ordermax7" value="${limitSets.gameType_07.singlemax!''}"/></td>
+
                                     </tr>
                                     <tr>
                                         <td>單項最高</td>
@@ -114,8 +142,7 @@
                                         <td><input type="text" valid="amount" name="itemmax4" value="${limitSets.gameType_04.singlehighest!''}"/></td>
                                         <td><input type="text" valid="amount" name="itemmax5" value="${limitSets.gameType_05.singlehighest!''}"/></td>
                                         <td><input type="text" valid="amount" name="itemmax6" value="${limitSets.gameType_06.singlehighest!''}"/></td>
-                                        <td><input type="text" valid="amount" name="itemmax7" value="${limitSets.gameType_07.singlehighest!''}"/></td>
-                                    </tr>
+                                        <td><input type="text" valid="amount" name="itemmax7" value="${limitSets.gameType_07.singlehighest!''}"/></td>                                    </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
                                         <td>
@@ -274,37 +301,39 @@
                                     </tr>
                                     </tbody>
                                 </table>
-
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
-                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index'"/></div>
-                                <input type="hidden" name="op" value='create'/>
+                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index1'"/></div>
+
                                 <input type="hidden" name="id" value="${(user.id)!''}"/>
 
-                                <input type="hidden" name="betting" value='0' />
-                                <input type="hidden" name="historyNum" value='1'/>
                                 <input type="hidden" name="usertype" value='1'/>
 
+                                <input type="hidden" name="childsumcredit" value='0'/>
+                                <input type="hidden" name="pageId" value='1'/>
+                                <input type="hidden" name="requestUrl" value='/user/index1'/>
+                                <input type="hidden" name="historyNum" value='1'/>
+                                <input type="hidden" name="op" value='create'/>
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />
+
                         <input type="hidden" name="parent_hkms_status" value="0" />
                         <div class="ft"></div>
-                    </div>
-                </div>
+                    </div>                </div>
             </div>
         </div>
         <div class="yui-b">
-            <div id="userli" curl="5" class="module g-li">
+            <div id="userli" curl="3" class="module g-li">
                 <div class="hd g-tif">
                     <h3>賬號管理<span>數量</span></h3>
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='3' href='user_list.htm?level=3'>總代理</a><cite>1</cite></li><li><a curl='4' href='user_list.htm?level=4'>代理商</a><cite>10</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>73</cite></li>        </ul>
                 </div>
                 <div class="ft">
-                    <p>在線會員數：0</p>
-                    <p>在線經銷商：1</p>
+                    <p>在線會員數：9</p>
+                    <p>在線經銷商：2</p>
                     <div class="dotbg"></div>
                 </div>
             </div>        </div>
@@ -318,9 +347,9 @@
 </div>
 <script type="text/javascript">
     window.setting = {
-        login_path: '/msdid63242a/account/login.html', //登錄路徑
+        login_path: '/msdid6321379a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 200000, //設置開關盤刷新頻率
+        draw_refersh: 20000, //設置開關盤刷新頻率
         log4js_type:  0, //設置log4javascript的類型
         log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼

@@ -94,6 +94,7 @@ public class MemberController {
     public ModelAndView info1(String id, String parentId) {
         ModelAndView modelAndView = new ModelAndView("/member/info1");
         User user = null;
+
         List<LimitSet> limitSets ;
         List<LimitSet> plimitSets ;
         if (StringUtils.isNotBlank(parentId)) {

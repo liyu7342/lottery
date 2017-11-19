@@ -8,6 +8,7 @@ import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.StatisDto;
 import com.fr.lottery.dto.UserHistoryDto;
 import com.fr.lottery.entity.*;
+import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
 import com.fr.lottery.enums.LianMaEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
@@ -64,14 +65,17 @@ public class OrderService implements IOrderService {
         }
 
         User user = UserHelper.getCurrentUser();
+        if(orderDto.getOrder_allamount()+user.getAmount()>user.getCredits())
+            return false;
         user.setAmount(orderDto.getOrder_allamount() + user.getAmount());
         UserHelper.setCurrentUser(user);
         List<LimitSet> limitSetList = limitSetService.findAll(user.getId());
 
         Map<String, Float> map = new HashedMap();
         for (LimitSet limitSet : limitSetList) {
-            map.put(limitSet.getLimitType(), limitSet.getaRetreat());
+            map.put( limitSet.getLimitType(), ("A".equals( user.getHandicap())? limitSet.getaRetreat():("B".equals(user.getHandicap())?limitSet.getbRetreat():limitSet.getcRetreat())));
         }
+
 
         String[] orderDatas = orderDto.getOrderData().split(";");
         for (String orderDataStr : orderDatas) {
@@ -86,10 +90,14 @@ public class OrderService implements IOrderService {
             orders.setOdds(orderStrs[2]);
             orders.setNo(orderStrs[1]);
             String category = GameCfg.getGameCategory(orderStrs[0]);
+            orders.setGametype(orderStrs[0]);
+            if(OddsTypeEnum.tema.getValue().equals( orders.getGametype())) {
+                category = orderDto.getOdds_set().substring(1)+category;
+            }
             if (map.containsKey(category)) {
                 orders.setRetreat(map.get(category));
             }
-            orders.setGametype(orderStrs[0]);
+
             orders.setHandicapId(handicap.getId());
             if (orderStrs.length == 5) {//连码
                 orders.setTotalAmount(orderDto.getOrder_allamount());
@@ -151,11 +159,16 @@ public class OrderService implements IOrderService {
                 detail.setOrderId(orders.getId());
                 detail.setRetreat(orders.getRetreat());
                 detail.setUserId(orders.getUserid());
-                orders.setCanWinAmount(detail.getOdds() * detail.getAmount());
+
+
+                    orders.setCanWinAmount(detail.getAmount() * (detail.getOdds() -1 + orders.getRetreat()/100 ));
+
+
                 orderDetailMapper.insert(detail);
             } else {
                 String[] detailOdds = orderDto.getDetailOdds().split(";");
                 orders.setCanWinAmount(0F);
+                float detailSum = 0f;
                 for (String detailOdd : detailOdds) {
                     String[] detailArr = detailOdd.split("\\|");
                     OrderDetail detail = new OrderDetail();
@@ -254,9 +267,10 @@ public class OrderService implements IOrderService {
                     detail.setOrderId(orders.getId());
                     detail.setRetreat(orders.getRetreat());
                     detail.setUserId(orders.getUserid());
-                    orders.setCanWinAmount(orders.getCanWinAmount() + detail.getOdds() * detail.getAmount());
+                    detailSum+= detail.getAmount()  *(detail.getOdds() -1 + orders.getRetreat()/100 ) ;
                     orderDetailMapper.insert(detail);
                 }
+                orders.setCanWinAmount(orders.getCanWinAmount() +detailSum );
             }
             orderMapper.insert(orders);
         }
