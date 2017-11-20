@@ -28,7 +28,7 @@
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">新增代理</h2></li>
-                                    <li>&nbsp<span>上級总代理：${parentUser.name!''}</span></li>
+                                    <li>&nbsp<span>上級总代理：${parentUser.userName!''}</span></li>
                                     <li><a class="btn1 cs"  onclick="location.href='/user/index';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>
@@ -37,7 +37,7 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="name" value="${(user.name)!''}" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="name" value="${(user.userName)!''}" /></td>
                                         <td>賬號</td>
                                         <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12" name="account" placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
                                         <td> 密碼</td>

@@ -6,7 +6,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.name!''} - A28</title>
+    <title>${user.userName!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -17,9 +17,9 @@
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="u2create" class="module">
+                    <div id="u1create" class="module">
 
-                        <form id="create" method="post" action="">
+                        <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">新增大股東</h2></li>
@@ -33,41 +33,40 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="__sys_user_userName" value="" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" name="__sys_user_userAccount" value="4-12個數字/字母" class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" name="account" value="${user.account!''}" class="gray"/> </td>
                                         <td>密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_password" value="" valid="password" /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
                                         <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" valid="password"/></td>
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" maxlength="9" name="sys_user_credit"  title="0~1000000" value="0~1000000" class="gray"/>
+                                        <td><input type="text" valid="credit" maxlength="9" name="credits"  title="0~1000000" value="${user.credits!''}" class="gray"/>
                                         </td>
                                         <td>盤口</td>
                                         <td><select class="w1" name="sys_user_oddsSet"  >
-                                            <option value="C" selected="selected">C</option>
-                                            <option value="B" >B</option>
-                                            <option value="A" >A</option>
+                                            <option value="C" <#if user.sys_user_oddsSet=="C">selected="selected"</#if> >C</option>
+                                            <option value="B" <#if user.sys_user_oddsSet=="B">selected="selected"</#if> >B</option>
+                                            <option value="A" <#if user.sys_user_oddsSet=="A">selected="selected"</#if> >A</option>
                                         </select></td>
                                         <td>補貨設定</td>
-                                        <td><select class="w3" name="sys_user_shortCovering" >
-                                            <option value="0" >不允許</option>
-                                            <option value="1" selected="selected">允許</option>
+                                        <td><select class="w3" name="shortCovering" >
+                                            <option value="0" <#if user.shortCovering==0>selected="selected"</#if> >不允許</option>
+                                            <option value="1" <#if user.shortCovering==1>selected="selected"</#if>  >允許</option>
                                         </select></td>
                                         <td>狀態</td>
                                         <td><select class="w4" name="status">
-                                            <option value="0" >停用</option>
-                                            <option value="1" selected="selected">啟用</option>
-                                            <option value="2" >停押</option>
+                                            <option value="0" <#if user.status==0>selected="selected"</#if>  >停用</option>
+                                            <option value="1" <#if user.status==1>selected="selected"</#if> >啟用</option>
+                                            <option value="2" <#if user.status==2>selected="selected"</#if> >停押</option>
                                         </select></td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
-
                                             </select>
                                             <input type="hidden" name="shareParent" value="100"/>
                                         </td>
@@ -97,7 +96,7 @@
                                             </select>
                                         </td>
                                         <td colspan="2"> 補貨是否佔成
-                                            <select class="w1" name="sys_user_shareFlag" >
+                                            <select class="w1" name="shareFlag" >
                                                 <option value="1" selected="selected">是</option>
                                                 <option value="0" >否</option>
                                             </select>
@@ -106,7 +105,7 @@
                                         </td>
                                     </tr>
                                     </tbody></table>
-                                <table class="g-t1 g-t2 mt t2 hline" id='zdl_discount_body'>
+                                <table class="g-t1 g-t2 mt t2 hline" id='gudong_discount_body'>
                                     <tbody nomovod><tr class="hline">
                                         <td></td><td>特碼</td><td>正碼</td><td>正碼特</td><td>連碼二</td><td>連碼三</td><td>過關</td><td>生肖</td><td>尾數</td>
                                     </tr>
@@ -312,7 +311,7 @@
                                 <input type="hidden" name="pageId" value='1'/>
                                 <input type="hidden" name="requestUrl" value='/user/index1'/>
                                 <input type="hidden" name="historyNum" value='1'/>
-                                <input type="hidden" name="op" value='create'/>
+                                <input type="hidden" name="op" value='udp'/>
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />

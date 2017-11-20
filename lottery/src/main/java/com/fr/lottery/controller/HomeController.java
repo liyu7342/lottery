@@ -55,7 +55,7 @@ public class HomeController  {
         amount =amount==null?0:amount;
         userInfo.put("memberId",user.getId());
         userInfo.put("credit",user.getCredits());
-        userInfo.put("name",user.getName());
+        userInfo.put("name",user.getUserName());
         userInfo.put("account",user.getAccount());
         userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());
@@ -105,7 +105,7 @@ public class HomeController  {
         Map<String,Object> userInfo=new HashedMap();
         userInfo.put("memberId",user.getId());
         userInfo.put("credits",user.getCredits());
-        userInfo.put("name",user.getName());
+        userInfo.put("name",user.getUserName());
         userInfo.put("account",user.getAccount());
         userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());
@@ -157,7 +157,7 @@ public class HomeController  {
         amount =amount==null?0:amount;
         userInfo.put("memberId",user.getId());
         userInfo.put("credits",user.getCredits());
-        userInfo.put("name",user.getName());
+        userInfo.put("name",user.getUserName());
         userInfo.put("account",user.getAccount());
         userInfo.put("sum",amount);
         userInfo.put("odds_set",user.getHandicap());

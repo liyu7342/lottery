@@ -16,7 +16,7 @@ public class User implements Serializable{
 
     private String account;
 
-    private String name;
+    private String userName;
 
     private String parentName;
 
@@ -30,13 +30,13 @@ public class User implements Serializable{
 
     private Long credits;
 
-    private Integer isreplenish;
+    private Integer shortCovering;
 
-    private Integer zhanchenghe;
+    private Integer shareTotal;
 
-    private Integer zongdaizhanchengshu;
+    private Integer shareUp;
 
-    private Integer replenishpercent;
+    private Integer shareFlag;
 
     private Integer proportional;
 
@@ -47,6 +47,8 @@ public class User implements Serializable{
     private String xpath;
 
     private Integer xseq;
+
+    private String sys_user_oddsSet;
 
     public String getId() {
         return id;
@@ -72,12 +74,12 @@ public class User implements Serializable{
         this.account = account == null ? null : account.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUserName(String name) {
+        this.userName = name == null ? null : name.trim();
     }
 
     public String getPassword() {
@@ -120,36 +122,36 @@ public class User implements Serializable{
         this.credits = credits;
     }
 
-    public Integer getIsreplenish() {
-        return isreplenish;
+    public Integer getShortCovering() {
+        return shortCovering;
     }
 
-    public void setIsreplenish(Integer isreplenish) {
-        this.isreplenish = isreplenish;
+    public void setShortCovering(Integer shortCovering) {
+        this.shortCovering = shortCovering;
     }
 
-    public Integer getZhanchenghe() {
-        return zhanchenghe;
+    public Integer getShareTotal() {
+        return shareTotal;
     }
 
-    public void setZhanchenghe(Integer zhanchenghe) {
-        this.zhanchenghe = zhanchenghe;
+    public void setShareTotal(Integer shareTotal) {
+        this.shareTotal = shareTotal;
     }
 
-    public Integer getZongdaizhanchengshu() {
-        return zongdaizhanchengshu;
+    public Integer getShareUp() {
+        return shareUp;
     }
 
-    public void setZongdaizhanchengshu(Integer zongdaizhanchengshu) {
-        this.zongdaizhanchengshu = zongdaizhanchengshu;
+    public void setShareUp(Integer shareUp) {
+        this.shareUp = shareUp;
     }
 
-    public Integer getReplenishpercent() {
-        return replenishpercent;
+    public Integer getShareFlag() {
+        return shareFlag;
     }
 
-    public void setReplenishpercent(Integer replenishpercent) {
-        this.replenishpercent = replenishpercent;
+    public void setShareFlag(Integer shareFlag) {
+        this.shareFlag = shareFlag;
     }
 
     public Integer getProportional() {
@@ -198,5 +200,13 @@ public class User implements Serializable{
 
     public void setXseq(Integer xseq) {
         this.xseq = xseq;
+    }
+
+    public String getSys_user_oddsSet() {
+        return sys_user_oddsSet;
+    }
+
+    public void setSys_user_oddsSet(String sys_user_oddsSet) {
+        this.sys_user_oddsSet = sys_user_oddsSet;
     }
 }

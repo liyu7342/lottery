@@ -104,6 +104,7 @@ public class MemberController {
         }
         if (StringUtils.isNotBlank(id)) {
             user = userService.get(id);
+            user.setSys_user_oddsSet(user.getHandicap());
             limitSets = limitSetService.findAll(id);
         }
         else{

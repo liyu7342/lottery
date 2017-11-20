@@ -86,6 +86,9 @@ public class UserService implements IUserService {
     @Override
     public int Save(User user, LimitSetDto limitSetDto) {
         user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+        if(StringUtils.isNotBlank( user.getSys_user_oddsSet())){
+            user.setHandicap(user.getSys_user_oddsSet());
+        }
         if (StringUtils.isBlank(user.getId())) {
             user.setId(StringUtil.getUUID());
             user.setCreatedate(new Date());
@@ -97,7 +100,7 @@ public class UserService implements IUserService {
                 User parentUser = get(user.getParentid());
                 if (parentUser != null) {
                     xpath = parentUser.getXpath();
-                    user.setParentName(parentUser.getName());
+                    user.setParentName(parentUser.getUserName());
                 }
             }
             xpath+=String.format("%03d", seq);

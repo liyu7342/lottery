@@ -127,4 +127,12 @@ public class UserController {
     public int changeStatus(Integer level,String pid,String id,Integer status){
        return userService.changeStatus(level,pid,id,status);
     }
+
+    @RequestMapping("/checkAccount")
+    @ResponseBody
+    public int checkAccount(String account){
+        User user = userService.getByAccount(account);
+        int result = user == null?0:1;
+        return result;
+    }
 }

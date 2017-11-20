@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.lottery.dao.UserMapper">
     <resultMap id="userResult" type="com.fr.lottery.entity.User">
-        <id column="Id" jdbcType="VARCHAR" property="id" />
-        <result column="ParentId" jdbcType="VARCHAR" property="parentid" />
-        <result column="Account" jdbcType="VARCHAR" property="account" />
-        <result column="Name" jdbcType="VARCHAR" property="name" />
-        <result column="Password" jdbcType="VARCHAR" property="password" />
-        <result column="Status" jdbcType="TINYINT" property="status" />
-        <result column="UserType" jdbcType="TINYINT" property="usertype" />
-        <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
-        <result column="Credits" jdbcType="BIGINT" property="credits" />
-        <result column="IsReplenish" jdbcType="TINYINT" property="isreplenish" />
-        <result column="ZhanChengHe" jdbcType="INTEGER" property="zhanchenghe" />
-        <result column="ZongDaiZhanChengShu" jdbcType="INTEGER" property="zongdaizhanchengshu" />
-        <result column="ReplenishPercent" jdbcType="INTEGER" property="replenishpercent" />
-        <result column="Proportional" jdbcType="INTEGER" property="proportional" />
-        <result column="Handicap" jdbcType="VARCHAR" property="handicap" />
+        <id column="Id" jdbcType="VARCHAR" property="id"/>
+        <result column="ParentId" jdbcType="VARCHAR" property="parentid"/>
+        <result column="Account" jdbcType="VARCHAR" property="account"/>
+        <result column="UserName" jdbcType="VARCHAR" property="userName"/>
+        <result column="Password" jdbcType="VARCHAR" property="password"/>
+        <result column="Status" jdbcType="TINYINT" property="status"/>
+        <result column="UserType" jdbcType="TINYINT" property="usertype"/>
+        <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate"/>
+        <result column="Credits" jdbcType="BIGINT" property="credits"/>
+        <result column="shortCovering" jdbcType="TINYINT" property="shortCovering"/>
+        <result column="shareTotal" jdbcType="INTEGER" property="shareTotal"/>
+        <result column="shareUp" jdbcType="INTEGER" property="shareUp"/>
+        <result column="shareFlag" jdbcType="INTEGER" property="shareFlag"/>
+        <result column="Proportional" jdbcType="INTEGER" property="proportional"/>
+        <result column="Handicap" jdbcType="VARCHAR" property="handicap"/>
         <result column="Xpath" jdbcType="VARCHAR" property="xpath"/>
         <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
     </resultMap>
     <sql id="Columns">
-          Id, ParentId, Account, Name, Password, Status, UserType, CreateDate, Credits, IsReplenish,
-    ZhanChengHe, ZongDaiZhanChengShu, ReplenishPercent, Proportional, Handicap,xpath,xseq
+          Id, ParentId, Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
+    shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
     </sql>
     <sql id="sqlWhere">
         <where>
@@ -38,7 +38,7 @@
     <!-- 查询所有 -->
     <select id="findAll" resultMap="userResult">
         select
-        <include refid="Columns" />
+        <include refid="Columns"/>
         from USER
         <include refid="sqlWhere"></include>
         <if test="limit >0">
@@ -65,34 +65,32 @@
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.fr.lottery.entity.User">
       insert into user (Id, ParentId,ParentName, Account,
-      Name, Password, Status,
-      UserType, CreateDate, Credits,
-      IsReplenish, ZhanChengHe, ZongDaiZhanChengShu,
-      ReplenishPercent, Proportional, Handicap,xpath,xseq
+      UserName, Password, Status,
+      UserType, CreateDate, Credits, shortCovering,
+      shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
       )
     values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR},#{parentName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
-      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT},
+      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT},
       #{usertype,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{credits,jdbcType=BIGINT},
-      #{isreplenish,jdbcType=TINYINT}, #{zhanchenghe,jdbcType=INTEGER}, #{zongdaizhanchengshu,jdbcType=INTEGER},
-      #{replenishpercent,jdbcType=INTEGER}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR},#{xpath,jdbcType=VARCHAR}
+      #{shortCovering,jdbcType=TINYINT}, #{shareTotal,jdbcType=INTEGER}, #{shareUp,jdbcType=INTEGER},
+      #{shareFlag,jdbcType=INTEGER}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR},#{xpath,jdbcType=VARCHAR}
       ,#{xseq,jdbcType=INTEGER}
       )
     </insert>
 
-    <update id="update" >
+    <update id="update">
          update user set
       ParentId = #{parentid,jdbcType=VARCHAR},
       Account = #{account,jdbcType=VARCHAR},
-      Name = #{name,jdbcType=VARCHAR},
+      UserName = #{userName,jdbcType=VARCHAR},
       Password = #{password,jdbcType=VARCHAR},
       Status = #{status,jdbcType=TINYINT},
       UserType = #{usertype,jdbcType=TINYINT},
-      CreateDate = #{createdate,jdbcType=TIMESTAMP},
       Credits = #{credits,jdbcType=BIGINT},
-      IsReplenish = #{isreplenish,jdbcType=TINYINT},
-      ZhanChengHe = #{zhanchenghe,jdbcType=INTEGER},
-      ZongDaiZhanChengShu = #{zongdaizhanchengshu,jdbcType=INTEGER},
-      ReplenishPercent = #{replenishpercent,jdbcType=INTEGER},
+      shortCovering = #{shortCovering,jdbcType=TINYINT},
+      shareTotal = #{shareTotal,jdbcType=INTEGER},
+      shareUp = #{shareUp,jdbcType=INTEGER},
+      shareFlag = #{shareFlag,jdbcType=INTEGER},
       Proportional = #{proportional,jdbcType=INTEGER},
       Handicap = #{handicap,jdbcType=VARCHAR}
       where Id = #{id,jdbcType=VARCHAR}
@@ -110,35 +108,35 @@
     </update>
 
     <select id="getUsers" resultMap="userResult">
-    select
-    <include refid="Columns" />
-    from USER
-    <include refid="sqlWhere" />
-    <if test="userType!=null and userType!=0">
-        AND UserType = #{userType,jdbcType=VARCHAR}
-    </if>
-    <if test="keyword!=null and keyword !=''">
-        AND (account like #{keyword,jdbcType=VARCHAR}
-        OR NAME  like #{keyword,jdbcType=VARCHAR}
-        )
-    </if>
-        <if test="xpath!=null and xpath !=''">
-          AND xpath like #{xpath,jdbcType=VARCHAR}
-        </if>
-    <if test="start !=null">
-        limit #{start ,jdbcType=INTEGER} ,10
-    </if>
-    </select>
-    <select id="count" resultType="java.lang.Long">
-        select count(1)
+        select
+        <include refid="Columns"/>
         from USER
-        <include refid="sqlWhere" />
+        <include refid="sqlWhere"/>
         <if test="userType!=null and userType!=0">
             AND UserType = #{userType,jdbcType=VARCHAR}
         </if>
         <if test="keyword!=null and keyword !=''">
             AND (account like #{keyword,jdbcType=VARCHAR}
-            OR NAME  like #{keyword,jdbcType=VARCHAR}
+            OR NAME like #{keyword,jdbcType=VARCHAR}
+            )
+        </if>
+        <if test="xpath!=null and xpath !=''">
+            AND xpath like #{xpath,jdbcType=VARCHAR}
+        </if>
+        <if test="start !=null">
+            limit #{start ,jdbcType=INTEGER} ,10
+        </if>
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from USER
+        <include refid="sqlWhere"/>
+        <if test="userType!=null and userType!=0">
+            AND UserType = #{userType,jdbcType=VARCHAR}
+        </if>
+        <if test="keyword!=null and keyword !=''">
+            AND (account like #{keyword,jdbcType=VARCHAR}
+            OR NAME like #{keyword,jdbcType=VARCHAR}
             )
         </if>
         <if test="xpath!=null and xpath !=''">
@@ -147,6 +145,15 @@
     </select>
     <select id="getSeq" resultType="java.lang.Integer">
         SELECT IFNULL(max(xseq),0)+1 from USER
-        WHERE parentId =#{parentID ,jdbcType=VARCHAR}
+        WHERE
+        <choose>
+            <when test="parentID !=null and parentID != ''">
+                parentId =#{parentID ,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                parentId IS NULL
+            </otherwise>
+        </choose>
+
     </select>
 </mapper>

@@ -6625,6 +6625,7 @@ $.extend({
             , f = $("select[name=parentid]:first", l)
             , r = $("select[name=keywordstatus]:first", l)
             , j = 0
+
             , g = -1
             , o = $("input[name='keyword']")
             , c = encodeURIComponent(o.val());
@@ -6925,7 +6926,7 @@ $.extend({
                     if (j == d) {
                         return
                     }
-                    $.get("ajax_req.htm?act=checkAccount&account=" + j, function(v) {
+                    $.get("/user/checkAccount?account=" + j, function(v) {
                         if (v == 1) {
                             u.data("old", j);
                             alert(x);
@@ -6951,11 +6952,11 @@ $.extend({
         });
         $.back_filld(f);
         var b = f.shareParent ? parseInt(f.shareParent.value, 10) : 0;
-        if (f.sys_user_shareUp) {
-            $(f.sys_user_shareUp).change(function(y) {
+        if (f.shareUp) {
+            $(f.shareUp).change(function(y) {
                 var w = y.target;
                 var d = b - parseInt(w.value, 10);
-                var x = f.sys_user_shareTotal;
+                var x = f.shareTotal;
                 var j = parseInt(x.value, 10) || 0;
                 j = d > j ? j : d;
                 x.length = 0;
@@ -7038,6 +7039,7 @@ $.extend({
         var g;
         var o;
         $(f).submit(function(K) {
+            console.log(K);
             try {
                 var F = this;
                 var w = $(":text[valid=account]", this), C, d;
@@ -7052,13 +7054,13 @@ $.extend({
                         return false
                     }
                 }
-                if (F.__sys_user_userName) {
+                if (F.userName) {
                     if (!$.validateForm(this)) {
                         return false
                     }
-                    if (F.sys_user_password.value !== F.sys_user_repassword2.value) {
+                    if (F.password.value !== F.sys_user_repassword2.value) {
                         alert("密碼兩次輸入不一致");
-                        F.sys_user_password.select();
+                        F.password.select();
                         return false
                     }
                     if (F.sys_user_permission) {
@@ -7075,11 +7077,11 @@ $.extend({
                         }
                         return true
                     }
-                    if (F.sys_user_credit && F.childsumcredit && parseInt(F.sys_user_credit.value, 10) < parseInt(F.childsumcredit.value, 10)) {
+                    if (F.credits && F.childsumcredit && parseInt(F.credits.value, 10) < parseInt(F.childsumcredit.value, 10)) {
                         alert("上級信用總額必須大於下級信用總額之和: " + F.childsumcredit.value);
                         return false
                     }
-                    if (F.sys_user_credit && F.parentcredit && parseInt(F.sys_user_credit.value, 10) > parseInt(F.parentcredit.value, 10)) {
+                    if (F.credits && F.parentcredit && parseInt(F.credits.value, 10) > parseInt(F.parentcredit.value, 10)) {
                         alert("下級信用總額不能超過上級剩餘{#|4fe1|7528|989d|5ea6#}: ".keyComment() + F.parentcredit.value);
                         return false
                     }
