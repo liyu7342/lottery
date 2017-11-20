@@ -263,9 +263,7 @@ public class HomeController  {
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() != UserTypeEnum.Admin.ordinal() &&user.getUsertype() != UserTypeEnum.Member.ordinal()){
                 result.setSuccess(true);
-
                 UserHelper.setCurrentUser(user);
-
             }
             else{
                 result.setSuccess(false);

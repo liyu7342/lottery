@@ -17,14 +17,14 @@
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="u2create" class="module">
+                    <div id="u1create" class="module">
 
-                        <form id="create" method="post" action="">
+                        <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">新增股東</h2></li>
                                     <li>&nbsp;&nbsp;<span></span></li>
-                                    <li><a class="btn1 cs" onclick="location.href='/user/index1';return false;" href="javascript:void(0);">返回</a></li>
+                                    <li><a class="btn1 cs" onclick="location.href='/user/index2';return false;" href="javascript:void(0);">返回</a></li>
                                 </ul>
                             </div>
                             <div class="bd g-new" >
@@ -33,71 +33,73 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="__sys_user_userName" value="" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" name="__sys_user_userAccount" value="4-12個數字/字母" class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account" class="gray"/> </td>
                                         <td>密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_password" value="" valid="password" /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
                                         <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" valid="password"/></td>
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" maxlength="9" name="sys_user_credit"  title="0~1000000" value="0~1000000" class="gray"/>
+                                        <td><input type="text" valid="credit" maxlength="9" name="credits"  title="0~1000000" value="${user.credits!''}" class="gray"/>
                                         </td>
                                         <td>盤口</td>
                                         <td><select class="w1" name="sys_user_oddsSet"  >
-                                            <option value="C" selected="selected">C</option>
-                                            <option value="B" >B</option>
-                                            <option value="A" >A</option>
+                                            <option value="C" <#if "C" ==user.sys_user_oddsSet>selected="selected"</#if> >C</option>
+                                            <option value="B" <#if "B" == user.sys_user_oddsSet>selected="selected"</#if> >B</option>
+                                            <option value="A" <#if "A" == user.sys_user_oddsSet>selected="selected"</#if> >A</option>
                                         </select></td>
                                         <td>補貨設定</td>
-                                        <td><select class="w3" name="sys_user_shortCovering" >
-                                            <option value="0" >不允許</option>
-                                            <option value="1" selected="selected">允許</option>
+                                        <td><select class="w3" name="shortCovering" >
+                                            <option value="0" <#if user.shortCovering==0>selected="selected"</#if> >不允許</option>
+                                            <option value="1" <#if user.shortCovering==1>selected="selected"</#if>  >允許</option>
                                         </select></td>
                                         <td>狀態</td>
-                                        <td><select class="w4" name="sys_user_status">
-                                            <option value="0" >停用</option>
-                                            <option value="1" selected="selected">啟用</option>
-                                            <option value="2" >停押</option>
+                                        <td><select class="w4" name="status">
+                                            <option value="0" <#if user.status==0>selected="selected"</#if>  >停用</option>
+                                            <option value="1" <#if user.status==1>selected="selected"</#if> >啟用</option>
+                                            <option value="2" <#if user.status==2>selected="selected"</#if> >停押</option>
                                         </select></td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
-                                            <select class="w2" name="sys_user_shareTotal" >
-
+                                            <select class="w2" name="shareTotal" >
+                                                <#list shareTotalList as share>
+                                                    <option  value=${share}>${share}</option>
+                                                </#list>
                                             </select>
-                                            <input type="hidden" name="shareParent" value="70"/>
+                                            <input type="hidden" name="shareParent" value="100"/>
                                         </td>
                                         <td colspan="2">股東佔成數(<font color='red'>%</font>)
-                                            <select class="w2" name="sys_user_shareUp" >
-                                                <option selected="selected" value="0">0</option>
-                                                <option  value="5">5</option>
-                                                <option  value="10">10</option>
-                                                <option  value="15">15</option>
-                                                <option  value="20">20</option>
-                                                <option  value="25">25</option>
-                                                <option  value="30">30</option>
-                                                <option  value="35">35</option>
-                                                <option  value="40">40</option>
-                                                <option  value="45">45</option>
-                                                <option  value="50">50</option>
-                                                <option  value="55">55</option>
-                                                <option  value="60">60</option>
-                                                <option  value="65">65</option>
-                                                <option  value="70">70</option>
-                                                <option  value="75">75</option>
-                                                <option  value="80">80</option>
-                                                <option  value="85">85</option>
-                                                <option  value="90">90</option>
-                                                <option  value="95">95</option>
-                                                <option  value="100">100</option>
+                                            <select class="w2" name="shareUp" >
+                                                <option <#if user.shareUp==0 >selected="selected"</#if> value="0">0</option>
+                                                <option  value="5" <#if user.shareUp==5>selected="selected"</#if>>5</option>
+                                                <option  value="10" <#if user.shareUp==10>selected="selected"</#if>>10</option>
+                                                <option  value="15" <#if user.shareUp==15>selected="selected"</#if>>15</option>
+                                                <option  value="20" <#if user.shareUp==20>selected="selected"</#if>>20</option>
+                                                <option  value="25" <#if user.shareUp==25>selected="selected"</#if>>25</option>
+                                                <option  value="30" <#if user.shareUp==30>selected="selected"</#if>>30</option>
+                                                <option  value="35" <#if user.shareUp==35>selected="selected"</#if>>35</option>
+                                                <option  value="40" <#if user.shareUp==40>selected="selected"</#if>>40</option>
+                                                <option  value="45" <#if user.shareUp==45>selected="selected"</#if>>45</option>
+                                                <option  value="50" <#if user.shareUp==50>selected="selected"</#if>>50</option>
+                                                <option  value="55" <#if user.shareUp==55>selected="selected"</#if>>55</option>
+                                                <option  value="60" <#if user.shareUp==60>selected="selected"</#if>>60</option>
+                                                <option  value="65" <#if user.shareUp==65>selected="selected"</#if>>65</option>
+                                                <option  value="70" <#if user.shareUp==70>selected="selected"</#if>>70</option>
+                                                <option  value="75" <#if user.shareUp==75>selected="selected"</#if>>75</option>
+                                                <option  value="80" <#if user.shareUp==80>selected="selected"</#if>>80</option>
+                                                <option  value="85" <#if user.shareUp==85>selected="selected"</#if>>85</option>
+                                                <option  value="90" <#if user.shareUp==90>selected="selected"</#if>>90</option>
+                                                <option  value="95" <#if user.shareUp==95>selected="selected"</#if>>95</option>
+                                                <option  value="100" <#if user.shareUp==100>selected="selected"</#if>>100</option>
                                             </select>
                                         </td>
                                         <td colspan="2"> 補貨是否佔成
-                                            <select class="w1" name="sys_user_shareFlag" >
+                                            <select class="w1" name="shareFlag" >
                                                 <option value="1" selected="selected">是</option>
                                                 <option value="0" >否</option>
                                             </select>
@@ -106,7 +108,7 @@
                                         </td>
                                     </tr>
                                     </tbody></table>
-                                <table class="g-t1 g-t2 mt t2 hline" id='zdl_discount_body'>
+                                <table class="g-t1 g-t2 mt t2 hline" id='gudong_discount_body'>
                                     <tbody nomovod><tr class="hline">
                                         <td></td><td>特碼</td><td>正碼</td><td>正碼特</td><td>連碼二</td><td>連碼三</td><td>過關</td><td>生肖</td><td>尾數</td>
                                     </tr>
@@ -302,69 +304,17 @@
                                     </tbody>
                                 </table>
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
-                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index1'"/></div>
+                                    <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index2'"/></div>
 
                                 <input type="hidden" name="id" value="${(user.id)!''}"/>
 
-                                <input type="hidden" name="parentid" value='${parentUser.id!''}' />
-                                <input type="hidden" name="usertype" value='2'/>
-
-                                <input type="hidden" name="pordermin0" value="${plimit.gameType_A00.singlemin}" />
-                                <input type="hidden" name="pordermin1" value="${plimit.gameType_01.singlemin}" />
-                                <input type="hidden" name="pordermin2" value="${plimit.gameType_02.singlemin}" />
-                                <input type="hidden" name="pordermin3" value="${plimit.gameType_03.singlemin}" />
-                                <input type="hidden" name="pordermin4" value="${plimit.gameType_04.singlemin}" />
-                                <input type="hidden" name="pordermin5" value="${plimit.gameType_05.singlemin}" />
-                                <input type="hidden" name="pordermin6" value="${plimit.gameType_06.singlemin}" />
-                                <input type="hidden" name="pordermin7" value="${plimit.gameType_07.singlemin}" />
-                                <input type="hidden" name="pordermin8" value="${plimit.gameType_08.singlemin}" />
-                                <input type="hidden" name="pordermin9" value="${plimit.gameType_09.singlemin}" />
-                                <input type="hidden" name="pordermin10" value="${plimit.gameType_10.singlemin}" />
-                                <input type="hidden" name="pordermin11" value="${plimit.gameType_11.singlemin}" />
-                                <input type="hidden" name="pordermin12" value="${plimit.gameType_12.singlemin}" />
-                                <input type="hidden" name="pordermin13" value="${plimit.gameType_13.singlemin}" />
-                                <input type="hidden" name="pordermin14" value="${plimit.gameType_14.singlemin}" />
-                                <input type="hidden" name="pordermin15" value="${plimit.gameType_15.singlemin}" />
-
-                                <input type="hidden" name="pordermax0" value="${plimit.gameType_A00.singlemax}" />
-                                <input type="hidden" name="pordermax1" value="${plimit.gameType_01.singlemax}" />
-                                <input type="hidden" name="pordermax2" value="${plimit.gameType_02.singlemax}" />
-                                <input type="hidden" name="pordermax3" value="${plimit.gameType_03.singlemax}" />
-                                <input type="hidden" name="pordermax4" value="${plimit.gameType_04.singlemax}" />
-                                <input type="hidden" name="pordermax5" value="${plimit.gameType_05.singlemax}" />
-                                <input type="hidden" name="pordermax6" value="${plimit.gameType_06.singlemax}" />
-                                <input type="hidden" name="pordermax7" value="${plimit.gameType_07.singlemax}" />
-                                <input type="hidden" name="pordermax8" value="${plimit.gameType_08.singlemax}" />
-                                <input type="hidden" name="pordermax9" value="${plimit.gameType_09.singlemax}" />
-                                <input type="hidden" name="pordermax10" value="${plimit.gameType_10.singlemax}" />
-                                <input type="hidden" name="pordermax11" value="${plimit.gameType_11.singlemax}" />
-                                <input type="hidden" name="pordermax12" value="${plimit.gameType_12.singlemax}" />
-                                <input type="hidden" name="pordermax13" value="${plimit.gameType_13.singlemax}" />
-                                <input type="hidden" name="pordermax14" value="${plimit.gameType_14.singlemax}" />
-                                <input type="hidden" name="pordermax15" value="${plimit.gameType_15.singlemax}" />
-
-                                <input type="hidden" name="pitemmax0" value="${plimit.gameType_A00.singlehighest}" />
-                                <input type="hidden" name="pitemmax1" value="${plimit.gameType_01.singlehighest}" />
-                                <input type="hidden" name="pitemmax2" value="${plimit.gameType_02.singlehighest}" />
-                                <input type="hidden" name="pitemmax3" value="${plimit.gameType_03.singlehighest}" />
-                                <input type="hidden" name="pitemmax4" value="${plimit.gameType_04.singlehighest}" />
-                                <input type="hidden" name="pitemmax5" value="${plimit.gameType_05.singlehighest}" />
-                                <input type="hidden" name="pitemmax6" value="${plimit.gameType_06.singlehighest}" />
-                                <input type="hidden" name="pitemmax7" value="${plimit.gameType_07.singlehighest}" />
-                                <input type="hidden" name="pitemmax8" value="${plimit.gameType_08.singlehighest}" />
-                                <input type="hidden" name="pitemmax9" value="${plimit.gameType_09.singlehighest}" />
-                                <input type="hidden" name="pitemmax10" value="${plimit.gameType_10.singlehighest}" />
-                                <input type="hidden" name="pitemmax11" value="${plimit.gameType_11.singlehighest}" />
-                                <input type="hidden" name="pitemmax12" value="${plimit.gameType_12.singlehighest}" />
-                                <input type="hidden" name="pitemmax13" value="${plimit.gameType_13.singlehighest}" />
-                                <input type="hidden" name="pitemmax14" value="${plimit.gameType_14.singlehighest}" />
-                                <input type="hidden" name="pitemmax15" value="${plimit.gameType_15.singlehighest}" />
-
+                                <input type="hidden" name="usertype" value='1'/>
+                                <input type="hidden" name="parentcredit" value='1000000'/>
                                 <input type="hidden" name="childsumcredit" value='0'/>
-                                <input type="hidden" name="parentcredit" value="${parentUser.credits!''}'"/>
                                 <input type="hidden" name="pageId" value='1'/>
-                                <input type="hidden" name="requestUrl" value='/user/index1'/>
+                                <input type="hidden" name="requestUrl" value='/user/index2'/>
                                 <input type="hidden" name="historyNum" value='1'/>
+                                <input type="hidden" name="op" value='udp'/>
                             </div>
                         </form>
                         <input type="hidden" name="childcount" id="childcount" value="0" />

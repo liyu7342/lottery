@@ -35,7 +35,7 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" name="account" value="${user.account!''}" class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" <#if user.account!="">readonly="readonly"</#if> name="account" value="${user.account!''}" class="gray"/> </td>
                                         <td>密碼</td>
                                         <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
@@ -67,32 +67,35 @@
                                     <tr>
                                         <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
+                                                <#list shareTotalList as share>
+                                                    <option  value=${share}>${share}</option>
+                                                </#list>
                                             </select>
                                             <input type="hidden" name="shareParent" value="100"/>
                                         </td>
                                         <td colspan="2">股東佔成數(<font color='red'>%</font>)
                                             <select class="w2" name="shareUp" >
-                                                <option selected="selected" value="0">0</option>
-                                                <option  value="5">5</option>
-                                                <option  value="10">10</option>
-                                                <option  value="15">15</option>
-                                                <option  value="20">20</option>
-                                                <option  value="25">25</option>
-                                                <option  value="30">30</option>
-                                                <option  value="35">35</option>
-                                                <option  value="40">40</option>
-                                                <option  value="45">45</option>
-                                                <option  value="50">50</option>
-                                                <option  value="55">55</option>
-                                                <option  value="60">60</option>
-                                                <option  value="65">65</option>
-                                                <option  value="70">70</option>
-                                                <option  value="75">75</option>
-                                                <option  value="80">80</option>
-                                                <option  value="85">85</option>
-                                                <option  value="90">90</option>
-                                                <option  value="95">95</option>
-                                                <option  value="100">100</option>
+                                                <option <#if user.shareUp==0 >selected="selected"</#if> value="0">0</option>
+                                                <option  value="5" <#if user.shareUp==5>selected="selected"</#if>>5</option>
+                                                <option  value="10" <#if user.shareUp==10>selected="selected"</#if>>10</option>
+                                                <option  value="15" <#if user.shareUp==15>selected="selected"</#if>>15</option>
+                                                <option  value="20" <#if user.shareUp==20>selected="selected"</#if>>20</option>
+                                                <option  value="25" <#if user.shareUp==25>selected="selected"</#if>>25</option>
+                                                <option  value="30" <#if user.shareUp==30>selected="selected"</#if>>30</option>
+                                                <option  value="35" <#if user.shareUp==35>selected="selected"</#if>>35</option>
+                                                <option  value="40" <#if user.shareUp==40>selected="selected"</#if>>40</option>
+                                                <option  value="45" <#if user.shareUp==45>selected="selected"</#if>>45</option>
+                                                <option  value="50" <#if user.shareUp==50>selected="selected"</#if>>50</option>
+                                                <option  value="55" <#if user.shareUp==55>selected="selected"</#if>>55</option>
+                                                <option  value="60" <#if user.shareUp==60>selected="selected"</#if>>60</option>
+                                                <option  value="65" <#if user.shareUp==65>selected="selected"</#if>>65</option>
+                                                <option  value="70" <#if user.shareUp==70>selected="selected"</#if>>70</option>
+                                                <option  value="75" <#if user.shareUp==75>selected="selected"</#if>>75</option>
+                                                <option  value="80" <#if user.shareUp==80>selected="selected"</#if>>80</option>
+                                                <option  value="85" <#if user.shareUp==85>selected="selected"</#if>>85</option>
+                                                <option  value="90" <#if user.shareUp==90>selected="selected"</#if>>90</option>
+                                                <option  value="95" <#if user.shareUp==95>selected="selected"</#if>>95</option>
+                                                <option  value="100" <#if user.shareUp==100>selected="selected"</#if>>100</option>
                                             </select>
                                         </td>
                                         <td colspan="2"> 補貨是否佔成

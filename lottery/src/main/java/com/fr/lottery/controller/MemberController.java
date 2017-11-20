@@ -13,6 +13,7 @@ import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
+import org.apache.commons.collections.ArrayStack;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
@@ -118,7 +116,14 @@ public class MemberController {
         }
 
         modelAndView.addObject("limitSets", map);
+        if(user.getShareUp()==null) user.setShareUp(0);
         modelAndView.addObject("user", user);
+        int shareTotal =100 -user.getShareUp();
+        List<Integer> shareArr = new ArrayList<Integer>();
+        for(int i =shareTotal;i>0;i-=5){
+            shareArr.add(i);
+        }
+        modelAndView.addObject("shareTotalList",shareArr);
 //        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
@@ -137,9 +142,14 @@ public class MemberController {
         }
         if (StringUtils.isNotBlank(id)) {
             user = userService.get(id);
+            user.setSys_user_oddsSet(user.getHandicap());
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+            user.setSys_user_oddsSet("A");
+            user.setStatus(1);
+            user.setShortCovering(1);
+
             limitSets = plimitSets;
         }
         Map<String, Object> map = new HashMap<String, Object>();
@@ -155,7 +165,15 @@ public class MemberController {
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
+
+        if(user.getShareUp()==null) user.setShareUp(0);
         modelAndView.addObject("user", user);
+        int shareTotal =100 -user.getShareUp();
+        List<Integer> shareArr = new ArrayList<Integer>();
+        for(int i =shareTotal;i>0;i-=5){
+            shareArr.add(i);
+        }
+        modelAndView.addObject("shareTotalList",shareArr);
         modelAndView.addObject("parentUser", parentUser);
         return modelAndView;
     }
@@ -177,6 +195,7 @@ public class MemberController {
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+
             limitSets = plimitSets;
         }
 
@@ -236,12 +255,12 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping("/save")
-    public void save(User user, LimitSetDto limitSetDto, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void save(User user, LimitSetDto limitSetDto,String requestUrl,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ResultInfo<String> resultInfo = new ResultInfo<String>();
         userService.Save(user, limitSetDto);
         //ModelAndView modelAndView = new ModelAndView("redirect:/member/info?parentId="+user.getParentid()+"&id="+user.getId());
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/user/index\";</script>");
+        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\""+requestUrl+"\";</script>");
         //return "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/user/index\";</script>";
         //return modelAndView;
     }
