@@ -29,4 +29,6 @@ public interface IUserService {
 
     Page<User> getDagudongs(Integer userType,String keyword,Integer status,Integer pageId);
 
+    Integer getChildSumCredit(String id);
+
 }

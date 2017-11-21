@@ -71,7 +71,7 @@
 
                                     <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                     <td class="offline" id="${obj.id}"></td>
-                                    <td class="bg tl">${obj.userName}&nbsp;&nbsp;</td>
+                                    <td class="bg tl">${obj.userName!''}&nbsp;&nbsp;</td>
                                     <td>${obj.credits}</td>
                                     <td>${obj.handicap}</td><td>0</td>
 

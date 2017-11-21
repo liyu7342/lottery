@@ -54,10 +54,10 @@ public class MemberController {
     @RequestMapping("/info")
     public ModelAndView info(String id, String parentId) {
         ModelAndView modelAndView = new ModelAndView("/member/info");
-        User user ;
-        User parentUser = userService.get(parentId);
-        List<LimitSet> limitSets ;
+        User user;
+        List<LimitSet> limitSets;
         List<LimitSet> plimitSets;
+        User parentUser = userService.get(parentId);
         if (StringUtils.isNotBlank(parentId)) {
             plimitSets = limitSetService.findAll(parentId);
         } else {
@@ -81,6 +81,8 @@ public class MemberController {
                 ) {
             pmap.put("gameType_" + limitset.getLimitType(), limitset);
         }
+
+
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
         modelAndView.addObject("user", user);
@@ -91,10 +93,10 @@ public class MemberController {
     @RequestMapping("/info1")
     public ModelAndView info1(String id, String parentId) {
         ModelAndView modelAndView = new ModelAndView("/member/info1");
-        User user = null;
-
-        List<LimitSet> limitSets ;
-        List<LimitSet> plimitSets ;
+        User user;
+        Integer childsumcredit = 0;
+        List<LimitSet> limitSets;
+        List<LimitSet> plimitSets;
         if (StringUtils.isNotBlank(parentId)) {
             plimitSets = limitSetService.findAll(parentId);
         } else {
@@ -103,9 +105,9 @@ public class MemberController {
         if (StringUtils.isNotBlank(id)) {
             user = userService.get(id);
             user.setSys_user_oddsSet(user.getHandicap());
+            childsumcredit = userService.getChildSumCredit(id);
             limitSets = limitSetService.findAll(id);
-        }
-        else{
+        } else {
             user = new User();
             limitSets = plimitSets;
         }
@@ -116,14 +118,15 @@ public class MemberController {
         }
 
         modelAndView.addObject("limitSets", map);
-        if(user.getShareUp()==null) user.setShareUp(0);
+        if (user.getShareUp() == null) user.setShareUp(0);
         modelAndView.addObject("user", user);
-        int shareTotal =100 -user.getShareUp();
+        int shareTotal = 100 - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
-        for(int i =shareTotal;i>0;i-=5){
+        for (int i = 0; i <= shareTotal; i += 5) {
             shareArr.add(i);
         }
-        modelAndView.addObject("shareTotalList",shareArr);
+        modelAndView.addObject("shareTotalList", shareArr);
+        modelAndView.addObject("childsumcredit", childsumcredit);
 //        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
@@ -146,7 +149,7 @@ public class MemberController {
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
-            user.setSys_user_oddsSet("A");
+            user.setSys_user_oddsSet(parentUser.getHandicap());
             user.setStatus(1);
             user.setShortCovering(1);
 
@@ -166,14 +169,21 @@ public class MemberController {
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
 
-        if(user.getShareUp()==null) user.setShareUp(0);
+        if (user.getShareUp() == null) user.setShareUp(0);
+
         modelAndView.addObject("user", user);
-        int shareTotal =100 -user.getShareUp();
+        modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
+        int shareTotal = parentUser.getShareTotal() - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
-        for(int i =shareTotal;i>0;i-=5){
+        for (int i = 0; i <= shareTotal; i += 5) {
             shareArr.add(i);
         }
-        modelAndView.addObject("shareTotalList",shareArr);
+        List<Integer> shareUpArr = new ArrayList<Integer>();
+        for (int i = 0; i <= parentUser.getShareTotal(); i += 5) {
+            shareUpArr.add(i);
+        }
+        modelAndView.addObject("shareTotalList", shareArr);
+        modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         return modelAndView;
     }
@@ -192,18 +202,22 @@ public class MemberController {
         }
         if (StringUtils.isNotBlank(id)) {
             user = userService.get(id);
+            user.setSys_user_oddsSet(user.getHandicap());
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+            user.setSys_user_oddsSet(parentUser.getHandicap());
+            user.setStatus(1);
+            user.setShortCovering(1);
 
             limitSets = plimitSets;
         }
-
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets
                 ) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
+
         Map<String, Object> pmap = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets
                 ) {
@@ -211,7 +225,22 @@ public class MemberController {
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
+
+        if (user.getShareUp() == null) user.setShareUp(0);
+
         modelAndView.addObject("user", user);
+        modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
+        int shareTotal = parentUser.getShareTotal() - user.getShareUp();
+        List<Integer> shareArr = new ArrayList<Integer>();
+        for (int i = 0; i <= shareTotal; i += 5) {
+            shareArr.add(i);
+        }
+        List<Integer> shareUpArr = new ArrayList<Integer>();
+        for (int i = 0; i <= parentUser.getShareTotal(); i += 5) {
+            shareUpArr.add(i);
+        }
+        modelAndView.addObject("shareTotalList", shareArr);
+        modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         return modelAndView;
     }
@@ -219,7 +248,7 @@ public class MemberController {
     @RequestMapping("/info4")
     public ModelAndView info4(String id, String parentId) {
         ModelAndView modelAndView = new ModelAndView("/member/info4");
-        User user = null;
+        User user;
         User parentUser = userService.get(parentId);
         List<LimitSet> limitSets;
         List<LimitSet> plimitSets;
@@ -230,17 +259,22 @@ public class MemberController {
         }
         if (StringUtils.isNotBlank(id)) {
             user = userService.get(id);
+            user.setSys_user_oddsSet(user.getHandicap());
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+            user.setSys_user_oddsSet(parentUser.getHandicap());
+            user.setStatus(1);
+            user.setShortCovering(1);
+
             limitSets = plimitSets;
         }
-
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets
                 ) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
+
         Map<String, Object> pmap = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets
                 ) {
@@ -248,19 +282,34 @@ public class MemberController {
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
+
+        if (user.getShareUp() == null) user.setShareUp(0);
+
         modelAndView.addObject("user", user);
+        modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
+        int shareTotal = parentUser.getShareTotal() - user.getShareUp();
+        List<Integer> shareArr = new ArrayList<Integer>();
+        for (int i = 0; i <= shareTotal; i += 5) {
+            shareArr.add(i);
+        }
+        List<Integer> shareUpArr = new ArrayList<Integer>();
+        for (int i = 0; i <= parentUser.getShareTotal(); i += 5) {
+            shareUpArr.add(i);
+        }
+        modelAndView.addObject("shareTotalList", shareArr);
+        modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         return modelAndView;
     }
 
     @ResponseBody
     @RequestMapping("/save")
-    public void save(User user, LimitSetDto limitSetDto,String requestUrl,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void save(User user, LimitSetDto limitSetDto, String requestUrl, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ResultInfo<String> resultInfo = new ResultInfo<String>();
         userService.Save(user, limitSetDto);
         //ModelAndView modelAndView = new ModelAndView("redirect:/member/info?parentId="+user.getParentid()+"&id="+user.getId());
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\""+requestUrl+"\";</script>");
+        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
         //return "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/user/index\";</script>";
         //return modelAndView;
     }

@@ -23,7 +23,7 @@
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">新增股東</h2></li>
-                                    <li>&nbsp;&nbsp;<span></span></li>
+                                    <li>&nbsp;&nbsp;<span>上级股东：${parentUser.userName!''}</span></li>
                                     <li><a class="btn1 cs" onclick="location.href='/user/index2';return false;" href="javascript:void(0);">返回</a></li>
                                 </ul>
                             </div>
@@ -35,7 +35,7 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account" class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account"  value="${user.account!''}"  class="gray"/> </td>
                                         <td>密碼</td>
                                         <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
@@ -43,7 +43,7 @@
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" maxlength="9" name="credits"  title="0~1000000" value="${user.credits!''}" class="gray"/>
+                                        <td><input type="text" valid="credit" maxlength="9" name="credits"  title="0~1000000" value="${credits!''}" class="gray"/>
                                         </td>
                                         <td>盤口</td>
                                         <td><select class="w1" name="sys_user_oddsSet"  >
@@ -68,34 +68,16 @@
                                         <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
                                                 <#list shareTotalList as share>
-                                                    <option  value=${share}>${share}</option>
+                                                    <option  value=${share} <#if user.shareUp==share>selected="selected"</#if>>${share}</option>
                                                 </#list>
                                             </select>
-                                            <input type="hidden" name="shareParent" value="100"/>
+                                            <input type="hidden" name="shareParent" value="${parentUser.shareTotal!'0'}"/>
                                         </td>
                                         <td colspan="2">股東佔成數(<font color='red'>%</font>)
                                             <select class="w2" name="shareUp" >
-                                                <option <#if user.shareUp==0 >selected="selected"</#if> value="0">0</option>
-                                                <option  value="5" <#if user.shareUp==5>selected="selected"</#if>>5</option>
-                                                <option  value="10" <#if user.shareUp==10>selected="selected"</#if>>10</option>
-                                                <option  value="15" <#if user.shareUp==15>selected="selected"</#if>>15</option>
-                                                <option  value="20" <#if user.shareUp==20>selected="selected"</#if>>20</option>
-                                                <option  value="25" <#if user.shareUp==25>selected="selected"</#if>>25</option>
-                                                <option  value="30" <#if user.shareUp==30>selected="selected"</#if>>30</option>
-                                                <option  value="35" <#if user.shareUp==35>selected="selected"</#if>>35</option>
-                                                <option  value="40" <#if user.shareUp==40>selected="selected"</#if>>40</option>
-                                                <option  value="45" <#if user.shareUp==45>selected="selected"</#if>>45</option>
-                                                <option  value="50" <#if user.shareUp==50>selected="selected"</#if>>50</option>
-                                                <option  value="55" <#if user.shareUp==55>selected="selected"</#if>>55</option>
-                                                <option  value="60" <#if user.shareUp==60>selected="selected"</#if>>60</option>
-                                                <option  value="65" <#if user.shareUp==65>selected="selected"</#if>>65</option>
-                                                <option  value="70" <#if user.shareUp==70>selected="selected"</#if>>70</option>
-                                                <option  value="75" <#if user.shareUp==75>selected="selected"</#if>>75</option>
-                                                <option  value="80" <#if user.shareUp==80>selected="selected"</#if>>80</option>
-                                                <option  value="85" <#if user.shareUp==85>selected="selected"</#if>>85</option>
-                                                <option  value="90" <#if user.shareUp==90>selected="selected"</#if>>90</option>
-                                                <option  value="95" <#if user.shareUp==95>selected="selected"</#if>>95</option>
-                                                <option  value="100" <#if user.shareUp==100>selected="selected"</#if>>100</option>
+                                                <#list shareUpList as shareup>
+                                                    <option  value=${shareup} <#if user.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
+                                                </#list>
                                             </select>
                                         </td>
                                         <td colspan="2"> 補貨是否佔成
@@ -307,9 +289,10 @@
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index2'"/></div>
 
                                 <input type="hidden" name="id" value="${(user.id)!''}"/>
+                                <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
+                                <input type="hidden" name="usertype" value='2'/>
+                                <input type="hidden" name="parentcredit" value='${parentUser.credits}'/>
 
-                                <input type="hidden" name="usertype" value='1'/>
-                                <input type="hidden" name="parentcredit" value='1000000'/>
                                 <input type="hidden" name="childsumcredit" value='0'/>
                                 <input type="hidden" name="pageId" value='1'/>
                                 <input type="hidden" name="requestUrl" value='/user/index2'/>

@@ -284,7 +284,7 @@
                                 <input type="hidden" name="parentcredit" value="${(parentUser.credits)!''}"/>
                                 <input type="hidden" name="betting" value='0' />
                                 <input type="hidden" name="parentstatus" value="${(parentUser.status)!''}"/>
-                                <input type="hidden" name="requestUrl" value='member/index'/>
+                                <input type="hidden" name="requestUrl" value='/user/index'/>
                                 <input type="hidden" name="historyNum" value='1'/>
 
                                 <input type="hidden" name="pordermin0" value="${plimit.gameType_A00.singlemin}" />

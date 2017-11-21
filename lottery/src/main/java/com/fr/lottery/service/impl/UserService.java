@@ -90,9 +90,6 @@ public class UserService implements IUserService {
             user.setHandicap(user.getSys_user_oddsSet());
         }
         if (StringUtils.isBlank(user.getId())) {
-            user.setId(StringUtil.getUUID());
-            user.setCreatedate(new Date());
-
             String xpath = "";
             Integer seq = userMapper.getSeq(user.getParentid());
 
@@ -168,5 +165,18 @@ public class UserService implements IUserService {
         long total = userMapper.count("", userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSize, total, users);
         return page;
+    }
+
+    /**
+     * 获取下级总信用
+     * @param id
+     * @return
+     */
+    @Override
+    public Integer getChildSumCredit(String id) {
+        if(StringUtils.isBlank( id)){
+            return 0;
+        }
+        return userMapper.getChildSumCredit(id);
     }
 }

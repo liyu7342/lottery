@@ -34,4 +34,6 @@ public interface UserMapper {
     List<User> getUsers(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status,@Param("start") Integer start);
 
     int getSeq(@Param("parentID") String parentID);
+
+    Integer getChildSumCredit(@Param("id") String id);
 }

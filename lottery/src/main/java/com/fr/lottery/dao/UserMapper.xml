@@ -154,6 +154,12 @@
                 parentId IS NULL
             </otherwise>
         </choose>
-
+    </select>
+    <select id="getChildSumCredit" resultType="java.lang.Integer">
+        SELECT IFNULL(sum(Credits),0) from USER
+        WHERE
+        <if test="id !=null and id != ''">
+            parentId =#{id ,jdbcType=VARCHAR}
+        </if>
     </select>
 </mapper>
