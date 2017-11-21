@@ -97,8 +97,20 @@ public class UserController {
 
     @RequestMapping("/logout")
     public void  logout(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        User user = UserHelper.getCurrentUser();
+
         UserHelper.logout(request);
-        response.sendRedirect("/home/login");
+        if(UserTypeEnum.Member.ordinal() == user.getUsertype())
+            response.sendRedirect("/home/login");
+        else if(UserTypeEnum.Daili.ordinal() == user.getUsertype() || UserTypeEnum.ZongDaili.ordinal() == user.getUsertype()
+                || UserTypeEnum.XiaoGudong.ordinal() == user.getUsertype() || UserTypeEnum.DaGudong.ordinal() == user.getUsertype() )
+            response.sendRedirect("/home/login1");
+         else if(UserTypeEnum.Admin.ordinal() == user.getUsertype()){
+            response.sendRedirect("/home/login2");
+        }
+        else{
+            response.sendRedirect("/home/default");
+        }
     }
 
 

@@ -337,7 +337,8 @@ public class OrderService implements IOrderService {
         Handicap handicap = handicapService.getCurrentHandicap();
         if(handicap == null)
             return  new ArrayList<StatisDto>();
-        return statisMapper.getStatis(gameTypes, handicap.getId());
+        String userId = UserHelper.getCurrentUser().getId();
+        return statisMapper.getStatis(gameTypes, handicap.getId(),UserHelper.getCurrentUser().getXpath()+"%");
     }
 
     @Override
