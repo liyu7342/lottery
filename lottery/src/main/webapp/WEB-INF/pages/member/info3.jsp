@@ -22,8 +22,8 @@
                         <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">
                                 <ul>
-                                    <li><h2 class="g-tit">新增总代理</h2></li>
-                                    <li>&nbsp;&nbsp;<span>上级股东：${parentUser.userName!''}</span></li>
+                                    <li><h2 class="g-tit">新增總代理</h2></li>
+                                    <li>&nbsp;&nbsp;<span>上级股東：${parentUser.userName!''}</span></li>
                                     <li><a class="btn1 cs" onclick="location.href='/user/index3';return false;" href="javascript:void(0);">返回</a></li>
                                 </ul>
                             </div>
@@ -314,7 +314,22 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='3' href='user_list.htm?level=3'>總代理</a><cite>1</cite></li><li><a curl='4' href='user_list.htm?level=4'>代理商</a><cite>10</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>73</cite></li>        </ul>
+                        <#if currentuser.usertype lt 1>
+                            <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 2>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 3>
+                            <li><a curl='5' class="red" href='/user/index3'>總代理</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 4>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 5>
+                            <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
+                        </#if>
+                    </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：9</p>

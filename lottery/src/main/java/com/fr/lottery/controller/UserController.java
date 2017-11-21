@@ -30,12 +30,14 @@ public class UserController {
         if(pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index");
-        String userId = UserHelper.getCurrentUser().getId();
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
 
         Page<User> users = userService.getUsers(userId,UserTypeEnum.Member.ordinal(),keyword,keywordstatus,pageId);
         modelAndView.addObject("currentUserId",userId);
         modelAndView.addObject("users",users.getList());
         modelAndView.addObject("page",users.toString());
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -45,12 +47,13 @@ public class UserController {
         if(pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_1");
-        String userId = UserHelper.getCurrentUser().getId();
-
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
         Page<User> users = userService.getDagudongs(UserTypeEnum.DaGudong.ordinal(),keyword,keywordstatus,pageId);
         modelAndView.addObject("currentUserId",userId);
         modelAndView.addObject("users",users.getList());
         modelAndView.addObject("page",users.toString());
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
     @RequestMapping("/index2")
@@ -58,12 +61,14 @@ public class UserController {
         if(pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_2");
-        String userId = UserHelper.getCurrentUser().getId();
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
 
         Page<User> users = userService.getUsers(userId,UserTypeEnum.XiaoGudong.ordinal(),keyword,keywordstatus,pageId);
         modelAndView.addObject("currentUserId",userId);
         modelAndView.addObject("users",users.getList());
         modelAndView.addObject("page",users.toString());
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -72,12 +77,14 @@ public class UserController {
         if(pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_3");
-        String userId = UserHelper.getCurrentUser().getId();
 
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
         Page<User> users = userService.getUsers(userId,UserTypeEnum.ZongDaili.ordinal(),keyword,keywordstatus,pageId);
         modelAndView.addObject("currentUserId",userId);
         modelAndView.addObject("users",users.getList());
         modelAndView.addObject("page",users.toString());
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -86,12 +93,14 @@ public class UserController {
         if(pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_4");
-        String userId = UserHelper.getCurrentUser().getId();
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
 
         Page<User> users = userService.getUsers(userId,UserTypeEnum.Daili.ordinal(),keyword,keywordstatus,pageId);
         modelAndView.addObject("currentUserId",userId);
         modelAndView.addObject("users",users.getList());
         modelAndView.addObject("page",users.toString());
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 

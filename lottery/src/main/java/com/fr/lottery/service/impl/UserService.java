@@ -168,7 +168,7 @@ public class UserService implements IUserService {
     }
 
     /**
-     * 获取下级总信用
+     * 获取下级總信用
      * @param id
      * @return
      */

@@ -109,11 +109,21 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/user/index1'>大股东</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index2'>小股东</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index3'>总代理</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index4'>代理</a><cite>0</cite></li>
-                        <li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>
+                        <#if user.usertype lt 1>
+                            <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 2>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 3>
+                            <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 4>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 5>
+                            <li><a curl='5' href='/user/index'>會員</a><cite>0</cite></li>
+                        </#if>
                     </ul>
                 </div>
                 <div class="ft">

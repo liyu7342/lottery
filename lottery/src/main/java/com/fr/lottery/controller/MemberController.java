@@ -68,6 +68,7 @@ public class MemberController {
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+            user.setHandicap(parentUser.getHandicap());
             limitSets = plimitSets;
         }
 
@@ -109,6 +110,9 @@ public class MemberController {
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
+            user.setStatus(1);
+            user.setShortCovering(1);
+            user.setSys_user_oddsSet("C");
             limitSets = plimitSets;
         }
         Map<String, Object> map = new HashMap<String, Object>();
@@ -127,6 +131,7 @@ public class MemberController {
         }
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("childsumcredit", childsumcredit);
+        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
 //        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
@@ -185,6 +190,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
+        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -242,6 +248,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
+        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -299,6 +306,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
+        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
         return modelAndView;
     }
 

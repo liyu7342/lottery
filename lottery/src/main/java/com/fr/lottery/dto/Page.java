@@ -22,7 +22,7 @@ public class Page<T> {
     private int pageNo = 1; // 当前页码
     private int pageSize = Global.pageSize; // 页面大小，设置为“-1”表示不进行分页（分页无效）
 
-    private long count;// 总记录数，设置为“-1”表示不查询总数
+    private long count;// 總记录数，设置为“-1”表示不查询總数
 
     private int first;// 首页索引
     private int last;// 尾页索引
@@ -289,7 +289,7 @@ public class Page<T> {
 //	}
 
     /**
-     * 获取设置总数
+     * 获取设置總数
      * @return
      */
     public long getCount() {
@@ -297,7 +297,7 @@ public class Page<T> {
     }
 
     /**
-     * 设置数据总数
+     * 设置数据總数
      * @param count
      */
     public void setCount(long count) {
@@ -358,7 +358,7 @@ public class Page<T> {
     }
 
     /**
-     * 获取页面总数
+     * 获取页面總数
      * @return getLast();
      */
     @JsonIgnore
@@ -504,7 +504,7 @@ public class Page<T> {
     }
 
     /**
-     * 是否进行总数统计
+     * 是否进行總数统计
      * @return this.count==-1
      */
     @JsonIgnore

@@ -31,7 +31,7 @@
                             <form id="form1" method="GET" action="/user/index1">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
-                                    <li><h2 class="g-tit">大股东
+                                    <li><h2 class="g-tit">大股東
                                     </h2></li>
                                     <li>
                                         <select class="s" name="keywordstatus">
@@ -56,11 +56,15 @@
                                 <thead><tr>
                                     <td id="batchDelSelectAll"><input type="checkbox" name='checkAllAccount'/></td>
                                     <td>在線</td>
-                                    <td>會員賬號</td>
+                                    <td>大股東賬號</td>
                                     <td>信用額度</td>
                                     <td>盤口</td>
-
-                                    <td>代理%</td>
+                                    <td>系統管理員%</td>
+                                    <td>大股東%</td>
+                                    <td>小股東數</td>
+                                    <td>總代理數</td>
+                                    <td>代理商數</td>
+                                    <td>會員數</td>
                                     <td>狀態</td>
                                     <td>新增日期</td>
                                     <td class="r">功能</td>
@@ -72,9 +76,14 @@
                                     <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                     <td class="offline" id="${obj.id}"></td>
                                     <td class="bg tl">${obj.userName}&nbsp;&nbsp;</td>
-                                    <td>${obj.credits}</td>
-                                    <td>${obj.handicap}</td><td>0</td>
-
+                                    <td>${obj.credits!''}</td>
+                                    <td>${obj.handicap!''}</td>
+                                    <td>${obj.shareUp!''}</td>
+                                    <td>${obj.shareTotal!''}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                     <#if obj.status == 0>
                                         <span class='red'>停用</span>
@@ -109,11 +118,21 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='5' href='/user/index1'>大股东</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index2'>小股东</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index3'>总代理</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index4'>代理</a><cite>0</cite></li>
-                        <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
+                        <#if user.usertype lt 1>
+                            <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 2>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 3>
+                            <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 4>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
+                        </#if>
+                        <#if user.usertype lt 5>
+                            <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
+                        </#if>
                     </ul>
                 </div>
                 <div class="ft">

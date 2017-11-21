@@ -35,7 +35,7 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" <#if user.account!="">readonly="readonly"</#if> name="account" value="${user.account!''}" class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account" value="${user.account!''}" class="gray"/> </td>
                                         <td>密碼</td>
                                         <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
                                         <td>確認密碼</td>
@@ -65,15 +65,15 @@
                                     </tr>
 
                                     <tr>
-                                        <td colspan="2">總代理及下級佔成和(<font color='red'>%</font>)
+                                        <td colspan="2">大股東及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
                                                 <#list shareTotalList as share>
-                                                    <option  value=${share}>${share}</option>
+                                                    <option  value=${share} <#if user.shareUp==share>selected="selected"</#if>>${share}</option>
                                                 </#list>
                                             </select>
                                             <input type="hidden" name="shareParent" value="100"/>
                                         </td>
-                                        <td colspan="2">股東佔成數(<font color='red'>%</font>)
+                                        <td colspan="2">系统管理员佔成數(<font color='red'>%</font>)
                                             <select class="w2" name="shareUp" >
                                                 <option <#if user.shareUp==0 >selected="selected"</#if> value="0">0</option>
                                                 <option  value="5" <#if user.shareUp==5>selected="selected"</#if>>5</option>
@@ -331,7 +331,23 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='3' href='user_list.htm?level=3'>總代理</a><cite>1</cite></li><li><a curl='4' href='user_list.htm?level=4'>代理商</a><cite>10</cite></li><li><a curl='5' href='member_list.htm'>會員</a><cite>73</cite></li>        </ul>
+                        <#if currentuser.usertype lt 1>
+                            <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 2>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 3>
+                            <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 4>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
+                        </#if>
+                        <#if currentuser.usertype lt 5>
+                            <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
+                        </#if>
+
+                    </ul>
                 </div>
                 <div class="ft">
                     <p>在線會員數：9</p>

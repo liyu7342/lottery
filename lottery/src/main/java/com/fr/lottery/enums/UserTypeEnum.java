@@ -9,11 +9,11 @@ public enum UserTypeEnum {
      */
     Admin,
     /**
-     *大股东
+     *大股東
      */
     DaGudong,
     /**
-     * 小股东
+     * 小股東
      */
     XiaoGudong,
     /**
