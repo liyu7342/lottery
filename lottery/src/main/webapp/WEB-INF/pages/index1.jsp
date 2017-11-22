@@ -73,8 +73,8 @@
                     <li ><a target='main' href="/result/index" act='result'>開獎結果</a></li>
                     <li ><a target='main' href="/order/order">注單數據</a></li>
                     <li ><a target='main' href="/sysconfig/buhuo">系統設定</a></li>
-                    <li ><a target='main' href="/user/info">個人資訊</a></li>
-                    <li ><a target='main' href="/user/password">密碼變更</a></li>
+                    <li ><a target='main' href="/user/info1">個人資訊</a></li>
+                    <li ><a target='main' href="/user/password1">密碼變更</a></li>
                 </ul>
             </div>
         </div>   </div>

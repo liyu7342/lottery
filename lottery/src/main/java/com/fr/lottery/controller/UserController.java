@@ -8,6 +8,7 @@ import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.UserHelper;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -161,6 +162,12 @@ public class UserController {
         return mv;
     }
 
+    @RequestMapping("password1")
+    public ModelAndView password1(){
+        ModelAndView mv = new ModelAndView("/user/password1");
+        return mv;
+    }
+
     @RequestMapping("/info")
     public ModelAndView info() {
         ModelAndView mv = new ModelAndView("/user/info");
@@ -176,6 +183,21 @@ public class UserController {
             else if("C".equals(currentUser.getHandicap())){
                 limitset.setaRetreat(limitset.getcRetreat());
             }
+            map.put("gameType_" + limitset.getLimitType(), limitset);
+        }
+        mv.addObject("limitSets", map);
+        return mv;
+    }
+
+    @RequestMapping("/info1")
+    public ModelAndView info1() {
+        ModelAndView mv = new ModelAndView("/user/info1");
+        User currentUser = UserHelper.getCurrentUser();
+        mv.addObject("currentUser", currentUser);
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<LimitSet> limitSets = limitSetService.findAll(currentUser.getId());
+
+        for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         mv.addObject("limitSets", map);

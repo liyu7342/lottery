@@ -52,7 +52,7 @@
                                 <tbody movod='movod'>
                                 <#list handicaps as handicap>
                                 <tr>
-                                    <td>${handicap.riQi!''}</td>
+                                    <td>${handicap.riqi!''}</td>
                                     <td class="bl">
 
                                         <em class="ico n${handicap.no1!''}"></em>${handicap.xiaoName1!''}

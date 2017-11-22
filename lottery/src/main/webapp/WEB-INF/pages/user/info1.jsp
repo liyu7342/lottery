@@ -38,14 +38,22 @@
                                     <td>${currentUser.userName!''}</td>
                                     <td class="bg">賬號</td>
                                     <td>${currentUser.account!''}</td>
-                                    <td class="bg">總信用額度</td>
-                                    <td>${currentUser.credits!''}</td>
+                                    <td class="bg">補貨設定</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="bg">狀態</td>
-                                    <td colspan="3" >${currentUser.status!''}</td>
+                                    <td class="bg">總信用額度</td>
+                                    <td>${currentUser.credits!''}</td>
+                                    <td class="bg" >自己及下級佔成數</td>
+                                    <td >0%</td>
                                     <td class="bg" >盤口</td>
                                     <td> ${currentUser.handicap!''}</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg">補貨是否佔成</td>
+                                    <td>是</td>
+                                    <td class="bg">狀態</td>
+                                    <td colspan="3" >${currentUser.status!''}</td>
                                 </tr>
                                 </tbody></table>
                             <div class="g-tif mt"><h3>詳細資料</h3></div>
