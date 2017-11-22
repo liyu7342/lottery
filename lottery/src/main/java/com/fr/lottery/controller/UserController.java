@@ -168,7 +168,14 @@ public class UserController {
         mv.addObject("currentUser", currentUser);
         Map<String, Object> map = new HashMap<String, Object>();
         List<LimitSet> limitSets = limitSetService.findAll(currentUser.getId());
+
         for (LimitSet limitset : limitSets) {
+            if("B".equals(currentUser.getHandicap())){
+                limitset.setaRetreat(limitset.getbRetreat());
+            }
+            else if("C".equals(currentUser.getHandicap())){
+                limitset.setaRetreat(limitset.getcRetreat());
+            }
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         mv.addObject("limitSets", map);

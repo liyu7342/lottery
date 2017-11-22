@@ -1,67 +1,82 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
     <script type="text/javascript">
-        var domainOK = 1, domain = 'pm10.x.mmm33.us';
-        window.gms_fcorp = parseInt("0",10);
+        var domainOK = 1, domain = '';
         try{if(domain){document.domain = domain;}}catch(x){domainOK = 0;}
     </script>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>f2213 - A28</title>
-    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
-
-
+    <title>${currentUser.userName} - A28</title>
+    <link rel="stylesheet" href="../../resources/css/new/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_3106" type="text/css">
 </head>
-<body class="userinfo" >
+<body class="frame_usermsg">
+<div id="htmlcover" style="background-color:rgb(255, 255, 255);filter:alpha(opacity=0);opacity:0;position:absolute;top:0pt;left:0pt;z-index:5;display:block;width:100%;height:100%;"></div>
 <div id="doc3" class="yui-t7">
     <div id="bd">
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="ausinfo" class="module">
-                        <div class="hd g-tm"><h2 class="g-tit">
-                            <a class="btn6 log" href="javascript:void(0)" >個人資訊</a>
-                            <a class="btn6 red" href="history.htm">歷史登錄</a>
-                        </h2></div>
-                        <div class="bd g-new">
-                            <div class="g-tif"><h3>基本資料</h3></div>
-                            <table class="g-t1 g-t2 t1">
-                                <colgroup><col width="10%"/><col width="23%"/><col width="10%"/><col width="23%"/><col width="10%"/></colgroup>
-                                <tbody nomovod>
+                    <div id="usermsg" class="module">
+                        <div class="hd">
+                            <!-- <h2 class="g-tit"><a class="btn6 log" href="javascript:void(0)" >會員資訊</a>
+                          <a class="btn6 red" href="history.htm">歷史登錄</a></h2> -->
+                            <div class="itab">
+                                <a href="javascript:void(0)" class="on">會員資訊</a>
+                                <a href="history.htm">歷史登錄</a>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <table class="g-t1">
+                                <colgroup>
+                                    <col width="16%" />
+                                    <col width="16%" />
+                                    <col width="16%" />
+                                    <col width="16%" />
+                                    <col width="16%" />
+                                    <col width="16%" />
+                                </colgroup>
+                                <thead>
+                                <td colspan="6">基本信息</td>
+                                </thead>
+                                <tbody movod='movod'>
                                 <tr>
-                                    <td class="bg">名稱</td>
+                                    <td class="bg"> 賬號</td>
                                     <td>${currentUser.userName!''}</td>
-                                    <td class="bg">賬號</td>
+                                    <td class="bg">會員名稱</td>
                                     <td>${currentUser.account!''}</td>
-                                    <td class="bg">補貨設定</td>
+                                    <td class="bg"> 信用額度</td>
+                                    <td>${currentUser.credits!''}</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="bg"> 賬號狀態</td>
+                                    <td>${currentUser.status!''}</td>
+
+                                    <td class="bg">所屬盤口</td>
+                                    <td> ${currentUser.handicap!''}</td>
+                                    <td class="bg"></td>
                                     <td></td>
                                 </tr>
+                                </tbody>
+                            </table>
+                            <table class="g-t1 mt">
+                                <thead>
                                 <tr>
-                                    <td class="bg">總信用額度</td>
-                                    <td>${currentUser.credits!''}</td>
-                                    <td class="bg" >自己及下級佔成數</td>
-                                    <td >0%</td>
-                                    <td class="bg" >盤口</td>
-                                    <td> ${currentUser.handicap!''}</td>
+                                    <td width="11%"></td>
+                                    <td width="12%">特碼A/特碼B</td>
+                                    <td width="11%">正碼</td>
+                                    <td width="11%">正碼特</td>
+                                    <td width="11%">連碼二</td>
+                                    <td width="11%">連碼三</td>
+                                    <td width="11%">過關</td>
+                                    <td width="11%">生肖</td>
+                                    <td width="11%" class="r">尾數</td>
                                 </tr>
-                                <tr>
-                                    <td class="bg">補貨是否佔成</td>
-                                    <td>是</td>
-                                    <td class="bg">狀態</td>
-                                    <td colspan="3" >${currentUser.status!''}</td>
-                                </tr>
-                                </tbody></table>
-                            <div class="g-tif mt"><h3>詳細資料</h3></div>
-                            <table class="g-t1 g-t2 t2">
-                                <colgroup><col width="10%"/></colgroup>
-                                <tbody nomovod><tr class="bg">
-                                    <td></td><td>特碼A/特碼B</td><td>正碼</td><td>正碼特</td><td>連碼二</td><td>連碼三</td><td>過關</td><td>生肖</td><td>尾數</td>
-                                </tr>
+                                </thead>
+                                <tbody movod='movod'>
                                 <tr>
                                     <td class="bg">單注最低</td>
                                     <td>${limitSets.gameType_A00.singlemin!''}</td>
@@ -72,7 +87,6 @@
                                     <td>${limitSets.gameType_05.singlemin!''}</td>
                                     <td>${limitSets.gameType_06.singlemin!''}</td>
                                     <td>${limitSets.gameType_07.singlemin!''}</td>
-
                                 </tr>
                                 <tr>
                                     <td class="bg">單注最高</td>
@@ -97,7 +111,7 @@
                                     <td>${limitSets.gameType_07.singlehighest!''}</td>
                                 </tr>
                                 <tr>
-                                    <td class="bg">A盤退水</td>
+                                    <td class="bg">退水</td>
                                     <td>${limitSets.gameType_A00.aRetreat!''}%/${limitSets.gameType_B00.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_01.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_02.aRetreat!''}%</td>
@@ -106,37 +120,23 @@
                                     <td>${limitSets.gameType_05.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_06.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_07.aRetreat!''}%</td>
-                                </tr>
-
+                                </tr></tbody>
+                            </table>
+                            <table class="g-t1 mt">
+                                <thead>
                                 <tr>
-                                    <td class="bg">B盤退水</td>
-                                    <td>${limitSets.gameType_A00.bRetreat!''}%/${limitSets.gameType_B00.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_01.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_02.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_03.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_04.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_05.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_06.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_07.bRetreat!''}%</td>
+                                    <td width="11%"></td>
+                                    <td width="12%">半波</td>
+                                    <td width="11%">六肖</td>
+                                    <td width="11%">兩面</td>
+                                    <td width="11%">色波</td>
+                                    <td width="11%">特肖</td>
+                                    <td width="11%">生肖連</td>
+                                    <td width="11%">尾數連</td>
+                                    <td width="11%" class="r">不中</td>
                                 </tr>
-                                <tr>
-                                    <td class="bg">C盤退水</td>
-                                    <td>${limitSets.gameType_A00.cRetreat!''}%/${limitSets.gameType_B00.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_01.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_02.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_03.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_04.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_05.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_06.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_07.cRetreat!''}%</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="9" class="bg3"> </td>
-                                </tr>
-                                <tr class="bg">
-                                    <td/><td>半波</td><td>六肖</td><td>兩面</td><td>色波</td><td>特肖</td><td>生肖連</td><td>尾數連</td><td>不中</td>
-                                </tr>
+                                </thead>
+                                <tbody movod='movod'>
                                 <tr>
                                     <td class="bg">單注最低</td>
                                     <td>${limitSets.gameType_08.singlemin!''}</td>
@@ -171,7 +171,7 @@
                                     <td>${limitSets.gameType_15.singlehighest!''}</td>
                                 </tr>
                                 <tr>
-                                    <td class="bg">A盤退水</td>
+                                    <td class="bg">退水</td>
                                     <td>${limitSets.gameType_08.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_09.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_10.aRetreat!''}%</td>
@@ -180,49 +180,29 @@
                                     <td>${limitSets.gameType_13.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_14.aRetreat!''}%</td>
                                     <td>${limitSets.gameType_15.aRetreat!''}%</td>
-                                </tr>
-                                <tr>
-                                    <td class="bg">B盤退水</td>
-                                    <td>${limitSets.gameType_08.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_09.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_10.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_11.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_12.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_13.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_14.bRetreat!''}%</td>
-                                    <td>${limitSets.gameType_15.bRetreat!''}%</td>
-                                </tr>
-                                <tr>
-                                    <td class="bg">C盤退水</td>
-                                    <td>${limitSets.gameType_08.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_09.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_10.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_11.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_12.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_13.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_14.cRetreat!''}%</td>
-                                    <td>${limitSets.gameType_15.cRetreat!''}%</td>
-                                </tr>
-                                </tbody>
+                                </tr></tbody>
                             </table>
                         </div>
-                        <div class="ft"></div>
-                    </div>                </div>
+                        <div class="ft">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div id="ft">
-        <div id="footer" class="module">
-            <div class="hd rh"></div>
-            <div class="bd rb">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
+        <div id="footer" class="module" style="display:none">
+            <div class="hd"></div>
+            <div class="bd">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
         </div>    </div>
 </div>
 <script type="text/javascript">
     window.setting = {
-        login_path: '/msdid63242a/account/login.html', //登錄路徑
+        login_path: '/login/login', //登錄路徑
+        odds_refersh: 60000, //頁面的賠率刷新頻率,默認改為 60秒
         password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 200000, //設置開關盤刷新頻率
+        marqueeFresh: 60000, //設置跑馬燈頻率為60秒
         log4js_type:  0, //設置log4javascript的類型
         log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼
@@ -231,4 +211,3 @@
 <script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
-
