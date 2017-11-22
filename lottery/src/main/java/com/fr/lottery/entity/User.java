@@ -26,6 +26,19 @@ public class User implements Serializable{
     private String userName;
 
     private String parentName;
+    private String dagudongId;
+    private String dagudongAccount;
+    private String dagudongName;
+    private String gudongId;
+    private String gudongAccount;
+    private String gudongName;
+    private String zongdailiId;
+    private String zongdaiAccount;
+    private String zongdailiName;
+    private String dailiId;
+    private String dailiAccount;
+    private String dailiName;
+
 
     private String password;
 
@@ -215,5 +228,101 @@ public class User implements Serializable{
 
     public void setSys_user_oddsSet(String sys_user_oddsSet) {
         this.sys_user_oddsSet = sys_user_oddsSet;
+    }
+
+    public String getDagudongId() {
+        return dagudongId;
+    }
+
+    public void setDagudongId(String dagudongId) {
+        this.dagudongId = dagudongId;
+    }
+
+    public String getDagudongAccount() {
+        return dagudongAccount;
+    }
+
+    public void setDagudongAccount(String dagudongAccount) {
+        this.dagudongAccount = dagudongAccount;
+    }
+
+    public String getDagudongName() {
+        return dagudongName;
+    }
+
+    public void setDagudongName(String dagudongName) {
+        this.dagudongName = dagudongName;
+    }
+
+    public String getGudongId() {
+        return gudongId;
+    }
+
+    public void setGudongId(String gudongId) {
+        this.gudongId = gudongId;
+    }
+
+    public String getGudongAccount() {
+        return gudongAccount;
+    }
+
+    public void setGudongAccount(String gudongAccount) {
+        this.gudongAccount = gudongAccount;
+    }
+
+    public String getGudongName() {
+        return gudongName;
+    }
+
+    public void setGudongName(String gudongName) {
+        this.gudongName = gudongName;
+    }
+
+    public String getZongdailiId() {
+        return zongdailiId;
+    }
+
+    public void setZongdailiId(String zongdailiId) {
+        this.zongdailiId = zongdailiId;
+    }
+
+    public String getZongdaiAccount() {
+        return zongdaiAccount;
+    }
+
+    public void setZongdaiAccount(String zongdaiAccount) {
+        this.zongdaiAccount = zongdaiAccount;
+    }
+
+    public String getZongdailiName() {
+        return zongdailiName;
+    }
+
+    public void setZongdailiName(String zongdailiName) {
+        this.zongdailiName = zongdailiName;
+    }
+
+    public String getDailiId() {
+        return dailiId;
+    }
+
+    public void setDailiId(String dailiId) {
+        this.dailiId = dailiId;
+    }
+
+    public String getDailiAccount() {
+        return dailiAccount;
+    }
+
+    public void setDailiAccount(String dailiAccount) {
+        this.dailiAccount = dailiAccount;
+    }
+
+    public String getDailiName() {
+        return dailiName;
+    }
+
+    public void setDailiName(String dailiName) {
+        this.dailiName = dailiName;
     }
 }

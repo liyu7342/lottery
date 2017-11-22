@@ -6,6 +6,19 @@
         <result column="ParentId" jdbcType="VARCHAR" property="parentid"/>
         <result column="Account" jdbcType="VARCHAR" property="account"/>
         <result column="UserName" jdbcType="VARCHAR" property="userName"/>
+        <result column="DagudongId" jdbcType="VARCHAR" property="dagudongId"/>
+        <result column="DagudongAccount" jdbcType="VARCHAR" property="dagudongAccount"/>
+        <result column="DagudongName" jdbcType="VARCHAR" property="dagudongName"/>
+        <result column="GudongId" jdbcType="VARCHAR" property="gudongId"/>
+        <result column="GudongAccount" jdbcType="VARCHAR" property="gudongAccount"/>
+        <result column="GudongName" jdbcType="VARCHAR" property="gudongName"/>
+        <result column="ZongdailiId" jdbcType="VARCHAR" property="zongdailiId"/>
+        <result column="ZongdailiAccount" jdbcType="VARCHAR" property="zongdailiAccount"/>
+        <result column="ZongdailiName" jdbcType="VARCHAR" property="zongdailiName"/>
+        <result column="DailiId" jdbcType="VARCHAR" property="dailiId"/>
+        <result column="DailiAccount" jdbcType="VARCHAR" property="dailiAccount"/>
+        <result column="DailiName" jdbcType="VARCHAR" property="dailiName"/>
+
         <result column="Password" jdbcType="VARCHAR" property="password"/>
         <result column="Status" jdbcType="TINYINT" property="status"/>
         <result column="UserType" jdbcType="TINYINT" property="usertype"/>
@@ -21,7 +34,9 @@
         <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
     </resultMap>
     <sql id="Columns">
-          Id, ParentId, Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
+          Id, ParentId,ParengName,DagudongId,DagudongAccount,DagudongName,GudongId,
+          GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
+ Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
     shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
     </sql>
     <sql id="sqlWhere">

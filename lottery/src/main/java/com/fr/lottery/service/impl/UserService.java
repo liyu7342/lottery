@@ -97,12 +97,40 @@ public class UserService implements IUserService {
                 if (parentUser != null) {
                     xpath = parentUser.getXpath();
                     user.setParentName(parentUser.getUserName());
+                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){
+                        user.setDagudongAccount(parentUser.getAccount());
+                        user.setDagudongId(parentUser.getId());
+                        user.setDagudongName(parentUser.getDagudongName());
+                    }
+                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){
+                        user.setDagudongId(parentUser.getId());
+                        user.setDagudongAccount(parentUser.getDagudongAccount());
+                        user.setDagudongName(parentUser.getDagudongName());
+                    }
+                    if(user.getUsertype()>UserTypeEnum.ZongDaili.ordinal()){
+                        user.setGudongId(parentUser.getGudongId());
+                        user.setGudongId(parentUser.getGudongAccount());
+                        user.setGudongId(parentUser.getGudongName());
+                    }
+                    if(user.getUsertype()>UserTypeEnum.Daili.ordinal()){
+                        user.setZongdailiId(parentUser.getZongdailiId());
+                        user.setZongdaiAccount(parentUser.getZongdaiAccount());
+                        user.setZongdailiName(parentUser.getZongdailiName());
+                    }
+                    if(user.getUsertype()>UserTypeEnum.Member.ordinal()){
+                        user.setDailiId(parentUser.getDailiId());
+                        user.setDailiAccount(parentUser.getDailiAccount());
+                        user.setDailiName(parentUser.getDailiName());
+                    }
+
+
                 }
             }
             xpath+=String.format("%03d", seq);
             user.setXpath(xpath);
             user.setXseq(seq);
             user.setId(StringUtil.getUUID());
+
             user.setCreatedate(new Date());
             userMapper.insert(user);
         } else {
