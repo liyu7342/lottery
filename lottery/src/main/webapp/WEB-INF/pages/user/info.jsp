@@ -35,25 +35,25 @@
                                 <tbody nomovod>
                                 <tr>
                                     <td class="bg">名稱</td>
-                                    <td>22</td>
+                                    <td>${currentUser.userName!''}</td>
                                     <td class="bg">賬號</td>
-                                    <td>f2213</td>
+                                    <td>${currentUser.account!''}</td>
                                     <td class="bg">補貨設定</td>
-                                    <td>允許</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="bg">總信用額度</td>
-                                    <td>500</td>
+                                    <td>${currentUser.credits!''}</td>
                                     <td class="bg" >自己及下級佔成數</td>
                                     <td >0%</td>
                                     <td class="bg" >盤口</td>
-                                    <td >C</td>
+                                    <td> ${currentUser.handicap!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">補貨是否佔成</td>
                                     <td>是</td>
                                     <td class="bg">狀態</td>
-                                    <td colspan="3" >啟用</td>
+                                    <td colspan="3" >${currentUser.status!''}</td>
                                 </tr>
                                 </tbody></table>
                             <div class="g-tif mt"><h3>詳細資料</h3></div>
@@ -64,71 +64,71 @@
                                 </tr>
                                 <tr>
                                     <td class="bg">單注最低</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td>${limitSets.gameType_A00.singlemin!''}</td>
+                                    <td>${limitSets.gameType_01.singlemin!''}</td>
+                                    <td>${limitSets.gameType_02.singlemin!''}</td>
+                                    <td>${limitSets.gameType_03.singlemin!''}</td>
+                                    <td>${limitSets.gameType_04.singlemin!''}</td>
+                                    <td>${limitSets.gameType_05.singlemin!''}</td>
+                                    <td>${limitSets.gameType_06.singlemin!''}</td>
+                                    <td>${limitSets.gameType_07.singlemin!''}</td>
 
                                 </tr>
                                 <tr>
                                     <td class="bg">單注最高</td>
-                                    <td>20000</td>
-                                    <td>20000</td>
-                                    <td>20000</td>
-                                    <td>3000</td>
-                                    <td>2000</td>
-                                    <td>1</td>
-                                    <td>50000</td>
-                                    <td>50000</td>
+                                    <td>${limitSets.gameType_A00.singlemax!''}</td>
+                                    <td>${limitSets.gameType_01.singlemax!''}</td>
+                                    <td>${limitSets.gameType_02.singlemax!''}</td>
+                                    <td>${limitSets.gameType_03.singlemax!''}</td>
+                                    <td>${limitSets.gameType_04.singlemax!''}</td>
+                                    <td>${limitSets.gameType_05.singlemax!''}</td>
+                                    <td>${limitSets.gameType_06.singlemax!''}</td>
+                                    <td>${limitSets.gameType_07.singlemax!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">單項最高</td>
-                                    <td>300000</td>
-                                    <td>200000</td>
-                                    <td>100000</td>
-                                    <td>100000</td>
-                                    <td>100000</td>
-                                    <td>1</td>
-                                    <td>500000</td>
-                                    <td>500000</td>
+                                    <td>${limitSets.gameType_A00.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_01.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_02.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_03.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_04.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_05.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_06.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_07.singlehighest!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">A盤退水</td>
-                                    <td>13.3%/3.3%</td>
-                                    <td>11.5%</td>
-                                    <td>13.5%</td>
-                                    <td>15.5%</td>
-                                    <td>15.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.3%</td>
-                                    <td>0.3%</td>
+                                    <td>${limitSets.gameType_A00.aRetreat!''}%/${limitSets.gameType_B00.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_01.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_02.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_03.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_04.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_05.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_06.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_07.aRetreat!''}%</td>
                                 </tr>
 
                                 <tr>
                                     <td class="bg">B盤退水</td>
-                                    <td>13.3%/3.3%</td>
-                                    <td>11.5%</td>
-                                    <td>13.5%</td>
-                                    <td>15.5%</td>
-                                    <td>15.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>0.5%</td>
+                                    <td>${limitSets.gameType_A00.bRetreat!''}%/${limitSets.gameType_B00.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_01.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_02.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_03.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_04.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_05.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_06.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_07.bRetreat!''}%</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">C盤退水</td>
-                                    <td>13.5%/3.5%</td>
-                                    <td>11.5%</td>
-                                    <td>13.5%</td>
-                                    <td>15.5%</td>
-                                    <td>15.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
+                                    <td>${limitSets.gameType_A00.cRetreat!''}%/${limitSets.gameType_B00.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_01.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_02.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_03.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_04.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_05.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_06.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_07.cRetreat!''}%</td>
                                 </tr>
 
                                 <tr>
@@ -139,69 +139,69 @@
                                 </tr>
                                 <tr>
                                     <td class="bg">單注最低</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td>${limitSets.gameType_08.singlemin!''}</td>
+                                    <td>${limitSets.gameType_09.singlemin!''}</td>
+                                    <td>${limitSets.gameType_10.singlemin!''}</td>
+                                    <td>${limitSets.gameType_11.singlemin!''}</td>
+                                    <td>${limitSets.gameType_12.singlemin!''}</td>
+                                    <td>${limitSets.gameType_13.singlemin!''}</td>
+                                    <td>${limitSets.gameType_14.singlemin!''}</td>
+                                    <td>${limitSets.gameType_15.singlemin!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">單注最高</td>
-                                    <td>20000</td>
-                                    <td>50000</td>
-                                    <td>50000</td>
-                                    <td>20000</td>
-                                    <td>20000</td>
-                                    <td>10000</td>
-                                    <td>20000</td>
-                                    <td>50000</td>
+                                    <td>${limitSets.gameType_08.singlemax!''}</td>
+                                    <td>${limitSets.gameType_09.singlemax!''}</td>
+                                    <td>${limitSets.gameType_10.singlemax!''}</td>
+                                    <td>${limitSets.gameType_11.singlemax!''}</td>
+                                    <td>${limitSets.gameType_12.singlemax!''}</td>
+                                    <td>${limitSets.gameType_13.singlemax!''}</td>
+                                    <td>${limitSets.gameType_14.singlemax!''}</td>
+                                    <td>${limitSets.gameType_15.singlemax!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">單項最高</td>
-                                    <td>100000</td>
-                                    <td>500000</td>
-                                    <td>1000000</td>
-                                    <td>100000</td>
-                                    <td>100000</td>
-                                    <td>100000</td>
-                                    <td>60000</td>
-                                    <td>500000</td>
+                                    <td>${limitSets.gameType_08.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_09.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_10.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_11.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_12.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_13.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_14.singlehighest!''}</td>
+                                    <td>${limitSets.gameType_15.singlehighest!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">A盤退水</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
-                                    <td>0.5%</td>
+                                    <td>${limitSets.gameType_08.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_09.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_10.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_11.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_12.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_13.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_14.aRetreat!''}%</td>
+                                    <td>${limitSets.gameType_15.aRetreat!''}%</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">B盤退水</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
-                                    <td>1.5%</td>
+                                    <td>${limitSets.gameType_08.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_09.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_10.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_11.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_12.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_13.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_14.bRetreat!''}%</td>
+                                    <td>${limitSets.gameType_15.bRetreat!''}%</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">C盤退水</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
-                                    <td>2.5%</td>
+                                    <td>${limitSets.gameType_08.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_09.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_10.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_11.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_12.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_13.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_14.cRetreat!''}%</td>
+                                    <td>${limitSets.gameType_15.cRetreat!''}%</td>
                                 </tr>
                                 </tbody>
                             </table>

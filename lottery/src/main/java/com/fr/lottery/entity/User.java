@@ -8,6 +8,13 @@ import java.util.Date;
  */
 
 public class User implements Serializable{
+    public User(){
+        this.status=1;
+        this.shortCovering=1;
+        this.shareUp=0;
+        this.shareTotal=0;
+        this.id="";
+    }
     private static final long serialVersionUID = 1L;
 
     private String id;

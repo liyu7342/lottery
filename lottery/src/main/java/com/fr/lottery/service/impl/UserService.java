@@ -85,7 +85,6 @@ public class UserService implements IUserService {
 
     @Override
     public int Save(User user, LimitSetDto limitSetDto) {
-        user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
         if(StringUtils.isNotBlank( user.getSys_user_oddsSet())){
             user.setHandicap(user.getSys_user_oddsSet());
         }
@@ -107,6 +106,9 @@ public class UserService implements IUserService {
             user.setCreatedate(new Date());
             userMapper.insert(user);
         } else {
+            if(StringUtil.isNullOrEmpty(user.getPassword())){
+                user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+            }
             userMapper.update(user);
         }
 

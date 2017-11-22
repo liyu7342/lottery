@@ -30,7 +30,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" /><!-- 拦截的url -->
-			<mvc:exclude-mapping path="/home/**" /><!-- 不拦截的url -->
+			<mvc:exclude-mapping path="/login/**" /><!-- 不拦截的url -->
 			<mvc:exclude-mapping path="/api/**" /><!-- 不拦截的url -->
 			<mvc:exclude-mapping path="/resources/**" /><!-- 不拦截的url -->
 			<bean class="com.fr.lottery.init.MyInterceptor"></bean>

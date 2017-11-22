@@ -35,11 +35,11 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account"  value="${user.account!''}"  class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" <#if user.id!="">disabled="disabled"</#if>  name="account"  value="${user.account!''}"  class="gray"/> </td>
                                         <td>密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" <#if user.id=="">valid="password"</#if> /></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" valid="password"/></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" <#if user.id=="">valid="password"</#if> value="" /></td>
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>
@@ -314,19 +314,19 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <#if parentcurrentuser.usertype lt 1>
+                        <#if currentuser.usertype lt 1>
                             <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>
-                        <#if parentcurrentuser.usertype lt 2>
+                        <#if currentuser.usertype lt 2>
                             <li><a curl='5' class="red" href='/user/index2'>小股東</a><cite>0</cite></li>
                         </#if>
-                        <#if parentcurrentuser.usertype lt 3>
+                        <#if currentuser.usertype lt 3>
                             <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
                         </#if>
-                        <#if parentcurrentuser.usertype lt 4>
+                        <#if currentuser.usertype lt 4>
                             <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
                         </#if>
-                        <#if parentcurrentuser.usertype lt 5>
+                        <#if currentuser.usertype lt 5>
                             <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
                         </#if>
                     </ul>

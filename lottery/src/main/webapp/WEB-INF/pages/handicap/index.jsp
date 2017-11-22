@@ -36,9 +36,8 @@
                                     <li><h2><a class="btn10 mt red" href='/handicap/info?op=create&id='>新增</a>&nbsp;&nbsp;  </h2></li>
                                 </ul></form>
                             <div class="fr">
-                                <span class="ico">第一頁</span><span class="ico i2">上一頁</span><input type="hidden" value="0" id="buttontype" />
-                                第<input value="1" id="pageid" type="text" class="pt" onBlur="javascript:var type=document.getElementById('buttontype').value;document.getElementById('buttontype').value=0;if(type == 0){if(event.keyCode==13){return;}if(isNaN(parseInt(this.value)) || parseInt(this.value)>1){alert('您輸入的數字衹能在 1 ～ 1之間，請重新輸入');document.getElementById('pageid').value=1;return false;}if(this.defaultValue != this.value){location.href='http://pm10.x.mmm33.us:80/msdid63242a_8955/account/member_list.htm?pageId='+parseInt(this.value);}}" onkeydown="javascript:if(event.keyCode==13){document.getElementById('buttontype').value=1;if(isNaN(parseInt(this.value)) || parseInt(this.value)>1){alert('您輸入的數字衹能在 1 ～ 1之間，請重新輸入');document.getElementById('pageid').value=1;return false;}location.href='http://pm10.x.mmm33.us:80/msdid63242a_8955/account/member_list.htm?pageId='+parseInt(this.value);return false;}"/>
-                                頁 &nbsp;&nbsp;共1頁<span class="ico i3">下一頁</span><span class="ico i4">最後一頁</span>        &nbsp;</div>
+                               ${page}
+                            </div>
                         </div>
                         <div class="bd">
                             <table class="g-t1">

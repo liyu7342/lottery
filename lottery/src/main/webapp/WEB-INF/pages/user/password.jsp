@@ -28,7 +28,7 @@
                             <div class="g-thd">
                                 <h3 class="m" id="title">密碼變更</h3>
                             </div>
-                            <form action="" name="chgpwd" method="post">
+                            <form action="/user/changepwd" name="chgpwd" method="post">
                                 <table class="g-t1">
                                     <colgroup><col width="50%" /></colgroup>
                                     <tbody>

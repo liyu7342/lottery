@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HandicapMapper {
-    long countByExample(Handicap example);
 
     int deleteByPrimaryKey(String id);
 
@@ -25,4 +24,6 @@ public interface HandicapMapper {
     int updateByPrimaryKey(Handicap record);
 
     Handicap getCurrentHandicaps();
+
+    Long count();
 }

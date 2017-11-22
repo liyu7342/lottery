@@ -30,9 +30,8 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
         User user = UserHelper.getCurrentUser();
-        //String rquestUrl = request.getRequestURI().replace(request.getContextPath(), "");
         if(user ==null){
-            request.getRequestDispatcher("/home/default").forward(request, response);
+            request.getRequestDispatcher("/login/index").forward(request, response);
             return false;
         }
         //request.setAttribute("user", user);

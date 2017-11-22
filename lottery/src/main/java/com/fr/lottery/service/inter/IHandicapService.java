@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.Handicap;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface IHandicapService {
 
 
 
-    List<Handicap> getHandicaps(Integer pageId) ;
+    Page<Handicap> getHandicaps(Integer pageId) ;
 
     boolean delete(String id);
 

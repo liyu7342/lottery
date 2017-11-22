@@ -154,7 +154,7 @@
         }
         .footer{
             width: 965px;
-            background: url("../../resources/css/new/linebottom.png");
+            background: url("../../../resources/css/new/linebottom.png");
             height:94px;
             clear: both;
             margin: 0 auto;
@@ -174,7 +174,7 @@
             margin: 0 auto 20px;
             color: #E9BCAB;
         }
-        .mainLeft{ float:left;width: 470px;height:430px;background: url("../../resources/css/new/lineLeft.png") right no-repeat; position:relative}
+        .mainLeft{ float:left;width: 470px;height:430px;background: url("../../../resources/css/new/lineLeft.png") right no-repeat; position:relative}
         .mainRight{float:left;width: 402px;}
         .main p{
             margin: 0;
@@ -301,20 +301,20 @@
         <div class='datalist-contain datalist'>
             <h2>會員線路</h2>
             <ul>
-                <li><a href="/home/login" target="_blank">线路1</a></li><li><a href="/home/login" target="_blank">线路2</a></li><li><a href="/home/login" target="_blank">线路3</a></li><li><a href="/home/login" target="_blank">线路4</a></li><li><a href="/home/login" target="_blank">线路5</a></li>
+                <li><a href="/login/login" target="_blank">线路1</a></li><li><a href="/login/login" target="_blank">线路2</a></li><li><a href="/login/login" target="_blank">线路3</a></li><li><a href="/login/login" target="_blank">线路4</a></li><li><a href="/login/login" target="_blank">线路5</a></li>
             </ul>
             <h2>會員備用線路：</h2>
             <ul>
-                <li><a href="/home/login" target="_blank">线路1</a></li><li><a href="/home/login" target="_blank">线路2</a></li><li><a href="/home/login" target="_blank">线路3</a></li><li><a href="/home/login" target="_blank">线路4</a></li><li><a href="/home/login" target="_blank">线路5</a></li>
+                <li><a href="/login/login" target="_blank">线路1</a></li><li><a href="/login/login" target="_blank">线路2</a></li><li><a href="/login/login" target="_blank">线路3</a></li><li><a href="/login/login" target="_blank">线路4</a></li><li><a href="/login/login" target="_blank">线路5</a></li>
             </ul>
             <div class='b_line'></div>
             <h2>代理線路</h2>
             <ul>
-                <li><a href="/home/login1" target="_blank">线路1</a></li><li><a href="/home/login1" target="_blank">线路2</a></li><li><a href="/home/login1" target="_blank">线路3</a></li><li><a href="/home/login1" target="_blank">线路4</a></li><li><a href="/home/login1" target="_blank">线路5</a></li>
+                <li><a href="/login/login1" target="_blank">线路1</a></li><li><a href="/login/login1" target="_blank">线路2</a></li><li><a href="/login/login1" target="_blank">线路3</a></li><li><a href="/login/login1" target="_blank">线路4</a></li><li><a href="/login/login1" target="_blank">线路5</a></li>
             </ul>
             <h2>代理備用線路：</h2>
             <ul>
-                <li><a href="/home/login1" target="_blank">线路1</a></li><li><a href="/home/login1" target="_blank">线路2</a></li><li><a href="/home/login1" target="_blank">线路3</a></li><li><a href="/home/login1" target="_blank">线路4</a></li><li><a href="/home/login1" target="_blank">线路5</a></li>
+                <li><a href="/login/login1" target="_blank">线路1</a></li><li><a href="/login/login1" target="_blank">线路2</a></li><li><a href="/login/login1" target="_blank">线路3</a></li><li><a href="/login/login1" target="_blank">线路4</a></li><li><a href="/login/login1" target="_blank">线路5</a></li>
             </ul>
         </div>
     </div>

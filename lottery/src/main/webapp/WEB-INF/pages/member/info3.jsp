@@ -35,11 +35,11 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account"  value="${user.account!''}"  class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12"  name="account" <#if user.id!=""> disabled="disabled"</#if> value="${user.account!''}"  class="gray"/> </td>
                                         <td>密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" valid="password" /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" <#if user.id=="">valid="password"</#if> /></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" valid="password"/></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" value="" <#if user.id=="">valid="password"</#if>/></td>
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>

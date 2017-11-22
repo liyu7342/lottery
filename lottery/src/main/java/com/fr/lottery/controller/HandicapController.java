@@ -1,5 +1,6 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.service.impl.HandicapService;
@@ -31,18 +32,20 @@ public class HandicapController extends BaseController {
     @RequestMapping("index")
     public ModelAndView index(Integer pageId){
         if(pageId== null) pageId =1;
-        List<Handicap> handicaps = handicapService.getHandicaps(pageId);
+        Page<Handicap> page = handicapService.getHandicaps(pageId);
 
         ModelAndView modelAndView = new ModelAndView("handicap/index");
-        modelAndView.addObject("handicaps",handicaps);
+        modelAndView.addObject("handicaps",page.getList());
+        modelAndView.addObject("page",page.toString());
         return modelAndView;
     }
 
     @RequestMapping("openindex")
     public ModelAndView handicapOpenView(Integer pageId){
         ModelAndView modelAndView = new ModelAndView("handicap/openindex");
-        List<Handicap> handicaps = handicapService.getHandicaps(pageId);
-        modelAndView.addObject("handicaps",handicaps);
+        Page<Handicap> page = handicapService.getHandicaps(pageId);
+        modelAndView.addObject("handicaps",page.getList());
+        modelAndView.addObject("page",page.toString());
         return modelAndView;
     }
 

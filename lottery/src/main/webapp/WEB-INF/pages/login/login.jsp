@@ -164,7 +164,7 @@
         }
         .footer{
             width: 965px;
-            background: url("../../resources/images/linebottom.png");
+            background: url("../../../resources/images/linebottom.png");
             height:94px;
             clear: both;
             margin: 0 auto;
@@ -178,7 +178,7 @@
             margin: 0 auto 20px;
             color: #000;
         }
-        .mainLeft{ float:left;width: 470px;height:368px;background: url(../../resources/images/lineLeft.png) right no-repeat; position:relative}
+        .mainLeft{ float:left;width: 470px;height:368px;background: url(../../../resources/images/lineLeft.png) right no-repeat; position:relative}
         .mainRight{float:left;width: 450px;}
         .main p{
             margin: 0;
@@ -355,7 +355,7 @@
         }
     }
     function getVImag(){
-        document.getElementById("img_auth").src ='/home/getCodeInfo?r='+ Math.random();
+        document.getElementById("img_auth").src ='/login/getCodeInfo?r='+ Math.random();
        /* ajax({
             url : "/home/getCodeInfo?r="+ Math.random(),
             success : function(v){
@@ -403,7 +403,7 @@
         param +="&userAccount="+encodeURIComponent(form.__name.value.trim());
         param +="&verifyCode="+encodeURIComponent(form.VerifyCode.value.trim());
         ajax({
-            url : "/home/doLogin",
+            url : "/login/doLogin",
             type : "POST",
             data : param,
 //                {"userPwd":encodeURIComponent(form.password.value.trim()),

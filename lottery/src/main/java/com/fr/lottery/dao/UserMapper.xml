@@ -83,7 +83,9 @@
       ParentId = #{parentid,jdbcType=VARCHAR},
       Account = #{account,jdbcType=VARCHAR},
       UserName = #{userName,jdbcType=VARCHAR},
-      Password = #{password,jdbcType=VARCHAR},
+      <if test="password!=null and password!=''">
+          Password = #{password,jdbcType=VARCHAR},
+      </if>
       Status = #{status,jdbcType=TINYINT},
       UserType = #{usertype,jdbcType=TINYINT},
       Credits = #{credits,jdbcType=BIGINT},

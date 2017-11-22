@@ -1,9 +1,12 @@
 package com.fr.lottery.service.impl;
 
 import com.fr.lottery.dao.HandicapMapper;
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
+import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.StringUtil;
 import org.apache.commons.collections.map.HashedMap;
@@ -24,6 +27,8 @@ public class HandicapService implements IHandicapService {
 
     @Autowired
     private HandicapMapper handicapMapper;
+    @Autowired
+    private IShengxiaoService shengxiaoService;
     @Override
     public boolean save(Handicap entity) {
         entity.setAutoopen(true);
@@ -46,15 +51,115 @@ public class HandicapService implements IHandicapService {
         handicap.setStatus(2);
         handicap.setTemastatus(true);
         handicap.setZhengmastatus(true);
+        Integer no1 =Integer.valueOf(handicap.getNo1());
+        Integer no2 =Integer.valueOf(handicap.getNo2());
+        Integer no3 =Integer.valueOf(handicap.getNo3());
+        Integer no4 =Integer.valueOf(handicap.getNo4());
+        Integer no5 =Integer.valueOf(handicap.getNo5());
+        Integer no6 =Integer.valueOf(handicap.getNo6());
+        Integer tema =Integer.valueOf(handicap.getTema());
+
+
+        //特碼單雙
+        if("49".equals( handicap.getTema())){
+            handicap.setTeDanshuang("和");
+        }else if(Integer.valueOf( handicap.getTema()) %2==0){
+            handicap.setTeDanshuang("雙");
+        }
+        else{
+            handicap.setTeDanshuang("單");
+        }
+        //特碼大小
+        if("49".equals(handicap.getTema())){
+            handicap.setTeDaxiao("和");
+        }
+        else if(Integer.valueOf(handicap.getTema())>24){
+            handicap.setTeDaxiao("大");
+        }
+        else{
+            handicap.setTeDaxiao("小");
+        }
+        if("49".equals(handicap.getTema())){
+            handicap.setHeDanshuang("和");
+        }
+        else if((Integer.valueOf( handicap.getTema().substring(0,1))+ Integer.valueOf(handicap.getTema().substring(1))) %2==0){
+            handicap.setHeDanshuang("雙");
+        }
+        else{
+            handicap.setHeDanshuang("單");
+        }
+
+        //總分大小
+        Integer zongfen = no1+no2+no3+no4+no5+no6+tema;
+        handicap.setZongfen(zongfen);
+        if(zongfen>174){
+            handicap.setZongDaxiao("大");
+        }
+        else{
+            handicap.setZongDaxiao("小");
+        }
+        //總分單雙
+        if(zongfen%2==0){
+            handicap.setZongDanshuang("雙");
+        }
+        else{
+            handicap.setZongDaxiao("單");
+        }
+
+       List<ShengXiao> shengXiaos= shengxiaoService.findByYear();
+        for (ShengXiao xiao : shengXiaos){
+            if(handicap.getNo1().equals( xiao.getNo1()) ||handicap.getNo1().equals( xiao.getNo2())||handicap.getNo1().equals( xiao.getNo3())
+                    ||handicap.getNo1().equals( xiao.getNo4()) ||  handicap.getNo1().equals( xiao.getNo5())){
+                handicap.setXiao1(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName1(xiao.getName());
+            }
+            if(handicap.getNo2().equals( xiao.getNo1()) ||handicap.getNo2().equals( xiao.getNo2())||handicap.getNo2().equals( xiao.getNo3())
+                    ||handicap.getNo2().equals( xiao.getNo4()) ||  handicap.getNo2().equals( xiao.getNo5())){
+                handicap.setXiao2(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName2(xiao.getName());
+            }
+            if(handicap.getNo3().equals( xiao.getNo1()) ||handicap.getNo3().equals( xiao.getNo2())||handicap.getNo3().equals( xiao.getNo3())
+                    ||handicap.getNo3().equals( xiao.getNo4()) ||  handicap.getNo3().equals( xiao.getNo5())){
+                handicap.setXiao3(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName3(xiao.getName());
+            }
+            if(handicap.getNo4().equals( xiao.getNo1()) ||handicap.getNo4().equals( xiao.getNo2())||handicap.getNo4().equals( xiao.getNo3())
+                    ||handicap.getNo4().equals( xiao.getNo4()) ||  handicap.getNo4().equals( xiao.getNo5())){
+                handicap.setXiao4(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName4(xiao.getName());
+            }
+            if(handicap.getNo5().equals( xiao.getNo1()) ||handicap.getNo5().equals( xiao.getNo2())||handicap.getNo5().equals( xiao.getNo3())
+                    ||handicap.getNo5().equals( xiao.getNo4()) ||  handicap.getNo5().equals( xiao.getNo5())){
+                handicap.setXiao5(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName5(xiao.getName());
+            }
+            if(handicap.getNo6().equals( xiao.getNo1()) ||handicap.getNo6().equals( xiao.getNo2())||handicap.getNo6().equals( xiao.getNo3())
+                    ||handicap.getNo6().equals( xiao.getNo4()) ||  handicap.getNo6().equals( xiao.getNo5())){
+                handicap.setXiao6(String.format("%02d",xiao.getSortNo()) );
+                handicap.setXiaoName6(xiao.getName());
+            }
+            if(handicap.getTema().equals( xiao.getNo1()) ||handicap.getTema().equals( xiao.getNo2())||handicap.getTema().equals( xiao.getNo3())
+                    ||handicap.getTema().equals( xiao.getNo4()) ||  handicap.getTema().equals( xiao.getNo5())){
+                handicap.setTexiaono(String.format("%02d",xiao.getSortNo()) );
+                handicap.setTexiaoName(xiao.getName());
+            }
+
+        }
+
         return handicapMapper.openHandicap(handicap) >0;
     }
 
     @Override
-    public List<Handicap> getHandicaps(Integer pageId) {
+    public Page<Handicap> getHandicaps(Integer pageId) {
        if(pageId==null)
            pageId =1;
+
         Integer start = (pageId-1) * Global.pageSize;
-        return  handicapMapper.findAll(start, Global.pageSize);
+        List<Handicap> handicaps=  handicapMapper.findAll(start, Global.pageSize);
+        Long total = handicapMapper.count();
+        Page<Handicap> page = new Page<Handicap>(pageId,Global.pageSize,total);
+        page.setList(handicaps);
+        return page;
     }
 
     @Override

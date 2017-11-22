@@ -39,11 +39,11 @@
                                         <td>名稱</td>
                                         <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${(user.userName)!''}" /></td>
                                         <td>賬號</td>
-                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12" name="account" placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
+                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12"  name="account" <#if user.id!="">disabled="disabled"</#if> placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
                                         <td> 密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" valid="password"/></td>
+                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" <#if user.id=="">valid="password"</#if>/></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="sys_user_repassword2" value="" valid="password"/> </td>
+                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="sys_user_repassword2" value="" <#if user.id=="">valid="password"</#if>/> </td>
                                         <input type="hidden" name="pwd"/>   </tr>
                                     <tr>
                                         <td>總信用額度</td>
@@ -51,7 +51,11 @@
                                         </td>
                                         <td colspan="2">對此會員佔成比例(<font color='red'>%</font>)
                                             <select class="w2" name="member_shareUp" >
-                                                <option selected="selected" value="0">0</option>      </select><input type="hidden" name="sharecorp" value=""/>
+                                                <#list shareUpList as shareup>
+                                                    <option  value=${shareup} <#if user.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
+                                                </#list>
+                                            </select>
+                                            <input type="hidden" name="sharecorp" value=""/>
                                         </td>
 
                                         <td>盤口</td>

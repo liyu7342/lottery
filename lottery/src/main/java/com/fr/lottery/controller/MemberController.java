@@ -73,21 +73,23 @@ public class MemberController {
         }
 
         Map<String, Object> map = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         Map<String, Object> pmap = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : plimitSets) {
             pmap.put("gameType_" + limitset.getLimitType(), limitset);
         }
 
-
+        List<Integer> shareUpArr = new ArrayList<Integer>();
+        for (int i = 0; i <= parentUser.getShareTotal(); i += 5) {
+            shareUpArr.add(i);
+        }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
         modelAndView.addObject("user", user);
         modelAndView.addObject("parentUser", parentUser);
+        modelAndView.addObject("shareUpList", shareUpArr);
         return modelAndView;
     }
 
@@ -110,8 +112,6 @@ public class MemberController {
             limitSets = limitSetService.findAll(id);
         } else {
             user = new User();
-            user.setStatus(1);
-            user.setShortCovering(1);
             user.setSys_user_oddsSet("C");
             limitSets = plimitSets;
         }
@@ -122,7 +122,6 @@ public class MemberController {
         }
 
         modelAndView.addObject("limitSets", map);
-        if (user.getShareUp() == null) user.setShareUp(0);
         modelAndView.addObject("user", user);
         int shareTotal = 100 - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
@@ -131,7 +130,7 @@ public class MemberController {
         }
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("childsumcredit", childsumcredit);
-        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
+        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
 //        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
@@ -155,26 +154,20 @@ public class MemberController {
         } else {
             user = new User();
             user.setSys_user_oddsSet(parentUser.getHandicap());
-            user.setStatus(1);
-            user.setShortCovering(1);
 
             limitSets = plimitSets;
         }
         Map<String, Object> map = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
 
         Map<String, Object> pmap = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : plimitSets) {
             pmap.put("gameType_" + limitset.getLimitType(), limitset);
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
-
-        if (user.getShareUp() == null) user.setShareUp(0);
 
         modelAndView.addObject("user", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
@@ -190,7 +183,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
+        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -213,26 +206,21 @@ public class MemberController {
         } else {
             user = new User();
             user.setSys_user_oddsSet(parentUser.getHandicap());
-            user.setStatus(1);
-            user.setShortCovering(1);
 
             limitSets = plimitSets;
         }
         Map<String, Object> map = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : limitSets  ) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
 
         Map<String, Object> pmap = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : plimitSets  ) {
             pmap.put("gameType_" + limitset.getLimitType(), limitset);
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
 
-        if (user.getShareUp() == null) user.setShareUp(0);
 
         modelAndView.addObject("user", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
@@ -248,7 +236,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
+        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -271,26 +259,21 @@ public class MemberController {
         } else {
             user = new User();
             user.setSys_user_oddsSet(parentUser.getHandicap());
-            user.setStatus(1);
-            user.setShortCovering(1);
 
             limitSets = plimitSets;
         }
         Map<String, Object> map = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
 
         Map<String, Object> pmap = new HashMap<String, Object>();
-        for (LimitSet limitset : limitSets
-                ) {
+        for (LimitSet limitset : plimitSets) {
             pmap.put("gameType_" + limitset.getLimitType(), limitset);
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
 
-        if (user.getShareUp() == null) user.setShareUp(0);
 
         modelAndView.addObject("user", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
@@ -306,19 +289,15 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("currentuser",UserHelper.getCurrentUser());
+        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
         return modelAndView;
     }
 
     @ResponseBody
     @RequestMapping("/save")
     public void save(User user, LimitSetDto limitSetDto, String requestUrl, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ResultInfo<String> resultInfo = new ResultInfo<String>();
         userService.Save(user, limitSetDto);
-        //ModelAndView modelAndView = new ModelAndView("redirect:/member/info?parentId="+user.getParentid()+"&id="+user.getId());
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
-        //return "<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/user/index\";</script>";
-        //return modelAndView;
     }
 }
