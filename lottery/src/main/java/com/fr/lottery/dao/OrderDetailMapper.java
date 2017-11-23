@@ -1,5 +1,6 @@
 package com.fr.lottery.dao;
 
+import com.fr.lottery.dto.OrderDetailDto;
 import com.fr.lottery.entity.OrderDetail;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,13 @@ public interface OrderDetailMapper {
 
     int updateWinAmountByPrimaryKey(@Param("winAmount") Float winAmount, @Param("id") String id);
 
+    /**
+     * 开奖，结算
+     * @param handicapId
+     */
     void settlement(@Param("handicapId") String handicapId);
+
+    List<OrderDetailDto> getOrderDetailsByDaili(@Param("handicapId") String handicapId, @Param("xpath") String xpath,
+                                         @Param("gameType") String gameType,@Param("numbers") String numbers, @Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
+    long getDetailsTotalByDaili (@Param("handicapId") String handicapId, @Param("xpath") String xpath,  @Param("gameType") String gameType,@Param("numbers") String numbers);
 }

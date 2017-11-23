@@ -29,6 +29,7 @@
     from orderdetail
 
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
@@ -114,6 +115,70 @@
       </if>
       <if test="gameType!='' and gameType!=null" >
         AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+
+  <resultMap id="OrderDetailDtoMap" type="com.fr.lottery.dto.OrderDetailDto">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="orderNo" jdbcType="VARCHAR" property="orderNo" />
+    <result column="DagudongAccount" jdbcType="VARCHAR" property="dagudongAccount" />
+    <result column="gameType" jdbcType="VARCHAR" property="gameType" />
+    <result column="Number1" jdbcType="VARCHAR" property="numbers" />
+    <result column="odds" jdbcType="VARCHAR" property="odds" />
+
+    <result column="retreat" jdbcType="VARCHAR" property="retreat"/>
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="Account" jdbcType="VARCHAR" property="memberAccount"/>
+    <result column="GudongAccount" jdbcType="VARCHAR" property="gudongAccount"/>
+    <result column="zongdaiAccount" jdbcType="VARCHAR" property="zongdaiAccount" />
+    <result column="DailiAccount" jdbcType="VARCHAR" property="dailiAccount" />
+  </resultMap>
+
+  <select id="getOrderDetailsByDaili"  resultMap="OrderDetailDtoMap">
+    select
+    od.Id,o.orderNo,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
+    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType
+    from orderdetail od
+    join orders  o on od.OrderId = o.id
+    join user u on od.userid = u.id
+    <where>
+      <if test="handicapId!='' and handicapId!=null" >
+        AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+      <if test="xpath!='' and xpath!=null" >
+        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND od.gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+      <if test="numbers!='' and numbers!=null" >
+        AND Number1 = #{numbers,jdbcType=VARCHAR}
+      </if>
+      <if test="pageIndex!=null ">
+        limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="getDetailsTotalByDaili"  resultType="java.lang.Long">
+    select
+    COUNT(1)
+    from orderdetail od
+    join orders  o on od.OrderId = o.id
+    join user u on od.userid = u.id
+    <where>
+      <if test="handicapId!='' and handicapId!=null" >
+        AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+      <if test="xpath!='' and xpath!=null" >
+        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND od.gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+      <if test="numbers!='' and numbers!=null" >
+        AND Number1 = #{numbers,jdbcType=VARCHAR}
       </if>
     </where>
   </select>

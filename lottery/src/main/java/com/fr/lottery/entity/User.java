@@ -21,6 +21,9 @@ public class User implements Serializable{
 
     private String parentid;
 
+    private String parentAccount;
+
+
     private String account;
 
     private String userName;
@@ -324,5 +327,13 @@ public class User implements Serializable{
 
     public void setDailiName(String dailiName) {
         this.dailiName = dailiName;
+    }
+
+    public String getParentAccount() {
+        return parentAccount;
+    }
+
+    public void setParentAccount(String parentAccount) {
+        this.parentAccount = parentAccount;
     }
 }

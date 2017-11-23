@@ -11703,6 +11703,7 @@ var init = {
             a("u1create", $.userCheck);
             a("admcreate", $.userCheck);
             a("u2create", $.userCheck);
+            a("u3create", $.userCheck);
             a("memcreate", $.userCheck);
             a("guanliyuan", $.adminReloadData);
             a("dagudong", $.dgdList);
@@ -11714,6 +11715,7 @@ var init = {
             a("choose", $.chooseParent);
             a("u1create", $.changeSpinner);
             a("u2create", $.changeSpinner);
+            a("u3create", $.changeSpinner);
             a("memcreate", $.changeSpinner);
             a("userli", $.heightLightAcount);
             a("xiazhumsg", $.xiazhumsg);

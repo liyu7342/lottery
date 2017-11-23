@@ -107,7 +107,7 @@
                             <#list orderDetails as detail>
                                 <tr>
                                     <td>${detail_index+1!''}</td>
-                                    <td>${detail.description!''}</td>
+                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.gameType!''}">${detail.description!''}</a></td>
                                     <td>${detail.orderNum!''}</td>
 
                                     <td>${detail.amount!''}</td>

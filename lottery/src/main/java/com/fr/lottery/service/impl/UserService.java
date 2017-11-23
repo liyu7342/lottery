@@ -88,7 +88,9 @@ public class UserService implements IUserService {
         if(StringUtils.isNotBlank( user.getSys_user_oddsSet())){
             user.setHandicap(user.getSys_user_oddsSet());
         }
+        user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
         if (StringUtils.isBlank(user.getId())) {
+            user.setId(StringUtil.getUUID());
             String xpath = "";
             Integer seq = userMapper.getSeq(user.getParentid());
 
@@ -96,40 +98,57 @@ public class UserService implements IUserService {
                 User parentUser = get(user.getParentid());
                 if (parentUser != null) {
                     xpath = parentUser.getXpath();
+                    user.setParentAccount(parentUser.getAccount());
                     user.setParentName(parentUser.getUserName());
-                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){
-                        user.setDagudongAccount(parentUser.getAccount());
-                        user.setDagudongId(parentUser.getId());
+                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){//股东
+                        user.setDagudongAccount(parentUser.getDagudongAccount());
+                        user.setDagudongId(parentUser.getDagudongId());
                         user.setDagudongName(parentUser.getDagudongName());
                     }
-                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){
-                        user.setDagudongId(parentUser.getId());
-                        user.setDagudongAccount(parentUser.getDagudongAccount());
-                        user.setDagudongName(parentUser.getDagudongName());
+                    if(user.getUsertype()>UserTypeEnum.XiaoGudong.ordinal()){//总代理
+                        user.setGudongId(parentUser.getGudongId());
+                        user.setGudongAccount(parentUser.getGudongAccount());
+                        user.setGudongName(parentUser.getGudongName());
                     }
                     if(user.getUsertype()>UserTypeEnum.ZongDaili.ordinal()){
-                        user.setGudongId(parentUser.getGudongId());
-                        user.setGudongId(parentUser.getGudongAccount());
-                        user.setGudongId(parentUser.getGudongName());
-                    }
-                    if(user.getUsertype()>UserTypeEnum.Daili.ordinal()){
                         user.setZongdailiId(parentUser.getZongdailiId());
                         user.setZongdaiAccount(parentUser.getZongdaiAccount());
                         user.setZongdailiName(parentUser.getZongdailiName());
                     }
-                    if(user.getUsertype()>UserTypeEnum.Member.ordinal()){
+                    if(user.getUsertype()>UserTypeEnum.Daili.ordinal()){
                         user.setDailiId(parentUser.getDailiId());
                         user.setDailiAccount(parentUser.getDailiAccount());
                         user.setDailiName(parentUser.getDailiName());
                     }
 
-
                 }
             }
+
+            if(user.getUsertype() ==UserTypeEnum.DaGudong.ordinal()){
+                user.setDagudongAccount(user.getAccount());
+                user.setDagudongId(user.getId());
+                user.setDagudongName(user.getUserName());
+            }
+            else if(user.getUsertype() ==UserTypeEnum.XiaoGudong.ordinal()){
+                user.setGudongAccount(user.getAccount());
+                user.setGudongId(user.getId());
+                user.setGudongName(user.getUserName());
+            }
+            else if(user.getUsertype() ==UserTypeEnum.ZongDaili.ordinal()){
+                user.setZongdaiAccount(user.getAccount());
+                user.setZongdailiId(user.getId());
+                user.setZongdailiName(user.getUserName());
+            }
+            else if(user.getUsertype() ==UserTypeEnum.Daili.ordinal()){
+                user.setDailiAccount(user.getAccount());
+                user.setDailiId(user.getId());
+                user.setDailiName(user.getUserName());
+            }
+
             xpath+=String.format("%03d", seq);
             user.setXpath(xpath);
             user.setXseq(seq);
-            user.setId(StringUtil.getUUID());
+
 
             user.setCreatedate(new Date());
             userMapper.insert(user);

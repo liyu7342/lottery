@@ -1,9 +1,6 @@
 package com.fr.lottery.service.inter;
 
-import com.fr.lottery.dto.OrderDto;
-import com.fr.lottery.dto.Page;
-import com.fr.lottery.dto.StatisDto;
-import com.fr.lottery.dto.UserHistoryDto;
+import com.fr.lottery.dto.*;
 import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.OrderDetail;
 
@@ -28,4 +25,6 @@ public interface IOrderService {
     List<StatisDto> getStatis(String[] gameTypes);
     boolean settlement(String handicapId) ;
     Integer getOrderAmount();
+
+    Page<OrderDetailDto> getOrderDetailsByDaili(String game_id, String number, String name, Integer pageId);
 }

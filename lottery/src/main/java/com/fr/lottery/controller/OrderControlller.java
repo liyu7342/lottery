@@ -1,7 +1,9 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.OrderDetailDto;
 import com.fr.lottery.dto.OrderDto;
 import com.fr.lottery.dto.Page;
+import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.IOrderService;
@@ -75,7 +77,16 @@ public class OrderControlller {
 
     }
 
+    @RequestMapping("/xiazhumingxi")
+    public  ModelAndView xiazhumingxi(String game_id,String number,String name,Integer pageId){
+        ModelAndView modelAndView = new ModelAndView("/order/xiazhumingxi") ;
+        if(pageId==null) pageId=1;
 
+        Page<OrderDetailDto> page = orderService.getOrderDetailsByDaili(game_id,number,name,pageId);
+        modelAndView.addObject("details",page.getList());
+        modelAndView.addObject("page",page.toString());
+        return  modelAndView;
+    }
 
     public static void main(String[] args) {
 

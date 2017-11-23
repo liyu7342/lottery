@@ -4,6 +4,8 @@
     <resultMap id="userResult" type="com.fr.lottery.entity.User">
         <id column="Id" jdbcType="VARCHAR" property="id"/>
         <result column="ParentId" jdbcType="VARCHAR" property="parentid"/>
+        <result column="ParentAccount" jdbcType="VARCHAR" property="parentAccount"/>
+        <result column="ParentName" jdbcType="VARCHAR" property="parentName"/>
         <result column="Account" jdbcType="VARCHAR" property="account"/>
         <result column="UserName" jdbcType="VARCHAR" property="userName"/>
         <result column="DagudongId" jdbcType="VARCHAR" property="dagudongId"/>
@@ -34,7 +36,7 @@
         <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
     </resultMap>
     <sql id="Columns">
-          Id, ParentId,ParengName,DagudongId,DagudongAccount,DagudongName,GudongId,
+          Id, ParentId,ParentAccount,ParentName,DagudongId,DagudongAccount,DagudongName,GudongId,
           GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
  Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
     shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
@@ -79,12 +81,16 @@
 
     <!-- 插入用户 -->
     <insert id="insert" parameterType="com.fr.lottery.entity.User">
-      insert into user (Id, ParentId,ParentName, Account,
+      insert into user (Id, ParentId,ParentAccount,ParentName, Account,DagudongId,DagudongAccount,DagudongName,GudongId,
+      GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
       UserName, Password, Status,
       UserType, CreateDate, Credits, shortCovering,
       shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
       )
-    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR},#{parentName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR},#{parentAccount,jdbcType=VARCHAR},#{parentName,jdbcType=VARCHAR},
+      #{account,jdbcType=VARCHAR},#{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongName,jdbcType=VARCHAR},#{gudongId,jdbcType=VARCHAR},
+      #{gudongAccount,jdbcType=VARCHAR},#{gudongName,jdbcType=VARCHAR},#{zongdailiId,jdbcType=VARCHAR},#{zongdaiAccount,jdbcType=VARCHAR},#{zongdailiName,jdbcType=VARCHAR},
+      #{dailiId,jdbcType=VARCHAR},#{dailiAccount,jdbcType=VARCHAR},#{dailiName,jdbcType=VARCHAR},
       #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT},
       #{usertype,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{credits,jdbcType=BIGINT},
       #{shortCovering,jdbcType=TINYINT}, #{shareTotal,jdbcType=INTEGER}, #{shareUp,jdbcType=INTEGER},

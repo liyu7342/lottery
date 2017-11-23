@@ -17,7 +17,7 @@
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
-                    <div id="u3create" class="module">
+                    <div id="u2create" class="module">
 
                         <form id="create" method="post" action="/member/save">
                             <div class="hd g-tm">

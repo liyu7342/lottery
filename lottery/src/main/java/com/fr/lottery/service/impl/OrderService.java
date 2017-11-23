@@ -3,10 +3,7 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.OrderDetailMapper;
 import com.fr.lottery.dao.OrderMapper;
 import com.fr.lottery.dao.StatisMapper;
-import com.fr.lottery.dto.OrderDto;
-import com.fr.lottery.dto.Page;
-import com.fr.lottery.dto.StatisDto;
-import com.fr.lottery.dto.UserHistoryDto;
+import com.fr.lottery.dto.*;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.HandicapStatusEnum;
@@ -350,6 +347,18 @@ public class OrderService implements IOrderService {
             return list.get(0).getAmount();
         }
         return 0;
+    }
+
+    @Override
+    public Page<OrderDetailDto> getOrderDetailsByDaili(String game_id, String number, String name, Integer pageId) {
+        User user = UserHelper.getCurrentUser();
+        String xpath =user.getXpath()+"%";
+        Handicap handicap = handicapService.getCurrentHandicap();
+        List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),xpath,game_id,number,(pageId-1)*10,10);
+        long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(),xpath,game_id,number);
+        Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId,10,total);
+        page.setList(detailDtos);
+        return  page;
     }
 
 
