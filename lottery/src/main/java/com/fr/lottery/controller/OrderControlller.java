@@ -85,6 +85,7 @@ public class OrderControlller {
         Page<OrderDetailDto> page = orderService.getOrderDetailsByDaili(game_id,number,name,pageId);
         modelAndView.addObject("details",page.getList());
         modelAndView.addObject("page",page.toString());
+        modelAndView.addObject("name",name);
         return  modelAndView;
     }
 

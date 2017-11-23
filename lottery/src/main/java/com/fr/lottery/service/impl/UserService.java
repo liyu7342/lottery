@@ -120,7 +120,6 @@ public class UserService implements IUserService {
                         user.setDailiAccount(parentUser.getDailiAccount());
                         user.setDailiName(parentUser.getDailiName());
                     }
-
                 }
             }
 
