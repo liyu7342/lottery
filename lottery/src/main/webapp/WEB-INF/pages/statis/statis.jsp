@@ -105,10 +105,10 @@
                             </thead>
                             <tbody>
                             <#list orderDetails as detail>
-                                <#setting url_escaping_charset='gbk'>
+
                                 <tr>
                                     <td>${detail_index+1!''}</td>
-                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description!''}">${detail.description!''}</a></td>
                                     <td>${detail.orderNum!''}</td>
 
                                     <td>${detail.amount!''}</td>

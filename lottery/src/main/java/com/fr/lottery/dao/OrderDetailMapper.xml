@@ -126,20 +126,27 @@
     <result column="DagudongAccount" jdbcType="VARCHAR" property="dagudongAccount" />
     <result column="gameType" jdbcType="VARCHAR" property="gameType" />
     <result column="Number1" jdbcType="VARCHAR" property="numbers" />
-    <result column="odds" jdbcType="VARCHAR" property="odds" />
+    <result column="odds" jdbcType="FLOAT" property="odds" />
 
-    <result column="retreat" jdbcType="VARCHAR" property="retreat"/>
+    <result column="retreat" jdbcType="FLOAT" property="retreat"/>
     <result column="amount" jdbcType="VARCHAR" property="amount" />
+    <result column="shareTotal" jdbcType="FLOAT" property="shareTotal" />
+
     <result column="Account" jdbcType="VARCHAR" property="memberAccount"/>
     <result column="GudongAccount" jdbcType="VARCHAR" property="gudongAccount"/>
     <result column="zongdaiAccount" jdbcType="VARCHAR" property="zongdaiAccount" />
     <result column="DailiAccount" jdbcType="VARCHAR" property="dailiAccount" />
+    <result column="oddset" jdbcType="VARCHAR" property="oddset" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
 
   <select id="getOrderDetailsByDaili"  resultMap="OrderDetailDtoMap">
     select
-    od.Id,o.orderNo,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
-    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType
+    od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
+    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
+    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
+    AND #{userId,jdbcType=VARCHAR} in(u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
     from orderdetail od
     join orders  o on od.OrderId = o.id
     join user u on od.userid = u.id
@@ -160,6 +167,32 @@
         limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
       </if>
     </where>
+  </select>
+
+  <select id="getStatsByDaili"  resultMap="OrderDetailDtoMap">
+    SELECT sum(shareTotal) as shareTotal,sum(amount) as amount from (
+    select
+    od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
+    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
+    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
+    AND #{userId,jdbcType=VARCHAR} in(u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as shareTotal
+    from orderdetail od
+    join orders o on od.OrderId = o.id
+    join user u on od.userid = u.id
+    <where>
+      <if test="handicapId!='' and handicapId!=null">
+        AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+      <if test="xpath!='' and xpath!=null">
+        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null">
+        AND od.gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+      <if test="numbers!='' and numbers!=null">
+        AND Number1 = #{numbers,jdbcType=VARCHAR}
+      </if>
+    </where>) t
   </select>
   <select id="getDetailsTotalByDaili"  resultType="java.lang.Long">
     select

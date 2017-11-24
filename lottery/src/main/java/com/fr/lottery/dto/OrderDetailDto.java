@@ -1,5 +1,7 @@
 package com.fr.lottery.dto;
 
+import java.util.Date;
+
 /**
  * Created by Administrator on 2017/11/23.
  */
@@ -36,16 +38,16 @@ public class OrderDetailDto {
     /**
      * 赔率
      */
-    private String odds;
+    private Float odds;
     /**
      * 下注金额
      */
-    private String amount;
+    private Integer amount;
 
     /**
      * 占成
      */
-    private String shareTotal;
+    private Float shareTotal;
     //
     /**
      * 占成总额
@@ -58,7 +60,13 @@ public class OrderDetailDto {
     /**
      * 退水
      */
-    private String retreat;
+    private Float retreat;
+
+    private String description;
+
+    private String oddset;
+
+    private Date createDate;
 
     public String getId() {
         return id;
@@ -124,27 +132,27 @@ public class OrderDetailDto {
         this.numbers = numbers;
     }
 
-    public String getOdds() {
+    public Float getOdds() {
         return odds;
     }
 
-    public void setOdds(String odds) {
+    public void setOdds(Float odds) {
         this.odds = odds;
     }
 
-    public String getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public String getShareTotal() {
+    public Float getShareTotal() {
         return shareTotal;
     }
 
-    public void setShareTotal(String shareTotal) {
+    public void setShareTotal(Float shareTotal) {
         this.shareTotal = shareTotal;
     }
 
@@ -164,11 +172,35 @@ public class OrderDetailDto {
         this.orderNo = orderNo;
     }
 
-    public String getRetreat() {
+    public Float getRetreat() {
         return retreat;
     }
 
-    public void setRetreat(String retreat) {
+    public void setRetreat(Float retreat) {
         this.retreat = retreat;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getOddset() {
+        return oddset;
+    }
+
+    public void setOddset(String oddset) {
+        this.oddset = oddset;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

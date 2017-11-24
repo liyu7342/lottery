@@ -35,6 +35,8 @@ public class Orders {
 
     private String lianmadan;
 
+    private String oddset;
+
     public String getId() {
         return id;
     }
@@ -162,5 +164,13 @@ public class Orders {
 
     public void setCanWinAmount(Float canWinAmount) {
         this.canWinAmount = canWinAmount;
+    }
+
+    public String getOddset() {
+        return oddset;
+    }
+
+    public void setOddset(String oddset) {
+        this.oddset = oddset;
     }
 }

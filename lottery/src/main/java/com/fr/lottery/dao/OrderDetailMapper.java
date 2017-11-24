@@ -25,7 +25,19 @@ public interface OrderDetailMapper {
      */
     void settlement(@Param("handicapId") String handicapId);
 
-    List<OrderDetailDto> getOrderDetailsByDaili(@Param("handicapId") String handicapId, @Param("xpath") String xpath,
+    List<OrderDetailDto> getOrderDetailsByDaili(@Param("handicapId") String handicapId,@Param("userId") String userId, @Param("xpath") String xpath,
                                          @Param("gameType") String gameType,@Param("numbers") String numbers, @Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
     long getDetailsTotalByDaili (@Param("handicapId") String handicapId, @Param("xpath") String xpath,  @Param("gameType") String gameType,@Param("numbers") String numbers);
+
+    /**
+     * 收付统计 总计
+     * @param handicapId
+     * @param userId
+     * @param xpath
+     * @param gameType
+     * @param numbers
+     * @return
+     */
+    OrderDetailDto getStatsByDaili(@Param("handicapId") String handicapId,@Param("userId") String userId, @Param("xpath") String xpath,
+                                         @Param("gameType") String gameType,@Param("numbers") String numbers);
 }

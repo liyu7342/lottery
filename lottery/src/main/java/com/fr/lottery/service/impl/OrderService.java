@@ -86,6 +86,7 @@ public class OrderService implements IOrderService {
             orders.setAmount(Integer.parseInt(orderStrs[3]));
             orders.setOdds(orderStrs[2]);
             orders.setNo(orderStrs[1]);
+            orders.setOddset(orderDto.getOdds_set());
             String category = GameCfg.getGameCategory(orderStrs[0]);
             orders.setGametype(orderStrs[0]);
             if(OddsTypeEnum.tema.getValue().equals( orders.getGametype())) {
@@ -354,11 +355,26 @@ public class OrderService implements IOrderService {
         User user = UserHelper.getCurrentUser();
         String xpath =user.getXpath()+"%";
         Handicap handicap = handicapService.getCurrentHandicap();
-        List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),xpath,game_id,number,(pageId-1)*10,10);
+        List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),user.getId(),xpath,game_id,number,(pageId-1)*10,10);
         long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(),xpath,game_id,number);
         Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId,10,total);
         page.setList(detailDtos);
         return  page;
+    }
+
+    /**
+     * 获取下注明细统计
+     * @param game_id
+     * @param number
+     * @return
+     */
+    @Override
+    public OrderDetailDto getStatsByDaili(String game_id,String number){
+        User user = UserHelper.getCurrentUser();
+        String xpath =user.getXpath()+"%";
+        Handicap handicap = handicapService.getCurrentHandicap();
+        OrderDetailDto detailDto= orderDetailMapper.getStatsByDaili(handicap.getId(),user.getId(),xpath,game_id,number);
+        return detailDto;
     }
 
 

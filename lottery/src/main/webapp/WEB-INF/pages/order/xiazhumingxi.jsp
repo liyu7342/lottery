@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>aj022 - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -61,13 +61,13 @@
                                     <td>${detail.zongdaiAccount!''}</td>
                                     <td>${detail.dailiAccount!''}</td>
                                     <td>${detail.memberAccount!''}</td>
-                                    <td>21:19:31</td>
+                                    <td>${detail.createDate?string("HH:mm:ss")}</td>
                                     <td real=8.00000>${detail.amount!'0'}</td>
-                                    <td class='red'>${detail.odds!''}</td>
-                                    <td>${detail.retreat!''}</td>
-                                    <td>B(特A)</td>
+                                    <td class='red'>${detail.odds?string('#.###')}</td>
+                                    <td>${detail.retreat?string('#.#')}</td>
+                                    <td>${detail.oddset!''}</td>
                                     <td real=3.2>
-                                        3
+                                        ${detail.shareTotal?floor}
                                     </td>
                                     <td>X</td>
                                     <td>正常</td>
@@ -76,21 +76,21 @@
 
                                 <tr>
                                     <td colspan='8'>小計</td>
-                                    <td real=283>283</td>
+                                    <td real=283>${subAmount!'0'}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=63.7>63</td>
+                                    <td real=63.7>${subShareTotal?floor}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td colspan='8'>總計</td>
-                                    <td real=6682.00000>6,682</td>
+                                    <td real=6682.00000>${totalAmount!''}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=722.80000>722</td>
+                                    <td real=722.80000>${totalShareTotal?floor}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
