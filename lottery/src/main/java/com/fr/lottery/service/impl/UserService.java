@@ -88,8 +88,9 @@ public class UserService implements IUserService {
         if(StringUtils.isNotBlank( user.getSys_user_oddsSet())){
             user.setHandicap(user.getSys_user_oddsSet());
         }
-        user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+
         if (StringUtils.isBlank(user.getId())) {
+            user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             user.setId(StringUtil.getUUID());
             String xpath = "";
             Integer seq = userMapper.getSeq(user.getParentid());
@@ -152,7 +153,7 @@ public class UserService implements IUserService {
             user.setCreatedate(new Date());
             userMapper.insert(user);
         } else {
-            if(StringUtil.isNullOrEmpty(user.getPassword())){
+            if(StringUtils.isNotBlank(user.getPassword())){
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             }
             userMapper.update(user);

@@ -420,7 +420,7 @@ public class OddsController {
         header.put("sum", user.getAmount());
         header.put("credit", user.getCredits());
         header.put("fail_count", 0);
-        header.put("calc_status", -1);
+        header.put("calc_status", 20);
         List<Orders> orderDetails = orderService.getOrders();
         List<List<String>> new_order = new ArrayList<List<String>>();
 //        if(Global.cfg_category_key.size()==0){

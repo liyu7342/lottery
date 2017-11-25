@@ -28,7 +28,7 @@
                 <div class="yui-g">
 
                     <input id='xiazhumsg_header_info'
-                           value='{"marquee":"欢迎进入前台","draws":"","sum":"0.00000","credit":"0.00000","new_order":[],"calc_status":-1,"fail_count":0}'
+                           value='${headinfo}'
                            type="hidden"/>
                     <div id="xiazhumsg" class="module ">
                         <div class="hd g-tm">

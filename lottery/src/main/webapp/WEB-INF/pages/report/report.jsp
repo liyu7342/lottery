@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>f2213 - A28</title>
+    <title>${user.userName} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -30,64 +30,30 @@
                             <table class="g-t1 g-t2">
                                 <colgroup><col width="8%"></col></colgroup>
                                 <tbody nomovod>
-                                <tr
-                                        style="display:none"    >
-                                    <td>類型</td>
-                                    <th>
-
-                                        <label for="gameType_0"><input id="gameType_0" name="gameType" value="0" type="radio"  />全部</label>
-                                        <label for="gameType_1"><input id="gameType_1" name="gameType" value="1" type="radio" checked />六合彩</label>
-                                        <label for="gameType_2"><input id="gameType_2" name="gameType" value="2" type="radio"  />高額彩</label>
-
-                                    </th>
-                                </tr>
                                 <tr>
                                     <td>日期查詢</td>
                                     <th>
                                         <select name="draw_date">
-                                            <option value="2017-07-11">2017-07-11</option>
-                                            <option value="2017-07-08">2017-07-08</option>
-                                            <option value="2017-07-06">2017-07-06</option>
-                                            <option value="2017-07-04">2017-07-04</option>
-                                            <option value="2017-07-02">2017-07-02</option>
-                                            <option value="2017-06-29">2017-06-29</option>
-                                            <option value="2017-06-27">2017-06-27</option>
-                                            <option value="2017-06-24">2017-06-24</option>
-                                            <option value="2017-06-22">2017-06-22</option>
-                                            <option value="2017-06-20">2017-06-20</option>
-                                            <option value="2017-06-17">2017-06-17</option>
-                                            <option value="2017-06-15">2017-06-15</option>
-                                            <option value="2017-06-13">2017-06-13</option>
-                                            <option value="2017-06-10">2017-06-10</option>
-                                            <option value="2017-06-08">2017-06-08</option>
+                                            <#list datelist as obj>
+                                                <option value="${obj.text}">${obj.text}</option>
+                                            </#list>
+
 
                                         </select>
                                         ~
-                                        <select name="draw_date2"><option value="2017-07-11">2017-07-11</option>
+                                        <select name="draw_date2">
 
-                                            <option value="2017-07-08">2017-07-08</option>
-                                            <option value="2017-07-06">2017-07-06</option>
-                                            <option value="2017-07-04">2017-07-04</option>
-                                            <option value="2017-07-02">2017-07-02</option>
-                                            <option value="2017-06-29">2017-06-29</option>
-                                            <option value="2017-06-27">2017-06-27</option>
-                                            <option value="2017-06-24">2017-06-24</option>
-                                            <option value="2017-06-22">2017-06-22</option>
-                                            <option value="2017-06-20">2017-06-20</option>
-                                            <option value="2017-06-17">2017-06-17</option>
-                                            <option value="2017-06-15">2017-06-15</option>
-                                            <option value="2017-06-13">2017-06-13</option>
-                                            <option value="2017-06-10">2017-06-10</option>
-                                            <option value="2017-06-08">2017-06-08</option>
-
+                                            <#list datelist as obj>
+                                                <option value="${obj.text}">${obj.text}</option>
+                                            </#list>
                                         </select>
                                         &nbsp;<button type="button" href="reportmonth.htm">本月報表</button>
                                 </tr>
                                 <tr>
                                     <td>類別</td>
                                     <th colspan="2">
-                                        <label for="kind_user_report"><input type="radio" id="kind_user_report" name="kind" value="user_report.htm" checked="checked">總賬</label>&nbsp;
-                                        <label for="kind_game_report"><input type="radio" id="kind_game_report" name="kind" value="game_report.htm" >分類賬</label>
+                                        <label for="kind_user_report"><input type="radio" id="kind_user_report" name="kind" value="/report/user_report" checked="checked">總賬</label>&nbsp;
+                                        <label for="kind_game_report"><input type="radio" id="kind_game_report" name="kind" value="/user/game_report" >分類賬</label>
                                     </th>
                                 </tr>
                                 </tbody></table>
