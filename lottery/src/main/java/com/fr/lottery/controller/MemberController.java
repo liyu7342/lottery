@@ -46,7 +46,7 @@ public class MemberController {
         ModelAndView modelAndView = new ModelAndView("/member/index");
         String agentId = UserHelper.getCurrentUser().getId();
         Page<User> members = userService.getUsers(agentId, UserTypeEnum.Member.ordinal(), "", null, pageId);
-        modelAndView.addObject("user", members.getList());
+        modelAndView.addObject("users", members.getList());
         modelAndView.addObject("page", members.toString());
         return modelAndView;
     }
@@ -87,7 +87,7 @@ public class MemberController {
         }
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("info", user);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("shareUpList", shareUpArr);
         return modelAndView;
@@ -122,7 +122,7 @@ public class MemberController {
         }
 
         modelAndView.addObject("limitSets", map);
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("info", user);
         int shareTotal = 100 - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
         for (int i = 0; i <= shareTotal; i += 5) {
@@ -130,7 +130,6 @@ public class MemberController {
         }
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("childsumcredit", childsumcredit);
-        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
 //        modelAndView.addObject("parentUser",parentUser);
         return modelAndView;
     }
@@ -169,7 +168,7 @@ public class MemberController {
         modelAndView.addObject("limitSets", map);
         modelAndView.addObject("plimit", pmap);
 
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("info", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
         int shareTotal = parentUser.getShareTotal() - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
@@ -222,7 +221,7 @@ public class MemberController {
         modelAndView.addObject("plimit", pmap);
 
 
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("info", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
         int shareTotal = parentUser.getShareTotal() - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();
@@ -236,7 +235,6 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -275,7 +273,7 @@ public class MemberController {
         modelAndView.addObject("plimit", pmap);
 
 
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("info", user);
         modelAndView.addObject("credits", user.getCredits() != null ? user.getCredits().toString() : "0~" + parentUser.getCredits().toString());
         int shareTotal = parentUser.getShareTotal() - user.getShareUp();
         List<Integer> shareArr = new ArrayList<Integer>();

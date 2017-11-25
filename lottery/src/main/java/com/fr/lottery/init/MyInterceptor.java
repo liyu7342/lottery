@@ -34,6 +34,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
             request.getRequestDispatcher("/login/index").forward(request, response);
             return false;
         }
+        request.setAttribute("user", UserHelper.getCurrentUser());
         //request.setAttribute("user", user);
         return super.preHandle(request, response, handler);
     }

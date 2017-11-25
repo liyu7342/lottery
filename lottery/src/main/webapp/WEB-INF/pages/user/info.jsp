@@ -8,7 +8,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${currentUser.userName} - A28</title>
+    <title>${user.userName!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_3106" type="text/css">
 </head>
@@ -44,19 +44,19 @@
                                 <tbody movod='movod'>
                                 <tr>
                                     <td class="bg"> 賬號</td>
-                                    <td>${currentUser.userName!''}</td>
+                                    <td>${user.userName!''}</td>
                                     <td class="bg">會員名稱</td>
-                                    <td>${currentUser.account!''}</td>
+                                    <td>${user.account!''}</td>
                                     <td class="bg"> 信用額度</td>
-                                    <td>${currentUser.credits!''}</td>
+                                    <td>${user.credits!''}</td>
 
                                 </tr>
                                 <tr>
                                     <td class="bg"> 賬號狀態</td>
-                                    <td>${currentUser.status!''}</td>
+                                    <td>${user.status!''}</td>
 
                                     <td class="bg">所屬盤口</td>
-                                    <td> ${currentUser.handicap!''}</td>
+                                    <td> ${user.handicap!''}</td>
                                     <td class="bg"></td>
                                     <td></td>
                                 </tr>

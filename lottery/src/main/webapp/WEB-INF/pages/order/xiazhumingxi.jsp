@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,9 +10,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName} - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <title>${user.userName!''} - A28</title>
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -34,21 +34,21 @@
                             <table class="g-t1 g-t2">
                                 <thead>
                                 <tr>
-                                    <td>注單號</td>
+                                    <td>注單號/td>
                                     <td>玩法</td>
-                                    <td>大股東</td>
+                                    <td>大股東/td>
                                     <td>股東</td>
-                                    <td>總代理</td>
+                                    <td>總代理/td>
                                     <td>代理</td>
                                     <td>會員</td>
                                     <td>下注時間</td>
                                     <td>下注金額</td>
                                     <td>賠率</td>
-                                    <td>退水%</td>
+                                    <td>退�</td>
                                     <td>盤口</td>
                                     <td>佔成收入</td>
                                     <td class="r">補貨</td>
-                                    <td>注單狀態</td>
+                                    <td>注單狀�/td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,13 +61,13 @@
                                     <td>${detail.zongdaiAccount!''}</td>
                                     <td>${detail.dailiAccount!''}</td>
                                     <td>${detail.memberAccount!''}</td>
-                                    <td>21:19:31</td>
+                                    <td>${detail.createDate?string("HH:mm:ss")}</td>
                                     <td real=8.00000>${detail.amount!'0'}</td>
-                                    <td class='red'>${detail.odds!''}</td>
-                                    <td>${detail.retreat!''}</td>
-                                    <td>B(特A)</td>
+                                    <td class='red'>${detail.odds?string('#.###')}</td>
+                                    <td>${detail.retreat?string('#.#')}</td>
+                                    <td>${detail.oddset!''}</td>
                                     <td real=3.2>
-                                        3
+                                        ${detail.shareTotal?floor}
                                     </td>
                                     <td>X</td>
                                     <td>正常</td>
@@ -76,21 +76,21 @@
 
                                 <tr>
                                     <td colspan='8'>小計</td>
-                                    <td real=283>283</td>
+                                    <td real=283>${subAmount!'0'}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=63.7>63</td>
+                                    <td real=63.7>${subShareTotal?floor}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td colspan='8'>總計</td>
-                                    <td real=6682.00000>6,682</td>
+                                    <td real=6682.00000>${totalAmount!''}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=722.80000>722</td>
+                                    <td real=722.80000>${totalShareTotal?floor}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
@@ -103,7 +103,8 @@
                         </div>
                         <div class="ft">
                         </div>
-                    </div>                </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -112,9 +113,9 @@
     window.setting = {
         login_path: '/msdid6321379a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 20000, //設置開關盤刷新頻率
-        log4js_type:  0, //設置log4javascript的類型
-        log4js_level: 'INFO', //設置log4javascript的級別
+        draw_refersh: 20000, //設置開關盤刷新頻�
+        log4js_type:  0, //設置log4javascript的類�
+        log4js_level: 'INFO', //設置log4javascript的級�
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>

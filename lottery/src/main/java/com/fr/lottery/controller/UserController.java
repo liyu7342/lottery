@@ -46,7 +46,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        modelAndView.addObject("user", user);
+        
         return modelAndView;
     }
 
@@ -62,7 +62,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        modelAndView.addObject("user", user);
+        
         return modelAndView;
     }
 
@@ -78,7 +78,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        modelAndView.addObject("user", user);
+        
         return modelAndView;
     }
 
@@ -94,7 +94,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        modelAndView.addObject("user", user);
+        
         return modelAndView;
     }
 
@@ -110,7 +110,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        modelAndView.addObject("user", user);
+        
         return modelAndView;
     }
 
@@ -159,12 +159,15 @@ public class UserController {
 
     public ModelAndView repassword() {
         ModelAndView mv = new ModelAndView("/user/password");
+
+        
         return mv;
     }
 
     @RequestMapping("password1")
     public ModelAndView password1(){
         ModelAndView mv = new ModelAndView("/user/password1");
+
         return mv;
     }
 
@@ -172,7 +175,6 @@ public class UserController {
     public ModelAndView info() {
         ModelAndView mv = new ModelAndView("/user/info");
         User currentUser = UserHelper.getCurrentUser();
-        mv.addObject("currentUser", currentUser);
         Map<String, Object> map = new HashMap<String, Object>();
         List<LimitSet> limitSets = limitSetService.findAll(currentUser.getId());
 
@@ -193,7 +195,6 @@ public class UserController {
     public ModelAndView info1() {
         ModelAndView mv = new ModelAndView("/user/info1");
         User currentUser = UserHelper.getCurrentUser();
-        mv.addObject("currentUser", currentUser);
         Map<String, Object> map = new HashMap<String, Object>();
         List<LimitSet> limitSets = limitSetService.findAll(currentUser.getId());
 
@@ -201,6 +202,7 @@ public class UserController {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         mv.addObject("limitSets", map);
+
         return mv;
     }
 

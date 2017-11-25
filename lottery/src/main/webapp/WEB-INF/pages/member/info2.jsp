@@ -33,13 +33,13 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${user.userName!''}" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${info.userName!''}" /></td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" <#if user.id!="">disabled="disabled"</#if>  name="account"  value="${user.account!''}"  class="gray"/> </td>
+                                        <td><input type="text" valid='account' title="4-12個數字或字母字符" maxlength="12" <#if info.id!="">disabled="disabled"</#if>  name="account"  value="${info.account!''}"  class="gray"/> </td>
                                         <td>密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" <#if user.id=="">valid="password"</#if> /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="password" value="" <#if info.id=="">valid="password"</#if> /></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" <#if user.id=="">valid="password"</#if> value="" /></td>
+                                        <td><input type="password" maxlength="12" title="6-12個字符，必須包含字母和數字!" name="sys_user_repassword2" <#if info.id=="">valid="password"</#if> value="" /></td>
                                     </tr>
                                     <tr>
                                         <td>總信用額度</td>
@@ -47,20 +47,20 @@
                                         </td>
                                         <td>盤口</td>
                                         <td><select class="w1" name="sys_user_oddsSet"  >
-                                            <option value="C" <#if "C" ==user.sys_user_oddsSet>selected="selected"</#if> >C</option>
-                                            <option value="B" <#if "B" == user.sys_user_oddsSet>selected="selected"</#if> >B</option>
-                                            <option value="A" <#if "A" == user.sys_user_oddsSet>selected="selected"</#if> >A</option>
+                                            <option value="C" <#if "C" ==info.sys_user_oddsSet>selected="selected"</#if> >C</option>
+                                            <option value="B" <#if "B" == info.sys_user_oddsSet>selected="selected"</#if> >B</option>
+                                            <option value="A" <#if "A" == info.sys_user_oddsSet>selected="selected"</#if> >A</option>
                                         </select></td>
                                         <td>補貨設定</td>
                                         <td><select class="w3" name="shortCovering" >
-                                            <option value="0" <#if user.shortCovering==0>selected="selected"</#if> >不允許</option>
-                                            <option value="1" <#if user.shortCovering==1>selected="selected"</#if>  >允許</option>
+                                            <option value="0" <#if info.shortCovering==0>selected="selected"</#if> >不允許</option>
+                                            <option value="1" <#if info.shortCovering==1>selected="selected"</#if>  >允許</option>
                                         </select></td>
                                         <td>狀態</td>
                                         <td><select class="w4" name="status">
-                                            <option value="0" <#if user.status==0>selected="selected"</#if>  >停用</option>
-                                            <option value="1" <#if user.status==1>selected="selected"</#if> >啟用</option>
-                                            <option value="2" <#if user.status==2>selected="selected"</#if> >停押</option>
+                                            <option value="0" <#if info.status==0>selected="selected"</#if>  >停用</option>
+                                            <option value="1" <#if info.status==1>selected="selected"</#if> >啟用</option>
+                                            <option value="2" <#if info.status==2>selected="selected"</#if> >停押</option>
                                         </select></td>
                                     </tr>
 
@@ -68,7 +68,7 @@
                                         <td colspan="2">小股東及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
                                                 <#list shareTotalList as share>
-                                                    <option  value=${share} <#if user.shareUp==share>selected="selected"</#if>>${share}</option>
+                                                    <option  value=${share} <#if info.shareUp==share>selected="selected"</#if>>${share}</option>
                                                 </#list>
                                             </select>
                                             <input type="hidden" name="shareParent" value="${parentUser.shareTotal!'0'}"/>
@@ -76,7 +76,7 @@
                                         <td colspan="2">大股東佔成數(<font color='red'>%</font>)
                                             <select class="w2" name="shareUp" >
                                                 <#list shareUpList as shareup>
-                                                    <option  value=${shareup} <#if user.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
+                                                    <option  value=${shareup} <#if info.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
                                                 </#list>
                                             </select>
                                         </td>
@@ -288,7 +288,7 @@
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index2'"/></div>
 
-                                <input type="hidden" name="id" value="${(user.id)!''}"/>
+                                <input type="hidden" name="id" value="${(info.id)!''}"/>
                                 <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
                                 <input type="hidden" name="usertype" value='2'/>
                                 <input type="hidden" name="parentcredit" value='${parentUser.credits}'/>
@@ -314,19 +314,19 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <#if currentuser.usertype lt 1>
+                        <#if user.usertype lt 1>
                             <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>
-                        <#if currentuser.usertype lt 2>
+                        <#if user.usertype lt 2>
                             <li><a curl='5' class="red" href='/user/index2'>小股東</a><cite>0</cite></li>
                         </#if>
-                        <#if currentuser.usertype lt 3>
+                        <#if user.usertype lt 3>
                             <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
                         </#if>
-                        <#if currentuser.usertype lt 4>
+                        <#if user.usertype lt 4>
                             <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
                         </#if>
-                        <#if currentuser.usertype lt 5>
+                        <#if user.usertype lt 5>
                             <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
                         </#if>
                     </ul>

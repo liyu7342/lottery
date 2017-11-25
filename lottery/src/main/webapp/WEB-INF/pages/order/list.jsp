@@ -14,7 +14,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>f2211 - A28</title>
+    <title>${user.userName} - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_31064" type="text/css">
 </head>

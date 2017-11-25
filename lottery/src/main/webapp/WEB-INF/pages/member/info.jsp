@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName} - A28</title>
+    <title>${user.userName!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -37,22 +37,22 @@
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${(user.userName)!''}" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="userName" value="${(info.userName)!''}" /></td>
                                         <td>賬號</td>
-                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12"  name="account" <#if user.id!="">disabled="disabled"</#if> placeholder="1-12個數字/字母" value="${(user.account)!''}" class="gray"/> </td>
+                                        <td> <input type="text" valid='account' title="1-12個數字或字母字符" maxlength="12"  name="account" <#if info.id!="">disabled="disabled"</#if> placeholder="1-12個數字/字母" value="${(info.account)!''}" class="gray"/> </td>
                                         <td> 密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" <#if user.id=="">valid="password"</#if>/></td>
+                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" name="password" value="" <#if info.id=="">valid="password"</#if>/></td>
                                         <td>確認密碼</td>
-                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="sys_user_repassword2" value="" <#if user.id=="">valid="password"</#if>/> </td>
+                                        <td><input type="password" title="6-12個字符，必須包含字母和數字!" maxlength="12" size="15" name="sys_user_repassword2" value="" <#if info.id=="">valid="password"</#if>/> </td>
                                         <input type="hidden" name="pwd"/>   </tr>
                                     <tr>
                                         <td>總信用額度</td>
-                                        <td><input type="text" valid="credit" title="0~0" maxlength="9" size="8" name="credits" placeholder="0~0" value="${(user.credits)!''}" class="gray"/>
+                                        <td><input type="text" valid="credit" title="0~0" maxlength="9" size="8" name="credits" placeholder="0~0" value="${(info.credits)!''}" class="gray"/>
                                         </td>
                                         <td colspan="2">對此會員佔成比例(<font color='red'>%</font>)
                                             <select class="w2" name="member_shareUp" >
                                                 <#list shareUpList as shareup>
-                                                    <option  value=${shareup} <#if user.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
+                                                    <option  value=${shareup} <#if info.shareUp==shareup>selected="selected"</#if>>${shareup}</option>
                                                 </#list>
                                             </select>
                                             <input type="hidden" name="sharecorp" value=""/>
@@ -60,9 +60,9 @@
 
                                         <td>盤口</td>
                                         <td><select class="w1" name="handicap"  >
-                                            <option value="A" <#if user.handicap=="A">selected="selected"</#if> >A</option>
-                                            <option value="B" <#if user.handicap=="B">selected="selected"</#if> >B</option>
-                                            <option value="C" <#if user.handicap=="C">selected="selected"</#if> >C</option>
+                                            <option value="A" <#if info.handicap=="A">selected="selected"</#if> >A</option>
+                                            <option value="B" <#if info.handicap=="B">selected="selected"</#if> >B</option>
+                                            <option value="C" <#if info.handicap=="C">selected="selected"</#if> >C</option>
 
                                         </select></td>
                                         <td> 狀態</td>
@@ -283,7 +283,7 @@
                                 <div class="g-tn"><input type="submit" name="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/index'"/></div>
                                 <input type="hidden" name="op" value='create'/>
-                                <input type="hidden" name="id" value="${(user.id)!''}"/>
+                                <input type="hidden" name="id" value="${(info.id)!''}"/>
                                 <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
                                 <input type="hidden" name="usertype" value='5'/>
                                 <input type="hidden" name="parentcredit" value="${(parentUser.credits)!''}"/>

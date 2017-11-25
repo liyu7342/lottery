@@ -1,5 +1,7 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.entity.User;
+import com.fr.lottery.utils.UserHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +17,7 @@ public class ReportController {
     @RequestMapping("/report")
     public ModelAndView report(){
         ModelAndView modelAndView = new ModelAndView("/report/report");
+
         return modelAndView;
     }
 
@@ -40,29 +43,34 @@ public class ReportController {
     @RequestMapping("z_gudong")
     public ModelAndView z_dagudong(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_gudong");
+
         return modelAndView;
     }
     @RequestMapping("/z_zongdaili")
     public ModelAndView z_zongdaili(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_zongdaili");
+
         return modelAndView;
     }
 
     @RequestMapping("/z_daili")
     public ModelAndView z_daili(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_daili");
+
         return modelAndView;
     }
 
     @RequestMapping("/z_member")
     public ModelAndView z_member(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_member");
+
         return modelAndView;
     }
 
     @RequestMapping("/reportmingxi")
     public ModelAndView reportmingxi(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id) {
         ModelAndView modelAndView = new ModelAndView("/report/z_member");
+
         return modelAndView;
     }
 }

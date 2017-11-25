@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName} - A28</title>
+    <title>${user.userName!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -35,25 +35,25 @@
                                 <tbody nomovod>
                                 <tr>
                                     <td class="bg">名稱</td>
-                                    <td>${currentUser.userName!''}</td>
+                                    <td>${user.userName!''}</td>
                                     <td class="bg">賬號</td>
-                                    <td>${currentUser.account!''}</td>
+                                    <td>${user.account!''}</td>
                                     <td class="bg">補貨設定</td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td class="bg">總信用額度</td>
-                                    <td>${currentUser.credits!''}</td>
+                                    <td>${user.credits!''}</td>
                                     <td class="bg" >自己及下級佔成數</td>
                                     <td >0%</td>
                                     <td class="bg" >盤口</td>
-                                    <td> ${currentUser.handicap!''}</td>
+                                    <td> ${user.handicap!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">補貨是否佔成</td>
                                     <td>是</td>
                                     <td class="bg">狀態</td>
-                                    <td colspan="3" >${currentUser.status!''}</td>
+                                    <td colspan="3" >${user.status!''}</td>
                                 </tr>
                                 </tbody></table>
                             <div class="g-tif mt"><h3>詳細資料</h3></div>

@@ -77,6 +77,7 @@ public class OrderControlller {
         mv.addObject("totalAmount",orderDetail==null?0:orderDetail.getTotalAmount());
         mv.addObject("canWinAmount",orderDetail==null?0:orderDetail.getCanWinAmount());
         mv.addObject("subCanWinAmount",subCanWinAmount);
+
         return mv;
     }
 
@@ -111,11 +112,21 @@ public class OrderControlller {
     public  ModelAndView xiazhumingxi(String game_id,String number,String name,Integer pageId){
         ModelAndView modelAndView = new ModelAndView("/order/xiazhumingxi") ;
         if(pageId==null) pageId=1;
-
+        Integer subAmount =0;
+        Integer subShareTotal=0;
         Page<OrderDetailDto> page = orderService.getOrderDetailsByDaili(game_id,number,name,pageId);
         modelAndView.addObject("details",page.getList());
         modelAndView.addObject("page",page.toString());
         modelAndView.addObject("name",name);
+        for(OrderDetailDto detailDto:page.getList()){
+            subAmount+=detailDto.getAmount();
+            subShareTotal+=detailDto.getShareTotal().intValue();
+        }
+        modelAndView.addObject("subAmount",subAmount);
+        modelAndView.addObject("subShareTotal",subShareTotal);
+        OrderDetailDto orderDetailDto = orderService.getStatsByDaili(game_id,number);
+        modelAndView.addObject("totalAmount",orderDetailDto.getAmount());
+        modelAndView.addObject("totalShareTotal",orderDetailDto.getShareTotal());
         return  modelAndView;
     }
 

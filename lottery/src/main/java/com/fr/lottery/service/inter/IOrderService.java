@@ -27,4 +27,6 @@ public interface IOrderService {
     Integer getOrderAmount();
 
     Page<OrderDetailDto> getOrderDetailsByDaili(String game_id, String number, String name, Integer pageId);
+
+    OrderDetailDto getStatsByDaili(String game_id,String number);
 }

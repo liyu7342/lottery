@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName} - A28</title>
+    <title>${user.userName!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -27,7 +27,7 @@
                         <div class="hd g-tm">
                             <ul>
                                 <li><h2 class="g-tit">報表管理</h2></li>
-                                <li class="ps">股東[<span class='greenrpt'>${user.userName}</span>]${user.userName}
+                                <li class="ps">股東[<span class='greenrpt'>${user.userName!''}</span>]${user.userName!''}
                                     -- 日期範圍：2017-11-23 ~ 2017-11-23
                                     -- 報表分類：分類賬 -- <a href="report.htm" >上一頁</a></li>
                             </ul>
