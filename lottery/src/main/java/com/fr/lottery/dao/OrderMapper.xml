@@ -18,10 +18,11 @@
     <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
     <result column="lianmatype" jdbcType="VARCHAR" property="lianmatype" />
     <result column="lianmadan" jdbcType="VARCHAR" property="lianmadan" />
+    <result column="oddSet" jdbcType="DECIMAL" property="oddset" />
   </resultMap>
   <sql id="Base_Column_List">
     Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,winAmount, createdate,status,orderNo,
-    lianmatype,lianmadan,canWinAmount
+    lianmatype,lianmadan,canWinAmount,oddset
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -42,11 +43,11 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
     insert into orders (Id,  userId,handicapId,
-      gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount)
+      gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset)
     values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{totalAmount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
-      #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL})
+      #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orders

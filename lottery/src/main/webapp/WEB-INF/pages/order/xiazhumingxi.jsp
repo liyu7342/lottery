@@ -34,21 +34,21 @@
                             <table class="g-t1 g-t2">
                                 <thead>
                                 <tr>
-                                    <td>注單號/td>
+                                    <td>注單號</td>
                                     <td>玩法</td>
-                                    <td>大股東/td>
+                                    <td>大股東</td>
                                     <td>股東</td>
-                                    <td>總代理/td>
+                                    <td>總代理</td>
                                     <td>代理</td>
                                     <td>會員</td>
                                     <td>下注時間</td>
                                     <td>下注金額</td>
-                                    <td>賠率</td>
-                                    <td>退�</td>
+                                    <td>賠率%</td>
+                                    <td>退水%</td>
                                     <td>盤口</td>
                                     <td>佔成收入</td>
                                     <td class="r">補貨</td>
-                                    <td>注單狀�/td>
+                                    <td>注單狀態</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -113,9 +113,9 @@
     window.setting = {
         login_path: '/msdid6321379a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 20000, //設置開關盤刷新頻�
-        log4js_type:  0, //設置log4javascript的類�
-        log4js_level: 'INFO', //設置log4javascript的級�
+        draw_refersh: 20000, //設置開關盤刷新頻率
+        log4js_type:  0, //設置log4javascript的類型
+        log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>

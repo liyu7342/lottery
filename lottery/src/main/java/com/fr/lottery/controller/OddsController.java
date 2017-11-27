@@ -108,6 +108,7 @@ public class OddsController {
         ModelAndView modelAndView = new ModelAndView("/odds/buzhong8");
         String[] oddsTypes = {OddsTypeEnum.buzhong8.getValue()};
         Map<String, String> map = oddsService.getOddsMap(handicap, oddsTypes);
+        modelAndView.addObject("handicap",handicap);
         modelAndView.addObject("entity", map);
         return modelAndView;
     }

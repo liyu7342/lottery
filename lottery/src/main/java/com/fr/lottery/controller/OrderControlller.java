@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -109,8 +111,9 @@ public class OrderControlller {
     }
 
     @RequestMapping("/xiazhumingxi")
-    public  ModelAndView xiazhumingxi(String game_id,String number,String name,Integer pageId){
+    public  ModelAndView xiazhumingxi(String game_id,String number,String name,Integer pageId,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
         ModelAndView modelAndView = new ModelAndView("/order/xiazhumingxi") ;
+        name = URLDecoder.decode(name, "utf-8");
         if(pageId==null) pageId=1;
         Integer subAmount =0;
         Integer subShareTotal=0;
