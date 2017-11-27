@@ -5,6 +5,14 @@ package com.fr.lottery.entity;
  */
 public class BucangConfig {
 
+    public BucangConfig(){
+
+    }
+    public BucangConfig(String category,String gameType,Integer _flag){
+         this.category = category;
+         this.gameType = gameType;
+         this.flagValue = _flag;
+    }
     private String id;
     /**
      * 用户Id

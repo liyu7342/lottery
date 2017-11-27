@@ -38,26 +38,26 @@
       GROUP BY handicapId,gameType,`no`
 
   </select>
-  <select id="getStatisSum" resultMap="OrderDetailDtoMap">
-    SELECT COUNT (1) as orderNum,SUM(amount) as amount,sum(winAmount)
-    select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(orders.amount) amount,SUM(winAmount) winAmount,sum(odds* orders.amount)/SUM(orders.amount) aveOdds,0 buhuo,0 odds
-    FROM orders
-    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
-    INNER JOIN user u on u.id = orders.userId
-    <where>
-      <if test="handicapId!='' and handicapId!=null" >
-        AND handicapId = #{handicapId,jdbcType=VARCHAR}
-      </if>
-      <if test="gameTypes!=null ">
-        AND gameType in
-        <foreach item="item" index="index" collection="gameTypes" open="(" separator="," close=")">
-          #{item}
-        </foreach>
-      </if>
-      <if test="xpath!=null and xpath !=''">
-        AND u.xpath like #{xpath,jdbcType=VARCHAR}
-      </if>
-    </where>
-    GROUP BY handicapId,gameType,`no`
-  </select>
+  <!--<select id="getStatisSum" resultMap="OrderDetailDtoMap">-->
+    <!--SELECT COUNT (1) as orderNum,SUM(amount) as amount,sum(winAmount)-->
+    <!--select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(orders.amount) amount,SUM(winAmount) winAmount,sum(odds* orders.amount)/SUM(orders.amount) aveOdds,0 buhuo,0 odds-->
+    <!--FROM orders-->
+    <!--INNER  JOIN Handicap on orders.handicapId= Handicap.Id-->
+    <!--INNER JOIN user u on u.id = orders.userId-->
+    <!--<where>-->
+      <!--<if test="handicapId!='' and handicapId!=null" >-->
+        <!--AND handicapId = #{handicapId,jdbcType=VARCHAR}-->
+      <!--</if>-->
+      <!--<if test="gameTypes!=null ">-->
+        <!--AND gameType in-->
+        <!--<foreach item="item" index="index" collection="gameTypes" open="(" separator="," close=")">-->
+          <!--#{item}-->
+        <!--</foreach>-->
+      <!--</if>-->
+      <!--<if test="xpath!=null and xpath !=''">-->
+        <!--AND u.xpath like #{xpath,jdbcType=VARCHAR}-->
+      <!--</if>-->
+    <!--</where>-->
+    <!--GROUP BY handicapId,gameType,`no`-->
+  <!--</select>-->
 </mapper>
