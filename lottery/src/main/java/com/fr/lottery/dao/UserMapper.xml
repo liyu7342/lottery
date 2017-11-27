@@ -140,7 +140,7 @@
         </if>
         <if test="keyword!=null and keyword !=''">
             AND (account like #{keyword,jdbcType=VARCHAR}
-            OR NAME like #{keyword,jdbcType=VARCHAR}
+            OR userNAME like #{keyword,jdbcType=VARCHAR}
             )
         </if>
         <if test="xpath!=null and xpath !=''">
@@ -159,7 +159,7 @@
         </if>
         <if test="keyword!=null and keyword !=''">
             AND (account like #{keyword,jdbcType=VARCHAR}
-            OR NAME like #{keyword,jdbcType=VARCHAR}
+            OR userName like #{keyword,jdbcType=VARCHAR}
             )
         </if>
         <if test="xpath!=null and xpath !=''">

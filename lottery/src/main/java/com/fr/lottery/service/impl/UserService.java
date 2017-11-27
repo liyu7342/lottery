@@ -208,9 +208,7 @@ public class UserService implements IUserService {
     public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSize;
         User user = UserHelper.getCurrentUser();
-//        if (user.getUsertype() != UserTypeEnum.Admin.ordinal())
-//            return new Page<User>(0, Global.pageSize);
-        List<User> users = userMapper.getUsers("", userType, keyword, status, start);
+        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start);
         long total = userMapper.count("", userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSize, total, users);
         return page;

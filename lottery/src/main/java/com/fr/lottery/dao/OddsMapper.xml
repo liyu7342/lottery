@@ -99,8 +99,6 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-
-
   <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Odds">
     update odds set Type=#{type,jdbcType=VARCHAR}, IsDefault= #{isdefault,jdbcType=BIT}, NumKey=#{numkey,jdbcType=VARCHAR}, NumValue=#{numvalue,jdbcType=DECIMAL}
     where Id = #{id,jdbcType=VARCHAR}
