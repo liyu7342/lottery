@@ -31,8 +31,12 @@
                             <form id="form1" method="GET" action="/user/index2">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
-                                    <li><h2 class="g-tit">小股東
-                                    </h2></li>
+                                    <li><h2 class="g-tit">小股東</h2></li>
+                                    <#if user.userType==1>
+                                        <li>上級<select class="s" name="" ></select></li>
+
+                                    </#if>
+
                                     <li>
                                         <select class="s" name="keywordstatus">
                                             <option value=''  selected="selected">全部</option>

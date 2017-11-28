@@ -15,6 +15,8 @@ import com.fr.lottery.service.inter.*;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.lang3.NotImplementedException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -115,7 +117,20 @@ public class OrderService implements IOrderService {
                     LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
                     if (!StringUtil.isNullOrEmpty(orders.getLianmatype())) {
                         if (LianMaEnum.zhengchang.getValue().equals(orders.getLianmatype())) {
-                            orders.setDescription(lot.getGameTypeDesc() + " " + orderStrs[1]);
+                            if("035".equals( orders.getGametype()) ||"036".equals( orders.getGametype()) || "037".equals( orders.getGametype()) ||"038".equals( orders.getGametype())
+                                    ||"039".equals( orders.getGametype())||"040".equals( orders.getGametype())
+                                    ){
+                                Map<String, ShengXiao> shengxiaomap = shengxiaoService.findMapByYear1();
+                                String[] detailxiaoNos = orderStrs[1].split(",");
+                                orders.setDescription(lot.getGameTypeDesc() + " " );
+                                for(String xiao : detailxiaoNos){
+                                    orders.setDescription(orders.getDescription()+ shengxiaomap.get(xiao).getName()+" ");
+                                }
+
+                            }
+                            else{
+                                orders.setDescription(lot.getGameTypeDesc() + " " + orderStrs[1]);
+                            }
                         } else if (LianMaEnum.dantuo.getValue().equals(orders.getLianmatype())) {
                             orders.setDescription(lot.getGameTypeDesc() + " " + orders.getLianmadan() + " [拖] " + orderStrs[1].substring(nos[0].length() + 1));
                         } else if (LianMaEnum.shengxiaoduipeng.getValue().equals(orders.getLianmatype())) {
@@ -157,11 +172,7 @@ public class OrderService implements IOrderService {
                 detail.setOrderId(orders.getId());
                 detail.setRetreat(orders.getRetreat());
                 detail.setUserId(orders.getUserid());
-
-
-                    orders.setCanWinAmount(detail.getAmount() * (detail.getOdds() -1 + orders.getRetreat()/100 ));
-
-
+                orders.setCanWinAmount(detail.getAmount() * (detail.getOdds() -1 + orders.getRetreat()/100 ));
                 orderDetailMapper.insert(detail);
             } else {
                 String[] detailOdds = orderDto.getDetailOdds().split(";");
@@ -313,14 +324,29 @@ public class OrderService implements IOrderService {
 
     @Override
     public Orders getTotal(String categoryId) {
-        Handicap handicap = handicapService.getCurrentHandicap();
-        if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal()) {
+        throw new NotImplementedException("");
+//        Handicap handicap = handicapService.getCurrentHandicap();
+//        if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal()) {
+//            Orders orderDetail = new Orders();
+//            orderDetail.setTotalAmount(0);
+//            orderDetail.setWinAmount(0F);
+//            return orderDetail;
+//        }
+//        Orders orderDetail = orderMapper.getTotal(handicap.getId(), UserHelper.getCurrentUser().getId(), "");
+//        return orderDetail;
+    }
+
+    public Orders getTotal(String handicapId,String categoryId){
+        if(StringUtils.isNotBlank(handicapId))
+            handicapId = handicapService.getCurrentHandicap().getId();
+        if(StringUtils.isNotBlank(handicapId))
+        {
             Orders orderDetail = new Orders();
             orderDetail.setTotalAmount(0);
             orderDetail.setWinAmount(0F);
             return orderDetail;
         }
-        Orders orderDetail = orderMapper.getTotal(handicap.getId(), UserHelper.getCurrentUser().getId(), "");
+        Orders orderDetail = orderMapper.getTotal(handicapId,UserHelper.getCurrentUser().getId(),"");
         return orderDetail;
     }
 

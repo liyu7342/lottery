@@ -35,18 +35,20 @@ public class OrderControlller {
     @Autowired
     private IOrderService orderService;
     @RequestMapping("/list")
-    public ModelAndView list(String categoryId,Integer pageId) {
+    public ModelAndView list(String categoryId,Integer pageId,String handicapId) {
         ModelAndView mv = new ModelAndView("/order/list");
         Page<Orders> orderDetails = orderService.getOrders(pageId,categoryId);
         mv.addObject("orderList",orderDetails.getList());
         mv.addObject("page", orderDetails.toString());
         Integer subsum=0;
         Float subCanWinAmount =0F;
+        Float subWinAmount =0F;
         for(Orders orderDetail : orderDetails.getList()){
             subsum +=orderDetail.getTotalAmount();
             subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount());
+            subWinAmount += (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount());
         }
-        Orders orderDetail = orderService.getTotal(categoryId);
+        Orders orderDetail = orderService.getTotal(handicapId,categoryId);
         User user = UserHelper.getCurrentUser();
 
         Map<String,Object> map = new HashedMap();
@@ -78,7 +80,9 @@ public class OrderControlller {
         mv.addObject("subSum",subsum);
         mv.addObject("totalAmount",orderDetail==null?0:orderDetail.getTotalAmount());
         mv.addObject("canWinAmount",orderDetail==null?0:orderDetail.getCanWinAmount());
+        mv.addObject("winAmount",orderDetail==null?0:orderDetail.getWinAmount());
         mv.addObject("subCanWinAmount",subCanWinAmount);
+        mv.addObject("subWinAmount",subWinAmount);
 
         return mv;
     }

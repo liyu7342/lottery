@@ -34,4 +34,6 @@ public interface IHandicapService {
     boolean IsOpenHandicap();
 
     boolean settlement(String handicapId);
+
+    Handicap getHandicap(String handicapId);
 }

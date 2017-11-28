@@ -7,6 +7,7 @@ import com.fr.lottery.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -24,9 +25,12 @@ public class ShengxiaoService implements IShengxiaoService {
 
     @Override
     public List<ShengXiao> findByYear() {
-        Calendar date = Calendar.getInstance();
-
-        return shengxiaoMapper.findByYear(date.get(Calendar.YEAR));
+        Calendar cal=Calendar.getInstance();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
+        cal.setTimeZone(TimeZone.getDefault());
+        System.out.println("公历日期:"+sdf.format(cal.getTime()));
+        Lunar lunar=new Lunar(cal);
+        return shengxiaoMapper.findByYear(lunar.getYear());
     }
 
 

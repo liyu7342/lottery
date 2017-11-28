@@ -177,6 +177,11 @@ public class HandicapService implements IHandicapService {
     }
 
     @Override
+    public Handicap getHandicap(String handicapId) {
+        return handicapMapper.selectByPrimaryKey(handicapId);
+    }
+
+    @Override
     public boolean IsOpenHandicap(){
         Handicap handicap =getCurrentHandicap();
         String dtStr =DateTimeUtils.Date2StringLong( new Date());

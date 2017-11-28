@@ -26,7 +26,7 @@
                     <div class="bd">
                         <h2 class="g-tit"><span id="product_name">特碼</span> 投注
             <span class="tm_result">
-                <a href="../result/list.htm" name="result">查看開獎結果</a>
+                <a href="/result/index" name="result">查看開獎結果</a>
             </span>
                         </h2>
                         <div class="pr" id="change_rate">
