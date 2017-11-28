@@ -308,20 +308,20 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='/odds/temaa?handicap={handicap}'>特碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zhengma?handicap={handicap}'>正碼</a><cite></cite></li>
-                        <li><a curl='5' href='/odds/zhengmate?handicap={handicap}'>正馬特</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/zheng16?handicap={handicap}'>正1-6</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/erquanzh?handicap={handicap}'>連碼</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/guoguan?handicap={handicap}'>過關</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiao?handicap={handicap}'>生肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishu?handicap={handicap}'>尾數</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/banbo?handicap={handicap}'>半波</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/liuxiao?handicap={handicap}'>六肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/texiao?handicap={handicap}'>特肖</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/shengxiaolian?handicap={handicap}'>生肖連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/weishulian?handicap={handicap}'>尾數連</a><cite></cite></li>
-                        <li><a curl='0' href='/odds/buzhong?handicap={handicap}'>不中</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/temaa?handicap=${handicap}'>特碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zhengma?handicap=${handicap}'>正碼</a><cite></cite></li>
+                        <li><a curl='5' href='/odds/zhengmate?handicap=${handicap}'>正馬特</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/zheng16?handicap=${handicap}'>正1-6</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/erquanzh?handicap=${handicap}'>連碼</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/guoguan?handicap=${handicap}'>過關</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiao?handicap=${handicap}'>生肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishu?handicap=${handicap}'>尾數</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/banbo?handicap=${handicap}'>半波</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/liuxiao?handicap=${handicap}'>六肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/texiao?handicap=${handicap}'>特肖</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/shengxiaolian?handicap=${handicap}'>生肖連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/weishulian?handicap=${handicap}'>尾數連</a><cite></cite></li>
+                        <li><a curl='0' href='/odds/buzhong?handicap=${handicap}'>不中</a><cite></cite></li>
                     </ul>
                 </div>
 
