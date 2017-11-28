@@ -36,15 +36,15 @@
                                     <tbody nomovod>
                                     <tr class="bg">
                                         <td>設置</td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_00_" value="5000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_01_" value="5000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_02_" value="5000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_03_" value="500"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_04_011" value="50"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_04_012" value="1000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_05_" value="0"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_06_" value="100000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_07_" value="100000"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_00_" value="${entity.base_00_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_01_" value="${entity.base_01_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_02_" value="${entity.base_02_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_03_" value="${entity.base_03_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_04_011" value="${entity.base_04_011}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_04_012" value="${entity.base_04_012}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_05_" value="${entity.base_05_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_06_" value="${entity.base_06_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_07_" value="${entity.base_07_}"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bg">說明</td>
@@ -60,15 +60,15 @@
                                     </tr>
                                     <tr class="lab">
                                         <td class="bg">類型</td>
-                                        <th><label><input type="radio" name="flag_00_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_00_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_01_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_01_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_02_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_02_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_03_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_03_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_04_011" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_04_011" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_04_012" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_04_012" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_05_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_05_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_06_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_06_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_07_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_07_" value="0"  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_00_" value="1"  <#if entity.flag_00_==1> checked="checked" </#if>/>自動</label><label><input type="radio" name="flag_00_" value="0" <#if entity.flag_00_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_01_" value="1" <#if entity.flag_01_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_01_" value="0" <#if entity.flag_01_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_02_" value="1" <#if entity.flag_02_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_02_" value="0" <#if entity.flag_02_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_03_" value="1" <#if entity.flag_03_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_03_" value="0" <#if entity.flag_03_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_04_011" value="1" <#if entity.flag_04_011==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_04_011" value="0" <#if entity.flag_04_011==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_04_012" value="1" <#if entity.flag_04_012==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_04_012" value="0" <#if entity.flag_04_012==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_05_" value="1" <#if entity.flag_05_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_05_" value="0" <#if entity.flag_05_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_06_" value="1" <#if entity.flag_06_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_06_" value="0" <#if entity.flag_06_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_07_" value="1" <#if entity.flag_07_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_07_" value="0" <#if entity.flag_07_==0> checked="checked" </#if>  />手動</label></th>
                                     </tr>
                                     <tr><th class="bg3" colspan="10">&nbsp;</th></tr>
                                     <tr class="bg">
@@ -76,14 +76,14 @@
                                     </tr>
                                     <tr>
                                         <td class="bg">設置</td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_08_" value="10000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_09_" value="100000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_10_" value="100000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_11_" value="30000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_12_" value="5000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_13_" value="2000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_14_" value="2000"/></td>
-                                        <td><input type="text" maxlength="9" valid="amount0" name="base_15_" value="50000"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_08_" value="${entity.base_08_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_09_" value="${entity.base_09_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_10_" value="${entity.base_10_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_11_" value="${entity.base_11_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_12_" value="${entity.base_12_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_13_" value="${entity.base_13_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_14_" value="${entity.base_14_}"/></td>
+                                        <td><input type="text" maxlength="9" valid="amount0" name="base_15_" value="${entity.base_15_}"/></td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -100,14 +100,14 @@
                                     </tr>
                                     <tr class="lab">
                                         <td class="bg">類型</td>
-                                        <th><label><input type="radio" name="flag_08_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_08_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_09_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_09_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_10_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_10_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_11_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_11_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_12_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_12_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_13_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_13_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_14_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_14_" value="0"  />手動</label></th>
-                                        <th><label><input type="radio" name="flag_15_" value="1" checked="checked" />自動</label><label><input type="radio" name="flag_15_" value="0"  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_08_" value="1" <#if entity.flag_08_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_08_" value="0" <#if entity.flag_08_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_09_" value="1" <#if entity.flag_09_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_09_" value="0" <#if entity.flag_09_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_10_" value="1" <#if entity.flag_10_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_10_" value="0" <#if entity.flag_10_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_11_" value="1" <#if entity.flag_11_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_11_" value="0" <#if entity.flag_11_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_12_" value="1" <#if entity.flag_12_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_12_" value="0" <#if entity.flag_12_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_13_" value="1" <#if entity.flag_13_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_13_" value="0" <#if entity.flag_13_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_14_" value="1" <#if entity.flag_14_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_14_" value="0" <#if entity.flag_14_==0> checked="checked" </#if>  />手動</label></th>
+                                        <th><label><input type="radio" name="flag_15_" value="1" <#if entity.flag_15_==1> checked="checked" </#if> />自動</label><label><input type="radio" name="flag_15_" value="0" <#if entity.flag_15_==0> checked="checked" </#if>  />手動</label></th>
                                         <th></th>
                                     </tr>
                                     <tr><th colspan="10"><input type="checkbox" name="check_all"/> 全自動/全手動</th></tr>

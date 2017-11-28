@@ -54,4 +54,7 @@
         update bucangconfig set baseAmount=#{baseAmount,jdbcType=INTEGER}, flagValue= #{flagValue,jdbcType=INTEGER}
         where userId = #{userId,jdbcType=VARCHAR} AND category=#{category,jdbcType=VARCHAR} AND gameType=#{gameType,jdbcType=VARCHAR}
     </update>
+    <delete id="deleteByUserId" >
+        DELETE  FROM  bucangconfig WHERE userid=#{userId,jdbcType=VARCHAR}
+    </delete>
 </mapper>

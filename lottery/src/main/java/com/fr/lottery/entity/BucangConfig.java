@@ -1,5 +1,7 @@
 package com.fr.lottery.entity;
 
+import com.fr.lottery.utils.StringUtil;
+
 /**
  * Created by Administrator on 2017/11/27.
  */
@@ -8,10 +10,13 @@ public class BucangConfig {
     public BucangConfig(){
 
     }
-    public BucangConfig(String category,String gameType,Integer _flag){
+    public BucangConfig(String category,String gameType,Integer baseAmount,Integer _flag,String userId){
+        this.id= StringUtil.getUUID();
          this.category = category;
          this.gameType = gameType;
+        this.baseAmount = baseAmount;
          this.flagValue = _flag;
+        this.userId =userId;
     }
     private String id;
     /**

@@ -15,8 +15,6 @@
   <select id="getStatis" resultMap="BaseResultMap">
     select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(orders.amount) amount,SUM(winAmount) winAmount,sum(odds* orders.amount)/SUM(orders.amount) aveOdds,0 buhuo,0 odds
 
-    (select u1.shareUp from user u1 where u1.parentId ='0459c738b3294b11a9c1b2cf00c469ce'
-    AND '0459c738b3294b11a9c1b2cf00c469ce' in(u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
     FROM orders
       INNER  JOIN Handicap on orders.handicapId= Handicap.Id
 

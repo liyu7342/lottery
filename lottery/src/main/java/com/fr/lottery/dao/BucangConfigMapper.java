@@ -18,4 +18,6 @@ public interface BucangConfigMapper {
     Integer insert(BucangConfig config);
 
     Integer update(BucangConfig config);
+
+    Integer deleteByUserId(@Param("userId") String userId);
 }

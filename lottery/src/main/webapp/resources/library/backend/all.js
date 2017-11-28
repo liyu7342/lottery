@@ -7769,12 +7769,26 @@ BuHuo.prototype.init = function() {
             }
         }
         if (h.length > 0) {
+            var tl=[];
+            for (g = 0; g < c.fields.length; g++) {
+                d = c.fields.get(g);
+                if (!$.validateEm(d)) {
+                    return false
+                }
+                tl.push('"' + d.name + '":"' + d.value + '"')
+            }
+            for (g = 0; g < c.radios.length; g++) {
+                d = c.radios.get(g);
+                if (d.checked) {
+                    tl.push('"' + d.name + '":"' + d.value + '"');
+                }
+            }
             $("#sysconfig_buhuo").attr("disabled", "disabled");
-            h.value = "{" + h.join(",") + "}";
+            tl.value = "{" + tl.join(",") + "}";
             $.ajax({
                 type: "POST",
-                url: "ajax_req.htm?act=sysconfig_buhuo",
-                data: "chg=" + h.value,
+                url: "/sysconfig/save",
+                data: "chg=" + tl.value,
                 dataType: "text",
                 async: false,
                 success: function(l) {
