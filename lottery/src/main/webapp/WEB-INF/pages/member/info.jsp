@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName!''} - A28</title>
+    <title>${user.account!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -287,6 +287,7 @@
                                 <input type="hidden" name="parentid" value="${(parentUser.id)!''}"/>
                                 <input type="hidden" name="usertype" value='5'/>
                                 <input type="hidden" name="parentcredit" value="${(parentUser.credits)!''}"/>
+                                <input type="hidden" name="childsumcredit" value='0'/>
                                 <input type="hidden" name="betting" value='0' />
                                 <input type="hidden" name="parentstatus" value="${(parentUser.status)!''}"/>
                                 <input type="hidden" name="requestUrl" value='/user/index'/>

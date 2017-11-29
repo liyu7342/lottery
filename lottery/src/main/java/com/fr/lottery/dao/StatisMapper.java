@@ -1,5 +1,6 @@
 package com.fr.lottery.dao;
 
+import com.fr.lottery.condition.StatisCondition;
 import com.fr.lottery.dto.StatisDto;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,7 @@ import java.util.List;
 @Repository
 public interface StatisMapper {
     List<StatisDto> getStatis(@Param("gameTypes") String[] gameTypes,@Param("handicapId") String handicapId,@Param("xpath") String xpath);
+
+    List<StatisDto> getStatisByCallable(StatisCondition condition);
+
 }

@@ -25,27 +25,46 @@ public class StatisController {
     @RequestMapping("/statis")
     public ModelAndView statis(String category_id){
         ModelAndView modelAndView = new ModelAndView("statis/statis");
-        User user = UserHelper.getCurrentUser();
 
         String[] oddsTypes=GameCfg.getCategoryGame(category_id);
         List<StatisDto> statisDtoList= orderService.getStatis(oddsTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
         return modelAndView;
     }
     @RequestMapping("/tjzhengma")
     public ModelAndView tjzhengma(String category_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengma");
-        User user = UserHelper.getCurrentUser();
 
-        String[] gameTypes =GameCfg.getCategoryGame(category_id);
-        List<StatisDto> statisDtoList= orderService.getStatis(gameTypes);
+        String[] oddsTypes=GameCfg.getCategoryGame(category_id);
+        List<StatisDto> statisDtoList= orderService.getStatis(oddsTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
         return modelAndView;
     }
     @RequestMapping("/tjzhengmate")
     public ModelAndView tjzhengmate(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengmate");
-        User user = UserHelper.getCurrentUser();
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -55,7 +74,6 @@ public class StatisController {
     @RequestMapping("/tjlianma")
     public ModelAndView tjlianma(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjlianma");
-        User user = UserHelper.getCurrentUser();
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -64,7 +82,6 @@ public class StatisController {
     @RequestMapping("/guoguan")
     public ModelAndView guoguan(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/guoguan");
-        User user = UserHelper.getCurrentUser();
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -74,7 +91,7 @@ public class StatisController {
     @RequestMapping("/shengxiao")
     public ModelAndView shengxiao(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/shengxiao");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -84,7 +101,7 @@ public class StatisController {
     @RequestMapping("/weishu")
     public ModelAndView weishu(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/weishu");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -94,7 +111,7 @@ public class StatisController {
     @RequestMapping("/banbo")
     public ModelAndView banbo(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/banbo");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -105,7 +122,7 @@ public class StatisController {
     @RequestMapping("/texiao")
     public ModelAndView texiao(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/texiao");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -115,7 +132,7 @@ public class StatisController {
     @RequestMapping("/liuxiao")
     public ModelAndView liuxiao(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/liuxiao");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -125,7 +142,7 @@ public class StatisController {
     @RequestMapping("/liangmian")
     public ModelAndView liangmian(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/liangmian");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -135,7 +152,7 @@ public class StatisController {
     @RequestMapping("/sebo")
     public ModelAndView sebo(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/sebo");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -145,7 +162,7 @@ public class StatisController {
     @RequestMapping("/shengxiaolian")
     public ModelAndView shengxiaolian(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/shengxiaolian");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -154,7 +171,7 @@ public class StatisController {
     @RequestMapping("/weishulian")
     public ModelAndView weishulian(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/weishulian");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
@@ -164,7 +181,7 @@ public class StatisController {
     @RequestMapping("/wubuzhong")
     public ModelAndView wubuzhong(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/wubuzhong");
-        User user = UserHelper.getCurrentUser();
+
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);

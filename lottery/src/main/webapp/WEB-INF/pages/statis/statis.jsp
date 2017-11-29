@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName!''} - A28</title>
+    <title>${user.account!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -112,9 +112,9 @@
                                     <td>${detail.orderNum!''}</td>
 
                                     <td>${detail.amount!''}</td>
-                                    <td></td>
+                                    <td>${detail.shareTotal?floor}</td>
                                     <td>${detail.aveOdds!''}</td>
-                                    <td>${detail.winAmount!''}</td>
+                                    <td>${detail.winAmount?floor}</td>
                                     <td>${detail.buhuo!''}</td>
                                     <td>${detail.odds!''}</td>
                                 </tr>
@@ -124,9 +124,9 @@
                             <tfoot><tr>
                                 <td></td>
                                 <td>總計</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>        <td class="hid"></td>
+                                <td>${orderNum!'0'}</td>
+                                <td>${amount!'0'}</td>
+                                <td>${shareTotal?floor}</td>        <td class="hid"></td>
                                 <td class="hid"></td>
                                 <td class="hid" >0</td>
                                 <td class="hid"></td>

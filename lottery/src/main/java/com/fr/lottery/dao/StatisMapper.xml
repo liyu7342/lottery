@@ -2,13 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.lottery.dao.StatisMapper">
   <resultMap id="BaseResultMap" type="com.fr.lottery.dto.StatisDto">
-    <id column="gameType" jdbcType="VARCHAR" property="gameType" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gameType" jdbcType="VARCHAR" property="gameType" />
     <result column="no" jdbcType="VARCHAR" property="no" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
     <result column="amount" jdbcType="VARCHAR" property="amount" />
     <result column="winAmount" jdbcType="VARCHAR" property="winAmount" />
     <result column="aveOdds" jdbcType="VARCHAR" property="aveOdds" />
+    <result column="shareTotal" jdbcType="DECIMAL" property="shareTotal" />
     <result column="odds" jdbcType="DECIMAL" property="odds" />
   </resultMap>
 
@@ -36,26 +38,13 @@
       GROUP BY handicapId,gameType,`no`
 
   </select>
-  <!--<select id="getStatisSum" resultMap="OrderDetailDtoMap">-->
-    <!--SELECT COUNT (1) as orderNum,SUM(amount) as amount,sum(winAmount)-->
-    <!--select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(orders.amount) amount,SUM(winAmount) winAmount,sum(odds* orders.amount)/SUM(orders.amount) aveOdds,0 buhuo,0 odds-->
-    <!--FROM orders-->
-    <!--INNER  JOIN Handicap on orders.handicapId= Handicap.Id-->
-    <!--INNER JOIN user u on u.id = orders.userId-->
-    <!--<where>-->
-      <!--<if test="handicapId!='' and handicapId!=null" >-->
-        <!--AND handicapId = #{handicapId,jdbcType=VARCHAR}-->
-      <!--</if>-->
-      <!--<if test="gameTypes!=null ">-->
-        <!--AND gameType in-->
-        <!--<foreach item="item" index="index" collection="gameTypes" open="(" separator="," close=")">-->
-          <!--#{item}-->
-        <!--</foreach>-->
-      <!--</if>-->
-      <!--<if test="xpath!=null and xpath !=''">-->
-        <!--AND u.xpath like #{xpath,jdbcType=VARCHAR}-->
-      <!--</if>-->
-    <!--</where>-->
-    <!--GROUP BY handicapId,gameType,`no`-->
-  <!--</select>-->
+  <select id="getStatisByCallable" parameterMap="StatisCondition"  resultMap="BaseResultMap" statementType="CALLABLE">
+    CALL P_DB_Statis1(#{handicapId,mode=IN,jdbcType=VARCHAR},#{gameType,mode=IN,jdbcType=VARCHAR},#{userId,mode=IN,jdbcType=VARCHAR},#{xpath,mode=IN,jdbcType=VARCHAR})
+  </select>
+  <parameterMap type="java.util.Map" id="StatisCondition">
+    <parameter property="userId" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="handicapId" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="xpath" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="gameType" mode="IN" jdbcType="VARCHAR"/>
+  </parameterMap>
 </mapper>

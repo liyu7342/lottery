@@ -1,5 +1,6 @@
 package com.fr.lottery.service.impl;
 
+import com.fr.lottery.condition.StatisCondition;
 import com.fr.lottery.dao.OrderDetailMapper;
 import com.fr.lottery.dao.OrderMapper;
 import com.fr.lottery.dao.StatisMapper;
@@ -380,8 +381,13 @@ public class OrderService implements IOrderService {
         Handicap handicap = handicapService.getCurrentHandicap();
         if(handicap == null)
             return  new ArrayList<StatisDto>();
-        String userId = UserHelper.getCurrentUser().getId();
-        return statisMapper.getStatis(gameTypes, handicap.getId(),UserHelper.getCurrentUser().getXpath()+"%");
+        User user = UserHelper.getCurrentUser();
+        StatisCondition condition = new StatisCondition();
+        condition.setP_gameType(StringUtils.join( gameTypes,","));
+        condition.setP_userId(user.getId());
+        condition.setP_xpath(user.getXpath());
+        condition.setP_handicapId(handicap.getId());
+        return statisMapper.getStatisByCallable( condition);
     }
 
     @Override

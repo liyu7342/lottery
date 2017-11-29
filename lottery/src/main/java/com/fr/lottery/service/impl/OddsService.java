@@ -51,6 +51,12 @@ public class OddsService implements IOddsService{
     public Map<String, String> getOddsMap(String oddSet,String[] oddsType) {
         List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
         Map<String,String> map = new HashedMap();
+        boolean isOpen =handicapService.IsOpenHandicap();
+        if(!isOpen){
+            for(Odds odds :oddsList){
+                odds.setNumvalue(null);
+            }
+        }
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
         }

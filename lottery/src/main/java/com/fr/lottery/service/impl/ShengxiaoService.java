@@ -28,7 +28,7 @@ public class ShengxiaoService implements IShengxiaoService {
         Calendar cal=Calendar.getInstance();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
         cal.setTimeZone(TimeZone.getDefault());
-        System.out.println("公历日期:"+sdf.format(cal.getTime()));
+       // System.out.println("公历日期:"+sdf.format(cal.getTime()));
         Lunar lunar=new Lunar(cal);
         return shengxiaoMapper.findByYear(lunar.getYear());
     }

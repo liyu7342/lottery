@@ -58,6 +58,7 @@ public class MemberController {
         List<LimitSet> limitSets;
         List<LimitSet> plimitSets;
         User parentUser = userService.get(parentId);
+
         if (StringUtils.isNotBlank(parentId)) {
             plimitSets = limitSetService.findAll(parentId);
         } else {
@@ -71,6 +72,8 @@ public class MemberController {
             user.setHandicap(parentUser.getHandicap());
             limitSets = plimitSets;
         }
+        Integer credits = userService.getChildSumCredit(parentId);
+        parentUser.setCredits(parentUser.getCredits() -credits+user.getCredits());
 
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets) {
@@ -115,6 +118,7 @@ public class MemberController {
             user.setSys_user_oddsSet("C");
             limitSets = plimitSets;
         }
+
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets
                 ) {
@@ -156,6 +160,8 @@ public class MemberController {
 
             limitSets = plimitSets;
         }
+        Integer credits = userService.getChildSumCredit(parentId);
+        parentUser.setCredits(parentUser.getCredits() -credits+user.getCredits());
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
@@ -208,6 +214,8 @@ public class MemberController {
 
             limitSets = plimitSets;
         }
+        Integer credits = userService.getChildSumCredit(parentId);
+        parentUser.setCredits(parentUser.getCredits() -credits+user.getCredits());
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets  ) {
             map.put("gameType_" + limitset.getLimitType(), limitset);
@@ -260,6 +268,8 @@ public class MemberController {
 
             limitSets = plimitSets;
         }
+        Integer credits = userService.getChildSumCredit(parentId);
+        parentUser.setCredits(parentUser.getCredits() -credits+user.getCredits());
         Map<String, Object> map = new HashMap<String, Object>();
         for (LimitSet limitset : limitSets) {
             map.put("gameType_" + limitset.getLimitType(), limitset);

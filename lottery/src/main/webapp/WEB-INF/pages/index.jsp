@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<title>${user.userName!''}_Title</title>
+<title>${user.account!''}_A28</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>

@@ -417,7 +417,8 @@ public class OddsController {
         Map<String, Object> header = new HashedMap();
         User user = UserHelper.getCurrentUser();
         header.put("marquee", "欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
-        header.put("draws", DateTimeUtils.Date2String(new Date(), "yyyy-MM-dd"));
+        Handicap handicap = handicapService.getCurrentHandicap();
+        header.put("draws",handicap !=null?handicap.getRiqi():"" );
         header.put("sum", user.getAmount());
         header.put("credit", user.getCredits());
         header.put("fail_count", 0);

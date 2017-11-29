@@ -20,6 +20,8 @@ public class StatisDto {
 
     private Float winAmount;
 
+    private Float shareTotal;
+
     public String getGameType() {
         return gameType;
     }
@@ -90,5 +92,13 @@ public class StatisDto {
 
     public void setWinAmount(Float winAmount) {
         this.winAmount = winAmount;
+    }
+
+    public Float getShareTotal() {
+        return shareTotal;
+    }
+
+    public void setShareTotal(Float shareTotal) {
+        this.shareTotal = shareTotal;
     }
 }
