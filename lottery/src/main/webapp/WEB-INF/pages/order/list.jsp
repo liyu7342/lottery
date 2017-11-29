@@ -73,7 +73,7 @@
                                     <td>下注金額</td>
                                     <td>賠率</td>
                                     <td>退水</td>
-                                    <td>可贏金額</td>
+                                    <td><#if id=="">可贏金額<#else>结果</#if></td>
                                     <td class="r">注單狀態</td>
                                 </tr>
                                 </thead>
@@ -86,8 +86,9 @@
                                     <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}</td>
-                                    <td>${(obj.canWinAmount)!''}</td>
-                                    <td>下注成功</td>
+                                    <td><#if id=="">${(obj.canWinAmount)!''}<#else>${(obj.winAmount)!''}</#if></td>
+
+                                    <td><#if id=="">下注成功 <#else>成功</#if></td>
                                 </tr>
                                 </#list>
                                 <tfoot>
@@ -96,7 +97,7 @@
                                     <td>${subSum}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>${subCanWinAmount}</td>
+                                    <td><#if id=="">${(subCanWinAmount)!''}<#else>${(subWinAmount)!''}</#if></td>
                                     <td></td>
                                 </tr>
                                 <tr class="red">
@@ -104,7 +105,7 @@
                                     <td>${totalAmount}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>${canWinAmount}</td>
+                                    <td><#if id=="">${(canWinAmount)!''}<#else>${(winAmount)!''}</#if></td>
                                     <td></td>
                                 </tr>
                                 </tfoot>
@@ -126,7 +127,7 @@
 </div>
 <script type="text/javascript">
     function page(index){
-    location.href="/order/list?pageId="+index+"&categoryId="+$("#categoryId").val()
+    location.href="/order/list?pageId="+index+"&categoryId="+$("#categoryId").val()+"&id=${id}"
     }
     window.setting = {
         login_path: '/msdid63242f/user/login.html', //登錄路徑

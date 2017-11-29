@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
  * Created by Liyu7342 on 2017-9-17.
  */
 public class UserHistoryDto {
+    private String id;
     private String userId;
     /***
      * 注单日期
@@ -82,5 +83,13 @@ public class UserHistoryDto {
 
     public void setTotalAmount(Integer totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

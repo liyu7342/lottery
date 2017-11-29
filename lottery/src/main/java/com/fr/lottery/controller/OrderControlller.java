@@ -35,9 +35,10 @@ public class OrderControlller {
     @Autowired
     private IOrderService orderService;
     @RequestMapping("/list")
-    public ModelAndView list(String categoryId,Integer pageId,String handicapId) {
+    public ModelAndView list(String categoryId,Integer pageId,String id) {
+        if(id==null) id="";
         ModelAndView mv = new ModelAndView("/order/list");
-        Page<Orders> orderDetails = orderService.getOrders(pageId,categoryId);
+        Page<Orders> orderDetails = orderService.getOrders(id,pageId,categoryId);
         mv.addObject("orderList",orderDetails.getList());
         mv.addObject("page", orderDetails.toString());
         Integer subsum=0;
@@ -48,7 +49,7 @@ public class OrderControlller {
             subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount());
             subWinAmount += (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount());
         }
-        Orders orderDetail = orderService.getTotal(handicapId,categoryId);
+        Orders orderDetail = orderService.getTotal(id,categoryId);
         User user = UserHelper.getCurrentUser();
 
         Map<String,Object> map = new HashedMap();
@@ -60,15 +61,9 @@ public class OrderControlller {
         map.put("calc_status",20);
         map.put("fail_count",0);
         List<List<String>> new_order = new ArrayList<List<String>>();
-//        if(Global.cfg_category_key.size()==0){
-//            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
-//            for(LotConfig lotConfig: lotConfigs)
-//                Global..put(lotConfig.getGameNo(),lotConfig);
-//        }
-        Page<Orders> new_orders = orderService.getOrders(1,categoryId);
+        Page<Orders> new_orders = orderService.getOrders(id,1,categoryId);
         for (Orders detail : new_orders.getList()) {
             List<String> detailArr = new ArrayList<String>();
-            //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());
             detailArr.add(detail.getTotalAmount().toString());
             detailArr.add(detail.getOdds().toString());
@@ -83,6 +78,7 @@ public class OrderControlller {
         mv.addObject("winAmount",orderDetail==null?0:orderDetail.getWinAmount());
         mv.addObject("subCanWinAmount",subCanWinAmount);
         mv.addObject("subWinAmount",subWinAmount);
+        mv.addObject("id",id);
 
         return mv;
     }

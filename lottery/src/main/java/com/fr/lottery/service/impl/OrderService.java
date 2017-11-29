@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
-import static com.fr.lottery.init.Global.pageSize;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
@@ -311,13 +310,23 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Page<Orders> getOrders(Integer pageIndex, String categoryId) {
+    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId) {
+         return getOrders(handicapId,pageIndex,categoryId,Global.pageSize);
+    }
+
+    @Override
+    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,Integer pageSize) {
         if (pageIndex == null) pageIndex = 1;
-        Handicap handicap = handicapService.getCurrentHandicap();
-        if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal())
-            return new Page<Orders>();
-        List<Orders> details = orderMapper.getOrderDetails(handicap.getId(), UserHelper.getCurrentUser().getId(), "", (pageIndex - 1) * pageSize, pageSize);
-        Long total = orderMapper.countByUserId(handicap.getId(), UserHelper.getCurrentUser().getId(), "");
+        if(StringUtils.isBlank(handicapId)){
+            Handicap handicap = handicapService.getCurrentHandicap();
+
+            if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal())
+                return new Page<Orders>();
+            handicapId = handicap.getId();
+        }
+
+        List<Orders> details = orderMapper.getOrderDetails(handicapId, UserHelper.getCurrentUser().getId(), "", (pageIndex - 1) * pageSize, pageSize);
+        Long total = orderMapper.countByUserId(handicapId, UserHelper.getCurrentUser().getId(), "");
 
         return new Page<Orders>(pageIndex, pageSize, total, details);
     }
@@ -337,13 +346,23 @@ public class OrderService implements IOrderService {
     }
 
     public Orders getTotal(String handicapId,String categoryId){
-        if(StringUtils.isNotBlank(handicapId))
-            handicapId = handicapService.getCurrentHandicap().getId();
-        if(StringUtils.isNotBlank(handicapId))
+        if(StringUtils.isBlank(handicapId)){
+            Handicap handicap = handicapService.getCurrentHandicap();
+            if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal())
+            {
+
+            }
+            else{
+                handicapId =handicap.getId();
+            }
+        }
+
+        if(StringUtils.isBlank(handicapId))
         {
             Orders orderDetail = new Orders();
             orderDetail.setTotalAmount(0);
             orderDetail.setWinAmount(0F);
+            orderDetail.setCanWinAmount(0F);
             return orderDetail;
         }
         Orders orderDetail = orderMapper.getTotal(handicapId,UserHelper.getCurrentUser().getId(),"");

@@ -19,7 +19,9 @@ public interface IOrderService {
    // List<Orders> getOrders(String handicapId);
 
     List<Orders> getOrders();
-    Page<Orders> getOrders(Integer pageIndex, String categoryId);
+    Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId);
+
+    Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,Integer pageSize);
     Orders getTotal(String categoryId);
     Orders getTotal(String handicapId,String categoryId);
     List<UserHistoryDto> getOrderHistory();

@@ -172,6 +172,7 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
   </select>
 
   <resultMap id="UserHistoryMap" type="com.fr.lottery.dto.UserHistoryDto">
+    <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="historyDate" jdbcType="VARCHAR" property="historyDate" />
     <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
@@ -182,18 +183,21 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-      SELECT ,userid,QiShu historyDate,COUNT(1) orderNum,sum(amount) amount,sum(canWinAmount) as canWinAmount,sum(totalAmount) as totalAmount,0 as winAmount
-      FROM orders
-      INNER  JOIN Handicap on orders.handicapId= Handicap.Id
+    SELECT handicap.id,od.userid,QiShu as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
+      ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
+    FROM orders
+    INNER  JOIN orderdetail od on orders.id = od.orderId
+    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
       <where>
         <if test="userid!='' and userid!=null" >
-          AND userid = #{userid,jdbcType=VARCHAR}
+          AND od.userid = #{userid,jdbcType=VARCHAR}
         </if>
         <if test="handicapId!='' and handicapId!=null" >
-          AND handicapId = #{handicapId,jdbcType=VARCHAR}
+          AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
         </if>
       </where>
-      GROUP  BY userid,handicapId
+      GROUP  BY od.userid,od.handicapId
+    ORDER  BY QiShu desc
 
   </select>
 
