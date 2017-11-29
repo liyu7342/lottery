@@ -11,6 +11,7 @@ import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.UserHelper;
 import net.sf.json.util.JSONUtils;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,28 +51,36 @@ public class OrderControlller {
             subWinAmount += (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount());
         }
         Orders orderDetail = orderService.getTotal(id,categoryId);
-        User user = UserHelper.getCurrentUser();
 
         Map<String,Object> map = new HashedMap();
-        map.put("sum",user.getAmount());
+        User user = UserHelper.getCurrentUser();
+
         map.put("credit", user.getCredits());
         map.put("marquee","欢迎进入前台");
         map.put("draws","");
-
-        map.put("calc_status",20);
+        map.put("calc_status",0);
         map.put("fail_count",0);
         List<List<String>> new_order = new ArrayList<List<String>>();
-        Page<Orders> new_orders = orderService.getOrders(id,1,categoryId);
-        for (Orders detail : new_orders.getList()) {
-            List<String> detailArr = new ArrayList<String>();
-            detailArr.add(detail.getDescription());
-            detailArr.add(detail.getTotalAmount().toString());
-            detailArr.add(detail.getOdds().toString());
+        if(StringUtils.isNotBlank(id)){
+            map.put("sum",0);
+            map.put("new_order",new_order);
+        }else{
+            Page<Orders> new_orders = orderService.getOrders(id,1,categoryId);
+            for (Orders detail : new_orders.getList()) {
+                List<String> detailArr = new ArrayList<String>();
+                detailArr.add(detail.getDescription());
+                detailArr.add(detail.getTotalAmount().toString());
+                detailArr.add(detail.getOdds().toString());
 
-            new_order.add(detailArr);
+                new_order.add(detailArr);
+            }
+            map.put("new_order",new_order);
+            map.put("sum",user.getAmount());
+
         }
-        map.put("new_order",new_order);
         mv.addObject("headinfo", JsonUtil.toJson( map));
+
+
         mv.addObject("subSum",subsum);
         mv.addObject("totalAmount",orderDetail==null?0:orderDetail.getTotalAmount());
         mv.addObject("canWinAmount",orderDetail==null?0:orderDetail.getCanWinAmount());
