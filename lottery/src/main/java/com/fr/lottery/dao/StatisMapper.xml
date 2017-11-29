@@ -39,12 +39,12 @@
 
   </select>
   <select id="getStatisByCallable" parameterMap="StatisCondition"  resultMap="BaseResultMap" statementType="CALLABLE">
-    CALL P_DB_Statis1(#{handicapId,mode=IN,jdbcType=VARCHAR},#{gameType,mode=IN,jdbcType=VARCHAR},#{userId,mode=IN,jdbcType=VARCHAR},#{xpath,mode=IN,jdbcType=VARCHAR})
+    CALL P_DB_Statis1(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_xpath,mode=IN,jdbcType=VARCHAR})
   </select>
   <parameterMap type="java.util.Map" id="StatisCondition">
-    <parameter property="userId" mode="IN" jdbcType="VARCHAR"/>
-    <parameter property="handicapId" mode="IN" jdbcType="VARCHAR"/>
-    <parameter property="xpath" mode="IN" jdbcType="VARCHAR"/>
-    <parameter property="gameType" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_userId" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_handicapId" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_xpath" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_gameType" mode="IN" jdbcType="VARCHAR"/>
   </parameterMap>
 </mapper>

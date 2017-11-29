@@ -31,7 +31,7 @@ public interface UserMapper {
 
     int changeStatus (@Param("id") String id,@Param("status") Integer status);
 
-    List<User> getUsers(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status,@Param("start") Integer start);
+    List<User> getUsers(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status,@Param("start") Integer start,@Param("pageSize") Integer pageSize);
 
     int getSeq(@Param("parentID") String parentID);
 

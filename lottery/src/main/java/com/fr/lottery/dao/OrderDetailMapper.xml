@@ -145,7 +145,7 @@
     select
     od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
     ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
-    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
+    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}  AND u1.id = od.UserId
     AND #{userId,jdbcType=VARCHAR} in(u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
     from orderdetail od
     join orders  o on od.OrderId = o.id
@@ -174,7 +174,7 @@
     select
     od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
     ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
-    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
+    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR} AND u1.id = od.UserId
     AND #{userId,jdbcType=VARCHAR} in(u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as shareTotal
     from orderdetail od
     join orders o on od.OrderId = o.id

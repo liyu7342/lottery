@@ -196,21 +196,21 @@ public class UserService implements IUserService {
 
     @Override
     public Page<User> getUsers(String parentId, Integer userType, String keyword, Integer status, Integer pageId) {
-        Integer start = (pageId - 1) * Global.pageSize;
+        Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = userMapper.get(parentId);
-        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start);
+        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
         long total = userMapper.count(user.getXpath(), userType, keyword, status);
-        Page<User> page = new Page<User>(pageId, Global.pageSize, total, users);
+        Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }
 
     @Override
     public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
-        Integer start = (pageId - 1) * Global.pageSize;
+        Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = UserHelper.getCurrentUser();
-        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start);
+        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
         long total = userMapper.count("", userType, keyword, status);
-        Page<User> page = new Page<User>(pageId, Global.pageSize, total, users);
+        Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }
 

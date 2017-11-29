@@ -147,7 +147,7 @@
             AND xpath like #{xpath,jdbcType=VARCHAR}
         </if>
         <if test="start !=null">
-            limit #{start ,jdbcType=INTEGER} ,10
+            limit #{start ,jdbcType=INTEGER} ,#{pageSize ,jdbcType=INTEGER}
         </if>
     </select>
     <select id="count" resultType="java.lang.Long">

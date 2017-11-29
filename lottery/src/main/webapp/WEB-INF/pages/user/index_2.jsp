@@ -32,10 +32,7 @@
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
                                     <li><h2 class="g-tit">小股東</h2></li>
-                                    <#if user.userType==1>
-                                        <li>上級<select class="s" name="" ></select></li>
 
-                                    </#if>
 
                                     <li>
                                         <select class="s" name="keywordstatus">
@@ -80,7 +77,7 @@
                                     <td class="offline" id="${obj.id}"></td>
                                     <td class="bg tl">${obj.userName}&nbsp;&nbsp;</td>
                                     <td>${obj.credits}</td>
-                                    <td>${obj.handicap}</td><td>0</td>
+                                    <td>${obj.handicap}</td>
                                     <td>${obj.shareUp!''}</td>
                                     <td>${obj.shareTotal!''}</td>
                                     <td></td>
@@ -163,7 +160,7 @@
     };
 
     function page(index){
-        location.href="/order/list?pageId="+index;
+        location.href="/user/index2?pageId="+index;
     }
 </script>
 <script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>

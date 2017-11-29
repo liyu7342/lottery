@@ -167,21 +167,12 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 <script type="text/javascript">
-    window.setting = {
-        login_path: '/msdid63242a/account/login.html', //登錄路徑
-        password_need: false, //是否開啟密碼登陸加密
-        draw_refersh: 200000, //設置開關盤刷新頻率
-        log4js_type: 0, //設置log4javascript的類型
-        log4js_level: 'INFO', //設置log4javascript的級別
-        isStrongPwd: true //是否啟用複雜密碼
-    };
-
-    function page(index) {
-        location.href = "/order/list?pageId=" + index;
+    function page(index){
+    location.href="/user/index3?pageId="+index;
     }
 </script>
-<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 

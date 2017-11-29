@@ -129,20 +129,25 @@ public class OrderControlller {
         name = URLDecoder.decode(name, "utf-8");
         if(pageId==null) pageId=1;
         Integer subAmount =0;
-        Integer subShareTotal=0;
+        Float subShareTotal=0F;
         Page<OrderDetailDto> page = orderService.getOrderDetailsByDaili(game_id,number,name,pageId);
         modelAndView.addObject("details",page.getList());
         modelAndView.addObject("page",page.toString());
         modelAndView.addObject("name",name);
         for(OrderDetailDto detailDto:page.getList()){
             subAmount+=detailDto.getAmount();
-            subShareTotal+=detailDto.getShareTotal().intValue();
+            if (detailDto.getShareTotal()==null){
+                detailDto.setShareTotal(0F);
+            }
+            else{
+                subShareTotal+=detailDto.getShareTotal();
+            }
         }
         modelAndView.addObject("subAmount",subAmount);
         modelAndView.addObject("subShareTotal",subShareTotal);
         OrderDetailDto orderDetailDto = orderService.getStatsByDaili(game_id,number);
         modelAndView.addObject("totalAmount",orderDetailDto.getAmount());
-        modelAndView.addObject("totalShareTotal",orderDetailDto.getShareTotal());
+        modelAndView.addObject("totalShareTotal",orderDetailDto.getShareTotal()==null?0F:orderDetailDto.getShareTotal());
         return  modelAndView;
     }
 
