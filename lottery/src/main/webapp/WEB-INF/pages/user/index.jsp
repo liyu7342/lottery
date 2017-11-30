@@ -73,7 +73,7 @@
                                     <td class="offline" id="${obj.id}"></td>
                                     <td class="bg tl">${obj.userName!''}&nbsp;&nbsp;</td>
                                     <td>${obj.credits}</td>
-                                    <td>${obj.handicap}</td><td>0</td>
+                                    <td>${obj.handicap}</td><td>${obj.shareUp!'0'}</td>
 
                                     <td>
                                     <#if obj.status == 0>

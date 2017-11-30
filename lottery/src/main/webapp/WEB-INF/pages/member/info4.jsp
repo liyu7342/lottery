@@ -68,7 +68,7 @@
                                         <td colspan="2">代理及下級佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
                                                 <#list shareTotalList as share>
-                                                    <option  value=${share} <#if info.shareUp==share>selected="selected"</#if>>${share}</option>
+                                                    <option  value=${share} <#if info.shareTotal==share>selected="selected"</#if>>${share}</option>
                                                 </#list>
                                             </select>
                                             <input type="hidden" name="shareParent" value="${parentUser.shareTotal!'0'}"/>

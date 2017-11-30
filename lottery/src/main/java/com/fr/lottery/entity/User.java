@@ -74,6 +74,8 @@ public class User implements Serializable{
 
     private String sys_user_oddsSet;
 
+    private Integer member_shareUp;
+
     public String getId() {
         return id;
     }
@@ -336,5 +338,13 @@ public class User implements Serializable{
 
     public void setParentAccount(String parentAccount) {
         this.parentAccount = parentAccount;
+    }
+
+    public Integer getMember_shareUp() {
+        return member_shareUp;
+    }
+
+    public void setMember_shareUp(Integer member_shareUp) {
+        this.member_shareUp = member_shareUp;
     }
 }
