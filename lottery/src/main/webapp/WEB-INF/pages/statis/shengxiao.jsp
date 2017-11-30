@@ -47,7 +47,7 @@
                         <div class="bd">
                             <div class="n2 g-tm">
                                 <form>
-                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=000">補倉明細</a> <select name="type">
+                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=053">補倉明細</a> <select name="type">
                                         <option value="no" >手動</option>
                                         <option value="10" selected>10</option>
                                         <option value="30" >30</option>
@@ -56,9 +56,15 @@
                                     </select>
                                         <input class="tx" value="" id="pulse" disabled="disabled" type="text">
                                         <a class="btn1 red" id="refresh" href="?">更新</a>
-                                        <input type="checkbox" name="" id="totalwinlos" value="" style=""/><label for="totalwinlos">總項贏虧</label>
+                                        <div class="radiomenu">
+                                            <h3 class="m g-rl">
+                                                <a <#if game_id=="014">class="on" </#if>  href="/statis/shengxiao?category_id=06&game_id=014">生肖中</a>
+                                                <a <#if game_id=="053">class="on" </#if> href="/statis/shengxiao?category_id=06&game_id=053">生肖不中</a>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </form>
+
                                 <div class="fr">
 
                                 </div>
@@ -93,12 +99,9 @@
                                 <td act="pl">賠率
                                     <select act="qh" class="red">
                                         <option value="S" selected>全部</option>
-                                        <option value="AA" >A(特A)</option>
-                                        <option value="AB" >A(特B)</option>
-                                        <option value="BA" >B(特A)</option>
-                                        <option value="BB" >B(特B)</option>
-                                        <option value="CA" >C(特A)</option>
-                                        <option value="CB" >C(特B)</option>
+                                        <option value="A" >A</option>
+                                        <option value="B" >B</option>
+                                        <option value="C" >C</option>
                                     </select>
                                 </td>
                             </tr>

@@ -50,6 +50,9 @@ public class OrderService implements IOrderService {
     private ISysCodeService sysCodeService;
 
     @Autowired
+    private IOddsService oddsService;
+
+    @Autowired
     private IShengxiaoService shengxiaoService;
 
     public List<OrderDetail> getOrderList(String userId) {
@@ -387,7 +390,34 @@ public class OrderService implements IOrderService {
         condition.setP_userId(user.getId());
         condition.setP_xpath(user.getXpath());
         condition.setP_handicapId(handicap.getId());
-        return statisMapper.getStatisByCallable( condition);
+        List<StatisDto> statisDtos= statisMapper.getStatisByCallable( condition);
+        List<Odds> oddsList = oddsService.getOddsList("",gameTypes);
+        for (StatisDto statisDto: statisDtos){
+            for(Odds odds : oddsList){
+                if((statisDto.getGameType()+statisDto.getNo()).equals(odds.getNumkey())){
+                    if("AA".equals(odds.getOddSet()) || "A".equals(odds.getOddSet())){
+                        statisDto.setAaOdds(odds.getNumvalue().toString());
+                    }
+                    else if("AB".equals(odds.getOddSet())){
+                        statisDto.setAbOdds(odds.getNumvalue().toString());
+                    }
+                    else if("BA".equals(odds.getOddSet()) ||"B".equals(odds.getOddSet())){
+                        statisDto.setBaOdds(odds.getNumvalue().toString());
+                    }
+                    else if("BB".equals(odds.getOddSet())){
+                        statisDto.setBbOdds(odds.getNumvalue().toString());
+                    }
+                    else if("CA".equals(odds.getOddSet()) || "C".equals(odds.getOddSet())){
+                        statisDto.setCaOdds(odds.getNumvalue().toString());
+                    }
+                    else if("CB".equals(odds.getOddSet())){
+                        statisDto.setCbOdds(odds.getNumvalue().toString());
+                    }
+
+                }
+            }
+        }
+        return  statisDtos;
     }
 
     @Override

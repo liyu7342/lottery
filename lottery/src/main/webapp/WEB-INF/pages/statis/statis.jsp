@@ -116,7 +116,8 @@
                                     <td>${detail.aveOdds!''}</td>
                                     <td>${detail.winAmount?floor}</td>
                                     <td>${detail.buhuo!''}</td>
-                                    <td>${detail.odds!''}</td>
+                                    <td><span oddsSet='AA'>${detail.aaOdds!''}</span><span oddsSet='AB'  class="hid">${detail.abOdds!''}</span><span   oddsSet='BA' class="hid">${detail.baOdds!''}</span>
+                                        <span   oddsSet='BB' class="hid">${detail.bbOdds!''}</span><span   oddsSet='CA' class="hid">${detail.caOdds!''}</span><span   oddsSet='CB' class="hid">${detail.cbOdds!''}</span></td>
                                 </tr>
                             </#list>
                             <tr></tr>

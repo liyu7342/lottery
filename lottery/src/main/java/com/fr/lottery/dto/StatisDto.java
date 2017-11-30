@@ -22,6 +22,13 @@ public class StatisDto {
 
     private Float shareTotal;
 
+    private String aaOdds;
+    private String abOdds;
+    private String baOdds;
+    private String bbOdds;
+    private String caOdds;
+    private String cbOdds;
+
     public String getGameType() {
         return gameType;
     }
@@ -100,5 +107,53 @@ public class StatisDto {
 
     public void setShareTotal(Float shareTotal) {
         this.shareTotal = shareTotal;
+    }
+
+    public String getAaOdds() {
+        return aaOdds;
+    }
+
+    public void setAaOdds(String aaOdds) {
+        this.aaOdds = aaOdds;
+    }
+
+    public String getAbOdds() {
+        return abOdds;
+    }
+
+    public void setAbOdds(String abOdds) {
+        this.abOdds = abOdds;
+    }
+
+    public String getBaOdds() {
+        return baOdds;
+    }
+
+    public void setBaOdds(String baOdds) {
+        this.baOdds = baOdds;
+    }
+
+    public String getBbOdds() {
+        return bbOdds;
+    }
+
+    public void setBbOdds(String bbOdds) {
+        this.bbOdds = bbOdds;
+    }
+
+    public String getCaOdds() {
+        return caOdds;
+    }
+
+    public void setCaOdds(String caOdds) {
+        this.caOdds = caOdds;
+    }
+
+    public String getCbOdds() {
+        return cbOdds;
+    }
+
+    public void setCbOdds(String cbOdds) {
+        this.cbOdds = cbOdds;
     }
 }

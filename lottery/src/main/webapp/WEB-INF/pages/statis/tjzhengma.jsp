@@ -33,7 +33,6 @@
                                 <td id="05" class="sp"><a href="/statis/guoguan?category_id=05"><span>過關</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="06"  class="sp wide"><a href="/statis/shengxiao?category_id=06&game_id=014"><span>生肖</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="07" class="sp"><a href="/statis/weishu?category_id=07"><span>尾數</span><sup title="總佔成收入">0</sup></a></td>
-
                                 <td id="08" class="sp"><a href="/statis/banbo?category_id=08"><span>半波</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="12" class="sp"><a href="/statis/texiao?category_id=12"><span>特肖</span><sup title="總佔成收入">0</sup></a></td>
                                 <td id="09" class="sp"><a href="/statis/liuxiao?category_id=09"><span>六肖</span><sup title="總佔成收入">0</sup></a></td>
@@ -83,22 +82,17 @@
                                 <td>數量</td>
                                 <td>下注總額</td>
                                 <td><em><span class="hc" act="hide">總佔成</span></em></td>
-                                <td class="hid">特A佔成</td>
-                                <td class="hid">特B佔成</td>
-                                <td class="hid">佣金收入</td>
-                                <td class="hid">彩金</td>
+                                <td >佣金收入</td>
+                                <td >彩金</td>
                                 <td>平均賠率</td>
                                 <td id="totalwinlos_td">勝出金額</td>
                                 <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=000"  type="button">多補</button> </td>
                                 <td act="pl">賠率
                                     <select act="qh" class="red">
                                         <option value="S" selected>全部</option>
-                                        <option value="AA" >A(特A)</option>
-                                        <option value="AB" >A(特B)</option>
-                                        <option value="BA" >B(特A)</option>
-                                        <option value="BB" >B(特B)</option>
-                                        <option value="CA" >C(特A)</option>
-                                        <option value="CB" >C(特B)</option>
+                                        <option value="A" >A</option>
+                                        <option value="B" >B</option>
+                                        <option value="C" >C</option>
                                     </select>
                                 </td>
                             </tr>
@@ -115,7 +109,7 @@
                                     <td>${detail.aveOdds!''}</td>
                                     <td>${detail.winAmount?floor}</td>
                                     <td>${detail.buhuo!''}</td>
-                                    <td>${detail.odds!''}</td>
+                                    <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
                                 </tr>
                             </#list>
                             </tbody>

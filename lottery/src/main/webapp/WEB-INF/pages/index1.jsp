@@ -67,7 +67,7 @@
                 <ul class="clearfix" id="nav">
                     <li ><a target="main" href="/rule/notice">規則</a></li>
                     <li ><a target='main' href="/user/index">賬號管理</a></li>
-                    <li ><a target='main' href="/statis/statis">收付統計</a></li>
+                    <li ><a target='main' href="/statis/statis?category_id=00">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
                     <li ><a target='main' href="/report/report" act='report'>報表</a></li>
                     <li ><a target='main' href="/result/index" act='result'>開獎結果</a></li>

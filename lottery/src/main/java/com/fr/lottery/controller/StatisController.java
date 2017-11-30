@@ -60,6 +60,7 @@ public class StatisController {
         modelAndView.addObject("orderNum",orderNum);
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
+
         return modelAndView;
     }
     @RequestMapping("/tjzhengmate")
@@ -68,6 +69,7 @@ public class StatisController {
 
         List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
+        modelAndView.addObject("game_id",game_id);
         return modelAndView;
     }
 
@@ -75,8 +77,81 @@ public class StatisController {
     public ModelAndView tjlianma(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjlianma");
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        String[] oddsTypes=GameCfg.getCategoryGame(category_id);
+        //二全中
+        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{OddsTypeEnum.erquanzh.getValue()});
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
+
+        //二中特
+        List<StatisDto> statisDtoList009= orderService.getStatis(new String[]{OddsTypeEnum.erzhongte.getValue()});
+        Integer orderNum009=0;
+        Float amount009=0F;
+        Float shareTotal009=0F;
+        for(StatisDto statisDto : statisDtoList009){
+            orderNum009+=statisDto.getOrderNum();
+            amount009 +=statisDto.getAmount();
+            shareTotal009 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails009",statisDtoList009);
+        modelAndView.addObject("orderNum009",orderNum009);
+        modelAndView.addObject("amount009",amount009);
+        modelAndView.addObject("shareTotal009",shareTotal009);
+
+        //特串
+        List<StatisDto> statisDtoList010= orderService.getStatis(new String[]{OddsTypeEnum.techuan.getValue()});
+        Integer orderNum010=0;
+        Float amount010=0F;
+        Float shareTotal010=0F;
+        for(StatisDto statisDto : statisDtoList010){
+            orderNum010+=statisDto.getOrderNum();
+            amount010 +=statisDto.getAmount();
+            shareTotal010 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails010",statisDtoList010);
+        modelAndView.addObject("orderNum010",orderNum010);
+        modelAndView.addObject("amount010",amount010);
+        modelAndView.addObject("shareTotal010",shareTotal010);
+
+        //三全中
+        List<StatisDto> statisDtoList011= orderService.getStatis(new String[]{OddsTypeEnum.sanquanzh.getValue()});
+        Integer orderNum011=0;
+        Float amount011=0F;
+        Float shareTotal011=0F;
+        for(StatisDto statisDto : statisDtoList011){
+            orderNum011+=statisDto.getOrderNum();
+            amount011 +=statisDto.getAmount();
+            shareTotal011 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails011",statisDtoList011);
+        modelAndView.addObject("orderNum011",orderNum011);
+        modelAndView.addObject("amount011",amount011);
+        modelAndView.addObject("shareTotal011",shareTotal011);
+
+        //三中二
+        List<StatisDto> statisDtoList012= orderService.getStatis(new String[]{OddsTypeEnum.sanzher.getValue()});
+        Integer orderNum012=0;
+        Float amount012=0F;
+        Float shareTotal012=0F;
+        for(StatisDto statisDto : statisDtoList011){
+            orderNum012+=statisDto.getOrderNum();
+            amount012 +=statisDto.getAmount();
+            shareTotal012 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails012",statisDtoList012);
+        modelAndView.addObject("orderNum012",orderNum012);
+        modelAndView.addObject("amount012",amount012);
+        modelAndView.addObject("shareTotal012",shareTotal012);
         return modelAndView;
     }
     @RequestMapping("/guoguan")
