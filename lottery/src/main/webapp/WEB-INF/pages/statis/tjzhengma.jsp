@@ -106,7 +106,9 @@
 
                                     <td>${detail.amount!''}</td>
                                     <td>${detail.shareTotal?floor}</td>
-                                    <td>${detail.aveOdds!''}</td>
+                                    <td>${detail.aveOdds!'0'}</td>
+                                    <td>${detail.yongJin!'0'}</td>
+                                    <td>${detail.caiJin!'0'}</td>
                                     <td>${detail.winAmount?floor}</td>
                                     <td>${detail.buhuo!''}</td>
                                     <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>

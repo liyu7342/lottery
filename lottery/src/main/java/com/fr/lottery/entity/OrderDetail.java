@@ -36,6 +36,7 @@ public class OrderDetail implements Serializable {
 
     private Float retreat;
     private Date createDate;
+    private String oddset;
 
     public String getId() {
         return id;
@@ -219,6 +220,14 @@ public class OrderDetail implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getOddset() {
+        return oddset;
+    }
+
+    public void setOddset(String oddset) {
+        this.oddset = oddset;
     }
 }
 

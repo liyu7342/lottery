@@ -27,7 +27,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/statis");
 
         String[] oddsTypes=GameCfg.getCategoryGame(category_id);
-        List<StatisDto> statisDtoList= orderService.getStatis(oddsTypes);
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,oddsTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
         Integer orderNum=0;
         Float amount=0F;
@@ -47,7 +47,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengma");
 
         String[] oddsTypes=GameCfg.getCategoryGame(category_id);
-        List<StatisDto> statisDtoList= orderService.getStatis(oddsTypes);
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,oddsTypes);
         modelAndView.addObject("orderDetails",statisDtoList);
         Integer orderNum=0;
         Float amount=0F;
@@ -67,7 +67,7 @@ public class StatisController {
     public ModelAndView tjzhengmate(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjzhengmate");
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         modelAndView.addObject("game_id",game_id);
         return modelAndView;
@@ -79,7 +79,7 @@ public class StatisController {
 
         String[] oddsTypes=GameCfg.getCategoryGame(category_id);
         //二全中
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{OddsTypeEnum.erquanzh.getValue()});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{OddsTypeEnum.erquanzh.getValue()});
         modelAndView.addObject("orderDetails",statisDtoList);
         Integer orderNum=0;
         Float amount=0F;
@@ -94,7 +94,7 @@ public class StatisController {
         modelAndView.addObject("shareTotal",shareTotal);
 
         //二中特
-        List<StatisDto> statisDtoList009= orderService.getStatis(new String[]{OddsTypeEnum.erzhongte.getValue()});
+        List<StatisDto> statisDtoList009= orderService.getStatis(category_id,new String[]{OddsTypeEnum.erzhongte.getValue()});
         Integer orderNum009=0;
         Float amount009=0F;
         Float shareTotal009=0F;
@@ -109,7 +109,7 @@ public class StatisController {
         modelAndView.addObject("shareTotal009",shareTotal009);
 
         //特串
-        List<StatisDto> statisDtoList010= orderService.getStatis(new String[]{OddsTypeEnum.techuan.getValue()});
+        List<StatisDto> statisDtoList010= orderService.getStatis(category_id,new String[]{OddsTypeEnum.techuan.getValue()});
         Integer orderNum010=0;
         Float amount010=0F;
         Float shareTotal010=0F;
@@ -124,7 +124,7 @@ public class StatisController {
         modelAndView.addObject("shareTotal010",shareTotal010);
 
         //三全中
-        List<StatisDto> statisDtoList011= orderService.getStatis(new String[]{OddsTypeEnum.sanquanzh.getValue()});
+        List<StatisDto> statisDtoList011= orderService.getStatis(category_id,new String[]{OddsTypeEnum.sanquanzh.getValue()});
         Integer orderNum011=0;
         Float amount011=0F;
         Float shareTotal011=0F;
@@ -139,7 +139,7 @@ public class StatisController {
         modelAndView.addObject("shareTotal011",shareTotal011);
 
         //三中二
-        List<StatisDto> statisDtoList012= orderService.getStatis(new String[]{OddsTypeEnum.sanzher.getValue()});
+        List<StatisDto> statisDtoList012= orderService.getStatis(category_id,new String[]{OddsTypeEnum.sanzher.getValue()});
         Integer orderNum012=0;
         Float amount012=0F;
         Float shareTotal012=0F;
@@ -158,7 +158,7 @@ public class StatisController {
     public ModelAndView guoguan(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/guoguan");
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -168,7 +168,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/shengxiao");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -178,7 +178,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/weishu");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -188,7 +188,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/banbo");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -199,7 +199,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/texiao");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -209,7 +209,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/liuxiao");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -219,7 +219,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/liangmian");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -229,7 +229,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/sebo");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -239,7 +239,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/shengxiaolian");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -248,7 +248,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/weishulian");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }
@@ -258,7 +258,7 @@ public class StatisController {
         ModelAndView modelAndView = new ModelAndView("statis/wubuzhong");
 
 
-        List<StatisDto> statisDtoList= orderService.getStatis(new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
         return modelAndView;
     }

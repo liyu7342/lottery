@@ -15,6 +15,7 @@ public class StatisCondition {
     private String p_gameType;
 
 
+
     public String getP_userId() {
         return p_userId;
     }

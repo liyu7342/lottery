@@ -176,7 +176,9 @@ public class OrderService implements IOrderService {
                 detail.setRetreat(orders.getRetreat());
                 detail.setUserId(orders.getUserid());
                 orders.setCanWinAmount(detail.getAmount() * (detail.getOdds() -1 + orders.getRetreat()/100 ));
+                detail.setOddset(orders.getOddset());
                 orderDetailMapper.insert(detail);
+
             } else {
                 String[] detailOdds = orderDto.getDetailOdds().split(";");
                 orders.setCanWinAmount(0F);
@@ -280,6 +282,7 @@ public class OrderService implements IOrderService {
                     detail.setRetreat(orders.getRetreat());
                     detail.setUserId(orders.getUserid());
                     detailSum+= detail.getAmount()  *(detail.getOdds() -1 + orders.getRetreat()/100 ) ;
+                    detail.setOddset(orders.getOddset());
                     orderDetailMapper.insert(detail);
                 }
                 orders.setCanWinAmount(orders.getCanWinAmount() +detailSum );
@@ -380,7 +383,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<StatisDto> getStatis(String[] gameTypes) {
+    public List<StatisDto> getStatis(String categoryId,String[] gameTypes) {
         Handicap handicap = handicapService.getCurrentHandicap();
         if(handicap == null)
             return  new ArrayList<StatisDto>();
@@ -390,7 +393,15 @@ public class OrderService implements IOrderService {
         condition.setP_userId(user.getId());
         condition.setP_xpath(user.getXpath());
         condition.setP_handicapId(handicap.getId());
-        List<StatisDto> statisDtos= statisMapper.getStatisByCallable( condition);
+        condition.setP_categoryId(categoryId);
+        List<StatisDto> statisDtos;
+        if( GameTypeEnum.特码.getValue().equals(categoryId )){
+            statisDtos= statisMapper.getStatisByCallable( condition);
+        }
+        else{
+            statisDtos= statisMapper.getStatisZhengmaByCallable( condition);
+        }
+        //实时赔率
         List<Odds> oddsList = oddsService.getOddsList("",gameTypes);
         for (StatisDto statisDto: statisDtos){
             for(Odds odds : oddsList){

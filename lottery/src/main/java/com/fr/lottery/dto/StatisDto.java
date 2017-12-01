@@ -8,19 +8,23 @@ public class StatisDto {
     private String no;
     private String description;
 
-    private Integer orderNum;
+    private Integer orderNum;//订单数量
 
-    private Float amount;
+    private Float amount;//金额
 
-    private Float aveOdds;
+    private Float aveOdds;//平均赔率
 
-    private Float buhuo;
+    private Float buhuo;//补货
 
-    private Float odds;
+    private Float odds;//
 
-    private Float winAmount;
+    private Float winAmount;//胜出金额
 
-    private Float shareTotal;
+    private Float shareTotal;//占成
+
+    private Float yongJin;
+
+    private Float caiJin;
 
     private String aaOdds;
     private String abOdds;
@@ -155,5 +159,21 @@ public class StatisDto {
 
     public void setCbOdds(String cbOdds) {
         this.cbOdds = cbOdds;
+    }
+
+    public Float getYongJin() {
+        return yongJin;
+    }
+
+    public void setYongJin(Float yongJin) {
+        this.yongJin = yongJin;
+    }
+
+    public Float getCaiJin() {
+        return caiJin;
+    }
+
+    public void setCaiJin(Float caiJin) {
+        this.caiJin = caiJin;
     }
 }

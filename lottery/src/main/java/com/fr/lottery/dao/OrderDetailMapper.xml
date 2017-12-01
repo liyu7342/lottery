@@ -18,10 +18,11 @@
     <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
     <result column="canWinAmount" jdbcType="DECIMAL" property="canWinAmount"/>
     <result column="createdate" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="oddset" jdbcType="VARCHAR" property="oddset" />
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
-    ,canWinAmount
+    ,canWinAmount,oddset
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -43,14 +44,14 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,
-      gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount,retreat,winAmount, createdate,canWinAmount)
+      gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount,retreat,winAmount, createdate,canWinAmount,oddset)
     values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
       #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR},
        #{number4,jdbcType=VARCHAR},#{number5,jdbcType=VARCHAR},#{number6,jdbcType=VARCHAR},
        #{number7,jdbcType=VARCHAR},#{number8,jdbcType=VARCHAR},#{number9,jdbcType=VARCHAR},
        #{number10,jdbcType=VARCHAR},#{odds,jdbcType=DECIMAL},#{odds1,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP},
-      #{canWinAmount,jdbcType=DECIMAL})
+      #{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail
