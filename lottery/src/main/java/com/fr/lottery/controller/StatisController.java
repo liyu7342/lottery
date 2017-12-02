@@ -298,20 +298,44 @@ public class StatisController {
     @RequestMapping("/liangmian")
     public ModelAndView liangmian(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/liangmian");
-
-
-        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,GameCfg.getCategoryGame(category_id));
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        Float yongjin = 0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+            yongjin +=statisDto.getYongJin();
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
+        modelAndView.addObject("yongjin",yongjin);
         return modelAndView;
     }
 
     @RequestMapping("/sebo")
     public ModelAndView sebo(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/sebo");
-
-
-        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
+        List<StatisDto> statisDtoList= orderService.getStatis(category_id,GameCfg.getCategoryGame(category_id));
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        Float yongjin = 0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+            yongjin +=statisDto.getYongJin();
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
+        modelAndView.addObject("yongjin",yongjin);
         return modelAndView;
     }
 
@@ -338,9 +362,24 @@ public class StatisController {
     public ModelAndView wubuzhong(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/wubuzhong");
 
-
         List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        Float yongjin = 0F;
+        for(StatisDto statisDto : statisDtoList){
+            orderNum+=statisDto.getOrderNum();
+            amount +=statisDto.getAmount();
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+            yongjin +=statisDto.getYongJin();
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("shareTotal",shareTotal);
+        modelAndView.addObject("yongjin",yongjin);
+        modelAndView.addObject("game_id",game_id);
+
         return modelAndView;
     }
 
