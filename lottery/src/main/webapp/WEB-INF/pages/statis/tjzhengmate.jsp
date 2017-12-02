@@ -131,29 +131,29 @@
                                 <#list orderDetails as detail>
 
                                     <tr id="${detail.gameType!''}${detail.no!''}">
-                                        <td>${detail_index+1!''}</td>
+                                        <td>${(detail_index)+1!''}</td>
                                         <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                         <td>${detail.orderNum!''}</td>
 
                                         <td>${detail.amount!''}</td>
                                         <td>${detail.shareTotal?floor}</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>${detail.aveOdds!''}</td>
-                                        <td>${detail.winAmount?floor}</td>
+                                        <td>${detail.yongJin?floor}</td>
+                                        <td>${detail.caiJin?floor}</td>
+                                        <td>${detail.aveOdds!'0'}</td>
 
-                                        <td><a href="javascript:void(0);" to="short_covering.htm?game_id=002&number=14" class="red gms_a">${detail.buhuo!''}</a></td>
-                                        <td><span oddsSet='A'>42.000</span><span oddsSet='B'  class="hid">42.000</span><span   oddsSet='C' class="hid">42.000</span></td>
+                                        <td>${detail.winAmount?floor}</td>
+                                        <td>${detail.buhuo!''}</td>
+                                        <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
                                     </tr>
                                 </#list>
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <td colspan="2">總計</td>
-                                    <td>3</td>
-                                    <td>18</td>
-                                    <td>5</td>
-                                    <td>0</td>
+                                    <td>${orderNum!'0'}</td>
+                                    <td>${amount!'0'}</td>
+                                    <td>${shareTotal?floor}</td>
+                                    <td >${yongjin?floor}</td>
                                     <td colspan="18"></td>
                                 </tr>
                                 </tfoot>

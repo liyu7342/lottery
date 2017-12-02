@@ -83,34 +83,47 @@
                                 <td>數量</td>
                                 <td>下注總額</td>
                                 <td><em><span class="hc" act="hide">總佔成</span></em></td>
-                                <td class="hid">特A佔成</td>
-                                <td class="hid">特B佔成</td>
-                                <td class="hid">佣金收入</td>
-                                <td class="hid">彩金</td>
+                                <td >佣金收入</td>
+                                <td >彩金</td>
                                 <td>平均賠率</td>
                                 <td id="totalwinlos_td">勝出金額</td>
                                 <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=000"  type="button">多補</button> </td>
                                 <td act="pl">賠率
                                     <select act="qh" class="red">
                                         <option value="S" selected>全部</option>
-                                        <option value="AA" >A(特A)</option>
-                                        <option value="AB" >A(特B)</option>
-                                        <option value="BA" >B(特A)</option>
-                                        <option value="BB" >B(特B)</option>
-                                        <option value="CA" >C(特A)</option>
-                                        <option value="CB" >C(特B)</option>
+                                        <option value="A" >A</option>
+                                        <option value="B" >B</option>
+                                        <option value="C" >C</option>
                                     </select>
                                 </td>
                             </tr>
                             </thead>
                             <tbody>
+                            <#list orderDetails as detail>
+                                <tr>
+                                    <td>${(detail_index)+1!''}</td>
+                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                    <td>${detail.orderNum!''}</td>
+
+                                    <td>${detail.amount!''}</td>
+                                    <td>${detail.shareTotal?floor}</td>
+                                    <td>${detail.yongJin?floor}</td>
+                                    <td>${detail.caiJin?floor}</td>
+                                    <td>${detail.aveOdds!'0'}</td>
+
+                                    <td>${detail.winAmount?floor}</td>
+                                    <td>${detail.buhuo!''}</td>
+                                    <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
+                                </tr>
+                            </#list>
                             </tbody>
                             <tfoot><tr>
                                 <td></td>
                                 <td>總計</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>        <td class="hid"></td>
+                                <td>${orderNum!'0'}</td>
+                                <td>${amount!'0'}</td>
+                                <td>${shareTotal?floor}</td>
+                                <td >${yongjin?floor}</td>
                                 <td class="hid"></td>
                                 <td class="hid" >0</td>
                                 <td class="hid"></td>

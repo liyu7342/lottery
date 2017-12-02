@@ -55,7 +55,7 @@
                                     </select>
                                         <input class="tx" value="" id="pulse" disabled="disabled" type="text">
                                         <a class="btn1 red" id="refresh" href="?">更新</a>
-                                        <input type="checkbox" name="" id="totalwinlos" value="" style=""/><label for="totalwinlos">總項贏虧</label>
+
                                     </div>
                                 </form>
                                 <div class="fr">
@@ -101,14 +101,15 @@
                             <#list orderDetails as detail>
                                 <tr>
                                     <td>${(detail_index)+1!''}</td>
-                                    <td>${detail.description!''}</td>
+                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                     <td>${detail.orderNum!''}</td>
 
                                     <td>${detail.amount!''}</td>
                                     <td>${detail.shareTotal?floor}</td>
+                                    <td>${detail.yongJin?floor}</td>
+                                    <td>${detail.caiJin?floor}</td>
                                     <td>${detail.aveOdds!'0'}</td>
-                                    <td>${detail.yongJin!'0'}</td>
-                                    <td>${detail.caiJin!'0'}</td>
+
                                     <td>${detail.winAmount?floor}</td>
                                     <td>${detail.buhuo!''}</td>
                                     <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
@@ -120,7 +121,8 @@
                                 <td>總計</td>
                                 <td>${orderNum!'0'}</td>
                                 <td>${amount!'0'}</td>
-                                <td>${shareTotal?floor}</td>        <td class="hid"></td>
+                                <td>${shareTotal?floor}</td>
+                                <td >${yongjin?floor}</td>
                                 <td class="hid"></td>
                                 <td class="hid" >0</td>
                                 <td class="hid"></td>
