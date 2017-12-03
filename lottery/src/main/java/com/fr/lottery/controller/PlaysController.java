@@ -380,13 +380,21 @@ public class PlaysController {
         mv.addObject("entity",map1);
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
+        boolean isOpen=handicapService.IsOpenHandicap();
         Map<String,String> oddsMap = new HashMap<String, String>();
-        for(Odds odds : oddsList){
+        if(isOpen){
+            for(Odds odds : oddsList){
                 oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
+            }
+        }else{
+            for(Odds odds : oddsList){
+                oddsMap.put(odds.getNumkey(),"");
+            }
         }
+
         map.put("odds",oddsMap);
         Map<String,Integer> statusmap = new HashMap<String, Integer>();
-        boolean isOpen=handicapService.IsOpenHandicap();
+
         if(isOpen){
             for(String oddsType :oddsTypes){
                 statusmap.put(oddsType,1);

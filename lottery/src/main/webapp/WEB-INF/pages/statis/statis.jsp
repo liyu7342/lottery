@@ -66,7 +66,8 @@
                         </div>
                         <input type="hidden" name="stops" value='0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'>
                         <div class="ft"></div>
-                    </div>                <div id="tongjitema" class="module g-mt0">
+                    </div>
+                    <div id="tongjitema" class="module g-mt0">
                     <div class="hd"></div>
                     <div class="bd">
                         <input type="hidden" name="category_id" value='00'>

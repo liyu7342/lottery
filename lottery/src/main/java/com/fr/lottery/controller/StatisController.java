@@ -93,7 +93,6 @@ public class StatisController {
     public ModelAndView tjlianma(String category_id ,String game_id){
         ModelAndView modelAndView = new ModelAndView("statis/tjlianma");
 
-        String[] oddsTypes=GameCfg.getCategoryGame(category_id);
         //二全中
         List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{OddsTypeEnum.erquanzh.getValue()});
         modelAndView.addObject("orderDetails",statisDtoList);
