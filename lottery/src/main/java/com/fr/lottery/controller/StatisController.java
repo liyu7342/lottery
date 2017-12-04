@@ -334,12 +334,86 @@ public class StatisController {
     }
 
     @RequestMapping("/shengxiaolian")
-    public ModelAndView shengxiaolian(String category_id ,String game_id){
+    public ModelAndView shengxiaolian(String category_id ,String game_id,Integer pageId){
         ModelAndView modelAndView = new ModelAndView("statis/shengxiaolian");
 
+//二肖连(中)
+        Page<StatisDto> statisDtoList= orderService.getStatisLianma(category_id,new String[]{"035"},pageId);
 
-        List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
-        modelAndView.addObject("orderDetails",statisDtoList);
+        Integer orderNum=0;
+        Float amount=0F;
+        Float shareTotal=0F;
+        for(StatisDto statisDto : statisDtoList.getList()){
+            shareTotal += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("shareTotal035",shareTotal);
+        modelAndView.addObject("orderDetails035",statisDtoList.getList());
+
+        ////二肖连(不中)
+        Page<StatisDto> statisDtoList036= orderService.getStatisLianma(category_id,new String[]{"036"},pageId);
+        Integer orderNum036=0;
+        Float amount036=0F;
+        Float shareTotal036=0F;
+        for(StatisDto statisDto : statisDtoList036.getList()){
+            shareTotal036 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails036",statisDtoList036.getList());
+        modelAndView.addObject("orderNum036",orderNum036);
+        modelAndView.addObject("amount036",amount036);
+        modelAndView.addObject("shareTotal036",shareTotal036);
+
+        //三肖连(中)
+        Page<StatisDto> statisDtoList037= orderService.getStatisLianma(category_id,new String[]{"037"},pageId);
+        Integer orderNum037=0;
+        Float amount037=0F;
+        Float shareTotal037=0F;
+        for(StatisDto statisDto : statisDtoList037.getList()){
+            shareTotal037 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails037",statisDtoList037.getList());
+        modelAndView.addObject("orderNum037",orderNum037);
+        modelAndView.addObject("amount037",amount037);
+        modelAndView.addObject("shareTotal037",shareTotal037);
+
+        //三肖连（不中）
+        Page<StatisDto> statisDtoList038= orderService.getStatisLianma(category_id,new String[]{"038"},pageId);
+        Integer orderNum038=0;
+        Float amount038=0F;
+        Float shareTotal038=0F;
+        for(StatisDto statisDto : statisDtoList038.getList()){
+
+            shareTotal038 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails038",statisDtoList038.getList());
+        modelAndView.addObject("orderNum038",orderNum038);
+        modelAndView.addObject("amount038",amount038);
+        modelAndView.addObject("shareTotal038",shareTotal038);
+
+        //四肖连（不中）
+        Page<StatisDto> statisDtoList039= orderService.getStatisLianma(category_id,new String[]{"039"},pageId);
+        Integer orderNum039=0;
+        Float amount039=0F;
+        Float shareTotal039=0F;
+        for(StatisDto statisDto : statisDtoList039.getList()){
+            shareTotal039 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails039",statisDtoList039.getList());
+        modelAndView.addObject("orderNum039",orderNum039);
+        modelAndView.addObject("amount039",amount039);
+        modelAndView.addObject("shareTotal039",shareTotal039);
+
+        //四肖连（不中）
+        Page<StatisDto> statisDtoList040= orderService.getStatisLianma(category_id,new String[]{"040"},pageId);
+        Integer orderNum040=0;
+        Float amount040=0F;
+        Float shareTotal040=0F;
+        for(StatisDto statisDto : statisDtoList040.getList()){
+            shareTotal040 += (statisDto.getShareTotal()==null?0F: statisDto.getShareTotal());
+        }
+        modelAndView.addObject("orderDetails040",statisDtoList040.getList());
+        modelAndView.addObject("orderNum040",orderNum040);
+        modelAndView.addObject("amount040",amount040);
+        modelAndView.addObject("shareTotal040",shareTotal040);
         return modelAndView;
     }
     @RequestMapping("/weishulian")
