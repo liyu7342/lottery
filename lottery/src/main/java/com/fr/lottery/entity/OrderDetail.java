@@ -37,6 +37,7 @@ public class OrderDetail implements Serializable {
     private Float retreat;
     private Date createDate;
     private String oddset;
+    private String gameDesc;
 
     public String getId() {
         return id;
@@ -228,6 +229,14 @@ public class OrderDetail implements Serializable {
 
     public void setOddset(String oddset) {
         this.oddset = oddset;
+    }
+
+    public String getGameDesc() {
+        return gameDesc;
+    }
+
+    public void setGameDesc(String gameDesc) {
+        this.gameDesc = gameDesc;
     }
 }
 

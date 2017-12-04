@@ -36,4 +36,5 @@ public interface UserMapper {
     int getSeq(@Param("parentID") String parentID);
 
     Integer getChildSumCredit(@Param("id") String id);
+
 }

@@ -5732,10 +5732,9 @@ Header.prototype.refersh = function() {
             }
         }
     }
-    return ;
     if (h) {
         $.ajax({
-            url: "ajax_req.htm?act=" + h + g,
+            url: "/ajax_req/req?act=" + h + g,
             dataType: "json",
             timeout: c,
             complete: function() {

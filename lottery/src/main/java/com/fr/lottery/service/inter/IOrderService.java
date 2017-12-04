@@ -32,4 +32,13 @@ public interface IOrderService {
     Page<OrderDetailDto> getOrderDetailsByDaili(String game_id, String number, String name, Integer pageId);
 
     OrderDetailDto getStatsByDaili(String game_id,String number);
+
+    /**
+     * 连码收付统计
+     * @param categoryId
+     * @param gameTypes
+     * @param pageId
+     * @return
+     */
+    Page<StatisDto>  getStatisLianma(String categoryId,String[] gameTypes,Integer pageId);
 }

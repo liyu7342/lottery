@@ -6,7 +6,9 @@ package com.fr.lottery.init;
 
 
 import com.fr.lottery.entity.LotConfig;
+import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.utils.LotConfigHelper;
+import com.fr.lottery.utils.ShengXiaoConfigHelper;
 import org.apache.commons.collections.map.HashedMap;
 
 import java.util.*;
@@ -53,6 +55,7 @@ public class Global {
 
     public static final Integer pageSize=20;
     public static final Integer pageSizeOfTen=10;
+    public static final Integer pageSizeOfTh=30;
 
     public static final Integer userStatus_qiyong=1;
     public static final Integer userStatus_tingyong=0;
@@ -62,11 +65,19 @@ public class Global {
 
     public static final Map<String,LotConfig> lotConfigDic =new HashMap<String, LotConfig>();
 
-
+    public static final Map<String,ShengXiao> shengxiaoDic = new HashMap<String, ShengXiao>();
     static {
         List<LotConfig> lotConfigs= LotConfigHelper.findAll();
-        for(LotConfig lotConfig: lotConfigs)
+        for(LotConfig lotConfig: lotConfigs){
             Global.lotConfigDic.put(lotConfig.getGameNo(),lotConfig);
-    };
+        }
+        Map<String,ShengXiao> _shengxiaoDic = ShengXiaoConfigHelper.findShengxiaos();
+        for(String key :_shengxiaoDic.keySet()){
+            Global.shengxiaoDic.put(key,_shengxiaoDic.get(key));
+        }
+    }
+
+
+
 
 }

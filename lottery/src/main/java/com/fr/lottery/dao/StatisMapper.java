@@ -17,4 +17,9 @@ public interface StatisMapper {
     List<StatisDto> getStatisByCallable(StatisCondition condition);
 
     List<StatisDto> getStatisZhengmaByCallable(StatisCondition condition);
+
+
+    List<StatisDto> getStatisLianma(StatisCondition condition);
+
+    Long getStatisLianmaCount(StatisCondition condition);
 }

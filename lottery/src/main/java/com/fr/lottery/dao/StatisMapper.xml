@@ -47,9 +47,45 @@
     <parameter property="p_xpath" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_gameType" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_categoryId" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_start" mode="IN" jdbcType="INTEGER"/>
+    <parameter property="p_pageSize" mode="IN" jdbcType="INTEGER"/>
   </parameterMap>
   <select id="getStatisZhengmaByCallable" parameterMap="StatisCondition"  resultMap="BaseResultMap" statementType="CALLABLE">
     CALL P_DB_Statis_zhengma(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_xpath,mode=IN,jdbcType=VARCHAR},#{p_categoryId,mode=IN,jdbcType=VARCHAR})
+  </select>
+
+  <select id="getStatisLianma" parameterMap="StatisCondition"  resultMap="BaseResultMap">
+    select * from (
+  select od.gameType,od. gameDesc as`description`,od.amount ,
+      (select IFNULL(u1.shareUp,0) as shareUp
+          from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
+      AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as shareTotal
+      ,  od.odds,od.oddset
+      FROM  orderdetail od
+        INNER  JOIN Handicap on od.handicapId= Handicap.Id
+      INNER JOIN user u on u.id = od.userId
+  where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
+      AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
+  AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+  ) t
+  order by shareTotal
+  LIMIT #{p_start,jdbcType=INTEGER},#{p_pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="getStatisLianmaCount" parameterMap="StatisCondition" resultType="java.lang.Long">
+    select count(1) from (
+    select od.gameType,od. gameDesc as`description`,od.amount ,
+    (select IFNULL(u1.shareUp,0) as shareUp
+    from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
+    AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as shareTotal
+    ,  od.odds,od.oddset
+    FROM  orderdetail od
+    INNER  JOIN Handicap on od.handicapId= Handicap.Id
+    INNER JOIN user u on u.id = od.userId
+    where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
+    AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
+    AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+    ) t
   </select>
 
 </mapper>

@@ -92,10 +92,10 @@
                                         </tbody>
                                         <tfoot>
                                         <tr><td colspan="2">總計</td>
-                                            <td>1,695</td>
+                                            <td>${shareTotal!'0'}</td>
                                             <td>0</td></tr>
                                         </tfoot>
-                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='tjlianmamingxi.htm?game_id=008&pageId=2' op='more'>更多</a></td></tr>
+                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=008&pageId=2' op='more'>更多</a></td></tr>
                                     </table>
                                 </td>
                                 <td class="ts">
@@ -117,7 +117,7 @@
                                         </tbody>
                                         <tfoot>
                                         <tr><td colspan="2">總計</td>
-                                            <td>3</td>
+                                            <td>${shareTotal009!'0'}</td>
                                             <td>0</td></tr>
                                         </tfoot>
                                     </table>
@@ -141,10 +141,10 @@
                                         </tbody>
                                         <tfoot>
                                         <tr><td colspan="2">總計</td>
-                                            <td>61</td>
+                                            <td>${shareTotal010!'0'}</td>
                                             <td>0</td></tr>
                                         </tfoot>
-                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='tjlianmamingxi.htm?game_id=010&pageId=2' op='more'>更多</a></td></tr>
+                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=010&pageId=2' op='more'>更多</a></td></tr>
                                     </table>
                                 </td>
                                 <td class="ts">
@@ -166,10 +166,10 @@
                                          </tbody>
                                         <tfoot>
                                         <tr><td colspan="2">總計</td>
-                                            <td>3,003</td>
+                                            <td>${shareTotal011!'0'}</td>
                                             <td>0</td></tr>
                                         </tfoot>
-                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='tjlianmamingxi.htm?game_id=011&pageId=2' op='more'>更多</a></td></tr>
+                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=011&pageId=2' op='more'>更多</a></td></tr>
                                     </table>
                                 </td>
                                 <td class="ts">
@@ -191,10 +191,10 @@
                                         </tbody>
                                         <tfoot>
                                         <tr><td colspan="2">總計</td>
-                                            <td>336</td>
+                                            <td>${shareTotal012!'0'}</td>
                                             <td>0</td></tr>
                                         </tfoot>
-                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='tjlianmamingxi.htm?game_id=012&pageId=2' op='more'>更多</a></td></tr>
+                                        <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=012&pageId=2' op='more'>更多</a></td></tr>
                                     </table>
                                 </td>
                             </tr>

@@ -1,12 +1,15 @@
 package com.fr.lottery.utils;
 
 import com.fr.lottery.entity.LotConfig;
+import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.service.inter.ILotConfigService;
+import com.fr.lottery.service.inter.IShengxiaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-9-9.
@@ -18,6 +21,7 @@ public class LotConfigHelper {
 
     private static LotConfigHelper lotConfigHelper;
 
+
     @PostConstruct
     public void init(){
         lotConfigHelper=this;
@@ -27,4 +31,6 @@ public class LotConfigHelper {
     public static List<LotConfig> findAll(){
         return lotConfigHelper.lotConfigService.findAll();
     }
+
+
 }

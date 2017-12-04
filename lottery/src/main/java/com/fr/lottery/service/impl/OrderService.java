@@ -121,13 +121,11 @@ public class OrderService implements IOrderService {
                     if (!StringUtil.isNullOrEmpty(orders.getLianmatype())) {
                         if (LianMaEnum.zhengchang.getValue().equals(orders.getLianmatype())) {
                             if("035".equals( orders.getGametype()) ||"036".equals( orders.getGametype()) || "037".equals( orders.getGametype()) ||"038".equals( orders.getGametype())
-                                    ||"039".equals( orders.getGametype())||"040".equals( orders.getGametype())
-                                    ){
-                                Map<String, ShengXiao> shengxiaomap = shengxiaoService.findMapByYear1();
+                                    ||"039".equals( orders.getGametype())||"040".equals( orders.getGametype())){
                                 String[] detailxiaoNos = orderStrs[1].split(",");
                                 orders.setDescription(lot.getGameTypeDesc() + " " );
                                 for(String xiao : detailxiaoNos){
-                                    orders.setDescription(orders.getDescription()+ shengxiaomap.get(xiao).getName()+" ");
+                                    orders.setDescription(orders.getDescription()+ Global.shengxiaoDic.get(xiao).getName()+" ");
                                 }
 
                             }
@@ -137,15 +135,15 @@ public class OrderService implements IOrderService {
                         } else if (LianMaEnum.dantuo.getValue().equals(orders.getLianmatype())) {
                             orders.setDescription(lot.getGameTypeDesc() + " " + orders.getLianmadan() + " [拖] " + orderStrs[1].substring(nos[0].length() + 1));
                         } else if (LianMaEnum.shengxiaoduipeng.getValue().equals(orders.getLianmatype())) {
-                            Map<String, ShengXiao> shengxiaomap = shengxiaoService.findMapByYear1();
+
                             String[] xiaonos = orderStrs[1].split("#");
                             String[] detailxiaoNos = xiaonos[0].split(",");
-                            orders.setDescription(lot.getGameTypeDesc() + " " + shengxiaomap.get(detailxiaoNos[0]).getName() + " [碰] " + shengxiaomap.get(detailxiaoNos[1]).getName());
+                            orders.setDescription(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(detailxiaoNos[0]).getName() + " [碰] " + Global.shengxiaoDic.get(detailxiaoNos[1]).getName());
                         } else if (LianMaEnum.shengweiduipeng.getValue().equals(orders.getLianmatype())) {
-                            Map<String, ShengXiao> shengxiaomap = shengxiaoService.findMapByYear1();
+
                             String[] xiaonos = orderStrs[1].split("#");
                             String[] detailxiaoNos = xiaonos[0].split(",");
-                            orders.setDescription(lot.getGameTypeDesc() + " " + shengxiaomap.get(detailxiaoNos[0]).getName() + " [碰] " + Long.valueOf(detailxiaoNos[1]).toString() + "尾");
+                            orders.setDescription(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(detailxiaoNos[0]).getName() + " [碰] " + Long.valueOf(detailxiaoNos[1]).toString() + "尾");
                         } else if (LianMaEnum.weishuduipeng.getValue().equals(orders.getLianmatype())) {
                             String[] xiaonos = orderStrs[1].split("#");
                             String[] detailxiaoNos = xiaonos[0].split(",");
@@ -192,22 +190,51 @@ public class OrderService implements IOrderService {
                     detail.setGameType(orders.getGametype());
                     detail.setHandicapId(orders.getHandicapId());
                     if (OddsTypeEnum.erquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.erzhongte.getValue().equals(orders.getGametype()) || OddsTypeEnum.techuan.getValue().equals(orders.getGametype() )
-                            || "035".equals(orders.getGametype()) || "036".equals(orders.getGametype()) || "041".equals(orders.getGametype()) || "042".equals(orders.getGametype())) {
+                            || "035".equals(orders.getGametype()) || "036".equals(orders.getGametype())  ) {
+
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
+                        LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
+                        if("035".equals(orders.getGametype()) || "036".equals(orders.getGametype())){ //生肖连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(nos[0]).getName()+","+Global.shengxiaoDic.get(nos[1]).getName());
+                        }
+                        else if("041".equals(orders.getGametype()) || "042".equals(orders.getGametype())){// 尾数连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Long.valueOf(nos[0]).toString()+"尾,"+ Long.valueOf(nos[1]).toString()+"尾");
+                        }
+                        else{
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + detailArr[0]);
+                        }
+
                     } else if (OddsTypeEnum.sanquanzh.getValue().equals(orders.getGametype()) || OddsTypeEnum.sanzher.getValue().equals(orders.getGametype())
                             || "037".equals(orders.getGametype()) || "038".equals(orders.getGametype() ) || "043".equals(orders.getGametype()) || "044".equals(orders.getGametype())) {//三全中、三中二
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
                         detail.setNumber3(nos[2]);
+                        LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
+                        if("037".equals(orders.getGametype()) || "038".equals(orders.getGametype()) ){//三肖连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(nos[0]).getName()+","+Global.shengxiaoDic.get(nos[1]).getName()+","+Global.shengxiaoDic.get(nos[2]).getName());
+                        }
+                        else if("043".equals(orders.getGametype()) || "044".equals(orders.getGametype())){//三尾连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Long.valueOf(nos[0]).toString()+"尾,"+ Long.valueOf(nos[1]).toString()+"尾, "+ Long.valueOf(nos[2]).toString()+"尾");
+                        }
+                        else{//
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + detailArr[0]);
+                        }
                     }else if("039".equals(orders.getGametype()) || "040".equals(orders.getGametype()) || "045".equals(orders.getGametype()) || "046".equals(orders.getGametype())){
                         String[] nos = detailArr[0].split(",");
                         detail.setNumber1(nos[0]);
                         detail.setNumber2(nos[1]);
                         detail.setNumber3(nos[2]);
                         detail.setNumber4(nos[3]);
+                        LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
+                        if("039".equals(orders.getGametype()) || "040".equals(orders.getGametype()) ){//四肖连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(nos[0]).getName()+","+Global.shengxiaoDic.get(nos[1]).getName()+","+Global.shengxiaoDic.get(nos[2]).getName());
+                        }
+                        else{//四尾连
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Long.valueOf(nos[0]).toString()+"尾,"+ Long.valueOf(nos[1]).toString()+"尾,"+ Long.valueOf(nos[2]).toString()+"尾,"+ Long.valueOf(nos[3]).toString()+"尾");
+                        }
                     }
                     else if ("047".equals(orders.getGametype()))// 五不中
                     {
@@ -469,6 +496,35 @@ public class OrderService implements IOrderService {
         return detailDto;
     }
 
+    /**
+     * 连码收付统计
+     * @param categoryId
+     * @param gameTypes
+     * @param pageId
+     * @return
+     */
+    public Page<StatisDto>  getStatisLianma(String categoryId,String[] gameTypes,Integer pageId){
+        if(pageId==null) pageId=1;
+        Handicap handicap = handicapService.getCurrentHandicap();
+        if(handicap == null)
+            return  new Page<StatisDto>();
+        User user = UserHelper.getCurrentUser();
+        StatisCondition condition = new StatisCondition();
+        condition.setP_gameType(StringUtils.join( gameTypes,","));
+        condition.setP_userId(user.getId());
+        condition.setP_xpath(user.getXpath());
+        condition.setP_handicapId(handicap.getId());
+        condition.setP_categoryId(categoryId);
+
+        condition.setP_start((pageId-1)*Global.pageSizeOfTh);
+        condition.setP_pageSize(Global.pageSizeOfTh);
+        List<StatisDto> statisDtos;
+
+        statisDtos= statisMapper.getStatisLianma( condition);
+        Long total =0L;
+        total =statisMapper.getStatisLianmaCount(condition);
+        return new Page<StatisDto>(pageId,Global.pageSizeOfTh,total,statisDtos);
+    }
 
     @Override
     public boolean settlement(String handicapId) {
