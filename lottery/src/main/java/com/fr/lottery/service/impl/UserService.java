@@ -210,6 +210,10 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<User> getUsers(String xpath,Integer userType){
+       return userMapper.getUsers(xpath+"%",userType,"",null,null,null);
+    }
+    @Override
     public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = UserHelper.getCurrentUser();

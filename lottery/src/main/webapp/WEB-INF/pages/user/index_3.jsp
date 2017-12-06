@@ -52,7 +52,7 @@
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
                                     <li><h2><a class="btn10 mt red"
-                                               href='/member/info3?op=create&id=&parentId=${currentUserId}'>新增</a>&nbsp;&nbsp;
+                                               href='/user/userselect?userType=3'>新增</a>&nbsp;&nbsp;
                                         <a id="batchDel" class="btn9 mt red" level="5"
                                            href="javascript:void(0)">批量刪除</a></h2></li>
                                 </ul>

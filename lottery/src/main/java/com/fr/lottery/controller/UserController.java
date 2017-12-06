@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -218,5 +219,44 @@ public class UserController {
         User user = userService.getByAccount(account);
         int result = user == null ? 0 : 1;
         return result;
+    }
+    @RequestMapping("/userselect")
+    public ModelAndView userselect(Integer userType){
+
+        User user = UserHelper.getCurrentUser();
+
+        String reqUrl ;
+        String redirectUrl="";
+        List<User> users =new ArrayList<User>();
+        String title="";
+        if(userType==UserTypeEnum.XiaoGudong.ordinal()){
+            reqUrl ="/member/info2?op=create&id=&parentId=";//小股東
+            title="新增小股東";
+        }
+        else if(userType==UserTypeEnum.ZongDaili.ordinal()){
+            reqUrl ="/member/info3?op=create&id=&parentId=";//總代理
+            title="新增總代理";
+        }else if(userType == UserTypeEnum.Daili.ordinal()){
+            reqUrl ="/member/info4?op=create&id=&parentId=";//代理
+            title = "新增代理";
+        }else {
+            reqUrl ="/member/info?op=create&id=&parentId=";//會員
+            title ="新增會員";
+        }
+        if(user.getUsertype()+1 <userType){//如果是跨級新增
+            redirectUrl = reqUrl;
+            reqUrl="/user/userselect";
+
+            users = userService.getUsers(user.getXpath(),userType -1);
+        }
+        else{
+            reqUrl+=user.getId();//
+            reqUrl="redirect:"+reqUrl;
+        }
+        ModelAndView modelAndView = new ModelAndView(reqUrl);
+        modelAndView.addObject("reqUrl",redirectUrl);
+        modelAndView.addObject("users",users);
+        modelAndView.addObject("title",title);
+        return modelAndView;
     }
 }

@@ -27,6 +27,9 @@ public interface IUserService {
 
     Page<User> getUsers(String parentId,Integer userType,String keyword,Integer status,Integer pageId);
 
+    //獲取當前用戶指定級別的用戶
+    List<User> getUsers(String xpath,Integer userType);
+
     Page<User> getDagudongs(Integer userType,String keyword,Integer status,Integer pageId);
 
     Integer getChildSumCredit(String id);

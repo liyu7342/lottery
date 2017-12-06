@@ -10717,8 +10717,9 @@ $.extend({
     chooseParent: function(b) {
         var a = b.getElementsByTagName("form")[0];
         b.getElementsByTagName("select")[0].onchange = function() {
-            if ($.isRPint(this.value)) {
-                a.submit()
+            if (this.value) {//$.isRPint(this.value)
+
+               location.href =document.getElementById("requestUrl").value+ this.value;// a.submit()
             }
         }
     }
