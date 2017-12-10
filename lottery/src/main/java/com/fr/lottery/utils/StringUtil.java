@@ -252,4 +252,12 @@ public class StringUtil {
 		String uuid = UUID.randomUUID().toString();
 		return uuid.replaceAll("-","");
 	}
+
+	public static Integer ToInteger(String str){
+		if(StringUtil.isNullOrEmpty(str))
+			return 0;
+		int idx = str.lastIndexOf(".");//查找小数点的位置
+		String strNum = str.substring(0,idx);
+		return Integer.valueOf(strNum);
+	}
 }

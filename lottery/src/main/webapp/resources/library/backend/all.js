@@ -6972,6 +6972,13 @@ $.extend({
             })
         }
         var c = $("tr.discount_A input", f), h = $("tr.discount_B input", f), k = $("tr.discount_C input", f), a;
+        if(f.handicapOpen&&f.handicapOpen.value=='yes'){
+           f.handicap&&( f.handicap.disabled=true);
+            f.sys_user_oddsSet &&(f.sys_user_oddsSet.disabled=true);
+            c.attr("disabled",true);
+            h.attr("disabled",true);
+            k.attr("disabled",true);
+        }
         if (f.handicap) {
             if (!f.handicap.disabled) {
                 a = function() {
@@ -6981,12 +6988,14 @@ $.extend({
                         h.attr("disabled", d === "B" ? false : true);
                         k.attr("disabled", d === "C" ? false : true)
                     }
+
                 }
                 ;
                 a();
                 $(f.handicap).change(a)
             }
         }
+
         if (f.sys_user_oddsSet) {
             if (!f.sys_user_oddsSet.disabled) {
                 var q = f.sys_user_oddsSet.value.charCodeAt(0);

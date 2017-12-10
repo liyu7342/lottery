@@ -61,7 +61,9 @@
                                             <option value="0" <#if info.status==0>selected="selected"</#if>  >停用</option>
                                             <option value="1" <#if info.status==1>selected="selected"</#if> >啟用</option>
                                             <option value="2" <#if info.status==2>selected="selected"</#if> >停押</option>
-                                        </select></td>
+                                        </select>
+                                            <input type="hidden" name="handicapOpen" value="${isopen?string('yes','no')}">
+                                        </td>
                                     </tr>
 
                                     <tr>

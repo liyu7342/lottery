@@ -102,16 +102,27 @@ public class OrderControlller {
         return mv;
     }
 
+    /**
+     * -1000 5秒内重复单据
+     * -9999 重复数据，询问是否继续
+     * -999 不是開盤時間
+     * -1124 信用额度不足
+     * 小于-1000
+     * @param orderDto
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/saveOrder")
     public Map<String,Object> saveOrder(OrderDto orderDto, HttpServletRequest request, HttpServletResponse response) throws IOException {
         //String referer = request.getHeader("Referer");
         response.setContentType("text/html;charset=UTF-8");
-        boolean isSuccess=orderService.save(orderDto);
+        Integer result=orderService.save(orderDto);
+
         User user =UserHelper.getCurrentUser();
         Map<String,Object> map = new HashedMap();
-        map.put("credit_error","3");
-        map.put("return_str",isSuccess?"0|;1|1;2|;3|;4|;5|;6|;7|;8|;9|;10|;":"0|1;1|;2|;3|;4|;5|;6|;7|;8|;9|;10|;");
+
+        map.put("credit_error",result== -1124?"信用額度不足":result==-1001?"尚未開盤":"");
+        map.put("return_str", result==1?"0|;1|1;2|;3|;4|;5|;6|;7|;8|;9|;10|;" : result+"|1;1|;2|;3|;4|;5|;6|;7|;8|;9|;10|;");
         map.put("item_error",new ArrayList<Integer>());
         map.put("limit","1");
         map.put("sum",user.getAmount());

@@ -50,7 +50,9 @@
                                             <option value="C" <#if "C" ==info.sys_user_oddsSet>selected="selected"</#if> >C</option>
                                             <option value="B" <#if "B" == info.sys_user_oddsSet>selected="selected"</#if> >B</option>
                                             <option value="A" <#if "A" == info.sys_user_oddsSet>selected="selected"</#if> >A</option>
-                                        </select></td>
+                                        </select>
+                                            <input type="hidden" name="handicapOpen" value="${isopen?string('yes','no')}">
+                                        </td>
                                         <td>補貨設定</td>
                                         <td><select class="w3" name="shortCovering" >
                                             <option value="0" <#if info.shortCovering==0>selected="selected"</#if> >不允許</option>

@@ -20,10 +20,11 @@
     <result column="createdate" jdbcType="TIMESTAMP" property="createDate" />
     <result column="oddset" jdbcType="VARCHAR" property="oddset" />
     <result column="gameDesc" jdbcType="VARCHAR" property="gameDesc" />
+    <result column="numbers" jdbcType="VARCHAR" property="numbers"/>
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
-    ,canWinAmount,oddset,gameDesc
+    ,canWinAmount,oddset,gameDesc,numbers
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -46,14 +47,14 @@
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,
       gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount
-      ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc)
+      ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc,numbers)
     values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
       #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR},
        #{number4,jdbcType=VARCHAR},#{number5,jdbcType=VARCHAR},#{number6,jdbcType=VARCHAR},
        #{number7,jdbcType=VARCHAR},#{number8,jdbcType=VARCHAR},#{number9,jdbcType=VARCHAR},
        #{number10,jdbcType=VARCHAR},#{odds,jdbcType=DECIMAL},#{odds1,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP},
-      #{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR},#{gameDesc,jdbcType=VARCHAR})
+      #{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR},#{gameDesc,jdbcType=VARCHAR},#{numbers,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail
@@ -147,7 +148,7 @@
   <select id="getOrderDetailsByDaili"  resultMap="OrderDetailDtoMap">
     select
     od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
-    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
+    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,od.gameDesc as description,o.createDate,
     (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
     AND u1.Id in(od.UserId ,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
     from orderdetail od
@@ -164,7 +165,7 @@
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>
       <if test="numbers!='' and numbers!=null" >
-        AND Number1 = #{numbers,jdbcType=VARCHAR}
+        AND numbers = #{numbers,jdbcType=VARCHAR}
       </if>
       <if test="pageIndex!=null ">
         limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}

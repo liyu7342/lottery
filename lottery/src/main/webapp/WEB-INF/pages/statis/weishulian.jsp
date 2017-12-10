@@ -66,58 +66,170 @@
                         </div>
                         <input type="hidden" name="stops" value='0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'>
                         <div class="ft"></div>
-                    </div>                <div id="tongjitema" class="module g-mt0">
-                    <div class="hd"></div>
-                    <div class="bd">
-                        <input type="hidden" name="category_id" value='14'>
-                        <input type="hidden" name="game_id" value='041|042|043|044|045|046'>
-                        <input type="hidden" name="time_stamp" value='1499779795,0,0'>
-                        <input type="hidden" name="fresh" value='0'>
-                        <input type="hidden" name="level"value="${user.usertype!''}">
-                        <input type="hidden" name="odds_set" value='S'>
-                        <table class="g-t1 g-t2">
-                            <thead>
-                            <tr>
-                                <td>序號</td>
-                                <td>玩法</td>
-                                <td>數量</td>
-                                <td>下注總額</td>
-                                <td><em><span class="hc" act="hide">總佔成</span></em></td>
-                                <td class="hid">特A佔成</td>
-                                <td class="hid">特B佔成</td>
-                                <td class="hid">佣金收入</td>
-                                <td class="hid">彩金</td>
-                                <td>平均賠率</td>
-                                <td id="totalwinlos_td">勝出金額</td>
-                                <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=000"  type="button">多補</button> </td>
-                                <td act="pl">賠率
-                                    <select act="qh" class="red">
-                                        <option value="S" selected>全部</option>
-                                        <option value="AA" >A(特A)</option>
-                                        <option value="AB" >A(特B)</option>
-                                        <option value="BA" >B(特A)</option>
-                                        <option value="BB" >B(特B)</option>
-                                        <option value="CA" >C(特A)</option>
-                                        <option value="CB" >C(特B)</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                            <tfoot><tr>
-                                <td></td>
-                                <td>總計</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>        <td class="hid"></td>
-                                <td class="hid"></td>
-                                <td class="hid" >0</td>
-                                <td class="hid"></td>
-                                <td colspan="10"></td>
-                            </tr></tfoot>
-                        </table>
                     </div>
+                    <div id="tjlianma" class="module g-mt0">
+                    <div class="hd"></div>
+                        <div class="bd">
+
+                            <input type="hidden" name="category_id" value='03|04'>
+                            <input type="hidden" name="level" value='3'>
+                            <table class="g-tl">
+                                <tbody nomovod>
+                                <tr>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">二尾連(中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=041" act="db" gid="041"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="041">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails041 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=041&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=041&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                            <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=041&pageId=2' op='more'>更多</a></td></tr>
+                                        </table>
+                                    </td>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">二尾連(不中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=042" act="db" gid="042"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="042">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails042 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=042&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=042&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal042!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                        </table>
+                                    </td>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">三尾連(中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=043" act="db" gid="043"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="043">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails043 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=043&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=043&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal043!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                            <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=043&pageId=2' op='more'>更多</a></td></tr>
+                                        </table>
+                                    </td>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">三尾連(不中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=044" act="db" gid="044"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="044">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails044 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=044&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=044&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal044!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                            <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=044&pageId=2' op='more'>更多</a></td></tr>
+                                        </table>
+                                    </td>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">四尾連(中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=045" act="db" gid="045"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="045">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails045 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=045&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=045&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal045!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                            <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=045&pageId=2' op='more'>更多</a></td></tr>
+                                        </table>
+                                    </td>
+                                    <td class="ts">
+                                        <div class="g-tif"><h3 class="m">四尾連(不中)
+                                            <button class="gms_ctl" to="duobu.htm?game_id=046" act="db" gid="046"  type="button">多補</button></h3></div>
+                                        <table class="g-t1 g-t2" gid="046">
+                                            <thead>
+                                            <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                            </thead>
+                                            <tbody>
+                                            <#list orderDetails046 as detail>
+                                                <tr id="${detail.no!''}">
+                                                    <td>${detail_index+1!''}</td>
+                                                    <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=046&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                    <td>${detail.shareTotal?floor}</td>
+                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=046&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr><td colspan="2">總計</td>
+                                                <td>${shareTotal046!'0'}</td>
+                                                <td>0</td></tr>
+                                            </tfoot>
+                                            <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=046&pageId=2' op='more'>更多</a></td></tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     <div class="ft"></div>
                 </div>
                 </div>

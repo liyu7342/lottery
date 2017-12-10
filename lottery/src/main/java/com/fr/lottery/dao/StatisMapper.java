@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-9-17.
@@ -22,4 +23,6 @@ public interface StatisMapper {
     List<StatisDto> getStatisLianma(StatisCondition condition);
 
     Long getStatisLianmaCount(StatisCondition condition);
+
+    List<Map>  get_statics_data(StatisCondition condition);
 }

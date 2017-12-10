@@ -5,12 +5,14 @@ import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.OrderDetail;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-7-16.
  */
 public interface IOrderService {
-    boolean save(OrderDto orderDto) ;
+
+    Integer save(OrderDto orderDto) ;
 
    // List<Orders> getOrders(String handicapId, String userId);
 
@@ -41,4 +43,6 @@ public interface IOrderService {
      * @return
      */
     Page<StatisDto>  getStatisLianma(String categoryId,String[] gameTypes,Integer pageId);
+
+    List<Map> get_statics_data();
 }

@@ -1,6 +1,5 @@
 package com.fr.lottery.dto;
 
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Liyu7342 on 2017-9-17.

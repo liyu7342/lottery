@@ -60,11 +60,13 @@
 
                                         <td>盤口</td>
                                         <td><select class="w1" name="handicap"  >
-                                            <option value="A" <#if info.handicap=="A">selected="selected"</#if> >A</option>
+                                            <option value="A"  <#if info.handicap=="A">selected="selected"</#if> >A</option>
                                             <option value="B" <#if info.handicap=="B">selected="selected"</#if> >B</option>
                                             <option value="C" <#if info.handicap=="C">selected="selected"</#if> >C</option>
 
-                                        </select></td>
+                                        </select>
+                                            <input type="hidden" name="handicapOpen" value="${isopen?string('yes','no')}">
+                                        </td>
                                         <td> 狀態</td>
                                         <td><select class="w4" name="status">
                                             <option value="0" >停用</option>
@@ -246,7 +248,7 @@
                                     </tr>
                                     <tr class="discount_A">
                                         <td>A盤退水(<font color='red'>%</font>)</td>
-                                        <td><input type="text"  name="discountA8" valid="dis" value="${limitSets.gameType_08.aRetreat!''}" minval="0" maxval="${plimit.gameType_08.aRetreat!''}" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountA8" valid="dis" <#if isopen==true>disabled = "disabled"</#if> value="${limitSets.gameType_08.aRetreat!''}" minval="0" maxval="${plimit.gameType_08.aRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA9" valid="dis" value="${limitSets.gameType_09.aRetreat!''}" minval="0" maxval="${plimit.gameType_09.aRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA10" valid="dis" value="${limitSets.gameType_10.aRetreat!''}" minval="0" maxval="${plimit.gameType_10.aRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountA11" valid="dis" value="${limitSets.gameType_11.aRetreat!''}" minval="0" maxval="${plimit.gameType_11.aRetreat!''}" insval="0.1" alternateval="0.5"/></td>
@@ -268,8 +270,8 @@
                                     </tr>
                                     <tr class="discount_C">
                                         <td>C盤退水(<font color='red'>%</font>)</td>
-                                        <td><input type="text"  name="discountC8" valid="dis" value="${limitSets.gameType_08.cRetreat!''}" minval="0" maxval="${plimit.gameType_08.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
-                                        <td><input type="text"  name="discountC9" valid="dis" value="${limitSets.gameType_09.cRetreat!''}" minval="0" maxval="${plimit.gameType_09.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountC8" valid="dis"  value="${limitSets.gameType_08.cRetreat!''}" minval="0" maxval="${plimit.gameType_08.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
+                                        <td><input type="text"  name="discountC9" valid="dis"  value="${limitSets.gameType_09.cRetreat!''}" minval="0" maxval="${plimit.gameType_09.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC10" valid="dis" value="${limitSets.gameType_10.cRetreat!''}" minval="0" maxval="${plimit.gameType_10.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC11" valid="dis" value="${limitSets.gameType_11.cRetreat!''}" minval="0" maxval="${plimit.gameType_11.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>
                                         <td><input type="text"  name="discountC12" valid="dis" value="${limitSets.gameType_12.cRetreat!''}" minval="0" maxval="${plimit.gameType_12.cRetreat!''}" insval="0.1" alternateval="0.5"/></td>

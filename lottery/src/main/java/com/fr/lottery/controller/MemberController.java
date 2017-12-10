@@ -2,18 +2,14 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.LimitSetDto;
 import com.fr.lottery.dto.Page;
-import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.UserTypeEnum;
-import com.fr.lottery.service.impl.UserService;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IUserService;
-import com.fr.lottery.utils.MD5Util;
-import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
-import org.apache.commons.collections.ArrayStack;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +36,8 @@ public class MemberController {
     private IOddsService oddsService;
     @Autowired
     private ILimitSetService limitSetService;
+    @Autowired
+    private  IHandicapService handicapService;
 
     @RequestMapping("/index")
     public ModelAndView index(Integer pageId) {
@@ -93,6 +91,7 @@ public class MemberController {
         modelAndView.addObject("info", user);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("shareUpList", shareUpArr);
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
         return modelAndView;
     }
 
@@ -135,7 +134,9 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("childsumcredit", childsumcredit);
 //        modelAndView.addObject("parentUser",parentUser);
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
         return modelAndView;
+
     }
 
     @RequestMapping("/info2")
@@ -189,6 +190,7 @@ public class MemberController {
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
         return modelAndView;
     }
 
@@ -243,6 +245,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
         return modelAndView;
     }
 
@@ -298,13 +301,21 @@ public class MemberController {
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
         return modelAndView;
     }
 
     @ResponseBody
     @RequestMapping("/save")
     public void save(User user, LimitSetDto limitSetDto, String requestUrl, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userService.Save(user, limitSetDto);
+        boolean isOpenHandicap=handicapService.IsOpenHandicap();
+        if( isOpenHandicap){
+            response.setContentType("text/html;charset=UTF-8");
+            response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存失败！开盘中，不允许修改信息！\");</script>");
+            return;
+        }
+        else
+            userService.Save(user, limitSetDto);
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
     }

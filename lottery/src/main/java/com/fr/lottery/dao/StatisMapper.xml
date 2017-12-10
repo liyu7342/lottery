@@ -88,4 +88,18 @@
     ) t
   </select>
 
+  <select id="get_statics_data"  resultType="java.util.HashMap">
+    select cc.category,sum(
+        (select IFNULL(u1.shareUp,0) as shareUp
+            from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
+        AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100) as zhancheng
+        FROM orders
+                INNER JOIN orderdetail od on orders.Id = od.orderId
+          INNER  JOIN Handicap on orders.handicapId= Handicap.Id
+                INNER JOIN categoryconfig  cc on cc.gametype = od.gametype
+    INNER JOIN user u on u.id = orders.userId
+    where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
+  AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+    GROUP BY cc.category
+  </select>
 </mapper>

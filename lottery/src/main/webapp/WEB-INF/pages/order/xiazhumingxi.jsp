@@ -55,7 +55,7 @@
                                 <#list details as detail>
                                 <tr>
                                     <td>${detail.orderNo!''}</td>
-                                    <td>${name}</td>
+                                    <td>${detail.description!''}</td>
                                     <td>${detail.dagudongAccount!''}</td>
                                     <td>${detail.gudongAccount!''}</td>
                                     <td>${detail.zongdaiAccount!''}</td>

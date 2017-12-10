@@ -123,7 +123,8 @@
                             </#list>
                             <tr></tr>
                             </tbody>
-                            <tfoot><tr>
+                            <tfoot>
+                            <tr>
                                 <td></td>
                                 <td>總計</td>
                                 <td>${orderNum!'0'}</td>
