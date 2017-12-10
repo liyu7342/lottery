@@ -308,13 +308,13 @@ public class MemberController {
     @ResponseBody
     @RequestMapping("/save")
     public void save(User user, LimitSetDto limitSetDto, String requestUrl, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean isOpenHandicap=handicapService.IsOpenHandicap();
-        if( isOpenHandicap){
-            response.setContentType("text/html;charset=UTF-8");
-            response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存失败！开盘中，不允许修改信息！\");</script>");
-            return;
-        }
-        else
+//        boolean isOpenHandicap=handicapService.IsOpenHandicap();
+//        if( isOpenHandicap){
+//            response.setContentType("text/html;charset=UTF-8");
+//            response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存失败！开盘中，不允许修改信息！\");</script>");
+//            return;
+//        }
+//        else
             userService.Save(user, limitSetDto);
         response.setContentType("text/html;charset=UTF-8");
         response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
