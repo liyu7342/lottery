@@ -24,24 +24,7 @@
                 <div class="yui-g">
                     <div id="shoufutongji" class="module">
                         <div class="hd">
-                            <table class="g-jft"><tbody nomovod><tr id="total_plays">
-                                <td id="00" class="sp wide"><a href="statis.htm?category_id=00"><span>特碼</span><br/><sup title="總佔成收入">59,929</sup></a></td>
-                                <td id="01" class="sp"><a href="tjzhengma.htm?category_id=01"><span>正碼</span><sup title="總佔成收入">869</sup></a></td>
-                                <td id="02"  class="sp wide"><a href="tjzhengmate.htm?category_id=02&game_id=002"><span>正特</span><sup title="總佔成收入">5</sup></a></td>
-                                <td id="03" class="on sp"><a href="tjlianma.htm?category_id=03|04"><span>連碼</span><sup title="總佔成收入">5,100</sup></a></td>
-                                <td id="05" class="sp"><a href="guoguan.htm?category_id=05"><span>過關</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="06"  class="sp wide"><a href="shengxiao.htm?category_id=06&game_id=014"><span>生肖</span><sup title="總佔成收入">84,688</sup></a></td>
-                                <td id="07" class="sp"><a href="weishu.htm?category_id=07"><span>尾數</span><sup title="總佔成收入">1,470</sup></a></td>
-
-                                <td id="08" class="sp"><a href="banbo.htm?category_id=08"><span>半波</span><sup title="總佔成收入">405</sup></a></td>
-                                <td id="12" class="sp"><a href="texiao.htm?category_id=12"><span>特肖</span><sup title="總佔成收入">10,100</sup></a></td>
-                                <td id="09" class="sp"><a href="liuxiao.htm?category_id=09"><span>六肖</span><sup title="總佔成收入">2,151</sup></a></td>
-                                <td id="10" class="sp"><a href="liangmian.htm?category_id=10"><span>兩面</span><sup title="總佔成收入">8,785</sup></a></td>
-                                <td id="11"  class="sp"><a href="sebo.htm?category_id=11"><span>色波</span><sup title="總佔成收入">1,552</sup></a></td>
-                                <td id="13" class="sp"><a href="shengxiaolian.htm?category_id=13"><span>生連</span><sup title="總佔成收入">16,748</sup></a></td>
-                                <td id="14" class="sp narrow"><a href="weishulian.htm?category_id=14"><span>尾連</span><sup title="總佔成收入">90</sup></a></td>
-                                <td id="15" class="sp"><a href="wubuzhong.htm?category_id=15&game_id=047"><span>不中</span><sup title="總佔成收入">1,839</sup></a></td>
-                            </tr></tbody></table>
+                            <#include "/statis/staticsheader.jsp">
                         </div>
                         <div class="bd">
                             <div class="n2 g-tm">
@@ -85,7 +68,7 @@
                                             <tr id="${detail.no!''}">
                                                 <td>${detail_index+1!''}</td>
                                                 <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=008&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
-                                                <td>${detail.shareTotal?floor}</td>
+                                                <td>${detail.shareTotal?int}</td>
                                                 <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=008&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                             </tr>
                                             </#list>
@@ -110,7 +93,7 @@
                                             <tr id="${detail.no!''}">
                                                 <td>${detail_index+1!''}</td>
                                                 <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=009&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
-                                                <td>${detail.shareTotal?floor}</td>
+                                                <td>${detail.shareTotal?int}</td>
                                                 <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=009&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                             </tr>
                                         </#list>
@@ -134,7 +117,7 @@
                                             <tr id="${detail.no!''}">
                                                 <td>${detail_index+1!''}</td>
                                                 <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=010&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
-                                                <td>${detail.shareTotal?floor}</td>
+                                                <td>${detail.shareTotal?int}</td>
                                                 <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=010&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                             </tr>
                                         </#list>
@@ -159,7 +142,7 @@
                                             <tr id="${detail.no!''}">
                                                 <td>${detail_index+1!''}</td>
                                                 <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=011&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
-                                                <td>${detail.shareTotal?floor}</td>
+                                                <td>${detail.shareTotal?int}</td>
                                                 <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=011&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                             </tr>
                                         </#list>
@@ -184,7 +167,7 @@
                                             <tr id="${detail.no!''}">
                                                 <td>${detail_index+1!''}</td>
                                                 <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=012&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
-                                                <td>${detail.shareTotal?floor}</td>
+                                                <td>${detail.shareTotal?int}</td>
                                                 <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=012&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                             </tr>
                                         </#list>

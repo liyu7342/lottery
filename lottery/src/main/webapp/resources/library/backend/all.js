@@ -9815,7 +9815,7 @@ $.extend({
                 return
             }
             k = 1;
-            var d = "ajax_req.htm?act=get_statics_data" + $.get_params();
+            var d = "/ajax_req/req?act=get_statics_data" + $.get_params();
             $.ajax({
                 url: d,
                 dataType: "json",

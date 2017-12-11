@@ -28,7 +28,7 @@
                     </style>
                     <div id="huiyuan" class="module">
                         <div class="hd g-tm">
-                            <form id="form1" method="GET" action="/user/index2">
+                            <form id="form1" method="post" action="/user/index2">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
                                     <li><h2 class="g-tit">小股東</h2></li>
@@ -42,7 +42,7 @@
                                             <option value='2' >停押</option>
                                             <option value='3' >禁止登錄</option>
                                         </select>&nbsp;
-                                        <input type="text" name="keyword" size="12" value="請輸入名稱/賬號" class="gray">
+                                        <input type="text" name="keyword" size="12" value="${keyword!''}" class="gray">
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
                                     <li><h2><a class="btn10 mt red" href='/user/userselect?userType=2'>新增</a>&nbsp;&nbsp;
@@ -140,7 +140,8 @@
                     <p>在線經銷商：1</p>
                     <div class="dotbg"></div>
                 </div>
-            </div>        </div>
+            </div>
+        </div>
     </div>
     <div id="ft">
         <div id="footer" class="module">

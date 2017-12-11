@@ -35,7 +35,7 @@
                     </style>
                     <div id="huiyuan" class="module">
                         <div class="hd g-tm">
-                            <form id="form1" method="GET" action="/user/index3">
+                            <form id="form1" method="post" action="/user/index3">
                                 <input type='hidden' name='op' value="slt">
                                 <ul>
                                     <li><h2 class="g-tit">總代理
@@ -48,7 +48,7 @@
                                             <option value='2'>停押</option>
                                             <option value='3'>禁止登錄</option>
                                         </select>&nbsp;
-                                        <input type="text" name="keyword" size="12" value="請輸入名稱/賬號" class="gray">
+                                        <input type="text" name="keyword" size="12" value="${keyword!''}" class="gray">
                                         <input type="submit" class="btn10" value="查詢"/>
                                     </li>
                                     <li><h2><a class="btn10 mt red"
@@ -141,7 +141,7 @@
                             <li><a curl='0' href='/user/index2'>小股東</a><cite>0</cite></li>
                         </#if>
                         <#if user.usertype lt 3>
-                            <li><a curl='5'  href='/user/index3'>總代理</a><cite>0</cite></li>
+                            <li><a curl='5' href='/user/index3'>總代理</a><cite>0</cite></li>
                         </#if>
                         <#if user.usertype lt 4>
                             <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
@@ -169,8 +169,8 @@
 </div>
 <script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 <script type="text/javascript">
-    function page(index){
-    location.href="/user/index3?pageId="+index;
+    function page(index) {
+        location.href = "/user/index3?pageId=" + index;
     }
 </script>
 </body>

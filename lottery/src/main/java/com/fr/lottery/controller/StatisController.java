@@ -7,13 +7,16 @@ import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-7-12.
@@ -23,6 +26,14 @@ import java.util.List;
 public class StatisController {
     @Autowired
     private IOrderService orderService;
+
+//    @RequestMapping("/staticsheader")
+//    public ModelAndView staticsheader(String category_id){
+//        ModelAndView modelAndView = new ModelAndView("statis/staticsheader");
+//        modelAndView.addObject("category_id",category_id);
+//        return modelAndView;
+//    }
+
     @RequestMapping("/statis")
     public ModelAndView statis(String category_id){
         ModelAndView modelAndView = new ModelAndView("statis/statis");
@@ -41,6 +52,14 @@ public class StatisController {
         modelAndView.addObject("orderNum",orderNum);
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
     @RequestMapping("/tjzhengma")
@@ -64,6 +83,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
     @RequestMapping("/tjzhengmate")
@@ -87,6 +114,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -162,6 +197,14 @@ public class StatisController {
         modelAndView.addObject("amount012",amount012);
         modelAndView.addObject("shareTotal012",shareTotal012);
         modelAndView.addObject("page012",shareTotal012.toString());
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
     @RequestMapping("/guoguan")
@@ -170,6 +213,14 @@ public class StatisController {
 
         List<StatisDto> statisDtoList= orderService.getStatis(category_id,new String[]{game_id});
         modelAndView.addObject("orderDetails",statisDtoList);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -193,6 +244,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -217,6 +276,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -239,6 +306,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -263,7 +338,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
-
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -286,6 +368,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -308,6 +398,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -330,6 +428,14 @@ public class StatisController {
         modelAndView.addObject("amount",amount);
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -414,6 +520,14 @@ public class StatisController {
         modelAndView.addObject("orderNum040",orderNum040);
         modelAndView.addObject("amount040",amount040);
         modelAndView.addObject("shareTotal040",shareTotal040);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
     @RequestMapping("/weishulian")
@@ -497,6 +611,14 @@ public class StatisController {
         modelAndView.addObject("orderNum046",orderNum046);
         modelAndView.addObject("amount046",amount046);
         modelAndView.addObject("shareTotal046",shareTotal046);
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 
@@ -521,7 +643,14 @@ public class StatisController {
         modelAndView.addObject("shareTotal",shareTotal);
         modelAndView.addObject("yongjin",yongjin);
         modelAndView.addObject("game_id",game_id);
-
+        List<Map> dataMaps=  orderService.get_statics_data();
+        Map<String,Integer> menumaps= new HashMap<String, Integer>();
+        for(Map menumap:dataMaps){
+            Integer put = StringUtil.ToInteger(menumap.get("zhancheng").toString());
+            menumaps.put("statics_"+menumap.get("category").toString(),put);
+        }
+        modelAndView.addObject("entity",menumaps);
+        modelAndView.addObject("category_id",category_id);
         return modelAndView;
     }
 

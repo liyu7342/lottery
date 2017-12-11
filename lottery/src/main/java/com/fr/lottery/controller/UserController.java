@@ -9,6 +9,7 @@ import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.UserHelper;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,19 +38,29 @@ public class UserController {
     @Autowired
     private ILimitSetService limitSetService;
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index",produces = "text/html;charset=UTF-8")
     public ModelAndView index(Integer pageId, Integer keywordstatus, String keyword) {
-        if (pageId == null) pageId = 1;
+                if (pageId == null) pageId = 1;
+        if(StringUtils.isNotBlank(keyword)){
+            try{
+                keyword = URLDecoder.decode(keyword, "utf-8");
+            }
+            catch (UnsupportedEncodingException ex){
 
+                ex.printStackTrace();
+            }
+
+        }
         ModelAndView modelAndView = new ModelAndView("/user/index");
         User user = UserHelper.getCurrentUser();
+
         String userId = user.getId();
 
         Page<User> users = userService.getUsers(userId, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        
+        modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
 
@@ -63,7 +76,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        
+        modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
 
@@ -79,7 +92,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        
+        modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
 
@@ -95,7 +108,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        
+        modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
 
@@ -111,7 +124,7 @@ public class UserController {
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
-        
+        modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
 

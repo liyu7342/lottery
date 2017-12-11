@@ -67,7 +67,7 @@
                                     <td>${detail.retreat?string('#.#')}</td>
                                     <td>${detail.oddset!''}</td>
                                     <td real=3.2>
-                                        ${detail.shareTotal?floor}
+                                        ${detail.shareTotal?int}
                                     </td>
                                     <td>X</td>
                                     <td>正常</td>
@@ -80,7 +80,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=63.7>${subShareTotal?floor}</td>
+                                    <td real=63.7>${subShareTotal?int}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
@@ -90,7 +90,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td real=722.80000>${totalShareTotal?floor}</td>
+                                    <td real=722.80000>${totalShareTotal?int}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>

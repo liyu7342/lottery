@@ -203,7 +203,10 @@ public class UserService implements IUserService {
     public Page<User> getUsers(String parentId, Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = userMapper.get(parentId);
-        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
+        if(StringUtils.isNotBlank(keyword)){
+            keyword= "%"+keyword+"%";
+        }
+         List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
         long total = userMapper.count(user.getXpath()+"%", userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;

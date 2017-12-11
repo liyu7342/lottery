@@ -25,23 +25,7 @@
                 <div class="yui-g">
                     <div id="shoufutongji" class="module">
                         <div class="hd">
-                            <table class="g-jft"><tbody nomovod><tr id="total_plays">
-                                <td id="00" class="sp wide"><a href="/statis/statis?category_id=00"><span>特碼</span><br/><sup title="總佔成收入">0</sup></a></td>
-                                <td id="01" class="on sp"><a href="/statis/tjzhengma?category_id=01"><span>正碼</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="02"  class="sp wide"><a href="/statis/tjzhengmate?category_id=02&game_id=002"><span>正特</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="03" class="sp"><a href="/statis/tjlianma?category_id=03|04"><span>連碼</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="05" class="sp"><a href="/statis/guoguan?category_id=05"><span>過關</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="06"  class="sp wide"><a href="/statis/shengxiao?category_id=06&game_id=014"><span>生肖</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="07" class="sp"><a href="/statis/weishu?category_id=07"><span>尾數</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="08" class="sp"><a href="/statis/banbo?category_id=08"><span>半波</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="12" class="sp"><a href="/statis/texiao?category_id=12"><span>特肖</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="09" class="sp"><a href="/statis/liuxiao?category_id=09"><span>六肖</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="10" class="sp"><a href="/statis/liangmian?category_id=10"><span>兩面</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="11"  class="sp"><a href="/statis/sebo?category_id=11"><span>色波</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="13" class="sp"><a href="/statis/shengxiaolian?category_id=13"><span>生連</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="14" class="sp narrow"><a href="/statis/weishulian?category_id=14"><span>尾連</span><sup title="總佔成收入">0</sup></a></td>
-                                <td id="15" class="sp"><a href="/statis/wubuzhong?category_id=15&game_id=047"><span>不中</span><sup title="總佔成收入">0</sup></a></td>
-                            </tr></tbody></table>
+                            <#include "/statis/staticsheader.jsp">
                         </div>
                         <div class="bd">
                             <div class="n2 g-tm">
@@ -105,12 +89,12 @@
                                     <td>${detail.orderNum!''}</td>
 
                                     <td>${detail.amount!''}</td>
-                                    <td>${detail.shareTotal?floor}</td>
-                                    <td>${detail.yongJin?floor}</td>
-                                    <td>${detail.caiJin?floor}</td>
+                                    <td>${detail.shareTotal?int}</td>
+                                    <td>${detail.yongJin?int}</td>
+                                    <td>${detail.caiJin?int}</td>
                                     <td>${detail.aveOdds!'0'}</td>
 
-                                    <td>${detail.winAmount?floor}</td>
+                                    <td>${detail.winAmount?int}</td>
                                     <td>${detail.buhuo!''}</td>
                                     <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
                                 </tr>
@@ -121,8 +105,8 @@
                                 <td>總計</td>
                                 <td>${orderNum!'0'}</td>
                                 <td>${amount!'0'}</td>
-                                <td>${shareTotal?floor}</td>
-                                <td >${yongjin?floor}</td>
+                                <td>${shareTotal?int}</td>
+                                <td >${yongjin?int}</td>
                                 <td class="hid"></td>
                                 <td class="hid" >0</td>
                                 <td class="hid"></td>
