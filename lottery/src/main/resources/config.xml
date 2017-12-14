@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>
-<sysName>内业系统</sysName>
-<readUrl>http://oss.read.yunfangdata.com/ResourcesPoolRead/</readUrl>
-<writeUrl>http://oss.write.yunfangdata.com/ResourcesPoolWrite/</writeUrl>
-</config>

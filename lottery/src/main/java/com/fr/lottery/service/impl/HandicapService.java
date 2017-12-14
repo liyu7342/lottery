@@ -7,7 +7,9 @@ import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IShengxiaoService;
+import com.fr.lottery.service.inter.ISysCodeService;
 import com.fr.lottery.utils.DateTimeUtils;
+import com.fr.lottery.utils.HttpClientUtils;
 import com.fr.lottery.utils.StringUtil;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
@@ -15,6 +17,7 @@ import org.opensaml.xml.signature.G;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,13 +32,15 @@ public class HandicapService implements IHandicapService {
     private HandicapMapper handicapMapper;
     @Autowired
     private IShengxiaoService shengxiaoService;
+    @Autowired
+    private ISysCodeService sysCodeService;
     @Override
     public boolean save(Handicap entity) {
         entity.setAutoopen(true);
         entity.setStatus(0);
+        entity.setQishu(sysCodeService.getQiShuAutoCode());
         if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
             entity.setId(StringUtil.getUUID());
-
             return handicapMapper.insert(entity)>0;
         }
         return handicapMapper.updateByPrimaryKey(entity)>0;
@@ -48,7 +53,7 @@ public class HandicapService implements IHandicapService {
 
     @Override
     public boolean openHandicap(Handicap handicap){
-        handicap.setStatus(2);
+        handicap.setStatus(1);
         handicap.setTemastatus(true);
         handicap.setZhengmastatus(true);
         Integer no1 =Integer.valueOf(handicap.getNo1());
@@ -176,6 +181,9 @@ public class HandicapService implements IHandicapService {
         return handicapMapper.getCurrentHandicaps();
     }
 
+    public  Handicap getNotOpenHandicap(){
+       return handicapMapper.getNotOpenHandicap();
+    }
     @Override
     public Handicap getHandicap(String handicapId) {
         return handicapMapper.selectByPrimaryKey(handicapId);
@@ -192,5 +200,10 @@ public class HandicapService implements IHandicapService {
     @Override
     public boolean settlement(String handicapId) {
         return false;
+    }
+
+    public String get6hbd(){
+        String url =Global.properties.get("6hbd").toString();
+        return HttpClientUtils.clientGet(url);
     }
 }

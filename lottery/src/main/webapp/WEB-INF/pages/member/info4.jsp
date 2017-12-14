@@ -67,7 +67,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td colspan="2">代理及下級佔成和(<font color='red'>%</font>)
+                                        <td colspan="2">代理商佔成和(<font color='red'>%</font>)
                                             <select class="w2" name="shareTotal" >
                                                 <#list shareTotalList as share>
                                                     <option  value=${share} <#if info.shareTotal==share>selected="selected"</#if>>${share}</option>

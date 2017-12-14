@@ -190,4 +190,6 @@ public class LoginController {
         int w = 120, h = 32;
         VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
     }
+
+
 }

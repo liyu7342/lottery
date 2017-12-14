@@ -8,6 +8,7 @@ package com.fr.lottery.init;
 import com.fr.lottery.entity.LotConfig;
 import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.utils.LotConfigHelper;
+import com.fr.lottery.utils.ReadPropertiesData;
 import com.fr.lottery.utils.ShengXiaoConfigHelper;
 import org.apache.commons.collections.map.HashedMap;
 
@@ -66,6 +67,8 @@ public class Global {
     public static final Map<String,LotConfig> lotConfigDic =new HashMap<String, LotConfig>();
 
     public static final Map<String,ShengXiao> shengxiaoDic = new HashMap<String, ShengXiao>();
+
+    public static Properties  properties;
     static {
         List<LotConfig> lotConfigs= LotConfigHelper.findAll();
         for(LotConfig lotConfig: lotConfigs){
@@ -75,6 +78,8 @@ public class Global {
         for(String key :_shengxiaoDic.keySet()){
             Global.shengxiaoDic.put(key,_shengxiaoDic.get(key));
         }
+
+        properties= ReadPropertiesData.readPropertie("config");
     }
 
 

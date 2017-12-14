@@ -1,12 +1,16 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.utils.UserHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.enterprise.inject.Model;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Liyu7342 on 2017-7-12.
@@ -14,13 +18,24 @@ import javax.enterprise.inject.Model;
 @RequestMapping("report")
 @Controller
 public class ReportController {
+    @Autowired
+    private IHandicapService handicapService;
     @RequestMapping("/report")
     public ModelAndView report(){
         ModelAndView modelAndView = new ModelAndView("/report/report");
-
+        List<String>  datelist = new ArrayList<String>();
+        datelist.add("2017-12-05");
+        datelist.add("2017-12-07");
+        datelist.add("2017-12-09");
+        modelAndView.addObject("datelist",datelist);
         return modelAndView;
     }
 
+    @RequestMapping("/reportmonth")
+    public ModelAndView reportmonth(){
+        ModelAndView modelAndView = new ModelAndView("/report/reportmonth");
+        return modelAndView;
+    }
     @RequestMapping("/user_report")
     public ModelAndView user_report(String gameType,String draw_date,String draw_date2,String kind){
         ModelAndView modelAndView = new ModelAndView("/report/user_report");

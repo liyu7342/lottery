@@ -39,7 +39,7 @@
                                     </select>
                                         <input class="tx" value="" id="pulse" disabled="disabled" type="text">
                                         <a class="btn1 red" id="refresh" href="?">更新</a>
-                                        <input type="checkbox" name="" id="totalwinlos" value="" style=""/><label for="totalwinlos">總項贏虧</label>
+
                                     </div>
                                 </form>
                                 <div class="fr">
@@ -54,7 +54,7 @@
                     <div class="hd"></div>
                         <div class="bd">
 
-                            <input type="hidden" name="category_id" value='03|04'>
+                            <input type="hidden" name="category_id" value='14'>
                             <input type="hidden" name="level" value='3'>
                             <table class="g-tl">
                                 <tbody nomovod>
@@ -72,7 +72,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=041&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=041&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=041&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>
@@ -97,7 +97,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=042&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=042&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=042&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>
@@ -121,7 +121,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=043&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=043&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=043&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>
@@ -146,7 +146,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=044&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=044&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=044&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>
@@ -171,7 +171,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=045&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=045&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=045&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>
@@ -196,7 +196,7 @@
                                                     <td>${detail_index+1!''}</td>
                                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=046&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                                     <td>${detail.shareTotal?int}</td>
-                                                    <td><a href="javascript:void(0);" to="short_covering.htm?number=${detail.no!''}&game_id=046&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=046&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                                 </tr>
                                             </#list>
                                             </tbody>

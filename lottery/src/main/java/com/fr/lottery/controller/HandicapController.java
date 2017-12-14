@@ -3,9 +3,9 @@ package com.fr.lottery.controller;
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.Handicap;
-import com.fr.lottery.service.impl.HandicapService;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.utils.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,7 +69,17 @@ public class HandicapController extends BaseController {
     @RequestMapping("/info")
     public ModelAndView info(String id){
         ModelAndView modelAndView = new ModelAndView("handicap/info");
-        modelAndView.addObject("entity",handicapService.selectByPrimaryKey(id));
+         Handicap handicap =handicapService.selectByPrimaryKey(id);
+         if(handicap==null){
+             handicap = new Handicap();
+             handicap.setRiqi(DateTimeUtils.Date2StringSimple(new Date()));
+             handicap.setTemaclosetime(DateTimeUtils.getDate(21,30,0));
+             handicap.setZhengmaclosetime(DateTimeUtils.getDate(21,32,0));
+             handicap.setOpentime(DateTimeUtils.getDate(17,40,0));
+         }
+
+
+        modelAndView.addObject("entity",handicap);
         return modelAndView;
     }
 
@@ -111,5 +122,11 @@ public class HandicapController extends BaseController {
         else{
             response.getWriter().write( "<script type=\"text/javascript\"> alert(\"保存失败！\");</script>");
         }
+    }
+
+    @ResponseBody
+    @RequestMapping("get6hbd")
+    public String get6hbd(){
+        return handicapService.get6hbd();
     }
 }

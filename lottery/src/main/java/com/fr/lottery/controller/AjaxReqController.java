@@ -86,7 +86,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二全中\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=009\" act=\"db\" gid=\"008\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=009\" act=\"db\" gid=\"008\" type=\"button\">多補</button></h3></div>");
             //二全中
             Page<StatisDto> statisDtoList= orderService.getStatisLianma(GameTypeEnum.連碼二.getValue(),new String[]{OddsTypeEnum.erquanzh.getValue()},1);
             StatisTable statisTable008 =new StatisTable(statisDtoList.getList(),GameTypeEnum.連碼二.getValue());
@@ -96,7 +96,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二中特\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=009\" act=\"db\" gid=\"009\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=009\" act=\"db\" gid=\"009\" type=\"button\">多補</button></h3></div>");
             //二中特
             Page<StatisDto> statisDtoList009= orderService.getStatisLianma(GameTypeEnum.連碼二.getValue(),new String[]{OddsTypeEnum.erzhongte.getValue()},1);
             StatisTable statisTable009 =new StatisTable(statisDtoList009.getList(),GameTypeEnum.連碼二.getValue());
@@ -106,7 +106,7 @@ public class AjaxReqController {
             //特串
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">特串\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=010\" act=\"db\" gid=\"010\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=010\" act=\"db\" gid=\"010\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList010= orderService.getStatisLianma(GameTypeEnum.連碼二.getValue(),new String[]{OddsTypeEnum.techuan.getValue()},1);
             StatisTable statisTable010 =new StatisTable(statisDtoList010.getList(),GameTypeEnum.連碼二.getValue());
             tableHtml.add(statisTable010.toString());
@@ -115,7 +115,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三全中\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=011\" act=\"db\" gid=\"011\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=011\" act=\"db\" gid=\"011\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList011= orderService.getStatisLianma(GameTypeEnum.連碼三.getValue(),new String[]{OddsTypeEnum.sanquanzh.getValue()},1);
             StatisTable statisTable011 =new StatisTable(statisDtoList011.getList(),GameTypeEnum.連碼三.getValue());
             tableHtml.add(statisTable011.toString());
@@ -125,7 +125,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三中二\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=012\" act=\"db\" gid=\"012\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=012\" act=\"db\" gid=\"012\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList012= orderService.getStatisLianma(GameTypeEnum.連碼三.getValue(),new String[]{OddsTypeEnum.sanzher.getValue()},1);
             StatisTable statisTable012 =new StatisTable(statisDtoList012.getList(),GameTypeEnum.連碼三.getValue());
             tableHtml.add(statisTable012.toString());
@@ -142,7 +142,7 @@ public class AjaxReqController {
             tableHtml.add("<tr>");
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二肖连(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=035\" act=\"db\" gid=\"035\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=035\" act=\"db\" gid=\"035\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList= orderService.getStatisLianma(category_id,new String[]{"035"},1);
             StatisTable statisTable035 =new StatisTable(statisDtoList.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable035.toString());
@@ -150,7 +150,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二肖连(不中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=036\" act=\"db\" gid=\"036\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=036\" act=\"db\" gid=\"036\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList036= orderService.getStatisLianma(category_id,new String[]{"036"},1);
             StatisTable statisTable036 =new StatisTable(statisDtoList036.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable036.toString());
@@ -158,7 +158,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三肖连(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=037\" act=\"db\" gid=\"037\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=037\" act=\"db\" gid=\"037\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList037= orderService.getStatisLianma(category_id,new String[]{"037"},1);
             StatisTable statisTable037 =new StatisTable(statisDtoList037.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable037.toString());
@@ -166,7 +166,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三肖连(不中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=038\" act=\"db\" gid=\"038\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=038\" act=\"db\" gid=\"038\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList038= orderService.getStatisLianma(category_id,new String[]{"038"},1);
             StatisTable statisTable038 =new StatisTable(statisDtoList038.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable038.toString());
@@ -174,7 +174,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">四肖连(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=039\" act=\"db\" gid=\"039\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=039\" act=\"db\" gid=\"039\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList039= orderService.getStatisLianma(category_id,new String[]{"039"},1);
             StatisTable statisTable039 =new StatisTable(statisDtoList039.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable039.toString());
@@ -182,7 +182,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">四肖连(不中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=040\" act=\"db\" gid=\"040\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=040\" act=\"db\" gid=\"040\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList040 =orderService.getStatisLianma(category_id,new String[]{"040"},1);
             StatisTable statisTable040 =new StatisTable(statisDtoList040.getList(),GameTypeEnum.生肖連.getValue());
             tableHtml.add(statisTable040.toString());
@@ -200,21 +200,21 @@ public class AjaxReqController {
             tableHtml.add("<tr>");
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二尾連(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=041\" act=\"db\" gid=\"041\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=041\" act=\"db\" gid=\"041\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList041= orderService.getStatisLianma(category_id,new String[]{"041"},1);
             StatisTable statisTable041 =new StatisTable(statisDtoList041.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable041.toString());
             tableHtml.add("</td>");
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">二尾連(不中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=042\" act=\"db\" gid=\"042\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=042\" act=\"db\" gid=\"042\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList042= orderService.getStatisLianma(category_id,new String[]{"042"},1);
             StatisTable statisTable042 =new StatisTable(statisDtoList042.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable042.toString());
             tableHtml.add("</td>");
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三尾連(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=043\" act=\"db\" gid=\"043\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=043\" act=\"db\" gid=\"043\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList043= orderService.getStatisLianma(category_id,new String[]{"043"},1);
             StatisTable statisTable043 =new StatisTable(statisDtoList043.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable043.toString());
@@ -222,7 +222,7 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">三尾連(不中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=044\" act=\"db\" gid=\"044\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=044\" act=\"db\" gid=\"044\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList044= orderService.getStatisLianma(category_id,new String[]{"044"},1);
             StatisTable statisTable044 =new StatisTable(statisDtoList044.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable044.toString());
@@ -230,14 +230,14 @@ public class AjaxReqController {
 
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">四尾連(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=045\" act=\"db\" gid=\"045\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=045\" act=\"db\" gid=\"045\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList045= orderService.getStatisLianma(category_id,new String[]{"045"},1);
             StatisTable statisTable045 =new StatisTable(statisDtoList045.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable045.toString());
             tableHtml.add("</td>");
             tableHtml.add("<td class=\"ts\">");
             tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">四尾連(中)\n" +
-                    "                    <button class=\"gms_ctl\" to=\"duobu.htm?game_id=046\" act=\"db\" gid=\"046\" type=\"button\">多補</button></h3></div>");
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=046\" act=\"db\" gid=\"046\" type=\"button\">多補</button></h3></div>");
             Page<StatisDto> statisDtoList046= orderService.getStatisLianma(category_id,new String[]{"046"},1);
             StatisTable statisTable046 =new StatisTable(statisDtoList046.getList(),GameTypeEnum.尾數連.getValue());
             tableHtml.add(statisTable046.toString());
@@ -265,7 +265,7 @@ public class AjaxReqController {
              columnDtos.add(new ColumnDto("shareTotal","總佔成"));
              columnDtos.add(new ColumnDto("aveOdds","平均賠率"));
              columnDtos.add(new ColumnDto("winAmount","勝出金額"));
-             columnDtos.add(new ColumnDto("buhuo","補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"duobu.htm?game_id=000\"  type=\"button\">多補</button>"));
+             columnDtos.add(new ColumnDto("buhuo","補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"/statis/duobu?game_id=000\"  type=\"button\">多補</button>"));
              columnDtos.add(new ColumnDto("odds","赔率<select act=\"qh\" class=\"red\">\n" +
                      "                                        <option value=\"S\" selected>全部</option>\n" +
                      "                                        <option value=\"AA\" >A(特A)</option>\n" +

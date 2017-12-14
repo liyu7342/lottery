@@ -87,7 +87,7 @@ public class StatisTable {
         _header.add("<tr>");
         String[] columnList = new String[]{
                 "序號","玩法","数量","下注總額","總佔成","平均賠率","勝出金額",
-                "補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"duobu.htm?game_id=000\"  type=\"button\">多補</button>",
+                "補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"/statis/duobu?game_id=000\"  type=\"button\">多補</button>",
                 "赔率<select act=\"qh\" class=\"red\">\n" +
                         "                                        <option value=\"S\" selected>全部</option>\n" +
                         "                                        <option value=\"AA\" >A(特A)</option>\n" +
@@ -107,9 +107,6 @@ public class StatisTable {
     }
 
     private List<String> generateTemaBody() {
-
-        if (this.data.size() == 0)
-            return new ArrayList<String>();
         List<String> bodyList = new ArrayList<String>();
 
         bodyList.add("<tbody>");
@@ -131,7 +128,8 @@ public class StatisTable {
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
-            bodyList.add("<td>" + (t.getBuhuo()==null?0:t.getBuhuo()) + "</td>");
+            bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
+                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("<td><span oddsSet='AA'>"+t.getAaOdds()+"</span><span oddsSet='AB'  class=\"hid\">"+t.getAbOdds()+"</span><span   oddsSet='BA' class=\"hid\">"+t.getBaOdds()
                     +"</span><span   oddsSet='BB' class=\"hid\">"+t.getBbOdds()+"</span><span   oddsSet='CA' class=\"hid\">"
                     +t.getCaOdds()+"</span><span   oddsSet='CB' class=\"hid\">"+t.getCbOdds()+"</span></td>");
@@ -170,7 +168,7 @@ public class StatisTable {
         _header.add("<tr>");
         String[] columnList = new String[]{
                 "序號","玩法","数量","下注總額","<em><span class=\"hc\" act=\"hide\">總佔成</span></em>","佣金收入","彩金","平均賠率","勝出金額",
-                "補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"duobu.htm?game_id=000\"  type=\"button\">多補</button>",
+                "補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"/statis/duobu?game_id=001\"  type=\"button\">多補</button>",
                 "賠率\n" +
                         "                <select act=\"qh\" class=\"red\">\n" +
                         "                                        <option value=\"S\" selected>全部</option>\n" +
@@ -214,7 +212,8 @@ public class StatisTable {
             bodyList.add("<td>" + StringUtil.ToInteger(t.getCaiJin().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
-            bodyList.add("<td>" + (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString()) ) + "</td>");
+            bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
+                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("<td><span oddsSet='A'>"+t.getAaOdds()+"</span><span oddsSet='B'  class=\"hid\">"+t.getBaOdds()
                     +"</span><span   oddsSet='C' class=\"hid\">"+t.getCaOdds()  +"</span></td>");
             bodyList.add("</tr>");
@@ -289,7 +288,8 @@ public class StatisTable {
                     + descEnc + "\">" + t.getDescription() + "</a></td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
-            bodyList.add("<td>" + (t.getBuhuo()==null?0:t.getBuhuo()) + "</td>");
+            bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
+                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("</tr>");
             index++;
         }

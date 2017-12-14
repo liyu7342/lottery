@@ -58,7 +58,7 @@
                                     <tr level="5">
 
                                         <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
-                                        <td class="bg tl">${obj.qishu}&nbsp;&nbsp;</td>
+                                        <td class="bg tl">${obj.riqi}&nbsp;&nbsp;</td>
                                         <td><em class="ico n${(obj.no1)!''}">${(obj.no1)!''}</em></td>
                                         <td><em class="ico n${(obj.no2)!''}">${(obj.no2)!''}</em></td>
                                         <td><em class="ico n${(obj.no3)!''}">${(obj.no3)!''}</em></td>

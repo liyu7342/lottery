@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SysCodeMapper {
 
-    long getNextSeq(@Param("handicapid") String handicapId);
+    long getNextSeq(@Param("codeType") String codeType,@Param("codeKey") String codeKey);
 
     int insert(SysCode sysCode);
 }

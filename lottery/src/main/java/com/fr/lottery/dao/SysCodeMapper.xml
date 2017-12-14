@@ -3,21 +3,23 @@
 <mapper namespace="com.fr.lottery.dao.SysCodeMapper">
     <resultMap id="userResult" type="com.fr.lottery.entity.SysCode">
         <id column="Id" jdbcType="VARCHAR" property="id" />
-        <result column="HandicapId" jdbcType="VARCHAR" property="handicapid" />
+        <result column="codeType" jdbcType="VARCHAR" property="codeType" />
+        <result column="codeKey" jdbcType="VARCHAR" property="codeKey" />
         <result column="seq" jdbcType="BIGINT" property="seq" />
+        <result column="seq" jdbcType="TIMESTAMP" property="seq" />
     </resultMap>
     <sql id="Columns">
-        id,handicapid,seq
+        Id, codetype,codekey, seq,createdate
     </sql>
 
     <select id="getNextSeq" resultType="java.lang.Long">
-        SELECT  IFNULL(MAX(seq),0) from sys_code where handicapid=#{handicapid,jdbcType=VARCHAR}
+        SELECT  IFNULL(MAX(seq),0) from sys_code where  codetype=#{codeType,jdbcType=VARCHAR} and codekey=#{codeKey,jdbcType=VARCHAR}
     </select>
 
     <!-- 插入-->
     <insert id="insert" parameterType="com.fr.lottery.entity.SysCode">
-        insert into sys_code (Id, handicapid, seq)
-        values (#{id,jdbcType=VARCHAR}, #{handicapid,jdbcType=VARCHAR}, #{seq,jdbcType=BIGINT})
+        insert into sys_code (Id, codetype,codekey, seq,createdate)
+        values (#{id,jdbcType=VARCHAR}, #{codeType,jdbcType=VARCHAR}, #{codeKey,jdbcType=VARCHAR}, #{seq,jdbcType=BIGINT},#{createDate,jdbcType=TIMESTAMP})
     </insert>
 
 

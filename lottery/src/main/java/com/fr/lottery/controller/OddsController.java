@@ -441,7 +441,7 @@ public class OddsController {
         }
 
         header.put("new_order", new_order);
-        header.put("winnums", "04-20-07-03-19-23-27");
+        outMap.put("winnums", "04-20-07-03-19-23-27");
         header.put("limit", "");
         header.put("time_stamp", System.currentTimeMillis());
         header.put("lines", new String[]{});

@@ -37,7 +37,7 @@
                                     <tbody>
                                     <tr>
                                         <td>期数</td>
-                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="qishu" value="${(entity.qishu)!''}" /></td>
+                                        <td id="c_username"><input type="text" valid='name' maxlength="16" name="riqi" value="${(entity.riqi)!''}" /></td>
                                         <td>状态</td>
                                         <td><label id="">${(entity.status)!''}</label></td>
 

@@ -9970,7 +9970,7 @@ $.extend({
             if (H && !D.disabled) {
                 var G = $.popup_size[0];
                 var y = encodeURI(H) + (D.className.indexOf("red") > -1 ? "&amt=" + $(D).text().replace(/\,/g, "") : "");
-                if (H.indexOf("short_covering.htm") != -1 && $.hv.level != "0") {
+                if (H.indexOf("/statis/short_covering") != -1 && $.hv.level != "0") {
                     JqueryDialog.Open('<h2 class="g-tit">下級給上級{#|8865|8d27#}</h2>'.keyComment(), y, $.popup_size[0], $.popup_size[1], false)
                 } else {
                     if (H.indexOf("waidiaobuhuo.htm") != -1) {
@@ -10037,7 +10037,7 @@ $.extend({
                         JqueryDialog.Open('<h2 class="g-tit">公司間外調{#|8865|8d27#}</h2>'.keyComment(), c, $.popup_size[0] - 60, $.popup_size[1] - 50, false)
                     }
                 } else {
-                    if (c.indexOf("short_covering.htm") != -1) {
+                    if (c.indexOf("/statis/short_covering") != -1) {
                         if (!a) {
                             JqueryDialog.Open('<h2 class="g-tit">下級給上級{#|8865|8d27#}</h2>'.keyComment(), c, $.popup_size[0] - 60, $.popup_size[1] - 50, false)
                         }

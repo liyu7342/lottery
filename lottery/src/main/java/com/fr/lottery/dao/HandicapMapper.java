@@ -25,5 +25,7 @@ public interface HandicapMapper {
 
     Handicap getCurrentHandicaps();
 
+    Handicap getNotOpenHandicap();
+
     Long count();
 }

@@ -5,4 +5,8 @@ package com.fr.lottery.service.inter;
  */
 public interface ISysCodeService {
      String getAutoCode(String handicapId);
+
+     String getBuCangAutoCode(String handicapId);
+
+     String getQiShuAutoCode();
 }

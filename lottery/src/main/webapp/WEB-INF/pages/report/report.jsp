@@ -35,7 +35,7 @@
                                     <th>
                                         <select name="draw_date">
                                             <#list datelist as obj>
-                                                <option value="${obj.text}">${obj.text}</option>
+                                                <option value="${obj}">${obj}</option>
                                             </#list>
 
 
@@ -44,7 +44,7 @@
                                         <select name="draw_date2">
 
                                             <#list datelist as obj>
-                                                <option value="${obj.text}">${obj.text}</option>
+                                                <option value="${obj}">${obj}</option>
                                             </#list>
                                         </select>
                                         &nbsp;<button type="button" href="reportmonth.htm">本月報表</button>

@@ -27,6 +27,8 @@ public interface IHandicapService {
      */
     Handicap getCurrentHandicap();
 
+    Handicap getNotOpenHandicap();
+
     /**
      * 是否开盘
      * @return
@@ -36,4 +38,6 @@ public interface IHandicapService {
     boolean settlement(String handicapId);
 
     Handicap getHandicap(String handicapId);
+
+    String get6hbd();
 }

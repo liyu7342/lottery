@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * @author yzx
@@ -22,16 +23,13 @@ public class DateTimeUtils {
         return dateFormatSimple.format(date);
     }
     public static String Date2StringLong(Date date) {
-    	if(date != null){
-    		return dateFormatLong.format(date);
-    	}else{
-    		return "";
-    	}
+        if(date ==null) return "";
+        return dateFormatLong.format(date);
     }
     public static String Date2String(Date date,String format) {
-        dateFormatSimple = new SimpleDateFormat(
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
                 format);
-        return dateFormatSimple.format(date);
+        return dateFormat.format(date);
     }
     public static Date String2DateSimple(String date) {
         try {
@@ -54,19 +52,29 @@ public class DateTimeUtils {
 		return null;
     }
     public static Date String2Date(String date,String format) throws ParseException {
-        dateFormatSimple = new SimpleDateFormat(
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
                 format);
-        return dateFormatSimple.parse(date);
+        return dateFormat.parse(date);
     }
     public static String getDayLast(){
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR, 23);
         calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 59);
+
         return Date2String(calendar.getTime(),"yyyy-MM-dd HH:mm:ss");
+    }
+
+    public static Date getDate(int hour,int minute,int second){
+        Calendar calendar =  Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,hour);
+        calendar.set(Calendar.MINUTE,minute);
+        calendar.set(Calendar.SECOND,second);
+        return calendar.getTime();
     }
     public static String getDayFirst(){
         Calendar calendar = Calendar.getInstance();
+
         calendar.set(Calendar.HOUR, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
@@ -87,18 +95,6 @@ public class DateTimeUtils {
         if(second!=null)
             calendar.add(Calendar.SECOND,second);
         return Date2String(calendar.getTime(),"yyyy-MM-dd HH:mm:ss");
-    }
-    /**
-     * 时间类型转换为yyyy-MM-dd HH-mm-ss格式
-     * @param date
-     * @return
-     */
-    public static String dateToString(Date date){
-        String result = "";
-        if(date != null){
-            result = dateFormatLong.format(date);
-        }
-        return result;
     }
 
 

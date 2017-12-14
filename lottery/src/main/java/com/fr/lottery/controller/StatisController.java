@@ -2,13 +2,16 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.StatisDto;
+import com.fr.lottery.entity.LotConfig;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -652,6 +655,27 @@ public class StatisController {
         modelAndView.addObject("entity",menumaps);
         modelAndView.addObject("category_id",category_id);
         return modelAndView;
+    }
+    @RequestMapping("/short_covering")
+    public ModelAndView short_covering(String number,String game_id,Integer amt){
+        ModelAndView modelAndView = new ModelAndView("/statis/short_covering");
+        LotConfig config= Global.lotConfigDic.get(game_id+number);
+        String gameNumDesc ;
+        if(config!=null){
+            gameNumDesc= config.getGameDesc();
+        }
+        else{
+            gameNumDesc=game_id+number;
+        }
+        modelAndView.addObject("gameNumDesc",gameNumDesc);
+        return  modelAndView;
+    }
+
+    @RequestMapping("/duobu")
+    public ModelAndView duobu(String number,String game_id,Integer amt){
+        ModelAndView modelAndView = new ModelAndView("/statis/duobu");
+
+        return  modelAndView;
     }
 
 

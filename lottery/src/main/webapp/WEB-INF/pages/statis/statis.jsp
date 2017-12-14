@@ -99,7 +99,7 @@
                                     <td>${detail.shareTotal?int}</td>
                                     <td>${detail.aveOdds!''}</td>
                                     <td>${detail.winAmount?int}</td>
-                                    <td>${detail.buhuo!''}</td>
+                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=000&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                     <td><span oddsSet='AA'>${detail.aaOdds!''}</span><span oddsSet='AB'  class="hid">${detail.abOdds!''}</span><span   oddsSet='BA' class="hid">${detail.baOdds!''}</span>
                                         <span   oddsSet='BB' class="hid">${detail.bbOdds!''}</span><span   oddsSet='CA' class="hid">${detail.caOdds!''}</span><span   oddsSet='CB' class="hid">${detail.cbOdds!''}</span></td>
                                 </tr>
