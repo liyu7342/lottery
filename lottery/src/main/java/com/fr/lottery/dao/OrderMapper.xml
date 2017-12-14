@@ -183,7 +183,7 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-    SELECT handicap.id,od.userid,QiShu as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
+    SELECT handicap.id,od.userid,riqi as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
       ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
     FROM orders
     INNER  JOIN orderdetail od on orders.id = od.orderId

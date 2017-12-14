@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <td class="bg"> 賬號狀態</td>
-                                    <td>${user.status!''}</td>
+                                    <td><#if user.status==1>启用 <#elseif user.status==0>停用 <#elseif user.status==2>停押 <#elseif user.status==3>禁止登陆 <#else></#if></td>
 
                                     <td class="bg">所屬盤口</td>
                                     <td> ${user.handicap!''}</td>

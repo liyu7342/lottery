@@ -29,81 +29,78 @@ public class KaiJiangQuartz {
         if(handicap ==null) return;
         while (true){
           String str=  handicapService.get6hbd();
-          if(StringUtils.isBlank(str)){str="{}";}
-          JsonObject jsonObject= JsonUtil.getJson(str);
+          if(StringUtils.isNotBlank(str)) {
 
+              JsonObject jsonObject = JsonUtil.getJson(str);
+              if (jsonObject != null && !jsonObject.get("id").isJsonNull() && !jsonObject.get("year").isJsonNull()) {
+                  if ((jsonObject.get("id").getAsString()).equals(handicap.getQishu())) {
+                      if (jsonObject.get("ma").isJsonArray()) {
+                          JsonArray jsonArray = jsonObject.get("ma").getAsJsonArray();
 
-          if(jsonObject!=null && !jsonObject.get("id").isJsonNull() && !jsonObject.get("year").isJsonNull()){
-              if((jsonObject.get("id").getAsString()).equals(handicap.getQishu()))
-              {
-              if(jsonObject.get("ma").isJsonArray()){
-                  JsonArray jsonArray = jsonObject.get("ma").getAsJsonArray();
+                          if (jsonArray != null && jsonArray.size() == 21) {
+                              Integer c = 0;
+                              //Integer total = 0;
 
-                  if (jsonArray!=null && jsonArray.size()==21) {
-                      Integer c = 0;
-                      //Integer total = 0;
+                              for (Integer i = 0, len = jsonArray.size(); i < len; ) {
+                                  Integer no = jsonArray.get(i++).getAsInt();
+                                  //total +=no;
+                                  String xiao = jsonArray.get(i++).getAsString();
+                                  String color = jsonArray.get(i++).getAsString();
+                                  String noStr;
+                                  if (no != null && no != 0) {
 
-                      for (Integer i = 0,len=jsonArray.size(); i < len; ) {
-                          Integer no =jsonArray.get(i++).getAsInt();
-                          //total +=no;
-                          String xiao  = jsonArray.get(i++).getAsString();
-                          String color = jsonArray.get(i++).getAsString();
-                          String noStr;
-                          if (no!=null && no !=0) {
-
-                              c++;
-                              if (no < 10) {
-                                  noStr = "0" + no;
+                                      c++;
+                                      if (no < 10) {
+                                          noStr = "0" + no;
+                                      } else {
+                                          noStr = no.toString();
+                                      }
+                                      switch (c) {
+                                          case 1:
+                                              handicap.setNo1(noStr);
+                                              handicap.setXiaoName1(xiao);
+                                              break;
+                                          case 2:
+                                              handicap.setNo2(noStr);
+                                              handicap.setXiaoName2(xiao);
+                                              break;
+                                          case 3:
+                                              handicap.setNo3(noStr);
+                                              handicap.setXiaoName3(xiao);
+                                              break;
+                                          case 4:
+                                              handicap.setNo4(noStr);
+                                              handicap.setXiaoName4(xiao);
+                                              break;
+                                          case 5:
+                                              handicap.setNo5(noStr);
+                                              handicap.setXiaoName5(xiao);
+                                              break;
+                                          case 6:
+                                              handicap.setNo6(noStr);
+                                              handicap.setXiaoName6(xiao);
+                                              break;
+                                          case 7:
+                                              handicap.setTema(noStr);
+                                              handicap.setTexiaoName(xiao);
+                                              break;
+                                          default:
+                                              break;
+                                      }
+                                  }
                               }
-                              else {
-                                  noStr = no.toString();
-                              }
-                              switch (c){
-                                  case 1:
-                                      handicap.setNo1(noStr);
-                                      handicap.setXiaoName1(xiao);
-                                      break;
-                                  case 2:
-                                      handicap.setNo2(noStr);
-
-                                      handicap.setXiaoName2(xiao);
-                                      break;
-                                  case 3:
-                                      handicap.setNo3(noStr);
-
-                                      handicap.setXiaoName3(xiao);
-                                      break;
-                                  case 4:
-                                      handicap.setNo4(noStr);
-
-                                      handicap.setXiaoName4(xiao);
-                                      break;
-                                  case 5:
-                                      handicap.setNo5(noStr);
-                                      handicap.setXiaoName5(xiao);
-                                      break;
-                                  case 6:
-                                      handicap.setNo6(noStr);
-                                      handicap.setXiaoName6(xiao);
-                                      break;
-                                  case 7:
-                                      handicap.setTema(noStr);
-                                      handicap.setTexiaoName(xiao);
-                                      break;
-                                      default:
-                                          break;
-                              }
+                              handicapService.openHandicap(handicap);
+                              if (c == 7)
+                                  break;
                           }
                       }
-                      handicapService.openHandicap(handicap);
-                      break;
                   }
-              }
-              }
 
+              }
           }
             try{
                 Thread.sleep(5000);
+                System.out.println("Thread.sleep(5000)");
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();

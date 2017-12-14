@@ -129,7 +129,7 @@ public class StatisTable {
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
-                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
+                    +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("<td><span oddsSet='AA'>"+t.getAaOdds()+"</span><span oddsSet='AB'  class=\"hid\">"+t.getAbOdds()+"</span><span   oddsSet='BA' class=\"hid\">"+t.getBaOdds()
                     +"</span><span   oddsSet='BB' class=\"hid\">"+t.getBbOdds()+"</span><span   oddsSet='CA' class=\"hid\">"
                     +t.getCaOdds()+"</span><span   oddsSet='CB' class=\"hid\">"+t.getCbOdds()+"</span></td>");
@@ -213,7 +213,7 @@ public class StatisTable {
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
-                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
+                    +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("<td><span oddsSet='A'>"+t.getAaOdds()+"</span><span oddsSet='B'  class=\"hid\">"+t.getBaOdds()
                     +"</span><span   oddsSet='C' class=\"hid\">"+t.getCaOdds()  +"</span></td>");
             bodyList.add("</tr>");
@@ -289,7 +289,7 @@ public class StatisTable {
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
-                    +"&amp;amt=0\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
+                    +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("</tr>");
             index++;
         }

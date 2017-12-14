@@ -38,6 +38,7 @@ public class SysCodeService implements ISysCodeService {
         SysCode sysCode =new SysCode();
         sysCode.setId(StringUtil.getUUID());
         sysCode.setCodeKey(handicapId);
+        sysCode.setCodeType(CodeTypeEnum.單號.getValue());
         sysCode.setCreateDate(new Date());
         sysCode.setSeq(seq);
         sysCodeMapper.insert(sysCode);
@@ -59,7 +60,7 @@ public class SysCodeService implements ISysCodeService {
         String autoCode ="B"+dateStr +seqStr;
         SysCode sysCode =new SysCode();
         sysCode.setId(StringUtil.getUUID());
-        sysCode.setCodeType(CodeTypeEnum.單號.getValue());
+        sysCode.setCodeType(CodeTypeEnum.補倉單號.getValue());
         sysCode.setCodeKey(handicapId);
         sysCode.setSeq(seq);
         sysCode.setCreateDate(new Date());
@@ -80,7 +81,7 @@ public class SysCodeService implements ISysCodeService {
         else
             seq+=1L;
         String seqStr = String.format("%03d", seq);
-        String autoCode =cal.get(Calendar.YEAR) +seqStr;
+        String autoCode =seqStr;
         SysCode sysCode =new SysCode();
         sysCode.setId(StringUtil.getUUID());
         sysCode.setCodeType(CodeTypeEnum.期數.getValue());
