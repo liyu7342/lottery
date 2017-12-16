@@ -47,8 +47,7 @@
                                     </tbody>
                                 </table>
                                 <input type="hidden" name='detailOdds' value=""/>
-                                <input type="hidden" name='game_id' value="000" />
-                                <input type="hidden" name='number' value="09" />
+
                                 <input type="hidden" name='odds' value="42.480" />
                                 <input type="hidden" name="submit_time_msec" value="" />
                                 <input type="hidden" name='op' value="create" />

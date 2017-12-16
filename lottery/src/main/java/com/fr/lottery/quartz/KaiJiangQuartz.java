@@ -1,19 +1,15 @@
 package com.fr.lottery.quartz;
 
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
-import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.JsonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mchange.v2.cfg.PropertiesConfigSource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -27,10 +23,14 @@ public class KaiJiangQuartz {
     public void  work()  {
         Handicap handicap =handicapService.getNotOpenHandicap();
         if(handicap ==null) return;
+        int index=0;
+        String url=Global.properties.get("6hbd_"+index).toString();
         while (true){
-          String str=  handicapService.get6hbd();
-          if(StringUtils.isNotBlank(str)) {
+          String str=  handicapService.get6hbd(url);
+          try{
 
+
+          if(StringUtils.isNotBlank(str)) {
               JsonObject jsonObject = JsonUtil.getJson(str);
               if (jsonObject != null && !jsonObject.get("id").isJsonNull() && !jsonObject.get("year").isJsonNull()) {
                   if ((jsonObject.get("id").getAsString()).equals(handicap.getQishu())) {
@@ -89,14 +89,26 @@ public class KaiJiangQuartz {
                                       }
                                   }
                               }
-                              handicapService.openHandicap(handicap);
-                              if (c == 7)
+                              handicapService.save(handicap);
+                              if (c == 7){
+                                  handicapService.openHandicap(handicap);
                                   break;
+                              }
+
                           }
                       }
                   }
 
               }
+          }
+          else{
+              index++;
+              index %=5;
+              url= Global.properties.get("6hbd_"+index).toString();
+          }
+          }
+          catch (Exception ex){
+              ex.printStackTrace();
           }
             try{
                 Thread.sleep(5000);

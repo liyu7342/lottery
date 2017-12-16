@@ -21,10 +21,11 @@
     <result column="oddset" jdbcType="VARCHAR" property="oddset" />
     <result column="gameDesc" jdbcType="VARCHAR" property="gameDesc" />
     <result column="numbers" jdbcType="VARCHAR" property="numbers"/>
+    <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
-    ,canWinAmount,oddset,gameDesc,numbers
+    ,canWinAmount,oddset,gameDesc,numbers,orderType
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -45,10 +46,10 @@
   </delete>
 
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
-    insert into orderdetail (Id, orderId, userId,handicapId,
+    insert into orderdetail (Id, orderId, userId,handicapId,orderType,
       gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount
       ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc,numbers)
-    values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR},
        #{number4,jdbcType=VARCHAR},#{number5,jdbcType=VARCHAR},#{number6,jdbcType=VARCHAR},
        #{number7,jdbcType=VARCHAR},#{number8,jdbcType=VARCHAR},#{number9,jdbcType=VARCHAR},

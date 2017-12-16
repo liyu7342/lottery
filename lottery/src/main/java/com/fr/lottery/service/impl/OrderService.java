@@ -6,10 +6,7 @@ import com.fr.lottery.dao.OrderMapper;
 import com.fr.lottery.dao.StatisMapper;
 import com.fr.lottery.dto.*;
 import com.fr.lottery.entity.*;
-import com.fr.lottery.enums.GameTypeEnum;
-import com.fr.lottery.enums.HandicapStatusEnum;
-import com.fr.lottery.enums.LianMaEnum;
-import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.enums.*;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.*;
@@ -127,7 +124,6 @@ public class OrderService implements IOrderService {
                                 for(String xiao : detailxiaoNos){
                                     orders.setDescription(orders.getDescription()+ Global.shengxiaoDic.get(xiao).getName()+" ");
                                 }
-
                             }
                             else{
                                 orders.setDescription(lot.getGameTypeDesc() + " " + orderStrs[1]);
@@ -135,7 +131,6 @@ public class OrderService implements IOrderService {
                         } else if (LianMaEnum.dantuo.getValue().equals(orders.getLianmatype())) {
                             orders.setDescription(lot.getGameTypeDesc() + " " + orders.getLianmadan() + " [拖] " + orderStrs[1].substring(nos[0].length() + 1));
                         } else if (LianMaEnum.shengxiaoduipeng.getValue().equals(orders.getLianmatype())) {
-
                             String[] xiaonos = orderStrs[1].split("#");
                             String[] detailxiaoNos = xiaonos[0].split(",");
                             orders.setDescription(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(detailxiaoNos[0]).getName() + " [碰] " + Global.shengxiaoDic.get(detailxiaoNos[1]).getName());
@@ -333,10 +328,12 @@ public class OrderService implements IOrderService {
                     detail.setUserId(orders.getUserid());
                     detailSum+= detail.getAmount()  *(detail.getOdds() -1 + orders.getRetreat()/100 ) ;
                     detail.setOddset(orders.getOddset());
+                    detail.setOrderType(OrderTypeEnum.下注.getValue());
                     orderDetailMapper.insert(detail);
                 }
                 orders.setCanWinAmount(orders.getCanWinAmount() +detailSum );
             }
+            orders.setOrderType(OrderTypeEnum.下注.getValue());
             orderMapper.insert(orders);
         }
         return 1;
@@ -499,6 +496,7 @@ public class OrderService implements IOrderService {
         Handicap handicap = handicapService.getCurrentHandicap();
         if(game_id.equals(OddsTypeEnum.erquanzh.getValue()) || game_id.equals(OddsTypeEnum.erzhongte.getValue()) || game_id.equals(OddsTypeEnum.sanquanzh.getValue())
             ||game_id.equals(OddsTypeEnum.sanzher.getValue()) || game_id.equals(OddsTypeEnum.techuan.getValue())){
+
 
         }
         List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),user.getId(),xpath,game_id,number,(pageId-1)*10,10);

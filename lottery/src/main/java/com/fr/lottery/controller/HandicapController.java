@@ -127,6 +127,7 @@ public class HandicapController extends BaseController {
     @ResponseBody
     @RequestMapping("get6hbd")
     public String get6hbd(){
-        return handicapService.get6hbd();
+        String url="";
+        return handicapService.get6hbd(url);
     }
 }

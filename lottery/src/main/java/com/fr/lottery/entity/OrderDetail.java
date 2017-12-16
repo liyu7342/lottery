@@ -39,6 +39,8 @@ public class OrderDetail implements Serializable {
     private String oddset;
     private String gameDesc;
     private String numbers;
+    private String orderType;
+
     public String getId() {
         return id;
     }
@@ -245,6 +247,14 @@ public class OrderDetail implements Serializable {
 
     public void setNumbers(String numbers) {
         this.numbers = numbers;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }
 

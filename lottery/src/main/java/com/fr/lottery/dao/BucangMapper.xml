@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.BucangMapper">
+    <resultMap id="baseResult" type="com.fr.lottery.entity.Bucang">
+        <id column="Id" jdbcType="VARCHAR" property="id"/>
+        <result column="userId" jdbcType="VARCHAR" property="userId"/>
+        <result column="game_id" jdbcType="VARCHAR" property="game_id"/>
+        <result column="handicapid" jdbcType="VARCHAR" property="handicapId"/>
+        <result column="orderno" jdbcType="INTEGER" property="orderNo"/>
+        <result column="description" jdbcType="INTEGER" property="description"/>
+        <result column="number" jdbcType="VARCHAR" property="number"/>
+        <result column="odds_set" jdbcType="VARCHAR" property="odds_set"/>
+        <result column="odds" jdbcType="VARCHAR" property="odds"/>
+        <result column="detailodds" jdbcType="VARCHAR" property="detailOdds"/>
+        <result column="amt" jdbcType="INTEGER" property="amt"/>
+        <result column="order_amt" jdbcType="INTEGER" property="order_amt"/>
+        <result column="createdate" jdbcType="TIMESTAMP" property="createDate"/>
+    </resultMap>
+
+    <sql id="Columns">
+       id,handicapid,orderno,description,userid,number,odds_set,game_id,odds,detailodds,amt,order_amt,createdate
+    </sql>
+
+
+    <select id="getDatas"  resultMap="baseResult">
+        SELECT
+        <include refid="Columns"></include>
+        from bucang
+        <where>
+            <if test="userId!=null and userId!=''">
+                AND userId = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="handicapId!=null and handicapId!=''">
+                AND handicapid = #{handicapId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="getBuCang"  resultMap="baseResult">
+        SELECT
+        <include refid="Columns"></include>
+        from bucang
+        <where>
+            <if test="userId!=null and userId!=''">
+                AND userId = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="handicapId!=null and handicapId!=''">
+                AND handicapId = #{handicapId,jdbcType=VARCHAR}
+            </if>
+            <if test="game_id!=null and game_id!=''">
+                AND game_id = #{game_id,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.fr.lottery.entity.Bucang">
+        insert into bucang (id,handicapid,orderno,description,userid,number,odds_set,game_id,odds,detailodds,amt,order_amt,createdate)
+        values (#{id,jdbcType=VARCHAR}, #{handicapId,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+        #{userid,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR},#{odds_set,jdbcType=VARCHAR},#{game_id,jdbcType=VARCHAR},#{odds,jdbcType=VARCHAR}
+        ,#{detailOdds,jdbcType=VARCHAR},#{amt,jdbcType=INTEGER},#{order_amt,jdbcType=INTEGER},#{createDate,jdbcType=TIMESTAMP})
+    </insert>
+</mapper>

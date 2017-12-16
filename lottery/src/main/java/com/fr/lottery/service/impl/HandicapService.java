@@ -36,10 +36,10 @@ public class HandicapService implements IHandicapService {
     private ISysCodeService sysCodeService;
     @Override
     public boolean save(Handicap entity) {
-        entity.setAutoopen(true);
-        entity.setStatus(0);
-        entity.setQishu(sysCodeService.getQiShuAutoCode());
         if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
+            entity.setAutoopen(true);
+            entity.setStatus(0);
+            entity.setQishu(sysCodeService.getQiShuAutoCode());
             entity.setId(StringUtil.getUUID());
             return handicapMapper.insert(entity)>0;
         }
@@ -191,7 +191,7 @@ public class HandicapService implements IHandicapService {
 
     @Override
     public boolean IsOpenHandicap(){
-        Handicap handicap =getCurrentHandicap();
+        Handicap handicap =getNotOpenHandicap();
         String dtStr =DateTimeUtils.Date2StringLong( new Date());
         boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0 && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>0;
         return isOpen;
@@ -202,8 +202,8 @@ public class HandicapService implements IHandicapService {
         return false;
     }
 
-    public String get6hbd(){
-        String url =Global.properties.get("6hbd").toString();
+    public String get6hbd(String url){
+
         return HttpClientUtils.clientGet(url);
     }
 }

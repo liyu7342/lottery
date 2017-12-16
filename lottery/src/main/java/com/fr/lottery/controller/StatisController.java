@@ -2,21 +2,27 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.StatisDto;
+import com.fr.lottery.entity.Bucang;
 import com.fr.lottery.entity.LotConfig;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.GameCfg;
 import com.fr.lottery.init.Global;
+import com.fr.lottery.service.inter.IBucangService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.utils.RequestDataUtils;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +35,9 @@ import java.util.Map;
 public class StatisController {
     @Autowired
     private IOrderService orderService;
+
+    @Autowired
+    private IBucangService bucangService;
 
 //    @RequestMapping("/staticsheader")
 //    public ModelAndView staticsheader(String category_id){
@@ -657,17 +666,21 @@ public class StatisController {
         return modelAndView;
     }
     @RequestMapping("/short_covering")
-    public ModelAndView short_covering(String number,String game_id,Integer amt){
+    public ModelAndView short_covering( String number,String game_id,String amt ,Bucang bucang, HttpServletRequest request, HttpServletResponse response){
         ModelAndView modelAndView = new ModelAndView("/statis/short_covering");
-        LotConfig config= Global.lotConfigDic.get(game_id+number);
-        String gameNumDesc ;
+        LotConfig config= Global.lotConfigDic.get(bucang.getGame_id()+bucang.getNumber());
+
+        if(StringUtils.isNotBlank(bucang.getOdds_set())){
+            bucangService.insert(bucang);
+        }
         if(config!=null){
-            gameNumDesc= config.getGameDesc();
+            bucang.setDescription( config.getGameDesc());
         }
         else{
-            gameNumDesc=game_id+number;
+            bucang.setDescription( bucang.getGame_id()+bucang.getNumber());
         }
-        modelAndView.addObject("gameNumDesc",gameNumDesc);
+        modelAndView.addObject("gameNumDesc",bucang.getDescription());
+        modelAndView.addObject("number",bucang.getNumber());
         return  modelAndView;
     }
 

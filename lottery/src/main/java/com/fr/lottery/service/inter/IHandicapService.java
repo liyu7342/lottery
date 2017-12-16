@@ -39,5 +39,5 @@ public interface IHandicapService {
 
     Handicap getHandicap(String handicapId);
 
-    String get6hbd();
+    String get6hbd(String url);
 }

@@ -37,6 +37,8 @@ public class Orders {
 
     private String oddset;
 
+    private String orderType;
+
     public String getId() {
         return id;
     }
@@ -172,5 +174,13 @@ public class Orders {
 
     public void setOddset(String oddset) {
         this.oddset = oddset;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }

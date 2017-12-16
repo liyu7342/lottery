@@ -10,7 +10,7 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="odds" jdbcType="DECIMAL" property="odds" />
     <result column="retreat" jdbcType="DECIMAL" property="retreat"/>
-
+    <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
     <result column="amount" jdbcType="INTEGER" property="amount" />
     <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
     <result column="canWinAmount" jdbcType="DECIMAL" property="canWinAmount"/>
@@ -22,7 +22,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,winAmount, createdate,status,orderNo,
-    lianmatype,lianmadan,canWinAmount,oddset
+    lianmatype,lianmadan,canWinAmount,oddset,orderType
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -42,9 +42,9 @@
   </delete>
 
   <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
-    insert into orders (Id,  userId,handicapId,
+    insert into orders (Id,  userId,handicapId,orderType,
       gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset)
-    values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{totalAmount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
       #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR})
