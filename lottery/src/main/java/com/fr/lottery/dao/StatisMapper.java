@@ -22,7 +22,7 @@ public interface StatisMapper {
 
     List<StatisDto> getStatisLianma(StatisCondition condition);
 
-    Long getStatisLianmaCount(StatisCondition condition);
+    StatisDto getStatisLianmaCount(StatisCondition condition);
 
     List<Map>  get_statics_data(StatisCondition condition);
 }

@@ -108,7 +108,7 @@ public class HandicapService implements IHandicapService {
             handicap.setZongDanshuang("雙");
         }
         else{
-            handicap.setZongDaxiao("單");
+            handicap.setZongDanshuang("單");
         }
 
        List<ShengXiao> shengXiaos= shengxiaoService.findByYear();

@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Liyu7342 on 2017-12-8.
@@ -20,7 +21,7 @@ public class StatisTable {
     //<input type="hidden" name="level" value='2'>
     //<input type="hidden" name="odds_set" value='S'>
     //<table>
-
+    private Map statisInfo ;
     private static final String _className = "g-t1 g-t2";
 
     private String className;
@@ -38,11 +39,12 @@ public class StatisTable {
         _htmlList = new ArrayList<String>();
     }
 
-    public StatisTable( List<StatisDto> data, String category_id,String className) {
+    public StatisTable( List<StatisDto> data, String category_id,Map otherInfo) {
 
         this.data = data;
         this.category_id = category_id;
-        this.className = className;
+        this.statisInfo = otherInfo;
+        this.className=_className;
         _htmlList = new ArrayList<String>();
     }
 
@@ -124,7 +126,7 @@ public class StatisTable {
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/order/xiazhumingxi?game_id=" + t.getGameType() + "&number=" + t.getNo() + "&name="
                     + descEnc + "\">" + t.getDescription() + "</a></td>");
             bodyList.add("<td>" + t.getOrderNum() + "</td>");
-            bodyList.add("<td>" + t.getAmount() + "</td>");
+            bodyList.add("<td>" + (t.getAmount().intValue()) + "</td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
@@ -206,7 +208,7 @@ public class StatisTable {
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/order/xiazhumingxi?game_id=" + t.getGameType() + "&number=" + t.getNo() + "&name="
                     + descEnc + "\">" + t.getDescription() + "</a></td>");
             bodyList.add("<td>" + t.getOrderNum() + "</td>");
-            bodyList.add("<td>" + StringUtil.ToInteger(t.getAmount().toString())  + "</td>");
+            bodyList.add("<td>" + t.getAmount().intValue()  + "</td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getYongJin().toString()) + "</td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getCaiJin().toString()) + "</td>");
@@ -229,14 +231,12 @@ public class StatisTable {
         Float amount =0F;
         Float shareTotal=0F;
         Float yongjin=0F;
-        Float caijin=0F;
 
         for(StatisDto statisDto :this.data){
             orderNum+=statisDto.getOrderNum();
             amount +=statisDto.getAmount();
             shareTotal+= statisDto.getShareTotal();
             yongjin+=statisDto.getYongJin();
-            caijin +=statisDto.getCaiJin();
         }
         _footerList.add("<tfoot>");
         _footerList.add("<td></td>");
@@ -245,8 +245,7 @@ public class StatisTable {
         _footerList.add("<td>"+ StringUtil.ToInteger(amount.toString())+"</td>");
         _footerList.add("<td>"+ StringUtil.ToInteger(shareTotal.toString())+"</td>");
         _footerList.add("<td>"+ StringUtil.ToInteger(yongjin.toString())+"</td>");
-        _footerList.add("<td>"+ StringUtil.ToInteger(caijin.toString())+"</td>");
-        _footerList.add("<td colspan=\"4\"></td>");
+        _footerList.add("<td colspan=\"5\"></td>");
         _footerList.add("</tfoot>");
         return _footerList;
     }
@@ -287,7 +286,6 @@ public class StatisTable {
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/order/xiazhumingxi?game_id=" + t.getGameType() + "&number=" + t.getNo() + "&name="
                     + descEnc + "\">" + t.getDescription() + "</a></td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
-            bodyList.add("<td>" + t.getAveOdds() + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
                     +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("</tr>");
@@ -300,15 +298,16 @@ public class StatisTable {
     private List<String> generateLianmaFooter(){
         List<String> _footerList= new ArrayList<String>();
 
-        Float shareTotal=0F;
-
-        for(StatisDto statisDto :this.data){
-            shareTotal+= statisDto.getShareTotal();
+        String shareTotal= "";
+        String buhuo= "";
+        if(this.statisInfo!=null){
+            shareTotal=this.statisInfo.get("shareTotal").toString();
+            buhuo=this.statisInfo.get("buhuo").toString();
         }
         _footerList.add("<tfoot>");
         _footerList.add("<td colspan=\"2\">總 計</td>");
-        _footerList.add("<td>"+ StringUtil.ToInteger(shareTotal.toString())+"</td>");
-        _footerList.add("<td></td>");
+        _footerList.add("<td>"+shareTotal+"</td>");
+        _footerList.add("<td>"+buhuo+"</td>");
         _footerList.add("</tfoot>");
         return _footerList;
     }

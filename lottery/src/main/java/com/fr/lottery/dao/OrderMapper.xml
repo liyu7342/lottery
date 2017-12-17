@@ -150,7 +150,7 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
       </if>
     </where>
 
-    order by orderNo ASC
+    order by orderNo DESC
     <if test="pageIndex!=null ">
       limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </if>

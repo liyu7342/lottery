@@ -78,8 +78,8 @@
                                             </tbody>
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
-                                                <td>${shareTotal!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${shareTotal041!'0'}</td>
+                                                <td>${buhuo041!'0'}</td></tr>
                                             </tfoot>
                                             <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=041&pageId=2' op='more'>更多</a></td></tr>
                                         </table>
@@ -104,7 +104,7 @@
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
                                                 <td>${shareTotal042!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${buhuo042!'0'}</td></tr>
                                             </tfoot>
                                         </table>
                                     </td>
@@ -128,7 +128,8 @@
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
                                                 <td>${shareTotal043!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${buhuo042!'0'}</td>
+                                            </tr>
                                             </tfoot>
                                             <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=043&pageId=2' op='more'>更多</a></td></tr>
                                         </table>
@@ -153,7 +154,7 @@
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
                                                 <td>${shareTotal044!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${buhuo044!'0'}</td></tr>
                                             </tfoot>
                                             <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=044&pageId=2' op='more'>更多</a></td></tr>
                                         </table>
@@ -178,7 +179,7 @@
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
                                                 <td>${shareTotal045!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${buhuo045!'0'}</td></tr>
                                             </tfoot>
                                             <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=045&pageId=2' op='more'>更多</a></td></tr>
                                         </table>
@@ -203,7 +204,7 @@
                                             <tfoot>
                                             <tr><td colspan="2">總計</td>
                                                 <td>${shareTotal046!'0'}</td>
-                                                <td>0</td></tr>
+                                                <td>${buhuo046!'0'}</td></tr>
                                             </tfoot>
                                             <tr class="hid"><td colspan="3"></td><td><a href="javascript:void(0);" to='/statis/tjlianmamingxi?game_id=046&pageId=2' op='more'>更多</a></td></tr>
                                         </table>

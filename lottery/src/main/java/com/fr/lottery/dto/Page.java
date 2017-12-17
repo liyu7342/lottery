@@ -7,8 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -44,6 +46,16 @@ public class Page<T> {
     private String funcParam = ""; // 函数的附加参数，第三个参数值。
 
     private String message = ""; // 设置提示消息，显示在“共n条”之后
+
+    private Map otherInfo;
+
+    public Map getOtherInfo() {
+        return otherInfo;
+    }
+
+    public void setOtherInfo(Map otherInfo) {
+        this.otherInfo = otherInfo;
+    }
 
     public Page() {
         this.pageSize = -1;

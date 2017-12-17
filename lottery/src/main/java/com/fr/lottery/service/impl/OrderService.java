@@ -547,8 +547,14 @@ public class OrderService implements IOrderService {
 
         statisDtos= statisMapper.getStatisLianma( condition);
         Long total =0L;
-        total =statisMapper.getStatisLianmaCount(condition);
-        return new Page<StatisDto>(pageId,Global.pageSizeOfTh,total,statisDtos);
+        StatisDto statisDto =statisMapper.getStatisLianmaCount(condition);
+        Page<StatisDto> page =new Page<StatisDto>(pageId,Global.pageSizeOfTh,total,statisDtos);
+        Map<String,Integer> map = new HashMap<String, Integer>();
+        total = (long)statisDto.getOrderNum();
+        map.put("shareTotal", statisDto.getAmount()==null ?0:statisDto.getAmount().intValue());
+        map.put("buhuo",statisDto.getBuhuo()==null ?0:statisDto.getBuhuo().intValue());
+        page.setOtherInfo(map);
+        return page;
     }
 
     @Override

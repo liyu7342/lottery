@@ -72,8 +72,8 @@
   LIMIT #{p_start,jdbcType=INTEGER},#{p_pageSize,jdbcType=INTEGER}
   </select>
 
-  <select id="getStatisLianmaCount" parameterMap="StatisCondition" resultType="java.lang.Long">
-    select count(1) from (
+  <select id="getStatisLianmaCount" parameterMap="StatisCondition" resultMap="BaseResultMap">
+    select count(1) as orderNum,sum(ifNUll(shareTotal,0)) as amount,0 AS buhuo from (
     select od.gameType,od. gameDesc as`description`,od.amount ,
     (select IFNULL(u1.shareUp,0) as shareUp
     from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
