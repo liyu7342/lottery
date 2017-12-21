@@ -25,29 +25,37 @@
                 <div class="yui-g">
                     <div id="shangxiabuhuo" class="module">
                         <div class="hd g-tif"><h3 class="m"><span class="red">【</span>${gameNumDesc!''}<span class="red">】</span> 下級給上級補貨</h3></div>
-                        <form name="frmAction" method="POST" action="" id="frmBuhuo" motai='shangxiabuhuo'>
+                        <form name="frmAction" method="POST" action="/statis/save" id="frmBuhuo" motai='shangxiabuhuo'>
                             <div class="bd">
                                 <table class="g-t1 g-t2" width="500">
                                     <tbody nomovod>
                                     <tr>
                                         <td>金額</td>
                                         <td width='90'>
-                                            <input type="text" name="order_amt" valid="amount" class="w" maxlength="9" value="0"/>
+                                            <input type="text" name="order_amt" valid="amount" value="${amt}" class="w" maxlength="9" value="0"/>
                                         </td>
                                         <td>盤口</td>
                                         <td width='90'>
                                             <select name="odds_set" id="odds_set">
-                                                -A--C-<option value='AA' disc='13.3' odds='42.480' detailOdds=''>A(特A)盤</option>-A--C-<option value='AB' disc='3.3' odds='47.260' detailOdds=''>A(特B)盤</option>-B--C-<option value='BA' disc='13.3' odds='42.480' detailOdds=''>B(特A)盤</option>-B--C-<option value='BB' disc='3.3' odds='47.260' detailOdds=''>B(特B)盤</option>-C--C-<option value='CA' disc='13.5' odds='42.380' detailOdds=''>C(特A)盤</option>-C--C-<option value='CB' disc='3.5' odds='47.160' detailOdds=''>C(特B)盤</option>          </select>
+                                                <#list oddsList as oddset>
+                                                    <option value='${oddset.id}' disc='${oddset["retreat"]}' odds='${oddset["odds"]}' detailOdds=''>
+                                                        ${oddset["name"]} 盤
+                                                    </option>
+                                                </#list>
+
+                                               </select>
                                         </td>
                                         <td>賠率</td>
-                                        <td class="red" width='140'><span id="odds_show">42.480</span></td>
+                                        <td class="red" width='140'><span id="odds_show">${oddsList[0].odds}</span></td>
                                         <td>退水(<font color=red>%</font>)</td>
-                                        <td class="red" width='80'><span id="discount_show">13.3</span></td>
+                                        <td class="red" width='80'><span id="discount_show">${oddsList[0].retreat}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
                                 <input type="hidden" name='detailOdds' value=""/>
-
+                                <input type="hidden" name="amt" value="${amt}">
+                                <input type="hidden" name="game_id" value="${game_id}">
+                                <input type="hidden" name="number" value="${number}">
                                 <input type="hidden" name='odds' value="42.480" />
                                 <input type="hidden" name="submit_time_msec" value="" />
                                 <input type="hidden" name='op' value="create" />

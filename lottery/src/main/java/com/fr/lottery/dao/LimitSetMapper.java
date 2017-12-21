@@ -14,4 +14,6 @@ public interface LimitSetMapper {
     int insert(LimitSet record);
 
     List<LimitSet> selectByPrimaryKey(@Param("userId") String userId);
+
+    List<LimitSet> getByCategory(@Param("userId") String userId,@Param("categoryId") String categoryId);
 }

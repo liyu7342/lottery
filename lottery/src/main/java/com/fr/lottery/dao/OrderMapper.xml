@@ -74,50 +74,8 @@
     UPDATE orders set winAmount=#{winAmount,jdbcType=DECIMAL} WHERE Id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <update id="settlement">
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1=c.Tema AND b.gameType='000' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
-
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='001' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No1 AND b.gameType='002' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No2 AND b.gameType='003' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No3 AND b.gameType='004' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No4 AND b.gameType='005' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No5 AND b.gameType='006' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1 =c.No3 AND b.gameType='007' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND (b.Number1  in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) ) AND b.gameType='008' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-  UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND (b.Number1  in(c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) ) AND b.gameType='009' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-  UPDATE orderdetail b,handicap c set b.winAmount=(b.Odds1 + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND ((b.Number1=c.Tema   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)) or (b.Number2=c.Tema   AND b.Number1  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))) AND b.gameType='009' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND ((b.Number1=c.Tema   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)) or (b.Number2=c.Tema   AND b.Number1  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))) AND b.gameType='010' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-
-  UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-    AND b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='011' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-UPDATE orderdetail b,handicap c set b.winAmount=(b.odds1 + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
-    UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id
-		AND ((b.Number1 not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
-			or (b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2  not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
-or (b.Number1 in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6)   AND b.Number2   in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.Number3  not in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6))
-AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
-
- UPDATE orderdetail b,handicap c set b.winAmount=(b.odds + retreat /100 -1 )* b.amount where b.handicapId = c.Id AND b.Number1=c.Texiaono AND b.gameType='014' and b.handicapId= #{handicapId,jdbcType=VARCHAR};
-   UPDATE orderdetail b,handicap c set b.winAmount=-b.amount where b.handicapId = c.Id  and b.winAmount is NULL and b.handicapId='e4369384f7384b089689d1e75ec6acf0';
+  <update id="settlement" statementType="CALLABLE" >
+      Call P_DB_Settlement1(#{p_handicapId,mode=IN,jdbcType=VARCHAR})
   </update>
 <select id="countByUserId" resultType="java.lang.Long">
    select count(1) from orders
@@ -136,7 +94,8 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
 
   <select id="getOrderDetails"  resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,(SELECT sum(IFNULL(od.winAmount,0))  from orderdetail od where orderid=orders.id) AS winAmount, createdate,status,orderNo,
+    lianmatype,lianmadan,canWinAmount,oddset,orderType
     from orders
     <where>
       <if test="handicapId!='' and handicapId!=null" >
@@ -156,7 +115,9 @@ AND b.Number3  in (c.No1,c.no2,c.No3,c.no4,c.no5,c.no6) AND b.gameType='012' and
     </if>
   </select>
   <select id="getTotal"  resultMap="BaseResultMap">
-    select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)) as canWinAmount,sum(IFNULL(winAmount,0)) as winAmount
+    select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)) as canWinAmount,
+      (SELECT sum(IFNULL(od.winAmount,0))  from orderdetail od where od.handicapid= #{handicapId,jdbcType=VARCHAR}
+        and od.userid= #{userid,jdbcType=VARCHAR}) AS winAmount
     from orders
     <where>
       <if test="handicapId!='' and handicapId!=null" >

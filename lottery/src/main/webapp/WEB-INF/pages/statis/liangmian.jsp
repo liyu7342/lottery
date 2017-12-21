@@ -30,7 +30,7 @@
                         <div class="bd">
                             <div class="n2 g-tm">
                                 <form>
-                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=000">補倉明細</a> <select name="type">
+                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="/statis/short_cover_list?game_id=026,025,024,023,022,021,020,019">補倉明細</a> <select name="type">
                                         <option value="no" >手動</option>
                                         <option value="10" selected>10</option>
                                         <option value="30" >30</option>
@@ -94,7 +94,7 @@
                                     <td>${detail.aveOdds!'0'}</td>
 
                                     <td>${detail.winAmount?int}</td>
-                                    <td>${detail.buhuo!''}</td>
+                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=${detail.gameType!''}&description=${detail.description?url}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                     <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
                                 </tr>
                             </#list>

@@ -21,6 +21,9 @@ public interface OddsMapper {
     //
     List<Odds> getTypeOddsList(@Param("oddSet") String oddset,@Param("types") String[] types, @Param("isDefault") Boolean isDefault);
 
+    List<Odds> getOddsByNumKey(@Param("type") String gameType,@Param("numkey") String numkey);
+    List<Odds> getOddsByNumKeys(@Param("type") String gameType,@Param("numkeys") String[] numkeys);
+
     Odds getOdds(@Param("oddSet") String oddset,@Param("type")String type,@Param("numkey") String numkey,@Param("isDefault") Boolean isDefault);
 
     Odds selectByPrimaryKey(String id);

@@ -45,4 +45,6 @@ public interface IOrderService {
     Page<StatisDto>  getStatisLianma(String categoryId,String[] gameTypes,Integer pageId);
 
     List<Map> get_statics_data();
+
+    List<OrderDetailDto> getBuhuo(String game_id,String userId);
 }

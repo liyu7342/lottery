@@ -30,7 +30,7 @@
                         <div class="bd">
                             <div class="n2 g-tm">
                                 <form>
-                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=000">補倉明細</a> <select name="type">
+                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="/statis/short_cover_list?game_id=000">補倉明細</a> <select name="type">
                                         <option value="no" >手動</option>
                                         <option value="10" selected>10</option>
                                         <option value="30" >30</option>

@@ -69,7 +69,7 @@ public class AjaxReqController {
         map.put("bChangeOrder",0);
         String[] gameTypes ;
         if(StringUtils.isNotBlank(game_id)){
-            gameTypes = new String[]{game_id};
+            gameTypes = game_id.split("\\|");
         }else{
             gameTypes = GameCfg.getCategoryGame(category_id);
         }

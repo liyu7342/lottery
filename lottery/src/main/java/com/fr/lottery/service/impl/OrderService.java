@@ -147,6 +147,13 @@ public class OrderService implements IOrderService {
                             orders.setDescription(lot.getGameTypeDesc() + " " + orders.getLianmadan() + "  [碰] " + orderStrs[1].substring(orders.getLianmadan().length() + 1));
                         }
                     }
+                    else if("017".equals(orders.getGametype()) || "018".equals(orders.getGametype())){
+                        String[] detailxiaoNos = orderStrs[1].split(",");
+                        orders.setDescription(lot.getGameTypeDesc() + " " );
+                        for(String xiao : detailxiaoNos){
+                            orders.setDescription(orders.getDescription()+ Global.shengxiaoDic.get(xiao).getName()+" ");
+                        }
+                    }
                 }
 
             } else {
@@ -162,7 +169,17 @@ public class OrderService implements IOrderService {
                 detail.setCreateDate(new Date());
                 detail.setGameType(orders.getGametype());
                 detail.setHandicapId(orders.getHandicapId());
-                detail.setNumber1(orders.getNo());
+                if("017".equals(orders.getGametype()) ||"018".equals(orders.getGametype())){
+                   String[] xiaoNos=orders.getNo().split(",");
+                    detail.setNumber1(xiaoNos[0]);
+                    detail.setNumber2(xiaoNos[1]);
+                    detail.setNumber3(xiaoNos[2]);
+                    detail.setNumber4(xiaoNos[3]);
+                    detail.setNumber5(xiaoNos[4]);
+                    detail.setNumber6(xiaoNos[5]);
+                }
+                else
+                    detail.setNumber1(orders.getNo());
                 detail.setOdds(Float.parseFloat(orders.getOdds()));
                 detail.setOddsNumber(orders.getNo());
                 detail.setOrderId(orders.getId());
@@ -172,6 +189,7 @@ public class OrderService implements IOrderService {
                 detail.setOddset(orders.getOddset());
                 detail.setGameDesc(orders.getDescription());
                 detail.setNumbers(orders.getNo());
+                detail.setOrderType(OrderTypeEnum.下注.getValue());
                 orderDetailMapper.insert(detail);
 
             } else {
@@ -230,7 +248,7 @@ public class OrderService implements IOrderService {
                         detail.setNumber4(nos[3]);
                         LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
                         if("039".equals(orders.getGametype()) || "040".equals(orders.getGametype()) ){//四肖连
-                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(nos[0]).getName()+","+Global.shengxiaoDic.get(nos[1]).getName()+","+Global.shengxiaoDic.get(nos[2]).getName());
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + Global.shengxiaoDic.get(nos[0]).getName()+","+Global.shengxiaoDic.get(nos[1]).getName()+","+Global.shengxiaoDic.get(nos[2]).getName()+","+Global.shengxiaoDic.get(nos[3]).getName());
                         }
                         else{//四尾连
                             detail.setGameDesc(lot.getGameTypeDesc() + " " + Long.valueOf(nos[0]).toString()+"尾,"+ Long.valueOf(nos[1]).toString()+"尾,"+ Long.valueOf(nos[2]).toString()+"尾,"+ Long.valueOf(nos[3]).toString()+"尾");
@@ -248,7 +266,7 @@ public class OrderService implements IOrderService {
                         detail.setNumber5(nos[4]);
                         LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
                         detail.setGameDesc(lot.getGameTypeDesc() + " " + detailArr[0]);
-                    }else if("048".equals(orders.getGametype())){  //六不中
+                    }else if("048".equals(orders.getGametype()) ||"017".equals(orders.getGametype()) ||"018".equals(orders.getGametype())){  //六不中
                         String[] nos = detailArr[0].split(",");
                         detail.setNumbers(detailArr[0]);
                         detail.setNumber1(nos[0]);
@@ -257,8 +275,14 @@ public class OrderService implements IOrderService {
                         detail.setNumber4(nos[3]);
                         detail.setNumber5(nos[4]);
                         detail.setNumber6(nos[5]);
-                        LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
-                        detail.setGameDesc(lot.getGameTypeDesc() + " " + detailArr[0]);
+                        if("048".equals(orders.getGametype())){
+                            LotConfig lot = Global.lotConfigDic.get(orderStrs[0] + "01");
+                            detail.setGameDesc(lot.getGameTypeDesc() + " " + detailArr[0]);
+                        }
+                        else {
+                            detail.setGameDesc(orders.getDescription());
+                        }
+
                     }else if("049".equals(orders.getGametype())){  //七不中
                         String[] nos = detailArr[0].split(",");
                         detail.setNumbers(detailArr[0]);
@@ -452,6 +476,7 @@ public class OrderService implements IOrderService {
         List<Odds> oddsList = oddsService.getOddsList("",gameTypes);
         for (StatisDto statisDto: statisDtos){
             for(Odds odds : oddsList){
+
                 if((statisDto.getGameType()+statisDto.getNo()).equals(odds.getNumkey())){
                     if("AA".equals(odds.getOddSet()) || "A".equals(odds.getOddSet())){
                         statisDto.setAaOdds(odds.getNumvalue().toString());
@@ -500,6 +525,7 @@ public class OrderService implements IOrderService {
 
         }
         List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),user.getId(),xpath,game_id,number,(pageId-1)*10,10);
+
         long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(),xpath,game_id,number);
         Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId,10,total);
         page.setList(detailDtos);
@@ -557,6 +583,11 @@ public class OrderService implements IOrderService {
         return page;
     }
 
+    /**
+     * 各玩法占成統計
+     * 返回 map 包含category,zhancheng 兩個Key
+     * @return
+     */
     @Override
     public List<Map> get_statics_data() {
         User user = UserHelper.getCurrentUser();
@@ -572,5 +603,11 @@ public class OrderService implements IOrderService {
     public boolean settlement(String handicapId) {
             orderDetailMapper.settlement(handicapId);
         return true;
+    }
+
+    @Override
+    public List<OrderDetailDto> getBuhuo(String game_id, String userId) {
+        Handicap handicap = handicapService.getCurrentHandicap();
+        return orderDetailMapper.getBuhuoes(handicap.getId(),game_id,userId);
     }
 }

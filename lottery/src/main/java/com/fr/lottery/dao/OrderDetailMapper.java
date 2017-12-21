@@ -40,4 +40,6 @@ public interface OrderDetailMapper {
      */
     OrderDetailDto getStatsByDaili(@Param("handicapId") String handicapId,@Param("userId") String userId, @Param("xpath") String xpath,
                                          @Param("gameType") String gameType,@Param("numbers") String numbers);
+
+    List<OrderDetailDto> getBuhuoes(@Param("handicapId") String handicapId,@Param("gameType") String game_id, @Param("userId") String userId);
 }

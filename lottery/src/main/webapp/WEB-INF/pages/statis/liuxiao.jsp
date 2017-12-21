@@ -30,7 +30,7 @@
                         <div class="bd">
                             <div class="n2 g-tm">
                                 <form>
-                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=000">補倉明細</a> <select name="type">
+                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="/statis/short_cover_list?game_id=018,017">補倉明細</a> <select name="type">
                                         <option value="no" >手動</option>
                                         <option value="10" selected>10</option>
                                         <option value="30" >30</option>
@@ -69,16 +69,8 @@
                                 <td >佣金收入</td>
                                 <td >彩金</td>
                                 <td>平均賠率</td>
-                                <td id="totalwinlos_td">勝出金額</td>
                                 <td>補倉(<span class="red" id="amt">5,000</span>) <button act="db" class="gms_ctl" to="duobu.htm?game_id=000"  type="button">多補</button> </td>
-                                <td act="pl">賠率
-                                    <select act="qh" class="red">
-                                        <option value="S" selected>全部</option>
-                                        <option value="A" >A</option>
-                                        <option value="B" >B</option>
-                                        <option value="C" >C</option>
-                                    </select>
-                                </td>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -87,16 +79,12 @@
                                     <td>${(detail_index)+1!''}</td>
                                     <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=${detail.gameType!''}&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
                                     <td>${detail.orderNum!''}</td>
-
                                     <td>${detail.amount!''}</td>
                                     <td>${detail.shareTotal?int}</td>
                                     <td>${detail.yongJin?int}</td>
                                     <td>${detail.caiJin?int}</td>
                                     <td>${detail.aveOdds!'0'}</td>
-
-                                    <td>${detail.winAmount?int}</td>
-                                    <td>${detail.buhuo!''}</td>
-                                    <td><span oddsSet='A'>${detail.aaOdds!''}</span><span oddsSet='B'  class="hid">${detail.baOdds!''}</span><span   oddsSet='C' class="hid">${detail.caOdds!''}</span></td>
+                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=${detail.gameType!''}&description=${detail.description?url}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                 </tr>
                             </#list>
                             </tbody>

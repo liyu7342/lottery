@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ILimitSetService {
     List<LimitSet>   findAll(String userId);
-
+    List<LimitSet> getByCategory(String userId,String categoryId);
     boolean insert(List<LimitSet> limitSets);
     boolean insert(String userId, LimitSetDto limitSetDto);
 

@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -127,11 +128,11 @@ public class StatisTable {
                     + descEnc + "\">" + t.getDescription() + "</a></td>");
             bodyList.add("<td>" + t.getOrderNum() + "</td>");
             bodyList.add("<td>" + (t.getAmount().intValue()) + "</td>");
-            bodyList.add("<td>" + StringUtil.ToInteger(t.getShareTotal().toString()) + "</td>");
+            bodyList.add("<td>" +(t.getShareTotal()==null?0:t.getShareTotal().intValue())+ "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
-            bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
+            bodyList.add("<td>" + (t.getWinAmount()==null ?0:t.getWinAmount().intValue())  + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
-                    +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
+                    +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:t.getBuhuo().intValue()) +"</a></td>");
             bodyList.add("<td><span oddsSet='AA'>"+t.getAaOdds()+"</span><span oddsSet='AB'  class=\"hid\">"+t.getAbOdds()+"</span><span   oddsSet='BA' class=\"hid\">"+t.getBaOdds()
                     +"</span><span   oddsSet='BB' class=\"hid\">"+t.getBbOdds()+"</span><span   oddsSet='CA' class=\"hid\">"
                     +t.getCaOdds()+"</span><span   oddsSet='CB' class=\"hid\">"+t.getCbOdds()+"</span></td>");
@@ -149,16 +150,16 @@ public class StatisTable {
         Float shareTotal=0F;
 
         for(StatisDto statisDto :this.data){
-            orderNum+=statisDto.getOrderNum();
-            amount +=statisDto.getAmount();
-            shareTotal+= statisDto.getShareTotal();
+            orderNum+=(statisDto.getOrderNum()==null?0:statisDto.getOrderNum());
+            amount +=(statisDto.getAmount()==null?0:statisDto.getAmount()) ;
+            shareTotal+=(statisDto.getShareTotal()==null?0:statisDto.getShareTotal());
         }
         _footerList.add("<tfoot>");
         _footerList.add("<td></td>");
         _footerList.add("<td>總計</td>");
         _footerList.add("<td>"+orderNum+"</td>");
-        _footerList.add("<td>"+ StringUtil.ToInteger(amount.toString())+"</td>");
-        _footerList.add("<td>"+ StringUtil.ToInteger(shareTotal.toString())+"</td>");
+        _footerList.add("<td>"+ (amount==null?0:amount.intValue())+"</td>");
+        _footerList.add("<td>"+(shareTotal==null?0:shareTotal.intValue()) +"</td>");
         _footerList.add("<td colspan=\"4\"></td>");
         _footerList.add("</tfoot>");
         return _footerList;
@@ -168,17 +169,23 @@ public class StatisTable {
         List<String> _header = new ArrayList<String>();
         _header.add("<thead>");
         _header.add("<tr>");
-        String[] columnList = new String[]{
-                "序號","玩法","数量","下注總額","<em><span class=\"hc\" act=\"hide\">總佔成</span></em>","佣金收入","彩金","平均賠率","勝出金額",
-                "補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"/statis/duobu?game_id=001\"  type=\"button\">多補</button>",
-                "賠率\n" +
-                        "                <select act=\"qh\" class=\"red\">\n" +
-                        "                                        <option value=\"S\" selected>全部</option>\n" +
-                        "                                        <option value=\"A\" >A</option>\n" +
-                        "                                        <option value=\"B\" >B</option>\n" +
-                        "                                        <option value=\"C\" >C</option>\n" +
-                        "                                    </select>"
-        };
+        List<String> columnList = Arrays.asList(
+                "序號","玩法","数量","下注總額","<em><span class=\"hc\" act=\"hide\">總佔成</span></em>","佣金收入","彩金","平均賠率"
+        );
+        if(!GameTypeEnum.六肖.getValue().equals( category_id)){
+            columnList.add("勝出金額");
+        }
+        columnList.add("補倉(<span class=\"red\" id=\"amt\">5,000</span>) <button act=\"db\" class=\"gms_ctl\" to=\"/statis/duobu?game_id=001\"  type=\"button\">多補</button>");
+
+        if(!GameTypeEnum.六肖.getValue().equals(category_id)){
+            columnList.add("賠率\n" +
+                    "                <select act=\"qh\" class=\"red\">\n" +
+                    "                                        <option value=\"S\" selected>全部</option>\n" +
+                    "                                        <option value=\"A\" >A</option>\n" +
+                    "                                        <option value=\"B\" >B</option>\n" +
+                    "                                        <option value=\"C\" >C</option>\n" +
+                    "                                    </select>");
+        }
         for (String columnName : columnList) {
             _header.add("<td >" + columnName+ "</td>");
         }

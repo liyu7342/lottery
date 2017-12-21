@@ -16,7 +16,6 @@
 
   <select id="getStatis" resultMap="BaseResultMap">
     select gameType,handicapId,`no`,description,COUNT(1) orderNum,SUM(orders.amount) amount,SUM(winAmount) winAmount,sum(odds* orders.amount)/SUM(orders.amount) aveOdds,0 buhuo,0 odds
-
     FROM orders
       INNER  JOIN Handicap on orders.handicapId= Handicap.Id
 
@@ -55,8 +54,8 @@
   </select>
 
   <select id="getStatisLianma" parameterMap="StatisCondition"  resultMap="BaseResultMap">
-    select * from (
-  select od.gameType,od. gameDesc as`description`,od.amount ,
+    select t.gameType,t.`no`,t.`description`,t.amount,t.shareTotal -IFNULL(t1.amount,0)  as shareTotal from (
+    select od.gameType,od.numbers as `no`,od.gameDesc as`description`,sum(od.amount)  as amount ,
       (select IFNULL(u1.shareUp,0) as shareUp
           from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
       AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as shareTotal
@@ -67,17 +66,25 @@
   where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
       AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
   AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+  AND (od.orderType is null or orderType='xiazhu' or (od.orderType='bucang' AND od.userId !=#{p_userId,jdbcType=VARCHAR}))
+  GROUP  BY od.gameType,od.numbers,od.gameDesc
   ) t
-  order by shareTotal
+  left JOIN (SELECT gameType,od1.numbers,SUM(amount) as Amount
+					from orderdetail od1
+					where od1.UserId=#{p_userId,jdbcType=VARCHAR} AND od1.HandicapId=#{p_handicapId,jdbcType=VARCHAR}
+					AND od1.orderType='bucang'
+				group by od1.gameType,od1.numbers
+			 ) as t1 on t.gameType=t1.gameType and t.`no`=t1.numbers
+  order by shareTotal DESC
   LIMIT #{p_start,jdbcType=INTEGER},#{p_pageSize,jdbcType=INTEGER}
   </select>
 
   <select id="getStatisLianmaCount" parameterMap="StatisCondition" resultMap="BaseResultMap">
-    select count(1) as orderNum,sum(ifNUll(shareTotal,0)) as amount,0 AS buhuo from (
-    select od.gameType,od. gameDesc as`description`,od.amount ,
-    (select IFNULL(u1.shareUp,0) as shareUp
+    select count(1) as orderNum,t.shareTotal -IFNULL(t1.amount,0)  as amount,0 AS buhuo from (
+    select od.gameType,
+    sum((select IFNULL(u1.shareUp,0) as shareUp
     from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
-    AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as shareTotal
+    AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100) as shareTotal
     ,  od.odds,od.oddset
     FROM  orderdetail od
     INNER  JOIN Handicap on od.handicapId= Handicap.Id
@@ -85,11 +92,18 @@
     where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
     AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
     AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+    GROUP  BY od.gameType
     ) t
+    left JOIN (SELECT gameType,od1.numbers,SUM(amount) as Amount
+					from orderdetail od1
+					where od1.UserId=#{p_userId,jdbcType=VARCHAR} AND od1.HandicapId=#{p_handicapId,jdbcType=VARCHAR}
+					AND od1.orderType='bucang'
+				group by od1.gameType
+			 ) as t1 on t.gameType=t1.gameType
   </select>
 
   <select id="get_statics_data"  resultType="java.util.HashMap">
-select cc.category,sum(IFNULL(zhancheng,0)) as zhancheng
+select cc.category,sum(IFNULL(zhancheng,0))-IFNULL(t1.Amount,0) as zhancheng
 FROM categoryconfig  cc
  left JOIN(
 	select od.gameType,(select IFNULL(u1.shareUp,0) as shareUp
@@ -100,6 +114,12 @@ FROM categoryconfig  cc
           INNER JOIN  Handicap  on orders.handicapId= Handicap.Id
           INNER JOIN user u on u.id = orders.userId
 where od.handicapId =#{p_handicapId,jdbcType=VARCHAR} and xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')) t on cc.gametype = t.gametype
+left JOIN (SELECT gameType,SUM(amount) as Amount
+					from orderdetail od1
+					where od1.UserId=#{p_userId,jdbcType=VARCHAR} AND od1.HandicapId=#{p_handicapId,jdbcType=VARCHAR}
+					AND od1.orderType='bucang'
+				group by od1.gameType
+			 ) as t1 on cc.gameType=t1.gameType
 GROUP BY cc.category
   </select>
 </mapper>

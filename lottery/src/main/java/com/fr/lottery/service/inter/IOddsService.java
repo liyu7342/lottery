@@ -39,6 +39,8 @@ public interface IOddsService {
 
     List<Odds> getOddsList(String oddSet,String[] oddsType);
 
+    List<Odds> getOddsListByNumkey(String oddsType,String numkey);
+
     boolean update(Odds entity);
 
     boolean insert (Odds entity);

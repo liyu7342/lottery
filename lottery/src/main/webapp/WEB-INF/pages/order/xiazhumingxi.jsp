@@ -62,14 +62,14 @@
                                     <td>${detail.dailiAccount!''}</td>
                                     <td>${detail.memberAccount!''}</td>
                                     <td>${detail.createDate?string("HH:mm:ss")}</td>
-                                    <td real=8.00000>${detail.amount!'0'}</td>
+                                    <td >${detail.amount!'0'}</td>
                                     <td class='red'>${detail.odds?string('#.###')}</td>
                                     <td>${detail.retreat?string('#.#')}</td>
                                     <td>${detail.oddset!''}</td>
-                                    <td real=3.2>
+                                    <td>
                                         ${detail.shareTotal?int}
                                     </td>
-                                    <td>X</td>
+                                    <td><#if detail.orderType=='bucang' >O<#else>X</#if></td>
                                     <td>正常</td>
                                 </tr>
                                 </#list>

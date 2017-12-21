@@ -49,14 +49,8 @@ public class OddsService implements IOddsService{
 
     @Override
     public Map<String, String> getOddsMap(String oddSet,String[] oddsType) {
-        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
         Map<String,String> map = new HashedMap();
-        boolean isOpen =handicapService.IsOpenHandicap();
-        if(!isOpen){
-            for(Odds odds :oddsList){
-                odds.setNumvalue(null);
-            }
-        }
+        List<Odds> oddsList = getOddsChange(oddSet,oddsType);
         for(Odds odds : oddsList){
             map.put("pro_"+odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
         }
@@ -65,7 +59,10 @@ public class OddsService implements IOddsService{
 
     @Override
     public List<Odds> getOddsChange(String oddSet, String[] oddsType) {
-        List<Odds> oddsList=oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        if(oddSet.length()==2){
+
+        }
+        List<Odds> oddsList=getOddsList(oddSet,oddsType);
         boolean isOpen =handicapService.IsOpenHandicap();
         if(!isOpen){
             for(Odds odds :oddsList){
@@ -109,6 +106,20 @@ public class OddsService implements IOddsService{
         return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
     }
 
+    public List<Odds> getOddsListByNumkey(String oddsType,String numkey){
+        if(numkey.contains(",")){
+            String[] keys= numkey.split(",");
+            String[] keyArr = new String[keys.length];
+            int i=0;
+            for(String key :keys){
+                keyArr[i++] = oddsType +key ;
+            }
+            return oddsMapper.getOddsByNumKeys(oddsType,keyArr);
+
+        }
+        else
+            return oddsMapper.getOddsByNumKey(oddsType,oddsType+numkey);
+    }
 
 
     @Override
@@ -157,6 +168,10 @@ public class OddsService implements IOddsService{
                 Float numvalue= Float.parseFloat(keyValue);
                 odds.setNumvalue(numvalue);
             }
+            if(odds.getType().equals("019") || odds.getType().equals("027")){
+                odds.setOddSet(oddSet.substring(0,1));
+            }
+
             Odds oddsEntity= oddsMapper.getOdds(oddSet,odds.getType(),odds.getNumkey(),odds.getIsdefault());
             if(oddsEntity==null){
                 odds.setId(StringUtil.getUUID());

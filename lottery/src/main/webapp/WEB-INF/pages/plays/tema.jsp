@@ -276,7 +276,7 @@
                                 <td class="borderLeftNone borderRightNone">${(entity.pro_01906)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"   name="pro_01906"/></td>
                                 <td class="borderRightNone"><strong class="deepblue">尾小</strong></td>
-                                <td class="borderLeftNone borderRightNone">>${(entity.pro_01908)!''}</td>
+                                <td class="borderLeftNone borderRightNone">${(entity.pro_01908)!''}</td>
                                 <td class="borderLeftNone"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="text"   name="pro_01908"/></td>
                             </tr>
                             <tr pro="027">

@@ -40,6 +40,43 @@
     ORDER  BY Numkey DESC
   </select>
 
+  <select id="getOddsByNumKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from odds
+    <where>
+
+      <if test="type !=null and type !='' ">
+        AND  Type=#{type,jdbcType=VARCHAR}
+      </if>
+
+      <if test="numkey !=null and numkey !='' ">
+        AND Numkey =#{numkey,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER  BY `oddSet`
+  </select>
+
+  <select id="getOddsByNumKeys" resultMap="BaseResultMap">
+    select Type,oddSet,MIN(numvalue),MAX(NumValue)
+    <include refid="Base_Column_List" />
+    from odds
+    <where>
+
+      <if test="type !=null and type !='' ">
+        AND  Type=#{type,jdbcType=VARCHAR}
+      </if>
+      <if test="numkeys !=null and numkeys !='' ">
+        AND Numkey in
+        <foreach item="item" index="index" collection="numkeys" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+    GROUP BY Type, oddSet
+    ORDER  BY `oddSet`
+  </select>
+
   <select id="getTypeOdds" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

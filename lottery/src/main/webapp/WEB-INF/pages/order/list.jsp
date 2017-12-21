@@ -14,7 +14,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.userName} - A28</title>
+    <title>${user.account} - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_31064" type="text/css">
 </head>
@@ -86,7 +86,7 @@
                                     <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}</td>
-                                    <td><#if id=="">${(obj.canWinAmount)!''}<#else>${(obj.winAmount)!''}</#if></td>
+                                    <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> ><#if id=="">${(obj.canWinAmount)!''}<#else>${(obj.winAmount)!''}</#if></td>
 
                                     <td><#if id=="">下注成功 <#else>成功</#if></td>
                                 </tr>

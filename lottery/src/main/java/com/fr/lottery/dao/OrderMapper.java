@@ -32,4 +32,6 @@ public interface OrderMapper {
     long countByUserId(@Param("handicapId") String handicapId,@Param("userid")  String userId, @Param("gameType") String gameType);
 
     Orders getTotal(@Param("handicapId") String handicapId, @Param("userid")  String userId, @Param("gameType") String gameType);
+
+    int settlement(@Param("handicapId") String handicapId);
 }

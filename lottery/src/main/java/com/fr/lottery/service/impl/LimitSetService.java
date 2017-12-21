@@ -27,6 +27,11 @@ public class LimitSetService  implements ILimitSetService{
     }
 
     @Override
+    public List<LimitSet> getByCategory(String userId,String categoryId){
+        return limitSetMapper.getByCategory(userId,categoryId);
+    }
+
+    @Override
     public boolean insert(List<LimitSet> limitSets) {
 
         for(LimitSet limitSet: limitSets){

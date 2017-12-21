@@ -40,9 +40,7 @@ public class BucangService implements IBucangService {
 
     @Override
     public int insert(Bucang bucang) {
-        boolean isOpen= handicapService.IsOpenHandicap();
-        if(!isOpen)
-            return -1;
+
         Handicap handicap = handicapService.getNotOpenHandicap();
         User user = UserHelper.getCurrentUser();
 
@@ -79,7 +77,7 @@ public class BucangService implements IBucangService {
             orders.setDescription(lot.getGameTypeDesc() + " " );
 
             int i=0;
-            if("035".equals(orders.getGametype()) || "036".equals(orders.getGametype()) || "037".equals(orders.getGametype())
+            if("017".equals(orders.getGametype()) || "018".equals(orders.getGametype()) || "035".equals(orders.getGametype()) || "036".equals(orders.getGametype()) || "037".equals(orders.getGametype())
                     ||"038".equals(orders.getGametype())|| "039".equals(orders.getGametype())||"040".equals(orders.getGametype())){
                 orderDetail.setNumbers(bucang.getNumber());
                 for(String xiao : numbers){
@@ -161,6 +159,40 @@ public class BucangService implements IBucangService {
             }
             else{
                 orders.setDescription(lot.getGameTypeDesc() + " " + bucang.getNumber());
+                i=0;
+                    for(String number : numbers){
+                        i++;
+                        if(i==1){
+                            orderDetail.setNumber1(number);
+                        }
+                        else if(i==2){
+                            orderDetail.setNumber2(number);
+                        }
+                        else if (i==3){
+                            orderDetail.setNumber3(number);
+                        }
+                        else if(i==4){
+                            orderDetail.setNumber4(number);
+                        }
+                        else if(i==5){
+                            orderDetail.setNumber5(number);
+                        }
+                        else if(i==6){
+                            orderDetail.setNumber6(number);
+                        }
+                        else if(i==7){
+                            orderDetail.setNumber7(number);
+                        }
+                        else if(i==8){
+                            orderDetail.setNumber8(number);
+                        }
+                        else if(i==9){
+                            orderDetail.setNumber9(number);
+                        }
+                        else if(i==10){
+                            orderDetail.setNumber10(number);
+                        }
+                    }
             }
         }
         else{

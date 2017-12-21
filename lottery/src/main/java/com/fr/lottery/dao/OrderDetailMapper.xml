@@ -144,12 +144,13 @@
     <result column="oddset" jdbcType="VARCHAR" property="oddset" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
   </resultMap>
 
   <select id="getOrderDetailsByDaili"  resultMap="OrderDetailDtoMap">
     select
     od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
-    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,od.gameDesc as description,o.createDate,
+    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,od.gameDesc as description,o.createDate,IFNULL(od.orderType,'xiazhu') AS orderType,
     (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
     AND u1.Id in(od.UserId ,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
     from orderdetail od
@@ -195,7 +196,7 @@
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>
       <if test="numbers!='' and numbers!=null">
-        AND Number1 = #{numbers,jdbcType=VARCHAR}
+        AND numbers = #{numbers,jdbcType=VARCHAR}
       </if>
     </where>) t
   </select>
@@ -216,9 +217,28 @@
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>
       <if test="numbers!='' and numbers!=null" >
-        AND Number1 = #{numbers,jdbcType=VARCHAR}
+        AND numbers = #{numbers,jdbcType=VARCHAR}
       </if>
     </where>
   </select>
+  <select id="getBuhuoes"  resultMap="OrderDetailDtoMap">
+    select od.gameDesc as description,count(1) as orderno,sum(amount) AS amount
+    ,sum(IFNULL(amount * Retreat /100,0)) as retreat
+    from orderdetail od
+    <where>
+      <if test="handicapId!='' and handicapId!=null" >
+        AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="gameType!='' and gameType!=null" >
+        AND FIND_IN_SET (od.gameType, #{gameType,jdbcType=VARCHAR})
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND od.userId = #{userId,jdbcType=VARCHAR}
+      </if>
+    </where>
+    GROUP BY gameDesc
+  </select>
+
 
 </mapper>

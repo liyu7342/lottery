@@ -68,6 +68,8 @@ public class OrderDetailDto {
 
     private Date createDate;
 
+    private String orderType;
+
     public String getId() {
         return id;
     }
@@ -202,5 +204,13 @@ public class OrderDetailDto {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }

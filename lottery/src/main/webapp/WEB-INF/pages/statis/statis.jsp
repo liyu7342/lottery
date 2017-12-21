@@ -30,7 +30,7 @@
                         <div class="bd">
                             <div class="n2 g-tm">
                                 <form>
-                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="short_cover_list.htm?game_id=000">補倉明細</a> <select name="type">
+                                    <div class="n1 g-rl"><strong>收付統計</strong> <a class="btn6 red" href="/statis/short_cover_list?game_id=000">補倉明細</a> <select name="type">
                                         <option value="no" >手動</option>
                                         <option value="10" selected>10</option>
                                         <option value="30" >30</option>
@@ -97,9 +97,9 @@
 
                                     <td>${detail.amount!''}</td>
                                     <td>${detail.shareTotal?int}</td>
-                                    <td>${detail.aveOdds!''}</td>
+                                    <td>${detail.aveOdds?string("0.###")}</td>
                                     <td>${detail.winAmount?int}</td>
-                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=000&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                    <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=000&description=${detail.description?url}" class="red gms_a">${detail.buhuo!'0'}</a></td>
                                     <td><span oddsSet='AA'>${detail.aaOdds!''}</span><span oddsSet='AB'  class="hid">${detail.abOdds!''}</span><span   oddsSet='BA' class="hid">${detail.baOdds!''}</span>
                                         <span   oddsSet='BB' class="hid">${detail.bbOdds!''}</span><span   oddsSet='CA' class="hid">${detail.caOdds!''}</span><span   oddsSet='CB' class="hid">${detail.cbOdds!''}</span></td>
                                 </tr>

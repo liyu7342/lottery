@@ -21,9 +21,31 @@
     select
     <include refid="Base_Column_List" />
     from limitset
-    where UserId=#{userId}
+    where UserId=#{userId,jdbcType=VARCHAR}
     ORDER BY  LimitOrder ASC
   </select>
+
+  <select id="getByCategory" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from limitset
+    <where >
+    <if test="userId!='' and userId !=null">
+      UserId=#{userId,jdbcType=VARCHAR}
+    </if>
+      <choose>
+        <when test="categoryId='00'">
+         AND (LimitType='A00' or LimitType='B00')
+        </when>
+        <otherwise>
+          AND LimitType=#{categoryId,jdbcType=VARCHAR}
+        </otherwise>
+      </choose>
+    </where>
+    ORDER BY  LimitOrder ASC
+  </select>
+
+
   <insert id="insert" parameterType="com.fr.lottery.entity.LimitSet">
     insert into limitset (Id, userId , LimitType, SingleMin, SingleMax,
       SingleHighest, A_Retreat, B_Retreat, C_Retreat,LimitOrder)
