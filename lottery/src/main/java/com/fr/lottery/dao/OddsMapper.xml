@@ -89,17 +89,26 @@
     <include refid="Base_Column_List" />
     from odds
     <where>
-      <if test="oddSet !=null and oddSet !='' ">
-        AND oddSet =#{oddSet,jdbcType=VARCHAR}
-      </if>
+      <choose>
+        <when test="oddSet!=null and oddSet !='' and oddSet.length()>1">
+          AND ((oddset =#{oddSet,jdbcType=VARCHAR} and TYPE ='000') OR
+          (oddSet=left(#{oddSet,jdbcType=VARCHAR},1) AND  Type in
+          <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
+            #{item}
+          </foreach>
+          ))
+        </when>
+        <otherwise>
+          AND oddSet =#{oddSet,jdbcType=VARCHAR}
+          AND Type in
+          <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
+            #{item}
+          </foreach>
+        </otherwise>
+      </choose>
+
       <if test="isDefault !=null and isDefault !='' ">
         AND  IsDefault=#{isDefault,jdbcType=BIT}
-      </if>
-      <if test="types!=null ">
-        AND Type in
-        <foreach item="item" index="index" collection="types" open="(" separator="," close=")">
-          #{item}
-        </foreach>
       </if>
     </where>
     ORDER  BY Numkey DESC

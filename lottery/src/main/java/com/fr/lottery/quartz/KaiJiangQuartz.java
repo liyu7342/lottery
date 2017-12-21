@@ -37,7 +37,7 @@ public class KaiJiangQuartz {
                       if (jsonObject.get("ma").isJsonArray()) {
                           JsonArray jsonArray = jsonObject.get("ma").getAsJsonArray();
 
-                          if (jsonArray != null && jsonArray.size() == 21) {
+                          if (jsonArray != null && jsonArray.size() >0 ) {
                               Integer c = 0;
                               //Integer total = 0;
 
