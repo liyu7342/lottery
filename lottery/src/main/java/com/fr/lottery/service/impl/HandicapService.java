@@ -178,12 +178,24 @@ public class HandicapService implements IHandicapService {
      */
     @Override
     public Handicap getCurrentHandicap() {
-        return handicapMapper.getCurrentHandicaps();
+        Handicap handicap= getLastestHandicap();
+        if(handicap.getStatus()==0 || handicap.getStatus()==1)
+            return handicap;
+        return  null;
     }
 
     public  Handicap getNotOpenHandicap(){
-       return handicapMapper.getNotOpenHandicap();
+       Handicap handicap =  getLastestHandicap();
+       if(handicap.getStatus()==0)
+           return handicap;
+       return null;
     }
+
+    public Handicap getLastestHandicap(){
+        Handicap handicap = handicapMapper.getLastestHandicap();
+        return handicap;
+    }
+
     @Override
     public Handicap getHandicap(String handicapId) {
         return handicapMapper.selectByPrimaryKey(handicapId);
@@ -192,6 +204,7 @@ public class HandicapService implements IHandicapService {
     @Override
     public boolean IsOpenHandicap(){
         Handicap handicap =getNotOpenHandicap();
+        if(handicap==null) return false;
         String dtStr =DateTimeUtils.Date2StringLong( new Date());
         boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0 && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>0;
         return isOpen;

@@ -61,7 +61,8 @@
                                         <em class="ico n${handicap.no4!''}"></em>${handicap.xiaoName4!''}
                                         <em class="ico n${handicap.no5!''}"></em>${handicap.xiaoName5!''}
                                         <em class="ico n${handicap.no6!''}"></em>${handicap.xiaoName6!''}
-                                        <span></span> <em class="ico n${handicap.tema!''}"></em> <font
+
+                                        <span><#if handicap.tema??>+</#if></span> <em class="ico n${handicap.tema!''}"></em> <font
                                             class="red">${handicap.texiaoName!''}</font>
 
                                     </td>

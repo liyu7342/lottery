@@ -19,6 +19,8 @@ public interface OddsMapper {
     List<Odds> getTypeOdds(@Param("type") String type, @Param("isDefault") Boolean isDefault);
 
     //
+
+    List<Odds> getOddsList(@Param("oddSet") String oddset,@Param("types") String[] types, @Param("isDefault") Boolean isDefault);
     List<Odds> getTypeOddsList(@Param("oddSet") String oddset,@Param("types") String[] types, @Param("isDefault") Boolean isDefault);
 
     List<Odds> getOddsByNumKey(@Param("type") String gameType,@Param("numkey") String numkey);

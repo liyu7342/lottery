@@ -388,16 +388,15 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId) {
-         return getOrders(handicapId,pageIndex,categoryId,Global.pageSize);
+    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId) {
+         return getOrders(handicapId,pageIndex,categoryId,userId,Global.pageSize);
     }
 
     @Override
-    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,Integer pageSize) {
+    public Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId,Integer pageSize) {
         if (pageIndex == null) pageIndex = 1;
         if(StringUtils.isBlank(handicapId)){
             Handicap handicap = handicapService.getCurrentHandicap();
-
             if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal())
                 return new Page<Orders>();
             handicapId = handicap.getId();
@@ -455,7 +454,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<StatisDto> getStatis(String categoryId,String[] gameTypes) {
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
         if(handicap == null)
             return  new ArrayList<StatisDto>();
         User user = UserHelper.getCurrentUser();
@@ -473,7 +472,7 @@ public class OrderService implements IOrderService {
             statisDtos= statisMapper.getStatisZhengmaByCallable( condition);
         }
         //实时赔率
-        List<Odds> oddsList = oddsService.getOddsList("",gameTypes);
+        List<Odds> oddsList = oddsService.getOddsList(gameTypes);
         for (StatisDto statisDto: statisDtos){
             for(Odds odds : oddsList){
 
@@ -556,7 +555,7 @@ public class OrderService implements IOrderService {
      */
     public Page<StatisDto>  getStatisLianma(String categoryId,String[] gameTypes,Integer pageId){
         if(pageId==null) pageId=1;
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
         if(handicap == null)
             return  new Page<StatisDto>();
         User user = UserHelper.getCurrentUser();
@@ -591,7 +590,9 @@ public class OrderService implements IOrderService {
     @Override
     public List<Map> get_statics_data() {
         User user = UserHelper.getCurrentUser();
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
+        if(handicap==null)
+            handicap= new Handicap();
         StatisCondition condition = new StatisCondition();
         condition.setP_handicapId(handicap.getId());
         condition.setP_xpath(user.getXpath());
@@ -607,7 +608,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<OrderDetailDto> getBuhuo(String game_id, String userId) {
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
         return orderDetailMapper.getBuhuoes(handicap.getId(),game_id,userId);
     }
 }

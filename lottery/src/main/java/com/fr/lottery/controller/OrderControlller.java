@@ -6,6 +6,7 @@ import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.OrderDetail;
 import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.JsonUtil;
 import com.fr.lottery.utils.UserHelper;
@@ -39,7 +40,8 @@ public class OrderControlller {
     public ModelAndView list(String categoryId,Integer pageId,String id) {
         if(id==null) id="";
         ModelAndView mv = new ModelAndView("/order/list");
-        Page<Orders> orderDetails = orderService.getOrders(id,pageId,categoryId);
+        User user = UserHelper.getCurrentUser();
+        Page<Orders> orderDetails = orderService.getOrders(id,pageId,categoryId,user.getId());
         mv.addObject("orderList",orderDetails.getList());
         mv.addObject("page", orderDetails.toString());
         Integer subsum=0;
@@ -57,7 +59,6 @@ public class OrderControlller {
         Orders orderDetail = orderService.getTotal(id,categoryId);
 
         Map<String,Object> map = new HashedMap();
-        User user = UserHelper.getCurrentUser();
 
         map.put("credit", user.getCredits());
         map.put("marquee","欢迎进入前台");
@@ -69,7 +70,7 @@ public class OrderControlller {
             map.put("sum",0);
             map.put("new_order",new_order);
         }else{
-            Page<Orders> new_orders = orderService.getOrders(id,1,categoryId);
+            Page<Orders> new_orders = orderService.getOrders(id,1,categoryId,user.getId(), Global.pageSizeOfTen);
             for (Orders detail : new_orders.getList()) {
                 List<String> detailArr = new ArrayList<String>();
                 detailArr.add(detail.getDescription());

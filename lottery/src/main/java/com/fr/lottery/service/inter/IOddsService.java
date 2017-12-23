@@ -37,6 +37,8 @@ public interface IOddsService {
 
     List<Odds> getOddsChange(String oddSet,String[] oddsType);
 
+    List<Odds> getOddsList(String[] oddsType);
+
     List<Odds> getOddsList(String oddSet,String[] oddsType);
 
     List<Odds> getOddsListByNumkey(String oddsType,String numkey);

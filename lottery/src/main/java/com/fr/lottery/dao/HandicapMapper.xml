@@ -89,10 +89,10 @@
     WHERE Status in (0,1) limit 1
   </select>
 
-  <select id="getNotOpenHandicap" resultMap="BaseResultMap">
+  <select id="getLastestHandicap" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"></include>
     FROM  handicap
-    WHERE Status=0 order by Qishu DESC    limit 1
+    order by riqi DESC    limit 1
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

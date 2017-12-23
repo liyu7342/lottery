@@ -24,6 +24,7 @@ public class ReportController {
     public ModelAndView report(){
         ModelAndView modelAndView = new ModelAndView("/report/report");
         List<String>  datelist = new ArrayList<String>();
+
         datelist.add("2017-12-05");
         datelist.add("2017-12-07");
         datelist.add("2017-12-09");

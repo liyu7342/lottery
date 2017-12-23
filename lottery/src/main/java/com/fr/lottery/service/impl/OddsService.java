@@ -106,6 +106,11 @@ public class OddsService implements IOddsService{
         return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
     }
 
+    @Override
+    public List<Odds> getOddsList(String[] oddsType){
+        return oddsMapper.getOddsList("",oddsType,false);
+    }
+
     public List<Odds> getOddsListByNumkey(String oddsType,String numkey){
         if(numkey.contains(",")){
             String[] keys= numkey.split(",");

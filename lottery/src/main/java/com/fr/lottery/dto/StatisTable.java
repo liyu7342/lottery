@@ -169,9 +169,16 @@ public class StatisTable {
         List<String> _header = new ArrayList<String>();
         _header.add("<thead>");
         _header.add("<tr>");
-        List<String> columnList = Arrays.asList(
-                "序號","玩法","数量","下注總額","<em><span class=\"hc\" act=\"hide\">總佔成</span></em>","佣金收入","彩金","平均賠率"
-        );
+        List<String> columnList = new ArrayList<String>();
+        columnList.add("序號");
+        columnList.add("玩法");
+        columnList.add("数量");
+        columnList.add("下注總額");
+        columnList.add("<em><span class=\"hc\" act=\"hide\">總佔成</span></em>");
+        columnList.add("佣金收入");
+        columnList.add("彩金");
+        columnList.add("平均賠率");
+
         if(!GameTypeEnum.六肖.getValue().equals( category_id)){
             columnList.add("勝出金額");
         }

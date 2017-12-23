@@ -29,6 +29,8 @@ public interface IHandicapService {
 
     Handicap getNotOpenHandicap();
 
+    Handicap getLastestHandicap();
+
     /**
      * 是否开盘
      * @return

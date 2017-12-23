@@ -1,7 +1,9 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IOrderService;
@@ -423,14 +425,10 @@ public class OddsController {
         header.put("credit", user.getCredits());
         header.put("fail_count", 0);
         header.put("calc_status", 20);
-        List<Orders> orderDetails = orderService.getOrders();
+        Page<Orders> orderDetails = orderService.getOrders(handicap !=null?handicap.getId():"",1,"",user.getId(), Global.pageSizeOfTen);
         List<List<String>> new_order = new ArrayList<List<String>>();
-//        if(Global.cfg_category_key.size()==0){
-//            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
-//            for(LotConfig lotConfig: lotConfigs)
-//                Global..put(lotConfig.getGameNo(),lotConfig);
-//        }
-        for (Orders detail : orderDetails) {
+
+        for (Orders detail : orderDetails.getList()) {
             List<String> detailArr = new ArrayList<String>();
             //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());
@@ -465,14 +463,14 @@ public class OddsController {
         header.put("credit", user.getCredits());
         header.put("fail_count", 0);
         header.put("calc_status", -1);
-        List<Orders> orderDetails = orderService.getOrders();
+        Page<Orders> orderDetails = orderService.getOrders("",1,"",user.getId(),Global.pageSizeOfTen);
         List<List<String>> new_order = new ArrayList<List<String>>();
 //        if(Global.cfg_category_key.size()==0){
 //            List<LotConfig> lotConfigs=LotConfigHelper.findAll();
 //            for(LotConfig lotConfig: lotConfigs)
 //                Global..put(lotConfig.getGameNo(),lotConfig);
 //        }
-        for (Orders detail : orderDetails) {
+        for (Orders detail : orderDetails.getList()) {
             List<String> detailArr = new ArrayList<String>();
             //detailArr.add(Global.cfg_category_key.get(detail.getGametype()+detail.getNo()).getGameDesc());
             detailArr.add(detail.getDescription());

@@ -23,9 +23,9 @@ public interface HandicapMapper {
 
     int updateByPrimaryKey(Handicap record);
 
-    Handicap getCurrentHandicaps();
+    //Handicap getCurrentHandicaps();
 
-    Handicap getNotOpenHandicap();
+    Handicap getLastestHandicap();
 
     Long count();
 }
