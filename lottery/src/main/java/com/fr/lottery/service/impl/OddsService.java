@@ -177,7 +177,7 @@ public class OddsService implements IOddsService{
                 odds.setOddSet(oddSet.substring(0,1));
             }
 
-            Odds oddsEntity= oddsMapper.getOdds(oddSet,odds.getType(),odds.getNumkey(),odds.getIsdefault());
+            Odds oddsEntity= oddsMapper.getOdds(odds.getOddSet(),odds.getType(),odds.getNumkey(),odds.getIsdefault());
             if(oddsEntity==null){
                 odds.setId(StringUtil.getUUID());
                 oddsMapper.insert(odds);
