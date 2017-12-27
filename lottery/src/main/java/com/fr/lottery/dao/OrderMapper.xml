@@ -19,10 +19,11 @@
     <result column="lianmatype" jdbcType="VARCHAR" property="lianmatype" />
     <result column="lianmadan" jdbcType="VARCHAR" property="lianmadan" />
     <result column="oddSet" jdbcType="DECIMAL" property="oddset" />
+    <result column="IsMuti" jdbcType="BIT" property="isMuti"/>
   </resultMap>
   <sql id="Base_Column_List">
     Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
-    lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType
+    lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -43,11 +44,13 @@
 
   <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
     insert into orders (Id,  userId,handicapId,orderType,
-      gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset)
+      gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset
+      ,IsMuti)
     values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{totalAmount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
-      #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR})
+      #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},
+      #{oddset,jdbcType=VARCHAR},#{isMuti,jdbcType=BIT})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orders

@@ -3,6 +3,7 @@ package com.fr.lottery.quartz;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
+import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.JsonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -25,10 +26,10 @@ public class KaiJiangQuartz {
         if(handicap ==null) return;
         int index=0;
         String url=Global.properties.get("6hbd_"+index).toString();
+        int repeatTime = 0;
         while (true){
           String str=  handicapService.get6hbd(url);
           try{
-
 
           if(StringUtils.isNotBlank(str)) {
               JsonObject jsonObject = JsonUtil.getJson(str);
@@ -112,6 +113,9 @@ public class KaiJiangQuartz {
           }
             try{
                 Thread.sleep(5000);
+                repeatTime++;
+                if(repeatTime>200)
+                    break;
                 System.out.println("Thread.sleep(5000)");
             }
             catch (InterruptedException ex){

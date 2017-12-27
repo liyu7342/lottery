@@ -158,6 +158,11 @@ public class OrderControlller {
         modelAndView.addObject("subAmount",subAmount);
         modelAndView.addObject("subShareTotal",subShareTotal);
         OrderDetailDto orderDetailDto = orderService.getStatsByDaili(game_id,number);
+        if(orderDetailDto==null){
+            orderDetailDto = new OrderDetailDto();
+            orderDetailDto.setShareTotal(0f);
+            orderDetailDto.setAmount(0);
+        }
         modelAndView.addObject("totalAmount",orderDetailDto.getAmount());
         modelAndView.addObject("totalShareTotal",orderDetailDto.getShareTotal()==null?0F:orderDetailDto.getShareTotal());
         return  modelAndView;

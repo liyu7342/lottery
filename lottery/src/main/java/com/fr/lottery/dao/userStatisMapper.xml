@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.UserShareMapper">
+    <resultMap id="baseResult" type="com.fr.lottery.entity.UserShare">
+        <id column="Id" jdbcType="VARCHAR" property="id"/>
+        <id column="handicapid" jdbcType="VARCHAR" property="id"/>
+        <id column="userid" jdbcType="VARCHAR" property="userId"/>
+        <id column="category" jdbcType="VARCHAR" property="category"/>
+        <id column="gametype" jdbcType="VARCHAR" property="gameType"/>
+        <id column="numbers" jdbcType="VARCHAR" property="numbers"/>
+        <id column="actualamt" jdbcType="DECIMAL" property="actualamt"/>
+        <id column="buhuo" jdbcType="DECIMAL" property="buhuo"/>
+        <id column="sharetotal" jdbcType="DECIMAL" property="shareTotal"/>
+        <id column="baseAmt" jdbcType="DECIMAL" property="baseAmt"/>
+
+
+    </resultMap>
+    <sql id="Columns">
+        id,handicapid,userid,category,gametype,numbers,actualamt,buhuo,sharetotal,baseAmt
+    </sql>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.UserShareMapper">
+    <resultMap id="baseResult" type="com.fr.lottery.entity.UserShare">
+        <id column="Id" jdbcType="VARCHAR" property="id"/>
+        <id column="handicapid" jdbcType="VARCHAR" property="id"/>
+        <id column="userid" jdbcType="VARCHAR" property="userId"/>
+        <id column="category" jdbcType="VARCHAR" property="category"/>
+        <id column="gametype" jdbcType="VARCHAR" property="gameType"/>
+        <id column="numbers" jdbcType="VARCHAR" property="numbers"/>
+        <id column="actualamt" jdbcType="DECIMAL" property="actualamt"/>
+        <id column="buhuo" jdbcType="DECIMAL" property="buhuo"/>
+        <id column="sharetotal" jdbcType="DECIMAL" property="shareTotal"/>
+        <id column="baseAmt" jdbcType="DECIMAL" property="baseAmt"/>
+
+
+    </resultMap>
+    <sql id="Columns">
+          id,handicapid,userid,category,gametype,numbers,actualamt,buhuo,sharetotal,baseAmt
+    </sql>
+
+
+    <!-- 查询所有 -->
+    <select id="getDatas" resultMap="baseResult" parameterType="com.fr.lottery.entity.UserShare">
+        select
+        <include refid="Columns"/>
+        from usershare
+        <where>
+            <if test="handicapId!='' and handicapId!=null">
+               AND handicapid = #{handicapId,jdbcType=VARCHAR}
+            </if>
+            <if test="userId!='' and userId !=null ">
+                AND userId=#{handicapId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据Id获取信息 -->
+    <select id="getData" resultMap="baseResult">
+        SELECT
+        <include refid="Columns"></include>
+        from usershare
+        WHERE handicapId=#{handicapId,jdbcType=VARCHAR}
+        and userId=#{handicapId,jdbcType=VARCHAR}
+        AND category=#{category,jdbcType=VARCHAR}
+        <if test="gameType!=null and gameType!=''">
+            AND gametype=#{gameType,jdbcType=VARCHAR}
+        </if>
+        AND numbers=#{numbers,jdbcType=VARCHAR}
+        limit 1;
+    </select>
+
+
+    <!-- 插入用户 -->
+    <insert id="insert" parameterType="com.fr.lottery.entity.UserShare">
+      insert into usershare (id,handicapid,userid,category,gametype,numbers,actualamt,buhuo,sharetotal,baseamt)
+    values (#{id,jdbcType=VARCHAR}, #{handicapId,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},
+      #{gameType,jdbcType=VARCHAR},#{numbers,jdbcType=VARCHAR},#{actualAmt,jdbcType=DECIMAL},#{buhuo,jdbcType=DECIMAL}
+      ,#{shareTotal,jdbcType=DECIMAL}  ,#{baseAmt,jdbcType=DECIMAL}      )
+    </insert>
+
+    <update id="update" parameterType="com.fr.lottery.entity.UserShare">
+         update usershare set
+        actualAmt = #{actualAmt,jdbcType=DECIMAL},
+        buhuo = #{buhuo,jdbcType=DECIMAL},
+        shareTotal = #{shareTotal,jdbcType=DECIMAL},
+      where Id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

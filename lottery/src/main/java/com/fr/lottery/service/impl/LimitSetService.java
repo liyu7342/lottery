@@ -5,18 +5,21 @@ import com.fr.lottery.dto.LimitSetDto;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.service.inter.ILimitSetService;
+import com.fr.lottery.utils.MemcacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/17.
  */
 @Service
 public class LimitSetService  implements ILimitSetService{
+    private static  final  String memcache_key="limit_";
     @Autowired
     private LimitSetMapper limitSetMapper;
 
@@ -101,6 +104,38 @@ public class LimitSetService  implements ILimitSetService{
                 limitSetDto.getOrdermax15(),limitSetDto.getItemmax15(),limitSetDto.getDiscountA15(),limitSetDto.getDiscountB15(),limitSetDto.getDiscountC15());
         limitSetMapper.insert(limitSet15);
         return true;
+    }
+
+    /**
+     *
+     * @param userId
+     * @param odd_set 下单盘口
+     * @param limitType
+     * @param handicapStr 用户所在盘口
+     * @return
+     */
+    @Override
+    public Float findRetreatFromCache(String userId,String odd_set,String limitType,String handicapStr){
+        String key = limitType;
+        Float result=0f;
+        if(GameTypeEnum.特码.getValue().equals(limitType) && odd_set.length()>1){
+            key=odd_set.substring(1)+limitType;
+        }
+        Object obj =  MemcacheUtil.get(memcache_key+key+"_"+userId);
+        if(obj==null){
+            List<LimitSet> limitSets= limitSetMapper.selectByPrimaryKey(userId);
+            for(LimitSet limitSet:limitSets){
+
+                Float retreat =  "A".equals( handicapStr)? limitSet.getaRetreat():("B".equals(handicapStr)?limitSet.getbRetreat():limitSet.getcRetreat());
+                if(limitSet.getLimitType().equals(key)){
+                    result=retreat;
+                }
+                MemcacheUtil.add(memcache_key+limitSet.getLimitType()+"_"+userId,retreat);
+            }
+            return result;
+        }
+        result = (Float)obj;
+        return result;
     }
 
 }

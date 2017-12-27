@@ -52,6 +52,12 @@ public class OrderService implements IOrderService {
     @Autowired
     private IShengxiaoService shengxiaoService;
 
+    @Autowired
+    private IUserShareService userShareService;
+
+    @Autowired
+    private IUserService userService;
+
     public List<OrderDetail> getOrderList(String userId) {
         return new ArrayList<OrderDetail>();
 //        GameTypeEnum.不中.getValue();
@@ -68,15 +74,19 @@ public class OrderService implements IOrderService {
             return -1124;
         user.setAmount(orderDto.getOrder_allamount() + user.getAmount());
         UserHelper.setCurrentUser(user);
-        List<LimitSet> limitSetList = limitSetService.findAll(user.getId());
-
-        Map<String, Float> map = new HashedMap();
-        for (LimitSet limitSet : limitSetList) {
-            map.put( limitSet.getLimitType(), ("A".equals( user.getHandicap())? limitSet.getaRetreat():("B".equals(user.getHandicap())?limitSet.getbRetreat():limitSet.getcRetreat())));
-        }
+//        List<LimitSet> limitSetList = limitSetService.findAllFromCache(user.getId());
+//
+//        Map<String, Float> map = new HashedMap();
+//        for (LimitSet limitSet : limitSetList) {
+//            map.put( limitSet.getLimitType(), ("A".equals( user.getHandicap())? limitSet.getaRetreat():("B".equals(user.getHandicap())?limitSet.getbRetreat():limitSet.getcRetreat())));
+//        }
 
 
         String[] orderDatas = orderDto.getOrderData().split(";");
+        User daili = userService.getUserFromCache(user.getDailiId());
+        User zongdai = userService.getUserFromCache(user.getZongdailiId());
+        User gudong = userService.getUserFromCache(user.getGudongId());
+        User dagudong = userService.getUserFromCache(user.getDagudongId());
         for (String orderDataStr : orderDatas) {
             String[] orderStrs = orderDataStr.split("\\|");
             Orders orders = new Orders();
@@ -91,13 +101,16 @@ public class OrderService implements IOrderService {
             orders.setOddset(orderDto.getOdds_set());
             String category = GameCfg.getGameCategory(orderStrs[0]);
             orders.setGametype(orderStrs[0]);
-            if(OddsTypeEnum.tema.getValue().equals( orders.getGametype())) {
-                category = orderDto.getOdds_set().substring(1)+category;
+            if(GameTypeEnum.連碼二.getValue().equals(category) ||GameTypeEnum.尾數連.getValue().equals(category)
+                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue()==category){
+                orders.setIsMuti(true);
             }
-            if (map.containsKey(category)) {
-                orders.setRetreat(map.get(category));
+            else{
+                orders.setIsMuti(false);
             }
 
+            Float retreat =  limitSetService.findRetreatFromCache(user.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            orders.setRetreat(retreat);
             orders.setHandicapId(handicap.getId());
             if (orderStrs.length == 5) {//连码
                 orders.setTotalAmount(orderDto.getOrder_allamount());
@@ -190,6 +203,26 @@ public class OrderService implements IOrderService {
                 detail.setGameDesc(orders.getDescription());
                 detail.setNumbers(orders.getNo());
                 detail.setOrderType(OrderTypeEnum.下注.getValue());
+                detail.setDailiId(user.getDailiId());
+                detail.setZongdaiId(user.getZongdailiId());
+                detail.setGudongId(user.getGudongId());
+                detail.setDagudongId(user.getDagudongId());
+                detail.setDailiAccount(daili.getAccount());
+                detail.setZongdaiAccount(zongdai.getAccount());
+                detail.setGudongAccount(gudong.getAccount());
+                detail.setDagudongAccount(dagudong.getAccount());
+                detail.setDailiAmt(user.getShareUp() * detail.getAmount()/100F);
+                detail.setGudongAmt(zongdai.getShareUp()* detail.getAmount()/100F);
+                detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
+                detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
+                Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float zongdaiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float gudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float dagudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                detail.setDailiRetreat(dailiRetreat);
+                detail.setZongdaiRetreat(zongdaiRetreat);
+                detail.setGudongRetreat(gudongRetreat);
+                detail.setDagudongRetreat(dagudongRetreat);
                 orderDetailMapper.insert(detail);
 
             } else {
@@ -256,7 +289,6 @@ public class OrderService implements IOrderService {
                     }
                     else if ("047".equals(orders.getGametype()))// 五不中
                     {
-
                         String[] nos = detailArr[0].split(",");
                         detail.setNumbers(detailArr[0]);
                         detail.setNumber1(nos[0]);
@@ -353,12 +385,33 @@ public class OrderService implements IOrderService {
                     detailSum+= detail.getAmount()  *(detail.getOdds() -1 + orders.getRetreat()/100 ) ;
                     detail.setOddset(orders.getOddset());
                     detail.setOrderType(OrderTypeEnum.下注.getValue());
+                    detail.setDailiId(user.getDailiId());
+                    detail.setZongdaiId(user.getZongdailiId());
+                    detail.setGudongId(user.getGudongId());
+                    detail.setDagudongId(user.getDagudongId());
+                    detail.setDailiAccount(daili.getAccount());
+                    detail.setZongdaiAccount(zongdai.getAccount());
+                    detail.setGudongAccount(gudong.getAccount());
+                    detail.setDagudongAccount(dagudong.getAccount());
+                    detail.setDailiAmt(user.getShareUp() * detail.getAmount()/100F);
+                    detail.setGudongAmt(zongdai.getShareUp()* detail.getAmount()/100F);
+                    detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
+                    detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
+                    Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float zongdaiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float gudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float dagudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    detail.setDailiRetreat(dailiRetreat);
+                    detail.setZongdaiRetreat(zongdaiRetreat);
+                    detail.setGudongRetreat(gudongRetreat);
+                    detail.setDagudongRetreat(dagudongRetreat);
                     orderDetailMapper.insert(detail);
                 }
                 orders.setCanWinAmount(orders.getCanWinAmount() +detailSum );
             }
             orders.setOrderType(OrderTypeEnum.下注.getValue());
             orderMapper.insert(orders);
+            userShareService.save(orders.getId());
         }
         return 1;
     }
@@ -457,20 +510,27 @@ public class OrderService implements IOrderService {
         Handicap handicap = handicapService.getLastestHandicap();
         if(handicap == null)
             return  new ArrayList<StatisDto>();
-        User user = UserHelper.getCurrentUser();
-        StatisCondition condition = new StatisCondition();
-        condition.setP_gameType(StringUtils.join( gameTypes,","));
-        condition.setP_userId(user.getId());
-        condition.setP_xpath(user.getXpath());
-        condition.setP_handicapId(handicap.getId());
-        condition.setP_categoryId(categoryId);
         List<StatisDto> statisDtos;
-        if( GameTypeEnum.特码.getValue().equals(categoryId )){
-            statisDtos= statisMapper.getStatisByCallable( condition);
+        if(handicap.getStatus()==0){
+            User user = UserHelper.getCurrentUser();
+            StatisCondition condition = new StatisCondition();
+            condition.setP_gameType(StringUtils.join( gameTypes,","));
+            condition.setP_userId(user.getId());
+            condition.setP_usertype(user.getUsertype());
+            condition.setP_handicapId(handicap.getId());
+            condition.setP_categoryId(categoryId);
+
+            if( GameTypeEnum.特码.getValue().equals(categoryId )){
+                statisDtos= statisMapper.getStatisByCallable( condition);
+            }
+            else{
+                statisDtos= statisMapper.getStatisZhengmaByCallable( condition);
+            }
         }
         else{
-            statisDtos= statisMapper.getStatisZhengmaByCallable( condition);
+            statisDtos = new ArrayList<StatisDto>();
         }
+
         //实时赔率
         List<Odds> oddsList = oddsService.getOddsList(gameTypes);
         for (StatisDto statisDto: statisDtos){
@@ -523,9 +583,9 @@ public class OrderService implements IOrderService {
 
 
         }
-        List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),user.getId(),xpath,game_id,number,(pageId-1)*10,10);
+        List<OrderDetailDto> detailDtos= orderDetailMapper.getOrderDetailsByDaili(handicap.getId(),user.getId(),user.getUsertype(),game_id,number,(pageId-1)*10,10);
 
-        long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(),xpath,game_id,number);
+        long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(),user.getId(),user.getUsertype(),game_id,number);
         Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId,10,total);
         page.setList(detailDtos);
         return  page;
@@ -542,7 +602,7 @@ public class OrderService implements IOrderService {
         User user = UserHelper.getCurrentUser();
         String xpath =user.getXpath()+"%";
         Handicap handicap = handicapService.getCurrentHandicap();
-        OrderDetailDto detailDto= orderDetailMapper.getStatsByDaili(handicap.getId(),user.getId(),xpath,game_id,number);
+        OrderDetailDto detailDto= orderDetailMapper.getStatsByDaili(handicap.getId(),user.getId(),user.getUsertype(),game_id,number);
         return detailDto;
     }
 
@@ -563,6 +623,7 @@ public class OrderService implements IOrderService {
         condition.setP_gameType(StringUtils.join( gameTypes,","));
         condition.setP_userId(user.getId());
         condition.setP_xpath(user.getXpath());
+        condition.setP_usertype(user.getUsertype());
         condition.setP_handicapId(handicap.getId());
         condition.setP_categoryId(categoryId);
 
@@ -597,6 +658,7 @@ public class OrderService implements IOrderService {
         condition.setP_handicapId(handicap.getId());
         condition.setP_xpath(user.getXpath());
         condition.setP_userId(user.getId());
+        condition.setP_usertype(user.getUsertype());
         return statisMapper.get_statics_data(condition);
     }
 
@@ -610,5 +672,9 @@ public class OrderService implements IOrderService {
     public List<OrderDetailDto> getBuhuo(String game_id, String userId) {
         Handicap handicap = handicapService.getLastestHandicap();
         return orderDetailMapper.getBuhuoes(handicap.getId(),game_id,userId);
+    }
+
+    public List<OrderDetail> getOrderDetailsByOrderId(String orderId){
+        return orderDetailMapper.getOrderDetailsByOrderId(orderId);
     }
 }

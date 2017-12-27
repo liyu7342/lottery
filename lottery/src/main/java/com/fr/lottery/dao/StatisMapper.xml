@@ -38,34 +38,37 @@
 
   </select>
   <select id="getStatisByCallable" parameterMap="StatisCondition"  resultMap="BaseResultMap" statementType="CALLABLE">
-    CALL P_DB_Statis_tema(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_xpath,mode=IN,jdbcType=VARCHAR})
+    CALL P_DB_Statis_tema(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_usertype,mode=IN,jdbcType=INTEGER})
   </select>
   <parameterMap type="java.util.Map" id="StatisCondition">
     <parameter property="p_userId" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_handicapId" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_xpath" mode="IN" jdbcType="VARCHAR"/>
+    <parameter property="p_usertype" mode="IN" jdbcType="INTEGER"/>
     <parameter property="p_gameType" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_categoryId" mode="IN" jdbcType="VARCHAR"/>
     <parameter property="p_start" mode="IN" jdbcType="INTEGER"/>
     <parameter property="p_pageSize" mode="IN" jdbcType="INTEGER"/>
   </parameterMap>
   <select id="getStatisZhengmaByCallable" parameterMap="StatisCondition"  resultMap="BaseResultMap" statementType="CALLABLE">
-    CALL P_DB_Statis_zhengma(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_xpath,mode=IN,jdbcType=VARCHAR},#{p_categoryId,mode=IN,jdbcType=VARCHAR})
+    CALL P_DB_Statis_zhengma(#{p_handicapId,mode=IN,jdbcType=VARCHAR},#{p_gameType,mode=IN,jdbcType=VARCHAR},#{p_userId,mode=IN,jdbcType=VARCHAR},#{p_usertype,mode=IN,jdbcType=INTEGER},#{p_categoryId,mode=IN,jdbcType=VARCHAR})
   </select>
 
   <select id="getStatisLianma" parameterMap="StatisCondition"  resultMap="BaseResultMap">
     select t.gameType,t.`no`,t.`description`,t.amount,t.shareTotal -IFNULL(t1.amount,0)  as shareTotal from (
     select od.gameType,od.numbers as `no`,od.gameDesc as`description`,sum(od.amount)  as amount ,
-      (select IFNULL(u1.shareUp,0) as shareUp
-          from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
-      AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as shareTotal
+     (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.amount ELSE 0 END )AS shareTotal
       ,  od.odds,od.oddset
       FROM  orderdetail od
         INNER  JOIN Handicap on od.handicapId= Handicap.Id
       INNER JOIN user u on u.id = od.userId
   where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
       AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
-  AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+   AND  (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiid=#{p_userId,mode=IN,jdbcType=VARCHAR} when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.userid=#{p_userId,mode=IN,jdbcType=VARCHAR} ELSE 1=1 END )
   AND (od.orderType is null or orderType='xiazhu' or (od.orderType='bucang' AND od.userId !=#{p_userId,jdbcType=VARCHAR}))
   GROUP  BY od.gameType,od.numbers,od.gameDesc
   ) t
@@ -82,16 +85,18 @@
   <select id="getStatisLianmaCount" parameterMap="StatisCondition" resultMap="BaseResultMap">
     select count(1) as orderNum,t.shareTotal -IFNULL(t1.amount,0)  as amount,0 AS buhuo from (
     select od.gameType,
-    sum((select IFNULL(u1.shareUp,0) as shareUp
-    from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
-    AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100) as shareTotal
+    sum(CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.amount ELSE 0 END ) as shareTotal
     ,  od.odds,od.oddset
     FROM  orderdetail od
     INNER  JOIN Handicap on od.handicapId= Handicap.Id
     INNER JOIN user u on u.id = od.userId
     where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
     AND  FIND_IN_SET(od.gameType,#{p_gameType,jdbcType=VARCHAR})
-    AND xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')
+    and (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiid=#{p_userId,mode=IN,jdbcType=VARCHAR} when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.userid=#{p_userId,mode=IN,jdbcType=VARCHAR} ELSE 1=1 END )
     GROUP  BY od.gameType
     ) t
     left JOIN (SELECT gameType,od1.numbers,SUM(amount) as Amount
@@ -106,14 +111,18 @@
 select cc.category,sum(IFNULL(zhancheng,0))-IFNULL(t1.Amount,0) as zhancheng
 FROM categoryconfig  cc
  left JOIN(
-	select od.gameType,(select IFNULL(u1.shareUp,0) as shareUp
-            from user u1 where u1.parentId =#{p_userId,jdbcType=VARCHAR}
-        AND u1.Id in(od.UserId,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId))  * od.Amount/100 as zhancheng
+	select od.gameType,(CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.amount ELSE 0 END )AS zhancheng
         FROM   orderdetail od
           INNER JOIN orders  on orders.Id = od.orderId
           INNER JOIN  Handicap  on orders.handicapId= Handicap.Id
           INNER JOIN user u on u.id = orders.userId
-where od.handicapId =#{p_handicapId,jdbcType=VARCHAR} and xpath like CONCAT(#{p_xpath,jdbcType=VARCHAR}, '%')) t on cc.gametype = t.gametype
+where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
+AND  (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+	then od.gudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiid=#{p_userId,mode=IN,jdbcType=VARCHAR} when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.userid=#{p_userId,mode=IN,jdbcType=VARCHAR} ELSE 1=1 END )
+	) t on cc.gametype = t.gametype
 left JOIN (SELECT gameType,SUM(amount) as Amount
 					from orderdetail od1
 					where od1.UserId=#{p_userId,jdbcType=VARCHAR} AND od1.HandicapId=#{p_handicapId,jdbcType=VARCHAR}
@@ -122,4 +131,8 @@ left JOIN (SELECT gameType,SUM(amount) as Amount
 			 ) as t1 on cc.gameType=t1.gameType
 GROUP BY cc.category
   </select>
+
+  <insert id="insert" databaseId="com.fr.lottery.entity.Statis">
+
+  </insert>
 </mapper>

@@ -8,7 +8,10 @@ public class StatisCondition {
 
     private String p_handicapId;
 
+    private Integer p_usertype;
+
     private String p_xpath;
+
 
     private String p_categoryId;
 
@@ -35,13 +38,7 @@ public class StatisCondition {
         this.p_handicapId = p_handicapId;
     }
 
-    public String getP_xpath() {
-        return p_xpath;
-    }
 
-    public void setP_xpath(String p_xpath) {
-        this.p_xpath = p_xpath;
-    }
 
     public String getP_categoryId() {
         return p_categoryId;
@@ -73,5 +70,21 @@ public class StatisCondition {
 
     public void setP_pageSize(Integer p_pageSize) {
         this.p_pageSize = p_pageSize;
+    }
+
+    public Integer getP_usertype() {
+        return p_usertype;
+    }
+
+    public void setP_usertype(Integer p_usertype) {
+        this.p_usertype = p_usertype;
+    }
+
+    public String getP_xpath() {
+        return p_xpath;
+    }
+
+    public void setP_xpath(String p_xpath) {
+        this.p_xpath = p_xpath;
     }
 }

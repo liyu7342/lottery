@@ -4,6 +4,7 @@ import com.fr.lottery.dto.LimitSetDto;
 import com.fr.lottery.entity.LimitSet;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/17.
@@ -16,4 +17,5 @@ public interface ILimitSetService {
 
     boolean delete(String userId);
 
+    Float findRetreatFromCache(String userId,String odd_set,String limitType,String handicapStr);
 }

@@ -10,6 +10,7 @@ import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
+import com.fr.lottery.utils.MemcacheUtil;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private ILimitSetService limitSetService;
+
+    private static  final String memcached_key = "user_";
 
     public User getByAccount(String loginName) {
         User result = userMapper.getByAccount(loginName);
@@ -237,5 +240,17 @@ public class UserService implements IUserService {
             return 0;
         }
         return userMapper.getChildSumCredit(id);
+    }
+
+    @Override
+    public User getUserFromCache(String id){
+        Object object =MemcacheUtil.get(memcached_key+id);
+        if(object!=null)
+            return (User)object;
+        User user = userMapper.get(id);
+        if(user !=null){
+            MemcacheUtil.add(memcached_key+id,user);
+        }
+        return user;
     }
 }

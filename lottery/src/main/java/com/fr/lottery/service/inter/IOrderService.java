@@ -47,4 +47,6 @@ public interface IOrderService {
     List<Map> get_statics_data();
 
     List<OrderDetailDto> getBuhuo(String game_id,String userId);
+
+    List<OrderDetail> getOrderDetailsByOrderId(String orderId);
 }

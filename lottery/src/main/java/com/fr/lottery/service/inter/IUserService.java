@@ -34,4 +34,6 @@ public interface IUserService {
 
     Integer getChildSumCredit(String id);
 
+    User getUserFromCache(String id);
+
 }

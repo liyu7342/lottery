@@ -22,10 +22,14 @@
     <result column="gameDesc" jdbcType="VARCHAR" property="gameDesc" />
     <result column="numbers" jdbcType="VARCHAR" property="numbers"/>
     <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
+    <result column="dailiamt" jdbcType="DECIMAL" property="dailiAmt"/>
+    <result column="zongdaiamt" jdbcType="DECIMAL" property="zongdaiAmt"/>
+    <result column="gudongAmt" jdbcType="DECIMAL" property="gudongAmt"/>
+    <result column="dagudongamt" jdbcType="DECIMAL" property="dagudongAmt"/>
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
-    ,canWinAmount,oddset,gameDesc,numbers,orderType
+    ,canWinAmount,oddset,gameDesc,numbers,orderType,dailiamt,zongdaiamt,gudongamt,dagudongamt
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -48,14 +52,20 @@
   <insert id="insert" parameterType="com.fr.lottery.entity.OrderDetail">
     insert into orderdetail (Id, orderId, userId,handicapId,orderType,
       gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount
-      ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc,numbers)
+      ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc,numbers,dailiId,dailiaccount,dailiamt,dailiRetreat,dailiwinamt
+      ,zongdaiId,zongdaiaccount,zongdaiamt,zongdairetreat,zongdaiwinamt,gudongId,gudongaccount,gudongamt,gudongretreat,gudongwinamt
+      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt)
     values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR},
        #{number4,jdbcType=VARCHAR},#{number5,jdbcType=VARCHAR},#{number6,jdbcType=VARCHAR},
        #{number7,jdbcType=VARCHAR},#{number8,jdbcType=VARCHAR},#{number9,jdbcType=VARCHAR},
        #{number10,jdbcType=VARCHAR},#{odds,jdbcType=DECIMAL},#{odds1,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createDate,jdbcType=TIMESTAMP},
-      #{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR},#{gameDesc,jdbcType=VARCHAR},#{numbers,jdbcType=VARCHAR})
+      #{canWinAmount,jdbcType=DECIMAL},#{oddset,jdbcType=VARCHAR},#{gameDesc,jdbcType=VARCHAR},#{numbers,jdbcType=VARCHAR},
+      #{dailiId,jdbcType=VARCHAR},#{dailiAccount,jdbcType=VARCHAR},#{dailiAmt,jdbcType=DECIMAL},#{dailiRetreat,jdbcType=DECIMAL},#{dailiWinamt,jdbcType=DECIMAL},
+      #{zongdaiId,jdbcType=VARCHAR},#{zongdaiAccount,jdbcType=VARCHAR},#{zongdaiAmt,jdbcType=DECIMAL},#{zongdaiRetreat,jdbcType=DECIMAL},#{zongdaiWinamt,jdbcType=DECIMAL},
+      #{gudongId,jdbcType=VARCHAR},#{gudongAccount,jdbcType=VARCHAR},#{gudongAmt,jdbcType=DECIMAL},#{gudongRetreat,jdbcType=DECIMAL},#{gudongWinamt,jdbcType=DECIMAL},
+      #{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongAmt,jdbcType=DECIMAL},#{dagudongRetreat,jdbcType=DECIMAL},#{dagudongWinamt,jdbcType=DECIMAL})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail
@@ -102,11 +112,21 @@
         AND gameType = #{gameType,jdbcType=VARCHAR}
       </if>
     </where>
-
     order by orderNo ASC
     <if test="pageIndex!=null ">
       limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </if>
+  </select>
+
+  <select id="getOrderDetailsByOrderId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from orderdetail
+    <where>
+      <if test="orderId!='' and orderId!=null" >
+        AND orderId = #{orderId,jdbcType=VARCHAR}
+      </if>
+     </where>
   </select>
   <select id="getTotal"  resultMap="BaseResultMap">
     select sum(IFNULL(canWinAmount,0)) as canWinAmount,sum(IFNULL(winAmount,0)) as winAmount
@@ -149,20 +169,51 @@
 
   <select id="getOrderDetailsByDaili"  resultMap="OrderDetailDtoMap">
     select
-    od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
+    od.Id,o.orderNo,od.DagudongId,od.GudongId,od.ZongdaiId,od.DailiId,od.DagudongAccount,od.GudongAccount,od.ZongdaiAccount,od.DailiAccount,od.account
     ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,od.gameDesc as description,o.createDate,IFNULL(od.orderType,'xiazhu') AS orderType,
-    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
-    AND u1.Id in(od.UserId ,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as  shareTotal
+    <choose>
+      <when test="usertype==1">
+         od.dagudongamt  AS shareTotal
+      </when>
+      <when test="usertype==2">
+        od.gudongamt  AS shareTotal
+      </when>
+      <when test="usertype==3">
+        od.zongdaiamt  AS shareTotal
+      </when>
+      <when test="usertype==4">
+        od.dailiamt  AS shareTotal
+      </when>
+      <when test="usertype==5">
+        od.amount  AS shareTotal
+      </when>
+      <otherwise>
+        0 as shareTotal
+      </otherwise>
+    </choose>
     from orderdetail od
     join orders  o on od.OrderId = o.id
-    join user u on od.userid = u.id
     <where>
       <if test="handicapId!='' and handicapId!=null" >
         AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
       </if>
-      <if test="xpath!='' and xpath!=null" >
-        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
-      </if>
+      <choose>
+        <when test="usertype==1">
+          and od.dagudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==2">
+          and od.gudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==3">
+          and od.zongdaiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==4">
+          and od.dailiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==5">
+          od.userid  =#{userId,jdbcType=VARCHAR}
+        </when>
+      </choose>
       <if test="gameType!='' and gameType!=null" >
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>
@@ -176,29 +227,55 @@
   </select>
 
   <select id="getStatsByDaili"  resultMap="OrderDetailDtoMap">
-    SELECT sum(shareTotal) as shareTotal,sum(amount) as amount from (
-    select
-    od.Id,o.orderNo,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId,u.DagudongAccount,u.GudongAccount,u.ZongdaiAccount,u.DailiAccount,u.account
-    ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,o.description,o.createDate,
-    (select u1.shareUp from user u1 where u1.parentId =#{userId,jdbcType=VARCHAR}
-    AND u1.Id in(od.UserId ,u.DagudongId,u.GudongId,u.ZongdailiId,u.DailiId) ) * od.Amount/100 as shareTotal
+    SELECT
+    <choose>
+      <when test="usertype==1">
+        sum(IFNULL(od.dagudongamt,0)) AS shareTotal
+      </when>
+      <when test="usertype==2">
+        sum(IFNULL(od.gudongamt,0)) AS shareTotal
+      </when>
+      <when test="usertype==3">
+        sum(IFNULL(od.zongdaiamt,0)) AS shareTotal
+      </when>
+      <when test="usertype==4">
+        sum(IFNULL(od.dailiamt,0)) AS shareTotal
+      </when>
+      <when test="usertype==5">
+        sum(IFNULL(od.amount,0)) AS shareTotal
+      </when>
+    </choose>
+    ,sum(amount) as amount
     from orderdetail od
-    join orders o on od.OrderId = o.id
-    join user u on od.userid = u.id
     <where>
       <if test="handicapId!='' and handicapId!=null">
         AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
       </if>
-      <if test="xpath!='' and xpath!=null">
-        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
-      </if>
+      <choose>
+        <when test="usertype==1">
+          and od.dagudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==2">
+          and od.gudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==3">
+          and od.zongdaiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==4">
+          and od.dailiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==5">
+          od.userid  =#{userId,jdbcType=VARCHAR}
+        </when>
+      </choose>
+
       <if test="gameType!='' and gameType!=null">
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>
       <if test="numbers!='' and numbers!=null">
         AND numbers = #{numbers,jdbcType=VARCHAR}
       </if>
-    </where>) t
+    </where>
   </select>
   <select id="getDetailsTotalByDaili"  resultType="java.lang.Long">
     select
@@ -210,9 +287,23 @@
       <if test="handicapId!='' and handicapId!=null" >
         AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
       </if>
-      <if test="xpath!='' and xpath!=null" >
-        AND u.xpath LIKE #{xpath,jdbcType=VARCHAR}
-      </if>
+      <choose>
+        <when test="usertype==1">
+          AND od.dagudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==2">
+          AND  od.gudongid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==3">
+          AND od.zongdaiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==4">
+          AND od.dailiid  =#{userId,jdbcType=VARCHAR}
+        </when>
+        <when test="usertype==5">
+          AND  od.userid  =#{userId,jdbcType=VARCHAR}
+        </when>
+      </choose>
       <if test="gameType!='' and gameType!=null" >
         AND od.gameType = #{gameType,jdbcType=VARCHAR}
       </if>

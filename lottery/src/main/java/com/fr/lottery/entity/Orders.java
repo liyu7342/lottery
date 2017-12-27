@@ -39,6 +39,8 @@ public class Orders {
 
     private String orderType;
 
+    private Boolean isMuti;
+
     public String getId() {
         return id;
     }
@@ -182,5 +184,13 @@ public class Orders {
 
     public void setOrderType(String orderType) {
         this.orderType = orderType;
+    }
+
+    public Boolean getIsMuti() {
+        return isMuti;
+    }
+
+    public void setIsMuti(Boolean isMuti) {
+        this.isMuti = isMuti;
     }
 }
