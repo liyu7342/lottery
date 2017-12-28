@@ -49,7 +49,7 @@ public class PlaysController {
         mv.addObject("status",JsonUtil.toJson(statusMap));
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap()+"A",oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap()+"A",oddsTypes);
         mv.addObject("entity",map);
         return mv;
     }
@@ -60,7 +60,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -76,7 +76,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate1.getValue(),OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.sebozhmate1.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -92,7 +92,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate2.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.sebozhmate2.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -108,7 +108,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate3.getValue(),OddsTypeEnum.lmzhmate3.getValue(),OddsTypeEnum.sebozhmate3.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -124,7 +124,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate4.getValue(),OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.sebozhmate4.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -140,7 +140,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate5.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.sebozhmate5.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -156,7 +156,7 @@ public class PlaysController {
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate6.getValue(),OddsTypeEnum.lmzhmate6.getValue(),OddsTypeEnum.sebozhmate6.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
 
@@ -172,7 +172,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/zheng1_6");
         String[] oddsTypes= {OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.lmzhmate3.getValue(),
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
-        Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         boolean isOpen = handicapService.IsOpenHandicap();
 
@@ -191,7 +191,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/lianma");
         String[] oddsTypes= {OddsTypeEnum.erquanzh.getValue()};
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         List<Odds> oddsList = oddsService.getOddsList(UserHelper.getCurrentUser().getHandicap(),oddsTypes1);
         Map<String,String> oddsMap = new HashMap<String, String>();
@@ -230,7 +230,7 @@ public class PlaysController {
     public ModelAndView guoguan() {
         ModelAndView mv = new ModelAndView("/plays/guoguan");
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
-       Map<String,String> map  =  oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -244,7 +244,7 @@ public class PlaysController {
         mv.addObject("shengxiao", map);
 
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -258,7 +258,7 @@ public class PlaysController {
         mv.addObject("shengxiao", map);
 
         String[] oddsTypes= {OddsTypeEnum.shengxiaobuzhong.getValue()};
-        Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -269,7 +269,7 @@ public class PlaysController {
     public ModelAndView weishu() {
         ModelAndView mv = new ModelAndView("/plays/weishu");
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -280,7 +280,7 @@ public class PlaysController {
     public ModelAndView banbo() {
         ModelAndView mv = new ModelAndView("/plays/banbo");
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -291,7 +291,7 @@ public class PlaysController {
     public ModelAndView liuxiao() {
         ModelAndView mv = new ModelAndView("/plays/liuxiao");
         String[] oddsTypes= {OddsTypeEnum.liuxiaozh.getValue(),OddsTypeEnum.liuxiaobuzh.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         Map<String,String> map=  shengxiaoService.findMapByYear();
          mv.addObject("shengxiao",map);
@@ -306,7 +306,7 @@ public class PlaysController {
         Map<String,String> map=  shengxiaoService.findMapByYear();
         mv.addObject("shengxiao", map);
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
-       Map<String,String> map1 =oddsService.getOddsMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -318,7 +318,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/shengxiaolian");
         String[] oddsTypes= OddsTypeEnum.shengxiaolian.getValue().split("\\|");
         String handicapStr  =UserHelper.getCurrentUser().getHandicap();
-        Map<String,String> map1 =oddsService.getOddsMap(handicapStr,oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsChangeMap(handicapStr,oddsTypes);
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
         mv.addObject("isOpen",isOpen);
@@ -346,7 +346,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/weishulian");
         String[] oddsTypes= OddsTypeEnum.weishulian.getValue().split("\\|");
         String handicapStr =UserHelper.getCurrentUser().getHandicap();
-       Map<String,String> map1 =oddsService.getOddsMap(handicapStr,oddsTypes);
+       Map<String,String> map1 =oddsService.getOddsChangeMap(handicapStr,oddsTypes);
 
         mv.addObject("entity",map1);
         boolean isOpen = handicapService.IsOpenHandicap();
@@ -376,7 +376,7 @@ public class PlaysController {
         ModelAndView mv = new ModelAndView("/plays/buzhong");
         String[] oddsTypes= OddsTypeEnum.buzhong.getValue().split("\\|");
         String handicapStr =UserHelper.getCurrentUser().getHandicap();
-        Map<String,String> map1 =oddsService.getOddsMap(handicapStr,oddsTypes);
+        Map<String,String> map1 =oddsService.getOddsChangeMap(handicapStr,oddsTypes);
         mv.addObject("entity",map1);
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);

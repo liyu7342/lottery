@@ -62,6 +62,8 @@ public class OrderDetail implements Serializable {
     private Float gudongWinamt;
     private Float dagudongWinamt;
 
+    private String account;
+
     public String getId() {
         return id;
     }
@@ -444,6 +446,14 @@ public class OrderDetail implements Serializable {
 
     public void setDagudongAccount(String dagudongAccount) {
         this.dagudongAccount = dagudongAccount;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
 

@@ -44,4 +44,6 @@ public interface OrderDetailMapper {
                                          @Param("gameType") String gameType,@Param("numbers") String numbers);
 
     List<OrderDetailDto> getBuhuoes(@Param("handicapId") String handicapId,@Param("gameType") String game_id, @Param("userId") String userId);
+
+    //List<OrderDetail> getOrderDetailsByOrderNo(@Param("orderNo") String orderNo);
 }

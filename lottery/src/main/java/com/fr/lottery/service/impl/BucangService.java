@@ -4,6 +4,7 @@ import com.fr.lottery.dao.BucangMapper;
 import com.fr.lottery.dao.OrderDetailMapper;
 import com.fr.lottery.dao.OrderMapper;
 import com.fr.lottery.entity.*;
+import com.fr.lottery.enums.GameTypeEnum;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.enums.OrderTypeEnum;
 import com.fr.lottery.init.GameCfg;
@@ -47,10 +48,14 @@ public class BucangService implements IBucangService {
         Orders orders = new Orders();
 
         orders.setOrderNo(sysCodeService.getBuCangAutoCode(handicap.getId()));
-        Map<String, Float> map = new HashedMap();
-        List<LimitSet> limitSetList = limitSetService.findAll(user.getId());
-        for (LimitSet limitSet : limitSetList) {
-            map.put( limitSet.getLimitType(), ("A".equals( user.getHandicap())? limitSet.getaRetreat():("B".equals(user.getHandicap())?limitSet.getbRetreat():limitSet.getcRetreat())));
+        String category = GameCfg.getGameCategory(bucang.getGame_id());
+        Float retreat =  limitSetService.findRetreatFromCache(user.getId(), bucang.getOdds_set(),category,user.getHandicap());
+        if(GameTypeEnum.連碼二.getValue().equals(category) ||GameTypeEnum.尾數連.getValue().equals(category)
+                || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue()==category){
+            orders.setIsMuti(true);
+        }
+        else{
+            orders.setIsMuti(false);
         }
         orders.setId(StringUtil.getUUID());
         orders.setCreatedate(new Date());
@@ -61,14 +66,7 @@ public class BucangService implements IBucangService {
         orders.setNo(bucang.getNumber());
         orders.setOddset(bucang.getOdds_set());
         orders.setGametype(bucang.getGame_id());
-
-        String category = GameCfg.getGameCategory(bucang.getGame_id());
-        if(OddsTypeEnum.tema.getValue().equals( orders.getGametype())) {
-            category = bucang.getOdds_set().substring(1)+category;
-        }
-        if(map.containsKey(category)){
-            orders.setRetreat(map.get(category));
-        }
+        orders.setRetreat(retreat);
         OrderDetail orderDetail = new OrderDetail();
         if(bucang.getNumber().contains(",")){
             String[] numbers = bucang.getNumber().split(",");

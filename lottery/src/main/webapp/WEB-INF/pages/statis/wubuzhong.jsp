@@ -63,7 +63,7 @@
                     <div class="hd"></div>
                     <div class="bd">
                         <input type="hidden" name="category_id" value='15'>
-                        <input type="hidden" name="game_id" value='047|048|049|050|051|052'>
+                        <input type="hidden" name="game_id" value='${game_id!'047'}'>
                         <input type="hidden" name="time_stamp" value='1499779795,0,0'>
                         <input type="hidden" name="fresh" value='0'>
                         <input type="hidden" name="level"value="${user.usertype!''}">

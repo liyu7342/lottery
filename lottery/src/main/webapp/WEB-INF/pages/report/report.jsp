@@ -47,7 +47,7 @@
                                                 <option value="${obj}">${obj}</option>
                                             </#list>
                                         </select>
-                                        &nbsp;<button type="button" href="reportmonth.htm">本月報表</button>
+                                        &nbsp;<button type="button" href="/report/reportmonth">本月報表</button>
                                 </tr>
                                 <tr>
                                     <td>類別</td>

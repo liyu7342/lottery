@@ -60,7 +60,7 @@
                                     <td>${detail.gudongAccount!''}</td>
                                     <td>${detail.zongdaiAccount!''}</td>
                                     <td>${detail.dailiAccount!''}</td>
-                                    <td>${detail.memberAccount!''}</td>
+                                    <td>${detail.account!''}</td>
                                     <td>${detail.createDate?string("HH:mm:ss")}</td>
                                     <td >${detail.amount!'0'}</td>
                                     <td class='red'>${detail.odds?string('#.###')}</td>

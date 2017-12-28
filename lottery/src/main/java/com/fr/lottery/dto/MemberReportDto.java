@@ -4,7 +4,7 @@ package com.fr.lottery.dto;
 /**
  * Created by Liyu7342 on 2017-9-17.
  */
-public class UserHistoryDto {
+public class MemberReportDto {
     private String id;
     private String userId;
     /***

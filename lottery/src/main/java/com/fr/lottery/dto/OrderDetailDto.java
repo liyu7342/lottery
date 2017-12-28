@@ -26,7 +26,7 @@ public class OrderDetailDto {
     /**
      * 会员账号
      */
-    private String memberAccount;
+    private String account;
     /**
      * 玩法
      */
@@ -110,12 +110,12 @@ public class OrderDetailDto {
         this.dailiAccount = dailiAccount;
     }
 
-    public String getMemberAccount() {
-        return memberAccount;
+    public String getAccount() {
+        return account;
     }
 
-    public void setMemberAccount(String memberAccount) {
-        this.memberAccount = memberAccount;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getGameType() {

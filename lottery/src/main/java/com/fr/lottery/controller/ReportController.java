@@ -1,7 +1,14 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.MemberReportDto;
+import com.fr.lottery.dto.Page;
+import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.entity.OrderDetail;
+import com.fr.lottery.entity.Orders;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.IHandicapService;
+import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.service.inter.IReportService;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +27,19 @@ import java.util.List;
 public class ReportController {
     @Autowired
     private IHandicapService handicapService;
+    @Autowired
+    private IOrderService orderService;
+
+//    @Autowired
+//    private IReportService reportService;
     @RequestMapping("/report")
     public ModelAndView report(){
         ModelAndView modelAndView = new ModelAndView("/report/report");
         List<String>  datelist = new ArrayList<String>();
-
-        datelist.add("2017-12-05");
-        datelist.add("2017-12-07");
-        datelist.add("2017-12-09");
+        Page<Handicap>  page= handicapService.getHandicaps(1,3);
+        for(Handicap handicap : page.getList()){
+            datelist.add(handicap.getRiqi());
+        }
         modelAndView.addObject("datelist",datelist);
         return modelAndView;
     }
@@ -56,8 +68,15 @@ public class ReportController {
         return modelAndView;
     }
 
-    @RequestMapping("z_gudong")
+    @RequestMapping("z_dagudong")
     public ModelAndView z_dagudong(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
+        ModelAndView modelAndView = new ModelAndView("/report/z_gudong");
+
+        return modelAndView;
+    }
+
+    @RequestMapping("z_gudong")
+    public ModelAndView z_gudong(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_gudong");
 
         return modelAndView;
@@ -77,16 +96,49 @@ public class ReportController {
     }
 
     @RequestMapping("/z_member")
-    public ModelAndView z_member(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
+    public ModelAndView z_member(String draw_date,String draw_date2,Integer type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_member");
-
+       // List<MemberReportDto> reportDtos =reportService.getMemberReportDto(id,__account,__name,p_level,type,draw_date,draw_date2);
+        modelAndView.addObject("account",__account);
+        modelAndView.addObject("name",__name);
+        modelAndView.addObject("id",id);
         return modelAndView;
     }
 
     @RequestMapping("/reportmingxi")
-    public ModelAndView reportmingxi(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id) {
-        ModelAndView modelAndView = new ModelAndView("/report/z_member");
+    public ModelAndView reportmingxi(String draw_date0,String type,String p_level,String __account,String __name,String id) {
+        ModelAndView modelAndView = new ModelAndView("/report/reportmingxi");
 
+        return modelAndView;
+    }
+
+    @RequestMapping("/detail")
+    public ModelAndView detail(String sub,String draw_date,String order_id){
+        ModelAndView modelAndView = new ModelAndView("report/detail");
+        Orders orders = orderService.getOrdersByOrderNo(order_id );
+        List<OrderDetail> orderDetails= orderService.getOrderDetailsByOrderId(orders.getId());
+        Integer index=0;
+        List<String> bodyList = new ArrayList<String>();
+        Integer size= orderDetails.size() /5 ;
+        if(orderDetails.size()%5!=0){
+            size++;
+        }
+        for(Integer i=0;i<size;i++){
+            bodyList.add("<tr>");
+            for(Integer j=0;j<5;j++){
+                if(index<orderDetails.size()){
+                    bodyList.add("<td width=\"20%\">"+orderDetails.get(index).getGameDesc()+"</td>");
+                }
+                else{
+                    bodyList.add("<td width=\"20%\">&nbsp;</td>");
+                }
+                index++;
+            }
+            bodyList.add("</tr>");
+        }
+        modelAndView.addObject("orders",orders);
+        modelAndView.addObject("bodyStr", org.apache.commons.lang3.StringUtils.join(bodyList, "\r\n"));
+        modelAndView.addObject("size",orderDetails.size());
         return modelAndView;
     }
 }

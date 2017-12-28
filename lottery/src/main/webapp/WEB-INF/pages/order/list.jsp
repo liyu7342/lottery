@@ -81,7 +81,7 @@
                                 <tr>
                                     <td>${(obj.orderNo)!''}</td>
                                     <td>${obj.oddset!''}</td>
-                                    <td>${(obj.description)!''}</td>
+                                    <td><#if obj.isMuti><a target="popup" href="/order/detail?order_id=${obj.orderNo}" fix="600|400|yes|yes" from_page="report" game_id="${obj.gameType!''}">${(obj.description)!''}</a><#else>${(obj.description)!''}</#if></td>
                                     <td>${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>
                                     <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>

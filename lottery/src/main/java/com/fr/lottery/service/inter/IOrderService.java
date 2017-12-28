@@ -26,7 +26,7 @@ public interface IOrderService {
     Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId,Integer pageSize);
     Orders getTotal(String categoryId);
     Orders getTotal(String handicapId,String categoryId);
-    List<UserHistoryDto> getOrderHistory();
+    List<MemberReportDto> getOrderHistory();
     List<StatisDto> getStatis(String categoryId,String[] gameTypes);
     boolean settlement(String handicapId) ;
     Integer getOrderAmount();
@@ -49,4 +49,6 @@ public interface IOrderService {
     List<OrderDetailDto> getBuhuo(String game_id,String userId);
 
     List<OrderDetail> getOrderDetailsByOrderId(String orderId);
+
+    Orders getOrdersByOrderNo(String order_id);
 }

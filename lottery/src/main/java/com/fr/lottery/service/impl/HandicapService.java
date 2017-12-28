@@ -158,15 +158,20 @@ public class HandicapService implements IHandicapService {
     public Page<Handicap> getHandicaps(Integer pageId) {
        if(pageId==null)
            pageId =1;
+       return getHandicaps(pageId,Global.pageSize);
+    }
+    @Override
+    public Page<Handicap> getHandicaps(Integer pageId,Integer pageSize) {
+        if(pageId==null)
+            pageId =1;
 
-        Integer start = (pageId-1) * Global.pageSize;
-        List<Handicap> handicaps=  handicapMapper.findAll(start, Global.pageSize);
+        Integer start = (pageId-1) * pageSize;
+        List<Handicap> handicaps=  handicapMapper.findAll(start, pageSize);
         Long total = handicapMapper.count();
-        Page<Handicap> page = new Page<Handicap>(pageId,Global.pageSize,total);
+        Page<Handicap> page = new Page<Handicap>(pageId,pageSize,total);
         page.setList(handicaps);
         return page;
     }
-
     @Override
     public boolean delete(String id) {
         return handicapMapper.deleteByPrimaryKey(id)>0;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fr.lottery.dao.OrderMapper">
+<mapper namespace="com.fr.lottery.dao.ReportMapper">
   <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Orders">
     <id column="Id" jdbcType="VARCHAR" property="id" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
@@ -37,13 +37,6 @@
     from orders
     where Id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="getOrdersByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from orders
-    where orderNo=#{orderNo,jdbcType=VARCHAR}
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from orders
     where Id = #{id,jdbcType=VARCHAR}

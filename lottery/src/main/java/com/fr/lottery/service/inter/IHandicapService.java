@@ -18,6 +18,7 @@ public interface IHandicapService {
 
 
     Page<Handicap> getHandicaps(Integer pageId) ;
+    Page<Handicap> getHandicaps(Integer pageId,Integer pageSize) ;
 
     boolean delete(String id);
 

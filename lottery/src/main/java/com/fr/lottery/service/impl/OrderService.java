@@ -12,12 +12,10 @@ import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.*;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -223,6 +221,7 @@ public class OrderService implements IOrderService {
                 detail.setZongdaiRetreat(zongdaiRetreat);
                 detail.setGudongRetreat(gudongRetreat);
                 detail.setDagudongRetreat(dagudongRetreat);
+                detail.setAccount(user.getAccount());
                 orderDetailMapper.insert(detail);
 
             } else {
@@ -405,6 +404,7 @@ public class OrderService implements IOrderService {
                     detail.setZongdaiRetreat(zongdaiRetreat);
                     detail.setGudongRetreat(gudongRetreat);
                     detail.setDagudongRetreat(dagudongRetreat);
+                    detail.setAccount(user.getAccount());
                     orderDetailMapper.insert(detail);
                 }
                 orders.setCanWinAmount(orders.getCanWinAmount() +detailSum );
@@ -500,7 +500,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<UserHistoryDto> getOrderHistory() {
+    public List<MemberReportDto> getOrderHistory() {
         String userId = UserHelper.getCurrentUser().getId();
         return orderMapper.getOrderHistory("", userId);
     }
@@ -511,7 +511,6 @@ public class OrderService implements IOrderService {
         if(handicap == null)
             return  new ArrayList<StatisDto>();
         List<StatisDto> statisDtos;
-        if(handicap.getStatus()==0){
             User user = UserHelper.getCurrentUser();
             StatisCondition condition = new StatisCondition();
             condition.setP_gameType(StringUtils.join( gameTypes,","));
@@ -526,10 +525,7 @@ public class OrderService implements IOrderService {
             else{
                 statisDtos= statisMapper.getStatisZhengmaByCallable( condition);
             }
-        }
-        else{
-            statisDtos = new ArrayList<StatisDto>();
-        }
+
 
         //实时赔率
         List<Odds> oddsList = oddsService.getOddsList(gameTypes);
@@ -566,7 +562,7 @@ public class OrderService implements IOrderService {
     public Integer getOrderAmount() {
         Handicap handicap = handicapService.getCurrentHandicap();
         if (handicap == null) return 0;
-        List<UserHistoryDto> list = orderMapper.getOrderHistory(handicap.getId(), UserHelper.getCurrentUser().getId());
+        List<MemberReportDto> list = orderMapper.getOrderHistory(handicap.getId(), UserHelper.getCurrentUser().getId());
         if (list.size() > 0) {
             return list.get(0).getAmount();
         }
@@ -577,7 +573,7 @@ public class OrderService implements IOrderService {
     public Page<OrderDetailDto> getOrderDetailsByDaili(String game_id, String number, String name, Integer pageId) {
         User user = UserHelper.getCurrentUser();
         String xpath =user.getXpath()+"%";
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
         if(game_id.equals(OddsTypeEnum.erquanzh.getValue()) || game_id.equals(OddsTypeEnum.erzhongte.getValue()) || game_id.equals(OddsTypeEnum.sanquanzh.getValue())
             ||game_id.equals(OddsTypeEnum.sanzher.getValue()) || game_id.equals(OddsTypeEnum.techuan.getValue())){
 
@@ -601,7 +597,7 @@ public class OrderService implements IOrderService {
     public OrderDetailDto getStatsByDaili(String game_id,String number){
         User user = UserHelper.getCurrentUser();
         String xpath =user.getXpath()+"%";
-        Handicap handicap = handicapService.getCurrentHandicap();
+        Handicap handicap = handicapService.getLastestHandicap();
         OrderDetailDto detailDto= orderDetailMapper.getStatsByDaili(handicap.getId(),user.getId(),user.getUsertype(),game_id,number);
         return detailDto;
     }
@@ -676,5 +672,9 @@ public class OrderService implements IOrderService {
 
     public List<OrderDetail> getOrderDetailsByOrderId(String orderId){
         return orderDetailMapper.getOrderDetailsByOrderId(orderId);
+    }
+
+    public Orders getOrdersByOrderNo(String orderNo){
+        return orderMapper.getOrdersByOrderNo(orderNo);
     }
 }

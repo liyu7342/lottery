@@ -11,27 +11,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>${user.account!''} - A28</title>
-    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
-
+    <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_31064" type="text/css">
 
 </head>
-<body class="odetail" >
+<body class="odetail">
+<div id="htmlcover" style="background-color:rgb(255, 255, 255);filter:alpha(opacity=0);opacity:0;position:absolute;top:0pt;left:0pt;z-index:5;display:block;width:100%;height:100%;"></div>
 <div id="doc3" class="yui-t7">
     <div id="bd">
         <div id="yui-main">
             <div class="yui-b">
                 <div class="yui-g">
                     <div id="odetail" class="module">
-                        <div class="hd">
-                            <p>${orders.description!''} <em>+ ${orders.amount!'0'}</em></p>
+                        <div class="hd" id="popupWindow">
+                        <p>${orders.description!''} <em>+ ${orders.amount!'0'}</em></p>
                             <p class="pr">(組合數：<em>${size!'0'}</em>,總金額：<em>${orders.totalAmount!'0'}</em>)</p>
                             <p><span>賠　率</span> ${orders.odds}</p>
                         </div>
                         <div class="bd">
-                            <table class="g-t1 g-t2 tr">
-                                <thead><tr><th colspan="5">組合清單</th></tr></thead>
+                            <div class="g-thd"><h3>組合清單</h3></div>
+                            <table class="g-t1">
+
                                 <tbody nomovod>
                                     ${bodyStr!''}
                                 </tbody>
@@ -54,7 +54,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
 </body>
 </html>
 

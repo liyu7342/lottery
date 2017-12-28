@@ -49,6 +49,19 @@
                                     <td class="r">注單狀態</td>
                                 </tr></thead>
                                 <tbody>
+                                <#list orderList as obj>
+                                    <tr>
+                                        <td class="bg">${(obj.orderNo)!''}</td>
+                                        <td>${obj.oddset!''}</td>
+                                        <td><#if obj.isMuti><a target="popup" href="/report/detai?order_id=${obj.orderNo}&draw_date=2017-11-23&sub=1" fix="600|400|yes|yes" from_page="report" game_id="${obj.gameType!''}">${(obj.description)!''}</a><#else>${(obj.description)!''}</#if></td>
+                                        <td>${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>
+                                        <td>${(obj.odds)!''}</td>
+                                        <td>${(obj.totalAmount)!''}</td>
+                                        <td>${(obj.retreat)!''}</td>
+                                        <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> ><#if id=="">${(obj.canWinAmount)!''}<#else>${(obj.winAmount)!''}</#if></td>
+                                        <td><#if id=="">下注成功 <#else>成功</#if></td>
+                                    </tr>
+                                </#list>
                                 <tr>
                                     <td class="bg">Z171123047335</td>
                                     <td>B</td>

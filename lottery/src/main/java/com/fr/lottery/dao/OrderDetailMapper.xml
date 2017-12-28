@@ -22,6 +22,9 @@
     <result column="gameDesc" jdbcType="VARCHAR" property="gameDesc" />
     <result column="numbers" jdbcType="VARCHAR" property="numbers"/>
     <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
+    <result column="dailiId" jdbcType="VARCHAR" property="dailiId"/>
+    <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
+    <result column="dailiaccount" jdbcType="VARCHAR" property="dailiAccount"/>
     <result column="dailiamt" jdbcType="DECIMAL" property="dailiAmt"/>
     <result column="zongdaiamt" jdbcType="DECIMAL" property="zongdaiAmt"/>
     <result column="gudongAmt" jdbcType="DECIMAL" property="gudongAmt"/>
@@ -29,7 +32,9 @@
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
-    ,canWinAmount,oddset,gameDesc,numbers,orderType,dailiamt,zongdaiamt,gudongamt,dagudongamt
+    ,canWinAmount,oddset,gameDesc,numbers,orderType,dailiId,dailiaccount,dailiamt,dailiRetreat,dailiwinamt
+      ,zongdaiId,zongdaiaccount,zongdaiamt,zongdairetreat,zongdaiwinamt,gudongId,gudongaccount,gudongamt,gudongretreat,gudongwinamt
+      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -44,6 +49,7 @@
     from orderdetail
     where Id = #{id,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from orderdetail
     where Id = #{id,jdbcType=VARCHAR}
@@ -157,7 +163,7 @@
     <result column="amount" jdbcType="VARCHAR" property="amount" />
     <result column="shareTotal" jdbcType="FLOAT" property="shareTotal" />
 
-    <result column="Account" jdbcType="VARCHAR" property="memberAccount"/>
+    <result column="Account" jdbcType="VARCHAR" property="account"/>
     <result column="GudongAccount" jdbcType="VARCHAR" property="gudongAccount"/>
     <result column="zongdaiAccount" jdbcType="VARCHAR" property="zongdaiAccount" />
     <result column="DailiAccount" jdbcType="VARCHAR" property="dailiAccount" />

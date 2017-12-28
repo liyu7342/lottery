@@ -168,6 +168,36 @@ public class OrderControlller {
         return  modelAndView;
     }
 
+    @RequestMapping("/detail")
+    public  ModelAndView detail(String order_id,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
+        ModelAndView modelAndView = new ModelAndView("/order/detail") ;
+        Orders orders = orderService.getOrdersByOrderNo(order_id );
+        List<OrderDetail> orderDetails= orderService.getOrderDetailsByOrderId(orders.getId());
+        Integer index=0;
+        List<String> bodyList = new ArrayList<String>();
+        Integer size= orderDetails.size() /5 ;
+        if(orderDetails.size()%5!=0){
+            size++;
+        }
+        for(Integer i=0;i<size;i++){
+            bodyList.add("<tr>");
+            for(Integer j=0;j<5;j++){
+                if(index<orderDetails.size()){
+                    bodyList.add("<td width=\"20%\"><em>"+orderDetails.get(index).getGameDesc()+"</em>("+orderDetails.get(index).getOdds()+")</td>");
+                }
+                else{
+                    bodyList.add("<td width=\"20%\">&nbsp;</td>");
+                }
+                index++;
+            }
+            bodyList.add("</tr>");
+        }
+        modelAndView.addObject("orders",orders);
+        modelAndView.addObject("size",orderDetails.size());
+        modelAndView.addObject("bodyStr", org.apache.commons.lang3.StringUtils.join(bodyList, "\r\n"));
+        return  modelAndView;
+    }
+
     public static void main(String[] args) {
 
     }
