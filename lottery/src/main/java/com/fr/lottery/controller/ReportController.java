@@ -108,7 +108,31 @@ public class ReportController {
     @RequestMapping("/reportmingxi")
     public ModelAndView reportmingxi(String draw_date0,String type,String p_level,String __account,String __name,String id) {
         ModelAndView modelAndView = new ModelAndView("/report/reportmingxi");
-
+        User user = UserHelper.getCurrentUser();
+        List<String> banners = new ArrayList<String>();
+        banners.add("下註明細--會員： "+__name+"."+__account +" -- 期数日期："+draw_date0+"&nbsp;&nbsp;");
+        if(user.getUsertype()>-1){
+            banners.add("<a href=\"/report/z_dagongdu?draw_date="+draw_date0+"&draw_date2="+draw_date0+"\">大股東</a>");
+        }
+        if(user.getUsertype()>0){
+            banners.add("href=\"/report/z_gudong?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${zongdaiAccount} &__name=${zongdaiName}&id=${zongdaiId}\">總代</a>");
+        }
+        if(user.getUsertype()>1){
+            banners.add("href=\"/report/z_zongdaili?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${zongdaiAccount} &__name=${zongdaiName}&id=${zongdaiId}\">總代</a>");
+        }
+        if(user.getUsertype()>2){
+            banners.add("href=\"/report/z_daili?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${zongdaiAccount} &__name=${zongdaiName}&id=${zongdaiId}\">總代</a>");
+        }
+        if(user.getUsertype()>2){
+            banners.add("href=\"/report/z_daili?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${zongdaiAccount} &__name=${zongdaiName}&id=${zongdaiId}\">總代</a>");
+        }
+//         <a href="/report/user_report?draw_date=${draw_date}&draw_date2=${draw_date}">股東</a>-><a
+//                href="/report/z_zongdaili?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${zongdaiAccount} &__name=${zongdaiName}&id=${zongdaiId}">總代</a>-><a
+//                href="/reports/z_daili?draw_date=${draw_date}&draw_date2=${draw_date}&type=1&p_level=${p_level}&__account=${dailiAccount}&__name=${dailiName}&id=${dailiId}">代理</a>->
+        modelAndView.addObject("");
+        modelAndView.addObject("");
+        modelAndView.addObject("");
+        modelAndView.addObject("");
         return modelAndView;
     }
 

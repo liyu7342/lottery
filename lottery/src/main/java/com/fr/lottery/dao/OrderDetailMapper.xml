@@ -29,12 +29,13 @@
     <result column="zongdaiamt" jdbcType="DECIMAL" property="zongdaiAmt"/>
     <result column="gudongAmt" jdbcType="DECIMAL" property="gudongAmt"/>
     <result column="dagudongamt" jdbcType="DECIMAL" property="dagudongAmt"/>
+    <result column="account" jdbcType="VARCHAR" property="account"/>
   </resultMap>
   <sql id="Base_Column_List">
     Id, orderId, userId,handicapId, gameType, `number1`,`number2`,`number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1, amount,retreat,winAmount, createdate
     ,canWinAmount,oddset,gameDesc,numbers,orderType,dailiId,dailiaccount,dailiamt,dailiRetreat,dailiwinamt
       ,zongdaiId,zongdaiaccount,zongdaiamt,zongdairetreat,zongdaiwinamt,gudongId,gudongaccount,gudongamt,gudongretreat,gudongwinamt
-      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt
+      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt,account
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -60,7 +61,7 @@
       gameType, `number1`, `number2`, `number3`, `number4`, `number5`, `number6`, `number7`, `number8`, `number9`, `number10`, odds,odds1,amount
       ,retreat,winAmount, createdate,canWinAmount,oddset,gameDesc,numbers,dailiId,dailiaccount,dailiamt,dailiRetreat,dailiwinamt
       ,zongdaiId,zongdaiaccount,zongdaiamt,zongdairetreat,zongdaiwinamt,gudongId,gudongaccount,gudongamt,gudongretreat,gudongwinamt
-      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt)
+      ,dagudongid,dagudongaccount,dagudongamt,dagudongretreat,dagudongwinamt,account)
     values (#{id,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gameType,jdbcType=VARCHAR}, #{number1,jdbcType=VARCHAR},#{number2,jdbcType=VARCHAR},#{number3,jdbcType=VARCHAR},
        #{number4,jdbcType=VARCHAR},#{number5,jdbcType=VARCHAR},#{number6,jdbcType=VARCHAR},
@@ -71,7 +72,8 @@
       #{dailiId,jdbcType=VARCHAR},#{dailiAccount,jdbcType=VARCHAR},#{dailiAmt,jdbcType=DECIMAL},#{dailiRetreat,jdbcType=DECIMAL},#{dailiWinamt,jdbcType=DECIMAL},
       #{zongdaiId,jdbcType=VARCHAR},#{zongdaiAccount,jdbcType=VARCHAR},#{zongdaiAmt,jdbcType=DECIMAL},#{zongdaiRetreat,jdbcType=DECIMAL},#{zongdaiWinamt,jdbcType=DECIMAL},
       #{gudongId,jdbcType=VARCHAR},#{gudongAccount,jdbcType=VARCHAR},#{gudongAmt,jdbcType=DECIMAL},#{gudongRetreat,jdbcType=DECIMAL},#{gudongWinamt,jdbcType=DECIMAL},
-      #{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongAmt,jdbcType=DECIMAL},#{dagudongRetreat,jdbcType=DECIMAL},#{dagudongWinamt,jdbcType=DECIMAL})
+      #{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongAmt,jdbcType=DECIMAL},#{dagudongRetreat,jdbcType=DECIMAL},#{dagudongWinamt,jdbcType=DECIMAL},
+      #{account,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orderdetail
@@ -205,16 +207,16 @@
       </if>
       <choose>
         <when test="usertype==1">
-          and od.dagudongid  =#{userId,jdbcType=VARCHAR}
+          and od.dagudongid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==2">
-          and od.gudongid  =#{userId,jdbcType=VARCHAR}
+          and od.gudongid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==3">
-          and od.zongdaiid  =#{userId,jdbcType=VARCHAR}
+          and od.zongdaiid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==4">
-          and od.dailiid  =#{userId,jdbcType=VARCHAR}
+          and od.dailiid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==5">
           od.userid  =#{userId,jdbcType=VARCHAR}

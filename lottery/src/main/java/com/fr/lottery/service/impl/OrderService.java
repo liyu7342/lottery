@@ -214,9 +214,9 @@ public class OrderService implements IOrderService {
                 detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
                 detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
                 Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float zongdaiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float gudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float dagudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
                 detail.setDailiRetreat(dailiRetreat);
                 detail.setZongdaiRetreat(zongdaiRetreat);
                 detail.setGudongRetreat(gudongRetreat);
@@ -397,9 +397,9 @@ public class OrderService implements IOrderService {
                     detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
                     detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
                     Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float zongdaiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float gudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float dagudongRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+                    Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
                     detail.setDailiRetreat(dailiRetreat);
                     detail.setZongdaiRetreat(zongdaiRetreat);
                     detail.setGudongRetreat(gudongRetreat);

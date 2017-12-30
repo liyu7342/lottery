@@ -38,12 +38,31 @@ public class BucangService implements IBucangService {
     @Autowired
     private OrderDetailMapper orderDetailMapper;
 
+    @Autowired
+    private IUserService userService;
 
     @Override
     public int insert(Bucang bucang) {
 
         Handicap handicap = handicapService.getNotOpenHandicap();
         User user = UserHelper.getCurrentUser();
+        User zongdai=null ;
+        User gudong =null;
+        User dagudong=null;
+        User daili=null;
+        if(!StringUtil.isNullOrEmpty(user.getDailiId())){
+            daili = userService.getUserFromCache(user.getDailiId());
+        }
+        if(!StringUtil.isNullOrEmpty(user.getZongdailiId())) //代理{
+        {
+            zongdai = userService.getUserFromCache(user.getZongdailiId());
+        }
+        if(!StringUtil.isNullOrEmpty(user.getGudongId())){
+            gudong = userService.getUserFromCache(user.getGudongId());
+        }
+        if(!StringUtil.isNullOrEmpty(user.getGudongId())){
+            dagudong = userService.getUserFromCache(user.getGudongId());
+        }
 
         Orders orders = new Orders();
 
@@ -215,6 +234,59 @@ public class BucangService implements IBucangService {
         orderDetail.setHandicapId(handicap.getId());
         orderDetail.setOddset(orders.getOddset());
         orderDetail.setOrderType(OrderTypeEnum.补仓.getValue());
+        if(!StringUtil.isNullOrEmpty(user.getDailiId()) && daili !=null) //代理{
+        {
+            orderDetail.setDailiId(user.getDailiId());
+            orderDetail.setDailiAccount(daili.getAccount());
+            orderDetail.setDailiAmt(user.getShareUp() * orderDetail.getAmount()/100F);
+            Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), bucang.getOdds_set(),category,user.getHandicap());
+            orderDetail.setDailiRetreat(dailiRetreat);
+        }
+        if(!StringUtil.isNullOrEmpty(user.getZongdailiId()) && zongdai!=null) //代理{
+        {
+            orderDetail.setZongdaiId(user.getZongdailiId());
+            orderDetail.setZongdaiAccount(zongdai.getAccount());
+            Integer shareUp=0;
+            if(daili==null){
+                shareUp = user.getShareUp();
+            }
+            else{
+                shareUp = daili.getShareUp();
+            }
+            orderDetail.setZongdaiAmt(shareUp * orderDetail.getAmount()/100F);
+            Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), bucang.getOdds_set(),category,user.getHandicap());
+            orderDetail.setZongdaiRetreat(zongdaiRetreat);
+        }
+        if(!StringUtil.isNullOrEmpty(user.getGudongId() )&& gudong!=null){
+            orderDetail.setGudongId(user.getGudongId());
+            orderDetail.setGudongAccount(gudong.getAccount());
+            Integer shareUp=0;
+            if(zongdai==null){
+                shareUp = user.getShareUp();
+            }
+            else
+                shareUp=zongdai.getShareUp();
+            orderDetail.setGudongAmt(shareUp * orderDetail.getAmount()/100F);
+
+            Float zongdaiRetreat = limitSetService.findRetreatFromCache(gudong.getId(), bucang.getOdds_set(),category,user.getHandicap());
+            orderDetail.setZongdaiRetreat(zongdaiRetreat);
+        }
+        if(!StringUtil.isNullOrEmpty(user.getGudongId()) && dagudong!=null){
+            orderDetail.setDagudongId(user.getDagudongId());
+            orderDetail.setDagudongAccount(dagudong.getAccount());
+            Integer shareUp=0;
+            if(gudong==null){
+                shareUp = user.getShareUp();
+            }
+            else{
+                shareUp = gudong.getShareUp();
+            }
+            orderDetail.setDagudongAmt(shareUp * orderDetail.getAmount()/100F );
+            Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), bucang.getOdds_set(),category,user.getHandicap());
+            orderDetail.setDagudongRetreat(dagudongRetreat);
+        }
+
+
         orders.setOrderType( OrderTypeEnum.补仓.getValue());
         orders.setHandicapId(handicap.getId());
         orderMapper.insert(orders);

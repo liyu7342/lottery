@@ -118,12 +118,12 @@
                     return true;
                 }
                 form.onsubmit = function(){
-//                    if(!validateForm(this)){
-//                        return false;
-//                    }
-                    if(window.setting.password_need){
-                        form.password.value = (hex_md5(hex_md5(form.password.value)+form.checksum.value)).substr(0,10);
+                    if(!validateForm(this)){
+                        return false;
                     }
+//                    if(window.setting.password_need){
+//                        form.password.value = (hex_md5(hex_md5(form.password.value)+form.checksum.value)).substr(0,10);
+//                    }
                     var xmlhttp = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP"),param = '';
                     param += 'userAccount='+encodeURIComponent(form.__name.value)+'&';
                     param += 'userPwd='+ encodeURIComponent(form.password.value.trim())+'&';
@@ -142,10 +142,10 @@
                                     form.password.value = '';
                                     form.VerifyCode.value='';
                                     alert(tx);
-                                }else if(tx.indexOf('upgrade.png')){
+                                }else if(tx.indexOf('upgrade.png')!= -1){
                                     location.href = '/user/logout';
                                     return false;
-                                }else if(tx.indexOf('停用')){
+                                }else if(tx.indexOf('停用')!=-1){
                                     alert( '抱歉，公司被停用了！');
                                     return false;
                                 }
