@@ -22,6 +22,7 @@ public interface OrderMapper {
                                  @Param("gameType") String gameType, @Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize );
 
     List<MemberReportDto> getOrderHistory(@Param("handicapId") String handicapId, @Param("userid") String userId);
+    List<MemberReportDto> getOrderHistoryByRiqi( @Param("userid") String userId,@Param("riqi") String riqi, @Param("riqi2") String riqi2);
 
     Orders selectByPrimaryKey(String id);
 

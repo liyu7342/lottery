@@ -20,10 +20,44 @@
     <result column="lianmadan" jdbcType="VARCHAR" property="lianmadan" />
     <result column="oddSet" jdbcType="DECIMAL" property="oddset" />
     <result column="IsMuti" jdbcType="BIT" property="isMuti"/>
+    <result column="dailiId" jdbcType="VARCHAR" property="dailiId" />
+    <result column="dailiAccount" jdbcType="VARCHAR" property="dailiAccount"/>
+    <result column="dailiName" jdbcType="VARCHAR" property="dailiName"/>
+    <result column="dailiAmt" jdbcType="DECIMAL" property="dailiAmt"/>
+    <result column="dailiRetreat" jdbcType="DECIMAL" property="dailiRetreat"/>
+    <result column="dailiRetreatAmt" jdbcType="DECIMAL" property="dailiRetreatAmt"/>
+    <result column="dailiWinAmt" jdbcType="DECIMAL" property="dailiWinamt"/>
+    <result column="retreatAmt" jdbcType="DECIMAL" property="retreatAmt"/>
+    <result column="zongdaiId" jdbcType="VARCHAR" property="zongdaiId" />
+    <result column="zongdaiAccount" jdbcType="VARCHAR" property="zongdaiAccount"/>
+    <result column="zongdaiName" jdbcType="VARCHAR" property="zongdaiName"/>
+    <result column="zongdaiAmt" jdbcType="DECIMAL" property="zongdaiAmt"/>
+    <result column="zongdaiRetreat" jdbcType="DECIMAL" property="zongdaiRetreat"/>
+    <result column="zongdaiRetreatAmt" jdbcType="DECIMAL" property="zongdaiRetreatAmt"/>
+    <result column="zongdaiWinAmt" jdbcType="DECIMAL" property="zongdaiWinamt"/>
+
+    <result column="gudongId" jdbcType="VARCHAR" property="gudongId" />
+    <result column="gudongAccount" jdbcType="VARCHAR" property="gudongAccount"/>
+    <result column="gudongName" jdbcType="VARCHAR" property="gudongName"/>
+    <result column="gudongAmt" jdbcType="DECIMAL" property="gudongAmt"/>
+    <result column="gudongRetreat" jdbcType="DECIMAL" property="gudongRetreat"/>
+    <result column="gudongRetreatAmt" jdbcType="DECIMAL" property="gudongRetreatAmt"/>
+    <result column="gudongWinAmt" jdbcType="DECIMAL" property="gudongWinamt"/>
+
+    <result column="dagudongId" jdbcType="VARCHAR" property="dagudongId" />
+    <result column="dagudongAccount" jdbcType="VARCHAR" property="dagudongAccount"/>
+    <result column="dagudongName" jdbcType="VARCHAR" property="dagudongName"/>
+    <result column="dagudongAmt" jdbcType="DECIMAL" property="dagudongAmt"/>
+    <result column="dagudongRetreat" jdbcType="DECIMAL" property="dagudongRetreat"/>
+    <result column="dagudongRetreatAmt" jdbcType="DECIMAL" property="dagudongRetreatAmt"/>
+    <result column="dagudongWinAmt" jdbcType="DECIMAL" property="dagudongWinamt"/>
+
   </resultMap>
   <sql id="Base_Column_List">
-    Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
-    lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti
+     Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
+    lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti,dailiId,dailiaccount,dailiname,dailiamt,dailiRetreat,dailiRetreatAmt,dailiwinamt
+      ,zongdaiId,zongdaiaccount,zongdainame,zongdaiamt,zongdairetreat,zongdairetreatamt,zongdaiwinamt,gudongId,gudongaccount,gudongname,gudongamt,gudongretreat,gudongretreatamt,gudongwinamt
+      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -52,12 +86,20 @@
   <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
     insert into orders (Id,  userId,handicapId,orderType,
       gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset
-      ,IsMuti)
+      ,IsMuti,dailiId,dailiaccount,dailiname,dailiamt,dailiRetreat,dailiRetreatAmt,dailiwinamt
+      ,zongdaiId,zongdaiaccount,zongdainame,zongdaiamt,zongdairetreat,zongdairetreatamt,zongdaiwinamt
+      ,gudongId,gudongaccount,gudongname,gudongamt,gudongretreat,gudongretreatamt,gudongwinamt
+      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account
+      ,retreatAmt)
     values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{totalAmount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
       #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},
-      #{oddset,jdbcType=VARCHAR},#{isMuti,jdbcType=BIT})
+      #{oddset,jdbcType=VARCHAR},#{isMuti,jdbcType=BIT},#{dailiId,jdbcType=VARCHAR},#{dailiAccount,jdbcType=VARCHAR},#{dailiName,jdbcType=VARCHAR},#{dailiAmt,jdbcType=DECIMAL},#{dailiRetreat,jdbcType=DECIMAL},#{dailiRetreatAmt,jdbcType=DECIMAL},#{dailiWinamt,jdbcType=DECIMAL},
+      #{zongdaiId,jdbcType=VARCHAR},#{zongdaiAccount,jdbcType=VARCHAR},#{zongdaiName,jdbcType=VARCHAR},#{zongdaiAmt,jdbcType=DECIMAL},#{zongdaiRetreat,jdbcType=DECIMAL},#{zongdaiRetreatAmt,jdbcType=DECIMAL},#{zongdaiWinamt,jdbcType=DECIMAL},
+      #{gudongId,jdbcType=VARCHAR},#{gudongAccount,jdbcType=VARCHAR},#{gudongName,jdbcType=VARCHAR},#{gudongAmt,jdbcType=DECIMAL},#{gudongRetreat,jdbcType=DECIMAL},#{gudongRetreatAmt,jdbcType=DECIMAL},#{gudongWinamt,jdbcType=DECIMAL},
+      #{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongName,jdbcType=VARCHAR},#{dagudongAmt,jdbcType=DECIMAL},#{dagudongRetreat,jdbcType=DECIMAL},#{dagudongRetreatAmt,jdbcType=DECIMAL},#{dagudongWinamt,jdbcType=DECIMAL},
+      #{account,jdbcType=VARCHAR},#{retreatAmt,jdbcType=DECIMAL})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orders
@@ -141,7 +183,7 @@
   <resultMap id="UserHistoryMap" type="com.fr.lottery.dto.MemberReportDto">
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
-    <result column="historyDate" jdbcType="VARCHAR" property="historyDate" />
+    <result column="riqi" jdbcType="VARCHAR" property="riqi" />
     <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
     <result column="amount" jdbcType="VARCHAR" property="amount" />
     <result column="totalAmount" jdbcType="VARCHAR" property="totalAmount" />
@@ -150,7 +192,7 @@
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-    SELECT handicap.id,od.userid,riqi as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
+    SELECT handicap.id,od.userid,riqi ,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
       ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
     FROM orders
     INNER  JOIN orderdetail od on orders.id = od.orderId
@@ -164,8 +206,29 @@
         </if>
       </where>
       GROUP  BY od.userid,od.handicapId
-    ORDER  BY QiShu desc
+    ORDER  BY riqi desc
 
   </select>
 
+  <select id="getOrderHistoryByRiqi" resultMap="UserHistoryMap">
+    SELECT handicap.id,od.userid,riqi ,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
+    ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
+    FROM orders
+    INNER  JOIN orderdetail od on orders.id = od.orderId
+    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
+    <where>
+      <if test="userid!='' and userid!=null" >
+        AND od.userid = #{userid,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi!='' and riqi!=null" >
+        AND handicap.riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND handicap.riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+    </where>
+    GROUP  BY od.userid,od.handicapId
+    ORDER  BY riqi desc
+
+  </select>
 </mapper>

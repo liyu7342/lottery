@@ -35,7 +35,7 @@
                                 <tbody movod='movod'>
                                 <#list histories as obj>
                                 <tr>
-                                    <td> <a href="../order/list?id=${obj.id}&amp;drawdate=${obj.historyDate!''}">${obj.historyDate!''}</a>
+                                    <td> <a href="../order/list?id=${obj.id}&drawdate=${obj.riqi!''}">${obj.riqi!''}</a>
                                     </td>
                                     <td>${(obj.orderNum)!''}</td>
                                     <td>${(obj.amount)!''}</td>

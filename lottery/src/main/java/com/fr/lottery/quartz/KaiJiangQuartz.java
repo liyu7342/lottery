@@ -31,10 +31,10 @@ public class KaiJiangQuartz {
           String str=  handicapService.get6hbd(url);
           try{
 
-          if(StringUtils.isNotBlank(str)) {
+          if(StringUtils.isNotBlank(str) && !"404".equals(str)) {
               JsonObject jsonObject = JsonUtil.getJson(str);
               if (jsonObject != null && !jsonObject.get("id").isJsonNull() && !jsonObject.get("year").isJsonNull()) {
-                  if ((jsonObject.get("id").getAsString()).equals(handicap.getQishu())) {
+                  if ((jsonObject.get("id").getAsInt()) == Integer.valueOf(handicap.getQishu())) {
                       if (jsonObject.get("ma").isJsonArray()) {
                           JsonArray jsonArray = jsonObject.get("ma").getAsJsonArray();
 
@@ -116,7 +116,7 @@ public class KaiJiangQuartz {
                 repeatTime++;
                 if(repeatTime>200)
                     break;
-                System.out.println("Thread.sleep(5000)");
+                System.out.println("第 "+ index +" 次请求 url："+url+"      Thread.sleep(5000)  ");
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();

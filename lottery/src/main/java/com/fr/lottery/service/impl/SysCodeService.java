@@ -72,9 +72,7 @@ public class SysCodeService implements ISysCodeService {
     @Override
     public synchronized String getQiShuAutoCode(){
         Calendar cal=Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getDefault());
-        Lunar lunar=new Lunar(cal);
-        String year =Integer.toString(lunar.getYear());
+         String year=Integer.toString( cal.get(Calendar.YEAR));
         Long seq = sysCodeMapper.getNextSeq(CodeTypeEnum.期數.getValue(),year);
         if(seq==null)
             seq=1L;

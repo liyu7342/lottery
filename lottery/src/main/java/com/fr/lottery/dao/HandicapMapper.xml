@@ -83,6 +83,12 @@
     from handicap
     where Id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="getHandicapByRiqi" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from handicap
+    where riqi = #{riqi,jdbcType=VARCHAR}
+  </select>
   <select id="getCurrentHandicaps" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"></include>
     FROM  handicap

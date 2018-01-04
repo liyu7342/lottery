@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fr.lottery.dao.ReportMapper">
-  <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Orders">
-    <id column="Id" jdbcType="VARCHAR" property="id" />
-    <result column="userId" jdbcType="VARCHAR" property="userid" />
-    <result column="handicapId" jdbcType="VARCHAR" property="handicapId" />
-    <result column="gameType" jdbcType="VARCHAR" property="gametype" />
-    <result column="no" jdbcType="VARCHAR" property="no" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="odds" jdbcType="DECIMAL" property="odds" />
-    <result column="retreat" jdbcType="DECIMAL" property="retreat"/>
-    <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
-    <result column="amount" jdbcType="INTEGER" property="amount" />
-    <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
-    <result column="canWinAmount" jdbcType="DECIMAL" property="canWinAmount"/>
-    <result column="totalAmount" jdbcType="INTEGER" property="totalAmount" />
-    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
-    <result column="lianmatype" jdbcType="VARCHAR" property="lianmatype" />
-    <result column="lianmadan" jdbcType="VARCHAR" property="lianmadan" />
-    <result column="oddSet" jdbcType="DECIMAL" property="oddset" />
-    <result column="IsMuti" jdbcType="BIT" property="isMuti"/>
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.fr.lottery.entity.Orders">
+        <id column="Id" jdbcType="VARCHAR" property="id"/>
+        <result column="userId" jdbcType="VARCHAR" property="userid"/>
+        <result column="handicapId" jdbcType="VARCHAR" property="handicapId"/>
+        <result column="gameType" jdbcType="VARCHAR" property="gametype"/>
+        <result column="no" jdbcType="VARCHAR" property="no"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="odds" jdbcType="DECIMAL" property="odds"/>
+        <result column="retreat" jdbcType="DECIMAL" property="retreat"/>
+        <result column="orderType" jdbcType="VARCHAR" property="orderType"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="winAmount" jdbcType="DECIMAL" property="winAmount"/>
+        <result column="canWinAmount" jdbcType="DECIMAL" property="canWinAmount"/>
+        <result column="totalAmount" jdbcType="INTEGER" property="totalAmount"/>
+        <result column="createdate" jdbcType="TIMESTAMP" property="createdate"/>
+        <result column="lianmatype" jdbcType="VARCHAR" property="lianmatype"/>
+        <result column="lianmadan" jdbcType="VARCHAR" property="lianmadan"/>
+        <result column="oddSet" jdbcType="DECIMAL" property="oddset"/>
+        <result column="IsMuti" jdbcType="BIT" property="isMuti"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
     lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti
   </sql>
-  <select id="selectByExample"  resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from orders
+    <select id="selectByExample" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
 
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from orders
-    where Id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        where Id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from orders
     where Id = #{id,jdbcType=VARCHAR}
   </delete>
 
-  <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
+    <insert id="insert" parameterType="com.fr.lottery.entity.Orders">
     insert into orders (Id,  userId,handicapId,orderType,
       gameType, no,description, odds,amount,totalAmount,retreat,winAmount, createdate,orderNo,lianmatype,lianmadan,canWinAmount,oddset
       ,IsMuti)
@@ -52,12 +52,12 @@
       #{orderNo,jdbcType=VARCHAR},#{lianmatype,jdbcType=VARCHAR},#{lianmadan,jdbcType=VARCHAR},#{canWinAmount,jdbcType=DECIMAL},
       #{oddset,jdbcType=VARCHAR},#{isMuti,jdbcType=BIT})
   </insert>
-  <select id="countByExample"  resultType="java.lang.Long">
+    <select id="countByExample" resultType="java.lang.Long">
     select count(*) from orders
 
   </select>
 
-  <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Orders">
+    <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Orders">
     update orders
     set userId = #{userid,jdbcType=VARCHAR},
       handicapId=#{handicapId,jdbcType=VARCHAR},
@@ -73,92 +73,143 @@
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <update id="updateWinAmountByPrimaryKey">
+    <update id="updateWinAmountByPrimaryKey">
     UPDATE orders set winAmount=#{winAmount,jdbcType=DECIMAL} WHERE Id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <update id="settlement" statementType="CALLABLE" >
+    <update id="settlement" statementType="CALLABLE">
       Call P_DB_Settlement1(#{p_handicapId,mode=IN,jdbcType=VARCHAR})
   </update>
-<select id="countByUserId" resultType="java.lang.Long">
-   select count(1) from orders
-   <where>
-     <if test="handicapId!='' and handicapId!=null" >
-       AND handicapId = #{handicapId,jdbcType=VARCHAR}
-     </if>
-     <if test="userid!='' and userid!=null" >
-       AND userid = #{userid,jdbcType=VARCHAR}
-     </if>
-     <if test="gameType!='' and gameType!=null" >
-       AND gameType = #{gameType,jdbcType=VARCHAR}
-     </if>
-   </where>
-</select>
+    <select id="countByUserId" resultType="java.lang.Long">
+        select count(1) from orders
+        <where>
+            <if test="handicapId!='' and handicapId!=null">
+                AND handicapId = #{handicapId,jdbcType=VARCHAR}
+            </if>
+            <if test="userid!='' and userid!=null">
+                AND userid = #{userid,jdbcType=VARCHAR}
+            </if>
+            <if test="gameType!='' and gameType!=null">
+                AND gameType = #{gameType,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 
-  <select id="getOrderDetails"  resultMap="BaseResultMap">
-    select <include refid="Base_Column_List" />
-    from orders
-    <where>
-      <if test="handicapId!='' and handicapId!=null" >
-        AND handicapId = #{handicapId,jdbcType=VARCHAR}
-      </if>
-      <if test="userid!='' and userid!=null" >
-        AND userid = #{userid,jdbcType=VARCHAR}
-      </if>
-      <if test="gameType!='' and gameType!=null" >
-        AND gameType = #{gameType,jdbcType=VARCHAR}
-      </if>
-    </where>
+    <select id="getOrderDetails" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        <where>
+            <if test="handicapId!='' and handicapId!=null">
+                AND handicapId = #{handicapId,jdbcType=VARCHAR}
+            </if>
+            <if test="userid!='' and userid!=null">
+                AND userid = #{userid,jdbcType=VARCHAR}
+            </if>
+            <if test="gameType!='' and gameType!=null">
+                AND gameType = #{gameType,jdbcType=VARCHAR}
+            </if>
+        </where>
 
-    order by orderNo DESC
-    <if test="pageIndex!=null ">
-      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
-    </if>
-  </select>
-  <select id="getTotal"  resultMap="BaseResultMap">
-    select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)) as canWinAmount,sum(IFNULL(winAmount,0)) as winAmount
-    from orders
-    <where>
-      <if test="handicapId!='' and handicapId!=null" >
-        AND handicapId = #{handicapId,jdbcType=VARCHAR}
-      </if>
-      <if test="userid!='' and userid!=null" >
-        AND userid = #{userid,jdbcType=VARCHAR}
-      </if>
-      <if test="gameType!='' and gameType!=null" >
-        AND gameType = #{gameType,jdbcType=VARCHAR}
-      </if>
-    </where>
-  </select>
-
-  <resultMap id="UserHistoryMap" type="com.fr.lottery.dto.MemberReportDto">
-    <result column="id" jdbcType="VARCHAR" property="id" />
-    <result column="userId" jdbcType="VARCHAR" property="userId" />
-    <result column="historyDate" jdbcType="VARCHAR" property="historyDate" />
-    <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
-    <result column="amount" jdbcType="VARCHAR" property="amount" />
-    <result column="totalAmount" jdbcType="VARCHAR" property="totalAmount" />
-    <result column="winAmount" jdbcType="VARCHAR" property="winAmount" />
-    <result column="canWinAmount" jdbcType="VARCHAR" property="canWinAmount" />
-  </resultMap>
-
-  <select id="getOrderHistory" resultMap="UserHistoryMap">
-    SELECT handicap.id,od.userid,riqi as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
-      ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
-    FROM orders
-    INNER  JOIN orderdetail od on orders.id = od.orderId
-    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
-      <where>
-        <if test="userid!='' and userid!=null" >
-          AND od.userid = #{userid,jdbcType=VARCHAR}
+        order by orderNo DESC
+        <if test="pageIndex!=null ">
+            limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
         </if>
-        <if test="handicapId!='' and handicapId!=null" >
-          AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
-        </if>
-      </where>
-      GROUP  BY od.userid,od.handicapId
-    ORDER  BY QiShu desc
+    </select>
+    <select id="getTotal" resultMap="BaseResultMap">
+        select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)) as
+        canWinAmount,sum(IFNULL(winAmount,0)) as winAmount
+        from orders
+        <where>
+            <if test="handicapId!='' and handicapId!=null">
+                AND handicapId = #{handicapId,jdbcType=VARCHAR}
+            </if>
+            <if test="userid!='' and userid!=null">
+                AND userid = #{userid,jdbcType=VARCHAR}
+            </if>
+            <if test="gameType!='' and gameType!=null">
+                AND gameType = #{gameType,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 
+    <resultMap id="UserHistoryMap" type="com.fr.lottery.dto.MemberReportDto">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="userId" jdbcType="VARCHAR" property="userId"/>
+        <result column="historyDate" jdbcType="VARCHAR" property="historyDate"/>
+        <result column="orderNum" jdbcType="VARCHAR" property="orderNum"/>
+        <result column="amount" jdbcType="VARCHAR" property="amount"/>
+        <result column="totalAmount" jdbcType="VARCHAR" property="totalAmount"/>
+        <result column="winAmount" jdbcType="VARCHAR" property="winAmount"/>
+        <result column="canWinAmount" jdbcType="VARCHAR" property="canWinAmount"/>
+    </resultMap>
+
+    <select id="getOrderHistory" resultMap="UserHistoryMap">
+        SELECT handicap.id,od.userid,riqi as historyDate,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as
+        canWinAmount
+        ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
+        FROM orders
+        INNER JOIN orderdetail od on orders.id = od.orderId
+        INNER JOIN Handicap on orders.handicapId= Handicap.Id
+        <where>
+            <if test="userid!='' and userid!=null">
+                AND od.userid = #{userid,jdbcType=VARCHAR}
+            </if>
+            <if test="handicapId!='' and handicapId!=null">
+                AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+            </if>
+        </where>
+        GROUP BY od.userid,od.handicapId
+        ORDER BY riqi desc
+
+    </select>
+
+    <select id="getDailiReport" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.dto.DailiReportDto">
+    select dailiId as id,CONCAT(dailiaccount,'.補') as account ,dailiname as userName,1 AS isbucang,
+    count(1) as orderNum,0 as amount ,0 as winAmount,0 as retreat,0 as memberActualAmt,
+    -sum(totalAmount) as zhancheng, 0 as dailiretreat,
+    sum(IFNULL(winAmount,0) +retreatamt) as dailiwinamt,
+    sum(totalAmount)  AS parentShareUp,-sum(IFNULL(winAmount,0) +retreatamt) as parentWinAmt
+    from orders
+    where orders.dailiId=#{p_userId,jdbcType=VARCHAR}
+    AND  orders.userId=#{p_userId,jdbcType=VARCHAR}
+    AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+    group by dailiId,dailiaccount,dailiname
+    UNION
+    select u.id,u.account,u.userName,0 AS isBucang,count(1) as orderNum,sum(totalAmount) as amount,sum(IFNULL(winAmount,0)) as winAmount,
+    sum(retreatamt) as retreat, sum(IFNULL(winAmount,0) + retreatamt) as memberActualAmt,
+    sum(dailiamt) as zhancheng,sum(dailiretreatamt-retreatamt) as dailiretreat,
+    sum(IFNULL(dailiwinamt,0) +dailiretreatamt-retreatamt) as dailiwinamt,
+    sum(totalAmount-dailiamt) AS parentShareUp,sum(-(IFNULL(winAmount,0))-(dailiRetreatAmt)-IFNULL(dailiwinamt,0)) as parentWinAmt
+    from orders
+    INNER JOIN user u on orders.userId = u.id
+    where orders.dailiId=#{p_userId,jdbcType=VARCHAR}
+    AND  orders.userId!=orders.dailiId
+    AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+    group by u.id,u.account,u.userName
   </select>
+
+    <select id="getZongDaiReport" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.dto.ZongdaiReportDto">
+
+   select dailiId as id,dailiaccount as account,dailiname as UserName,0 AS isBucang,count(1) as orderNum,sum(totalAmount) as amount,
+		sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0) END) as winAmount,
+sum(IFNULL(winAmount,0)) as allAmount,
+    sum(case WHEN userId=dailiId THEN 0  else  retreatamt END ) as retreat,
+		sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0)+retreatamt END ) as memberActualAmt,
+    sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) ) AS dailiToParentShareUp,
+sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)) as dailiToParentWinamt,
+	SUM(zongdaiamt) as zhancheng,sum(IFNULL(zongdaiwinamt,0)) as zongdaiwinamt ,sum(zongdairetreatAmt-dailiRetreatAmt) AS zongdairetreat,
+	sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) -zongdaiamt) as parentShareUp,
+	sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)
+			-(IFNULL(zongdaiwinamt,0)+zongdairetreatAmt-dailiRetreatAmt)) parentWinamt
+    from orders
+    where orders.zongdaiid=#{p_userId,jdbcType=VARCHAR}
+    AND  orders.userId!=orders.dailiId
+    AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+    group by dailiId,dailiaccount,dailiname
+  </select>
+
 
 </mapper>

@@ -1,14 +1,19 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <script type="text/javascript">
         var domainOK = 1, domain = 'pm10.x.mmm33.us';
-        window.gms_fcorp = parseInt("0",10);
-        try{if(domain){document.domain = domain;}}catch(x){domainOK = 0;}
+        window.gms_fcorp = parseInt("0", 10);
+        try {
+            if (domain) {
+                document.domain = domain;
+            }
+        } catch (x) {
+            domainOK = 0;
+        }
     </script>
     <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>${user.account!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
@@ -17,7 +22,7 @@
 
 
 </head>
-<body class="reportzongdaili" >
+<body class="reportzongdaili">
 <div id="doc3" class="yui-t7">
     <div id="bd">
         <div id="yui-main">
@@ -29,12 +34,15 @@
                                 <li><h2 class="g-tit">報表管理</h2></li>
                                 <li class="ps">總代[<span class='greenrpt'>升</span>]ad011
                                     -- 日期範圍：2017-11-23 ~ 2017-11-23
-                                    -- 報表分類：總賬 -- <a href="http://pm10.x.mmm33.us:80/msdid6321379a_9477/reports/user_report.htm?draw_date=2017-11-23&draw_date2=2017-11-23">股東</a>->        </li>
+                                    -- 報表分類：總賬 -- <a
+                                            href="http://pm10.x.mmm33.us:80/msdid6321379a_9477/reports/user_report.htm?draw_date=2017-11-23&draw_date2=2017-11-23">股東</a>->
+                                </li>
                             </ul>
                         </div>
                         <div class="bd">
                             <table class="g-t1 g-t2 tr nw">
-                                <thead><tr>
+                                <thead>
+                                <tr>
                                     <td>序號</td>
                                     <td>代理</td>
                                     <td>筆數</td>
@@ -57,10 +65,54 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <#list reportDtos as reportDto>
+                                    <tr>
+                                        <td>${(reportDto_index)+1!''}</td>
+                                        <td>
+                                            <#if reportDto.isBucang == 0>
+                                                <a href="/report/z_daili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
+                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                </a>
+                                        </td>
+                                        <#else>
+                                            <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
+                                                    class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}.補</a></td>
+                                            </#if>
+
+                                            <td>${reportDto.orderNum!'0'}</td>
+                                            <td>${reportDto.memberCount!'0'}</td>
+                                            <td>${reportDto.amount!'0'}</td>
+                                            <td>${reportDto.memberActualAmt!'0'}</td>
+                                            <td>${reportDto.dailiToParentShareUp!'0'}</td>
+                                            <td class="bg">${reportDto.dailiToParentWinamt!'0'}</td>
+                                            <td>${reportDto.zhancheng!'0'}</td>
+                                            <td>${reportDto.zongdaiRetreat!'0'}</td>
+                                            <td class="bg">${reportDto.zongdaiWinamt!'0'}</td>
+                                            <td>${reportDto.parentShareUp!'0'}</td>
+                                            <td class="bg">${reportDto.parentWinamt!'0'}</td>
+
+                                    </tr>
+                                </#list>
+                                <tfoot>
                                 <tr>
-                                    <td>1</td>
-                                    <td><a  href="z_daili.htm?draw_date=2017-11-23&draw_date2=2017-11-23&type=1&p_level=4&__account=qtf998&__name=%E9%A3%8E&id=9481">[<span class='greenrpt'>风</span>]qtf998</a></td><td>890</td><td>4</td><td>20,211</td><td>6,419</td><td>20,211</td><td class="hid">5,741</td><td class="hid">1,044</td><td class="bg">6,786</td><td>6,063</td><td class="hid">-1,722</td><td class="hid">-251</td><td>62</td><td class="bg">-1,973</td><td>14,147</td><td class="hid">-4,019</td><td class="hid">-793</td><td class="bg">-4,813</td></tr><tfoot><tr>
-                                <td></td><td>總計</td><td>890</td><td>4</td><td>20,211</td><td>6,419</td><td>20,211</td><td class="hid">5,741</td><td class="hid">1,044</td><td class="bg">6,786</td><td>6,063</td><td class="hid">-1,722</td><td class="hid">-251</td><td>62</td><td class="red" class="bg">-1,973</td><td>14,147</td><td class="hid">-4,019</td><td class="hid">-793</td><td class="bg">-4,813</td></tr></tfoot>            </tbody>
+                                    <td></td>
+                                    <td>總計</td>
+                                    <td>${reportTotal.orderNum!'0'}</td>
+                                    <td>${reportTotal.memberCount!'0'}</td>
+                                    <td>${reportTotal.amount!'0'}</td>
+                                     <td>${reportTotal.memberActualAmt!'0'}</td>
+                                    <td>${reportTotal.dailiToParentShareUp!'0'}</td>
+                                    <td class="bg">${reportTotal.dailiToParentWinamt!'0'}</td>
+
+                                    <td >${reportTotal.zhancheng!'0'}</td>
+                                    <td>${reportTotal.zongdaiRetreat!'0'}</td>
+                                    <td class="red" class="bg">${reportTotal.zongdaiWinamt!'0'}</td>
+                                    <td>${reportTotal.parentShareUp!'0'}</td>
+
+                                    <td class="bg">${reportTotal.parentWinamt!'0'}</td>
+                                </tr>
+                                </tfoot>
+                                </tbody>
                             </table>
                         </div>
                         <div class="ft"></div>
@@ -74,14 +126,15 @@
             <div class="hd rh"></div>
             <div class="bd rb">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
-        </div>    </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     window.setting = {
         login_path: '/msdid6321379a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
         draw_refersh: 20000, //設置開關盤刷新頻率
-        log4js_type:  0, //設置log4javascript的類型
+        log4js_type: 0, //設置log4javascript的類型
         log4js_level: 'INFO', //設置log4javascript的級別
         isStrongPwd: true //是否啟用複雜密碼
     };

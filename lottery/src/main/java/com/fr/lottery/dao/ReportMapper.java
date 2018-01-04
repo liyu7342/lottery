@@ -1,6 +1,9 @@
 package com.fr.lottery.dao;
 
+import com.fr.lottery.condition.StatisCondition;
+import com.fr.lottery.dto.DailiReportDto;
 import com.fr.lottery.dto.MemberReportDto;
+import com.fr.lottery.dto.ZongdaiReportDto;
 import com.fr.lottery.entity.Orders;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -34,4 +37,8 @@ public interface ReportMapper {
     Orders getTotal(@Param("handicapId") String handicapId, @Param("userid") String userId, @Param("gameType") String gameType);
 
     int settlement(@Param("handicapId") String handicapId);
+
+    List<DailiReportDto> getDailiReport(StatisCondition condition);
+
+    List<ZongdaiReportDto>  getZongDaiReport(StatisCondition condition);
 }

@@ -26,7 +26,9 @@ public interface IOrderService {
     Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId,Integer pageSize);
     Orders getTotal(String categoryId);
     Orders getTotal(String handicapId,String categoryId);
+    Orders getTotal(String handicapId,String categoryId,String userId);
     List<MemberReportDto> getOrderHistory();
+    List<MemberReportDto> getOrderHistoryByRiqi(String userId,String riqi,String riqi2);
     List<StatisDto> getStatis(String categoryId,String[] gameTypes);
     boolean settlement(String handicapId) ;
     Integer getOrderAmount();

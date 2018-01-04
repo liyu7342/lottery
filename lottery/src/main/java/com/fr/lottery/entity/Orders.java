@@ -41,6 +41,38 @@ public class Orders {
 
     private Boolean isMuti;
 
+    private Float retreatAmt;
+    private String dailiId;
+    private String gudongId;
+    private String zongdaiId;
+    private String dagudongId;
+    private String account;
+    private String dailiAccount;
+    private String zongdaiAccount;
+    private String gudongAccount;
+    private String dagudongAccount;
+    private String dagudongName;
+    private String dailiName;
+    private String zongdaiName;
+    private String gudongName;
+    private Float dailiAmt;
+    private Float zongdaiAmt;
+    private Float gudongAmt;
+    private Float dagudongAmt;
+    private Float dailiRetreat;
+    private Float zongdaiRetreat;
+    private Float gudongRetreat;
+    private Float dagudongRetreat;
+    private Float dailiRetreatAmt;
+    private Float zongdaiRetreatAmt;
+    private Float gudongRetreatAmt;
+    private Float dagudongRetreatAmt;
+    private Float dailiWinamt;
+    private Float zongdaiWinamt;
+    private Float gudongWinamt;
+    private Float dagudongWinamt;
+
+
     public String getId() {
         return id;
     }
@@ -192,5 +224,246 @@ public class Orders {
 
     public void setIsMuti(Boolean isMuti) {
         this.isMuti = isMuti;
+    }
+
+
+    public String getDailiId() {
+        return dailiId;
+    }
+
+    public void setDailiId(String dailiId) {
+        this.dailiId = dailiId;
+    }
+
+    public String getZongdaiId() {
+        return zongdaiId;
+    }
+
+    public void setZongdaiId(String zongdaiId) {
+        this.zongdaiId = zongdaiId;
+    }
+
+    public String getGudongId() {
+        return gudongId;
+    }
+
+    public void setGudongId(String gudongId) {
+        this.gudongId = gudongId;
+    }
+
+    public String getDagudongId() {
+        return dagudongId;
+    }
+
+    public void setDagudongId(String dagudongId) {
+        this.dagudongId = dagudongId;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String huiyuanAccount) {
+        this.account = huiyuanAccount;
+    }
+
+    public String getDailiAccount() {
+        return dailiAccount;
+    }
+
+    public void setDailiAccount(String dailiAccount) {
+        this.dailiAccount = dailiAccount;
+    }
+
+    public String getZongdaiAccount() {
+        return zongdaiAccount;
+    }
+
+    public void setZongdaiAccount(String zongdaiAccount) {
+        this.zongdaiAccount = zongdaiAccount;
+    }
+
+    public String getGudongAccount() {
+        return gudongAccount;
+    }
+
+    public void setGudongAccount(String gudongAccount) {
+        this.gudongAccount = gudongAccount;
+    }
+
+    public String getDagudongAccount() {
+        return dagudongAccount;
+    }
+
+    public void setDagudongAccount(String dagudongAccount) {
+        this.dagudongAccount = dagudongAccount;
+    }
+
+    public Float getDailiAmt() {
+        return dailiAmt;
+    }
+
+    public void setDailiAmt(Float dailiAmt) {
+        this.dailiAmt = dailiAmt;
+    }
+
+    public Float getZongdaiAmt() {
+        return zongdaiAmt;
+    }
+
+    public void setZongdaiAmt(Float zongdaiAmt) {
+        this.zongdaiAmt = zongdaiAmt;
+    }
+
+    public Float getGudongAmt() {
+        return gudongAmt;
+    }
+
+    public void setGudongAmt(Float gudongAmt) {
+        this.gudongAmt = gudongAmt;
+    }
+
+    public Float getDagudongAmt() {
+        return dagudongAmt;
+    }
+
+    public void setDagudongAmt(Float dagudongAmt) {
+        this.dagudongAmt = dagudongAmt;
+    }
+
+    public Float getDailiRetreat() {
+        return dailiRetreat;
+    }
+
+    public void setDailiRetreat(Float dailiRetreat) {
+        this.dailiRetreat = dailiRetreat;
+    }
+
+    public Float getZongdaiRetreat() {
+        return zongdaiRetreat;
+    }
+
+    public void setZongdaiRetreat(Float zongdaiRetreat) {
+        this.zongdaiRetreat = zongdaiRetreat;
+    }
+
+    public Float getGudongRetreat() {
+        return gudongRetreat;
+    }
+
+    public void setGudongRetreat(Float gudongRetreat) {
+        this.gudongRetreat = gudongRetreat;
+    }
+
+    public Float getDagudongRetreat() {
+        return dagudongRetreat;
+    }
+
+    public void setDagudongRetreat(Float dagudongRetreat) {
+        this.dagudongRetreat = dagudongRetreat;
+    }
+
+    public Float getDailiRetreatAmt() {
+        return dailiRetreatAmt;
+    }
+
+    public void setDailiRetreatAmt(Float dailiRetreatAmt) {
+        this.dailiRetreatAmt = dailiRetreatAmt;
+    }
+
+    public Float getZongdaiRetreatAmt() {
+        return zongdaiRetreatAmt;
+    }
+
+    public void setZongdaiRetreatAmt(Float zongdaiRetreatAmt) {
+        this.zongdaiRetreatAmt = zongdaiRetreatAmt;
+    }
+
+    public Float getGudongRetreatAmt() {
+        return gudongRetreatAmt;
+    }
+
+    public void setGudongRetreatAmt(Float gudongRetreatAmt) {
+        this.gudongRetreatAmt = gudongRetreatAmt;
+    }
+
+    public Float getDagudongRetreatAmt() {
+        return dagudongRetreatAmt;
+    }
+
+    public void setDagudongRetreatAmt(Float dagudongRetreatAmt) {
+        this.dagudongRetreatAmt = dagudongRetreatAmt;
+    }
+
+    public Float getDailiWinamt() {
+        return dailiWinamt;
+    }
+
+    public void setDailiWinamt(Float dailiWinamt) {
+        this.dailiWinamt = dailiWinamt;
+    }
+
+    public Float getZongdaiWinamt() {
+        return zongdaiWinamt;
+    }
+
+    public void setZongdaiWinamt(Float zongdaiWinamt) {
+        this.zongdaiWinamt = zongdaiWinamt;
+    }
+
+    public Float getGudongWinamt() {
+        return gudongWinamt;
+    }
+
+    public void setGudongWinamt(Float gudongWinamt) {
+        this.gudongWinamt = gudongWinamt;
+    }
+
+    public Float getDagudongWinamt() {
+        return dagudongWinamt;
+    }
+
+    public void setDagudongWinamt(Float dagudongWinamt) {
+        this.dagudongWinamt = dagudongWinamt;
+    }
+
+    public String getDagudongName() {
+        return dagudongName;
+    }
+
+    public void setDagudongName(String dagudongName) {
+        this.dagudongName = dagudongName;
+    }
+
+    public String getDailiName() {
+        return dailiName;
+    }
+
+    public void setDailiName(String dailiName) {
+        this.dailiName = dailiName;
+    }
+
+    public String getZongdaiName() {
+        return zongdaiName;
+    }
+
+    public void setZongdaiName(String zongdaiName) {
+        this.zongdaiName = zongdaiName;
+    }
+
+    public String getGudongName() {
+        return gudongName;
+    }
+
+    public void setGudongName(String gudongName) {
+        this.gudongName = gudongName;
+    }
+
+    public Float getRetreatAmt() {
+        return retreatAmt;
+    }
+
+    public void setRetreatAmt(Float retreatAmt) {
+        this.retreatAmt = retreatAmt;
     }
 }

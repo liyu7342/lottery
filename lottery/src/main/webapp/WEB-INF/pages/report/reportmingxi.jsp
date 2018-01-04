@@ -63,7 +63,7 @@
                                         <td>${obj.oddset!''}</td>
                                         <td>
                                             <#if obj.isMuti><a target="popup"
-                                                               href="/report/detai?order_id=${obj.orderNo}&draw_date=2017-11-23&sub=1"
+                                                               href="/report/detail?order_id=${obj.orderNo}&draw_date=${obj.riqi!''}&sub=1"
                                                                fix="600|400|yes|yes" from_page="report"
                                                                game_id="${obj.gameType!''}">${(obj.description)!''}</a>
                                                 <#else>
@@ -74,14 +74,14 @@
                                         <td>${(obj.totalAmount)!''}</td>
                                         <td>${(obj.retreat)!''}</td>
                                         <td
-                                        <#if id!="" && obj.winAmount gt 0 >class="red"</#if>
+                                        <#if obj.id!="" && obj.winAmount gt 0 >class="red"</#if>
                                         >
-                                        <#if id=="">${(obj.canWinAmount)!''}
+                                        <#if obj.id=="">${(obj.canWinAmount)!''}
                                             <#else>
                                             ${(obj.winAmount)!''}</#if>
                                         </td>
                                         <td>
-                                            <#if id=="">下注成功
+                                            <#if obj.id=="">下注成功
                                                 <#else>成功
                                             </#if>
                                         </td>
@@ -92,9 +92,9 @@
                                 <tfoot>
                                 <tr>
                                     <td colspan="5">合計</td>
-                                    <td>122</td>
+                                    <td>${totalAmount!'0'}</td>
                                     <td></td>
-                                    <td>-110</td>
+                                    <td>${(winAmount)!'0'}</td>
                                     <td></td>
                                 </tr>
                                 </tfoot>
@@ -116,6 +116,9 @@
     </div>
 </div>
 <script type="text/javascript">
+    function page(pageid,pagesize,key){
+        location.href="/report/reportmingxi?draw_id=${draw_id}&draw_date0=${draw_date0!''}&type=1&p_level=6&__name=${__name!''}&__account=${__account}&id=${id!''}&pageId="+pageid;
+    }
     window.setting = {
         login_path: '/msdid6321379a/account/login.html', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
@@ -125,7 +128,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 

@@ -10,11 +10,11 @@ public class MemberReportDto {
     /***
      * 注单日期
      */
-    private String historyDate;
+    private String riqi;
     /***
      * 注单数量
      */
-    private String orderNum;
+    private Integer orderNum;
     /***
      * 注单金额
      */
@@ -22,7 +22,7 @@ public class MemberReportDto {
     /**
      * 结果
      */
-    private String winAmount;
+    private Float winAmount;
 
     private String canWinAmount;
 
@@ -36,19 +36,19 @@ public class MemberReportDto {
         this.userId = userId;
     }
 
-    public String getHistoryDate() {
-        return historyDate;
+    public String getRiqi() {
+        return riqi;
     }
 
-    public void setHistoryDate(String historyDate) {
-        this.historyDate = historyDate;
+    public void setRiqi(String riqi) {
+        this.riqi = riqi;
     }
 
-    public String getOrderNum() {
+    public Integer getOrderNum() {
         return orderNum;
     }
 
-    public void setOrderNum(String orderNum) {
+    public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
 
@@ -60,11 +60,11 @@ public class MemberReportDto {
         this.amount = amount;
     }
 
-    public String getWinAmount() {
+    public Float getWinAmount() {
         return winAmount;
     }
 
-    public void setWinAmount(String winAmount) {
+    public void setWinAmount(Float winAmount) {
         this.winAmount = winAmount;
     }
 

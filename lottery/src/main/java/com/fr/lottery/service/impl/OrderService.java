@@ -12,6 +12,7 @@ import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.*;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
+import netscape.security.UserDialogHelper;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,19 +98,6 @@ public class OrderService implements IOrderService {
             orders.setOdds(orderStrs[2]);
             orders.setNo(orderStrs[1]);
             orders.setOddset(orderDto.getOdds_set());
-            String category = GameCfg.getGameCategory(orderStrs[0]);
-            orders.setGametype(orderStrs[0]);
-            if(GameTypeEnum.連碼二.getValue().equals(category) ||GameTypeEnum.尾數連.getValue().equals(category)
-                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue()==category){
-                orders.setIsMuti(true);
-            }
-            else{
-                orders.setIsMuti(false);
-            }
-
-            Float retreat =  limitSetService.findRetreatFromCache(user.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-            orders.setRetreat(retreat);
-            orders.setHandicapId(handicap.getId());
             if (orderStrs.length == 5) {//连码
                 orders.setTotalAmount(orderDto.getOrder_allamount());
                 if (!orderStrs[4].startsWith("3")) {
@@ -122,6 +110,51 @@ public class OrderService implements IOrderService {
             } else {
                 orders.setTotalAmount(orders.getAmount());
             }
+            String category = GameCfg.getGameCategory(orderStrs[0]);
+            orders.setDailiId(user.getDailiId());
+            orders.setZongdaiId(user.getZongdailiId());
+            orders.setGudongId(user.getGudongId());
+            orders.setDagudongId(user.getDagudongId());
+            orders.setDailiName(daili.getUserName());
+            orders.setZongdaiName(zongdai.getUserName());
+            orders.setGudongName(gudong.getUserName());
+            orders.setDagudongName(dagudong.getUserName());
+            orders.setDailiAccount(daili.getAccount());
+            orders.setZongdaiAccount(zongdai.getAccount());
+            orders.setGudongAccount(gudong.getAccount());
+            orders.setDagudongAccount(dagudong.getAccount());
+            orders.setDailiAmt(user.getShareUp() * orders.getAmount()/100F);
+            orders.setGudongAmt(zongdai.getShareUp()* orders.getAmount()/100F);
+            orders.setZongdaiAmt(daili.getShareUp()* orders.getAmount()/100F);
+            orders.setDagudongAmt(gudong.getShareUp()* orders.getAmount()/100F );
+            Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            orders.setDailiRetreat( dailiRetreat);
+            orders.setZongdaiRetreat(zongdaiRetreat);
+            orders.setGudongRetreat(gudongRetreat);
+            orders.setDagudongRetreat( dagudongRetreat);
+            orders.setDailiRetreatAmt(dailiRetreat * orders.getTotalAmount() /100);
+            orders.setZongdaiRetreatAmt(zongdaiRetreat * orders.getTotalAmount()/100);
+            orders.setGudongRetreatAmt(gudongRetreat * orders.getTotalAmount() /100);
+            orders.setDagudongRetreatAmt(dagudongRetreat * orders.getTotalAmount() /100);
+            orders.setAccount(user.getAccount());
+
+            orders.setGametype(orderStrs[0]);
+            if(GameTypeEnum.連碼二.getValue().equals(category) ||GameTypeEnum.尾數連.getValue().equals(category)
+                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue()==category){
+                orders.setIsMuti(true);
+            }
+            else{
+                orders.setIsMuti(false);
+            }
+
+            Float retreat =  limitSetService.findRetreatFromCache(user.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+            orders.setRetreat(retreat);
+            orders.setRetreatAmt(orders.getTotalAmount() * retreat /100);
+            orders.setHandicapId(handicap.getId());
+
             if (orderStrs[1].contains(",")) {
                 String[] nos = orderStrs[1].split(",");
                 if (Global.lotConfigDic.containsKey(orderStrs[0] + nos[0])) {
@@ -213,10 +246,10 @@ public class OrderService implements IOrderService {
                 detail.setGudongAmt(zongdai.getShareUp()* detail.getAmount()/100F);
                 detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
                 detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
-                Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
                 detail.setDailiRetreat(dailiRetreat);
                 detail.setZongdaiRetreat(zongdaiRetreat);
                 detail.setGudongRetreat(gudongRetreat);
@@ -396,10 +429,10 @@ public class OrderService implements IOrderService {
                     detail.setGudongAmt(zongdai.getShareUp()* detail.getAmount()/100F);
                     detail.setZongdaiAmt(daili.getShareUp()* detail.getAmount()/100F);
                     detail.setDagudongAmt(gudong.getShareUp()* detail.getAmount()/100F );
-                    Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
-                    Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                    Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                    Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                    Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
+//                    Float dagudongRetreat = limitSetService.findRetreatFromCache(dagudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
                     detail.setDailiRetreat(dailiRetreat);
                     detail.setZongdaiRetreat(zongdaiRetreat);
                     detail.setGudongRetreat(gudongRetreat);
@@ -455,8 +488,8 @@ public class OrderService implements IOrderService {
             handicapId = handicap.getId();
         }
 
-        List<Orders> details = orderMapper.getOrderDetails(handicapId, UserHelper.getCurrentUser().getId(), "", (pageIndex - 1) * pageSize, pageSize);
-        Long total = orderMapper.countByUserId(handicapId, UserHelper.getCurrentUser().getId(), "");
+        List<Orders> details = orderMapper.getOrderDetails(handicapId, userId, "", (pageIndex - 1) * pageSize, pageSize);
+        Long total = orderMapper.countByUserId(handicapId, userId, "");
 
         return new Page<Orders>(pageIndex, pageSize, total, details);
     }
@@ -476,17 +509,10 @@ public class OrderService implements IOrderService {
     }
 
     public Orders getTotal(String handicapId,String categoryId){
-        if(StringUtils.isBlank(handicapId)){
-            Handicap handicap = handicapService.getCurrentHandicap();
-            if (handicap == null || handicap.getStatus() >= HandicapStatusEnum.Closed.ordinal())
-            {
+        return getTotal(handicapId,categoryId, UserHelper.getCurrentUser().getId());
+    }
 
-            }
-            else{
-                handicapId =handicap.getId();
-            }
-        }
-
+    public Orders getTotal(String handicapId,String categoryId,String userId){
         if(StringUtils.isBlank(handicapId))
         {
             Orders orderDetail = new Orders();
@@ -495,7 +521,7 @@ public class OrderService implements IOrderService {
             orderDetail.setCanWinAmount(0F);
             return orderDetail;
         }
-        Orders orderDetail = orderMapper.getTotal(handicapId,UserHelper.getCurrentUser().getId(),"");
+        Orders orderDetail = orderMapper.getTotal(handicapId,userId,"");
         return orderDetail;
     }
 
@@ -503,6 +529,10 @@ public class OrderService implements IOrderService {
     public List<MemberReportDto> getOrderHistory() {
         String userId = UserHelper.getCurrentUser().getId();
         return orderMapper.getOrderHistory("", userId);
+    }
+    @Override
+    public List<MemberReportDto> getOrderHistoryByRiqi(String userId,String riqi,String riqi2){
+        return orderMapper.getOrderHistoryByRiqi(userId,riqi,riqi2);
     }
 
     @Override

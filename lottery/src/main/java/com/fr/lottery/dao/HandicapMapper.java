@@ -19,6 +19,8 @@ public interface HandicapMapper {
 
     Handicap selectByPrimaryKey(String id);
 
+    Handicap getHandicapByRiqi(String riqi);
+
     int openHandicap(Handicap handicap);
 
     int updateByPrimaryKey(Handicap record);

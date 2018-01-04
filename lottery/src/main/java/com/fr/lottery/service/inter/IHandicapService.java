@@ -13,6 +13,8 @@ public interface IHandicapService {
 
     Handicap selectByPrimaryKey(String id);
 
+    Handicap getHandicapByRiqi(String riqi);
+
     boolean openHandicap(Handicap handicap);
 
 

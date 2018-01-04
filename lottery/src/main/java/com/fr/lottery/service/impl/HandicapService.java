@@ -52,6 +52,10 @@ public class HandicapService implements IHandicapService {
     }
 
     @Override
+    public Handicap getHandicapByRiqi(String riqi) {
+        return  handicapMapper.getHandicapByRiqi(riqi);
+    }
+    @Override
     public boolean openHandicap(Handicap handicap){
         handicap.setStatus(1);
         handicap.setTemastatus(true);
