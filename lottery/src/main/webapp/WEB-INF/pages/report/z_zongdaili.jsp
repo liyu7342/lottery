@@ -32,10 +32,8 @@
                         <div class="hd g-tm">
                             <ul>
                                 <li><h2 class="g-tit">報表管理</h2></li>
-                                <li class="ps">總代[<span class='greenrpt'>升</span>]ad011
-                                    -- 日期範圍：2017-11-23 ~ 2017-11-23
-                                    -- 報表分類：總賬 -- <a
-                                            href="http://pm10.x.mmm33.us:80/msdid6321379a_9477/reports/user_report.htm?draw_date=2017-11-23&draw_date2=2017-11-23">股東</a>->
+                                <li class="ps">
+                                    ${banners!''}
                                 </li>
                             </ul>
                         </div>
@@ -73,23 +71,24 @@
                                                 <a href="/report/z_daili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
                                                         class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
                                                 </a>
-                                        </td>
-                                        <#else>
-                                            <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                    class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}.補</a></td>
-                                            </#if>
 
-                                            <td>${reportDto.orderNum!'0'}</td>
-                                            <td>${reportDto.memberCount!'0'}</td>
-                                            <td>${reportDto.amount!'0'}</td>
-                                            <td>${reportDto.memberActualAmt!'0'}</td>
-                                            <td>${reportDto.dailiToParentShareUp!'0'}</td>
-                                            <td class="bg">${reportDto.dailiToParentWinamt!'0'}</td>
-                                            <td>${reportDto.zhancheng!'0'}</td>
-                                            <td>${reportDto.zongdaiRetreat!'0'}</td>
-                                            <td class="bg">${reportDto.zongdaiWinamt!'0'}</td>
-                                            <td>${reportDto.parentShareUp!'0'}</td>
-                                            <td class="bg">${reportDto.parentWinamt!'0'}</td>
+                                                <#else>
+                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
+                                                            class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}.補</a>
+
+                                            </#if>
+                                        </td>
+                                        <td>${reportDto.orderNum!'0'}</td>
+                                        <td>${reportDto.memberCount!'0'}</td>
+                                        <td>${reportDto.amount!'0'}</td>
+                                        <td>${reportDto.memberActualAmt!'0'}</td>
+                                        <td>${reportDto.dailiToParentShareUp!'0'}</td>
+                                        <td class="bg">${reportDto.dailiToParentWinamt!'0'}</td>
+                                        <td>${reportDto.zhancheng!'0'}</td>
+                                        <td>${reportDto.zongdaiRetreat!'0'}</td>
+                                        <td class="bg">${reportDto.zongdaiWinamt!'0'}</td>
+                                        <td>${reportDto.parentShareUp!'0'}</td>
+                                        <td class="bg">${reportDto.parentWinamt!'0'}</td>
 
                                     </tr>
                                 </#list>
@@ -100,11 +99,11 @@
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.memberCount!'0'}</td>
                                     <td>${reportTotal.amount!'0'}</td>
-                                     <td>${reportTotal.memberActualAmt!'0'}</td>
+                                    <td>${reportTotal.memberActualAmt!'0'}</td>
                                     <td>${reportTotal.dailiToParentShareUp!'0'}</td>
                                     <td class="bg">${reportTotal.dailiToParentWinamt!'0'}</td>
 
-                                    <td >${reportTotal.zhancheng!'0'}</td>
+                                    <td>${reportTotal.zhancheng!'0'}</td>
                                     <td>${reportTotal.zongdaiRetreat!'0'}</td>
                                     <td class="red" class="bg">${reportTotal.zongdaiWinamt!'0'}</td>
                                     <td>${reportTotal.parentShareUp!'0'}</td>
@@ -139,7 +138,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 

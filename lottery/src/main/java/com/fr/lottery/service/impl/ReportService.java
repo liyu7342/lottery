@@ -3,6 +3,7 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.condition.StatisCondition;
 import com.fr.lottery.dao.ReportMapper;
 import com.fr.lottery.dto.DailiReportDto;
+import com.fr.lottery.dto.GudongReportDto;
 import com.fr.lottery.dto.MemberReportDto;
 import com.fr.lottery.dto.ZongdaiReportDto;
 import com.fr.lottery.service.inter.IReportService;
@@ -38,5 +39,20 @@ public class ReportService implements IReportService {
         condition.setP_handicapId(handicapId);
         condition.setP_userId(userId);
         return reportMapper.getZongDaiReport(condition);
+    }
+    @Override
+    public List<GudongReportDto> getGudongReport(String handicapId, String userId) {
+        StatisCondition  condition = new StatisCondition();
+        condition.setP_handicapId(handicapId);
+        condition.setP_userId(userId);
+        return reportMapper.getGudongReport(condition);
+    }
+
+    @Override
+    public List<GudongReportDto> getDagudongReport(String handicapId, String userId) {
+        StatisCondition  condition = new StatisCondition();
+        condition.setP_handicapId(handicapId);
+        condition.setP_userId(userId);
+        return reportMapper.getDagudongReport(condition);
     }
 }

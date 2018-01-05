@@ -16,8 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>aj022 - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
@@ -32,11 +32,8 @@
                         <div class="hd g-tm">
                             <ul>
                                 <li><h2 class="g-tit">報表管理</h2></li>
-                                <li class="ps">代理[<span class='greenrpt'>鸭</span>]yazi288
-                                    -- 日期範圍：2017-12-21 ~ 2017-12-21
-                                    -- 報表分類：總賬 -- <a
-                                            href="http://pm10.x.mmm33.us:80/msdid63213790a_9477/reports/user_report.htm?draw_date=2017-12-21&draw_date2=2017-12-21">股東</a>-><a
-                                            href="http://pm10.x.mmm33.us:80/msdid63213790a_9477/reports/z_zongdaili.htm?draw_date=2017-12-21&draw_date2=2017-12-21&type=1&p_level=3&__account=aj2123&__name=aj2123&id=9321">總代</a>->
+                                <li class="ps">
+                                    ${banners!''}
                                 </li>
                             </ul>
                         </div>
@@ -69,12 +66,14 @@
                                         <td>
                                             <#if reportDto.isBucang == 0>
                                                 <a href="/report/z_member?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}</a></td>
-                                        <#else>
-                                            <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                    class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}</a></td>
-                                        </#if>
-
+                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                </a>
+                                                <#else>
+                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
+                                                            class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                    </a>
+                                            </#if>
+                                        </td>
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
                                         <td>${reportDto.winAmount!'0'}</td>
@@ -139,7 +138,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/backend/js/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
 </body>
 </html>
 

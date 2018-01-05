@@ -193,23 +193,67 @@
     <select id="getZongDaiReport" parameterType="com.fr.lottery.condition.StatisCondition"
             resultType="com.fr.lottery.dto.ZongdaiReportDto">
 
-   select dailiId as id,dailiaccount as account,dailiname as UserName,0 AS isBucang,count(1) as orderNum,sum(totalAmount) as amount,
-		sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0) END) as winAmount,
-sum(IFNULL(winAmount,0)) as allAmount,
+   select dailiId as id,dailiaccount as account,dailiname as UserName,0 AS isBucang,count(1) as orderNum,
+    count(DISTINCT (case when userId =dailiId then NULL else userId END )) as membercount,
+    sum(totalAmount) as amount,
+    sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0) END) as winAmount,
+    sum(IFNULL(winAmount,0)) as allAmount,
     sum(case WHEN userId=dailiId THEN 0  else  retreatamt END ) as retreat,
-		sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0)+retreatamt END ) as memberActualAmt,
+    sum(case WHEN userId=dailiId THEN 0  else  IFNULL(winAmount,0)+retreatamt END ) as memberActualAmt,
     sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) ) AS dailiToParentShareUp,
-sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)) as dailiToParentWinamt,
-	SUM(zongdaiamt) as zhancheng,sum(IFNULL(zongdaiwinamt,0)) as zongdaiwinamt ,sum(zongdairetreatAmt-dailiRetreatAmt) AS zongdairetreat,
-	sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) -zongdaiamt) as parentShareUp,
-	sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)
-			-(IFNULL(zongdaiwinamt,0)+zongdairetreatAmt-dailiRetreatAmt)) parentWinamt
+    sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)) as dailiToParentWinamt,
+    SUM(zongdaiamt) as zhancheng,sum(IFNULL(zongdaiwinamt,0)) as zongdaiwinamt ,sum(zongdairetreatAmt-dailiRetreatAmt) AS zongdairetreat,
+    sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) -zongdaiamt) as parentShareUp,
+    sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 ELSE(dailiRetreatAmt) +IFNULL(dailiwinamt,0) END)
+        -(IFNULL(zongdaiwinamt,0)+zongdairetreatAmt-dailiRetreatAmt)) parentWinamt
     from orders
     where orders.zongdaiid=#{p_userId,jdbcType=VARCHAR}
-    AND  orders.userId!=orders.dailiId
+    AND  orders.userId!=orders.zongdaiId
     AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
     group by dailiId,dailiaccount,dailiname
   </select>
 
+    <select id="getGudongReport" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.dto.GudongReportDto">
+
+      select zongdaiId as id,zongdaiaccount as account,zongdainame as UserName,0 AS isBucang,count(1) as orderNum,
+        count(DISTINCT (case when userId =dailiId or userId=zongdaiId then NULL else userId END )) as membercount,
+        sum(totalAmount) as amount,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0  else  IFNULL(winAmount,0) END) as winAmount,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 else  retreatamt END ) as retreat,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 else  IFNULL(winAmount,0)+retreatamt END ) as memberActualAmt,
+        sum(totalAmount- (case WHEN userId=zongdaiId then 0 WHEN userId=zongdaiId then 0 else  dailiamt end) ) AS zongdaiToParentShareUp,
+        sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 ELSE(zongdaiRetreatAmt) +IFNULL(zongdaiwinamt,0) END)) as zongdaiToParentWinamt,
+        SUM(gudongamt) as zhancheng,sum(IFNULL(gudongwinamt,0)) as gudongwinamt ,sum(gudongretreatAmt-zongdaiRetreatAmt) AS gudongretreatAmt,
+        sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) -zongdaiamt) as parentShareUp,
+        sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId  THEN 0 WHEN userId=zongdaiId then 0 ELSE(zongdaiRetreatAmt) +IFNULL(zongdaiwinamt,0) END)
+        -(IFNULL(zongdaiwinamt,0)+zongdairetreatAmt-dailiRetreatAmt)) parentWinamt
+        from orders
+        where orders.gudongid=#{p_userId,jdbcType=VARCHAR}
+        AND  orders.userId!=#{p_userId,jdbcType=VARCHAR}
+        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        group by zongdaiId,zongdaiaccount,zongdainame
+    </select>
+    <select id="getDagudongReport" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.dto.GudongReportDto">
+
+        select gudongid as id,gudongaccount as account,gudongname as UserName,0 AS isBucang,count(1) as orderNum,
+        count(DISTINCT (case when userId =dailiId or userId=zongdaiId then NULL else userId END )) as membercount,
+        sum(totalAmount) as amount,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0  else  IFNULL(winAmount,0) END) as winAmount,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 else  retreatamt END ) as retreat,
+        sum(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 else  IFNULL(winAmount,0)+retreatamt END ) as memberActualAmt,
+        sum(totalAmount- (case WHEN userId=zongdaiId then 0 WHEN userId=zongdaiId then 0 else  dailiamt end) ) AS zongdaiToParentShareUp,
+        sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId THEN 0 WHEN userId=zongdaiId then 0 ELSE(zongdaiRetreatAmt) +IFNULL(zongdaiwinamt,0) END)) as zongdaiToParentWinamt,
+        SUM(gudongamt) as zhancheng,sum(IFNULL(gudongwinamt,0)) as gudongwinamt ,sum(gudongretreatAmt-zongdaiRetreatAmt) AS gudongretreatAmt,
+        sum(totalAmount- (case WHEN userId=dailiId then 0 else  dailiamt end) -zongdaiamt) as parentShareUp,
+        sum(-(IFNULL(winAmount,0))-(case WHEN userId=dailiId  THEN 0 WHEN userId=zongdaiId then 0 ELSE(zongdaiRetreatAmt) +IFNULL(zongdaiwinamt,0) END)
+        -(IFNULL(zongdaiwinamt,0)+zongdairetreatAmt-dailiRetreatAmt)) parentWinamt
+        from orders
+        where orders.dagudongid=#{p_userId,jdbcType=VARCHAR}
+        AND  orders.userId!=#{p_userId,jdbcType=VARCHAR}
+        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        group by gudongid,gudongaccount,gudongname
+    </select>
 
 </mapper>

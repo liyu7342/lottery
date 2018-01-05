@@ -1,6 +1,7 @@
 package com.fr.lottery.service.inter;
 
 import com.fr.lottery.dto.DailiReportDto;
+import com.fr.lottery.dto.GudongReportDto;
 import com.fr.lottery.dto.MemberReportDto;
 import com.fr.lottery.dto.ZongdaiReportDto;
 
@@ -15,4 +16,9 @@ public interface IReportService {
     List<DailiReportDto> getDailiReport(String handicapId,String userId);
 
     List<ZongdaiReportDto> getZongDaiReport(String handicapId,String userId);
+
+    List<GudongReportDto> getGudongReport(String handicapId, String userId);
+
+    List<GudongReportDto> getDagudongReport(String handicapId, String userId);
+
 }

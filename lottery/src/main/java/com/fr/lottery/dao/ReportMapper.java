@@ -2,6 +2,7 @@ package com.fr.lottery.dao;
 
 import com.fr.lottery.condition.StatisCondition;
 import com.fr.lottery.dto.DailiReportDto;
+import com.fr.lottery.dto.GudongReportDto;
 import com.fr.lottery.dto.MemberReportDto;
 import com.fr.lottery.dto.ZongdaiReportDto;
 import com.fr.lottery.entity.Orders;
@@ -41,4 +42,8 @@ public interface ReportMapper {
     List<DailiReportDto> getDailiReport(StatisCondition condition);
 
     List<ZongdaiReportDto>  getZongDaiReport(StatisCondition condition);
+
+    List<GudongReportDto> getGudongReport(StatisCondition condition);
+
+    List<GudongReportDto> getDagudongReport(StatisCondition condition);
 }
