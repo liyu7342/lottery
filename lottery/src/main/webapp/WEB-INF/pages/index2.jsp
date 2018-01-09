@@ -65,7 +65,6 @@
             <div class="ft">
                 <ul class="clearfix" id="nav">
                     <li ><a target="main" href="/handicap/index">盘口管理</a></li>
-                    <li ><a target='main' href="/handicap/openindex">開獎管理</a></li>
                     <li ><a target='main' href="http://bmwbmw.6665432.com/fixtures/">開獎日期</a></li>
                     <li ><a target='main' href="/odds/temaa?isDefault=0&handicap=A">(A盘)賠率設置</a></li>
                     <li ><a target='main' href="/odds/temaa?isDefault=0&handicap=B">（B盘）賠率設置</a></li>
@@ -74,7 +73,7 @@
                     <li ><a target='main' href="/statis/statis?category_id=00">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
 
-                    <li ><a target='main' href="/result/index" act='result'>開獎結果</a></li>
+                    <li ><a target='main' href="/result/index2" act='result'>開獎結果</a></li>
                     <li ><a target='main' href="/user/password1">密碼變更</a></li>
                 </ul>
             </div>

@@ -68,27 +68,27 @@
                                         <td>${(reportDto_index)+1!''}</td>
                                         <td>
                                             <#if reportDto.isBucang == 0>
-                                                <a href="/report/z_daili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                <a href="/report/z_daili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.dailiAccount!''}&__name=${reportDto.dailiName!''}&id=${reportDto.dailiId!''}">[<span
+                                                        class='greenrpt'>${reportDto.dailiName!''}</span>]${reportDto.dailiAccount!''}
                                                 </a>
 
                                                 <#else>
-                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                            class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}.補</a>
+                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.dailiAccount!''}&__name=${reportDto.dailiName!''}&id=${reportDto.dailiId!''}">[<span
+                                                            class='greenrpt'>${reportDto.dailiName!''}</span>]${reportDto.dailiAccount!''}.補</a>
 
                                             </#if>
                                         </td>
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.memberCount!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
-                                        <td>${reportDto.memberActualAmt!'0'}</td>
-                                        <td>${reportDto.dailiToParentShareUp!'0'}</td>
-                                        <td class="bg">${reportDto.dailiToParentWinamt!'0'}</td>
-                                        <td>${reportDto.zhancheng!'0'}</td>
-                                        <td>${reportDto.zongdaiRetreat!'0'}</td>
-                                        <td class="bg">${reportDto.zongdaiWinamt!'0'}</td>
-                                        <td>${reportDto.parentShareUp!'0'}</td>
-                                        <td class="bg">${reportDto.parentWinamt!'0'}</td>
+                                        <td>${reportDto.memberAmt?ceiling}</td>
+                                        <td>${reportDto.dailiToZongdai?ceiling}</td>
+                                        <td class="bg">${reportDto.dailiToZongdaiWinamt?ceiling}</td>
+                                        <td>${reportDto.zongdaiAmt?ceiling}</td>
+                                        <td>${reportDto.zongdaiRetreat?ceiling}</td>
+                                        <td class="bg">${reportDto.zongdaiWinamt?ceiling}</td>
+                                        <td>${reportDto.gudongAmt?ceiling}</td>
+                                        <td class="bg">${reportDto.gudongWinamt?ceiling}</td>
 
                                     </tr>
                                 </#list>
@@ -99,16 +99,16 @@
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.memberCount!'0'}</td>
                                     <td>${reportTotal.amount!'0'}</td>
-                                    <td>${reportTotal.memberActualAmt!'0'}</td>
-                                    <td>${reportTotal.dailiToParentShareUp!'0'}</td>
-                                    <td class="bg">${reportTotal.dailiToParentWinamt!'0'}</td>
+                                    <td>${reportTotal.memberAmt?ceiling}</td>
+                                    <td>${reportTotal.dailiToZongdai?ceiling}</td>
+                                    <td class="bg">${reportTotal.dailiToZongdaiWinamt?ceiling}</td>
 
-                                    <td>${reportTotal.zhancheng!'0'}</td>
-                                    <td>${reportTotal.zongdaiRetreat!'0'}</td>
-                                    <td class="red" class="bg">${reportTotal.zongdaiWinamt!'0'}</td>
-                                    <td>${reportTotal.parentShareUp!'0'}</td>
+                                    <td>${reportTotal.zongdaiAmt?ceiling}</td>
+                                    <td>${reportTotal.zongdaiRetreat?ceiling}</td>
+                                    <td class="red" class="bg">${reportTotal.zongdaiWinamt?ceiling}</td>
+                                    <td>${reportTotal.gudongAmt?ceiling}</td>
 
-                                    <td class="bg">${reportTotal.parentWinamt!'0'}</td>
+                                    <td class="bg">${reportTotal.gudongWinamt?ceiling}</td>
                                 </tr>
                                 </tfoot>
                                 </tbody>

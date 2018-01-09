@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.dao.ShengxiaoMapper;
 import com.fr.lottery.entity.ShengXiao;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface IShengxiaoService {
     Map<String,String> findMapByYear();
 
     Map<String, ShengXiao> findMapByYear1();
+
+    List<ShengXiao> findByDate(String date);
 }

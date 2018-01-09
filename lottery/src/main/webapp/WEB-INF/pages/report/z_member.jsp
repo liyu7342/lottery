@@ -61,7 +61,7 @@
                                         </td>
                                         <td>${(obj.orderNum)!''}</td>
                                         <td>${(obj.amount)!''}</td>
-                                        <td>${(obj.winAmount)!''}</td>
+                                        <td>${(obj.winAmount)?ceiling}</td>
 
                                 </tr>
                                 </#list>
@@ -71,7 +71,7 @@
                                     <td>總計</td>
                                     <td>${orderNum!'0'}</td>
                                     <td>${totalAmount!'0'}</td>
-                                    <td>${winAmount!'0'}</td>
+                                    <td>${winAmount?ceiling}</td>
                                 </tr>
                                 </tfoot>
 

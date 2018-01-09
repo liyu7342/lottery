@@ -29,6 +29,7 @@ public class KaiJiangQuartz {
         int repeatTime = 0;
         while (true){
           String str=  handicapService.get6hbd(url);
+            System.out.println("第 "+ repeatTime +" 次请求 url："+url+"   返回結果："+str);
           try{
 
           if(StringUtils.isNotBlank(str) && !"404".equals(str)) {
@@ -116,7 +117,7 @@ public class KaiJiangQuartz {
                 repeatTime++;
                 if(repeatTime>200)
                     break;
-                System.out.println("第 "+ index +" 次请求 url："+url+"      Thread.sleep(5000)  ");
+
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();

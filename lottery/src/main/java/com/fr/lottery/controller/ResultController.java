@@ -24,4 +24,13 @@ public class ResultController {
         modelAndView.addObject("page",page.toString());
         return modelAndView;
     }
+
+    @RequestMapping("/index2")
+    public ModelAndView index2(Integer pageId){
+        ModelAndView modelAndView = new ModelAndView("/result/index2");
+        Page<Handicap> page= handicapService.getHandicaps(pageId);
+        modelAndView.addObject("handicaps",page.getList());
+        modelAndView.addObject("page",page.toString());
+        return modelAndView;
+    }
 }

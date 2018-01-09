@@ -28,7 +28,7 @@
                             <div class="hd g-tm">
                                 <ul>
                                     <li><h2 class="g-tit">开奖</h2></li>
-                                    <li><a class="btn1 cs"  onclick="location.href='/handicap/openindex';return false;" href="javascript:void(0)">返回</a></li>
+                                    <li><a class="btn1 cs"  onclick="location.href='/handicap/index';return false;" href="javascript:void(0)">返回</a></li>
                                 </ul>
                             </div>
                             <div class="bd g-new">

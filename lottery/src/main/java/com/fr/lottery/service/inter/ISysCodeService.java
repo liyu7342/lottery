@@ -8,5 +8,5 @@ public interface ISysCodeService {
 
      String getBuCangAutoCode(String handicapId);
 
-     String getQiShuAutoCode();
+     String getQiShuAutoCode(String riqi);
 }

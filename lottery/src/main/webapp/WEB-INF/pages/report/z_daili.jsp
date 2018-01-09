@@ -65,53 +65,53 @@
                                         <td>${(reportDto_index)+1!''}</td>
                                         <td>
                                             <#if reportDto.isBucang == 0>
-                                                <a href="/report/z_member?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                <a href="/report/z_member?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.memberAccount!''}&__name=${reportDto.memberName!''}&id=${reportDto.memberId!''}">[<span
+                                                        class='greenrpt'>${reportDto.memberName!''}</span>]${reportDto.memberAccount!''}
                                                 </a>
                                                 <#else>
-                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                            class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.memberAccount!''}&__name=${reportDto.memberName!''}&id=${reportDto.memberId!''}">[<span
+                                                            class='greenrpt'>${reportDto.memberName!''}</span>]${reportDto.memberAccount!''}
                                                     </a>
                                             </#if>
                                         </td>
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
-                                        <td>${reportDto.winAmount!'0'}</td>
-                                        <td>${reportDto.retreat!'0'}</td>
-                                        <td>${reportDto.memberActualAmt!'0'}</td>
-                                        <td>${reportDto.zhancheng!'0'}</td>
+                                        <td>${reportDto.memberWinamt?ceiling}</td>
+                                        <td>${reportDto.memberRetreat?ceiling}</td>
+                                        <td>${reportDto.memberAmt?ceiling}</td>
+                                        <td>${reportDto.dailiAmt?ceiling}</td>
                                         <td class="hid">-6,901</td>
                                         <td class="hid">4</td>
-                                        <td>${reportDto.dailiretreat!'0'}</td>
-                                        <td class="bg">${reportDto.dailiwinamt!'0'}</td>
-                                        <td>${reportDto.parentShareUp!'0'}</td>
+                                        <td>${reportDto.dailiRetreat?ceiling}</td>
+                                        <td class="bg">${reportDto.dailiWinamt?ceiling}</td>
+                                        <td>${reportDto.toZongdaiAmt?ceiling}</td>
                                         <td class="hid">-16,102</td>
                                         <td class="hid">-197</td>
-                                        <td class="bg">${reportDto.parentWinAmt!'0'}</td>
+                                        <td class="bg">${reportDto.toZongdaiWinamt?ceiling}</td>
                                     </tr>
                                 </#list>
-
+                                </tbody>
                                 <tfoot>
                                 <tr>
                                     <td></td>
                                     <td>總計</td>
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.amount!'0'}</td>
-                                    <td>${reportTotal.winAmount!'0'}</td>
-                                    <td>${reportTotal.retreat!'0'}</td>
-                                    <td>${reportTotal.memberActualAmt!'0'}</td>
-                                    <td>${reportTotal.zhancheng!'0'}</td>
+                                    <td>${reportTotal.memberWinamt?ceiling}</td>
+                                    <td>${reportTotal.memberRetreat?ceiling}</td>
+                                    <td>${reportTotal.memberAmt?ceiling}</td>
+                                    <td>${reportTotal.dailiAmt?ceiling}</td>
                                     <td class="hid">-4,991</td>
                                     <td class="hid">-71</td>
-                                    <td>${reportTotal.dailiretreat!'0'}</td>
-                                    <td class="red" class="bg">${reportTotal.dailiwinamt!'0'}</td>
-                                    <td>${reportTotal.parentShareUp!'0'}</td>
+                                    <td>${reportTotal.dailiRetreat?ceiling}</td>
+                                    <td class="red" class="bg">${reportTotal.dailiWinamt?ceiling}</td>
+                                    <td>${reportTotal.toZongdaiAmt?ceiling}</td>
                                     <td class="hid">-14,362</td>
                                     <td class="hid">-1,909</td>
-                                    <td class="bg">${reportTotal.parentWinAmt!'0'}</td>
+                                    <td class="bg">${reportTotal.toZongdaiWinamt?ceiling}</td>
                                 </tr>
                                 </tfoot>
-                                </tbody>
+
                             </table>
                         </div>
                         <div class="ft"></div>

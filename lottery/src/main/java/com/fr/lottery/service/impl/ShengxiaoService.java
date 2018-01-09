@@ -3,10 +3,14 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.ShengxiaoMapper;
 import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.service.inter.IShengxiaoService;
+import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.StringUtil;
+import net.sourceforge.jtds.jdbc.DateTime;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -56,5 +60,17 @@ public class ShengxiaoService implements IShengxiaoService {
             map.put(shengXiao.getSortNo()>9?shengXiao.getSortNo().toString():"0"+shengXiao.getSortNo().toString(),shengXiao);
         }
         return map;
+    }
+
+    @Override
+    public List<ShengXiao> findByDate(String date) {
+        Calendar cal=Calendar.getInstance();
+
+        if(StringUtils.isNotBlank(date)){
+            String[] darr = date.split("-");
+            cal.set(Integer.parseInt(darr[0]),Integer.parseInt(darr[1]),Integer.parseInt(darr[2]));
+        }
+        Lunar lunar=new Lunar(cal);
+        return shengxiaoMapper.findByYear(lunar.getYear());
     }
 }

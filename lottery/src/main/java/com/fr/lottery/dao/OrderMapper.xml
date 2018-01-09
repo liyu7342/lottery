@@ -57,7 +57,7 @@
      Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
     lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti,dailiId,dailiaccount,dailiname,dailiamt,dailiRetreat,dailiRetreatAmt,dailiwinamt
       ,zongdaiId,zongdaiaccount,zongdainame,zongdaiamt,zongdairetreat,zongdairetreatamt,zongdaiwinamt,gudongId,gudongaccount,gudongname,gudongamt,gudongretreat,gudongretreatamt,gudongwinamt
-      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account
+      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account,retreatAmt
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -165,7 +165,7 @@
     </if>
   </select>
   <select id="getTotal"  resultMap="BaseResultMap">
-    select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)) as canWinAmount,sum(IFNULL(winAmount,0)) as winAmount
+    select sum(IFNULL(totalAmount,0)) as totalAmount,sum(IFNULL(canWinAmount,0)+IFNULL(retreatAmt,0)) as canWinAmount,sum(IFNULL(winAmount,0)+IFNULL(retreatAmt,0)) as winAmount
     from orders
     <where>
       <if test="handicapId!='' and handicapId!=null" >
@@ -192,33 +192,31 @@
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-    SELECT handicap.id,od.userid,riqi ,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
-      ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
+    SELECT handicap.id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
+    sum(winAmount+retreatamt) as winAmount
     FROM orders
-    INNER  JOIN orderdetail od on orders.id = od.orderId
     INNER  JOIN Handicap on orders.handicapId= Handicap.Id
       <where>
         <if test="userid!='' and userid!=null" >
-          AND od.userid = #{userid,jdbcType=VARCHAR}
+          AND userid = #{userid,jdbcType=VARCHAR}
         </if>
         <if test="handicapId!='' and handicapId!=null" >
-          AND od.handicapId = #{handicapId,jdbcType=VARCHAR}
+          AND handicapId = #{handicapId,jdbcType=VARCHAR}
         </if>
       </where>
-      GROUP  BY od.userid,od.handicapId
+      GROUP  BY userid,handicapId
     ORDER  BY riqi desc
 
   </select>
 
   <select id="getOrderHistoryByRiqi" resultMap="UserHistoryMap">
-    SELECT handicap.id,od.userid,riqi ,COUNT(1) orderNum,sum(od.amount) amount,sum(od.canWinAmount) as canWinAmount
-    ,sum(od.Amount) as totalAmount,sum(od.winAmount) as winAmount
+    SELECT handicap.id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
+    sum(winAmount+retreatamt) as winAmount
     FROM orders
-    INNER  JOIN orderdetail od on orders.id = od.orderId
     INNER  JOIN Handicap on orders.handicapId= Handicap.Id
     <where>
       <if test="userid!='' and userid!=null" >
-        AND od.userid = #{userid,jdbcType=VARCHAR}
+        AND userid = #{userid,jdbcType=VARCHAR}
       </if>
       <if test="riqi!='' and riqi!=null" >
         AND handicap.riqi &gt;= #{riqi,jdbcType=VARCHAR}
@@ -227,7 +225,7 @@
         AND handicap.riqi &lt;= #{riqi2,jdbcType=VARCHAR}
       </if>
     </where>
-    GROUP  BY od.userid,od.handicapId
+    GROUP  BY userid,handicapId
     ORDER  BY riqi desc
 
   </select>

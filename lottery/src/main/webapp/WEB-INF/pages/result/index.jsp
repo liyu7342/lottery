@@ -92,6 +92,9 @@
     </div>
 </div>
 <script type="text/javascript">
+    function page(pageid,pagesize,keyword){
+        location.href="/result/index?pageId="+pageid;
+    }
     window.setting = {
         login_path: '/msdid63242f/user/login.html', //登錄路徑
         odds_refersh: 60000, //頁面的賠率刷新頻率,默認改為 60秒

@@ -70,7 +70,7 @@
                     <li ><a target='main' href="/statis/statis?category_id=00">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
                     <li ><a target='main' href="/report/report" act='report'>報表</a></li>
-                    <li ><a target='main' href="/result/index" act='result'>開獎結果</a></li>
+                    <li ><a target='main' href="/result/index2" act='result'>開獎結果</a></li>
                     <li ><a target='main' href="/order/order">注單數據</a></li>
                     <li ><a target='main' href="/sysconfig/buhuo">系統設定</a></li>
                     <li ><a target='main' href="/user/info1">個人資訊</a></li>

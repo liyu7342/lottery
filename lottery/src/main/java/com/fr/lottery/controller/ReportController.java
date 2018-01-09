@@ -1,10 +1,7 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.*;
-import com.fr.lottery.entity.Handicap;
-import com.fr.lottery.entity.OrderDetail;
-import com.fr.lottery.entity.Orders;
-import com.fr.lottery.entity.User;
+import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
@@ -18,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.enterprise.inject.Model;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,26 +90,51 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView("/report/game_report");
         return modelAndView;
     }
+    public ModelAndView z_admin(String draw_date,String draw_date2){
+           ModelAndView modelAndView = new ModelAndView("/report/z_admin") ;
+           String handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
+        List<GudongReport> reportDtos = reportService.getAdminReport(handicapId);
+        GudongReport reportTotal = new GudongReport();
+//        for(GudongReport reportDto : reportDtos){
+//            reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
+//            reportTotal.setMemberCount(reportTotal.getMemberCount() +reportDto.getMemberCount());
+//            reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
+//            reportTotal.setMemberActualAmt( reportTotal.getMemberActualAmt()+reportDto.getMemberActualAmt());
+//            reportTotal.setZongdaiToParentShareUp(reportTotal.getZongdaiToParentShareUp() + reportDto.getZongdaiToParentShareUp());
+//            reportTotal.setZongdaiToParentWinamt(reportTotal.getZongdaiToParentWinamt()+ reportDto.getZongdaiToParentWinamt());
+//            reportTotal.setZhancheng(reportTotal.getZhancheng() +reportDto.getZhancheng());
+//            reportTotal.setGudongRetreat(reportTotal.getGudongRetreat()+reportDto.getGudongRetreat());
+//            reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+ reportDto.getGudongWinamt());
+//            reportTotal.setParentShareUp(reportTotal.getParentShareUp()+reportDto.getParentShareUp());
+//            reportTotal.setParentWinamt(reportTotal.getParentWinamt()+reportDto.getParentWinamt());
+//        }
+        modelAndView.addObject("reportDtos",reportDtos);
+        modelAndView.addObject("handicapId",handicapId);
+        modelAndView.addObject("reportTotal",reportTotal);
+        modelAndView.addObject("draw_date",draw_date);
+        modelAndView.addObject("draw_date2",draw_date2);
+           return modelAndView;
+    }
 
     @RequestMapping("z_dagudong")
     public ModelAndView z_dagudong(String draw_date,String draw_date2,String type,String p_level,String __account,String __name,String id){
         ModelAndView modelAndView = new ModelAndView("/report/z_dagudong");
         String handicapId ="";
         handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
-        List<GudongReportDto> reportDtos = reportService.getDagudongReport(handicapId,id);
-        GudongReportDto reportTotal = new GudongReportDto();
-        for(GudongReportDto reportDto : reportDtos){
+        List<GudongReport> reportDtos = reportService.getDagudongReport(handicapId,id);
+        GudongReport reportTotal = new GudongReport();
+        for(GudongReport reportDto : reportDtos){
             reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
             reportTotal.setMemberCount(reportTotal.getMemberCount() +reportDto.getMemberCount());
             reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
-            reportTotal.setMemberActualAmt( reportTotal.getMemberActualAmt()+reportDto.getMemberActualAmt());
-            reportTotal.setZongdaiToParentShareUp(reportTotal.getZongdaiToParentShareUp() + reportDto.getZongdaiToParentShareUp());
-            reportTotal.setZongdaiToParentWinamt(reportTotal.getZongdaiToParentWinamt()+ reportDto.getZongdaiToParentWinamt());
-            reportTotal.setZhancheng(reportTotal.getZhancheng() +reportDto.getZhancheng());
+            reportTotal.setMemberAmt( reportTotal.getMemberAmt()+reportDto.getMemberAmt());
+            reportTotal.setDailiToZongdai(reportTotal.getDailiToZongdai()+ reportDto.getDailiToZongdai());
+            reportTotal.setZongdaiToGudong(reportTotal.getZongdaiToGudong()+ reportDto.getZongdaiToGudong());
+            reportTotal.setGudongAmt(reportTotal.getGudongAmt() +reportDto.getGudongAmt());
             reportTotal.setGudongRetreat(reportTotal.getGudongRetreat()+reportDto.getGudongRetreat());
             reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+ reportDto.getGudongWinamt());
-            reportTotal.setParentShareUp(reportTotal.getParentShareUp()+reportDto.getParentShareUp());
-            reportTotal.setParentWinamt(reportTotal.getParentWinamt()+reportDto.getParentWinamt());
+            reportTotal.setDagudongAmt(reportTotal.getDagudongAmt()+reportDto.getDagudongAmt());
+            reportTotal.setDagudongWinAmt(reportTotal.getDagudongWinAmt()+reportDto.getDagudongWinAmt());
         }
         modelAndView.addObject("reportDtos",reportDtos);
         modelAndView.addObject("handicapId",handicapId);
@@ -142,20 +161,20 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView("/report/z_gudong");
         String handicapId ="";
         handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
-        List<GudongReportDto> reportDtos = reportService.getGudongReport(handicapId,id);
-        GudongReportDto reportTotal = new GudongReportDto();
-        for(GudongReportDto reportDto : reportDtos){
+        List<GudongReport> reportDtos = reportService.getGudongReport(handicapId,id);
+        GudongReport reportTotal = new GudongReport();
+        for(GudongReport reportDto : reportDtos){
             reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
             reportTotal.setMemberCount(reportTotal.getMemberCount() +reportDto.getMemberCount());
             reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
-            reportTotal.setMemberActualAmt( reportTotal.getMemberActualAmt()+reportDto.getMemberActualAmt());
-            reportTotal.setZongdaiToParentShareUp(reportTotal.getZongdaiToParentShareUp() + reportDto.getZongdaiToParentShareUp());
-            reportTotal.setZongdaiToParentWinamt(reportTotal.getZongdaiToParentWinamt()+ reportDto.getZongdaiToParentWinamt());
-            reportTotal.setZhancheng(reportTotal.getZhancheng() +reportDto.getZhancheng());
+            reportTotal.setMemberAmt( reportTotal.getMemberAmt()+reportDto.getMemberAmt());
+            reportTotal.setZongdaiToGudong(reportTotal.getZongdaiToGudong() + reportDto.getZongdaiToGudong());
+            reportTotal.setDailiToZongdai(reportTotal.getDailiToZongdai()+ reportDto.getDailiToZongdai());
+            reportTotal.setGudongAmt(reportTotal.getGudongAmt() +reportDto.getGudongAmt());
             reportTotal.setGudongRetreat(reportTotal.getGudongRetreat()+reportDto.getGudongRetreat());
             reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+ reportDto.getGudongWinamt());
-            reportTotal.setParentShareUp(reportTotal.getParentShareUp()+reportDto.getParentShareUp());
-            reportTotal.setParentWinamt(reportTotal.getParentWinamt()+reportDto.getParentWinamt());
+            reportTotal.setDagudongAmt(reportTotal.getDagudongAmt()+reportDto.getDagudongAmt());
+            reportTotal.setDagudongWinAmt(reportTotal.getDagudongWinAmt()+reportDto.getDagudongWinAmt());
         }
         modelAndView.addObject("reportDtos",reportDtos);
         modelAndView.addObject("handicapId",handicapId);
@@ -188,20 +207,20 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView("/report/z_zongdaili");
         String handicapId ="";
         handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
-        List<ZongdaiReportDto> reportDtos = reportService.getZongDaiReport(handicapId,id);
-        ZongdaiReportDto reportTotal = new ZongdaiReportDto();
-        for(ZongdaiReportDto reportDto : reportDtos){
+        List<ZongdaiReport> reportDtos = reportService.getZongDaiReport(handicapId,id);
+        ZongdaiReport reportTotal = new ZongdaiReport();
+        for(ZongdaiReport reportDto : reportDtos){
             reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
             reportTotal.setMemberCount(reportTotal.getMemberCount() +reportDto.getMemberCount());
             reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
-            reportTotal.setMemberActualAmt( reportTotal.getMemberActualAmt()+reportDto.getMemberActualAmt());
-            reportTotal.setDailiToParentShareUp(reportTotal.getDailiToParentShareUp() + reportDto.getDailiToParentShareUp());
-            reportTotal.setDailiToParentWinamt(reportTotal.getDailiToParentWinamt()+ reportDto.getDailiToParentWinamt());
-            reportTotal.setZhancheng(reportTotal.getZhancheng() +reportDto.getZhancheng());
+            reportTotal.setMemberAmt( reportTotal.getMemberAmt()+reportDto.getMemberAmt());
+            reportTotal.setDailiToZongdai(reportTotal.getDailiToZongdai() + reportDto.getDailiToZongdai());
+            reportTotal.setDailiToZongdaiWinamt(reportTotal.getDailiToZongdaiWinamt()+ reportDto.getDailiToZongdaiWinamt());
+            reportTotal.setZongdaiAmt(reportTotal.getZongdaiAmt() +reportDto.getZongdaiAmt());
             reportTotal.setZongdaiRetreat(reportTotal.getZongdaiRetreat()+reportTotal.getZongdaiRetreat());
             reportTotal.setZongdaiWinamt(reportTotal.getZongdaiWinamt()+ reportDto.getZongdaiWinamt());
-            reportTotal.setParentShareUp(reportTotal.getParentShareUp()+reportDto.getParentShareUp());
-            reportTotal.setParentWinamt(reportTotal.getParentWinamt()+reportDto.getParentWinamt());
+            reportTotal.setGudongAmt(reportTotal.getGudongAmt()+reportDto.getGudongAmt());
+            reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+reportDto.getGudongWinamt());
         }
         modelAndView.addObject("reportDtos",reportDtos);
         modelAndView.addObject("handicapId",handicapId);
@@ -242,19 +261,19 @@ public class ReportController {
         if(StringUtils.isBlank(handicapid)){
             handicapid = handicapService.getHandicapByRiqi(draw_date).getId();
         }
-        List<DailiReportDto> reportDtos = reportService.getDailiReport(handicapid,id);
-        DailiReportDto reportTotal = new DailiReportDto();
-        for(DailiReportDto reportDto : reportDtos){
+        List<DailiReport> reportDtos = reportService.getDailiReport(handicapid,id);
+        DailiReport reportTotal = new DailiReport();
+        for(DailiReport reportDto : reportDtos){
             reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
             reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
-            reportTotal.setWinAmount(reportTotal.getWinAmount()+reportDto.getWinAmount());
-            reportTotal.setRetreat(reportTotal.getRetreat()+reportDto.getRetreat());
-            reportTotal.setMemberActualAmt(reportTotal.getMemberActualAmt()+reportDto.getMemberActualAmt());
-            reportTotal.setZhancheng(reportTotal.getZhancheng()+reportDto.getZhancheng());
-            reportTotal.setDailiretreat(reportTotal.getDailiretreat()+reportDto.getDailiretreat());
-            reportTotal.setDailiwinamt(reportTotal.getDailiwinamt()+reportDto.getDailiwinamt());
-            reportTotal.setParentShareUp(reportTotal.getParentShareUp()+reportDto.getParentShareUp());
-            reportTotal.setParentWinAmt(reportTotal.getParentWinAmt()+reportDto.getParentWinAmt());
+            reportTotal.setMemberWinamt(reportTotal.getMemberWinamt()+reportDto.getMemberWinamt());
+            reportTotal.setMemberAmt(reportTotal.getMemberAmt()+reportDto.getMemberAmt());
+            reportTotal.setDailiAmt(reportTotal.getDailiAmt()+reportDto.getDailiAmt());
+            reportTotal.setDailiRetreat(reportTotal.getDailiRetreat()+reportDto.getDailiRetreat());
+            reportTotal.setDailiWinamt(reportTotal.getDailiWinamt()+reportDto.getDailiWinamt());
+            reportTotal.setToZongdaiAmt(reportTotal.getToZongdaiAmt()+reportDto.getToZongdaiAmt());
+            reportTotal.setToZongdaiWinamt(reportTotal.getToZongdaiWinamt()+reportDto.getToZongdaiWinamt());
+            reportTotal.setMemberRetreat(reportTotal.getMemberRetreat()+reportDto.getMemberRetreat());
         }
         modelAndView.addObject("reportDtos",reportDtos);
         modelAndView.addObject("handicapid",handicapid);

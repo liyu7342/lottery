@@ -67,32 +67,32 @@
                                     <td>${(reportDto_index)+1!''}</td>
                                     <td>
                                         <#if reportDto.isBucang == 0>
-                                            <a href="/report/z_zongdaili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                    class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                            <a href="/report/z_zongdaili?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.zongdaiAccount!''}&__name=${reportDto.zongdaiName!''}&id=${reportDto.zongdaiId!''}">[<span
+                                                    class='greenrpt'>${reportDto.zongdaiName!''}</span>]${reportDto.zongdaiAccount!''}
                                             </a>
                                             <#else>
-                                                <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.zongdaiAccount!''}&__name=${reportDto.zongdaiName!''}&id=${reportDto.zongdaiId!''}">[<span
+                                                        class='greenrpt'>${reportDto.zongdaiName!''}</span>]${reportDto.zongdaiAccount!''}
                                                 </a>
                                         </#if>
                                     </td>
                                     <td>${reportDto.orderNum!'0'}</td>
                                     <td>${reportDto.memberCount!'0'}</td>
                                     <td>${reportDto.amount!'0'}</td>
-                                    <td>${reportDto.memberActualAmt!'0'}</td>
-                                    <td>${reportDto.zongdaiToParentShareUp!'0'}</td>
+                                    <td>${reportDto.memberAmt?ceiling}</td>
+                                    <td>${reportDto.dailiToZongdai?ceiling}</td>
                                     <td class="hid">0</td>
                                     <td class="hid">0</td>
-                                    <td class="bg">${reportDto.zongdaiToParentWinamt!'0'}</td>
-                                    <td>${reportDto.zhancheng!'0'}</td>
+                                    <td class="bg">${reportDto.zongdaiToGudong?ceiling}</td>
+                                    <td>${reportDto.gudongAmt?ceiling}</td>
                                     <td class="hid">17,870</td>
                                     <td class="hid">-2,188</td>
-                                    <td>${reportDto.gudongRetreat!'0'}</td>
-                                    <td class="bg">${reportDto.gudongWinamt!'0'}</td>
-                                    <td>${reportDto.parentShareUp!'0'}</td>
+                                    <td>${reportDto.gudongRetreat?ceiling}</td>
+                                    <td class="bg">${reportDto.gudongWinamt?ceiling}</td>
+                                    <td>${reportDto.dagudongAmt?ceiling}</td>
                                     <td class="hid">55,085</td>
                                     <td class="hid">-8,003</td>
-                                    <td class="bg">${reportDto.parentWinamt!'0'}</td>
+                                    <td class="bg">${reportDto.dagudongWinAmt?ceiling}</td>
 
                                 </tr>
                                 </#list>
@@ -101,23 +101,23 @@
                                 <tr>
                                     <td></td>
                                     <td>總計</td>
-                                    <td>3,515</td>
-                                    <td>64</td>
-                                    <td>660,070</td>
-                                    <td>-168,889</td>
-                                    <td>307,812</td>
+                                    <td>${reportTotal.orderNum!'0'}</td>
+                                    <td>${reportTotal.memberCount!'0'}</td>
+                                    <td>${reportTotal.amount?ceiling}</td>
+                                    <td>${reportTotal.memberAmt?ceiling}</td>
+                                    <td>${reportTotal.dailiToZongdai?ceiling}</td>
                                     <td class="hid">-76,342</td>
                                     <td class="hid">10,912</td>
-                                    <td class="bg">-65,429</td>
-                                    <td>71,227</td>
+                                    <td class="bg">${reportTotal.zongdaiToGudong?ceiling}</td>
+                                    <td>${reportTotal.gudongAmt?ceiling}</td>
                                     <td class="hid">19,805</td>
                                     <td class="hid">-2,599</td>
-                                    <td>0</td>
-                                    <td class="red" class="bg">17,205</td>
-                                    <td>236,585</td>
+                                    <td>${reportTotal.gudongRetreat?ceiling}</td>
+                                    <td class="red" class="bg">${reportTotal.gudongWinamt?ceiling}</td>
+                                    <td>${reportTotal.dagudongAmt?ceiling}</td>
                                     <td class="hid">56,536</td>
                                     <td class="hid">-8,312</td>
-                                    <td class="bg">48,223</td>
+                                    <td class="bg">${reportTotal.dagudongWinAmt?ceiling}</td>
                                 </tr>
                                 </tfoot>
                                 </tbody>

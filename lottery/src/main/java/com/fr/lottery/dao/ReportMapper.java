@@ -1,11 +1,8 @@
 package com.fr.lottery.dao;
 
 import com.fr.lottery.condition.StatisCondition;
-import com.fr.lottery.dto.DailiReportDto;
-import com.fr.lottery.dto.GudongReportDto;
+import com.fr.lottery.entity.*;
 import com.fr.lottery.dto.MemberReportDto;
-import com.fr.lottery.dto.ZongdaiReportDto;
-import com.fr.lottery.entity.Orders;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -39,11 +36,22 @@ public interface ReportMapper {
 
     int settlement(@Param("handicapId") String handicapId);
 
-    List<DailiReportDto> getDailiReport(StatisCondition condition);
+    List<DailiReport> getDailiReport(StatisCondition condition);
 
-    List<ZongdaiReportDto>  getZongDaiReport(StatisCondition condition);
+    List<DailiReport> getDailiReportHasSettlement(StatisCondition condition);
 
-    List<GudongReportDto> getGudongReport(StatisCondition condition);
 
-    List<GudongReportDto> getDagudongReport(StatisCondition condition);
+    List<ZongdaiReport>  getZongDaiReport(StatisCondition condition);
+
+    List<ZongdaiReport>  getZongDaiReportHasSettlement(StatisCondition condition);
+
+
+    List<GudongReport> getGudongReport(StatisCondition condition);
+
+    List<GudongReport> getGudongReportHasSettlement(StatisCondition condition);
+
+    List<GudongReport> getDagudongReport(StatisCondition condition);
+
+    List<GudongReport> getAdminReport(StatisCondition condition);
+
 }

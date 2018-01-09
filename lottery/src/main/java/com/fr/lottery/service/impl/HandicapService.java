@@ -39,7 +39,7 @@ public class HandicapService implements IHandicapService {
         if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
             entity.setAutoopen(true);
             entity.setStatus(0);
-            entity.setQishu(sysCodeService.getQiShuAutoCode());
+            entity.setQishu(sysCodeService.getQiShuAutoCode(entity.getRiqi()));
             entity.setId(StringUtil.getUUID());
             return handicapMapper.insert(entity)>0;
         }
@@ -115,7 +115,9 @@ public class HandicapService implements IHandicapService {
             handicap.setZongDanshuang("單");
         }
 
-       List<ShengXiao> shengXiaos= shengxiaoService.findByYear();
+        Handicap currentHandicap = handicapMapper.selectByPrimaryKey(handicap.getId());
+
+       List<ShengXiao> shengXiaos= shengxiaoService.findByDate(currentHandicap.getRiqi());
         for (ShengXiao xiao : shengXiaos){
             if(handicap.getNo1().equals( xiao.getNo1()) ||handicap.getNo1().equals( xiao.getNo2())||handicap.getNo1().equals( xiao.getNo3())
                     ||handicap.getNo1().equals( xiao.getNo4()) ||  handicap.getNo1().equals( xiao.getNo5())){

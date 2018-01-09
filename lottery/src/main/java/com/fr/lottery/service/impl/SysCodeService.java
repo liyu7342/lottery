@@ -70,9 +70,10 @@ public class SysCodeService implements ISysCodeService {
     }
 
     @Override
-    public synchronized String getQiShuAutoCode(){
-        Calendar cal=Calendar.getInstance();
-         String year=Integer.toString( cal.get(Calendar.YEAR));
+    public synchronized String getQiShuAutoCode(String riqi){
+        String year = riqi.substring(0,4);
+//        Calendar cal=Calendar.getInstance();
+//        String year=Integer.toString( cal.get(Calendar.YEAR));
         Long seq = sysCodeMapper.getNextSeq(CodeTypeEnum.期數.getValue(),year);
         if(seq==null)
             seq=1L;
