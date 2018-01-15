@@ -43,7 +43,15 @@ public interface OrderDetailMapper {
     OrderDetailDto getStatsByDaili(@Param("handicapId") String handicapId,@Param("userId") String userId, @Param("usertype") Integer usertype,
                                          @Param("gameType") String gameType,@Param("numbers") String numbers);
 
+    /**
+     * 收付統計單項統計
+     * @param handicapId
+     * @param game_id
+     * @param userId
+     * @return
+     */
     List<OrderDetailDto> getBuhuoes(@Param("handicapId") String handicapId,@Param("gameType") String game_id, @Param("userId") String userId);
+
 
     //List<OrderDetail> getOrderDetailsByOrderNo(@Param("orderNo") String orderNo);
 }

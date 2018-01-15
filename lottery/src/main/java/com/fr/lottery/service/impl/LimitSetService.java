@@ -116,21 +116,24 @@ public class LimitSetService  implements ILimitSetService{
      */
     @Override
     public Float findRetreatFromCache(String userId,String odd_set,String limitType,String handicapStr){
-        String key = limitType;
+        String key = limitType+"_"+odd_set;
         Float result=0f;
-        if(GameTypeEnum.特码.getValue().equals(limitType) && odd_set.length()>1){
-            key=odd_set.substring(1)+limitType;
-        }
+        String selectLimitType=limitType;
         Object obj =  MemcacheUtil.get(memcache_key+key+"_"+userId);
         if(obj==null){
+            if(GameTypeEnum.特码.getValue().equals(limitType) && odd_set.length()>1){
+                selectLimitType=odd_set.substring(1)+limitType;
+            }
             List<LimitSet> limitSets= limitSetMapper.selectByPrimaryKey(userId);
             for(LimitSet limitSet:limitSets){
 
                 Float retreat =  "A".equals( handicapStr)? limitSet.getaRetreat():("B".equals(handicapStr)?limitSet.getbRetreat():limitSet.getcRetreat());
-                if(limitSet.getLimitType().equals(key)){
+                if(limitSet.getLimitType().equals(selectLimitType)){
                     result=retreat;
+                    MemcacheUtil.add(memcache_key+key+"_"+userId,retreat);
+                    break;
                 }
-                MemcacheUtil.add(memcache_key+limitSet.getLimitType()+"_"+userId,retreat);
+
             }
             return result;
         }

@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.entity.DagudongReport;
 import com.fr.lottery.entity.DailiReport;
 import com.fr.lottery.entity.GudongReport;
 import com.fr.lottery.dto.MemberReportDto;
@@ -19,7 +20,7 @@ public interface IReportService {
 
     List<GudongReport> getGudongReport(String handicapId, String userId);
 
-    List<GudongReport> getDagudongReport(String handicapId, String userId);
+    List<DagudongReport> getDagudongReport(String handicapId, String userId);
     List<GudongReport> getAdminReport(String handicapId);
 
 }

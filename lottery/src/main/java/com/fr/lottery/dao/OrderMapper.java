@@ -37,4 +37,27 @@ public interface OrderMapper {
     int settlement(@Param("handicapId") String handicapId);
 
     Orders getOrdersByOrderNo(@Param("orderNo") String orderNo);
+
+    /**
+     * 獲取用戶的補貨明細總數
+     * @param handicapId
+     * @param game_id
+     * @param userId
+     * @return
+     */
+    Long countBuhuoesByUserId(@Param("handicapId") String handicapId,@Param("gameType") String game_id
+            , @Param("userId") String userId);
+
+    /**
+     * 獲取用戶的補貨明細
+     * @param handicapId
+     * @param game_id
+     * @param userId
+     * @param pageId
+     * @param pageSize
+     * @return
+     */
+    List<Orders> getBuhuoesByUserId(@Param("handicapId") String handicapId,@Param("gameType") String game_id
+            , @Param("userId") String userId,@Param("pageIndex") Integer pageId,@Param("pageSize") Integer pageSize);
+
 }

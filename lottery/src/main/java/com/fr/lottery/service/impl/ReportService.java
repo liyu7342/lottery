@@ -28,7 +28,7 @@ public class ReportService implements IReportService {
 
     @Override
     public List<DailiReport> getDailiReport(String handicapId, String userId) {
-        Handicap handicap = handicapService.getLastestHandicap();
+        Handicap handicap = handicapService.getHandicap(handicapId);
         StatisCondition condition = new StatisCondition();
         condition.setP_handicapId(handicapId);
         condition.setP_userId(userId);
@@ -43,7 +43,7 @@ public class ReportService implements IReportService {
 
     @Override
     public List<ZongdaiReport> getZongDaiReport(String handicapId, String userId) {
-        Handicap handicap = handicapService.getLastestHandicap();
+        Handicap handicap = handicapService.getHandicap(handicapId);
         StatisCondition condition = new StatisCondition();
         condition.setP_handicapId(handicapId);
         condition.setP_userId(userId);
@@ -56,7 +56,7 @@ public class ReportService implements IReportService {
     }
     @Override
     public List<GudongReport> getGudongReport(String handicapId, String userId) {
-        Handicap handicap = handicapService.getLastestHandicap();
+        Handicap handicap = handicapService.getHandicap(handicapId);
         StatisCondition condition = new StatisCondition();
         condition.setP_handicapId(handicapId);
         condition.setP_userId(userId);
@@ -69,8 +69,8 @@ public class ReportService implements IReportService {
     }
 
     @Override
-    public List<GudongReport> getDagudongReport(String handicapId, String userId) {
-        Handicap handicap = handicapService.getLastestHandicap();
+    public List<DagudongReport> getDagudongReport(String handicapId, String userId) {
+        Handicap handicap = handicapService.getHandicap(handicapId);
         StatisCondition condition = new StatisCondition();
         condition.setP_handicapId(handicapId);
         condition.setP_userId(userId);
@@ -78,7 +78,7 @@ public class ReportService implements IReportService {
             return reportMapper.getDagudongReport(condition);
         }
         else {
-            return reportMapper.getDagudongReport(condition);
+            return reportMapper.getDagudongReportHasSettlement(condition);
         }
     }
 

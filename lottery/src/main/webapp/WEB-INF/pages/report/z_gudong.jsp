@@ -79,20 +79,21 @@
                                     <td>${reportDto.orderNum!'0'}</td>
                                     <td>${reportDto.memberCount!'0'}</td>
                                     <td>${reportDto.amount!'0'}</td>
-                                    <td>${reportDto.memberAmt?ceiling}</td>
-                                    <td>${reportDto.dailiToZongdai?ceiling}</td>
+                                    <td><#if reportDto.memberAmt gt 0>${reportDto.memberAmt?floor} <#else>${reportDto.memberAmt?ceiling}</#if> </td>
+                                    <td><#if reportDto.dailiToZongdai gt 0>${reportDto.dailiToZongdai?floor} <#else>${reportDto.dailiToZongdai?ceiling}</#if> </td>
                                     <td class="hid">0</td>
                                     <td class="hid">0</td>
-                                    <td class="bg">${reportDto.zongdaiToGudong?ceiling}</td>
-                                    <td>${reportDto.gudongAmt?ceiling}</td>
+                                    <td class="bg"><#if reportDto.zongdaiToGudong gt 0>${reportDto.zongdaiToGudong?floor} <#else>${reportDto.zongdaiToGudong?ceiling}</#if> </td>
+                                    <td><#if reportDto.gudongAmt gt 0>${reportDto.gudongAmt?floor} <#else>${reportDto.gudongAmt?ceiling}</#if> </td>
                                     <td class="hid">17,870</td>
                                     <td class="hid">-2,188</td>
-                                    <td>${reportDto.gudongRetreat?ceiling}</td>
-                                    <td class="bg">${reportDto.gudongWinamt?ceiling}</td>
-                                    <td>${reportDto.dagudongAmt?ceiling}</td>
+                                    <td><#if reportDto.gudongRetreat gt 0>${reportDto.gudongRetreat?floor} <#else>${reportDto.gudongRetreat?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportDto.gudongWinamt gt 0>${reportDto.gudongWinamt?floor} <#else>${reportDto.gudongWinamt?ceiling}</#if> </td>
+                                    <td><#if reportDto.dagudongAmt gt 0>${reportDto.dagudongAmt?floor} <#else>${reportDto.dagudongAmt?ceiling}</#if> </td>
                                     <td class="hid">55,085</td>
                                     <td class="hid">-8,003</td>
-                                    <td class="bg">${reportDto.dagudongWinAmt?ceiling}</td>
+                                    <td><#if reportDto.dagudongWinAmt gt 0>${reportDto.dagudongWinAmt?floor} <#else>${reportDto.dagudongWinAmt?ceiling}</#if> </td>
+
 
                                 </tr>
                                 </#list>
@@ -103,21 +104,22 @@
                                     <td>總計</td>
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.memberCount!'0'}</td>
-                                    <td>${reportTotal.amount?ceiling}</td>
-                                    <td>${reportTotal.memberAmt?ceiling}</td>
-                                    <td>${reportTotal.dailiToZongdai?ceiling}</td>
-                                    <td class="hid">-76,342</td>
-                                    <td class="hid">10,912</td>
-                                    <td class="bg">${reportTotal.zongdaiToGudong?ceiling}</td>
-                                    <td>${reportTotal.gudongAmt?ceiling}</td>
-                                    <td class="hid">19,805</td>
-                                    <td class="hid">-2,599</td>
-                                    <td>${reportTotal.gudongRetreat?ceiling}</td>
-                                    <td class="red" class="bg">${reportTotal.gudongWinamt?ceiling}</td>
-                                    <td>${reportTotal.dagudongAmt?ceiling}</td>
-                                    <td class="hid">56,536</td>
-                                    <td class="hid">-8,312</td>
-                                    <td class="bg">${reportTotal.dagudongWinAmt?ceiling}</td>
+                                    <td>${reportTotal.amount!'0'}</td>
+                                    <td><#if reportTotal.memberAmt gt 0>${reportTotal.memberAmt?floor} <#else>${reportTotal.memberAmt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.dailiToZongdai gt 0>${reportTotal.dailiToZongdai?floor} <#else>${reportTotal.dailiToZongdai?ceiling}</#if> </td>
+                                    <td class="hid">0</td>
+                                    <td class="hid">0</td>
+                                    <td class="bg"><#if reportTotal.zongdaiToGudong gt 0>${reportTotal.zongdaiToGudong?floor} <#else>${reportTotal.zongdaiToGudong?ceiling}</#if> </td>
+                                    <td><#if reportTotal.gudongAmt gt 0>${reportTotal.gudongAmt?floor} <#else>${reportTotal.gudongAmt?ceiling}</#if> </td>
+                                    <td class="hid">17,870</td>
+                                    <td class="hid">-2,188</td>
+                                    <td><#if reportTotal.gudongRetreat gt 0>${reportTotal.gudongRetreat?floor} <#else>${reportTotal.gudongRetreat?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportTotal.gudongWinamt gt 0>${reportTotal.gudongWinamt?floor} <#else>${reportTotal.gudongWinamt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.dagudongAmt gt 0>${reportTotal.dagudongAmt?floor} <#else>${reportTotal.dagudongAmt?ceiling}</#if> </td>
+                                    <td class="hid">55,085</td>
+                                    <td class="hid">-8,003</td>
+                                    <td><#if reportTotal.dagudongWinAmt gt 0>${reportTotal.dagudongWinAmt?floor} <#else>${reportTotal.dagudongWinAmt?ceiling}</#if> </td>
+
                                 </tr>
                                 </tfoot>
                                 </tbody>

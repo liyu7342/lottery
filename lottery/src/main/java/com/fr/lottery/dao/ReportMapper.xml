@@ -302,6 +302,40 @@
         AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
         ORDER  BY  isbucang desc
     </select>
+
+    <select id="getDagudongReport" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.entity.DagudongReport">
+
+        select '' as id,dagudongid,gudongid ,gudongaccount ,gudongname ,0 AS isBucang,
+        count(1) as orderNum,
+        count(DISTINCT (case when userId =dailiId or userId=zongdaiId  then NULL else userId END )) as membercount,
+        sum(totalAmount) as amount,
+        0 as winAmount,
+        0 as retreatamt,
+        0 as memberamt,
+        0 as dailitozongdai,
+        0 as zongdaitogudong,
+        SUM(dagudongamt) as dagudongamt,
+        0 as dagudongretreat,
+        0 as dagudongwinamt,
+        0  AS guanliyuanamt,
+        0 as guanliyuanwinamt
+        from orders
+        where orders.dagudongid=#{p_userId,jdbcType=VARCHAR}
+        AND  orders.userId!=#{p_userId,jdbcType=VARCHAR}
+        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        group by gudongid,gudongaccount,gudongname
+    </select>
+
+
+    <select id="getDagudongReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
+            resultType="com.fr.lottery.entity.DagudongReport">
+        select * from report_dagudong
+        where dagudongid=#{p_userId,jdbcType=VARCHAR}
+        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        ORDER  BY  isbucang desc
+    </select>
+
     <select id="getAdminReport" parameterType="com.fr.lottery.condition.StatisCondition"
             resultType="com.fr.lottery.entity.GudongReport">
 

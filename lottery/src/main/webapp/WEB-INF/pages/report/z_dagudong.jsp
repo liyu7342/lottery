@@ -45,54 +45,56 @@
                                     <td>客戶數</td>
                                     <td>下注金額</td>
                                     <td>會員盈虧</td>
-                                    <td><em>佔成上繳</em></td>
                                     <td class="hid"><em>總代金額</em></td>
                                     <td class="hid"><em>總代佣金</em></td>
-                                    <td><em><span class="hc">總代上繳</span></em></td>
-                                    <td>本級佔成</td>
                                     <td class="hid">股東獎金</td>
                                     <td class="hid">佣金</td>
-                                    <td>佣金差</td>
-                                    <td class="r"><span class="hc">股東盈虧</span></td>
-                                    <td><em>上級佔成</em></td>
+                                    <td>占成上缴</td>
+                                    <td>股東上缴</td>
+                                    <td class="hid">股東獎金</td>
+                                    <td class="hid">佣金</td>
+                                    <td>本級占成</td>
+                                    <td >佣金</td>
+                                    <td class="r"><span class="hc">大股東盈亏</span></td>
+                                    <td><em>管理员占成</em></td>
                                     <td class="hid"><em>大股東金額</em></td>
                                     <td class="hid"><em>大股東佣金</em></td>
-                                    <td><em><span class="hc">上繳大股東</span></em></td>
+                                    <td><em><span class="hc">分配管理员</span></em></td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <#list reportDtos as reportDto>
-
                                     <tr>
                                         <td>${(reportDto_index)+1!''}</td>
                                         <td>
                                             <#if reportDto.isBucang == 0>
-                                                <a href="/report/z_gudong?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                        class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                <a href="/report/z_gudong?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=1&p_level=5&__account=${reportDto.gudongAccount!''}&__name=${reportDto.gudongName!''}&id=${reportDto.gudongId!''}">[<span
+                                                        class='greenrpt'>${reportDto.gudongName!''}</span>]${reportDto.gudongAccount!''}
                                                 </a>
                                                 <#else>
-                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.account!''}&__name=${reportDto.userName!''}&id=${reportDto.id!''}">[<span
-                                                            class='greenrpt'>${reportDto.userName!''}</span>]${reportDto.account!''}
+                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.gudongAccount!''}&__name=${reportDto.gudongName!''}&id=${reportDto.gudongId!''}">[<span
+                                                            class='greenrpt'>${reportDto.gudongName!''}</span>]${reportDto.gudongAccount!''}
                                                     </a>
                                             </#if>
                                         </td>
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.memberCount!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
-                                        <td>${reportDto.memberActualAmt!'0'}</td>
-                                        <td>${reportDto.zongdaiToParentShareUp!'0'}</td>
+                                        <td ><#if reportDto.memberAmt gt 0>${reportDto.memberAmt?floor} <#else>${reportDto.memberAmt?ceiling}</#if> </td>
                                         <td class="hid">0</td>
+
                                         <td class="hid">0</td>
-                                        <td class="bg">${reportDto.zongdaiToParentWinamt!'0'}</td>
-                                        <td>${reportDto.zhancheng!'0'}</td>
+                                        <td ><#if reportDto.gudongToParent gt 0>${reportDto.gudongToParent?floor} <#else>${reportDto.gudongToParent?ceiling}</#if> </td>
+                                        <td class="bg"><#if reportDto.gudongToParentWinamt gt 0>${reportDto.gudongToParentWinamt?floor} <#else>${reportDto.gudongToParentWinamt?ceiling}</#if> </td>
+                                        <td ><#if reportDto.dagudongAmt gt 0>${reportDto.dagudongAmt?floor} <#else>${reportDto.dagudongAmt?ceiling}</#if> </td>
                                         <td class="hid">17,870</td>
                                         <td class="hid">-2,188</td>
-                                        <td>${reportDto.gudongRetreat!'0'}</td>
-                                        <td class="bg">${reportDto.gudongWinamt!'0'}</td>
-                                        <td>${reportDto.parentShareUp!'0'}</td>
+                                        <td ><#if reportDto.dagudongRetreat gt 0>${reportDto.dagudongRetreat?floor} <#else>${reportDto.dagudongRetreat?ceiling}</#if> </td>
+                                        <td ><#if reportDto.dagudongWinamt gt 0>${reportDto.dagudongWinamt?floor} <#else>${reportDto.dagudongWinamt?ceiling}</#if> </td>
+                                        <td ><#if reportDto.guanliyuanAmt gt 0>${reportDto.guanliyuanAmt?floor} <#else>${reportDto.guanliyuanAmt?ceiling}</#if> </td>
                                         <td class="hid">55,085</td>
                                         <td class="hid">-8,003</td>
-                                        <td class="bg">${reportDto.parentWinamt!'0'}</td>
+                                        <td class="bg"><#if reportDto.guanliyuanWinAmt gt 0>${reportDto.guanliyuanWinAmt?floor} <#else>${reportDto.guanliyuanWinAmt?ceiling}</#if> </td>
 
                                     </tr>
                                 </#list>
@@ -101,26 +103,28 @@
                                 <tr>
                                     <td></td>
                                     <td>總計</td>
-                                    <td>3,515</td>
-                                    <td>64</td>
-                                    <td>660,070</td>
-                                    <td>-168,889</td>
-                                    <td>307,812</td>
-                                    <td class="hid">-76,342</td>
-                                    <td class="hid">10,912</td>
-                                    <td class="bg">-65,429</td>
-                                    <td>71,227</td>
-                                    <td class="hid">19,805</td>
-                                    <td class="hid">-2,599</td>
-                                    <td>0</td>
-                                    <td class="red" class="bg">17,205</td>
-                                    <td>236,585</td>
-                                    <td class="hid">56,536</td>
-                                    <td class="hid">-8,312</td>
-                                    <td class="bg">48,223</td>
+                                    <td>${reportTotal.orderNum!'0'}</td>
+                                    <td>${reportTotal.memberCount!'0'}</td>
+                                    <td>${reportTotal.amount!'0'}</td>
+                                    <td ><#if reportTotal.memberAmt gt 0>${reportTotal.memberAmt?floor} <#else>${reportTotal.memberAmt?ceiling}</#if> </td>
+                                    <td class="hid">0</td>
+
+                                    <td class="hid">0</td>
+                                    <td ><#if reportTotal.gudongToParent gt 0>${reportTotal.gudongToParent?floor} <#else>${reportTotal.gudongToParent?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportTotal.gudongToParentWinamt gt 0>${reportTotal.gudongToParentWinamt?floor} <#else>${reportTotal.gudongToParentWinamt?ceiling}</#if> </td>
+                                    <td ><#if reportTotal.dagudongAmt gt 0>${reportTotal.dagudongAmt?floor} <#else>${reportTotal.dagudongAmt?ceiling}</#if> </td>
+                                    <td class="hid">17,870</td>
+                                    <td class="hid">-2,188</td>
+                                    <td ><#if reportTotal.dagudongRetreat gt 0>${reportTotal.dagudongRetreat?floor} <#else>${reportTotal.dagudongRetreat?ceiling}</#if> </td>
+                                    <td ><#if reportTotal.dagudongWinamt gt 0>${reportTotal.dagudongWinamt?floor} <#else>${reportTotal.dagudongWinamt?ceiling}</#if> </td>
+                                    <td ><#if reportTotal.guanliyuanAmt gt 0>${reportTotal.guanliyuanAmt?floor} <#else>${reportTotal.guanliyuanAmt?ceiling}</#if> </td>
+                                    <td class="hid">55,085</td>
+                                    <td class="hid">-8,003</td>
+                                    <td class="bg"><#if reportTotal.guanliyuanWinAmt gt 0>${reportTotal.guanliyuanWinAmt?floor} <#else>${reportTotal.guanliyuanWinAmt?ceiling}</#if> </td>
+
                                 </tr>
                                 </tfoot>
-                                </tbody>
+
                             </table>
                         </div>
                         <div class="ft"></div>

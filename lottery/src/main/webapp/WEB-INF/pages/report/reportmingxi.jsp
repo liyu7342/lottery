@@ -74,17 +74,15 @@
                                         <td>${(obj.totalAmount)!''}</td>
                                         <td>${(obj.retreat)!''}%</td>
                                         <td
-                                        <#if obj.id!="" && obj.winAmount gt 0 >class="red"</#if>
+                                        <#if  obj.winAmount gt 0 >class="red"</#if>
                                         >
-                                        <#if obj.id=="">${(obj.canWinAmount)!''}
-                                            <#else>
-                                            ${(obj.winAmount+obj.retreatAmt)}</#if>
+                                        <#if  obj.winAmount != 0 >
+                                            ${(obj.winAmount+obj.retreatAmt)}
+                                        <#else >
+                                            0
+                                        </#if>
                                         </td>
-                                        <td>
-                                            <#if obj.id=="">下注成功
-                                                <#else>成功
-                                            </#if>
-                                        </td>
+                                        <td>正常</td>
                                     </tr>
                                 </#list>
                                 </tbody>
@@ -94,7 +92,7 @@
                                     <td colspan="5">合計</td>
                                     <td>${totalAmount!'0'}</td>
                                     <td></td>
-                                    <td>${(winAmount)?ceiling}</td>
+                                    <td><#if winAmount lt 0 >${winAmount?ceiling} <#else> ${winAmount?floor}</#if></td>
                                     <td></td>
                                 </tr>
                                 </tfoot>

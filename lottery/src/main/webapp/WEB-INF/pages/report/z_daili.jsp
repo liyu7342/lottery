@@ -76,18 +76,20 @@
                                         </td>
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
-                                        <td>${reportDto.memberWinamt?ceiling}</td>
-                                        <td>${reportDto.memberRetreat?ceiling}</td>
-                                        <td>${reportDto.memberAmt?ceiling}</td>
-                                        <td>${reportDto.dailiAmt?ceiling}</td>
+                                        <td><#if reportDto.memberWinamt gt 0>${reportDto.memberWinamt?floor} <#else>${reportDto.memberWinamt?ceiling}</#if> </td>
+                                        <td>${reportDto.memberRetreat?floor}</td>
+                                        <td><#if reportDto.memberAmt gt 0>${reportDto.memberAmt?floor} <#else>${reportDto.memberAmt?ceiling}</#if> </td>
+                                        <td><#if reportDto.dailiAmt gt 0>${reportDto.dailiAmt?floor} <#else>${reportDto.dailiAmt?ceiling}</#if> </td>
                                         <td class="hid">-6,901</td>
                                         <td class="hid">4</td>
-                                        <td>${reportDto.dailiRetreat?ceiling}</td>
-                                        <td class="bg">${reportDto.dailiWinamt?ceiling}</td>
-                                        <td>${reportDto.toZongdaiAmt?ceiling}</td>
+                                        <td><#if reportDto.dailiRetreat gt 0>${reportDto.dailiRetreat?floor} <#else>${reportDto.dailiRetreat?ceiling}</#if> </td>
+                                        <td class="bg"><#if reportDto.dailiWinamt gt 0>${reportDto.dailiWinamt?floor} <#else>${reportDto.dailiWinamt?ceiling}</#if> </td>
+
+                                        <td>${reportDto.toZongdaiAmt?floor}</td>
                                         <td class="hid">-16,102</td>
                                         <td class="hid">-197</td>
-                                        <td class="bg">${reportDto.toZongdaiWinamt?ceiling}</td>
+                                        <td class="bg"><#if reportDto.toZongdaiWinamt gt 0>${reportDto.toZongdaiWinamt?floor} <#else>${reportDto.toZongdaiWinamt?ceiling}</#if> </td>
+
                                     </tr>
                                 </#list>
                                 </tbody>
@@ -97,18 +99,20 @@
                                     <td>總計</td>
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.amount!'0'}</td>
-                                    <td>${reportTotal.memberWinamt?ceiling}</td>
-                                    <td>${reportTotal.memberRetreat?ceiling}</td>
-                                    <td>${reportTotal.memberAmt?ceiling}</td>
-                                    <td>${reportTotal.dailiAmt?ceiling}</td>
-                                    <td class="hid">-4,991</td>
-                                    <td class="hid">-71</td>
-                                    <td>${reportTotal.dailiRetreat?ceiling}</td>
-                                    <td class="red" class="bg">${reportTotal.dailiWinamt?ceiling}</td>
-                                    <td>${reportTotal.toZongdaiAmt?ceiling}</td>
-                                    <td class="hid">-14,362</td>
-                                    <td class="hid">-1,909</td>
-                                    <td class="bg">${reportTotal.toZongdaiWinamt?ceiling}</td>
+                                    <td><#if reportTotal.memberWinamt gt 0>${reportTotal.memberWinamt?floor} <#else>${reportTotal.memberWinamt?ceiling}</#if> </td>
+                                    <td>${reportTotal.memberRetreat?floor}</td>
+                                    <td><#if reportTotal.memberAmt gt 0>${reportTotal.memberAmt?floor} <#else>${reportTotal.memberAmt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.dailiAmt gt 0>${reportTotal.dailiAmt?floor} <#else>${reportTotal.dailiAmt?ceiling}</#if> </td>
+                                    <td class="hid">-6,901</td>
+                                    <td class="hid">4</td>
+                                    <td><#if reportTotal.dailiRetreat gt 0>${reportTotal.dailiRetreat?floor} <#else>${reportTotal.dailiRetreat?ceiling}</#if> </td>
+                                    <td class="bg red"><#if reportTotal.dailiWinamt gt 0>${reportTotal.dailiWinamt?floor} <#else>${reportTotal.dailiWinamt?ceiling}</#if> </td>
+
+                                    <td>${reportTotal.toZongdaiAmt?floor}</td>
+                                    <td class="hid">-16,102</td>
+                                    <td class="hid">-197</td>
+                                    <td class="bg"><#if reportTotal.toZongdaiWinamt gt 0>${reportTotal.toZongdaiWinamt?floor} <#else>${reportTotal.toZongdaiWinamt?ceiling}</#if> </td>
+
                                 </tr>
                                 </tfoot>
 

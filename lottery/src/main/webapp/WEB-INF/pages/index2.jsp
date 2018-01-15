@@ -72,7 +72,7 @@
                     <li ><a target='main' href="/user/index">賬號管理</a></li>
                     <li ><a target='main' href="/statis/statis?category_id=00">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
-
+                    <li ><a target='main' href="/report/report" act='report'>報表</a></li>
                     <li ><a target='main' href="/result/index2" act='result'>開獎結果</a></li>
                     <li ><a target='main' href="/user/password1">密碼變更</a></li>
                 </ul>

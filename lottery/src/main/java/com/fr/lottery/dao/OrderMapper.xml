@@ -193,10 +193,11 @@
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
     SELECT handicap.id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
-    sum(winAmount+retreatamt) as winAmount
+    sum(ifnull(winAmount,0)+retreatamt) as winAmount
     FROM orders
     INNER  JOIN Handicap on orders.handicapId= Handicap.Id
       <where>
+
         <if test="userid!='' and userid!=null" >
           AND userid = #{userid,jdbcType=VARCHAR}
         </if>
@@ -227,6 +228,47 @@
     </where>
     GROUP  BY userid,handicapId
     ORDER  BY riqi desc
+
+  </select>
+
+  <select id="getBuhuoesByUserId" resultType="com.fr.lottery.entity.Orders">
+    SELECT * FROM orders
+    <where>
+      <if test="handicapId!='' and handicapId!=null" >
+        AND handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="gameType!='' and gameType!=null" >
+        AND FIND_IN_SET (gameType, #{gameType,jdbcType=VARCHAR})
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND userId = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND userId = #{userId,jdbcType=VARCHAR}
+      </if>
+      AND orderType='bucang'
+    </where>
+    order by orderNo DESC
+    <if test="pageIndex!=null ">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countBuhuoesByUserId" resultType="java.lang.Integer">
+    SELECT  count(1) FROM orders
+    <where>
+      <if test="handicapId!='' and handicapId!=null" >
+        AND handicapId = #{handicapId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="gameType!='' and gameType!=null" >
+        AND FIND_IN_SET (gameType, #{gameType,jdbcType=VARCHAR})
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND userId = #{userId,jdbcType=VARCHAR}
+      </if>
+      AND orderType='bucang'
+    </where>
 
   </select>
 </mapper>

@@ -90,6 +90,8 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView("/report/game_report");
         return modelAndView;
     }
+
+    @RequestMapping("/z_admin")
     public ModelAndView z_admin(String draw_date,String draw_date2){
            ModelAndView modelAndView = new ModelAndView("/report/z_admin") ;
            String handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
@@ -121,20 +123,21 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView("/report/z_dagudong");
         String handicapId ="";
         handicapId = handicapService.getHandicapByRiqi(draw_date).getId();
-        List<GudongReport> reportDtos = reportService.getDagudongReport(handicapId,id);
-        GudongReport reportTotal = new GudongReport();
-        for(GudongReport reportDto : reportDtos){
+        List<DagudongReport> reportDtos = reportService.getDagudongReport(handicapId,id);
+        DagudongReport reportTotal = new DagudongReport();
+        for(DagudongReport reportDto : reportDtos){
             reportTotal.setOrderNum(reportTotal.getOrderNum()+reportDto.getOrderNum());
             reportTotal.setMemberCount(reportTotal.getMemberCount() +reportDto.getMemberCount());
             reportTotal.setAmount(reportTotal.getAmount()+reportDto.getAmount());
             reportTotal.setMemberAmt( reportTotal.getMemberAmt()+reportDto.getMemberAmt());
-            reportTotal.setDailiToZongdai(reportTotal.getDailiToZongdai()+ reportDto.getDailiToZongdai());
-            reportTotal.setZongdaiToGudong(reportTotal.getZongdaiToGudong()+ reportDto.getZongdaiToGudong());
-            reportTotal.setGudongAmt(reportTotal.getGudongAmt() +reportDto.getGudongAmt());
-            reportTotal.setGudongRetreat(reportTotal.getGudongRetreat()+reportDto.getGudongRetreat());
-            reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+ reportDto.getGudongWinamt());
-            reportTotal.setDagudongAmt(reportTotal.getDagudongAmt()+reportDto.getDagudongAmt());
-            reportTotal.setDagudongWinAmt(reportTotal.getDagudongWinAmt()+reportDto.getDagudongWinAmt());
+            reportTotal.setGudongToParent(reportTotal.getGudongToParent()+ reportDto.getGudongToParent());
+            reportTotal.setGudongToParentWinamt(reportTotal.getGudongToParentWinamt()+ reportDto.getGudongToParentWinamt());
+
+            reportTotal.setDagudongAmt(reportTotal.getDagudongAmt() +reportDto.getDagudongAmt());
+            reportTotal.setDagudongRetreat(reportTotal.getDagudongRetreat()+reportDto.getDagudongRetreat());
+            reportTotal.setDagudongWinamt(reportTotal.getDagudongWinamt()+ reportDto.getDagudongWinamt());
+            reportTotal.setGuanliyuanAmt(reportTotal.getGuanliyuanAmt()+reportDto.getGuanliyuanAmt());
+            reportTotal.setGuanliyuanWinAmt(reportTotal.getGuanliyuanWinAmt()+reportDto.getGuanliyuanWinAmt());
         }
         modelAndView.addObject("reportDtos",reportDtos);
         modelAndView.addObject("handicapId",handicapId);
@@ -485,6 +488,61 @@ public class ReportController {
         modelAndView.addObject("orders",orders);
         modelAndView.addObject("bodyStr", org.apache.commons.lang3.StringUtils.join(bodyList, "\r\n"));
         modelAndView.addObject("size",orderDetails.size());
+        return modelAndView;
+    }
+
+    @RequestMapping("z_buhuo")
+    public ModelAndView z_buhuo(String draw_date0,String draw_id,String type,String p_level,String __account,String __name,String id,Integer pageId){
+        ModelAndView modelAndView = new ModelAndView("/report/z_buhuo");
+        User user = UserHelper.getCurrentUser();
+        if(StringUtils.isBlank(draw_id));
+            draw_id = handicapService.getHandicapByRiqi(draw_date0).getId();
+        Page<Orders> orderDetails =orderService.getBuhuoesByUserId("",id,draw_id,pageId);
+        User member = userService.get(id);
+        List<String> banners = new ArrayList<String>();
+
+        banners.add("補貨 -- 賬號：[<span class=\"greenrpt\">"+member.getUserName()  +"</span>"+member.getAccount() +" -- 期数日期："+draw_date0+" ~ " +draw_date0);
+        if(user.getUsertype()==0){
+            User daili  =userService.get(member.getDailiId());
+            User zongdai = userService.get(member.getZongdailiId());
+            User gudong = userService.get(member.getGudongId());
+            User dagudong = userService.get(member.getDagudongId());
+            banners.add("<a href=\"/report/user_report?gameType=1&draw_date="+draw_date0+"&draw_date2="+draw_date0+"&kind=user_report\">管理員</a> -> ");
+            banners.add("<a href=\"/report/z_dagudong?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=1&__account="+dagudong.getAccount()+" &__name="+dagudong.getUserName()+"&id="+dagudong.getId()+"\">大股東</a> -> ");
+            banners.add("<a href=\"/report/z_gudong?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=2&__account="+gudong.getAccount()+" &__name="+gudong.getUserName()+"&id="+gudong.getId()+"\">股東</a> -> ");
+            banners.add("<a href=\"/report/z_zongdaili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=3&__account="+zongdai.getAccount()+" &__name="+zongdai.getUserName()+"&id="+zongdai.getId()+"\">總代</a> -> ");
+            banners.add("<a href=\"/report/z_daili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=4&__account="+daili.getAccount()+" &__name="+daili.getUserName()+"&id="+daili.getId()+"\">代理商</a> -> ");
+        }
+        else if(user.getUsertype()==1){
+            User daili  =userService.get(member.getDailiId());
+            User zongdai = userService.get(member.getZongdailiId());
+            User gudong = userService.get(member.getGudongId());
+            banners.add("<a href=\"/report/user_report?gameType=1&draw_date="+draw_date0+"&draw_date2="+draw_date0+"&kind=user_report\">大股東</a> -> ");
+            banners.add("<a href=\"/report/z_gudong?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=2&__account="+gudong.getAccount()+" &__name="+gudong.getUserName()+"&id="+gudong.getId()+"\">股東</a> -> " );
+            banners.add("<a href=\"/report/z_zongdaili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=3&__account="+zongdai.getAccount()+" &__name="+zongdai.getUserName()+"&id="+zongdai.getId()+"\">總代</a> -> ");
+            banners.add("<a href=\"/report/z_daili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=4&__account="+daili.getAccount()+" &__name="+daili.getUserName()+"&id="+daili.getId()+"\">代理商</a> -> ");
+        }
+        else if(user.getUsertype()==2){
+            User daili  =userService.get(member.getDailiId());
+            User zongdai = userService.get(member.getZongdailiId());
+            banners.add("<a href=\"/report/user_report?gameType=1&draw_date="+draw_date0+"&draw_date2="+draw_date0+"&kind=user_report\">股東</a> -> ");
+            banners.add("<a href=\"/report/z_zongdaili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=3&__account="+zongdai.getAccount()+" &__name="+zongdai.getUserName()+"&id="+zongdai.getId()+"\">總代</a> -> ");
+            banners.add("<a href=\"/report/z_daili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=4&__account="+daili.getAccount()+" &__name="+daili.getUserName()+"&id="+daili.getId()+"\">代理商</a> -> ");
+        }
+        else if(user.getUsertype()==3){
+            User daili  =userService.get(member.getDailiId());
+            banners.add("<a href=\"/report/user_report?gameType=1&draw_date="+draw_date0+"&draw_date2="+draw_date0+"&kind=user_report\">總代</a> -> ");
+            banners.add("<a href=\"/report/z_daili?draw_date="+draw_date0+"&draw_date2="+draw_date0+"&type=1&p_level=4&__account="+daili.getAccount()+" &__name="+daili.getUserName()+"&id="+daili.getId()+"\">代理商</a> -> ");
+        }
+
+        else if(user.getUsertype()==4){
+            banners.add("<a href=\"/report/user_report?gameType=1&draw_date="+draw_date0+"&draw_date2="+draw_date0+"&kind=user_report\">代理商</a> -> ");
+        }
+        else{
+            banners.add("<a href=\"/report/report\">上一頁</a>");
+        }
+        modelAndView.addObject("banners", StringUtils.join(banners," "));
+        modelAndView.addObject("orderDetails",orderDetails);
         return modelAndView;
     }
 }

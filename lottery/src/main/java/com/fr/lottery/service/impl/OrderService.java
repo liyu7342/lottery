@@ -123,10 +123,10 @@ public class OrderService implements IOrderService {
             orders.setZongdaiAccount(zongdai.getAccount());
             orders.setGudongAccount(gudong.getAccount());
             orders.setDagudongAccount(dagudong.getAccount());
-            orders.setDailiAmt(user.getShareUp() * orders.getAmount()/100F);
-            orders.setGudongAmt(zongdai.getShareUp()* orders.getAmount()/100F);
-            orders.setZongdaiAmt(daili.getShareUp()* orders.getAmount()/100F);
-            orders.setDagudongAmt(gudong.getShareUp()* orders.getAmount()/100F );
+            orders.setDailiAmt(user.getShareUp() * orders.getTotalAmount()/100F);
+            orders.setGudongAmt(zongdai.getShareUp()* orders.getTotalAmount()/100F);
+            orders.setZongdaiAmt(daili.getShareUp()* orders.getTotalAmount()/100F);
+            orders.setDagudongAmt(gudong.getShareUp()* orders.getTotalAmount()/100F );
             Float dailiRetreat = limitSetService.findRetreatFromCache(daili.getId(), orderDto.getOdds_set(),category,user.getHandicap());
             Float zongdaiRetreat = limitSetService.findRetreatFromCache(zongdai.getId(), orderDto.getOdds_set(),category,user.getHandicap());
             Float gudongRetreat = limitSetService.findRetreatFromCache(gudong.getId(), orderDto.getOdds_set(),category,user.getHandicap());
@@ -694,10 +694,34 @@ public class OrderService implements IOrderService {
         return true;
     }
 
+    /**
+     * 收付統計 統計用戶單項數據補貨明細
+     * @param game_id
+     * @param userId
+     * @return
+     */
     @Override
     public List<OrderDetailDto> getBuhuo(String game_id, String userId) {
         Handicap handicap = handicapService.getLastestHandicap();
         return orderDetailMapper.getBuhuoes(handicap.getId(),game_id,userId);
+    }
+
+    /**
+     * 查看當前用戶的補貨情況
+     * @param game_id
+     * @param userId
+     * @param handicapId
+     * @param pageId
+     * @return
+     */
+    @Override
+    public Page<Orders> getBuhuoesByUserId(String game_id,String userId,String handicapId,Integer pageId){
+        if(pageId==null) pageId=1;
+        Integer pageIndex= (pageId -1)  * Global.pageSize;
+        List<Orders> orderDetailDtos= orderMapper.getBuhuoesByUserId(handicapId,game_id,userId,pageIndex,Global.pageSize);
+        Long total = orderMapper.countBuhuoesByUserId(handicapId,game_id,userId);
+        Page<Orders> page =new Page<Orders>(pageId,Global.pageSize,total,orderDetailDtos);
+        return page;
     }
 
     public List<OrderDetail> getOrderDetailsByOrderId(String orderId){

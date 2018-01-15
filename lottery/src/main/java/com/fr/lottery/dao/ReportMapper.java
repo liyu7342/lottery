@@ -50,7 +50,9 @@ public interface ReportMapper {
 
     List<GudongReport> getGudongReportHasSettlement(StatisCondition condition);
 
-    List<GudongReport> getDagudongReport(StatisCondition condition);
+    List<DagudongReport> getDagudongReport(StatisCondition condition);
+
+    List<DagudongReport> getDagudongReportHasSettlement(StatisCondition condition);
 
     List<GudongReport> getAdminReport(StatisCondition condition);
 

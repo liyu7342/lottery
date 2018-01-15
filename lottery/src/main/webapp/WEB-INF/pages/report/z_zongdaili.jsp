@@ -81,14 +81,15 @@
                                         <td>${reportDto.orderNum!'0'}</td>
                                         <td>${reportDto.memberCount!'0'}</td>
                                         <td>${reportDto.amount!'0'}</td>
-                                        <td>${reportDto.memberAmt?ceiling}</td>
-                                        <td>${reportDto.dailiToZongdai?ceiling}</td>
-                                        <td class="bg">${reportDto.dailiToZongdaiWinamt?ceiling}</td>
-                                        <td>${reportDto.zongdaiAmt?ceiling}</td>
-                                        <td>${reportDto.zongdaiRetreat?ceiling}</td>
-                                        <td class="bg">${reportDto.zongdaiWinamt?ceiling}</td>
-                                        <td>${reportDto.gudongAmt?ceiling}</td>
-                                        <td class="bg">${reportDto.gudongWinamt?ceiling}</td>
+                                        <td><#if reportDto.memberAmt gt 0>${reportDto.memberAmt?floor} <#else>${reportDto.memberAmt?ceiling}</#if> </td>
+                                        <td><#if reportDto.dailiToZongdai gt 0>${reportDto.dailiToZongdai?floor} <#else>${reportDto.dailiToZongdai?ceiling}</#if> </td>
+                                        <td class="bg"><#if reportDto.dailiToZongdaiWinamt gt 0>${reportDto.dailiToZongdaiWinamt?floor} <#else>${reportDto.dailiToZongdaiWinamt?ceiling}</#if> </td>
+                                        <td>${reportDto.zongdaiAmt?floor}</td>
+                                        <td><#if reportDto.zongdaiRetreat gt 0>${reportDto.zongdaiRetreat?floor} <#else>${reportDto.zongdaiRetreat?ceiling}</#if> </td>
+                                        <td class="bg red"><#if reportDto.zongdaiWinamt gt 0>${reportDto.zongdaiWinamt?floor} <#else>${reportDto.zongdaiWinamt?ceiling}</#if> </td>
+
+                                        <td>${reportDto.gudongAmt?floor}</td>
+                                        <td class="bg"><#if reportDto.gudongWinamt gt 0>${reportDto.gudongWinamt?floor} <#else>${reportDto.gudongWinamt?ceiling}</#if> </td>
 
                                     </tr>
                                 </#list>
@@ -99,16 +100,15 @@
                                     <td>${reportTotal.orderNum!'0'}</td>
                                     <td>${reportTotal.memberCount!'0'}</td>
                                     <td>${reportTotal.amount!'0'}</td>
-                                    <td>${reportTotal.memberAmt?ceiling}</td>
-                                    <td>${reportTotal.dailiToZongdai?ceiling}</td>
-                                    <td class="bg">${reportTotal.dailiToZongdaiWinamt?ceiling}</td>
+                                    <td><#if reportTotal.memberAmt gt 0>${reportTotal.memberAmt?floor} <#else>${reportTotal.memberAmt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.dailiToZongdai gt 0>${reportTotal.dailiToZongdai?floor} <#else>${reportTotal.dailiToZongdai?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportTotal.dailiToZongdaiWinamt gt 0>${reportTotal.dailiToZongdaiWinamt?floor} <#else>${reportTotal.dailiToZongdaiWinamt?ceiling}</#if> </td>
+                                    <td>${reportTotal.zongdaiAmt?floor}</td>
+                                    <td><#if reportTotal.zongdaiRetreat gt 0>${reportTotal.zongdaiRetreat?floor} <#else>${reportTotal.zongdaiRetreat?ceiling}</#if> </td>
+                                    <td class="bg red"><#if reportTotal.zongdaiWinamt gt 0>${reportTotal.zongdaiWinamt?floor} <#else>${reportTotal.zongdaiWinamt?ceiling}</#if> </td>
 
-                                    <td>${reportTotal.zongdaiAmt?ceiling}</td>
-                                    <td>${reportTotal.zongdaiRetreat?ceiling}</td>
-                                    <td class="red" class="bg">${reportTotal.zongdaiWinamt?ceiling}</td>
-                                    <td>${reportTotal.gudongAmt?ceiling}</td>
-
-                                    <td class="bg">${reportTotal.gudongWinamt?ceiling}</td>
+                                    <td>${reportTotal.gudongAmt?floor}</td>
+                                    <td class="bg"><#if reportTotal.gudongWinamt gt 0>${reportTotal.gudongWinamt?floor} <#else>${reportTotal.gudongWinamt?ceiling}</#if> </td>
                                 </tr>
                                 </tfoot>
                                 </tbody>
