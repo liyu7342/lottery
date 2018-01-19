@@ -356,4 +356,38 @@
         group by dagudongid,dagudongaccount,dagudongname
     </select>
 
+
+
+    <select id="getDailiReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+        SELECT handicapid,riqi,dailiid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
+          sum(dailiamt) as zhancheng,sum(dailiWinamt) as userWinamt,sum(dailiWinamt) as userTotalamt,sum(dailiretreat) as retreat,
+          sum(dailiretreatDiff) as retreatDiff
+           FROM report_daili where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND dailiid=#{userId,jdbcType=VARCHAR}
+        GROUP BY handicapid,riqi
+    </select>
+
+    <select id="getZongdaiReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+        SELECT handicapid,riqi,zongdaiid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
+        sum(zongdaiamt) as zhancheng,sum(zongdaiWinamt) as userWinamt,sum(zongdaitotalamt) as userTotalamt,
+        sum(zongdairetreatdiff) as retreatdiff,sum(zongdairetreat) as retreat
+        FROM report_zongdai where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND zongdaiid=#{userId,jdbcType=VARCHAR}
+        GROUP BY handicapid,riqi
+    </select>
+
+    <select id="getDGudongReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+        SELECT handicapid,riqi,gudongid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
+        sum(gudongamt) as zhancheng,sum(gudongwinamt) as userWinamt,sum(gudongtotalamt) as userTotalamt,
+        sum(gudongretreatdiff) as retreatdiff,sum(gudongretreat) as retreat
+        FROM report_gudong where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND gudongid=#{userId,jdbcType=VARCHAR}
+        GROUP BY handicapid,riqi
+    </select>
+
+    <select id="getDagudongReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+        SELECT handicapid,riqi,dagudongid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
+        sum(dagudongamt) as zhancheng,sum(dagudongwinamt) as userWinamt,sum(dagudongtotalamt) as userTotalamt,
+        sum(dagudongretreatdiff) as retreatdiff,sum(dagudongretreat) as retreat
+        FROM report_dagudong where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND dagudongid=#{userId,jdbcType=VARCHAR}
+        GROUP BY handicapid,riqi
+    </select>
+
 </mapper>

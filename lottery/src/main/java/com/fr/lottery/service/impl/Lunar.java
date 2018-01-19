@@ -190,6 +190,7 @@ public class Lunar {
 
     public static void main(String[] args) {
         Calendar cal=Calendar.getInstance();
+        cal.set(1984,11,13);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
         cal.setTimeZone(TimeZone.getDefault());
         System.out.println("公历日期:"+sdf.format(cal.getTime()));
@@ -202,12 +203,7 @@ public class Lunar {
         System.out.println(lunar);
     }
 
-    /*
- public static void main(String[] args) throws ParseException {
-  Calendar today = Calendar.getInstance();
-  today.setTime(chineseDateFormat.parse("2007年11月6日"));
-  Lunar lunar = new Lunar(today);
-  System.out.println("北京时间：" + chineseDateFormat.format(today.getTime()) + "　农历" + lunar);
-   }
-    */
+
+
+
 }

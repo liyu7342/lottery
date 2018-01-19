@@ -68,7 +68,7 @@ public class ShengxiaoService implements IShengxiaoService {
 
         if(StringUtils.isNotBlank(date)){
             String[] darr = date.split("-");
-            cal.set(Integer.parseInt(darr[0]),Integer.parseInt(darr[1]),Integer.parseInt(darr[2]));
+            cal.set(Integer.parseInt(darr[0]),Integer.parseInt(darr[1])-1,Integer.parseInt(darr[2]));
         }
         Lunar lunar=new Lunar(cal);
         return shengxiaoMapper.findByYear(lunar.getYear());

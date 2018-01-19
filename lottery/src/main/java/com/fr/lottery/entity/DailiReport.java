@@ -14,7 +14,9 @@ public class DailiReport {
         this.memberAmt = 0f;
         this.dailiAmt = 0f;
         this.dailiRetreat = 0f;
+        this.dailiRetreatDiff=0f;
         this.dailiWinamt = 0f;
+        this.dailiTotalamt=0f;
         this.toZongdaiAmt = 0f;
         this.toZongdaiWinamt = 0f;
     }
@@ -73,13 +75,21 @@ public class DailiReport {
      */
     private Float dailiAmt;
     /**
-     *佣金差
+     *佣金
      */
     private Float dailiRetreat;
     /**
-     *代理盈亏
+     *佣金差
+     */
+    private Float dailiRetreatDiff;
+    /**
+     *代理奖金
      */
     private Float dailiWinamt;
+    /**
+     *代理盈亏
+     */
+    private Float dailiTotalamt;
     /**
      *上级占成
      */
@@ -231,5 +241,21 @@ public class DailiReport {
 
     public void setToZongdaiWinamt(Float toZongdaiWinamt) {
         this.toZongdaiWinamt = toZongdaiWinamt;
+    }
+
+    public Float getDailiRetreatDiff() {
+        return dailiRetreatDiff;
+    }
+
+    public void setDailiRetreatDiff(Float dailiRetreatDiff) {
+        this.dailiRetreatDiff = dailiRetreatDiff;
+    }
+
+    public Float getDailiTotalamt() {
+        return dailiTotalamt;
+    }
+
+    public void setDailiTotalamt(Float dailiTotalamt) {
+        this.dailiTotalamt = dailiTotalamt;
     }
 }

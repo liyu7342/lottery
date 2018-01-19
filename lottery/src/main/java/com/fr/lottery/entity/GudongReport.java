@@ -16,7 +16,9 @@ public class GudongReport {
         this.dailiToZongdai=0f;
         this.gudongAmt=0f;
         this.gudongRetreat=0f;
+        this.gudongRetreatDiff=0f;
         this.gudongWinamt=0f;
+        this.gudongTotalamt=0f;
         this.dagudongAmt=0f;
         this.dagudongWinAmt=0f;
 
@@ -40,7 +42,9 @@ public class GudongReport {
     private Float zongdaiToGudong;
     private Float gudongAmt;
     private Float gudongRetreat;
+    private Float gudongRetreatDiff;
     private Float gudongWinamt;
+    private Float gudongTotalamt;
     private Float dagudongAmt;
     private Float dagudongWinAmt;
 
@@ -194,6 +198,23 @@ public class GudongReport {
 
     public void setGudongWinamt(Float gudongWinamt) {
         this.gudongWinamt = gudongWinamt;
+    }
+
+
+    public Float getGudongRetreatDiff() {
+        return gudongRetreatDiff;
+    }
+
+    public void setGudongRetreatDiff(Float gudongRetreatDiff) {
+        this.gudongRetreatDiff = gudongRetreatDiff;
+    }
+
+    public Float getGudongTotalamt() {
+        return gudongTotalamt;
+    }
+
+    public void setGudongTotalamt(Float gudongTotalamt) {
+        this.gudongTotalamt = gudongTotalamt;
     }
 
     public Float getDagudongAmt() {

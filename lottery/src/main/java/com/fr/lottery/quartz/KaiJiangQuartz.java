@@ -142,22 +142,6 @@ public class KaiJiangQuartz {
 
         String str = handicapService.get6hbd(url);
         str = str.substring(3);
-        try{
-            byte[]  bt = str.getBytes("GBK");
-            byte[]  bt1 = str.getBytes("ISO8859-1");
-            byte[]  bt2 = str.getBytes("UTF-8");
-
-            String str1 =new String(bt,"utf-8");
-            String str2 =new String(bt,"utf-8");
-            String str3 =new String(bt,"utf-8");
-
-            System.out.print( str1);
-            System.out.print( str1);
-            System.out.print( str1);
-        }
-        catch (UnsupportedEncodingException ex){
-            ex.printStackTrace();
-        }
 
         System.out.println("第 " + repeatTime + " 次请求 url：" + url + "   返回結果：" + str);
 

@@ -85,8 +85,8 @@
                                         <td><#if reportDto.dailiToZongdai gt 0>${reportDto.dailiToZongdai?floor} <#else>${reportDto.dailiToZongdai?ceiling}</#if> </td>
                                         <td class="bg"><#if reportDto.dailiToZongdaiWinamt gt 0>${reportDto.dailiToZongdaiWinamt?floor} <#else>${reportDto.dailiToZongdaiWinamt?ceiling}</#if> </td>
                                         <td>${reportDto.zongdaiAmt?floor}</td>
-                                        <td><#if reportDto.zongdaiRetreat gt 0>${reportDto.zongdaiRetreat?floor} <#else>${reportDto.zongdaiRetreat?ceiling}</#if> </td>
-                                        <td class="bg red"><#if reportDto.zongdaiWinamt gt 0>${reportDto.zongdaiWinamt?floor} <#else>${reportDto.zongdaiWinamt?ceiling}</#if> </td>
+                                        <td><#if reportDto.zongdaiRetreatDiff gt 0>${reportDto.zongdaiRetreatDiff?floor} <#else>${reportDto.zongdaiRetreatDiff?ceiling}</#if> </td>
+                                        <td class="bg red"><#if reportDto.zongdaiTotalamt gt 0>${reportDto.zongdaiTotalamt?floor} <#else>${reportDto.zongdaiTotalamt?ceiling}</#if> </td>
 
                                         <td>${reportDto.gudongAmt?floor}</td>
                                         <td class="bg"><#if reportDto.gudongWinamt gt 0>${reportDto.gudongWinamt?floor} <#else>${reportDto.gudongWinamt?ceiling}</#if> </td>
@@ -104,8 +104,8 @@
                                     <td><#if reportTotal.dailiToZongdai gt 0>${reportTotal.dailiToZongdai?floor} <#else>${reportTotal.dailiToZongdai?ceiling}</#if> </td>
                                     <td class="bg"><#if reportTotal.dailiToZongdaiWinamt gt 0>${reportTotal.dailiToZongdaiWinamt?floor} <#else>${reportTotal.dailiToZongdaiWinamt?ceiling}</#if> </td>
                                     <td>${reportTotal.zongdaiAmt?floor}</td>
-                                    <td><#if reportTotal.zongdaiRetreat gt 0>${reportTotal.zongdaiRetreat?floor} <#else>${reportTotal.zongdaiRetreat?ceiling}</#if> </td>
-                                    <td class="bg red"><#if reportTotal.zongdaiWinamt gt 0>${reportTotal.zongdaiWinamt?floor} <#else>${reportTotal.zongdaiWinamt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.zongdaiRetreatDiff gt 0>${reportTotal.zongdaiRetreatDiff?floor} <#else>${reportTotal.zongdaiRetreatDiff?ceiling}</#if> </td>
+                                    <td class="bg red"><#if reportTotal.zongdaiTotalamt gt 0>${reportTotal.zongdaiTotalamt?floor} <#else>${reportTotal.zongdaiTotalamt?ceiling}</#if> </td>
 
                                     <td>${reportTotal.gudongAmt?floor}</td>
                                     <td class="bg"><#if reportTotal.gudongWinamt gt 0>${reportTotal.gudongWinamt?floor} <#else>${reportTotal.gudongWinamt?ceiling}</#if> </td>

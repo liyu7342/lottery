@@ -1,5 +1,6 @@
 package com.fr.lottery.service.inter;
 
+import com.fr.lottery.dto.ReportMonthDto;
 import com.fr.lottery.entity.DagudongReport;
 import com.fr.lottery.entity.DailiReport;
 import com.fr.lottery.entity.GudongReport;
@@ -23,4 +24,10 @@ public interface IReportService {
     List<DagudongReport> getDagudongReport(String handicapId, String userId);
     List<GudongReport> getAdminReport(String handicapId);
 
+
+    List<ReportMonthDto> getDailiReportMonth(String riqi ,String riqi2,String userId);
+    List<ReportMonthDto> getZongdaiReportMonth(String riqi ,String riqi2,String userId);
+    List<ReportMonthDto> getGudongReportMonth(String riqi ,String riqi2,String userId);
+    List<ReportMonthDto> getDagudongReportMonth(String riqi ,String riqi2,String userId);
+    List<ReportMonthDto> getAdminReportMonth(String riqi ,String riqi2,String userId);
 }

@@ -1,6 +1,7 @@
 package com.fr.lottery.dao;
 
 import com.fr.lottery.condition.StatisCondition;
+import com.fr.lottery.dto.ReportMonthDto;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.dto.MemberReportDto;
 import org.apache.ibatis.annotations.Param;
@@ -55,5 +56,11 @@ public interface ReportMapper {
     List<DagudongReport> getDagudongReportHasSettlement(StatisCondition condition);
 
     List<GudongReport> getAdminReport(StatisCondition condition);
+
+
+    List<ReportMonthDto> getDailiReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
+    List<ReportMonthDto> getZongdaiReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
+    List<ReportMonthDto> getGudongReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
+    List<ReportMonthDto> getDagudongReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
 
 }

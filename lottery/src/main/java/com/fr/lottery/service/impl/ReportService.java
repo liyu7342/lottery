@@ -2,6 +2,7 @@ package com.fr.lottery.service.impl;
 
 import com.fr.lottery.condition.StatisCondition;
 import com.fr.lottery.dao.ReportMapper;
+import com.fr.lottery.dto.ReportMonthDto;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.dto.MemberReportDto;
 import com.fr.lottery.service.inter.IHandicapService;
@@ -89,4 +90,28 @@ public class ReportService implements IReportService {
         return reportMapper.getAdminReport(condition);
     }
 
+    @Override
+    public List<ReportMonthDto> getDailiReportMonth(String riqi, String riqi2, String userId) {
+       return reportMapper.getDailiReportMonth(riqi,riqi2,userId);
+    }
+
+    @Override
+    public List<ReportMonthDto> getZongdaiReportMonth(String riqi, String riqi2, String userId) {
+        return reportMapper.getZongdaiReportMonth(riqi,riqi2,userId);
+    }
+
+    @Override
+    public List<ReportMonthDto> getGudongReportMonth(String riqi, String riqi2, String userId) {
+        return reportMapper.getGudongReportMonth(riqi,riqi2,userId);
+    }
+
+    @Override
+    public List<ReportMonthDto> getDagudongReportMonth(String riqi, String riqi2, String userId) {
+        return reportMapper.getDagudongReportMonth(riqi,riqi2,userId);
+    }
+
+    @Override
+    public List<ReportMonthDto> getAdminReportMonth(String riqi, String riqi2, String userId) {
+        return reportMapper.getDailiReportMonth(riqi,riqi2,userId);
+    }
 }

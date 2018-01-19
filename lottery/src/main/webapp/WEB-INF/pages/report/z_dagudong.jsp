@@ -89,8 +89,8 @@
                                         <td ><#if reportDto.dagudongAmt gt 0>${reportDto.dagudongAmt?floor} <#else>${reportDto.dagudongAmt?ceiling}</#if> </td>
                                         <td class="hid">17,870</td>
                                         <td class="hid">-2,188</td>
-                                        <td ><#if reportDto.dagudongRetreat gt 0>${reportDto.dagudongRetreat?floor} <#else>${reportDto.dagudongRetreat?ceiling}</#if> </td>
-                                        <td ><#if reportDto.dagudongWinamt gt 0>${reportDto.dagudongWinamt?floor} <#else>${reportDto.dagudongWinamt?ceiling}</#if> </td>
+                                        <td ><#if reportDto.dagudongRetreatDiff gt 0>${reportDto.dagudongRetreatDiff?floor} <#else>${reportDto.dagudongRetreatDiff?ceiling}</#if> </td>
+                                        <td ><#if reportDto.dagudongTotalamt gt 0>${reportDto.dagudongTotalamt?floor} <#else>${reportDto.dagudongTotalamt?ceiling}</#if> </td>
                                         <td ><#if reportDto.guanliyuanAmt gt 0>${reportDto.guanliyuanAmt?floor} <#else>${reportDto.guanliyuanAmt?ceiling}</#if> </td>
                                         <td class="hid">55,085</td>
                                         <td class="hid">-8,003</td>
@@ -115,8 +115,8 @@
                                     <td ><#if reportTotal.dagudongAmt gt 0>${reportTotal.dagudongAmt?floor} <#else>${reportTotal.dagudongAmt?ceiling}</#if> </td>
                                     <td class="hid">17,870</td>
                                     <td class="hid">-2,188</td>
-                                    <td ><#if reportTotal.dagudongRetreat gt 0>${reportTotal.dagudongRetreat?floor} <#else>${reportTotal.dagudongRetreat?ceiling}</#if> </td>
-                                    <td ><#if reportTotal.dagudongWinamt gt 0>${reportTotal.dagudongWinamt?floor} <#else>${reportTotal.dagudongWinamt?ceiling}</#if> </td>
+                                    <td ><#if reportTotal.dagudongRetreatDiff gt 0>${reportTotal.dagudongRetreatDiff?floor} <#else>${reportTotal.dagudongRetreatDiff?ceiling}</#if> </td>
+                                    <td ><#if reportTotal.dagudongTotalamt gt 0>${reportTotal.dagudongTotalamt?floor} <#else>${reportTotal.dagudongTotalamt?ceiling}</#if> </td>
                                     <td ><#if reportTotal.guanliyuanAmt gt 0>${reportTotal.guanliyuanAmt?floor} <#else>${reportTotal.guanliyuanAmt?ceiling}</#if> </td>
                                     <td class="hid">55,085</td>
                                     <td class="hid">-8,003</td>

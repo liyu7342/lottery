@@ -82,8 +82,8 @@
                                         <td><#if reportDto.dailiAmt gt 0>${reportDto.dailiAmt?floor} <#else>${reportDto.dailiAmt?ceiling}</#if> </td>
                                         <td class="hid">-6,901</td>
                                         <td class="hid">4</td>
-                                        <td><#if reportDto.dailiRetreat gt 0>${reportDto.dailiRetreat?floor} <#else>${reportDto.dailiRetreat?ceiling}</#if> </td>
-                                        <td class="bg"><#if reportDto.dailiWinamt gt 0>${reportDto.dailiWinamt?floor} <#else>${reportDto.dailiWinamt?ceiling}</#if> </td>
+                                        <td><#if reportDto.dailiRetreatDiff gt 0>${reportDto.dailiRetreatDiff?floor} <#else>${reportDto.dailiRetreatDiff?ceiling}</#if> </td>
+                                        <td class="bg"><#if reportDto.dailiTotalamt gt 0>${reportDto.dailiTotalamt?floor} <#else>${reportDto.dailiTotalamt?ceiling}</#if> </td>
 
                                         <td>${reportDto.toZongdaiAmt?floor}</td>
                                         <td class="hid">-16,102</td>
@@ -105,8 +105,8 @@
                                     <td><#if reportTotal.dailiAmt gt 0>${reportTotal.dailiAmt?floor} <#else>${reportTotal.dailiAmt?ceiling}</#if> </td>
                                     <td class="hid">-6,901</td>
                                     <td class="hid">4</td>
-                                    <td><#if reportTotal.dailiRetreat gt 0>${reportTotal.dailiRetreat?floor} <#else>${reportTotal.dailiRetreat?ceiling}</#if> </td>
-                                    <td class="bg red"><#if reportTotal.dailiWinamt gt 0>${reportTotal.dailiWinamt?floor} <#else>${reportTotal.dailiWinamt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.dailiRetreatDiff gt 0>${reportTotal.dailiRetreatDiff?floor} <#else>${reportTotal.dailiRetreatDiff?ceiling}</#if> </td>
+                                    <td class="bg red"><#if reportTotal.dailiTotalamt gt 0>${reportTotal.dailiTotalamt?floor} <#else>${reportTotal.dailiTotalamt?ceiling}</#if> </td>
 
                                     <td>${reportTotal.toZongdaiAmt?floor}</td>
                                     <td class="hid">-16,102</td>

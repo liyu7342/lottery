@@ -17,7 +17,10 @@ public class DagudongReport {
         this.gudongToParentWinamt=0f;
         this.dagudongAmt=0f;
         this.dagudongRetreat=0f;
+        this.dagudongRetreatDiff=0f;
+
         this.dagudongWinamt=0f;
+        this.dagudongTotalamt =0f;
         this.guanliyuanAmt=0f;
         this.guanliyuanWinAmt=0f;
     }
@@ -42,6 +45,8 @@ public class DagudongReport {
     private Float dagudongWinamt;
     private Float guanliyuanAmt;
     private Float guanliyuanWinAmt;
+    private Float dagudongRetreatDiff;
+    private Float dagudongTotalamt;
 
     public String getId() {
         return id;
@@ -209,5 +214,21 @@ public class DagudongReport {
 
     public void setGuanliyuanWinAmt(Float guanliyuanWinAmt) {
         this.guanliyuanWinAmt = guanliyuanWinAmt;
+    }
+
+    public Float getDagudongRetreatDiff() {
+        return dagudongRetreatDiff;
+    }
+
+    public void setDagudongRetreatDiff(Float dagudongRetreatDiff) {
+        this.dagudongRetreatDiff = dagudongRetreatDiff;
+    }
+
+    public Float getDagudongTotalamt() {
+        return dagudongTotalamt;
+    }
+
+    public void setDagudongTotalamt(Float dagudongTotalamt) {
+        this.dagudongTotalamt = dagudongTotalamt;
     }
 }

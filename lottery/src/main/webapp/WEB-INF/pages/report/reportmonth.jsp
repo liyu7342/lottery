@@ -64,25 +64,33 @@
                                         </td>
                                         <td>${report.orderNum!'0'}</td>
                                         <td>${report.amount!'0'}</td>
-                                        <td>${report.shareTotal!'0'}</td>
-                                        <td>${report.huiyuanAmt}</td>
-                                        <td>${report.gudongamt!'0'}</td>
-                                        <td>${report.retreat!'0'}</td>
-                                        <td>${report.retreatDiff!'0'}</td>
-                                        <td>${report.gudongWinamt!''}</td>
+                                        <td>${report.zhancheng?floor}</td>
+                                        <td ><#if report.memberWinamt gt 0>${report.memberWinamt?floor} <#else>${report.memberWinamt?ceiling}</#if> </td>
+
+                                        <td ><#if report.userWinamt gt 0>${report.userWinamt?floor} <#else>${report.userWinamt?ceiling}</#if> </td>
+
+                                        <td ><#if report.retreat gt 0>${report.retreat?floor} <#else>${report.retreat?ceiling}</#if> </td>
+
+                                        <td ><#if report.retreatDiff gt 0>${report.retreatDiff?floor} <#else>${report.retreatDiff?ceiling}</#if> </td>
+
+                                        <td ><#if report.userTotalamt gt 0>${report.userTotalamt?floor} <#else>${report.userTotalamt?ceiling}</#if> </td>
                                     </tr>
                                 </#list>
                                 <tfoot>
                                 <tr>
                                     <td>總計</td>
-                                    <td>12,907</td>
-                                    <td>2,491,091</td>
-                                    <td>255,172</td>
-                                    <td>14,261</td>
-                                    <td>2,339</td>
-                                    <td>-8,448</td>
-                                    <td>0</td>
-                                    <td class="red">-6,108</td>
+                                    <td>${reportTotal.orderNum!'0'}</td>
+                                    <td>${reportTotal.amount!'0'}</td>
+                                    <td>${reportTotal.zhancheng?floor}</td>
+                                    <td ><#if reportTotal.memberWinamt gt 0>${reportTotal.memberWinamt?floor} <#else>${reportTotal.memberWinamt?ceiling}</#if> </td>
+
+                                    <td ><#if reportTotal.userWinamt gt 0>${reportTotal.userWinamt?floor} <#else>${reportTotal.userWinamt?ceiling}</#if> </td>
+
+                                    <td ><#if reportTotal.retreat gt 0>${reportTotal.retreat?floor} <#else>${reportTotal.retreat?ceiling}</#if> </td>
+
+                                    <td ><#if reportTotal.retreatDiff gt 0>${reportTotal.retreatDiff?floor} <#else>${reportTotal.retreatDiff?ceiling}</#if> </td>
+
+                                    <td ><#if reportTotal.userTotalamt gt 0>${reportTotal.userTotalamt?floor} <#else>${reportTotal.userTotalamt?ceiling}</#if> </td>
                                 </tr>
                                 </tfoot>
                                 </tbody>

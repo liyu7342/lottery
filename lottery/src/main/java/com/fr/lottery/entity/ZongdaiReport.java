@@ -14,7 +14,9 @@ public class ZongdaiReport {
         this.dailiToZongdai=0f;
         this.zongdaiAmt=0f;
         this.zongdaiRetreat=0f;
+        this.zongdaiRetreatDiff=0f;
         this.zongdaiWinamt=0f;
+        this.zongdaiTotalamt=0f;
         this.gudongAmt=0f;
         this.gudongWinamt=0f;
     }
@@ -89,9 +91,17 @@ public class ZongdaiReport {
      */
     private Float zongdaiRetreat;
     /**
-     *总代盈亏
+     * 总代佣金差
+     */
+    private Float zongdaiRetreatDiff;
+    /**
+     *总代奖金
      */
     private Float zongdaiWinamt;
+    /**
+     * 总代盈亏
+     */
+    private Float zongdaiTotalamt;
     /**
      * 股东占成
      */
@@ -267,5 +277,21 @@ public class ZongdaiReport {
 
     public void setGudongWinamt(Float gudongWinamt) {
         this.gudongWinamt = gudongWinamt;
+    }
+
+    public Float getZongdaiRetreatDiff() {
+        return zongdaiRetreatDiff;
+    }
+
+    public void setZongdaiRetreatDiff(Float zongdaiRetreatDiff) {
+        this.zongdaiRetreatDiff = zongdaiRetreatDiff;
+    }
+
+    public Float getZongdaiTotalamt() {
+        return zongdaiTotalamt;
+    }
+
+    public void setZongdaiTotalamt(Float zongdaiTotalamt) {
+        this.zongdaiTotalamt = zongdaiTotalamt;
     }
 }

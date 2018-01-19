@@ -87,8 +87,8 @@
                                     <td><#if reportDto.gudongAmt gt 0>${reportDto.gudongAmt?floor} <#else>${reportDto.gudongAmt?ceiling}</#if> </td>
                                     <td class="hid">17,870</td>
                                     <td class="hid">-2,188</td>
-                                    <td><#if reportDto.gudongRetreat gt 0>${reportDto.gudongRetreat?floor} <#else>${reportDto.gudongRetreat?ceiling}</#if> </td>
-                                    <td class="bg"><#if reportDto.gudongWinamt gt 0>${reportDto.gudongWinamt?floor} <#else>${reportDto.gudongWinamt?ceiling}</#if> </td>
+                                    <td><#if reportDto.gudongRetreatDiff gt 0>${reportDto.gudongRetreatDiff?floor} <#else>${reportDto.gudongRetreatDiff?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportDto.gudongTotalamt gt 0>${reportDto.gudongTotalamt?floor} <#else>${reportDto.gudongTotalamt?ceiling}</#if> </td>
                                     <td><#if reportDto.dagudongAmt gt 0>${reportDto.dagudongAmt?floor} <#else>${reportDto.dagudongAmt?ceiling}</#if> </td>
                                     <td class="hid">55,085</td>
                                     <td class="hid">-8,003</td>
@@ -113,8 +113,8 @@
                                     <td><#if reportTotal.gudongAmt gt 0>${reportTotal.gudongAmt?floor} <#else>${reportTotal.gudongAmt?ceiling}</#if> </td>
                                     <td class="hid">17,870</td>
                                     <td class="hid">-2,188</td>
-                                    <td><#if reportTotal.gudongRetreat gt 0>${reportTotal.gudongRetreat?floor} <#else>${reportTotal.gudongRetreat?ceiling}</#if> </td>
-                                    <td class="bg"><#if reportTotal.gudongWinamt gt 0>${reportTotal.gudongWinamt?floor} <#else>${reportTotal.gudongWinamt?ceiling}</#if> </td>
+                                    <td><#if reportTotal.gudongRetreatDiff gt 0>${reportTotal.gudongRetreatDiff?floor} <#else>${reportTotal.gudongRetreatDiff?ceiling}</#if> </td>
+                                    <td class="bg"><#if reportTotal.gudongTotalamt gt 0>${reportTotal.gudongTotalamt?floor} <#else>${reportTotal.gudongTotalamt?ceiling}</#if> </td>
                                     <td><#if reportTotal.dagudongAmt gt 0>${reportTotal.dagudongAmt?floor} <#else>${reportTotal.dagudongAmt?ceiling}</#if> </td>
                                     <td class="hid">55,085</td>
                                     <td class="hid">-8,003</td>

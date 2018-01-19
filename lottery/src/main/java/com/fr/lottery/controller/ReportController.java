@@ -8,6 +8,7 @@ import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.service.inter.IReportService;
 import com.fr.lottery.service.inter.IUserService;
+import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -48,6 +50,42 @@ public class ReportController {
     @RequestMapping("/reportmonth")
     public ModelAndView reportmonth(){
         ModelAndView modelAndView = new ModelAndView("/report/reportmonth");
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get(Calendar.MONTH);
+         cal.set(Calendar.DAY_OF_MONTH,1);
+        String riqi = DateTimeUtils.Date2StringSimple(cal.getTime());
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        String riqi2 =DateTimeUtils.Date2StringSimple(cal.getTime());
+        User user = UserHelper.getCurrentUser();
+        List<ReportMonthDto> reportMonthDtos;
+        if(UserTypeEnum.Daili.ordinal()== user.getUsertype()){
+            reportMonthDtos= reportService.getDailiReportMonth(riqi,riqi2,user.getId());
+        }
+        else if(UserTypeEnum.ZongDaili.ordinal()== user.getUsertype()){
+            reportMonthDtos= reportService.getZongdaiReportMonth(riqi,riqi2,user.getId());
+        }
+        else if( UserTypeEnum.XiaoGudong.ordinal()== user.getUsertype()){
+            reportMonthDtos= reportService.getGudongReportMonth(riqi,riqi2,user.getId());
+        }else if(UserTypeEnum.DaGudong.ordinal()== user.getUsertype()){
+            reportMonthDtos= reportService.getDagudongReportMonth(riqi,riqi2,user.getId());
+        }
+        else {
+            reportMonthDtos= new ArrayList<ReportMonthDto>();
+        }
+        modelAndView.addObject("currentMonth",month);
+        modelAndView.addObject("reportList",reportMonthDtos);
+        ReportMonthDto reportTotal =new ReportMonthDto();
+        for(ReportMonthDto reportMonthDto : reportMonthDtos){
+            reportTotal.setOrderNum(reportMonthDto.getOrderNum()+reportTotal.getOrderNum());
+            reportTotal.setAmount(reportMonthDto.getAmount()+ reportTotal.getAmount());
+            reportTotal.setMemberWinamt(reportMonthDto.getMemberWinamt()+reportTotal.getMemberWinamt());
+            reportTotal.setRetreat(reportMonthDto.getRetreat()+reportTotal.getRetreat());
+            reportTotal.setRetreatDiff(reportMonthDto.getRetreatDiff()+reportTotal.getRetreatDiff());
+            reportTotal.setZhancheng(reportMonthDto.getZhancheng()+reportTotal.getZhancheng());
+            reportTotal.setUserWinamt(reportMonthDto.getUserWinamt()+reportTotal.getUserWinamt());
+            reportTotal.setUserTotalamt(reportMonthDto.getUserTotalamt()+reportTotal.getUserTotalamt());
+        }
+        modelAndView.addObject("reportTotal",reportTotal);
         return modelAndView;
     }
     @RequestMapping("/user_report")
@@ -135,7 +173,9 @@ public class ReportController {
 
             reportTotal.setDagudongAmt(reportTotal.getDagudongAmt() +reportDto.getDagudongAmt());
             reportTotal.setDagudongRetreat(reportTotal.getDagudongRetreat()+reportDto.getDagudongRetreat());
+            reportTotal.setDagudongRetreatDiff(reportTotal.getDagudongRetreatDiff()+reportDto.getDagudongRetreatDiff());
             reportTotal.setDagudongWinamt(reportTotal.getDagudongWinamt()+ reportDto.getDagudongWinamt());
+            reportTotal.setDagudongTotalamt(reportTotal.getDagudongTotalamt()+ reportDto.getDagudongTotalamt());
             reportTotal.setGuanliyuanAmt(reportTotal.getGuanliyuanAmt()+reportDto.getGuanliyuanAmt());
             reportTotal.setGuanliyuanWinAmt(reportTotal.getGuanliyuanWinAmt()+reportDto.getGuanliyuanWinAmt());
         }
@@ -175,7 +215,9 @@ public class ReportController {
             reportTotal.setDailiToZongdai(reportTotal.getDailiToZongdai()+ reportDto.getDailiToZongdai());
             reportTotal.setGudongAmt(reportTotal.getGudongAmt() +reportDto.getGudongAmt());
             reportTotal.setGudongRetreat(reportTotal.getGudongRetreat()+reportDto.getGudongRetreat());
+            reportTotal.setGudongRetreatDiff(reportTotal.getGudongRetreatDiff()+reportDto.getGudongRetreatDiff());
             reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+ reportDto.getGudongWinamt());
+            reportTotal.setGudongTotalamt(reportTotal.getGudongTotalamt()+reportDto.getGudongTotalamt());
             reportTotal.setDagudongAmt(reportTotal.getDagudongAmt()+reportDto.getDagudongAmt());
             reportTotal.setDagudongWinAmt(reportTotal.getDagudongWinAmt()+reportDto.getDagudongWinAmt());
         }
@@ -221,7 +263,9 @@ public class ReportController {
             reportTotal.setDailiToZongdaiWinamt(reportTotal.getDailiToZongdaiWinamt()+ reportDto.getDailiToZongdaiWinamt());
             reportTotal.setZongdaiAmt(reportTotal.getZongdaiAmt() +reportDto.getZongdaiAmt());
             reportTotal.setZongdaiRetreat(reportTotal.getZongdaiRetreat()+reportTotal.getZongdaiRetreat());
+            reportTotal.setZongdaiRetreatDiff(reportTotal.getZongdaiRetreatDiff()+reportTotal.getZongdaiRetreatDiff());
             reportTotal.setZongdaiWinamt(reportTotal.getZongdaiWinamt()+ reportDto.getZongdaiWinamt());
+            reportTotal.setZongdaiTotalamt(reportTotal.getZongdaiTotalamt()+reportDto.getZongdaiTotalamt());
             reportTotal.setGudongAmt(reportTotal.getGudongAmt()+reportDto.getGudongAmt());
             reportTotal.setGudongWinamt(reportTotal.getGudongWinamt()+reportDto.getGudongWinamt());
         }
@@ -273,7 +317,9 @@ public class ReportController {
             reportTotal.setMemberAmt(reportTotal.getMemberAmt()+reportDto.getMemberAmt());
             reportTotal.setDailiAmt(reportTotal.getDailiAmt()+reportDto.getDailiAmt());
             reportTotal.setDailiRetreat(reportTotal.getDailiRetreat()+reportDto.getDailiRetreat());
+            reportTotal.setDailiRetreatDiff(reportTotal.getDailiRetreatDiff() + reportDto.getDailiRetreatDiff());
             reportTotal.setDailiWinamt(reportTotal.getDailiWinamt()+reportDto.getDailiWinamt());
+            reportTotal.setDailiTotalamt(reportTotal.getDailiTotalamt()+ reportDto.getDailiTotalamt());
             reportTotal.setToZongdaiAmt(reportTotal.getToZongdaiAmt()+reportDto.getToZongdaiAmt());
             reportTotal.setToZongdaiWinamt(reportTotal.getToZongdaiWinamt()+reportDto.getToZongdaiWinamt());
             reportTotal.setMemberRetreat(reportTotal.getMemberRetreat()+reportDto.getMemberRetreat());
