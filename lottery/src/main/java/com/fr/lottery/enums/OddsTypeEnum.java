@@ -40,7 +40,7 @@ public enum OddsTypeEnum {
     sebozhmate5("032"),
     sebozhmate6("033"),
     texiao("034"),
-    shengxiaolian("035|036|037|038|039|040"),
+    shengxiaolian("035|036|037|038|039|040|054|055"),
     weishulian("041|042|043|044|045|046"),
     buzhong("047|048|049|050|051|052"),
     buzhong5("047"),

@@ -76,6 +76,24 @@ public class User implements Serializable{
 
     private Integer member_shareUp;
 
+    /**
+     *小股东数量
+     *
+     */
+    private Integer gudongNumber;
+    /**
+     * 总代数量
+     */
+    private Integer zongdaiNumber;
+    /**
+     * 代理商数量
+     */
+    private Integer dailiNumber;
+    /**
+     * 会员数量
+     */
+    private Integer memberNumber;
+
     public String getId() {
         return id;
     }
@@ -346,5 +364,37 @@ public class User implements Serializable{
 
     public void setMember_shareUp(Integer member_shareUp) {
         this.member_shareUp = member_shareUp;
+    }
+
+    public Integer getGudongNumber() {
+        return gudongNumber;
+    }
+
+    public void setGudongNumber(Integer gudongNumber) {
+        this.gudongNumber = gudongNumber;
+    }
+
+    public Integer getZongdaiNumber() {
+        return zongdaiNumber;
+    }
+
+    public void setZongdaiNumber(Integer zongdaiNumber) {
+        this.zongdaiNumber = zongdaiNumber;
+    }
+
+    public Integer getDailiNumber() {
+        return dailiNumber;
+    }
+
+    public void setDailiNumber(Integer dailiNumber) {
+        this.dailiNumber = dailiNumber;
+    }
+
+    public Integer getMemberNumber() {
+        return memberNumber;
+    }
+
+    public void setMemberNumber(Integer memberNumber) {
+        this.memberNumber = memberNumber;
     }
 }

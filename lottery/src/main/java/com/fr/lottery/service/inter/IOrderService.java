@@ -24,6 +24,9 @@ public interface IOrderService {
     Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId);
 
     Page<Orders> getOrders(String handicapId,Integer pageIndex, String categoryId,String userId,Integer pageSize);
+
+    Page<Orders> getOrdersByUp(String riqi,String riqi2,String userId,Integer userType ,String categoryid,String gameType,String numner,Integer pageIndex);
+    Orders getTotalByUp(String riqi,String riqi2,String userId,Integer userType ,String categoryid,String gameType,String numner);
     Orders getTotal(String categoryId);
     Orders getTotal(String handicapId,String categoryId);
     Orders getTotal(String handicapId,String categoryId,String userId);

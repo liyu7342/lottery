@@ -35,18 +35,21 @@
                                     <thead><tr>
                                         <td>二肖連</td>
                                         <td>三肖連</td>
-                                        <td class="r">四肖連</td>
+                                        <td>四肖連</td>
+                                        <td class="r">五肖連</td>
                                     </tr></thead>
                                     <tbody id="plays">
                                     <tr>
                                         <th><label for="default_play"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  name="play" value="2035" type="radio"    checked="checked" id="default_play"/>二肖連(中)</label></th>
                                         <th><label for="sanxiaozhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sanxiaozhong" name="play" value="3037" type="radio"  />三肖連(中)</label></th>
                                         <th><label for="sixiaozhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sixiaozhong" name="play" value="4039" type="radio"  />四肖連(中)</label></th>
+                                        <th><label for="wuxiaozhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="wuxiaozhong" name="play" value="5054" type="radio"  />五肖連(中)</label></th>
                                     </tr>
                                     <tr>
                                         <th><label for="erxiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="erxiaobuzhong" name="play" value="2036" type="radio"  />二肖連(不中)</label></th>
                                         <th><label for="sanxiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sanxiaobuzhong" name="play" value="3038" type="radio"  />三肖連(不中)</label></th>
                                         <th><label for="sixiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="sixiaobuzhong" name="play" value="4040" type="radio"  />四肖連(不中)</label></th>
+                                        <th><label for="wuxiaobuzhong"><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  id="wuxiaobuzhong" name="play" value="5055" type="radio"  />五肖連(不中)</label></th>
                                     </tr>
                                     </tbody></table>
                                 <div class="mt g-thd"><h3>請選擇球號</h3></div>

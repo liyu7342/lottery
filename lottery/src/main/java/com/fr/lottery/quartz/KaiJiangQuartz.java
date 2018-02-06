@@ -1,9 +1,11 @@
 package com.fr.lottery.quartz;
 
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.entity.ShengXiao;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.JsonUtil;
 import com.google.gson.JsonArray;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 
 /**
@@ -24,6 +27,8 @@ public class KaiJiangQuartz {
     private IHandicapService handicapService;
     @Autowired
     private IOrderService orderService;
+    @Autowired
+    private IShengxiaoService shengxiaoService;
 
     public void work() {
         Handicap handicap = handicapService.getNotOpenHandicap();
@@ -32,7 +37,7 @@ public class KaiJiangQuartz {
         String url = Global.properties.get("6hbd_" + index).toString();
         int repeatTime = 0;
         while (true) {
-                boolean isFinish = otherOpen(handicap);
+            boolean isFinish = otherOpen(handicap);
             if (isFinish)
                 break;
 //
@@ -133,62 +138,117 @@ public class KaiJiangQuartz {
     }
 
     private boolean otherOpen(Handicap handicap) {
-        try{
+        try {
+            List<ShengXiao> shengXiaos = shengxiaoService.findByDate(handicap.getRiqi());
 
+            int index = 0;
+            String url = Global.properties.get("otherOpenurl").toString();
+            int repeatTime = 0;
 
-        int index = 0;
-        String url = Global.properties.get("otherOpenurl").toString();
-        int repeatTime = 0;
+            String str = handicapService.get6hbd(url);
+            str = str.substring(3);
 
-        String str = handicapService.get6hbd(url);
-        str = str.substring(3);
+            System.out.println("第 " + repeatTime + " 次请求 url：" + url + "   返回結果：" + str);
 
-        System.out.println("第 " + repeatTime + " 次请求 url：" + url + "   返回結果：" + str);
+            if (StringUtils.isNotBlank(str) && !"404".equals(str)) {
+                JsonObject jsonObject = JsonUtil.getJson(str);
 
-        if (StringUtils.isNotBlank(str) && !"404".equals(str)) {
-            JsonObject jsonObject = JsonUtil.getJson(str);
+                if (jsonObject != null && !jsonObject.get("k").isJsonNull()) {
+                    String[] arr = StringUtils.split(jsonObject.get("k").getAsString(), ",");
+                    if (arr.length > 0) {
+                        String qishu = arr[0];
+                        boolean hasFinish = false;
+                        if (qishu.equals(handicap.getQishu())) {
+                            if (arr.length > 2 && StringUtils.isNumeric(arr[1])) {
+                                handicap.setNo1(arr[1]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo1().equals(xiao.getNo1()) || handicap.getNo1().equals(xiao.getNo2()) || handicap.getNo1().equals(xiao.getNo3())
+                                            || handicap.getNo1().equals(xiao.getNo4()) || handicap.getNo1().equals(xiao.getNo5())) {
+                                        handicap.setXiao1(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName1(xiao.getName());
+                                    }
 
-            if (jsonObject != null && !jsonObject.get("k").isJsonNull()) {
-                String[] arr = StringUtils.split(jsonObject.get("k").getAsString(), ",");
-                if (arr.length > 0) {
-                    String qishu = arr[0];
-                    boolean hasFinish = false;
-                    if (qishu.equals(handicap.getQishu())) {
-                        if (arr.length > 2 && StringUtils.isNumeric(arr[1])) {
-                            handicap.setNo1(arr[1]);
-                        }
-                        if (arr.length > 3 && StringUtils.isNumeric(arr[2])) {
-                            handicap.setNo2(arr[2]);
-                        }
-                        if (arr.length > 4 && StringUtils.isNumeric(arr[3])) {
-                            handicap.setNo3(arr[3]);
-                        }
-                        if (arr.length > 5 && StringUtils.isNumeric(arr[4])) {
-                            handicap.setNo4(arr[4]);
-                        }
-                        if (arr.length > 6 && StringUtils.isNumeric(arr[5])) {
-                            handicap.setNo5(arr[5]);
-                        }
-                        if (arr.length > 7 && StringUtils.isNumeric(arr[6])) {
-                            handicap.setNo6(arr[6]);
-                        }
-                        if (arr.length > 8 && StringUtils.isNumeric(arr[7])) {
-                            handicap.setTema(arr[7]);
-                            hasFinish = true;
-                        }
-                        handicapService.save(handicap);
-                        if (hasFinish) {
-                            handicapService.openHandicap(handicap);
-                            orderService.settlement(handicap.getId());
-                            return true;
+                                }
+                            }
+                            if (arr.length > 3 && StringUtils.isNumeric(arr[2])) {
+                                handicap.setNo2(arr[2]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo2().equals(xiao.getNo1()) || handicap.getNo2().equals(xiao.getNo2()) || handicap.getNo2().equals(xiao.getNo3())
+                                            || handicap.getNo2().equals(xiao.getNo4()) || handicap.getNo2().equals(xiao.getNo5())) {
+                                        handicap.setXiao2(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName2(xiao.getName());
+                                    }
+
+                                }
+                            }
+                            if (arr.length > 4 && StringUtils.isNumeric(arr[3])) {
+                                handicap.setNo3(arr[3]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo3().equals(xiao.getNo1()) || handicap.getNo3().equals(xiao.getNo2()) || handicap.getNo3().equals(xiao.getNo3())
+                                            || handicap.getNo3().equals(xiao.getNo4()) || handicap.getNo3().equals(xiao.getNo5())) {
+                                        handicap.setXiao3(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName3(xiao.getName());
+                                    }
+
+                                }
+                            }
+                            if (arr.length > 5 && StringUtils.isNumeric(arr[4])) {
+                                handicap.setNo4(arr[4]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo4().equals(xiao.getNo1()) || handicap.getNo4().equals(xiao.getNo2()) || handicap.getNo4().equals(xiao.getNo3())
+                                            || handicap.getNo4().equals(xiao.getNo4()) || handicap.getNo4().equals(xiao.getNo5())) {
+                                        handicap.setXiao4(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName4(xiao.getName());
+                                    }
+
+                                }
+                            }
+                            if (arr.length > 6 && StringUtils.isNumeric(arr[5])) {
+                                handicap.setNo5(arr[5]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo5().equals(xiao.getNo1()) || handicap.getNo5().equals(xiao.getNo2()) || handicap.getNo5().equals(xiao.getNo3())
+                                            || handicap.getNo5().equals(xiao.getNo4()) || handicap.getNo5().equals(xiao.getNo5())) {
+                                        handicap.setXiao5(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName5(xiao.getName());
+                                    }
+
+                                }
+                            }
+                            if (arr.length > 7 && StringUtils.isNumeric(arr[6])) {
+                                handicap.setNo6(arr[6]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getNo6().equals(xiao.getNo1()) || handicap.getNo6().equals(xiao.getNo2()) || handicap.getNo6().equals(xiao.getNo3())
+                                            || handicap.getNo6().equals(xiao.getNo4()) || handicap.getNo6().equals(xiao.getNo5())) {
+                                        handicap.setXiao6(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setXiaoName6(xiao.getName());
+                                    }
+
+                                }
+                            }
+                            if (arr.length > 8 && StringUtils.isNumeric(arr[7])) {
+                                handicap.setTema(arr[7]);
+                                for (ShengXiao xiao : shengXiaos) {
+                                    if (handicap.getTema().equals(xiao.getNo1()) || handicap.getTema().equals(xiao.getNo2()) || handicap.getTema().equals(xiao.getNo3())
+                                            || handicap.getTema().equals(xiao.getNo4()) || handicap.getTema().equals(xiao.getNo5())) {
+                                        handicap.setTexiaono(String.format("%02d", xiao.getSortNo()));
+                                        handicap.setTexiaoName(xiao.getName());
+                                    }
+
+                                }
+                                hasFinish = true;
+                            }
+                            handicapService.save(handicap);
+                            if (hasFinish) {
+                                handicapService.openHandicap(handicap);
+                                orderService.settlement(handicap.getId());
+                                return true;
+                            }
                         }
                     }
                 }
             }
-        }
-        return false;
-        }
-        catch (Exception ex){
+            return false;
+        } catch (Exception ex) {
             return false;
         }
     }

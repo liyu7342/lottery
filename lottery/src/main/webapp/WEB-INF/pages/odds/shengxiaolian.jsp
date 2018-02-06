@@ -49,9 +49,11 @@
                                     <td>三肖連（不中）</td>
                                     <td>四肖連（中）</td>
                                     <td>四肖連（不中）</td>
+                                    <td>五肖連（中）</td>
+                                    <td>五肖連（不中）</td>
                                 </tr>
                                 </thead>
-                                <tbody id="product_mark" pro="035,036,037,038,039,040">
+                                <tbody id="product_mark" pro="035,036,037,038,039,040,054,055">
                                 <tr>
                                     <td>鼠</td>
                                     <td><input name="03501" type="text" value="${(entity.pro_03501)!''}" />
@@ -60,6 +62,8 @@
                                     <td><input name="03801" type="text" value="${(entity.pro_03801)!''}" />
                                     <td><input name="03901" type="text" value="${(entity.pro_03901)!''}" />
                                     <td><input name="04001" type="text" value="${(entity.pro_04001)!''}" />
+                                    <td><input name="05401" type="text" value="${(entity.pro_05401)!''}" />
+                                    <td><input name="05501" type="text" value="${(entity.pro_05501)!''}" />
                                 </tr>
                                 <tr>
                                     <td>牛</td>
@@ -69,6 +73,8 @@
                                     <td><input name="03802" type="text" value="${(entity.pro_03802)!''}" />
                                     <td><input name="03902" type="text" value="${(entity.pro_03902)!''}" />
                                     <td><input name="04002" type="text" value="${(entity.pro_04002)!''}" />
+                                    <td><input name="05402" type="text" value="${(entity.pro_05402)!''}" />
+                                    <td><input name="05502" type="text" value="${(entity.pro_05502)!''}" />
                                 </tr>
                                 <tr>
                                     <td>虎</td>
@@ -78,6 +84,8 @@
                                     <td><input name="03803" type="text" value="${(entity.pro_03803)!''}" />
                                     <td><input name="03903" type="text" value="${(entity.pro_03903)!''}" />
                                     <td><input name="04003" type="text" value="${(entity.pro_04003)!''}" />
+                                    <td><input name="05403" type="text" value="${(entity.pro_05403)!''}" />
+                                    <td><input name="05503" type="text" value="${(entity.pro_05503)!''}" />
                                 </tr>
                                 <tr>
                                     <td>兔</td>
@@ -87,6 +95,8 @@
                                     <td><input name="03804" type="text" value="${(entity.pro_03804)!''}" />
                                     <td><input name="03904" type="text" value="${(entity.pro_03904)!''}" />
                                     <td><input name="04004" type="text" value="${(entity.pro_04004)!''}" />
+                                    <td><input name="05404" type="text" value="${(entity.pro_05404)!''}" />
+                                    <td><input name="05504" type="text" value="${(entity.pro_05504)!''}" />
                                 </tr>
                                 <tr>
                                     <td>龍</td>
@@ -96,6 +106,8 @@
                                     <td><input name="03805" type="text" value="${(entity.pro_03805)!''}" />
                                     <td><input name="03905" type="text" value="${(entity.pro_03905)!''}" />
                                     <td><input name="04005" type="text" value="${(entity.pro_04005)!''}" />
+                                    <td><input name="05405" type="text" value="${(entity.pro_05405)!''}" />
+                                    <td><input name="05505" type="text" value="${(entity.pro_05505)!''}" />
                                 </tr>
                                 <tr>
                                     <td>蛇</td>
@@ -105,6 +117,8 @@
                                     <td><input name="03806" type="text" value="${(entity.pro_03806)!''}" />
                                     <td><input name="03906" type="text" value="${(entity.pro_03906)!''}" />
                                     <td><input name="04006" type="text" value="${(entity.pro_04006)!''}" />
+                                    <td><input name="05406" type="text" value="${(entity.pro_05406)!''}" />
+                                    <td><input name="05506" type="text" value="${(entity.pro_05506)!''}" />
                                 </tr>
                                 <tr>
                                     <td>馬</td>
@@ -114,6 +128,8 @@
                                     <td><input name="03807" type="text" value="${(entity.pro_03807)!''}" />
                                     <td><input name="03907" type="text" value="${(entity.pro_03907)!''}" />
                                     <td><input name="04007" type="text" value="${(entity.pro_04007)!''}" />
+                                    <td><input name="05407" type="text" value="${(entity.pro_05407)!''}" />
+                                    <td><input name="05507" type="text" value="${(entity.pro_05507)!''}" />
                                 </tr>
                                 <tr>
                                     <td>羊</td>
@@ -123,6 +139,8 @@
                                     <td><input name="03808" type="text" value="${(entity.pro_03808)!''}" />
                                     <td><input name="03908" type="text" value="${(entity.pro_03908)!''}" />
                                     <td><input name="04008" type="text" value="${(entity.pro_04008)!''}" />
+                                    <td><input name="05408" type="text" value="${(entity.pro_05408)!''}" />
+                                    <td><input name="05508" type="text" value="${(entity.pro_05508)!''}" />
                                 </tr>
                                 <tr>
                                     <td>猴</td>
@@ -132,6 +150,8 @@
                                     <td><input name="03809" type="text" value="${(entity.pro_03809)!''}" />
                                     <td><input name="03909" type="text" value="${(entity.pro_03909)!''}" />
                                     <td><input name="04009" type="text" value="${(entity.pro_04009)!''}" />
+                                    <td><input name="05409" type="text" value="${(entity.pro_05409)!''}" />
+                                    <td><input name="05509" type="text" value="${(entity.pro_05509)!''}" />
                                 </tr>
                                 <tr>
                                     <td>雞</td>
@@ -141,6 +161,8 @@
                                     <td><input name="03810" type="text" value="${(entity.pro_03810)!''}" />
                                     <td><input name="03910" type="text" value="${(entity.pro_03910)!''}" />
                                     <td><input name="04010" type="text" value="${(entity.pro_04010)!''}" />
+                                    <td><input name="05410" type="text" value="${(entity.pro_05410)!''}" />
+                                    <td><input name="05510" type="text" value="${(entity.pro_05510)!''}" />
                                 </tr>
                                 <tr>
                                     <td>狗</td>
@@ -150,6 +172,8 @@
                                     <td><input name="03811" type="text" value="${(entity.pro_03811)!''}" />
                                     <td><input name="03911" type="text" value="${(entity.pro_03911)!''}" />
                                     <td><input name="04011" type="text" value="${(entity.pro_04011)!''}" />
+                                    <td><input name="05411" type="text" value="${(entity.pro_05411)!''}" />
+                                    <td><input name="05511" type="text" value="${(entity.pro_05511)!''}" />
                                 </tr>
                                 <tr>
                                     <td>豬</td>
@@ -159,6 +183,8 @@
                                     <td><input name="03812" type="text" value="${(entity.pro_03812)!''}" />
                                     <td><input name="03912" type="text" value="${(entity.pro_03912)!''}" />
                                     <td><input name="04012" type="text" value="${(entity.pro_04012)!''}" />
+                                    <td><input name="05412" type="text" value="${(entity.pro_05412)!''}" />
+                                    <td><input name="05512" type="text" value="${(entity.pro_05512)!''}" />
                                 </tr>
                                 </tbody>
                             </table>

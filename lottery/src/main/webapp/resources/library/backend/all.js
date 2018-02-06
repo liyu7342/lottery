@@ -6592,8 +6592,8 @@ $.extend({
         var z = ["<span class='red'>停用</span>", "启用", "<span class='red'>{#|505c|62bc#}</span>".keyComment()];
         k.cells[x].innerHTML = z[v];
         var u = [[0, 1, 2, 4], [1, 0, 2, 4], [2, 1, 0, 4]];
-        var t = ["admin", "user1", "user2", "user2", "user2", "member"];
-        var m = "<a class='a_btm_line' href='" + t[a] + "_create.htm?op=upd&id=" + s + "&pageId=" + f + "&keywordstatus=" + v + "&keyword=" + p + "&level=" + a + "&parentid=" + n + "'>修改</a>";
+        var t = ["admin", "info1", "info2", "info3", "info4", "info"];
+        var m = "<a class='a_btm_line' href='/member/" + t[a] + "?op=upd&id=" + s + "&pageId=" + f + "&keywordstatus=" + v + "&keyword=" + p + "&level=" + a + "&parentId=" + n + "'>修改</a>";
         var b = $.getStatusUrl(a, s, u[v][1], f, n);
         var c = $.getStatusUrl(a, s, u[v][2], f, n);
         var l = $(":hidden[name=drawstatus]")[0].value;
@@ -6612,7 +6612,7 @@ $.extend({
         }
     },
     getChgStatusUrl: function(f, d, c, a, b) {
-        return "user/changStatus?level=" + f + "&pid=" + a + "&id=" + d + "&status=" + c + "&keyword=" + b
+        return "/user/changStatus?level=" + f + "&pid=" + a + "&id=" + d + "&status=" + c + "&keyword=" + b
     },
     getStatusUrl: function(h, g, c, d, b) {
         var f = ["admin", "user", "user", "user", "user", "member"];

@@ -53,7 +53,7 @@
                                     <td>類別</td>
                                     <th colspan="2">
                                         <label for="kind_user_report"><input type="radio" id="kind_user_report" name="kind" value="/report/user_report" checked="checked">總賬</label>&nbsp;
-                                        <label for="kind_game_report"><input type="radio" id="kind_game_report" name="kind" value="/user/game_report" >分類賬</label>
+                                        <label for="kind_game_report"><input type="radio" id="kind_game_report" name="kind" value="/report/game_report" >分類賬</label>
                                     </th>
                                 </tr>
                                 </tbody></table>

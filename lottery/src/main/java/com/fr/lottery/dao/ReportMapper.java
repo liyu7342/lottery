@@ -39,21 +39,21 @@ public interface ReportMapper {
 
     List<DailiReport> getDailiReport(StatisCondition condition);
 
-    List<DailiReport> getDailiReportHasSettlement(StatisCondition condition);
+    List<DailiReport> getDailiReportHasSettlement(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("p_userId") String userId);
 
 
     List<ZongdaiReport>  getZongDaiReport(StatisCondition condition);
 
-    List<ZongdaiReport>  getZongDaiReportHasSettlement(StatisCondition condition);
+    List<ZongdaiReport>  getZongDaiReportHasSettlement(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("p_userId") String userId);
 
 
     List<GudongReport> getGudongReport(StatisCondition condition);
 
-    List<GudongReport> getGudongReportHasSettlement(StatisCondition condition);
+    List<GudongReport> getGudongReportHasSettlement(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("p_userId") String userId);
 
     List<DagudongReport> getDagudongReport(StatisCondition condition);
 
-    List<DagudongReport> getDagudongReportHasSettlement(StatisCondition condition);
+    List<DagudongReport> getDagudongReportHasSettlement(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("p_userId") String userId);
 
     List<GudongReport> getAdminReport(StatisCondition condition);
 
@@ -62,5 +62,10 @@ public interface ReportMapper {
     List<ReportMonthDto> getZongdaiReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
     List<ReportMonthDto> getGudongReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
     List<ReportMonthDto> getDagudongReportMonth(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
+
+    List<GameReport> getGameReport(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId);
+    List<GameReport> getGameReportByCategoryId(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId,@Param("categoryid") String categoryid);
+    List<GameReport> getGameReportByGameId(@Param("riqi") String riqi, @Param("riqi2")String riqi2,@Param("userId") String userId
+                ,@Param("categoryid") String categoryid,@Param("gametype") String gameid);
 
 }

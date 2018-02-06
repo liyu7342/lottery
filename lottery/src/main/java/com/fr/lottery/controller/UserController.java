@@ -39,7 +39,7 @@ public class UserController {
     private ILimitSetService limitSetService;
 
     @RequestMapping(value = "/index",produces = "text/html;charset=UTF-8")
-    public ModelAndView index(Integer pageId, Integer keywordstatus, String keyword) {
+    public ModelAndView index(Integer pageId, Integer keywordstatus, String keyword,String parentid) {
                 if (pageId == null) pageId = 1;
         if(StringUtils.isNotBlank(keyword)){
             try{
@@ -53,17 +53,42 @@ public class UserController {
         }
         ModelAndView modelAndView = new ModelAndView("/user/index");
         User user = UserHelper.getCurrentUser();
-
         String userId = user.getId();
 
-        Page<User> users = userService.getUsers(userId, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
+        Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
         return modelAndView;
     }
+    @RequestMapping(value = "/default")
+    public ModelAndView currentView(){
+        String url = "";
+        User user = UserHelper.getCurrentUser();
 
+        if(UserTypeEnum.Admin.ordinal() == user.getUsertype()){
+            url="redirect:/user/index1";
+        }
+        else if(UserTypeEnum.DaGudong.ordinal() == user.getUsertype()){
+            url="redirect:/user/index2";
+        }
+       else if(UserTypeEnum.XiaoGudong.ordinal() == user.getUsertype()){
+            url="redirect:/user/index3";
+        }
+        else if(UserTypeEnum.ZongDaili.ordinal() == user.getUsertype()){
+            url="redirect:/user/index4";
+        }
+         else   if(UserTypeEnum.Daili.ordinal() == user.getUsertype())
+            {
+                url="redirect:/user/index";
+            }
+        else{
+            url="/user/default";
+        }
+        ModelAndView modelAndView = new ModelAndView(url);
+        return modelAndView;
+    }
 
     @RequestMapping("/index1")
     public ModelAndView index1(Integer pageId, Integer keywordstatus, String keyword) {
@@ -81,14 +106,14 @@ public class UserController {
     }
 
     @RequestMapping("/index2")
-    public ModelAndView index2(Integer pageId, Integer keywordstatus, String keyword) {
+    public ModelAndView index2(Integer pageId, Integer keywordstatus, String keyword,String parentid) {
         if (pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_2");
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
 
-        Page<User> users = userService.getUsers(userId, UserTypeEnum.XiaoGudong.ordinal(), keyword, keywordstatus, pageId);
+        Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.XiaoGudong.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
@@ -97,14 +122,14 @@ public class UserController {
     }
 
     @RequestMapping("/index3")
-    public ModelAndView index3(Integer pageId, Integer keywordstatus, String keyword) {
+    public ModelAndView index3(Integer pageId, Integer keywordstatus, String keyword,String parentid) {
         if (pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_3");
 
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
-        Page<User> users = userService.getUsers(userId, UserTypeEnum.ZongDaili.ordinal(), keyword, keywordstatus, pageId);
+        Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.ZongDaili.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
@@ -113,14 +138,14 @@ public class UserController {
     }
 
     @RequestMapping("/index4")
-    public ModelAndView index4(Integer pageId, Integer keywordstatus, String keyword) {
+    public ModelAndView index4(Integer pageId, Integer keywordstatus, String keyword,String parentid) {
         if (pageId == null) pageId = 1;
 
         ModelAndView modelAndView = new ModelAndView("/user/index_4");
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
 
-        Page<User> users = userService.getUsers(userId, UserTypeEnum.Daili.ordinal(), keyword, keywordstatus, pageId);
+        Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.Daili.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());

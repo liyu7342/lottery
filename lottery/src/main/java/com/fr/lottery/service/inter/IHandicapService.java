@@ -40,8 +40,6 @@ public interface IHandicapService {
      */
     boolean IsOpenHandicap();
 
-    boolean settlement(String handicapId);
-
     Handicap getHandicap(String handicapId);
 
     String get6hbd(String url);

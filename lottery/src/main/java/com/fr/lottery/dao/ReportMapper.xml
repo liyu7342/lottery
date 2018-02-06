@@ -193,12 +193,18 @@
     group by u.id,u.account,u.userName
   </select>
 
-    <select id="getDailiReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
-            resultType="com.fr.lottery.entity.DailiReport">
-       select * from report_daili
+    <select id="getDailiReportHasSettlement"   resultType="com.fr.lottery.entity.DailiReport">
+      SELECT   memberid,memberaccount,memberName,isBucang,sum(orderNum) as orderNum,
+        sum(amount) as amount,sum(memberwinamt) as memberwinamt,sum(memberRetreat) as memberRetreat,
+        sum(memberAmt) as memberAmt,sum(dailiAmt) as dailiamt,sum(dailiretreatdiff) as dailiretreatdiff,
+            sum(dailiretreat) as dailiretreat,sum(dailiwinamt) as dailiwinamt,
+        sum(dailiTotalamt) as dailiTotalamt,sum(tozongdaiamt) as tozongdaiamt,
+        sum(tozongdaiwinamt) as tozongdaiwinamt
+        from report_daili
        WHERE
-       handicapid=#{p_handicapId,jdbcType=VARCHAR}
+       riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
        and dailiid = #{p_userId,jdbcType=VARCHAR}
+       group BY  memberid,memberaccount,memberName,isBucang
       order by isbucang desc
     </select>
 
@@ -244,12 +250,19 @@
     AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
     group by dailiId,dailiaccount,dailiname
   </select>
-    <select id="getZongDaiReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
-            resultType="com.fr.lottery.entity.ZongdaiReport">
-         select * from report_zongdai
+    <select id="getZongDaiReportHasSettlement"   resultType="com.fr.lottery.entity.ZongdaiReport">
+         select dailiid,dailiaccount,dailiname,isBucang,sum(ordernum) as ordernum,
+		max(membercount) as membercount,sum(amount) as amount,sum(winamount) as winamount,
+		sum(retreatamt) as retreatamt,sum(memberamt) as memberamt,sum(dailitozongdai) as dailitozongdai,
+		sum(dailitozongdaiwinamt) as dailitozongdaiwinamt,sum(zongdaiamt) as zongdaiamt,
+		sum(zongdairetreatdiff) as zongdairetreatdiff,sum(zongdaiwinamt) as zongdaiwinamt,
+		sum(zongdaitotalamt) as zongdaitotalamt,sum(gudongamt) as gudongamt,
+		sum(gudongwinamt) as gudongwinamt
+		 from report_zongdai
        WHERE
-       handicapid=#{p_handicapId,jdbcType=VARCHAR}
+        riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
        and zongdaiid = #{p_userId,jdbcType=VARCHAR}
+       GROUP BY dailiid,dailiaccount,dailiname,isBucang
       order by isbucang desc
     </select>
     <select id="getGudongReport" parameterType="com.fr.lottery.condition.StatisCondition"
@@ -295,11 +308,17 @@
         group by zongdaiId,zongdaiaccount,zongdainame
     </select>
 
-    <select id="getGudongReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
-            resultType="com.fr.lottery.entity.GudongReport">
-       select * from report_gudong
+    <select id="getGudongReportHasSettlement" resultType="com.fr.lottery.entity.GudongReport">
+       select zongdaiid,zongdaiaccount,zongdainame,isbucang,sum(ordernum) as  ordernum,
+	max(membercount) as membercount,sum(amount) as amount,sum(winamount) as winamount,
+    sum(retreatamt) as retreatamt,sum(memberamt) as memberamt,sum(dailitozongdai) as dailitozongdai,
+    sum(zongdaitogudong) as zongdaitogudong,sum(gudongamt) as gudongamt,sum(gudongretreat) as gudongretreat,
+    sum(gudongretreatdiff) as gudongretreatdiff,sum(gudongwinamt) as gudongwinamt,
+    sum(gudongtotalamt) as gudongtotalamt,sum(dagudongamt) as dagudongamt,
+    sum(dagudongwinamt) as dagudongwinamt
+ from report_gudong
         where gudongid=#{p_userId,jdbcType=VARCHAR}
-        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        and riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
         ORDER  BY  isbucang desc
     </select>
 
@@ -330,9 +349,18 @@
 
     <select id="getDagudongReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
             resultType="com.fr.lottery.entity.DagudongReport">
-        select * from report_dagudong
+        select dagudongid,dagudongaccount,dagudongname,sum(ordernum) as ordernum,
+    	max(membercount) as membercount,sum(amount) as amount,
+        sum(winamount) as winamount,sum(retreatamt) as retreatamt,sum(memberamt) as memberamt,
+        sum(gudongtoparent) as gudongtoparent,sum(gudongtoparentwinamt)  as gudongtoparentwinamt,
+        sum(dagudongamt) as dagudongamt ,sum(dagudongretreat) as dagudongretreat,
+        sum(dagudongretreatdiff) as dagudongretreatdiff,sum(dagudongwinamt) as dagudongwinamt,
+        sum(dagudongtotalamt) as dagudongtotalamt,sum(guanliyuanamt) as guanliyuanamt,
+        sum(guanliyuanwinamt) as guanliyuanwinamt
+      from report_dagudong
         where dagudongid=#{p_userId,jdbcType=VARCHAR}
-        AND handicapId=#{p_handicapId,jdbcType=VARCHAR}
+        AND riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
+        GROUP BY dagudongid,dagudongaccount,dagudongname
         ORDER  BY  isbucang desc
     </select>
 
@@ -357,8 +385,7 @@
     </select>
 
 
-
-    <select id="getDailiReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+    <select id="getDailiReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
         SELECT handicapid,riqi,dailiid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
           sum(dailiamt) as zhancheng,sum(dailiWinamt) as userWinamt,sum(dailiWinamt) as userTotalamt,sum(dailiretreat) as retreat,
           sum(dailiretreatDiff) as retreatDiff
@@ -366,7 +393,7 @@
         GROUP BY handicapid,riqi
     </select>
 
-    <select id="getZongdaiReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+    <select id="getZongdaiReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
         SELECT handicapid,riqi,zongdaiid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
         sum(zongdaiamt) as zhancheng,sum(zongdaiWinamt) as userWinamt,sum(zongdaitotalamt) as userTotalamt,
         sum(zongdairetreatdiff) as retreatdiff,sum(zongdairetreat) as retreat
@@ -374,7 +401,7 @@
         GROUP BY handicapid,riqi
     </select>
 
-    <select id="getDGudongReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+    <select id="getGudongReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
         SELECT handicapid,riqi,gudongid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
         sum(gudongamt) as zhancheng,sum(gudongwinamt) as userWinamt,sum(gudongtotalamt) as userTotalamt,
         sum(gudongretreatdiff) as retreatdiff,sum(gudongretreat) as retreat
@@ -382,7 +409,7 @@
         GROUP BY handicapid,riqi
     </select>
 
-    <select id="getDagudongReportMonth"  resultType="com.fr.lottery.dto.ReportMonthDto">
+    <select id="getDagudongReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
         SELECT handicapid,riqi,dagudongid as userid,sum(orderNum) as orderNum,sum(amount) as amount,sum(memberamt) as memberWinamt,
         sum(dagudongamt) as zhancheng,sum(dagudongwinamt) as userWinamt,sum(dagudongtotalamt) as userTotalamt,
         sum(dagudongretreatdiff) as retreatdiff,sum(dagudongretreat) as retreat
@@ -390,4 +417,62 @@
         GROUP BY handicapid,riqi
     </select>
 
+    <select id="getGameReport" resultType="com.fr.lottery.entity.GameReport">
+      SELECT  userid,useraccount,categoryid,categorydesc as gamedesc,sum(ordernum) as ordernum,
+        sum(amount) as amount,
+        sum(memberamt) as memberamt,
+        sum(zhanchengTome) as zhanchengTome,
+        sum(totalTome) as totalTome,
+        sum(zhancheng) as zhancheng,
+        sum(retreatdiff) as retreatdiff,
+        sum(totalamt) as totalamt,
+        sum(totalToparent) as totalToparent,
+        sum(zhanchengToparent) as zhanchengToparent,
+        sum(zhancheng) as zhancheng
+    FROM report_game
+    WHERE  riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR}
+        AND userid=#{userId,jdbcType=VARCHAR}
+      group BY userid,useraccount,categoryid,categorydesc
+      order by categoryid
+    </select>
+    <select id="getGameReportByCategoryId" resultType="com.fr.lottery.entity.GameReport">
+    SELECT  userid,useraccount,categoryid,categorydesc,gameType,gametypedesc as gamedesc,sum(ordernum) as ordernum,
+            sum(amount) as amount,
+            sum(memberamt) as memberamt,
+            sum(zhanchengTome) as zhanchengTome,
+            sum(totalTome) as totalTome,
+            sum(zhancheng) as zhancheng,
+            sum(retreatdiff) as retreatdiff,
+            sum(totalamt) as totalamt,
+            sum(totalToparent) as totalToparent,
+            sum(zhanchengToparent) as zhanchengToparent,
+            sum(zhancheng) as zhancheng
+     FROM report_game
+     WHERE  riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR}
+            AND userid=#{userId,jdbcType=VARCHAR}
+            AND categoryid=#{categoryid,jdbcType=VARCHAR}
+          group BY userid,useraccount,categoryid,categorydesc,gameType,gametypedesc
+          order by gameType
+    </select>
+
+    <select id="getGameReportByGameId" resultType="com.fr.lottery.entity.GameReport">
+        SELECT  userid,useraccount,categoryid,categorydesc,gameType,gametypedesc gametypedesc,`number`, gamedesc,sum(ordernum) as ordernum,
+        sum(amount) as amount,
+        sum(memberamt) as memberamt,
+        sum(zhanchengTome) as zhanchengTome,
+        sum(totalTome) as totalTome,
+        sum(zhancheng) as zhancheng,
+        sum(retreatdiff) as retreatdiff,
+        sum(totalamt) as totalamt,
+        sum(totalToparent) as totalToparent,
+        sum(zhanchengToparent) as zhanchengToparent,
+        sum(zhancheng) as zhancheng
+        FROM report_game
+        WHERE  riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR}
+        AND userid=#{userId,jdbcType=VARCHAR}
+        AND categoryid=#{categoryid,jdbcType=VARCHAR}
+        AND  gametype=#{gametype,jdbcType=VARCHAR}
+        group BY userid,useraccount,categoryid,categorydesc,gameType,gametypedesc,`number`,gamedesc
+        order by `number`
+    </select>
 </mapper>

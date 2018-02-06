@@ -451,8 +451,6 @@ public class StatisController {
 
 //二肖连(中)
         Page<StatisDto> statisDtoList = orderService.getStatisLianma(category_id, new String[]{"035"}, pageId);
-
-
         modelAndView.addObject("shareTotal035", statisDtoList.getOtherInfo().get("shareTotal"));
         modelAndView.addObject("buhuo035", statisDtoList.getOtherInfo().get("buhuo"));
         modelAndView.addObject("orderDetails035", statisDtoList.getList());
@@ -489,6 +487,19 @@ public class StatisController {
         modelAndView.addObject("orderDetails040", statisDtoList040.getList());
         modelAndView.addObject("shareTotal040", statisDtoList040.getOtherInfo().get("shareTotal"));
         modelAndView.addObject("buhuo040", statisDtoList040.getOtherInfo().get("buhuo"));
+
+        //四肖连（不中）
+        Page<StatisDto> statisDtoList054 = orderService.getStatisLianma(category_id, new String[]{"054"}, pageId);
+        modelAndView.addObject("orderDetails054", statisDtoList054.getList());
+        modelAndView.addObject("shareTotal054", statisDtoList054.getOtherInfo().get("shareTotal"));
+        modelAndView.addObject("buhuo054", statisDtoList054.getOtherInfo().get("buhuo"));
+
+        //四肖连（不中）
+        Page<StatisDto> statisDtoList055 = orderService.getStatisLianma(category_id, new String[]{"055"}, pageId);
+
+        modelAndView.addObject("orderDetails055", statisDtoList055.getList());
+        modelAndView.addObject("shareTotal055", statisDtoList055.getOtherInfo().get("shareTotal"));
+        modelAndView.addObject("buhuo055", statisDtoList055.getOtherInfo().get("buhuo"));
         List<Map> dataMaps = orderService.get_statics_data();
         Map<String, Integer> menumaps = new HashMap<String, Integer>();
         for (Map menumap : dataMaps) {
@@ -637,7 +648,6 @@ public class StatisController {
                     map1.put("retreat", limitSets.get(1).getcRetreat());
                     map1.put("name", "C(特B)");
                 }
-
             }
         } else {
             LimitSet limitSet = limitSets.get(0);

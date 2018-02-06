@@ -51,13 +51,13 @@
     <result column="dagudongRetreat" jdbcType="DECIMAL" property="dagudongRetreat"/>
     <result column="dagudongRetreatAmt" jdbcType="DECIMAL" property="dagudongRetreatAmt"/>
     <result column="dagudongWinAmt" jdbcType="DECIMAL" property="dagudongWinamt"/>
-
+    <result column="riqi" jdbcType="VARCHAR" property="riqi"/>
   </resultMap>
   <sql id="Base_Column_List">
      Id,  userId,handicapId, gameType, `no`,description, odds, amount,totalAmount,retreat,IFNULL(winAmount,0) as winAmount, createdate,status,orderNo,
     lianmatype,lianmadan,IFNULL(canWinAmount,0) as canWinAmount,oddset,orderType,IsMuti,dailiId,dailiaccount,dailiname,dailiamt,dailiRetreat,dailiRetreatAmt,dailiwinamt
       ,zongdaiId,zongdaiaccount,zongdainame,zongdaiamt,zongdairetreat,zongdairetreatamt,zongdaiwinamt,gudongId,gudongaccount,gudongname,gudongamt,gudongretreat,gudongretreatamt,gudongwinamt
-      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account,retreatAmt
+      ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account,retreatAmt,riqi
   </sql>
   <select id="selectByExample"  resultMap="BaseResultMap">
     select
@@ -66,7 +66,7 @@
 
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from orders
     where Id = #{id,jdbcType=VARCHAR}
@@ -90,7 +90,7 @@
       ,zongdaiId,zongdaiaccount,zongdainame,zongdaiamt,zongdairetreat,zongdairetreatamt,zongdaiwinamt
       ,gudongId,gudongaccount,gudongname,gudongamt,gudongretreat,gudongretreatamt,gudongwinamt
       ,dagudongid,dagudongaccount,dagudongname,dagudongamt,dagudongretreat,dagudongretreatamt,dagudongwinamt,account
-      ,retreatAmt)
+      ,retreatAmt,riqi)
     values (#{id,jdbcType=VARCHAR},  #{userid,jdbcType=VARCHAR},#{handicapId,jdbcType=VARCHAR},#{orderType,jdbcType=VARCHAR},
       #{gametype,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR}, #{odds,jdbcType=DECIMAL},
       #{amount,jdbcType=INTEGER},#{totalAmount,jdbcType=INTEGER},#{retreat,jdbcType=DECIMAL},#{winAmount,jdbcType=DECIMAL}, #{createdate,jdbcType=TIMESTAMP},
@@ -99,7 +99,7 @@
       #{zongdaiId,jdbcType=VARCHAR},#{zongdaiAccount,jdbcType=VARCHAR},#{zongdaiName,jdbcType=VARCHAR},#{zongdaiAmt,jdbcType=DECIMAL},#{zongdaiRetreat,jdbcType=DECIMAL},#{zongdaiRetreatAmt,jdbcType=DECIMAL},#{zongdaiWinamt,jdbcType=DECIMAL},
       #{gudongId,jdbcType=VARCHAR},#{gudongAccount,jdbcType=VARCHAR},#{gudongName,jdbcType=VARCHAR},#{gudongAmt,jdbcType=DECIMAL},#{gudongRetreat,jdbcType=DECIMAL},#{gudongRetreatAmt,jdbcType=DECIMAL},#{gudongWinamt,jdbcType=DECIMAL},
       #{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongName,jdbcType=VARCHAR},#{dagudongAmt,jdbcType=DECIMAL},#{dagudongRetreat,jdbcType=DECIMAL},#{dagudongRetreatAmt,jdbcType=DECIMAL},#{dagudongWinamt,jdbcType=DECIMAL},
-      #{account,jdbcType=VARCHAR},#{retreatAmt,jdbcType=DECIMAL})
+      #{account,jdbcType=VARCHAR},#{retreatAmt,jdbcType=DECIMAL},#{riqi,jdbcType=VARCHAR})
   </insert>
   <select id="countByExample"  resultType="java.lang.Long">
     select count(*) from orders
@@ -192,10 +192,9 @@
   </resultMap>
 
   <select id="getOrderHistory" resultMap="UserHistoryMap">
-    SELECT handicap.id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
+    SELECT handicapid as id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
     sum(ifnull(winAmount,0)+retreatamt) as winAmount
     FROM orders
-    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
       <where>
 
         <if test="userid!='' and userid!=null" >
@@ -211,19 +210,18 @@
   </select>
 
   <select id="getOrderHistoryByRiqi" resultMap="UserHistoryMap">
-    SELECT handicap.id,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
+    SELECT handicapid,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
     sum(winAmount+retreatamt) as winAmount
     FROM orders
-    INNER  JOIN Handicap on orders.handicapId= Handicap.Id
     <where>
       <if test="userid!='' and userid!=null" >
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
       <if test="riqi!='' and riqi!=null" >
-        AND handicap.riqi &gt;= #{riqi,jdbcType=VARCHAR}
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
       </if>
       <if test="riqi2!='' and riqi2!=null" >
-        AND handicap.riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
       </if>
     </where>
     GROUP  BY userid,handicapId
@@ -270,5 +268,284 @@
       AND orderType='bucang'
     </where>
 
+  </select>
+
+  <select id="getOrdersByDaili" resultType="com.fr.lottery.entity.Orders">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dailiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pageIndex!=null">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countOrdersByDaili" resultType="java.lang.Integer">
+    SELECT  count(1) FROM orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi = #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi = #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dailiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="getTotalByDaili" resultType="com.fr.lottery.entity.Orders">
+    SELECT sum(totalamount) as totalamount,sum(IFnull(winamount,0)+retreatamt) as winamount
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dailiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="getOrdersByZongdai" resultType="com.fr.lottery.entity.Orders">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND zongdaiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pageIndex!=null">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countOrdersByZongdai" resultType="java.lang.Integer">
+    SELECT  count(1) FROM orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND zongdaiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="getTotalByZongdai" resultType="com.fr.lottery.entity.Orders">
+    SELECT sum(totalamount) as totalamount,sum(IFnull(winamount,0)+retreatamt) as winamount
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND zongdaiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="getOrdersByGudong" resultType="com.fr.lottery.entity.Orders">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND gudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pageIndex!=null">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countOrdersByGudong" resultType="java.lang.Integer">
+    SELECT  count(1) FROM orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND gudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="getTotalByGudong" resultType="com.fr.lottery.entity.Orders">
+    SELECT sum(totalamount) as totalamount,sum(IFnull(winamount,0)+retreatamt) as winamount
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND gudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="getOrdersByDagudong" resultType="com.fr.lottery.entity.Orders">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dagudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pageIndex!=null">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countOrdersByDagudong" resultType="java.lang.Integer">
+    SELECT  count(1) FROM orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;= #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dagudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="getTotalByDagudong" resultType="com.fr.lottery.entity.Orders">
+    SELECT sum(totalamount) as totalamount,sum(IFnull(winamount,0)+retreatamt) as winamount
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND dagudongid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
+
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
   </select>
 </mapper>

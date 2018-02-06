@@ -6644,7 +6644,7 @@ $.extend({
         sebozhmate5: "032",
         sebozhmate6: "033",
         texiao: "034",
-        shengxiaolian: "035|036|037|038|039|040",
+        shengxiaolian: "035|036|037|038|039|040|054|055",
         weishulian: "041|042|043|044|045|046",
         buzhong: "047|048|049|050|051|052",
         shengxiaobuzhong: "053"
@@ -6723,7 +6723,9 @@ $.extend({
         "050": "15",
         "051": "15",
         "052": "15",
-        "053": "06"
+        "053": "06",
+        "054": "13",
+        "055": "13"
     },
     odds_light: 5000,
     submit_expire: 20000,
@@ -6748,7 +6750,7 @@ $.extend({
         banbo: "odds_016",
         liuxiao: "odds_017",
         texiao: "odds_034",
-        shengxiaolian: "odds_035|odds_036|odds_037|odds_038|odds_039|odds_040",
+        shengxiaolian: "odds_035|odds_036|odds_037|odds_038|odds_039|odds_040|odds_054|odds_055",
         weishulian: "odds_041|odds_042|odds_043|odds_044|odds_045|odds_046",
         buzhong: "odds_047|odds_048|odds_049|odds_050|odds_051|odds_052"
     },

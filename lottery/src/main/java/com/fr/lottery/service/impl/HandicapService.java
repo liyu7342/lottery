@@ -156,7 +156,6 @@ public class HandicapService implements IHandicapService {
             }
 
         }
-
         return handicapMapper.openHandicap(handicap) >0;
     }
 
@@ -217,17 +216,12 @@ public class HandicapService implements IHandicapService {
         Handicap handicap =getNotOpenHandicap();
         if(handicap==null) return false;
         String dtStr =DateTimeUtils.Date2StringLong( new Date());
-        boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0 && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>0;
+        boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0
+                && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>0;
         return isOpen;
     }
 
-    @Override
-    public boolean settlement(String handicapId) {
-        return false;
-    }
-
     public String get6hbd(String url){
-
         return HttpClientUtils.clientGet(url);
     }
 }

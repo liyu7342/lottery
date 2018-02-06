@@ -209,6 +209,57 @@
                                         </tfoot>
                                     </table>
                                 </td>
+                                <td class="ts">
+                                    <div class="g-tif"><h3 class="m">五肖連(中)
+                                        <button class="gms_ctl" to="duobu.htm?game_id=054" act="db" gid="054"  type="button">多補</button></h3></div>
+                                    <table class="g-t1 g-t2" gid="054">
+                                        <thead>
+                                        <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                        </thead>
+                                        <tbody>
+                                        <#list orderDetails054 as detail>
+                                            <tr id="${detail.no!''}">
+                                                <td>${detail_index+1!''}</td>
+                                                <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=054&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                <td>${detail.shareTotal?int}</td>
+                                                <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=054&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                            </tr>
+                                        </#list>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr><td colspan="2">總計</td>
+                                            <td>${shareTotal054!'0'}</td>
+                                            <td>${buhuo055!'0'}</td>
+                                        </tr>
+                                        </tfoot>
+                                        <tr><td colspan="3"></td><td><a href="javascript:void(0);" to='tjlianmamingxi.htm?game_id=054&pageId=2' op='more'>更多</a></td></tr>
+                                    </table>
+                                </td>
+                                <td class="ts">
+                                    <div class="g-tif"><h3 class="m">五肖連(不中)
+                                        <button class="gms_ctl" to="duobu.htm?game_id=055" act="db" gid="055"  type="button">多補</button></h3></div>
+                                    <table class="g-t1 g-t2" gid="055">
+                                        <thead>
+                                        <tr><td>序號</td><td>玩法</td><td>佔成收入</td><td class="r">補倉</td></tr>
+                                        </thead>
+                                        <tbody>
+                                        <#list orderDetails055 as detail>
+                                            <tr id="${detail.no!''}">
+                                                <td>${detail_index+1!''}</td>
+                                                <td><a href="javascript:void(0);" to="/order/xiazhumingxi?game_id=055&number=${detail.no!''}&name=${detail.description?url}">${detail.description!''}</a></td>
+                                                <td>${detail.shareTotal?int}</td>
+                                                <td><a href="javascript:void(0);" to="/statis/short_covering?number=${detail.no!''}&game_id=055&amt=${detail.buhuo!'0'}" class="red gms_a">${detail.buhuo!'0'}</a></td>
+                                            </tr>
+                                        </#list>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr><td colspan="2">總計</td>
+                                            <td>${shareTotal055!'0'}</td>
+                                            <td>${buhuo055!'0'}</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

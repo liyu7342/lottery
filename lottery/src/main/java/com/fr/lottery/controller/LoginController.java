@@ -68,7 +68,6 @@ public class LoginController {
     @RequestMapping("/doLogin")
     @ResponseBody
     public ResultInfo<String> doLogin(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd, String verifyCode){
-
         ResultInfo<String> result = new ResultInfo<String>();
         try{
             if(StringUtils.isBlank(verifyCode)){
@@ -86,7 +85,6 @@ public class LoginController {
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Member.ordinal()){
                 result.setSuccess(true);
-
                 UserHelper.setCurrentUser(user);
 
             }
@@ -98,9 +96,11 @@ public class LoginController {
         catch (Exception ex){
             result.setSuccess(false);
             result.setMsg("内部500错误");
+            ex.printStackTrace();
         }
         return result;
     }
+
     @RequestMapping("/doLogin1")
     @ResponseBody
     public ResultInfo<String> doLogin1(HttpServletRequest request, HttpServletResponse response, String userAccount, String userPwd,String verifyCode){

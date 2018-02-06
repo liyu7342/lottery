@@ -66,6 +66,7 @@
                             <table class="g-t1">
                                 <thead>
                                 <tr>
+
                                     <td>注單號</td>
                                     <td>盤口</td>
                                     <td>玩法</td>
@@ -86,7 +87,8 @@
                                     <td>${(obj.totalAmount)!''}</td>
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}%</td>
-                                    <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> ><#if id=="">${(obj.canWinAmount)?ceiling}<#else>${(obj.winAmount+obj.retreatAmt)?ceiling}</#if></td>
+                                    <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> >
+                                        <#if id=="">${(obj.canWinAmount)?ceiling}<#else>${(obj.winAmount+obj.retreatAmt)?ceiling}</#if></td>
 
                                     <td><#if id=="">下注成功 <#else>成功</#if></td>
                                 </tr>
@@ -105,7 +107,7 @@
                                     <td>${totalAmount}</td>
                                     <td></td>
                                     <td></td>
-                                    <td><#if id=="">${(canWinAmount)!''}<#else>${(winAmount)?floor}</#if></td>
+                                    <td><#if id=="">${(canWinAmount)!''}<#else>${(winAmount gt 0? (winAmount)?ceiling)?floor}</#if></td>
                                     <td></td>
                                 </tr>
                                 </tfoot>

@@ -60,4 +60,32 @@ public interface OrderMapper {
     List<Orders> getBuhuoesByUserId(@Param("handicapId") String handicapId,@Param("gameType") String game_id
             , @Param("userId") String userId,@Param("pageIndex") Integer pageId,@Param("pageSize") Integer pageSize);
 
+    List<Orders> getOrdersByDaili(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                               @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
+                                ,@Param("pageSize") Integer pageSize);
+    Integer countOrdersByDaili(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                             @Param("gameType") String gameType,@Param("number") String number);
+    Orders getTotalByDaili(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                               @Param("gameType") String gameType,@Param("number") String number);
+    List<Orders> getOrdersByZongDai(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                                  @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
+            ,@Param("pageSize") Integer pageSize);
+    Integer countOrdersByZongdai(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                               @Param("gameType") String gameType,@Param("number") String number);
+    Orders getTotalByZongdai(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                           @Param("gameType") String gameType,@Param("number") String number);
+    List<Orders> getOrdersByGudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                                  @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
+            ,@Param("pageSize") Integer pageSize);
+    Integer countOrdersByGudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                               @Param("gameType") String gameType,@Param("number") String number);
+    Orders getTotalByGudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                           @Param("gameType") String gameType,@Param("number") String number);
+    List<Orders> getOrdersByDagudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                                  @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
+            ,@Param("pageSize") Integer pageSize);
+    Integer countOrdersByDagudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                               @Param("gameType") String gameType,@Param("number") String number);
+    Orders getTotalByDagudong(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                           @Param("gameType") String gameType,@Param("number") String number);
 }

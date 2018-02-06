@@ -17,7 +17,7 @@ public interface UserMapper {
     List<User> findAll(@Param("account") String  account,@Param("name") String  name,@Param("start") Integer start ,@Param("limit") Integer limit);
 
 
-    Long count(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status);
+    Long count(@Param("xpath") String xpath,@Param("parentId") String parentid,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status);
     User getByAccount(@Param("account") String  account);
 
     User get(@Param("id")String id);
@@ -31,7 +31,7 @@ public interface UserMapper {
 
     int changeStatus (@Param("id") String id,@Param("status") Integer status);
 
-    List<User> getUsers(@Param("xpath") String xpath,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status,@Param("start") Integer start,@Param("pageSize") Integer pageSize);
+    List<User> getUsers(@Param("xpath") String xpath,@Param("parentId") String parentid,@Param("userType") Integer userType,@Param("keyword") String keyword,@Param("status") Integer status,@Param("start") Integer start,@Param("pageSize") Integer pageSize);
 
     int getSeq(@Param("parentID") String parentID);
 

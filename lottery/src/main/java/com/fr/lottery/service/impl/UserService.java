@@ -203,28 +203,28 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Page<User> getUsers(String parentId, Integer userType, String keyword, Integer status, Integer pageId) {
+    public Page<User> getUsers(String userId,String parentid, Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
-        User user = userMapper.get(parentId);
+        User user = userMapper.get(userId);
         if(StringUtils.isNotBlank(keyword)){
             keyword= "%"+keyword+"%";
         }
-         List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
-        long total = userMapper.count(user.getXpath()+"%", userType, keyword, status);
+         List<User> users = userMapper.getUsers(user.getXpath()+"%",parentid, userType, keyword, status, start,Global.pageSizeOfTen);
+        long total = userMapper.count(user.getXpath()+"%",parentid, userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }
 
     @Override
     public List<User> getUsers(String xpath,Integer userType){
-       return userMapper.getUsers(xpath+"%",userType,"",null,null,null);
+       return userMapper.getUsers(xpath+"%","",userType,"",null,null,null);
     }
     @Override
     public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = UserHelper.getCurrentUser();
-        List<User> users = userMapper.getUsers(user.getXpath()+"%", userType, keyword, status, start,Global.pageSizeOfTen);
-        long total = userMapper.count("", userType, keyword, status);
+        List<User> users = userMapper.getUsers(user.getXpath()+"%","", userType, keyword, status, start,Global.pageSizeOfTen);
+        long total = userMapper.count("","" ,userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }

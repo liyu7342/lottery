@@ -25,7 +25,7 @@ public interface IUserService {
 
     int changeStatus(Integer level,String pid,String id,Integer status);
 
-    Page<User> getUsers(String parentId,Integer userType,String keyword,Integer status,Integer pageId);
+    Page<User> getUsers(String userId,String parentid,Integer userType,String keyword,Integer status,Integer pageId);
 
     //獲取當前用戶指定級別的用戶
     List<User> getUsers(String xpath,Integer userType);

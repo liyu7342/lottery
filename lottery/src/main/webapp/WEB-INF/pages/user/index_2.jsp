@@ -75,14 +75,15 @@
 
                                     <th><input style='display:none;' type='checkbox' name='delAccountAll' value='${obj.id}' /></th>
                                     <td class="offline" id="${obj.id}"></td>
-                                    <td class="bg tl">${obj.userName}&nbsp;&nbsp;</td>
+                                    <td class="bg tl"><a href='/user/index3?parentid=${obj.id}&level=2'>${obj.account!''}</a>&nbsp;&nbsp;[${obj.userName!''},${obj.parentName!''}]</td>
                                     <td>${obj.credits}</td>
                                     <td>${obj.handicap}</td>
                                     <td>${obj.shareUp!''}</td>
                                     <td>${obj.shareTotal!''}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+
+                                    <td>${obj.zongdaiNumber!'0'}</td>
+                                    <td>${obj.dailiNumber!''}</td>
+                                    <td>${obj.memberNumber!'0'}</td>
                                     <td>
                                     <#if obj.status == 0>
                                         <span class='red'>停用</span>
@@ -96,9 +97,27 @@
                                     <td>
                                         ${obj.createdate?string("yyyy-MM-dd HH:mm:ss")}
                                     </td>
-                                    <td><a class='a_btm_line' act='tingyong' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停用</a>
-                                        /&nbsp;<a class='a_btm_line' act='tingya' pid='${obj.parentId !''}' tid='${obj.id}' page='1' href='member_list.htm'>停押</a>
-                                        /&nbsp;<a class='a_btm_line' href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a></td>
+                                    <td><#if obj.status==0>
+                                        <a class='a_btm_line' act='qiyong'   pid="${obj.parentid !''}"
+                                           tid='${obj.id}' page='1' href='member_list.htm'>启用</a>/&nbsp;<a class='a_btm_line' act='tingya'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='member_list.htm'>停押</a>/&nbsp;<a class='a_btm_line' act='shanchu'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='member_list.htm'>删除</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                    </#if>
+                                        <#if obj.status==1>
+                                            <a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
+                                               tid='${obj.id}' page='1' href='member_list.htm'>停用</a>/&nbsp;<a class='a_btm_line' act='tingya'   pid="${obj.parentid !''}"
+                                                                                                               tid='${obj.id}' page='1' href='member_list.htm'>停押</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                        </#if>
+                                        <#if obj.status==2>
+                                            <a class='a_btm_line' act='qiyong'   pid="${obj.parentid !''}"
+                                               tid='${obj.id}' page='1' href='member_list.htm'>启用</a>/&nbsp;<a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
+                                                                                                               tid='${obj.id}' page='1' href='member_list.htm'>停用</a>/&nbsp;<a class ='a_btm_line' tid="${obj.id}"   pid="${obj.parentid !''}"
+                                                                                                                                                                               href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                        </#if>
+                                        <#if obj.status==3>
+                                            <a class='a_btm_line' act='qiyong'  pid="${obj.parentid !''}"
+                                               tid='${obj.id}' page='1' href='member_list.htm'>启用</a>/&nbsp;<a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
+                                                                                                               tid='${obj.id}' page='1' href='member_list.htm'>停用</a>/&nbsp;<a class='a_btm_line'
+                                                                                                                                                                               pid="${obj.parentid !''}" href='/member/info2?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                        </#if>
                                 </tr>
                                     </#list>
                                 </tbody></table>
@@ -119,25 +138,24 @@
                     <ul class="g-hover">
 
                         <#if user.usertype lt 1>
-                            <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
+                            <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>
                         <#if user.usertype lt 2>
-                            <li><a curl='5'  href='/user/index2'>小股東</a><cite>0</cite></li>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>${user.gudongNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 3>
-                            <li><a curl='0' href='/user/index3'>總代理</a><cite>0</cite></li>
+                            <li><a curl='0' href='/user/index3'>總代理</a><cite>${user.zongdaiNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 4>
-                            <li><a curl='0' href='/user/index4'>代理商</a><cite>0</cite></li>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>${user.dailiNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 5>
-                            <li><a curl='0' href='/user/index'>會員</a><cite>0</cite></li>
+                            <li><a curl='0' href='/user/index'>會員</a><cite>${user.memberNumber!'0'}</cite></li>
                         </#if>
                     </ul>
                 </div>
                 <div class="ft">
-                    <p>在線會員數：0</p>
-                    <p>在線經銷商：1</p>
+
                     <div class="dotbg"></div>
                 </div>
             </div>

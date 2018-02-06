@@ -154,7 +154,8 @@ public class BucangService implements IBucangService {
 
             int i = 0;
             if ("017".equals(orders.getGametype()) || "018".equals(orders.getGametype()) || "035".equals(orders.getGametype()) || "036".equals(orders.getGametype()) || "037".equals(orders.getGametype())
-                    || "038".equals(orders.getGametype()) || "039".equals(orders.getGametype()) || "040".equals(orders.getGametype())) {
+                    || "038".equals(orders.getGametype()) || "039".equals(orders.getGametype()) || "040".equals(orders.getGametype())
+                    || "054".equals(orders.getGametype()) || "055".equals(orders.getGametype())) {
                 orderDetail.setNumbers(bucang.getNumber());
                 for (String xiao : numbers) {
                     i++;
@@ -180,8 +181,6 @@ public class BucangService implements IBucangService {
                     } else if (i == 10) {
                         orderDetail.setNumber10(xiao);
                     }
-
-
                 }
                 orders.setDescription(orders.getDescription().substring(0, orders.getDescription().length() - 1));
             } else if ("041".equals(orders.getGametype()) || "042".equals(orders.getGametype()) || "043".equals(orders.getGametype())
@@ -315,6 +314,7 @@ public class BucangService implements IBucangService {
 
         orders.setOrderType(OrderTypeEnum.补仓.getValue());
         orders.setHandicapId(handicap.getId());
+        orders.setRiqi(handicap.getRiqi());
         orderMapper.insert(orders);
         orderDetailMapper.insert(orderDetail);
         return 1;

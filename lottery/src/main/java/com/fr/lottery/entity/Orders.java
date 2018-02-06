@@ -71,6 +71,7 @@ public class Orders {
     private Float zongdaiWinamt;
     private Float gudongWinamt;
     private Float dagudongWinamt;
+    private String riqi;
 
 
     public String getId() {
@@ -465,5 +466,13 @@ public class Orders {
 
     public void setRetreatAmt(Float retreatAmt) {
         this.retreatAmt = retreatAmt;
+    }
+
+    public String getRiqi() {
+        return riqi;
+    }
+
+    public void setRiqi(String riqi) {
+        this.riqi = riqi;
     }
 }

@@ -312,11 +312,10 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
-                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>1</cite></li>        </ul>
+                        <li><a curl='0' href='admin_list.htm'>管理員</a><cite>0</cite></li><li><a curl='5' href='/user/index'>會員</a><cite>${user.memberNumber!'0'}</cite></li>        </ul>
                 </div>
                 <div class="ft">
-                    <p>在線會員數：0</p>
-                    <p>在線經銷商：1</p>
+
                     <div class="dotbg"></div>
                 </div>
             </div>        </div>

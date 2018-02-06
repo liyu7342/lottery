@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.NoticeMapper">
+
+  <sql id="Base_Column_List">
+     Id,title, `type`, content, createdate,createuserid,sortorder
+  </sql>
+
+  <select id="getNotices"  resultType="com.fr.lottery.entity.Notice">
+    select
+    <include refid="Base_Column_List" />
+    from oddsChange
+    <where>
+      <if test="type !=null and type !='' ">
+        AND `type` =#{`type`,jdbcType=INTEGER}
+      </if>
+    </where>
+    <if test="start!=null">
+      limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+    ORDER  BY createdate DESC
+  </select>
+
+  <insert id="insert" parameterType="com.fr.lottery.entity.Notice">
+    insert into Notice (Id,title, `type`, content, createdate,createuserid,sortorder)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+      #{content,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{sortOrder,jdbcType=INTEGER})
+  </insert>
+
+  <update id="update" >
+    update Notice set title=#{title,jdbcType=VARCHAR},`type`=#{type,jdbcType=INTEGER},
+    content=#{content,jdbcType=DECIMAL},sortOrder=#{sortOrder,jdbcType=INTEGER},
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="delete" parameterType="java.lang.String">
+    delete from Notice
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+</mapper>

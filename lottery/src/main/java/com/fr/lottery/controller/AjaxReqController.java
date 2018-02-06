@@ -189,6 +189,22 @@ public class AjaxReqController {
             StatisTable statisTable040 =new StatisTable(statisDtoList040.getList(),GameTypeEnum.生肖連.getValue(),statisDtoList040.getOtherInfo());
             tableHtml.add(statisTable040.toString());
             tableHtml.add("</td>");
+
+            tableHtml.add("<td class=\"ts\">");
+            tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">五肖连(中)\n" +
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=054\" act=\"db\" gid=\"054\" type=\"button\">多補</button></h3></div>");
+            Page<StatisDto> statisDtoList054= orderService.getStatisLianma(category_id,new String[]{"054"},1);
+            StatisTable statisTable054 =new StatisTable(statisDtoList054.getList(),GameTypeEnum.生肖連.getValue(),statisDtoList054.getOtherInfo());
+            tableHtml.add(statisTable054.toString());
+            tableHtml.add("</td>");
+
+            tableHtml.add("<td class=\"ts\">");
+            tableHtml.add("<div class=\"g-tif\"><h3 class=\"m\">五肖连(不中)\n" +
+                    "                    <button class=\"gms_ctl\" to=\"/statis/duobu?game_id=055\" act=\"db\" gid=\"055\" type=\"button\">多補</button></h3></div>");
+            Page<StatisDto> statisDtoList055 =orderService.getStatisLianma(category_id,new String[]{"055"},1);
+            StatisTable statisTable055 =new StatisTable(statisDtoList055.getList(),GameTypeEnum.生肖連.getValue(),statisDtoList055.getOtherInfo());
+            tableHtml.add(statisTable055.toString());
+            tableHtml.add("</td>");
             tableHtml.add("</tr>");
             tableHtml.add("</tbody>");
             tableHtml.add("</table>");

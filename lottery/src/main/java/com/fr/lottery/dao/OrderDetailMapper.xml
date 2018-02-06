@@ -87,6 +87,7 @@
   <update id="settlement" parameterMap="getUserCountMap" statementType="CALLABLE">
       CALL P_DB_Settlement(#{handicapId,jdbcType=VARCHAR});
       CALL P_DB_Report_Daili(#{handicapId,jdbcType=VARCHAR});
+      CALL P_DB_Report_Game(#{handicapId,jdbcType=VARCHAR});
   </update>
     <parameterMap type="java.util.Map" id="getUserCountMap">
         <parameter property="handicapId" mode="IN" jdbcType="VARCHAR"/>

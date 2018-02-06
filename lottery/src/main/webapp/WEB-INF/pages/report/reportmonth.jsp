@@ -34,7 +34,7 @@
                                 <li><h2 class="g-tit">報表管理</h2></li>
                                 <li class="ps">本月報表 --
                                     ${currentMonth} （月） --
-                                    <a href="report/report">上一頁</a>
+                                    <a href="/report/report">上一頁</a>
                                 </li>
                             </ul>
                             <div class="fr">

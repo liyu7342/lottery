@@ -69,7 +69,7 @@ public class GameCfg {
         cfg_play_keys.put("sebozhmate5","032");
         cfg_play_keys.put("sebozhmate6","033");
         cfg_play_keys.put("texiao","034");
-        cfg_play_keys.put("shengxiaolian","035|036|037|038|039|040");
+        cfg_play_keys.put("shengxiaolian","035|036|037|038|039|040|054|055");
         cfg_play_keys.put("weishulian","041|042|043|044|045|046");
         cfg_play_keys.put("buzhong","047|048|049|050|051|052");
         cfg_play_keys.put("shengxiaobuzhong","053");
@@ -148,6 +148,8 @@ public class GameCfg {
         game_category.put("051","15");
         game_category.put("052","15");
         game_category.put("053","06");
+        game_category.put("054","13");
+        game_category.put("055","13");
 
 
 
@@ -164,7 +166,7 @@ public class GameCfg {
         category_game.put("10",new String[]{"019","020","021","022","023","024","025","026"});
         category_game.put("11",new String[]{"027","028","029","030","031","032","033"});
         category_game.put("12",new String[]{"034"});
-        category_game.put("13",new String[]{"035","036","037","038","039","040"});
+        category_game.put("13",new String[]{"035","036","037","038","039","040","054","055"});
         category_game.put("14",new String[]{"041","042","043","044","045","046"});
         category_game.put("15",new String[]{"047","048","049","050","051","052"});
     }

@@ -43,7 +43,7 @@ public class MemberController {
     public ModelAndView index(Integer pageId) {
         ModelAndView modelAndView = new ModelAndView("/member/index");
         String agentId = UserHelper.getCurrentUser().getId();
-        Page<User> members = userService.getUsers(agentId, UserTypeEnum.Member.ordinal(), "", null, pageId);
+        Page<User> members = userService.getUsers(agentId,"", UserTypeEnum.Member.ordinal(), "", null, pageId);
         modelAndView.addObject("users", members.getList());
         modelAndView.addObject("page", members.toString());
         return modelAndView;

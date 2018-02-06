@@ -422,14 +422,14 @@
                         form.__name.value = '';
                         form.password.value = '';
                         alert(tx);
-                    }else if(~tx.indexOf('upgrade.png')!=-1){
-                        location.href = 'user/logout';
+                    }else if(tx.indexOf('upgrade.png')!=-1){
+                        location.href = '/user/logout';
                         return false;
-                    }else if(~tx.indexOf('賬號已经被停用')!=-1){
+                    }else if(tx.indexOf('賬號已经被停用')!=-1){
                         alert(tx);
                         return false;
                     }
-                    else if(~tx.indexOf('公司被停用了')!=-1){
+                    else if(tx.indexOf('公司被停用了')!=-1){
                         alert(tx);
                         return false;
                     }
