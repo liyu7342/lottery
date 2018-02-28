@@ -436,7 +436,7 @@
                     getVImag ();
                 }
                 else{
-                    window.location.href ="/home/index";
+                    window.location.href ="/rule/protocol";
                 }
 
 //

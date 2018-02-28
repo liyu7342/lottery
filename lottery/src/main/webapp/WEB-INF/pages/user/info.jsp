@@ -44,9 +44,9 @@
                                 <tbody movod='movod'>
                                 <tr>
                                     <td class="bg"> 賬號</td>
-                                    <td>${user.userName!''}</td>
-                                    <td class="bg">會員名稱</td>
                                     <td>${user.account!''}</td>
+                                    <td class="bg">會員名稱</td>
+                                    <td>${user.userName!''}</td>
                                     <td class="bg"> 信用額度</td>
                                     <td>${user.credits!''}</td>
 

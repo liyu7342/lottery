@@ -324,7 +324,7 @@
                         <tr><td><label class="red"><input type="radio" name="he_dan"/>合單</label></td><td><label class="red"><input type="radio" name="he_shuang"/>合雙</label></td><td></td><td></td></tr>
                     </table>
                     <div class="outer_sx">
-                        <table id="sx_choose" class="olive" num='{"01":"10,22,34,46","02":"09,21,33,45","03":"08,20,32,44","04":"07,19,31,43","05":"06,18,30,42","06":"05,17,29,41","07":"04,16,28,40","08":"03,15,27,39","09":"02,14,26,38","10":"01,13,25,37,49","11":"12,24,36,48","12":"11,23,35,47"}'>
+                        <table id="sx_choose" class="olive" num='${xiao!''}'>
                             <tr><td><label><input name="sx01"  type="radio"/>鼠</label></td><td><label><input name="sx02"  type="radio"/>牛</label></td><td><label><input name="sx03"  type="radio" />虎</label></td><td><label><input name="sx04"  type="radio" />兔</label></td><td><label><input name="sx05"  type="radio" />龍</label></td><td><label><input name="sx06"  type="radio" />蛇</label></td></tr>
                             <tr><td><label><input name="sx07"  type="radio"/>馬</label></td><td><label><input name="sx08"  type="radio"/>羊</label></td><td><label><input name="sx09"  type="radio" />猴</label></td><td><label><input name="sx10"  type="radio" />雞</label></td><td><label><input name="sx11"  type="radio" />狗</label></td><td><label><input name="sx12"  type="radio" />豬</label></td></tr>
                         </table>

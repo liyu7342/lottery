@@ -42,10 +42,10 @@ public class BucangService implements IBucangService {
     private IUserService userService;
 
     @Override
-    public int insert(Bucang bucang) {
+    public int insert(Bucang bucang,User user) {
 
         Handicap handicap = handicapService.getNotOpenHandicap();
-        User user = UserHelper.getCurrentUser();
+
         User zongdai = null;
         User gudong = null;
         User dagudong = null;

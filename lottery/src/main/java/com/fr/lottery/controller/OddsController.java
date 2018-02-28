@@ -4,10 +4,7 @@ import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.*;
 import com.fr.lottery.enums.OddsTypeEnum;
 import com.fr.lottery.init.Global;
-import com.fr.lottery.service.inter.IHandicapService;
-import com.fr.lottery.service.inter.IOddsService;
-import com.fr.lottery.service.inter.IOrderService;
-import com.fr.lottery.service.inter.IShengxiaoService;
+import com.fr.lottery.service.inter.*;
 import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +33,8 @@ public class OddsController {
     private IHandicapService handicapService;
     @Autowired
     private IShengxiaoService shengxiaoService;
+    @Autowired
+    private INoticeService noticeService;
 
     @RequestMapping("/temaa")
     public ModelAndView temaa(Boolean isDefault, String handicap) {
@@ -418,7 +417,12 @@ public class OddsController {
         outMap.put("status", map);
         Map<String, Object> header = new HashedMap();
         User user = UserHelper.getCurrentUser();
-        header.put("marquee", "欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
+        Notice notice =noticeService.getLatestDailyNotice();
+        if(notice!= null){
+            header.put("marquee",notice.getContent().replaceAll("\\n","")  );//"欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
+        }
+
+        //header.put("marquee",  "欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
         Handicap handicap = handicapService.getCurrentHandicap();
         header.put("draws",handicap !=null?handicap.getRiqi():"" );
         header.put("sum", user.getAmount());
@@ -457,7 +461,8 @@ public class OddsController {
         Map<String, Object> map = new HashedMap();
         Map<String, Object> header = new HashedMap();
         User user =UserHelper.getCurrentUser();
-        header.put("marquee", "欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
+        Notice notice =noticeService.getLatestDailyNotice();
+        header.put("marquee",notice.getContent().replaceAll("\\r\\n","")  );//"欢迎进入A28 ! 2017年香港六合彩第095期開獎時間為：2017年8月15日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
         header.put("draws", DateTimeUtils.Date2String(new Date(), "yyyy-MM-dd"));
         header.put("sum", user.getAmount());
         header.put("credit", user.getCredits());

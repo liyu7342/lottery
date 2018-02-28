@@ -710,7 +710,8 @@ public class StatisController {
 //                }
 //            }
             if (isAllow) {//補貨金額不能超占成
-                bucangService.insert(bucang);
+                User user =UserHelper.getCurrentUser();
+                bucangService.insert(bucang,user);
             }
         }
         response.setContentType("text/html;charset=UTF-8");

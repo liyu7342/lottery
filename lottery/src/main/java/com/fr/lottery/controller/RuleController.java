@@ -1,5 +1,10 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.Page;
+import com.fr.lottery.entity.Notice;
+import com.fr.lottery.init.Global;
+import com.fr.lottery.service.impl.NoticeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RuleController {
 
+    @Autowired
+    private NoticeService noticeService;
 
     @RequestMapping("/notice")
     public ModelAndView notice(){
@@ -27,7 +34,14 @@ public class RuleController {
     @RequestMapping("/noticehistory")
     public ModelAndView noticehistory(){
         ModelAndView modelAndView = new ModelAndView("rule/noticehistory");
+        Page<Notice> noticePage =noticeService.getDailyNotices(1, Global.pageSize);
+        modelAndView.addObject("noticeList",noticePage.getList());
         return  modelAndView;
     }
 
+    @RequestMapping("/protocol")
+    public ModelAndView protocol(){
+        ModelAndView modelAndView = new ModelAndView("rule/protocol");
+        return  modelAndView;
+    }
 }

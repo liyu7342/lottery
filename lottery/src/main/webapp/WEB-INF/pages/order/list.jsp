@@ -88,7 +88,15 @@
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}%</td>
                                     <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> >
-                                        <#if id=="">${(obj.canWinAmount)?ceiling}<#else>${(obj.winAmount+obj.retreatAmt)?ceiling}</#if></td>
+                                    <#if id=="" && obj.canWinAmount gt 0>${(obj.canWinAmount)?floor}
+                                        <#elseif id=="" && obj.canWinAmount lte 0 >
+                                            ${obj.canWinAmount?ceiling}
+                                            <#elseif (obj.winAmount+obj.retreatAmt) gt 0>
+                                                ${(obj.winAmount+obj.retreatAmt)?floor}
+                                                <#else>
+                                                    ${(obj.winAmount+obj.retreatAmt)?ceiling}
+                                    </#if>
+                                    </td>
 
                                     <td><#if id=="">下注成功 <#else>成功</#if></td>
                                 </tr>
@@ -99,7 +107,15 @@
                                     <td>${subSum}</td>
                                     <td></td>
                                     <td></td>
-                                    <td><#if id=="">${(subCanWinAmount)?ceiling}<#else>${(subWinAmount)?ceiling}</#if></td>
+                                    <td><#if id=="" && subCanWinAmount gt 0>${(subCanWinAmount)?floor}
+                                        <#elseif id=="" && subCanWinAmount lte 0 >
+                                            ${subCanWinAmount?ceiling}
+                                            <#elseif subWinAmount gt 0>
+                                                ${subWinAmount?floor}
+                                                <#else>
+                                                    ${subWinAmount?ceiling}
+                                    </#if>
+                                      </td>
                                     <td></td>
                                 </tr>
                                 <tr class="red">
@@ -107,7 +123,14 @@
                                     <td>${totalAmount}</td>
                                     <td></td>
                                     <td></td>
-                                    <td><#if id=="">${(canWinAmount)!''}<#else>${(winAmount gt 0? (winAmount)?ceiling)?floor}</#if></td>
+                                    <td><#if id=="" && canWinAmount gt 0>${(canWinAmount)?floor}
+                                        <#elseif id=="" && canWinAmount lte 0 >
+                                            ${canWinAmount?ceiling}
+                                            <#elseif winAmount gt 0>
+                                                ${winAmount?floor}
+                                                <#else>
+                                                    ${winAmount?ceiling}
+                                            </#if></td>
                                     <td></td>
                                 </tr>
                                 </tfoot>

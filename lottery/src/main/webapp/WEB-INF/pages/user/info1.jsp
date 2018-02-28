@@ -39,21 +39,21 @@
                                     <td class="bg">賬號</td>
                                     <td>${user.account!''}</td>
                                     <td class="bg">補貨設定</td>
-                                    <td></td>
+                                    <td><#if user.shortCovering==1>允许<#else>不允许</#if></td>
                                 </tr>
                                 <tr>
                                     <td class="bg">總信用額度</td>
                                     <td>${user.credits!''}</td>
                                     <td class="bg" >自己及下級佔成數</td>
-                                    <td >0%</td>
+                                    <td >${user.shareUp!'0'}%</td>
                                     <td class="bg" >盤口</td>
                                     <td> ${user.handicap!''}</td>
                                 </tr>
                                 <tr>
                                     <td class="bg">補貨是否佔成</td>
-                                    <td>是</td>
+                                    <td><#if user.shareFlag==1>是<#else>否</#if> </td>
                                     <td class="bg">狀態</td>
-                                    <td colspan="3" >${user.status!''}</td>
+                                    <td colspan="3"><#if user.status==1>启用 <#elseif user.status==0>停用 <#elseif user.status==2>停押 <#elseif user.status==3>禁止登陆 <#else></#if></td>
                                 </tr>
                                 </tbody></table>
                             <div class="g-tif mt"><h3>詳細資料</h3></div>

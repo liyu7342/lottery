@@ -57,39 +57,39 @@
                                     <tbody>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"    value="01"/>鼠</label></th>
-                                        <td><strong>10,22,34,46</strong></td><td width="10%" name="pro_01">  ${(entity.pro_03501)!''}</td>
+                                        <td><strong>${shengxiao.鼠}</strong></td><td width="10%" name="pro_01">  ${(entity.pro_03501)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="02"/>牛</label></th>
-                                        <td><strong>09,21,33,45</strong></td><td width="10%" name="pro_02">${(entity.pro_03502)!''}</td>
+                                        <td><strong>${shengxiao.虎}</strong></td><td width="10%" name="pro_02">${(entity.pro_03502)!''}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="03"/>虎</label></th>
-                                        <td><strong>08,20,32,44</strong></td><td name="pro_03">${(entity.pro_03503)!''}</td>
+                                        <td><strong>${shengxiao.牛}</strong></td><td name="pro_03">${(entity.pro_03503)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="04"/>兔</label></th>
-                                        <td><strong>07,19,31,43</strong></td><td name="pro_04">${(entity.pro_03504)!''}</td>
+                                        <td><strong>${shengxiao.兔}</strong></td><td name="pro_04">${(entity.pro_03504)!''}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="05"/>龍</label></th>
-                                        <td><strong>06,18,30,42</strong></td><td name="pro_05">${(entity.pro_03505)!''}</td>
+                                        <td><strong>${shengxiao.龍}</strong></td><td name="pro_05">${(entity.pro_03505)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="06"/>蛇</label></th>
-                                        <td><strong>05,17,29,41</strong></td><td name="pro_06">${(entity.pro_03506)!''}</td>
+                                        <td><strong>${shengxiao.蛇}</strong></td><td name="pro_06">${(entity.pro_03506)!''}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="07"/>馬</label></th>
-                                        <td><strong>04,16,28,40</strong></td><td name="pro_07">${(entity.pro_03507)!''}</td>
+                                        <td><strong>${shengxiao.馬}</strong></td><td name="pro_07">${(entity.pro_03507)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="08"/>羊</label></th>
-                                        <td><strong>03,15,27,39</strong></td><td name="pro_08">${(entity.pro_03508)!''}</td>
+                                        <td><strong>${shengxiao.羊}</strong></td><td name="pro_08">${(entity.pro_03508)!''}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="09"/>猴</label></th>
-                                        <td><strong>02,14,26,38</strong></td><td name="pro_09">${(entity.pro_03509)!''}</td>
+                                        <td><strong>${shengxiao.猴}</strong></td><td name="pro_09">${(entity.pro_03509)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="10"/>雞</label></th>
-                                        <td><strong>01,13,25,37,49</strong></td><td name="pro_10">${(entity.pro_03510)!''}</td>
+                                        <td><strong>${shengxiao.雞}</strong></td><td name="pro_10">${(entity.pro_03510)!''}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="11"/>狗</label></th>
-                                        <td><strong>12,24,36,48</strong></td><td name="pro_11">${(entity.pro_03511)!''}</td>
+                                        <td><strong>${shengxiao.狗}</strong></td><td name="pro_11">${(entity.pro_03511)!''}</td>
                                         <th class="bg"><label><input   <#if isOpen==false> disabled="disabled" class="dis" </#if>  type="checkbox"   value="12"/>豬</label></th>
-                                        <td><strong>11,23,35,47</strong></td><td name="pro_12">${(entity.pro_03512)!''}</td>
+                                        <td><strong>${shengxiao.豬}</strong></td><td name="pro_12">${(entity.pro_03512)!''}</td>
                                     </tr>
                                     </tbody>
                                 </table>

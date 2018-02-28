@@ -17,7 +17,7 @@
 
 
     <script type="text/javascript" charset="utf-8">
-        var header_info = {"status":2,"calc_status":-1,"marquee":"欢迎进入A28 ! 2017年香港六合彩第080期開獎時間為：2017年7月11日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm11.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm22.us\/msdid63242a_8955\/lines.htm"],"time_stamp":"20170712084830"};
+        var header_info =${header_info!''}; //{"status":2,"calc_status":-1,"marquee":"欢迎进入A28 ! 2017年香港六合彩第080期開獎時間為：2017年7月11日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm11.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm22.us\/msdid63242a_8955\/lines.htm"],"time_stamp":"20170712084830"};
         function sysInfo(){
             return {chat:''};
         };
@@ -71,7 +71,6 @@
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
                     <li ><a target='main' href="/report/report" act='report'>報表</a></li>
                     <li ><a target='main' href="/result/index2" act='result'>開獎結果</a></li>
-                    <li ><a target='main' href="/order/order">注單數據</a></li>
                     <li ><a target='main' href="/sysconfig/buhuo">系統設定</a></li>
                     <li ><a target='main' href="/user/info1">個人資訊</a></li>
                     <li ><a target='main' href="/user/password1">密碼變更</a></li>

@@ -2,6 +2,7 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.dto.ResultInfo;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
@@ -84,8 +85,37 @@ public class LoginController {
             User user=  userService.getByAccount(userAccount);
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Member.ordinal()){
-                result.setSuccess(true);
-                UserHelper.setCurrentUser(user);
+                if(user.getStatus() == StatusEnum.TingYong.ordinal()){
+                    result.setSuccess(false);
+                    result.setMsg("賬號已停用");
+                }
+                else {
+                    User daili = userService.get(user.getDailiId());
+                    User zongdai =userService.get(user.getZongdailiId());
+                    User gudong =userService.get(user.getGudongId());
+                    User dagudong =userService.get(user.getDagudongId());
+                    if(daili.getStatus() == StatusEnum.TingYong.ordinal()){
+                        result.setSuccess(false);
+                        result.setMsg("公司被停用了");
+                    }
+                    else if(zongdai.getStatus() == StatusEnum.TingYong.ordinal()){
+                        result.setSuccess(false);
+                        result.setMsg("公司被停用了");
+                    }
+                    else if(gudong.getStatus() == StatusEnum.TingYong.ordinal()){
+                        result.setSuccess(false);
+                        result.setMsg("公司被停用了");
+                    }
+                    else  if(dagudong.getStatus() == StatusEnum.TingYong.ordinal()){
+                        result.setSuccess(false);
+                        result.setMsg("公司被停用了");
+                    }
+                    else{
+                        result.setSuccess(true);
+                        UserHelper.setCurrentUser(user);
+                    }
+
+                }
 
             }
             else{
@@ -121,8 +151,32 @@ public class LoginController {
             User user=  userService.getByAccount(userAccount);
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() != UserTypeEnum.Admin.ordinal() &&user.getUsertype() != UserTypeEnum.Member.ordinal()){
-                result.setSuccess(true);
-                UserHelper.setCurrentUser(user);
+               if(user.getStatus() == StatusEnum.TingYong.ordinal()){
+                   result.setSuccess(false);
+                   result.setMsg("賬號已停用");
+               }
+               else {
+                   User zongdai =userService.get(user.getZongdailiId());
+                   User gudong =userService.get(user.getGudongId());
+                   User dagudong =userService.get(user.getDagudongId());
+
+                  if(zongdai!=null && zongdai.getStatus() == StatusEnum.TingYong.ordinal()){
+                       result.setSuccess(false);
+                       result.setMsg("公司被停用了");
+                   }
+                   else if(gudong!=null && gudong.getStatus() == StatusEnum.TingYong.ordinal()){
+                       result.setSuccess(false);
+                       result.setMsg("公司被停用了");
+                   }
+                   else  if(dagudong!=null && dagudong.getStatus() == StatusEnum.TingYong.ordinal()){
+                       result.setSuccess(false);
+                       result.setMsg("公司被停用了");
+                   }
+                   else{
+                       result.setSuccess(true);
+                       UserHelper.setCurrentUser(user);
+                   }
+               }
             }
             else{
                 result.setSuccess(false);

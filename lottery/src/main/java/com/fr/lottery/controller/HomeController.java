@@ -1,8 +1,10 @@
 package com.fr.lottery.controller;
 
 import com.fr.lottery.entity.LimitSet;
+import com.fr.lottery.entity.Notice;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.ILimitSetService;
+import com.fr.lottery.service.inter.INoticeService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.*;
 import org.apache.commons.collections.map.HashedMap;
@@ -15,9 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/3/16.
@@ -31,6 +31,8 @@ public class HomeController  {
 
     @Autowired
     private ILimitSetService limitSetService;
+    @Autowired
+    private INoticeService noticeService;
 
     /**
      * 会员首页
@@ -63,7 +65,6 @@ public class HomeController  {
 
         Map<String,List<Integer>>listMap = new HashedMap();
         for(LimitSet set : limitSets){
-
             listMap.put(set.getLimitType().length()>2?set.getLimitType().substring(1):set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
         }
         map.put("limit",listMap);
@@ -126,7 +127,14 @@ public class HomeController  {
     public ModelAndView index1() {
 
         ModelAndView mv = new ModelAndView("index1");
-
+        //{"status":2,"calc_status":-1,"marquee":"欢迎进入A28 ! 2017年香港六合彩第080期開獎時間為：2017年7月11日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm11.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm22.us\/msdid63242a_8955\/lines.htm"],"time_stamp":"20170712084830"};
+        Map<String ,Object> map = new HashMap<String, Object>();
+        map.put("status",2);
+        map.put("calc_status",-1);
+        Notice notice = noticeService.getLatestDailyNotice();
+        map.put("marquee",notice.getContent());
+        map.put("lines",new ArrayList<String>());
+        mv.addObject("header_info",JsonUtil.toJson(map));
         return mv;
     }
 
@@ -139,33 +147,14 @@ public class HomeController  {
 
         ModelAndView mv = new ModelAndView("/index2");
         User user= UserHelper.getCurrentUser();
-        Map<String,Object> map = new HashedMap();
-        Map<String,Object> userInfo=new HashedMap();
 
-        Integer amount =orderService.getOrderAmount();
-        amount =amount==null?0:amount;
-        userInfo.put("memberId",user.getId());
-        userInfo.put("credits",user.getCredits());
-        userInfo.put("name",user.getUserName());
-        userInfo.put("account",user.getAccount());
-        userInfo.put("sum",amount);
-        userInfo.put("odds_set",user.getHandicap());
-        userInfo.put("status",1);
-        if(amount !=user.getAmount()){
-            user.setAmount(amount);
-            UserHelper.setCurrentUser(user);
-
-        }
-        map.put("user_info",userInfo);
-        List<LimitSet> limitSets = limitSetService.findAll(user.getId());
-
-        Map<String,List<Integer>>listMap = new HashedMap();
-        for(LimitSet set : limitSets){
-            listMap.put(set.getLimitType(),Arrays.asList(set.getSinglemin(),set.getSinglemax(),set.getSinglehighest()));
-        }
-
-        map.put("limit",listMap);
-        mv.addObject("info", JsonUtil.toJson( map));
+        Map<String ,Object> map = new HashMap<String, Object>();
+        map.put("status",2);
+        map.put("calc_status",-1);
+        Notice notice = noticeService.getLatestDailyNotice();
+        map.put("marquee",notice.getContent());
+        map.put("lines",new ArrayList<String>());
+        mv.addObject("header_info",JsonUtil.toJson(map));
         return mv;
     }
 

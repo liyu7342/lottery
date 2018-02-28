@@ -12,14 +12,18 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/3/22.
  */
 public class HttpClientUtils {
-    // {{httpclient post方式
     /**
      * httpclient post方式一
      *
@@ -48,7 +52,6 @@ public class HttpClientUtils {
         return result;
     }
 
-    // }}
 
     // {{httpclient get方式
     /**
@@ -76,7 +79,7 @@ public class HttpClientUtils {
 
     // }}
 
-    // {{httpclient post方式二
+
     /**
      * httpclient post方式二
      *
@@ -103,9 +106,43 @@ public class HttpClientUtils {
         }
         return result;
     }
-    // }}
 
-    // {{httpclient get方式二
+
+    public static final String clientGetByHttps(String url){
+        HttpURLConnection connection = null;
+
+        try {
+            URL realUrl  = new URL(url);
+            if("https".equalsIgnoreCase(realUrl.getProtocol())){
+                SslUtil.ignoreSsl();
+            }
+            connection = (HttpURLConnection) realUrl.openConnection();
+            final BufferedReader in = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream()));
+
+            String line;
+            final StringBuffer stringBuffer = new StringBuffer(255);
+
+            synchronized (stringBuffer) {
+                while ((line = in.readLine()) != null) {
+                    stringBuffer.append(line);
+                    stringBuffer.append("\n");
+                }
+                return stringBuffer.toString();
+            }
+
+        } catch (final IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (final Exception e1){
+            e1.printStackTrace();
+            return null;
+        }finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
     /**
      * httpclient get方式请求
      *
@@ -129,5 +166,45 @@ public class HttpClientUtils {
         }
         return result;
     }
-    //}}
+
+    private static void trustAllHttpsCertificates() throws Exception {
+        javax.net.ssl.TrustManager[] trustAllCerts = new javax.net.ssl.TrustManager[1];
+        javax.net.ssl.TrustManager tm = new miTM();
+        trustAllCerts[0] = tm;
+        javax.net.ssl.SSLContext sc = javax.net.ssl.SSLContext
+                .getInstance("SSL");
+        sc.init(null, trustAllCerts, null);
+        javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc
+                .getSocketFactory());
+    }
+
+    static class miTM implements javax.net.ssl.TrustManager,
+            javax.net.ssl.X509TrustManager {
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return null;
+        }
+
+        public boolean isServerTrusted(
+                java.security.cert.X509Certificate[] certs) {
+            return true;
+        }
+
+        public boolean isClientTrusted(
+                java.security.cert.X509Certificate[] certs) {
+            return true;
+        }
+
+        public void checkServerTrusted(
+                java.security.cert.X509Certificate[] certs, String authType)
+                throws java.security.cert.CertificateException {
+            return;
+        }
+
+        public void checkClientTrusted(
+                java.security.cert.X509Certificate[] certs, String authType)
+                throws java.security.cert.CertificateException {
+            return;
+        }
+    }
+
 }

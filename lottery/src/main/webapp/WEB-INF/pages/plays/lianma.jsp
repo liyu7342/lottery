@@ -333,7 +333,7 @@
                                 <div class="g-tn">
 
                                     金額：<input   <#if isOpen==false> disabled="disabled" class="dis txt" <#else>class="txt"</#if>   type="text"  id="amount"/>
-                                    <input type="hidden" value='{"01":["10","22","34","46"],"02":["09","21","33","45"],"03":["08","20","32","44"],"04":["07","19","31","43"],"05":["06","18","30","42"],"06":["05","17","29","41"],"07":["04","16","28","40"],"08":["03","15","27","39"],"09":["02","14","26","38"],"10":["01","13","25","37","49"],"11":["12","24","36","48"],"12":["11","23","35","47"]}' name="am" id="am"/>
+                                    <input type="hidden" value='${xiao!''}' name="am" id="am"/>
                                     <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="submit"  value="訂 單"/>
                                     <input   <#if isOpen==false> disabled="disabled" class="dis btn2 bds" <#else>class="btn2 bds" </#if> type="reset"  value="重 設"/>
 

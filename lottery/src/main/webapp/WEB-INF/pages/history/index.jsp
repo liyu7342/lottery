@@ -39,7 +39,7 @@
                                     </td>
                                     <td>${(obj.orderNum)!''}</td>
                                     <td>${(obj.amount)!''}</td>
-                                    <td>${(obj.winAmount)?ceiling}</td>
+                                    <td><#if obj.winAmount gt 0>${(obj.winAmount)?floor}<#else>${(obj.winAmount)?ceiling}</#if></td>
                                 </tr>
                                 </#list>
                                 </tbody>

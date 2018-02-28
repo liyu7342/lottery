@@ -52,7 +52,7 @@ public class OrderControlller {
                 orderDetail.setOddset(oddset[1]+ "(特"+oddset[2]+")" );
             }
             subsum +=orderDetail.getTotalAmount();
-            subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount());
+            subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount()+orderDetail.getRetreatAmt());
             subWinAmount += (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount() )+orderDetail.getRetreatAmt();
         }
         Orders orderDetail = orderService.getTotal(id,categoryId);

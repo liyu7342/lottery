@@ -1,5 +1,7 @@
 package com.fr.lottery.entity;
 
+import java.util.Date;
+
 /**
  * Created by Liyu7342 on 2018-1-28.
  */
@@ -8,7 +10,7 @@ public class Notice {
     private Integer type;
     private String title;
     private String content;
-    private String createDate;
+    private Date createDate;
     private Integer sortOrder;
     private String createUserId;
 
@@ -44,11 +46,11 @@ public class Notice {
         this.content = content;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 

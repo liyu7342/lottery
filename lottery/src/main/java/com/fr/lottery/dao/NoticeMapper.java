@@ -14,6 +14,8 @@ public interface NoticeMapper {
     int insert(Notice entity);
     int update(Notice entity);
     int delete(String id);
-    List<Notice> getNotices(@Param("start") Integer start,@Param("pageSize") Integer pageSize);
+    List<Notice> getNotices(@Param("noticeType") Integer noticeType,@Param("start") Integer start,@Param("pageSize") Integer pageSize);
     Notice getNotice(String id);
+
+    long count(@Param("noticeType") Integer type);
 }

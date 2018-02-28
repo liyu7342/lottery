@@ -349,7 +349,7 @@
 
     <select id="getDagudongReportHasSettlement" parameterType="com.fr.lottery.condition.StatisCondition"
             resultType="com.fr.lottery.entity.DagudongReport">
-        select dagudongid,dagudongaccount,dagudongname,sum(ordernum) as ordernum,
+        select dagudongid,gudongid,gudongaccount,gudongname,sum(ordernum) as ordernum,
     	max(membercount) as membercount,sum(amount) as amount,
         sum(winamount) as winamount,sum(retreatamt) as retreatamt,sum(memberamt) as memberamt,
         sum(gudongtoparent) as gudongtoparent,sum(gudongtoparentwinamt)  as gudongtoparentwinamt,
@@ -360,7 +360,7 @@
       from report_dagudong
         where dagudongid=#{p_userId,jdbcType=VARCHAR}
         AND riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
-        GROUP BY dagudongid,dagudongaccount,dagudongname
+        GROUP BY gudongid,gudongaccount,gudongname
         ORDER  BY  isbucang desc
     </select>
 

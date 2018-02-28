@@ -13,6 +13,7 @@ public class User implements Serializable{
         this.shortCovering=1;
         this.shareUp=0;
         this.shareTotal=0;
+        this.shareFlag=0;
         this.credits=0L;
         this.id="";
     }

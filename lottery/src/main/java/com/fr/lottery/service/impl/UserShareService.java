@@ -69,7 +69,7 @@ public class UserShareService implements IUserShareService {
 
     private int saveBu(OrderDetail detail,User user,Integer shareUp){
         String game_id = detail.getGameType();
-        if(!(game_id.equals(OddsTypeEnum.sanquanzh.getValue()) ||game_id.equals(OddsTypeEnum.sanzher))){
+        if(!(game_id.equals(OddsTypeEnum.sanquanzh.getValue()) ||game_id.equals(OddsTypeEnum.sanzher.getValue()))){
             game_id="";
         }
         String category_id=GameCfg.getGameCategory(detail.getGameType());
@@ -102,11 +102,12 @@ public class UserShareService implements IUserShareService {
             bucang.setNumber(detail.getNumbers());
             bucang.setDescription(detail.getGameDesc());
             bucang.setUserid(user.getId());
+            bucang.setOdds(detail.getOdds().toString());
             bucang.setGame_id(detail.getGameType());
             bucang.setOrder_amt(needTobuhuo.intValue());
             bucang.setHandicapId(detail.getHandicapId());
             bucang.setOdds_set("A");
-            bucangService.insert(bucang);
+            bucangService.insert(bucang,user);
         }
         else{
             share.setBuhuo(0F);

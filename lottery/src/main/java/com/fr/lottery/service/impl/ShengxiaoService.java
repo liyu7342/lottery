@@ -47,7 +47,21 @@ public class ShengxiaoService implements IShengxiaoService {
             if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
                 strr+=","+shengXiao.getNo5();
             }
-            map.put(shengXiao.getName(),strr);
+            map.put( shengXiao.getName(),strr);
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, String> findCodeMapByYear() {
+        List<ShengXiao> shengXiaos=  findByYear();
+        Map<String,String> map = new HashMap<String, String>();
+        for(ShengXiao shengXiao :shengXiaos){
+            String strr=  shengXiao.getNo1()+","+shengXiao.getNo2()+","+shengXiao.getNo3()+","+shengXiao.getNo4();
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                strr+=","+shengXiao.getNo5();
+            }
+            map.put( String.format("%02d", shengXiao.getSortNo()),strr);
         }
         return map;
     }
@@ -57,7 +71,26 @@ public class ShengxiaoService implements IShengxiaoService {
         List<ShengXiao> shengXiaos=  findByYear();
         Map<String,ShengXiao> map = new HashMap<String, ShengXiao>();
         for(ShengXiao shengXiao :shengXiaos){
-            map.put(shengXiao.getSortNo()>9?shengXiao.getSortNo().toString():"0"+shengXiao.getSortNo().toString(),shengXiao);
+            map.put( String.format("%02d", shengXiao.getSortNo()),shengXiao);
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, List<String>> findLianmaShengxiaoByYear() {
+        List<ShengXiao> shengXiaos=  findByYear();
+        Map<String,List<String>> map = new HashMap<String, List<String>>();
+        for(ShengXiao shengXiao :shengXiaos){
+            List<String> arr = new ArrayList<String>();
+            arr.add(shengXiao.getNo1());
+            arr.add(shengXiao.getNo2());
+            arr.add(shengXiao.getNo3());
+            arr.add(shengXiao.getNo4());
+
+            if(!StringUtil.isNullOrEmpty(shengXiao.getNo5())){
+                arr.add(shengXiao.getNo5());
+            }
+            map.put( String.format("%02d", shengXiao.getSortNo()),arr);
         }
         return map;
     }

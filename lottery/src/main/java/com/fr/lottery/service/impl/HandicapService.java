@@ -222,6 +222,6 @@ public class HandicapService implements IHandicapService {
     }
 
     public String get6hbd(String url){
-        return HttpClientUtils.clientGet(url);
+        return HttpClientUtils.clientGetByHttps(url);
     }
 }

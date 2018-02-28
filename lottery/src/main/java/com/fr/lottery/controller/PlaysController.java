@@ -50,7 +50,10 @@ public class PlaysController {
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.tema.getValue(),OddsTypeEnum.lmtema.getValue(),OddsTypeEnum.sebotema.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap()+"A",oddsTypes);
+
         mv.addObject("entity",map);
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
 
@@ -68,6 +71,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate")
@@ -84,6 +89,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate2")
@@ -100,6 +107,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate3")
@@ -116,6 +125,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate4")
@@ -132,6 +143,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate5")
@@ -148,6 +161,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
     @RequestMapping("/zhengmate6")
@@ -164,6 +179,8 @@ public class PlaysController {
             map1.put(oddsType,isOpen?1:0);
         }
         mv.addObject("status",JsonUtil.toJson(map1));
+        Map<String,String> xiao= shengxiaoService.findCodeMapByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
         return mv;
     }
 
@@ -222,6 +239,9 @@ public class PlaysController {
         infoMap.put("status",statusMap);
         infoMap.put("winnums" ,new ArrayList<String>());
         mv.addObject("info", JsonUtil.toJson(infoMap));
+        Map<String,List<String>> xiao = shengxiaoService.findLianmaShengxiaoByYear();
+        mv.addObject("xiao",JsonUtil.toJson(xiao));
+
         //{"odds":{"00801":"10","00802":"8","00803":"5","00804":"","00805":"","00806":"","00807":"","00808":"","00809":"","00810":"","00811":"","00812":"","00813":"","00814":"","00815":"","00816":"","00817":"","00818":"","00819":"","00820":"","00821":"","00822":"","00823":"","00824":"","00825":"","00826":"","00827":"","00828":"","00829":"","00830":"","00831":"","00832":"","00833":"","00834":"","00835":"","00836":"","00837":"","00838":"","00839":"","00840":"","00841":"","00842":"","00843":"","00844":"","00845":"","00846":"","00847":"","00848":"","00849":"","00901":"10","00902":"20","00903":"25","00904":"","00905":"","00906":"","00907":"","00908":"","00909":"","00910":"","00911":"","00912":"","00913":"","00914":"","00915":"","00916":"","00917":"","00918":"","00919":"","00920":"","00921":"","00922":"","00923":"","00924":"","00925":"","00926":"","00927":"","00928":"","00929":"","00930":"","00931":"","00932":"","00933":"","00934":"","00935":"","00936":"","00937":"","00938":"","00939":"","00940":"","00941":"","00942":"","00943":"","00944":"","00945":"","00946":"","00947":"","00948":"","00949":"","01001":"","01002":"","01003":"","01004":"","01005":"","01006":"","01007":"","01008":"","01009":"","01010":"","01011":"","01012":"","01013":"","01014":"","01015":"","01016":"","01018":"","01019":"","01020":"","01021":"","01022":"","01023":"","01024":"","01025":"","01026":"","01027":"","01028":"","01029":"","01030":"","01031":"","01032":"","01033":"","01034":"","01035":"","01036":"","01037":"","01038":"","01039":"","01040":"","01041":"","01042":"","01043":"","01044":"","01045":"","01046":"","01047":"","01048":"","01049":"","01017":"","01112":"","01130":"","01134":"","01142":"","01145":"","01146":"","01149":"","01139":"","01125":"","01113":"","01104":"","01140":"","01105":"","01123":"","01109":"","01143":"","01120":"","01129":"","01101":"","01106":"","01107":"","01117":"","01118":"","01137":"","01103":"","01122":"","01115":"","01132":"","01126":"","01114":"","01138":"","01144":"","01124":"","01135":"","01147":"","01110":"","01111":"","01121":"","01148":"","01127":"","01133":"","01108":"","01141":"","01136":"","01131":"","01102":"","01116":"","01128":"","01119":"","01201":"","01202":"","01203":"","01204":"","01205":"","01206":"","01207":"","01208":"","01209":"","01210":"","01211":"","01212":"","01213":"","01214":"","01215":"","01216":"","01217":"","01218":"","01219":"","01220":"","01221":"","01222":"","01223":"","01224":"","01225":"","01226":"","01227":"","01228":"","01229":"","01230":"","01231":"","01232":"","01233":"","01234":"","01235":"","01236":"","01237":"","01238":"","01239":"","01240":"","01241":"","01242":"","01243":"","01244":"","01245":"","01246":"","01247":"","01248":"","01249":""},"time_stamp":"1497965137","status":{"008":1,"009":1,"010":1,"011":1,"012":1},"winnums":[]}
         return mv;
     }
@@ -338,6 +358,8 @@ public class PlaysController {
         mv.addObject("isOpen",isOpen);
         map.put("status",statusmap);
         mv.addObject("info",JsonUtil.toJson(map));
+        Map<String,String> shengxiaomap =shengxiaoService.findMapByYear();
+        mv.addObject("shengxiao", shengxiaomap);
         return mv;
     }
 
