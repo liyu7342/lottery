@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +41,7 @@ public class HomeController  {
       * @return
      */
     @RequestMapping("/index")
-    public ModelAndView index() {
+    public ModelAndView index(HttpServletRequest request) {
 
         ModelAndView mv = new ModelAndView("index");
         User user= UserHelper.getCurrentUser();
@@ -69,6 +71,12 @@ public class HomeController  {
         }
         map.put("limit",listMap);
         mv.addObject("info",  JsonUtil.toJson(map));
+       Object first_login= request.getSession().getAttribute("first_login");
+
+        if(first_login!=null){
+            request.getSession().removeAttribute("first_login");
+            mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
+        }
         return mv;
     }
 
@@ -135,6 +143,13 @@ public class HomeController  {
         map.put("marquee",notice.getContent());
         map.put("lines",new ArrayList<String>());
         mv.addObject("header_info",JsonUtil.toJson(map));
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        Object first_login= request.getSession().getAttribute("first_login");
+
+        if(first_login!=null){
+            request.getSession().removeAttribute("first_login");
+            mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
+        }
         return mv;
     }
 

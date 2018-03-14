@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>fengb - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/new/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/new/css/mike.chen.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
 </head>
 <body class="notice">
 <div id="htmlcover" style="background-color:rgb(255, 255, 255);filter:alpha(opacity=0);opacity:0;position:absolute;top:0pt;left:0pt;z-index:5;display:block;width:100%;height:100%;"></div>
@@ -55,7 +55,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="http://pm10.x.mmm33.us:80/frontend/newjs/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms${JSVersion!''}" defer="defer"></script>
 </body>
 </html>
 

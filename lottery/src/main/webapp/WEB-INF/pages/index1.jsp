@@ -37,7 +37,7 @@
                 <div class="ps"><div class="h o">
                     <marquee onmouseout="this.start()" onmouseover="this.stop()" scrollamount="3" behavior="scroll" id="marquee" title="點擊查看更多公告"></marquee>
                 </div>
-                    <div class="rt">賬號:${user.userName!''}, <#if user.usertype==1>大股東<#elseif  user.usertype==2>小股東<#elseif user.usertype==3>總代理<#elseif user.usertype==4>代理<#elseif user.usertype==5>会员<#elseif user.usertype==0>管理员<#else>&nbsp;</#if></div>
+                    <div class="rt">賬號:${user.account!''}, <#if user.usertype==1>大股東<#elseif  user.usertype==2>小股東<#elseif user.usertype==3>總代理<#elseif user.usertype==4>代理<#elseif user.usertype==5>会员<#elseif user.usertype==0>管理员<#else>&nbsp;</#if></div>
                     <a act="logout" href="/user/logout" class="ico">退 出</a>
                 </div>
 
@@ -65,12 +65,13 @@
             </div>
             <div class="ft">
                 <ul class="clearfix" id="nav">
-                    <li ><a target="main" href="/rule/notice">規則</a></li>
+                    <li ><a target="main" href="/rule/rules">規則</a></li>
                     <li ><a target='main' href="/user/default">賬號管理</a></li>
                     <li ><a target='main' href="/statis/statis?category_id=00">收付統計</a></li>
                     <li ><a target='main' href="/oper/index">操作記錄</a></li>
                     <li ><a target='main' href="/report/report" act='report'>報表</a></li>
                     <li ><a target='main' href="/result/index2" act='result'>開獎結果</a></li>
+                    <li ><a target='main' href="http://bmwbmw.6665432.com/fixtures/">開獎日期</a></li>
                     <li ><a target='main' href="/sysconfig/buhuo">系統設定</a></li>
                     <li ><a target='main' href="/user/info1">個人資訊</a></li>
                     <li ><a target='main' href="/user/password1">密碼變更</a></li>
@@ -161,10 +162,10 @@
         <div class="ft"></div>
     </div>    </div>
 </div>
-
+${show_ip!''}
 <script type="text/javascript">
     window.setting = {
-        login_path: '/msdid63242a/account/login.html', //登錄路徑
+        login_path: '/login/login1', //登錄路徑
         password_need: false, //是否開啟密碼登陸加密
         draw_refersh: 200000, //設置開關盤刷新頻率
         log4js_type:  0, //設置log4javascript的類型

@@ -4,6 +4,7 @@ import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.Notice;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.impl.NoticeService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,9 +33,13 @@ public class RuleController {
     }
 
     @RequestMapping("/noticehistory")
-    public ModelAndView noticehistory(){
+    public ModelAndView noticehistory(String act){
         ModelAndView modelAndView = new ModelAndView("rule/noticehistory");
-        Page<Notice> noticePage =noticeService.getDailyNotices(1, Global.pageSize);
+        Integer pageSize=Global.pageSize;
+        if(StringUtils.isBlank(act)){
+            pageSize=1;
+        }
+        Page<Notice> noticePage =noticeService.getDailyNotices(1, pageSize);
         modelAndView.addObject("noticeList",noticePage.getList());
         return  modelAndView;
     }

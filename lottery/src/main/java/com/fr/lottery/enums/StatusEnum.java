@@ -7,5 +7,6 @@ public enum StatusEnum {
     TingYong,
     QiYong,
     TingYa,
-    JinZhiDenglu
+    JinZhiDenglu,
+    Deleted
 }

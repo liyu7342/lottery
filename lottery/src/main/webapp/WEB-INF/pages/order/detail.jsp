@@ -12,7 +12,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>${user.account!''} - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
-    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_31064" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?${JSVersion!''}" type="text/css">
 
 </head>
 <body class="odetail">
@@ -54,7 +54,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
+<script type="text/javascript" src="../../resources/css/new/all.js?${JSVersion!''}" defer="defer"></script>
 </body>
 </html>
 

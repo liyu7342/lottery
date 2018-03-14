@@ -83,7 +83,7 @@
                                         <td>${reportDto.amount!'0'}</td>
                                         <td><#if reportDto.memberAmt gt 0>${reportDto.memberAmt?floor} <#else>${reportDto.memberAmt?ceiling}</#if> </td>
                                         <td><#if reportDto.dailiToZongdai gt 0>${reportDto.dailiToZongdai?floor} <#else>${reportDto.dailiToZongdai?ceiling}</#if> </td>
-                                        <td class="bg"><#if reportDto.dailiToZongdaiWinamt gt 0>${reportDto.dailiToZongdaiWinamt?floor} <#else>${reportDto.dailiToZongdaiWinamt?ceiling}</#if> </td>
+                                        <td class="bg">${reportDto.dailiToZongdaiWinamt!'0'}  <#if reportDto.dailiToZongdaiWinamt gt 0>${reportDto.dailiToZongdaiWinamt?floor} <#else>${reportDto.dailiToZongdaiWinamt?ceiling}</#if> </td>
                                         <td>${reportDto.zongdaiAmt?floor}</td>
                                         <td><#if reportDto.zongdaiRetreatDiff gt 0>${reportDto.zongdaiRetreatDiff?floor} <#else>${reportDto.zongdaiRetreatDiff?ceiling}</#if> </td>
                                         <td class="bg red"><#if reportDto.zongdaiTotalamt gt 0>${reportDto.zongdaiTotalamt?floor} <#else>${reportDto.zongdaiTotalamt?ceiling}</#if> </td>

@@ -155,16 +155,16 @@
                             <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>
                         <#if user.usertype lt 2>
-                            <li><a curl='0' href='/user/index2'>小股東</a><cite>${user.gudongNumber!'0'}</cite></li>
+                            <li><a curl='0' href='/user/index2'>小股東</a><cite>${gudongNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 3>
-                            <li><a curl='0' href='/user/index3'>總代理</a><cite>${user.zongdaiNumber!'0'}</cite></li>
+                            <li><a curl='0' href='/user/index3'>總代理</a><cite>${zongdaiNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 4>
-                            <li><a curl='0' href='/user/index4'>代理商</a><cite>${user.dailiNumber!'0'}</cite></li>
+                            <li><a curl='0' href='/user/index4'>代理商</a><cite>${dailiNumber!'0'}</cite></li>
                         </#if>
                         <#if user.usertype lt 5>
-                            <li><a curl='0' href='/user/index'>會員</a><cite>${user.memberNumber!'0'}</cite></li>
+                            <li><a curl='0' href='/user/index'>會員</a><cite>${memberNumber!'0'}</cite></li>
                         </#if>
                     </ul>
                 </div>

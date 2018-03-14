@@ -665,10 +665,10 @@ public class OrderService implements IOrderService {
 
 
         }
-        List<OrderDetailDto> detailDtos = orderDetailMapper.getOrderDetailsByDaili(handicap.getId(), user.getId(), user.getUsertype(), game_id, number, (pageId - 1) * 10, 10);
+        List<OrderDetailDto> detailDtos = orderDetailMapper.getOrderDetailsByDaili(handicap.getId(), user.getId(), user.getUsertype(), game_id, number, (pageId - 1) * Global.pageSizeOfTen, Global.pageSizeOfTen);
 
         long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(), user.getId(), user.getUsertype(), game_id, number);
-        Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId, 10, total);
+        Page<OrderDetailDto> page = new Page<OrderDetailDto>(pageId, Global.pageSizeOfTen, total);
         page.setList(detailDtos);
         return page;
     }

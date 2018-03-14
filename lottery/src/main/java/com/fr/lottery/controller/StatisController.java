@@ -741,6 +741,17 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("game_id",game_id);
+        Integer orderNum=0;
+        Integer amount = 0;
+        Float retreat = 0f;
+        for(OrderDetailDto detail : orderDetails ){
+            orderNum += 1;
+            amount+= detail.getAmount();
+            retreat += detail.getRetreat();
+        }
+        modelAndView.addObject("orderNum",orderNum);
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("retreat",retreat);
         return modelAndView;
     }
 

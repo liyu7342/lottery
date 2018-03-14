@@ -6,6 +6,7 @@ import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
+import com.fr.lottery.utils.SessionContext;
 import com.fr.lottery.utils.UserHelper;
 import com.fr.lottery.utils.VerifyCodeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -87,7 +88,7 @@ public class LoginController {
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Member.ordinal()){
                 if(user.getStatus() == StatusEnum.TingYong.ordinal()){
                     result.setSuccess(false);
-                    result.setMsg("賬號已停用");
+                    result.setMsg("賬號已经被停用");
                 }
                 else {
                     User daili = userService.get(user.getDailiId());
@@ -113,6 +114,7 @@ public class LoginController {
                     else{
                         result.setSuccess(true);
                         UserHelper.setCurrentUser(user);
+                        userService.updateLoginStatus(user);
                     }
 
                 }
@@ -151,9 +153,9 @@ public class LoginController {
             User user=  userService.getByAccount(userAccount);
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() != UserTypeEnum.Admin.ordinal() &&user.getUsertype() != UserTypeEnum.Member.ordinal()){
-               if(user.getStatus() == StatusEnum.TingYong.ordinal()){
+                if(user.getStatus() == StatusEnum.TingYong.ordinal()){
                    result.setSuccess(false);
-                   result.setMsg("賬號已停用");
+                   result.setMsg("賬號已经被停用");
                }
                else {
                    User zongdai =userService.get(user.getZongdailiId());

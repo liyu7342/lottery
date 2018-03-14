@@ -8,7 +8,7 @@
         <id column="category" jdbcType="VARCHAR" property="category"/>
         <id column="gametype" jdbcType="VARCHAR" property="gameType"/>
         <id column="numbers" jdbcType="VARCHAR" property="numbers"/>
-        <id column="actualamt" jdbcType="DECIMAL" property="actualamt"/>
+        <id column="actualamt" jdbcType="DECIMAL" property="actualAmt"/>
         <id column="buhuo" jdbcType="DECIMAL" property="buhuo"/>
         <id column="sharetotal" jdbcType="DECIMAL" property="shareTotal"/>
         <id column="baseAmt" jdbcType="DECIMAL" property="baseAmt"/>
@@ -41,7 +41,7 @@
         <include refid="Columns"></include>
         from usershare
         WHERE handicapId=#{handicapId,jdbcType=VARCHAR}
-        and userId=#{handicapId,jdbcType=VARCHAR}
+        and userId=#{userId,jdbcType=VARCHAR}
         AND category=#{category,jdbcType=VARCHAR}
         <if test="gameType!=null and gameType!=''">
             AND gametype=#{gameType,jdbcType=VARCHAR}
@@ -63,7 +63,7 @@
          update usershare set
         actualAmt = #{actualAmt,jdbcType=DECIMAL},
         buhuo = #{buhuo,jdbcType=DECIMAL},
-        shareTotal = #{shareTotal,jdbcType=DECIMAL},
+        shareTotal = #{shareTotal,jdbcType=DECIMAL}
       where Id = #{id,jdbcType=VARCHAR}
     </update>
 </mapper>

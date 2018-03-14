@@ -56,10 +56,17 @@ public class UserController {
         String userId = user.getId();
 
         Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
+
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("gudongNumber",user1.getGudongNumber());
+        modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
+        modelAndView.addObject("dailiNumber",user1.getDailiNumber());
+        modelAndView.addObject("memberNumber",user1.getMemberNumber());
+        modelAndView.addObject("parentid",parentid);
         return modelAndView;
     }
     @RequestMapping(value = "/default")
@@ -102,6 +109,12 @@ public class UserController {
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
+
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("gudongNumber",user1.getGudongNumber());
+        modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
+        modelAndView.addObject("dailiNumber",user1.getDailiNumber());
+        modelAndView.addObject("memberNumber",user1.getMemberNumber());
         return modelAndView;
     }
 
@@ -118,6 +131,13 @@ public class UserController {
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
+
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("gudongNumber",user1.getGudongNumber());
+        modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
+        modelAndView.addObject("dailiNumber",user1.getDailiNumber());
+        modelAndView.addObject("memberNumber",user1.getMemberNumber());
+        modelAndView.addObject("parentid",parentid);
         return modelAndView;
     }
 
@@ -134,6 +154,13 @@ public class UserController {
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
+
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("gudongNumber",user1.getGudongNumber());
+        modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
+        modelAndView.addObject("dailiNumber",user1.getDailiNumber());
+        modelAndView.addObject("memberNumber",user1.getMemberNumber());
+        modelAndView.addObject("parentid",parentid);
         return modelAndView;
     }
 
@@ -150,6 +177,13 @@ public class UserController {
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
         modelAndView.addObject("keyword",keyword);
+
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("gudongNumber",user1.getGudongNumber());
+        modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
+        modelAndView.addObject("dailiNumber",user1.getDailiNumber());
+        modelAndView.addObject("memberNumber",user1.getMemberNumber());
+        modelAndView.addObject("parentid",parentid);
         return modelAndView;
     }
 

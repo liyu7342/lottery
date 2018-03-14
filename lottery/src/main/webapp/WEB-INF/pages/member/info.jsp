@@ -337,7 +337,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="../../resources/library/backend/all.js?ms2.4.7_3106" defer="defer"></script>
+<script type="text/javascript" src="../../resources/library/backend/all.js?ms${JSVersion!''}" defer="defer"></script>
 </body>
 </html>
 

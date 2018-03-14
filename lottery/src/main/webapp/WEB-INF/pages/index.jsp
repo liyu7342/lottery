@@ -9,7 +9,7 @@
 <link href="../../resources/css/new/mike.chen.css" rel="stylesheet" type="text/css" />
 
 <body class="frame_index">
-<div id="doc3" class="yui-t2">
+<div id="doc3" class="yui-t2"   >
     <div class="leftSider">
         <div class="yui-b">
             <div class="outer_logo" id="outer_logo">
@@ -44,6 +44,9 @@
                         <a name="information" target="main" href="/user/info">會員資訊</a>|
                         <a name="role" target="main" href="/rule/rules">遊戲規則</a>|
                         <a name="setting" target="main" href="/user/repassword">密碼變更</a>
+                    </div>
+                    <div class="item">
+                        <a target='main' name="riqi" href="http://bmwbmw.6665432.com/fixtures/">開獎日期</a>
                     </div>
                 </div>
                 <div id="">
@@ -123,6 +126,7 @@
 
 </div>
 
+${show_ip!''}
 <script type="text/javascript">
     var global_info =${info};
 
@@ -131,7 +135,7 @@
 </script>
 <script type="text/javascript">
     window.setting = {
-        login_path: '/msdid63242f/user/login.html', //登錄路徑
+        login_path: '/login/login', //登錄路徑
         odds_refersh: 60000, //頁面的賠率刷新頻率,默認改為 60秒
         password_need: false, //是否開啟密碼登陸加密
         marqueeFresh: 60000, //設置跑馬燈頻率為60秒
@@ -140,7 +144,7 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
+<script type="text/javascript" src="../../resources/css/new/all.js?${JSVersion!''}" defer="defer"></script>
 <script type="text/javascript">
      var cmset = {token:"",cometUrl: '',cometAction: 0 ,asname: '',drawStatus:'0',status:1};
 </script>

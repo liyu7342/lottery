@@ -16,7 +16,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>${user.account} - A28</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
-    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?ms2.4.7_31064" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?${JSVersion!''}" type="text/css">
 </head>
 <body class="frame_xiazhumsg">
 <div id="htmlcover"
@@ -88,13 +88,10 @@
                                     <td>${(obj.odds)!''}</td>
                                     <td>${(obj.retreat)!''}%</td>
                                     <td <#if id!="" && obj.winAmount gt 0 >class="red"</#if> >
-                                    <#if id=="" && obj.canWinAmount gt 0>${(obj.canWinAmount)?floor}
-                                        <#elseif id=="" && obj.canWinAmount lte 0 >
-                                            ${obj.canWinAmount?ceiling}
-                                            <#elseif (obj.winAmount+obj.retreatAmt) gt 0>
-                                                ${(obj.winAmount+obj.retreatAmt)?floor}
+                                    <#if id=="" && obj.canWinAmount gt 0>${(obj.canWinAmount)?string("#.##")}
+
                                                 <#else>
-                                                    ${(obj.winAmount+obj.retreatAmt)?ceiling}
+                                                    ${(obj.winAmount+obj.retreatAmt)?string("#.##")}
                                     </#if>
                                     </td>
 
@@ -164,6 +161,6 @@
         isStrongPwd: true //是否啟用複雜密碼
     };
 </script>
-<script type="text/javascript" src="../../resources/css/new/all.js?ms2.4.7_31064" defer="defer"></script>
+<script type="text/javascript" src="../../resources/css/new/all.js?${JSVersion!''}" defer="defer"></script>
 </body>
 </html>

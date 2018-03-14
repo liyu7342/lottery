@@ -73,8 +73,8 @@ public class HandicapController extends BaseController {
          if(handicap==null){
              handicap = new Handicap();
              handicap.setRiqi(DateTimeUtils.Date2StringSimple(new Date()));
-             handicap.setTemaclosetime(DateTimeUtils.getDate(21,30,0));
-             handicap.setZhengmaclosetime(DateTimeUtils.getDate(21,32,0));
+             handicap.setTemaclosetime(DateTimeUtils.getDate(21,29,59));
+             handicap.setZhengmaclosetime(DateTimeUtils.getDate(21,29,59));
              handicap.setOpentime(DateTimeUtils.getDate(17,40,0));
          }
 

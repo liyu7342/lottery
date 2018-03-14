@@ -45,7 +45,7 @@
                                     <td class="bg">總信用額度</td>
                                     <td>${user.credits!''}</td>
                                     <td class="bg" >自己及下級佔成數</td>
-                                    <td >${user.shareUp!'0'}%</td>
+                                    <td >${user.shareTotal!'0'}%</td>
                                     <td class="bg" >盤口</td>
                                     <td> ${user.handicap!''}</td>
                                 </tr>

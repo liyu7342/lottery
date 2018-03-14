@@ -57,7 +57,7 @@
   <select id="getStatisLianma" parameterMap="StatisCondition"  resultMap="BaseResultMap">
     select t.gameType,t.`no`,t.`description`,t.amount,t.shareTotal -IFNULL(t1.amount,0)  as shareTotal from (
     select od.gameType,od.numbers as `no`,od.gameDesc as`description`,sum(od.amount)  as amount ,
-     (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
+     SUM(CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
 	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
 	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.amount ELSE 0 END )AS shareTotal
       ,  od.odds,od.oddset

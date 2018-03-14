@@ -23,6 +23,8 @@ public interface IUserService {
 
     int updatePassword( String id, String password);
 
+    int updateLoginStatus(User user);
+
     int changeStatus(Integer level,String pid,String id,Integer status);
 
     Page<User> getUsers(String userId,String parentid,Integer userType,String keyword,Integer status,Integer pageId);
@@ -35,5 +37,7 @@ public interface IUserService {
     Integer getChildSumCredit(String id);
 
     User getUserFromCache(String id);
+
+    User getUserCount(boolean needToReload);
 
 }

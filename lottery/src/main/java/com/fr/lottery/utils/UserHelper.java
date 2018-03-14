@@ -1,6 +1,7 @@
 package com.fr.lottery.utils;
 
 import com.fr.lottery.entity.User;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -38,7 +39,17 @@ public class UserHelper {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
         HttpSession session = request.getSession();
+        if(StringUtils.isNotBlank(user.getSessionId()) && !session.getId().equals(user.getSessionId())){
+           HttpSession absession= SessionContext.getSession(user.getSessionId());
+           if(absession!=null){
+               SessionContext.DelSession(absession);
+               absession.setAttribute("dupSession","Duplicate session");
+
+           }
+        }
+        user.setSessionId(session.getId());
         session.setAttribute(session_user,user);
+        session.setAttribute("first_login","first");
     }
 
     public static void logout(HttpServletRequest request){

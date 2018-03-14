@@ -69,7 +69,7 @@
                                                         class='greenrpt'>${reportDto.memberName!''}</span>]${reportDto.memberAccount!''}
                                                 </a>
                                                 <#else>
-                                                    <a href="/report/z_buhuo?draw_date=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.memberAccount!''}&__name=${reportDto.memberName!''}&id=${reportDto.memberId!''}">[<span
+                                                    <a href="/report/z_buhuo?draw_date0=${draw_date!''}&draw_date2=${draw_date2!''}&type=0&p_level=5&__account=${reportDto.memberAccount!''}&__name=${reportDto.memberName!''}&id=${reportDto.memberId!''}">[<span
                                                             class='greenrpt'>${reportDto.memberName!''}</span>]${reportDto.memberAccount!''}
                                                     </a>
                                             </#if>

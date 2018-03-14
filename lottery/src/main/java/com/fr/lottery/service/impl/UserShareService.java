@@ -37,7 +37,7 @@ public class UserShareService implements IUserShareService {
             entity.setId(StringUtil.getUUID());
            return userShareMapper.insert(entity);
         }
-        return userShareMapper.insert(entity);
+        return userShareMapper.update(entity);
     }
 
     public UserShare getData(String handicapId,String userId,String category,String gameType,String numbers){

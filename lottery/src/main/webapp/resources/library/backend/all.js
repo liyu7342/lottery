@@ -5925,7 +5925,7 @@ Header.prototype.bind = function() {
     }
     var a = $("#show_ip").attr("popup");
     if (a == 1) {
-        var b = "./rule/noticehistory.htm";
+        var b = "/rule/noticehistory";
         JqueryDialog.Open1('<h2 class="g-tit">历史公告</h2>', b, 706, 322, false, true)
     }
 }
@@ -5966,7 +5966,7 @@ Header.prototype.refershStatus = function(d) {
     }
     if (d.popup) {
         JqueryDialog.Close(false);
-        var c = "./rule/noticehistory.htm?act=new";
+        var c = "/rule/noticehistory.htm?act=new";
         JqueryDialog.Open1('<h2 class="g-tit">历史公告</h2>', c, 706, 322, false, true)
     }
     if ($("#progress_cover").text() == "" && d.calc_status != undefined) {
@@ -6143,7 +6143,7 @@ Header.prototype.actions = function() {
         }
     });
     $("#marquee").bind("click", function() {
-        var j = "./rule/noticehistory.htm?act=more";
+        var j = "/rule/noticehistory.htm?act=more";
         var k = 322;
         JqueryDialog.Open1('<h2 class="g-tit">历史公告</h2>', j, 706, k, false, true)
     })
@@ -6975,6 +6975,9 @@ $.extend({
         if(f.handicapOpen&&f.handicapOpen.value=='yes'){
            f.handicap&&( f.handicap.disabled=true);
             f.sys_user_oddsSet &&(f.sys_user_oddsSet.disabled=true);
+            f.member_shareUp&&(f.member_shareUp.disabled=true);
+            f.shareTotal && (f.shareTotal.disabled=true);
+            f.shareUp && (f.shareUp.disabled=true);
             c.attr("disabled",true);
             h.attr("disabled",true);
             k.attr("disabled",true);
@@ -10948,11 +10951,11 @@ $.ajaxSetup({
     error: function(c, f, d) {
         try {
             var a = function() {
-              /*  if (parent) {
+                if (parent) {
                     parent.location.href = $.login_path
                 } else {
                     location.href = $.login_path
-                }*/
+                }
             };
             if (typeof (c.responseText) == "string") {
                 if (c.responseText == "Duplicate session") {

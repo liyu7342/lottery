@@ -211,7 +211,7 @@
 
   <select id="getOrderHistoryByRiqi" resultMap="UserHistoryMap">
     SELECT handicapid,userid,riqi ,COUNT(1) as  orderNum,sum(totalamount) as  amount,
-    sum(winAmount+retreatamt) as winAmount
+    sum(IFNULL( winAmount,0)+retreatamt) as winAmount
     FROM orders
     <where>
       <if test="userid!='' and userid!=null" >
@@ -252,7 +252,7 @@
       limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </if>
   </select>
-  <select id="countBuhuoesByUserId" resultType="java.lang.Integer">
+  <select id="countBuhuoesByUserId" resultType="java.lang.Long">
     SELECT  count(1) FROM orders
     <where>
       <if test="handicapId!='' and handicapId!=null" >

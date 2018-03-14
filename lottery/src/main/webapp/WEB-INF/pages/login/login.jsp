@@ -433,6 +433,10 @@
                         alert(tx);
                         return false;
                     }
+                    else{
+                        alert(tx);
+
+                    }
                     getVImag ();
                 }
                 else{

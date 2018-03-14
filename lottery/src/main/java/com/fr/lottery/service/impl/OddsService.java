@@ -4,19 +4,19 @@ import com.fr.lottery.dao.OddsChangeMapper;
 import com.fr.lottery.dao.OddsMapper;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.Odds;
+import com.fr.lottery.entity.User;
+import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.StringUtil;
+import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Liyu7342 on 2017-7-10.
@@ -103,6 +103,12 @@ public class OddsService implements IOddsService{
     }
     @Override
     public List<Odds> getOddsList(String oddSet, String[] oddsType) {
+        User user = UserHelper.getCurrentUser();
+        if(user.getStatus() == StatusEnum.TingYong.ordinal()
+                || user.getStatus() == StatusEnum.TingYa.ordinal()
+                || user.getStatus() ==StatusEnum.Deleted.ordinal()){
+            return new ArrayList<Odds>();
+        }
         return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
     }
 

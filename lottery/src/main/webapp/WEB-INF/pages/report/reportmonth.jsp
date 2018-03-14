@@ -49,10 +49,11 @@
                                     <td>下注金額</td>
                                     <td>佔成收入</td>
                                     <td>會員盈虧</td>
-                                    <td><#if></#if>股東獎金</td>
+                                    <td><#if user.usertype==4>代理奖金<#elseif user.usertype==3>總代獎金<#elseif user.usertype==2>股東獎金<#elseif user.usertype==1>大股東獎金<#else>獎金</#if></td>
                                     <td>佣金</td>
                                     <td>佣金差</td>
-                                    <td>股東盈虧</td>
+                                    <td><#if user.usertype==4>總代盈虧<#elseif user.usertype==3>股東盈虧<#elseif user.usertype==2>大股東盈虧<#elseif user.usertype==1>管理員盈虧<#else>上級盈虧</#if></td>
+
                                 </tr>
                                 </thead>
                                 <tbody>

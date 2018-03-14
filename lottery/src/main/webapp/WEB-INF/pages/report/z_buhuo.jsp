@@ -16,10 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <title>aj022 - A28</title>
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/common.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="http://pm10.x.mmm33.us:80/theme/gray/css/mike.chen.css?ms2.4.7_3106" type="text/css">
-    <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
-
+    <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
+    <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
 
 </head>
 <body class="reportdaili">
@@ -63,7 +61,7 @@
                                         <td class="bg">${orderDetail.orderNo!''}</td>
                                         <td>${orderDetail.orderNo!''}</td>
                                         <td>${orderDetail.description!''}</td>
-                                        <td>${orderDetail.createDate?string("yyyy-MM-dd HH:mm:ss")}</td>
+                                        <td>${orderDetail.createdate?string("yyyy-MM-dd HH:mm:ss")}</td>
                                         <td>${orderDetail.odds!''}</td>
                                         <td class="">${orderDetail.amount!''}</td>
                                         <td>${orderDetail.retreat!'0'}%</td>
@@ -79,9 +77,12 @@
                                 <tfoot>
                                 <tr>
                                     <td colspan="5">合計</td>
-                                    <td>661</td>
-                                    <td></td>
-                                    <td>-561</td>
+                                    <td><#if amount gt 0>${amount?floor} <#else>${amount?ceiling}</#if></td>
+                                    <td></td>，
+
+
+
+                                    <td>  <#if winAmount gt 0>${winAmount?floor} <#else>${winAmount?ceiling}</#if></td>
                                     <td></td>
                                 </tr>
                                 </tfoot>

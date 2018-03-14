@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.criteria.Order;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -607,7 +608,16 @@ public class ReportController {
             banners.add("<a href=\"/report/report\">上一頁</a>");
         }
         modelAndView.addObject("banners", StringUtils.join(banners, " "));
-        modelAndView.addObject("orderDetails", orderDetails);
+        modelAndView.addObject("orderDetails", orderDetails.getList());
+        Integer amount = 0;
+        Float winAmount=0f;
+        for(Orders orders: orderDetails.getList()){
+            amount += orders.getAmount();
+            winAmount += orders.getWinAmount()+orders.getRetreatAmt();
+        }
+        modelAndView.addObject("page", orderDetails.toString());
+        modelAndView.addObject("amount",amount);
+        modelAndView.addObject("winAmount",winAmount);
         return modelAndView;
     }
 }

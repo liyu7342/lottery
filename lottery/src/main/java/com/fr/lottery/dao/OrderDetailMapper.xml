@@ -183,16 +183,18 @@
     ,od.Retreat,od.Amount,od.Number1,od.Odds,od.gameType,o.oddset,od.gameDesc as description,o.createDate,IFNULL(od.orderType,'xiazhu') AS orderType,
     <choose>
       <when test="usertype==1">
-         od.dagudongamt  AS shareTotal
+         CASE  when od.userid = od.dagudongid  THEN -od.amount ELSE od.dagudongamt END  AS shareTotal
       </when>
       <when test="usertype==2">
-        od.gudongamt  AS shareTotal
+        CASE  when od.userid = od.gudongid  THEN -od.amount ELSE od.gudongamt END  AS shareTotal
+
       </when>
       <when test="usertype==3">
-        od.zongdaiamt  AS shareTotal
+        CASE  when od.userid = od.zongdaiid  THEN -od.amount ELSE od.zongdaiamt END  AS shareTotal
       </when>
       <when test="usertype==4">
-        od.dailiamt  AS shareTotal
+        CASE  when od.userid = od.dailiid  THEN -od.amount ELSE od.dailiamt END  AS shareTotal
+
       </when>
       <when test="usertype==5">
         od.amount  AS shareTotal
@@ -209,16 +211,16 @@
       </if>
       <choose>
         <when test="usertype==1">
-          and od.dagudongid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
+          and od.dagudongid  =#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==2">
-          and od.gudongid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
+          and od.gudongid  =#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==3">
-          and od.zongdaiid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
+          and od.zongdaiid  =#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==4">
-          and od.dailiid  =#{userId,jdbcType=VARCHAR} and od.userid !=#{userId,jdbcType=VARCHAR}
+          and od.dailiid  =#{userId,jdbcType=VARCHAR}
         </when>
         <when test="usertype==5">
           od.userid  =#{userId,jdbcType=VARCHAR}

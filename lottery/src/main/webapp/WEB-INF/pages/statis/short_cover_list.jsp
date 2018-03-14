@@ -116,9 +116,9 @@
                                     </tr>
                                 </#list>
                                 <td colspan="2">總計</td>
-                                <td>0</td>
-                                <td></td>
-                                <td></td>
+                                <td>${orderNum!'0'}</td>
+                                <td>${amount!'0'}</td>
+                                <td>${retreat?floor}</td>
                                 </tbody>
                             </table>
                         </div>

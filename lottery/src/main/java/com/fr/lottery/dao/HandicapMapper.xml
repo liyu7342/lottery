@@ -38,6 +38,9 @@
     <result column="Xiao6" jdbcType="VARCHAR" property="xiao6" />
     <result column="XiaoName6" jdbcType="VARCHAR" property="xiaoName6" />
     <result column="Riqi" jdbcType="VARCHAR" property="riqi" />
+    <result column="needToChangPwd" jdbcType="VARCHAR" property="needToChangPwd" />
+    <result column="lastChangPwd" jdbcType="TIMESTAMP" property="lastChangPwd" />
+    <result column="sessionid" jdbcType="VARCHAR" property="sessionId" />
 
   </resultMap>
   <sql id="Example_Where_Clause">

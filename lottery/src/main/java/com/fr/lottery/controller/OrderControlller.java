@@ -48,8 +48,8 @@ public class OrderControlller {
         Float subWinAmount =0F;
         for(Orders orderDetail : orderDetails.getList()){
             if(StringUtils.isNotBlank(orderDetail.getOddset()) && orderDetail.getOddset().length()>1){
-                String oddset[] =orderDetail.getOddset().split("");
-                orderDetail.setOddset(oddset[1]+ "(特"+oddset[2]+")" );
+                char oddset[] =orderDetail.getOddset().toCharArray();
+                orderDetail.setOddset(oddset[0]+ "(特"+oddset[1]+")" );
             }
             subsum +=orderDetail.getTotalAmount();
             subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount()+orderDetail.getRetreatAmt());

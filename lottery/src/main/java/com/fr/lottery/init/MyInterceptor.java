@@ -2,11 +2,13 @@ package com.fr.lottery.init;
 
 import com.fr.lottery.entity.User;
 import com.fr.lottery.utils.UserHelper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 
@@ -29,13 +31,34 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         if (request_Url.matches(reg)) {
             return true;
         }
-        User user = UserHelper.getCurrentUser();
+        //判断是否为ajax请求，默认不是
+        boolean isajax=false;
+        if(!StringUtils.isBlank(request.getHeader("x-requested-with")) && request.getHeader("x-requested-with").equals("XMLHttpRequest")) {
+            isajax = true;
+        }
+         User user = UserHelper.getCurrentUser();
         if(user ==null){
-            request.getRequestDispatcher("/login/index").forward(request, response);
+            if(isajax){
+                response.getWriter().write("Lost session");
+            }
+            else{
+                request.getRequestDispatcher("/login/index").forward(request, response);
+            }
             return false;
         }
-        request.setAttribute("user", UserHelper.getCurrentUser());
-        //request.setAttribute("user", user);
+        else{
+            if(isajax) {
+                HttpSession session = request.getSession();
+                if (session.getAttribute("dupSession") != null) {
+                    response.getWriter().write("Duplicate session");
+                    session.invalidate();
+                    return false;
+                }
+            }
+            else{
+                request.setAttribute("user", user);
+            }
+        }
         return super.preHandle(request, response, handler);
     }
 

@@ -391,6 +391,7 @@
           sum(dailiretreatDiff) as retreatDiff
            FROM report_daili where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND dailiid=#{userId,jdbcType=VARCHAR}
         GROUP BY handicapid,riqi
+        ORDER  BY riqi desc
     </select>
 
     <select id="getZongdaiReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
@@ -399,6 +400,7 @@
         sum(zongdairetreatdiff) as retreatdiff,sum(zongdairetreat) as retreat
         FROM report_zongdai where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND zongdaiid=#{userId,jdbcType=VARCHAR}
         GROUP BY handicapid,riqi
+        ORDER  BY riqi desc
     </select>
 
     <select id="getGudongReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
@@ -407,6 +409,7 @@
         sum(gudongretreatdiff) as retreatdiff,sum(gudongretreat) as retreat
         FROM report_gudong where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND gudongid=#{userId,jdbcType=VARCHAR}
         GROUP BY handicapid,riqi
+        ORDER  BY riqi desc
     </select>
 
     <select id="getDagudongReportMonth" resultType="com.fr.lottery.dto.ReportMonthDto">
@@ -415,6 +418,7 @@
         sum(dagudongretreatdiff) as retreatdiff,sum(dagudongretreat) as retreat
         FROM report_dagudong where riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND #{riqi2,jdbcType=VARCHAR} AND dagudongid=#{userId,jdbcType=VARCHAR}
         GROUP BY handicapid,riqi
+        ORDER  BY riqi desc
     </select>
 
     <select id="getGameReport" resultType="com.fr.lottery.entity.GameReport">

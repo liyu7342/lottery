@@ -77,6 +77,13 @@ public class User implements Serializable{
 
     private Integer member_shareUp;
 
+    private boolean needToChangPwd;
+
+    private Date lastChangeDate;
+
+    private String sessionId;
+
+
     /**
      *小股东数量
      *
@@ -94,6 +101,7 @@ public class User implements Serializable{
      * 会员数量
      */
     private Integer memberNumber;
+
 
     public String getId() {
         return id;
@@ -365,6 +373,30 @@ public class User implements Serializable{
 
     public void setMember_shareUp(Integer member_shareUp) {
         this.member_shareUp = member_shareUp;
+    }
+
+    public boolean isNeedToChangPwd() {
+        return needToChangPwd;
+    }
+
+    public void setNeedToChangPwd(boolean needToChangPwd) {
+        this.needToChangPwd = needToChangPwd;
+    }
+
+    public Date getLastChangeDate() {
+        return lastChangeDate;
+    }
+
+    public void setLastChangeDate(Date lastChangeDate) {
+        this.lastChangeDate = lastChangeDate;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
     public Integer getGudongNumber() {

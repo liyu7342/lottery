@@ -21,13 +21,15 @@ public interface UserMapper {
     User getByAccount(@Param("account") String  account);
 
     User get(@Param("id")String id);
-
+    User getUserCount(@Param("id")String id);
     int insert(User entity);
 
     int update(User entity);
 
 
     int updatePassword(@Param("id") String id,@Param("password") String password);
+
+    int updateLoginSessionId(@Param("id") String id,@Param("sessionid") String sessionId);
 
     int changeStatus (@Param("id") String id,@Param("status") Integer status);
 
@@ -36,5 +38,8 @@ public interface UserMapper {
     int getSeq(@Param("parentID") String parentID);
 
     Integer getChildSumCredit(@Param("id") String id);
+
+    Integer hasChild(@Param("id") String id);
+
 
 }

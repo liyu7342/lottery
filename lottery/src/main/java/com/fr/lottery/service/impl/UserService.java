@@ -33,7 +33,7 @@ public class UserService implements IUserService {
     @Autowired
     private ILimitSetService limitSetService;
 
-    private static  final String memcached_key = "user_";
+    private static final String memcached_key = "user_";
 
     public User getByAccount(String loginName) {
         User result = userMapper.getByAccount(loginName);
@@ -88,10 +88,10 @@ public class UserService implements IUserService {
 
     @Override
     public int Save(User user, LimitSetDto limitSetDto) {
-        if(StringUtils.isNotBlank( user.getSys_user_oddsSet())){//盘口
+        if (StringUtils.isNotBlank(user.getSys_user_oddsSet())) {//盘口
             user.setHandicap(user.getSys_user_oddsSet());
         }
-        if(user.getUsertype() == UserTypeEnum.Member.ordinal()){ //代理对会员占成
+        if (user.getUsertype() == UserTypeEnum.Member.ordinal()) { //代理对会员占成
             user.setShareUp(user.getMember_shareUp());
         }
 
@@ -107,22 +107,22 @@ public class UserService implements IUserService {
                     xpath = parentUser.getXpath();
                     user.setParentAccount(parentUser.getAccount());
                     user.setParentName(parentUser.getUserName());
-                    if(user.getUsertype()>UserTypeEnum.DaGudong.ordinal()){//股东
-                        user.setDagudongAccount(parentUser.getDagudongAccount());
-                        user.setDagudongId(parentUser.getDagudongId());
-                        user.setDagudongName(parentUser.getDagudongName());
+                    if (user.getUsertype() > UserTypeEnum.DaGudong.ordinal()) {//股东
+                        user.setDagudongAccount(parentUser.getAccount());
+                        user.setDagudongId(parentUser.getId());
+                        user.setDagudongName(parentUser.getAccount());
                     }
-                    if(user.getUsertype()>UserTypeEnum.XiaoGudong.ordinal()){//总代理
+                    if (user.getUsertype() > UserTypeEnum.XiaoGudong.ordinal()) {//总代理
                         user.setGudongId(parentUser.getGudongId());
                         user.setGudongAccount(parentUser.getGudongAccount());
                         user.setGudongName(parentUser.getGudongName());
                     }
-                    if(user.getUsertype()>UserTypeEnum.ZongDaili.ordinal()){
+                    if (user.getUsertype() > UserTypeEnum.ZongDaili.ordinal()) {
                         user.setZongdailiId(parentUser.getZongdailiId());
                         user.setZongdaiAccount(parentUser.getZongdaiAccount());
                         user.setZongdailiName(parentUser.getZongdailiName());
                     }
-                    if(user.getUsertype()>UserTypeEnum.Daili.ordinal()){
+                    if (user.getUsertype() > UserTypeEnum.Daili.ordinal()) {
                         user.setDailiId(parentUser.getDailiId());
                         user.setDailiAccount(parentUser.getDailiAccount());
                         user.setDailiName(parentUser.getDailiName());
@@ -130,36 +130,34 @@ public class UserService implements IUserService {
                 }
             }
 
-            if(user.getUsertype() ==UserTypeEnum.DaGudong.ordinal()){
+            if (user.getUsertype() == UserTypeEnum.DaGudong.ordinal()) {
                 user.setDagudongAccount(user.getAccount());
                 user.setDagudongId(user.getId());
                 user.setDagudongName(user.getUserName());
-            }
-            else if(user.getUsertype() ==UserTypeEnum.XiaoGudong.ordinal()){
+            } else if (user.getUsertype() == UserTypeEnum.XiaoGudong.ordinal()) {
                 user.setGudongAccount(user.getAccount());
                 user.setGudongId(user.getId());
                 user.setGudongName(user.getUserName());
-            }
-            else if(user.getUsertype() ==UserTypeEnum.ZongDaili.ordinal()){
+            } else if (user.getUsertype() == UserTypeEnum.ZongDaili.ordinal()) {
                 user.setZongdaiAccount(user.getAccount());
                 user.setZongdailiId(user.getId());
                 user.setZongdailiName(user.getUserName());
-            }
-            else if(user.getUsertype() ==UserTypeEnum.Daili.ordinal()){
+            } else if (user.getUsertype() == UserTypeEnum.Daili.ordinal()) {
                 user.setDailiAccount(user.getAccount());
                 user.setDailiId(user.getId());
                 user.setDailiName(user.getUserName());
             }
 
-            xpath+=String.format("%03d", seq);
+            xpath += String.format("%03d", seq);
             user.setXpath(xpath);
             user.setXseq(seq);
 
 
             user.setCreatedate(new Date());
             userMapper.insert(user);
+            getUserCount(true);
         } else {
-            if(StringUtils.isNotBlank(user.getPassword())){
+            if (StringUtils.isNotBlank(user.getPassword())) {
 
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             }
@@ -173,7 +171,12 @@ public class UserService implements IUserService {
 
     @Override
     public int delete(String id) {
-        return userMapper.changeStatus(id, Global.userStatus_delete);
+        int exists= userMapper.hasChild(id);
+        if(exists>0)
+            return -1;
+        userMapper.changeStatus(id, Global.userStatus_delete);
+        getUserCount(true);
+        return 1;
     }
 
     @Override
@@ -182,75 +185,111 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public int updateLoginStatus(User user) {
+        return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
+    }
+
+    @Override
     public int changeStatus(Integer level, String pid, String id, Integer status) {
         User user = userMapper.get(id);
         if (user == null) return 10086;
-
-     /*   if(user.isDefault())    //初始账号
-            return 2;*//*
-        User pUser = userMapper.get(pid);
-        if(pUser.getStatus()== StatusEnum.TingYa.ordinal()){//必須先啟用上級賬號
-            return -2;
-        }
-        if(pUser.getStatus()== StatusEnum.TingYong.ordinal()){//上級賬號已停用
-            return -3;
-        }
         if(user.getStatus()==StatusEnum.TingYong.ordinal()){
             return -5;
-        }*/
+        }
+        if(status == StatusEnum.QiYong.ordinal()){
+            User pUser = userMapper.get(pid);
+            if(pUser.getStatus()== StatusEnum.TingYa.ordinal()){//必須先啟用上級賬號
+                return -2;
+            }
+            if(pUser.getStatus()== StatusEnum.TingYong.ordinal()){//上級賬號已停用
+                return -3;
+            }
+        }
+        if(status == StatusEnum.Deleted.ordinal()){
+            int exists= userMapper.hasChild(id);
+            if(exists>0)
+                return -300;
+        }
+
+
+
+
         userMapper.changeStatus(id, status);
+
         return 0;
     }
 
     @Override
-    public Page<User> getUsers(String userId,String parentid, Integer userType, String keyword, Integer status, Integer pageId) {
+    public Page<User> getUsers(String userId, String parentid, Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = userMapper.get(userId);
-        if(StringUtils.isNotBlank(keyword)){
-            keyword= "%"+keyword+"%";
+        if (StringUtils.isNotBlank(keyword)) {
+            keyword = "%" + keyword + "%";
         }
-         List<User> users = userMapper.getUsers(user.getXpath()+"%",parentid, userType, keyword, status, start,Global.pageSizeOfTen);
-        long total = userMapper.count(user.getXpath()+"%",parentid, userType, keyword, status);
+        List<User> users = userMapper.getUsers(user.getXpath() + "%", parentid, userType, keyword, status, start, Global.pageSizeOfTen);
+        long total = userMapper.count(user.getXpath() + "%", parentid, userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }
 
     @Override
-    public List<User> getUsers(String xpath,Integer userType){
-       return userMapper.getUsers(xpath+"%","",userType,"",null,null,null);
+    public List<User> getUsers(String xpath, Integer userType) {
+        return userMapper.getUsers(xpath + "%", "", userType, "", null, null, null);
     }
+
     @Override
     public Page<User> getDagudongs(Integer userType, String keyword, Integer status, Integer pageId) {
         Integer start = (pageId - 1) * Global.pageSizeOfTen;
         User user = UserHelper.getCurrentUser();
-        List<User> users = userMapper.getUsers(user.getXpath()+"%","", userType, keyword, status, start,Global.pageSizeOfTen);
-        long total = userMapper.count("","" ,userType, keyword, status);
+        List<User> users = userMapper.getUsers(user.getXpath() + "%", "", userType, keyword, status, start, Global.pageSizeOfTen);
+        long total = userMapper.count("", "", userType, keyword, status);
         Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
         return page;
     }
 
     /**
      * 获取下级總信用
+     *
      * @param id
      * @return
      */
     @Override
     public Integer getChildSumCredit(String id) {
-        if(StringUtils.isBlank( id)){
+        if (StringUtils.isBlank(id)) {
             return 0;
         }
         return userMapper.getChildSumCredit(id);
     }
 
     @Override
-    public User getUserFromCache(String id){
-        Object object =MemcacheUtil.get(memcached_key+id);
-        if(object!=null)
-            return (User)object;
+    public User getUserFromCache(String id) {
+        Object object = MemcacheUtil.get(memcached_key + id);
+        if (object != null)
+            return (User) object;
         User user = userMapper.get(id);
-        if(user !=null){
-            MemcacheUtil.add(memcached_key+id,user);
+        if (user != null) {
+            MemcacheUtil.add(memcached_key + id, user);
         }
         return user;
     }
+
+    @Override
+    public User getUserCount(boolean needToReload) {
+        User currentUser = UserHelper.getCurrentUser();
+        User user =  userMapper.getUserCount(currentUser.getId());;
+        /*User currentUser = UserHelper.getCurrentUser();
+        if (!needToReload) {//不需要重新加载
+            Object object = MemcacheUtil.get(memcached_key + currentUser.getId() + "_count");
+            if (object != null) {
+                user = (User) object;
+
+            }
+        }
+        if (user == null) {
+            user = userMapper.getUserCount(currentUser.getId());
+            MemcacheUtil.add(memcached_key + currentUser.getId() + "_count",user);
+        }*/
+        return user;
+    }
+
 }

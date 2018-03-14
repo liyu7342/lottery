@@ -34,20 +34,16 @@
         <result column="Handicap" jdbcType="VARCHAR" property="handicap"/>
         <result column="Xpath" jdbcType="VARCHAR" property="xpath"/>
         <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
-        <result column="gudongnumber" jdbcType="INTEGER" property="gudongNumber"/>
-        <result column="zongdainumber" jdbcType="INTEGER" property="zongdaiNumber"/>
-        <result column="dailinumber" jdbcType="INTEGER" property="dailiNumber"/>
-        <result column="membernumber" jdbcType="INTEGER" property="memberNumber"/>
+        <result column="lastChangeDate" jdbcType="INTEGER" property="lastChangeDate"/>
+        <result column="needToChangPwd" jdbcType="INTEGER" property="needToChangPwd"/>
+        <result column="sessionId" jdbcType="VARCHAR" property="sessionId"/>
     </resultMap>
     <sql id="Columns">
           Id, ParentId,ParentAccount,ParentName,DagudongId,DagudongAccount,DagudongName,GudongId,
           GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
  Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
-    shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
-    ,(select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=2 ) as gudongnumber
-    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=3 ) as zongdainumber
-    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=4 ) as dailinumber
-    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=5 ) as membernumber
+    shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq,lastChangeDate,needToChangPwd,sessionId
+
     </sql>
     <sql id="sqlWhere">
         <where>
@@ -77,6 +73,7 @@
         <include refid="Columns"></include>
         from USER
         WHERE Id=#{id,jdbcType=VARCHAR}
+          AND status !=4
 
     </select>
     <!-- 根据账号获取信息 -->
@@ -84,7 +81,7 @@
         SELECT
         <include refid="Columns"></include>
         from USER
-        WHERE Account=#{account,jdbcType=VARCHAR} AND Status=1
+        WHERE Account=#{account,jdbcType=VARCHAR} AND Status !=4
     </select>
 
     <!-- 插入用户 -->
@@ -130,6 +127,9 @@
         UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
 
+    <update id="updateLoginSessionId">
+        UPDATE USER SET sessionid=#{sessionid,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
+    </update>
     <!--<delete id="delete" parameterType="String">
         UPDATE USER SET Status =0 WHERE Id =#{id,jdbcType=VARCHAR}
     </delete>-->
@@ -161,6 +161,15 @@
         <if test="start !=null">
             limit #{start ,jdbcType=INTEGER} ,#{pageSize ,jdbcType=INTEGER}
         </if>
+    </select>
+    <select id="getUserCount" resultMap="userResult">
+        SELECT id,account,
+        (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=2 and status!= 4) as gudongnumber
+    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=3 and status != 4) as zongdainumber
+    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=4 and status != 4) as dailinumber
+    , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=5 and status != 4) as membernumber
+        from user
+        where id= #{id,jdbcType=VARCHAR}
     </select>
     <select id="count" resultType="java.lang.Long">
         select count(1)
@@ -200,4 +209,14 @@
             parentId =#{id ,jdbcType=VARCHAR}
         </if>
     </select>
+
+    <select id="hasChild" resultType="java.lang.Integer">
+        SELECT count(1) from USER
+        WHERE
+        status !=4
+        <if test="id !=null and id != ''">
+            parentId =#{id ,jdbcType=VARCHAR}
+        </if>
+    </select>
+
 </mapper>
