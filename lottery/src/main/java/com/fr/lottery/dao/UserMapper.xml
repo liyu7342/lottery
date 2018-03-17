@@ -121,7 +121,11 @@
       shareFlag = #{shareFlag,jdbcType=INTEGER},
       Proportional = #{proportional,jdbcType=INTEGER},
       Handicap = #{handicap,jdbcType=VARCHAR}
-      where Id = #{id,jdbcType=VARCHAR}
+      where Id = #{id,jdbcType=VARCHAR};
+
+    update user a ,user b  set a.ParentName=b.UserName
+        where a.ParentId=b.Id and b.UserName != a.ParentName
+        and a.ParentId =#{id,jdbcType=VARCHAR};
     </update>
     <update id="updatePassword">
         UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}

@@ -497,9 +497,14 @@ public class OrderService implements IOrderService {
                 return new Page<Orders>();
             handicapId = handicap.getId();
         }
+        String gameType="";
+        if(StringUtils.isNotBlank(categoryId)){
+            String[] gameTypes= GameCfg.getCategoryGame(categoryId);
+             gameType =StringUtils.join(gameTypes,",");
+        }
 
-        List<Orders> details = orderMapper.getOrderDetails(handicapId, userId, "", (pageIndex - 1) * pageSize, pageSize);
-        Long total = orderMapper.countByUserId(handicapId, userId, "");
+        List<Orders> details = orderMapper.getOrderDetails(handicapId, userId, gameType, (pageIndex - 1) * pageSize, pageSize);
+        Long total = orderMapper.countByUserId(handicapId, userId, gameType);
         return new Page<Orders>(pageIndex, pageSize, total, details);
     }
 
@@ -582,7 +587,12 @@ public class OrderService implements IOrderService {
             }
             handicapId = handicap.getId();
         }
-        Orders orderDetail = orderMapper.getTotal(handicapId, userId, "");
+        String gameType="";
+        if(StringUtils.isNotBlank(categoryId)){
+            String[] gameTypes= GameCfg.getCategoryGame(categoryId);
+            gameType =StringUtils.join(gameTypes,",");
+        }
+        Orders orderDetail = orderMapper.getTotal(handicapId, userId, gameType);
         return orderDetail;
     }
 

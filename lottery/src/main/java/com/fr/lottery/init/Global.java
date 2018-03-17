@@ -56,6 +56,7 @@ public class Global {
 
     public static final Integer pageSize=20;
     public static final Integer pageSizeOfTen=10;
+    public static  final Integer pageSizeOfFiften=15;
     public static final Integer pageSizeOfTh=30;
 
     public static final Integer userStatus_qiyong=1;

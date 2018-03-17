@@ -86,6 +86,7 @@ public class ReportController {
             reportTotal.setUserTotalamt(reportMonthDto.getUserTotalamt() + reportTotal.getUserTotalamt());
         }
         modelAndView.addObject("reportTotal", reportTotal);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
@@ -152,6 +153,7 @@ public class ReportController {
         modelAndView.addObject("gameTotal", gameReportTotal);
         modelAndView.addObject("ismuti",ismuti);
         modelAndView.addObject("purl",url);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 

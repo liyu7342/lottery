@@ -177,6 +177,7 @@ public class LoginController {
                    else{
                        result.setSuccess(true);
                        UserHelper.setCurrentUser(user);
+                      userService.updateLoginStatus(user);
                    }
                }
             }
@@ -213,9 +214,8 @@ public class LoginController {
 
             if(user !=null && md5_pwd.equals( user.getPassword()) &&user.getUsertype() == UserTypeEnum.Admin.ordinal()){
                 result.setSuccess(true);
-
                 UserHelper.setCurrentUser(user);
-
+                userService.updateLoginStatus(user);
             }
             else{
                 result.setSuccess(false);

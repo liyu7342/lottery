@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<title>${user.account!''}_A28</title>
+<title>${title_userAccount!''}_A28</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
@@ -21,7 +21,7 @@
                     <div class="bd">
                         <table class="g-t1">
                             <tbody>
-                            <tr><td class="t" width="77">會員賬號</td><td>${user.userName!''}</td></tr>
+                            <tr><td class="t" width="77">會員賬號</td><td>${user.account!''}</td></tr>
                             <tr><td class="t">單注最低</td><td></td></tr>
                             <tr><td class="t">單注最高</td><td></td></tr>
                             <tr><td class="t">單項最高</td><td></td></tr>

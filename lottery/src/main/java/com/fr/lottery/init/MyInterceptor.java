@@ -1,15 +1,19 @@
 package com.fr.lottery.init;
 
 import com.fr.lottery.entity.User;
+import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -18,12 +22,38 @@ import java.util.Date;
  */
 public class MyInterceptor extends HandlerInterceptorAdapter {
     private long beginTime;
+    private  static final String  dailiHome= "/home/index1";
+
+    private List<String> notAllocUrls;
+
+    public List<String> getNotAllocUrls() {
+        return notAllocUrls;
+    }
+
+    public void setNotAllocUrls(List<String> notAllocUrls) {
+        this.notAllocUrls = notAllocUrls;
+    }
+
+    private List<String> dailiNotAllowUrls;
+
+    public List<String> getDailiNotAllowUrls() {
+        return dailiNotAllowUrls;
+    }
+
+    public void setDailiNotAllowUrls(List<String> dailiNotAllowUrls) {
+        this.dailiNotAllowUrls = dailiNotAllowUrls;
+    }
+
+    @Resource
+    private IUserService userService;
 
     public MyInterceptor() {
         super();
     }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         beginTime = new Date().getTime();//请求开始时间
         String request_Url = request.getRequestURL().toString();//请求的链接
         String reg = ".*\\.(?i)(jpg|js|png|css|gif|dwr)";
@@ -31,33 +61,58 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         if (request_Url.matches(reg)) {
             return true;
         }
+
+
+
         //判断是否为ajax请求，默认不是
-        boolean isajax=false;
-        if(!StringUtils.isBlank(request.getHeader("x-requested-with")) && request.getHeader("x-requested-with").equals("XMLHttpRequest")) {
+        boolean isajax = false;
+        if (!StringUtils.isBlank(request.getHeader("x-requested-with")) && request.getHeader("x-requested-with").equals("XMLHttpRequest")) {
             isajax = true;
         }
-         User user = UserHelper.getCurrentUser();
-        if(user ==null){
-            if(isajax){
+        User user = UserHelper.getCurrentUser();
+        if (user == null) {
+            if (isajax) {
                 response.getWriter().write("Lost session");
-            }
-            else{
+            } else {
                 request.getRequestDispatcher("/login/index").forward(request, response);
             }
             return false;
-        }
-        else{
-            if(isajax) {
-                HttpSession session = request.getSession();
-                if (session.getAttribute("dupSession") != null) {
+        } else {
+
+            //判斷session是否相同，不同則使session失效
+            String sessionId = userService.getUserSessionId(user.getId());
+            HttpSession session = request.getSession();
+            if (!session.getId().equals(sessionId)) {
+                session.invalidate();
+                if (isajax) {
                     response.getWriter().write("Duplicate session");
-                    session.invalidate();
-                    return false;
+                }
+                return false;
+            }
+            else {
+                if (!isajax) {
+                    request.setAttribute("title_userAccount", user.getAccount());
                 }
             }
-            else{
-                request.setAttribute("user", user);
+            if(user.getUsertype() == 5){
+                for (String url : notAllocUrls) {
+                    if (request_Url.indexOf(url) > -1) {
+                        return false;
+                    }
+                }
             }
+            else if(user.getUsertype() >0 && user.getUsertype()<5){
+                for (String url : dailiNotAllowUrls) {
+                    if (request_Url.indexOf(url) > -1) {
+                        if("/home/index".equals( url) &&request_Url.indexOf(dailiHome) >-1){
+                                return true;
+                        }
+                        return false;
+                    }
+                }
+            }
+
+
         }
         return super.preHandle(request, response, handler);
     }

@@ -92,9 +92,80 @@ public class OrderControlller {
         mv.addObject("subCanWinAmount",subCanWinAmount);
         mv.addObject("subWinAmount",subWinAmount);
         mv.addObject("id",id);
-
+        mv.addObject("user",user);
+        if(categoryId == null){
+            categoryId="";
+        }
+        mv.addObject("categoryId",categoryId);
         return mv;
     }
+
+    @RequestMapping("/fail_list")
+    public ModelAndView faillist(String categoryId,Integer pageId,String id) {
+        if(id==null) id="";
+        ModelAndView mv = new ModelAndView("/order/fail_list");
+        User user = UserHelper.getCurrentUser();
+        Page<Orders> orderDetails =  new Page<Orders>();//orderService.getOrders(id,pageId,categoryId,user.getId());
+        orderDetails.setList( new ArrayList<Orders>());
+        mv.addObject("orderList",orderDetails.getList());
+        mv.addObject("page", orderDetails.toString());
+        Integer subsum=0;
+        Float subCanWinAmount =0F;
+        Float subWinAmount =0F;
+        for(Orders orderDetail : orderDetails.getList()){
+            if(StringUtils.isNotBlank(orderDetail.getOddset()) && orderDetail.getOddset().length()>1){
+                char oddset[] =orderDetail.getOddset().toCharArray();
+                orderDetail.setOddset(oddset[0]+ "(特"+oddset[1]+")" );
+            }
+            subsum +=orderDetail.getTotalAmount();
+            subCanWinAmount+= (orderDetail.getCanWinAmount()==null?0:orderDetail.getCanWinAmount()+orderDetail.getRetreatAmt());
+            subWinAmount += (orderDetail.getWinAmount()==null?0:orderDetail.getWinAmount() )+orderDetail.getRetreatAmt();
+        }
+       // Orders orderDetail = orderService.getTotal(id,categoryId);
+
+        Map<String,Object> map = new HashedMap();
+
+        map.put("credit", user.getCredits());
+        map.put("marquee","欢迎进入前台");
+        map.put("draws","");
+        map.put("calc_status",0);
+        map.put("fail_count",0);
+        List<List<String>> new_order = new ArrayList<List<String>>();
+        if(StringUtils.isNotBlank(id)){
+            map.put("sum",0);
+            map.put("new_order",new_order);
+        }else{
+            Page<Orders> new_orders = orderService.getOrders(id,1,categoryId,user.getId(), Global.pageSizeOfTen);
+            for (Orders detail : new_orders.getList()) {
+                List<String> detailArr = new ArrayList<String>();
+                detailArr.add(detail.getDescription());
+                detailArr.add(detail.getTotalAmount().toString());
+                detailArr.add(detail.getOdds().toString());
+
+                new_order.add(detailArr);
+            }
+            map.put("new_order",new_order);
+            map.put("sum",user.getAmount());
+
+        }
+        mv.addObject("headinfo", JsonUtil.toJson( map));
+
+
+        mv.addObject("subSum",subsum);
+        mv.addObject("totalAmount",0);
+        mv.addObject("canWinAmount",0);
+        mv.addObject("winAmount",0);
+        mv.addObject("subCanWinAmount",subCanWinAmount);
+        mv.addObject("subWinAmount",subWinAmount);
+        mv.addObject("id",id);
+        if(categoryId == null){
+            categoryId="";
+        }
+        mv.addObject("categoryId",categoryId);
+        return mv;
+    }
+
+
 
     @RequestMapping("/order")
     public ModelAndView order() {

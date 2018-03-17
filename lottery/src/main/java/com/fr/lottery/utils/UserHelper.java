@@ -40,16 +40,14 @@ public class UserHelper {
 
         HttpSession session = request.getSession();
         if(StringUtils.isNotBlank(user.getSessionId()) && !session.getId().equals(user.getSessionId())){
-           HttpSession absession= SessionContext.getSession(user.getSessionId());
-           if(absession!=null){
-               SessionContext.DelSession(absession);
-               absession.setAttribute("dupSession","Duplicate session");
-
-           }
+            HttpSession absession= SessionContext.getSession(user.getSessionId());
+            if(absession!=null){
+                SessionContext.DelSession(absession);
+                absession.setAttribute("dupSession","Duplicate session");
+            }
         }
         user.setSessionId(session.getId());
         session.setAttribute(session_user,user);
-        session.setAttribute("first_login","first");
     }
 
     public static void logout(HttpServletRequest request){

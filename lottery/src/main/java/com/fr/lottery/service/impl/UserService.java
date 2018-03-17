@@ -33,7 +33,8 @@ public class UserService implements IUserService {
     @Autowired
     private ILimitSetService limitSetService;
 
-    private static final String memcached_key = "user_";
+    private static final String memcached_key = "user_user_";
+    private static final String memcached_sessionkey="user_sessionid_";
 
     public User getByAccount(String loginName) {
         User result = userMapper.getByAccount(loginName);
@@ -158,11 +159,11 @@ public class UserService implements IUserService {
             getUserCount(true);
         } else {
             if (StringUtils.isNotBlank(user.getPassword())) {
-
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             }
 
             userMapper.update(user);
+
         }
 
         limitSetService.insert(user.getId(), limitSetDto);
@@ -186,7 +187,24 @@ public class UserService implements IUserService {
 
     @Override
     public int updateLoginStatus(User user) {
+        MemcacheUtil.set(memcached_sessionkey+ user.getId(),user.getSessionId());
         return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
+    }
+
+    /**R
+     * 從緩存中獲取sessionid,獲取不到則從數據庫中獲取，并寫入緩存
+     * @param userId
+     * @return
+     */
+    @Override
+    public String getUserSessionId(String userId){
+        Object object= MemcacheUtil.get(memcached_sessionkey+ userId);
+        if(object==null){
+            User user =userMapper.get(userId);
+            MemcacheUtil.set(memcached_sessionkey+ userId,user.getSessionId());
+            return user.getSessionId();
+        }
+        return object.toString();
     }
 
     @Override
@@ -221,14 +239,14 @@ public class UserService implements IUserService {
 
     @Override
     public Page<User> getUsers(String userId, String parentid, Integer userType, String keyword, Integer status, Integer pageId) {
-        Integer start = (pageId - 1) * Global.pageSizeOfTen;
+        Integer start = (pageId - 1) * Global.pageSizeOfFiften;
         User user = userMapper.get(userId);
         if (StringUtils.isNotBlank(keyword)) {
             keyword = "%" + keyword + "%";
         }
-        List<User> users = userMapper.getUsers(user.getXpath() + "%", parentid, userType, keyword, status, start, Global.pageSizeOfTen);
+        List<User> users = userMapper.getUsers(user.getXpath() + "%", parentid, userType, keyword, status, start, Global.pageSizeOfFiften);
         long total = userMapper.count(user.getXpath() + "%", parentid, userType, keyword, status);
-        Page<User> page = new Page<User>(pageId, Global.pageSizeOfTen, total, users);
+        Page<User> page = new Page<User>(pageId, Global.pageSizeOfFiften, total, users);
         return page;
     }
 

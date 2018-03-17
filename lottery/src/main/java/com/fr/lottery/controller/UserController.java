@@ -67,6 +67,8 @@ public class UserController {
         modelAndView.addObject("dailiNumber",user1.getDailiNumber());
         modelAndView.addObject("memberNumber",user1.getMemberNumber());
         modelAndView.addObject("parentid",parentid);
+        modelAndView.addObject("currentPage",0);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
     @RequestMapping(value = "/default")
@@ -115,6 +117,8 @@ public class UserController {
         modelAndView.addObject("zongdaiNumber",user1.getZongdaiNumber());
         modelAndView.addObject("dailiNumber",user1.getDailiNumber());
         modelAndView.addObject("memberNumber",user1.getMemberNumber());
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("currentPage",1);
         return modelAndView;
     }
 
@@ -138,6 +142,8 @@ public class UserController {
         modelAndView.addObject("dailiNumber",user1.getDailiNumber());
         modelAndView.addObject("memberNumber",user1.getMemberNumber());
         modelAndView.addObject("parentid",parentid);
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("currentPage",2);
         return modelAndView;
     }
 
@@ -161,6 +167,8 @@ public class UserController {
         modelAndView.addObject("dailiNumber",user1.getDailiNumber());
         modelAndView.addObject("memberNumber",user1.getMemberNumber());
         modelAndView.addObject("parentid",parentid);
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("currentPage",3);
         return modelAndView;
     }
 
@@ -184,6 +192,8 @@ public class UserController {
         modelAndView.addObject("dailiNumber",user1.getDailiNumber());
         modelAndView.addObject("memberNumber",user1.getMemberNumber());
         modelAndView.addObject("parentid",parentid);
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("currentPage",4);
         return modelAndView;
     }
 
@@ -261,6 +271,7 @@ public class UserController {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         mv.addObject("limitSets", map);
+        mv.addObject("user",currentUser);
         return mv;
     }
 
@@ -275,7 +286,7 @@ public class UserController {
             map.put("gameType_" + limitset.getLimitType(), limitset);
         }
         mv.addObject("limitSets", map);
-
+        mv.addObject("user",currentUser);
         return mv;
     }
 
@@ -329,6 +340,13 @@ public class UserController {
         modelAndView.addObject("reqUrl",redirectUrl);
         modelAndView.addObject("users",users);
         modelAndView.addObject("title",title);
+        return modelAndView;
+    }
+
+    @RequestMapping("/left")
+    public ModelAndView left(){
+        ModelAndView modelAndView = new ModelAndView("/user/left");
+       // modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 }

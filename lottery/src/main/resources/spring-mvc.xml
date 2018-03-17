@@ -32,7 +32,31 @@
 			<mvc:exclude-mapping path="/login/**" /><!-- 不拦截的url -->
 			<mvc:exclude-mapping path="/api/**" /><!-- 不拦截的url -->
 			<mvc:exclude-mapping path="/resources/**" /><!-- 不拦截的url -->
-			<bean class="com.fr.lottery.init.MyInterceptor"></bean>
+			<bean class="com.fr.lottery.init.MyInterceptor">
+				<property name="notAllocUrls">
+					<list>
+						<value>/home/index2</value>
+						<value>/odds/temaa</value>
+						<value>/home/index1</value>
+						<value>/handicap/index</value>
+						<value>/user/index</value>
+						<value>/statis/statis</value>
+						<value>/user/info1</value>
+						<value>/oper/index</value>
+						<value>/report/report</value>
+						<value>/sysconfig/buhuo</value>
+
+					</list>
+				</property>
+				<property name="dailiNotAllowUrls">
+					<list>
+						<value>/home/index2</value>
+						<value>/odds/temaa</value>
+						<value>/home/index</value>
+						<value>/handicap/index</value>
+					</list>
+				</property>
+			</bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

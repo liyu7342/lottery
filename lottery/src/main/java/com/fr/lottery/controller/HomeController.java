@@ -77,6 +77,7 @@ public class HomeController  {
             request.getSession().removeAttribute("first_login");
             mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
         }
+        mv.addObject("user",user);
         return mv;
     }
 
@@ -150,6 +151,7 @@ public class HomeController  {
             request.getSession().removeAttribute("first_login");
             mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
         }
+        mv.addObject("user",UserHelper.getCurrentUser());
         return mv;
     }
 
@@ -170,6 +172,7 @@ public class HomeController  {
         map.put("marquee",notice.getContent());
         map.put("lines",new ArrayList<String>());
         mv.addObject("header_info",JsonUtil.toJson(map));
+        mv.addObject("user",user);
         return mv;
     }
 

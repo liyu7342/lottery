@@ -85,6 +85,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -227,6 +228,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -258,6 +260,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -290,6 +293,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -320,6 +324,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -352,6 +357,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -382,6 +388,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -412,6 +419,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -442,6 +450,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -508,6 +517,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -564,6 +574,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 
@@ -596,6 +607,7 @@ public class StatisController {
         }
         modelAndView.addObject("entity", menumaps);
         modelAndView.addObject("category_id", category_id);
+        modelAndView.addObject("user",UserHelper.getCurrentUser());
         return modelAndView;
     }
 

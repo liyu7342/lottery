@@ -35,27 +35,27 @@
                             <h2 class="g-tit">
                                 <!--當進入的是會員歷史時 下邊的菜單不需要顯示 當公司不需要高額彩時 下邊的菜單同樣不需要-->
                                 &nbsp;&nbsp;
-                                <input type='radio' name='to_link' id='to_link' value="list.htm" checked='checked'/>
+                                <input type='radio' name='to_link' id='to_link' value="list??id=${id}" checked='checked'/>
                                 <font color='red'>成功明細</font>&nbsp;
-                                <input type='radio' name='to_link' id='to_link' value="fail_list.htm"/>
+                                <input type='radio' name='to_link' id='to_link' value="fail_list?id=${id}"/>
                                 失敗明細 <select name="categoryId" id="categoryId">
                                 <option selected=selected value='-1'>全部</option>
-                                <option value='00'>特碼</option>
-                                <option value='01'>正碼</option>
-                                <option value='02'>正碼特</option>
-                                <option value='03'>連碼二</option>
-                                <option value='04'>連碼三</option>
-                                <option value='05'>過關</option>
-                                <option value='06'>生肖</option>
-                                <option value='07'>尾數</option>
-                                <option value='08'>半波</option>
-                                <option value='09'>六肖</option>
-                                <option value='10'>兩面</option>
-                                <option value='11'>色波</option>
-                                <option value='12'>特肖</option>
-                                <option value='13'>生肖連</option>
-                                <option value='14'>尾數連</option>
-                                <option value='15'>不中</option>
+                                <option value='00' <#if categoryId=="00" >selected=selected</#if>>特碼</option>
+                                <option value='01'<#if categoryId=="01" >selected=selected</#if>>正碼</option>
+                                <option value='02' <#if categoryId=="02" >selected=selected</#if>>正碼特</option>
+                                <option value='03' <#if categoryId=="03" >selected=selected</#if>>連碼二</option>
+                                <option value='04' <#if categoryId=="04" >selected=selected</#if>>連碼三</option>
+                                <option value='05' <#if categoryId=="05" >selected=selected</#if>>過關</option>
+                                <option value='06' <#if categoryId=="06" >selected=selected</#if>>生肖</option>
+                                <option value='07' <#if categoryId=="07" >selected=selected</#if>>尾數</option>
+                                <option value='08' <#if categoryId=="08" >selected=selected</#if>>半波</option>
+                                <option value='09' <#if categoryId=="09" >selected=selected</#if>>六肖</option>
+                                <option value='10'<#if categoryId=="10" >selected=selected</#if>>兩面</option>
+                                <option value='11' <#if categoryId=="11" >selected=selected</#if>>色波</option>
+                                <option value='12' <#if categoryId=="12" >selected=selected</#if>>特肖</option>
+                                <option value='13' <#if categoryId=="13" >selected=selected</#if>>生肖連</option>
+                                <option value='14' <#if categoryId=="14" >selected=selected</#if>>尾數連</option>
+                                <option value='15' <#if categoryId=="15" >selected=selected</#if>>不中</option>
                             </select>
                             </h2>
                             <div class="fr">

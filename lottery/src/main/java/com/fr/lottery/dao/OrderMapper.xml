@@ -155,7 +155,7 @@
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
       <if test="gameType!='' and gameType!=null" >
-        AND gameType = #{gameType,jdbcType=VARCHAR}
+        AND FIND_IN_SET (gameType, #{gameType,jdbcType=VARCHAR})
       </if>
     </where>
 
@@ -175,7 +175,7 @@
         AND userid = #{userid,jdbcType=VARCHAR}
       </if>
       <if test="gameType!='' and gameType!=null" >
-        AND gameType = #{gameType,jdbcType=VARCHAR}
+        AND FIND_IN_SET (gameType, #{gameType,jdbcType=VARCHAR})
       </if>
     </where>
   </select>
