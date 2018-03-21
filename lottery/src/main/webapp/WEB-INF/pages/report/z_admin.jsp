@@ -15,7 +15,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${title_userAccount!''} - A28</title>
+    <title>${title_userAccount!''} - X6</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
 

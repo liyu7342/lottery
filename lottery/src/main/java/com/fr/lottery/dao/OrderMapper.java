@@ -67,7 +67,10 @@ public interface OrderMapper {
                              @Param("gameType") String gameType,@Param("number") String number);
     Orders getTotalByDaili(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
                                @Param("gameType") String gameType,@Param("number") String number);
-    List<Orders> getOrdersByZongDai(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+    List<Orders> getOrdersByZongDai2(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
+                                  @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
+            ,@Param("pageSize") Integer pageSize);
+    List<Orders> getOrdersByTest(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,
                                   @Param("gameType") String gameType,@Param("number") String number,@Param("pageIndex") Integer pageIndex
             ,@Param("pageSize") Integer pageSize);
     Integer countOrdersByZongdai(@Param("riqi") String riqi,@Param("riqi2") String riqi2,@Param("userId") String userId,

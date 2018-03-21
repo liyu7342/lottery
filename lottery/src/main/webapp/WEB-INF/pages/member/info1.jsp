@@ -6,7 +6,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${title_userAccount!''} - A28</title>
+    <title>${title_userAccount!''} - X6</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -334,7 +334,7 @@
                 <div class="bd">
                     <ul class="g-hover">
                         <#if user.usertype lt 1>
-                            <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
+                            <li><a curl='0' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>
                         <#if user.usertype lt 2>
                             <li><a curl='0' href='/user/index2'>小股東</a><cite>${user.gudongNumber!'0'}</cite></li>
@@ -361,7 +361,7 @@
     <div id="ft">
         <div id="footer" class="module">
             <div class="hd rh"></div>
-            <div class="bd rb">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
+            <div class="bd rb">Copyright 2008-2018 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
         </div>    </div>
 </div>

@@ -340,7 +340,7 @@
       </if>
     </where>
   </select>
-  <select id="getOrdersByZongdai" resultType="com.fr.lottery.entity.Orders">
+  <select id="getOrdersByZongdai2" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List"></include>
     from orders
@@ -357,6 +357,32 @@
       <if test="gameType!='' and gameType!=null" >
         AND gameType = #{gameType,jdbcType=VARCHAR}
       </if>
+      <if test="number!='' and number!=null" >
+        AND `no` = #{number,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pageIndex!=null">
+      limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="getOrdersByTest" resultType="com.fr.lottery.entity.Orders">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    from orders
+    <where>
+      <if test="riqi!='' and riqi!=null" >
+        AND riqi &gt;= #{riqi,jdbcType=VARCHAR}
+      </if>
+      <if test="riqi2!='' and riqi2!=null" >
+        AND riqi &lt;=   #{riqi2,jdbcType=VARCHAR}
+      </if>
+      <if test="userId!='' and userId!=null" >
+        AND zongdaiid =#{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="gameType!='' and gameType!=null" >
+        AND gameType = #{gameType,jdbcType=VARCHAR}
+      </if>
 
       <if test="number!='' and number!=null" >
         AND `no` = #{number,jdbcType=VARCHAR}
@@ -366,6 +392,7 @@
       limit #{pageIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </if>
   </select>
+
   <select id="countOrdersByZongdai" resultType="java.lang.Integer">
     SELECT  count(1) FROM orders
     <where>

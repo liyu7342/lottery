@@ -2,7 +2,7 @@
 
     <div id="main-hd">
         <div id="main-hd-title">
-            <a class="label label-default">A28</a>
+            <a class="label label-default">X6</a>
         </div>
         <div style="float: right;">
             <ul id="topnav">

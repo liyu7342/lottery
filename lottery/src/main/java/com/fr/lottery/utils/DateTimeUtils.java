@@ -115,7 +115,14 @@ public class DateTimeUtils {
         return calendar.getTime();
     }
 
-
+    public  static Date addMonths(Date date,Integer month){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        if(month!=null){
+            calendar.add(Calendar.MONTH,month);
+        }
+        return calendar.getTime();
+    }
 
     /**
      * 获取指定的时间格式:yyyy-MM-dd  HH:mm:ss

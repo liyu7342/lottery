@@ -403,7 +403,7 @@ public class OddsController {
             }
         }
         Map<String, Object> outMap = new HashedMap();
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(odds_set.length()>1);
         if (isOpen) {
             for (String gameId : gameIds) {
                 map.put(gameId, 1);

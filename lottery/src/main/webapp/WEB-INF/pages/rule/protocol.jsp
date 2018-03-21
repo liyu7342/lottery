@@ -9,7 +9,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>fengb - A28</title>
+    <title>${title_userAccount!''} - X6</title>
     <link href="../../resources/css/new/common.css" rel="stylesheet" type="text/css" />
     <link href="../../resources/css/new/mike.chen.css" rel="stylesheet" type="text/css" />
 
@@ -19,7 +19,7 @@
     <div id="bd">
         <div class="yui-g">
             <div id="protocol" class="module">
-                <div class="hd"><div><img class="logo" src="http://pm10.x.mmm33.us:80/theme/logo/logo_msdid_20150727102235.png"/></div></div>
+                <div class="hd"><div><img class="logo" src="../../resources/images/logo_msdid.png"/></div></div>
                 <div class="bd g-fm">
                     <div class="g-rule">
                         <h3><strong>遊戲協議</strong></h3>

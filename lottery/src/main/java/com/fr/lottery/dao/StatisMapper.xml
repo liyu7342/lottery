@@ -112,15 +112,18 @@ select cc.category,sum(IFNULL(zhancheng,0))-IFNULL(t1.Amount,0) as zhancheng
 FROM categoryconfig  cc
  left JOIN(
 	select od.gameType,(CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
-	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+	then od.gudongamt WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiamt
+	when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
 	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.amount ELSE 0 END )AS zhancheng
         FROM   orderdetail od
           INNER JOIN orders  on orders.Id = od.orderId
           INNER JOIN  Handicap  on orders.handicapId= Handicap.Id
           INNER JOIN user u on u.id = orders.userId
 where od.handicapId =#{p_handicapId,jdbcType=VARCHAR}
-AND  (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2
-	then od.gudongid=#{p_userId,mode=IN,jdbcType=VARCHAR} WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiid=#{p_userId,mode=IN,jdbcType=VARCHAR} when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiamt
+AND  (CASE WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=1 THEN od.dagudongid=#{p_userId,mode=IN,jdbcType=VARCHAR}
+    WHEN #{p_usertype,mode=IN,jdbcType=INTEGER} =2  then od.gudongid=#{p_userId,mode=IN,jdbcType=VARCHAR}
+    WHEN #{p_usertype,mode=IN,jdbcType=INTEGER}=3 then od.zongdaiid=#{p_userId,mode=IN,jdbcType=VARCHAR}
+    when #{p_usertype,mode=IN,jdbcType=INTEGER}=4 then od.dailiid =#{p_userId,mode=IN,jdbcType=VARCHAR}
 	when #{p_usertype,mode=IN,jdbcType=INTEGER}=5 then od.userid=#{p_userId,mode=IN,jdbcType=VARCHAR} ELSE 1=1 END )
 	) t on cc.gametype = t.gametype
 left JOIN (SELECT gameType,SUM(amount) as Amount

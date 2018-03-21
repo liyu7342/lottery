@@ -35,14 +35,18 @@
         <result column="Xpath" jdbcType="VARCHAR" property="xpath"/>
         <result column="Xseq" jdbcType="INTEGER" property="xseq"/>
         <result column="lastChangeDate" jdbcType="INTEGER" property="lastChangeDate"/>
-        <result column="needToChangPwd" jdbcType="INTEGER" property="needToChangPwd"/>
+        <result column="needToChangePwd" jdbcType="INTEGER" property="needToChangePwd"/>
         <result column="sessionId" jdbcType="VARCHAR" property="sessionId"/>
+        <result column="gudongNumber" jdbcType="INTEGER" property="gudongNumber"/>
+        <result column="zongdaiNumber" jdbcType="INTEGER" property="zongdaiNumber"/>
+        <result column="dailiNumber" jdbcType="INTEGER" property="dailiNumber"/>
+        <result column="memberNumber" jdbcType="INTEGER" property="memberNumber"/>
     </resultMap>
     <sql id="Columns">
           Id, ParentId,ParentAccount,ParentName,DagudongId,DagudongAccount,DagudongName,GudongId,
           GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
  Account, UserName, Password, Status, UserType, CreateDate, Credits, shortCovering,
-    shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq,lastChangeDate,needToChangPwd,sessionId
+    shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq,lastChangeDate,needToChangePwd,sessionId
 
     </sql>
     <sql id="sqlWhere">
@@ -90,7 +94,7 @@
       GudongAccount,GudongName,ZongdailiId,ZongdaiAccount,ZongdailiName,DailiId,DailiAccount,DailiName,
       UserName, Password, Status,
       UserType, CreateDate, Credits, shortCovering,
-      shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq
+      shareTotal, shareUp, shareFlag, Proportional, Handicap,xpath,xseq,lastChangeDate,needToChangePwd
       )
     values (#{id,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR},#{parentAccount,jdbcType=VARCHAR},#{parentName,jdbcType=VARCHAR},
       #{account,jdbcType=VARCHAR},#{dagudongId,jdbcType=VARCHAR},#{dagudongAccount,jdbcType=VARCHAR},#{dagudongName,jdbcType=VARCHAR},#{gudongId,jdbcType=VARCHAR},
@@ -100,7 +104,7 @@
       #{usertype,jdbcType=TINYINT}, #{createdate,jdbcType=TIMESTAMP}, #{credits,jdbcType=BIGINT},
       #{shortCovering,jdbcType=TINYINT}, #{shareTotal,jdbcType=INTEGER}, #{shareUp,jdbcType=INTEGER},
       #{shareFlag,jdbcType=INTEGER}, #{proportional,jdbcType=INTEGER}, #{handicap,jdbcType=VARCHAR},#{xpath,jdbcType=VARCHAR}
-      ,#{xseq,jdbcType=INTEGER}
+      ,#{xseq,jdbcType=INTEGER},#{lastChangeDate,jdbcType=TIMESTAMP},#{needToChangePwd,jdbcType=INTEGER}
       )
     </insert>
 
@@ -112,6 +116,9 @@
       <if test="password!=null and password!=''">
           Password = #{password,jdbcType=VARCHAR},
       </if>
+        <if test="needToChangePwd!=null and needToChangePwd!=''">
+            needToChangePwd = #{needToChangePwd,jdbcType=VARCHAR},
+        </if>
       Status = #{status,jdbcType=TINYINT},
       UserType = #{usertype,jdbcType=TINYINT},
       Credits = #{credits,jdbcType=BIGINT},
@@ -128,7 +135,7 @@
         and a.ParentId =#{id,jdbcType=VARCHAR};
     </update>
     <update id="updatePassword">
-        UPDATE USER SET password=#{password,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
+        UPDATE USER SET password=#{password,jdbcType=VARCHAR},needToChangePwd =0,lastchangedate =NOW() WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
 
     <update id="updateLoginSessionId">
@@ -145,7 +152,10 @@
     <select id="getUsers" resultMap="userResult">
         select
         <include refid="Columns"/>
-
+        ,(select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=2 and status!= 4) as gudongnumber
+        , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=3 and status != 4) as zongdainumber
+        , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=4 and status != 4) as dailinumber
+        , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=5 and status != 4) as membernumber
         from USER
         <include refid="sqlWhere"/>
         <if test="userType!=null and userType!=0">
@@ -167,8 +177,8 @@
         </if>
     </select>
     <select id="getUserCount" resultMap="userResult">
-        SELECT id,account,
-        (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=2 and status!= 4) as gudongnumber
+        SELECT <include refid="Columns"/>
+        ,(select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=2 and status!= 4) as gudongnumber
     , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=3 and status != 4) as zongdainumber
     , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=4 and status != 4) as dailinumber
     , (select count( 1) from `user` a WHERE a.Xpath LIKE  concat(`user`.Xpath,'%') and  a.UserType=5 and status != 4) as membernumber
@@ -219,7 +229,7 @@
         WHERE
         status !=4
         <if test="id !=null and id != ''">
-            parentId =#{id ,jdbcType=VARCHAR}
+           AND parentId =#{id ,jdbcType=VARCHAR}
         </if>
     </select>
 

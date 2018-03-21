@@ -77,7 +77,7 @@ public class User implements Serializable{
 
     private Integer member_shareUp;
 
-    private boolean needToChangPwd;
+    private boolean needToChangePwd;
 
     private Date lastChangeDate;
 
@@ -375,12 +375,13 @@ public class User implements Serializable{
         this.member_shareUp = member_shareUp;
     }
 
-    public boolean isNeedToChangPwd() {
-        return needToChangPwd;
+
+    public boolean getNeedToChangePwd() {
+        return needToChangePwd;
     }
 
-    public void setNeedToChangPwd(boolean needToChangPwd) {
-        this.needToChangPwd = needToChangPwd;
+    public void setNeedToChangePwd(boolean needToChangePwd) {
+        this.needToChangePwd = needToChangePwd;
     }
 
     public Date getLastChangeDate() {
@@ -430,4 +431,6 @@ public class User implements Serializable{
     public void setMemberNumber(Integer memberNumber) {
         this.memberNumber = memberNumber;
     }
+
+
 }

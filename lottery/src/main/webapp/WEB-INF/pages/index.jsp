@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<title>${title_userAccount!''}_A28</title>
+<title>${title_userAccount!''} - X6</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
@@ -13,7 +13,7 @@
     <div class="leftSider">
         <div class="yui-b">
             <div class="outer_logo" id="outer_logo">
-                <img class="logo" src="http://pm10.x.mmm33.us:80/theme/logo/logo_msdid_20150727102235.png"/>
+                <img class="logo" src="../../resources/images/logo_msdid.png"/>
                 <div class="ct"><div></div></div>
             </div>
             <div class="bg_brown">

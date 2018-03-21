@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>线路选择-
-        A28导航-会员&代理</title>
+        X6导航-会员&代理</title>
     <style type="text/css">
 
         body,h2,ul,li{
@@ -301,7 +301,7 @@
         <div class='datalist-contain datalist'>
             <h2>會員線路</h2>
             <ul>
-                <li><a href="/login/login" target="_blank">线路1</a></li><li><a href="/login/login" target="_blank">线路2</a></li><li><a href="/login/login" target="_blank">线路3</a></li><li><a href="/login/login" target="_blank">线路4</a></li><li><a href="/login/login" target="_blank">线路5</a></li>
+                <li><a href="/login/login" target="_blank">线路1</a></li><li><a href="http://pm20.mlhky.hk/login/login" target="_blank">线路2</a></li><li><a href="/login/login" target="_blank">线路3</a></li><li><a href="/login/login" target="_blank">线路4</a></li><li><a href="/login/login" target="_blank">线路5</a></li>
             </ul>
             <h2>會員備用線路：</h2>
             <ul>
@@ -310,7 +310,7 @@
             <div class='b_line'></div>
             <h2>代理線路</h2>
             <ul>
-                <li><a href="/login/login1" target="_blank">线路1</a></li><li><a href="/login/login1" target="_blank">线路2</a></li><li><a href="/login/login1" target="_blank">线路3</a></li><li><a href="/login/login1" target="_blank">线路4</a></li><li><a href="/login/login1" target="_blank">线路5</a></li>
+                <li><a href="http://pm20.mlhky.hk/login/login1" target="_blank">线路1</a></li><li><a href="pm10.mlhky.hk/login/login1" target="_blank">线路2</a></li><li><a href="/login/login1" target="_blank">线路3</a></li><li><a href="/login/login1" target="_blank">线路4</a></li><li><a href="/login/login1" target="_blank">线路5</a></li>
             </ul>
             <h2>代理備用線路：</h2>
             <ul>
@@ -322,7 +322,7 @@
 </div>
 
 <div id="speed" style="display:none"></div>
-<form id="login_form" action="http://54.64.37.20:5201/loginVerify/.auth" style="display: none" method="post" target="_blank">
+<form id="login_form" action="" style="display: none" method="post" target="_blank">
     <input type="hidden" name="VerifyCode" value="1111">
     <input type="hidden" name="__name" value="1111" id="user_name">
     <input type="hidden" name="__VerifyValue" value="1">

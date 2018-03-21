@@ -696,7 +696,7 @@ public class StatisController {
     public void save(String number, String game_id, String amt, Bucang bucang, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String category = GameCfg.getGameCategory(game_id);
 
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap("00".equals(category));
         boolean isAllow = true;
         if (isOpen) { //已開盤
             BucangConfig bucangConfig;

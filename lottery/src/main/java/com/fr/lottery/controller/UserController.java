@@ -217,15 +217,18 @@ public class UserController {
     @RequestMapping("/changepwd")
     public void changepwd(String oldpwd, String newpwd1, HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = UserHelper.getCurrentUser();
+         user = userService.get(user.getId());
         MD5Util md5Util = new MD5Util();
         boolean result = false;
         if (user.getPassword().equals(md5Util.getMD5ofStr(oldpwd))) {
             userService.updatePassword(user.getId(), md5Util.getMD5ofStr(newpwd1));
+            request.getSession().removeAttribute("needToChangPwd");
             result = true;
         }
         response.setContentType("text/html;charset=UTF-8");
+        String url = user.getUsertype() ==0 ?"/home/index2":user.getUsertype()>0 && user.getUsertype()<5?"/home/index1":"/home/index";
         if(result){
-            response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");parent.location.href =\"/user/logout\";</script>");
+            response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");parent.location.href =\""+url+"\"</script>");
         }
         else
             response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存失败！\");</script>");
@@ -340,6 +343,7 @@ public class UserController {
         modelAndView.addObject("reqUrl",redirectUrl);
         modelAndView.addObject("users",users);
         modelAndView.addObject("title",title);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 

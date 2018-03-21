@@ -319,6 +319,7 @@
  from report_gudong
         where gudongid=#{p_userId,jdbcType=VARCHAR}
         and riqi BETWEEN #{riqi,jdbcType=VARCHAR} AND  #{riqi2,jdbcType=VARCHAR}
+        group by zongdaiid,zongdaiaccount,zongdainame
         ORDER  BY  isbucang desc
     </select>
 

@@ -10,14 +10,14 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${title_userAccount!''} - A28</title>
+    <title>${title_userAccount!''} - X6</title>
     <link rel="stylesheet" href="../../resources/css/gray/common.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="../../resources/css/gray/mike.chen.css?ms2.4.7_3106" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
 
 
     <script type="text/javascript" charset="utf-8">
-        var header_info = {"status":2,"calc_status":-1,"marquee":"欢迎进入A28 ! 2017年香港六合彩第136期開獎時間為：2017年11月21日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.mmm11.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.mmm22.us\/msdid6321379a_9477\/lines.htm"],"time_stamp":"20171122093508"};
+        var header_info = {"status":2,"calc_status":-1,"marquee":"欢迎进入X6 ! 2017年香港六合彩第136期開獎時間為：2017年11月21日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.mmm11.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid6321379a_9477\/lines.htm","http:\/\/pm10.mmm22.us\/msdid6321379a_9477\/lines.htm"],"time_stamp":"20171122093508"};
         function sysInfo(){
             return {chat:''};
         };
@@ -81,7 +81,7 @@
     <div id="ft">
         <div id="footer" class="module">
             <div class="hd rh"></div>
-            <div class="bd rb">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
+            <div class="bd rb">Copyright 2008-2018 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
         </div>    </div>
 </div>

@@ -18,6 +18,7 @@ import org.apache.xmlbeans.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,17 +102,26 @@ public class UserService implements IUserService {
             user.setId(StringUtil.getUUID());
             String xpath = "";
             Integer seq = userMapper.getSeq(user.getParentid());
-
+            user.setNeedToChangePwd(true);
             if (StringUtils.isNoneBlank(user.getParentid())) {
                 User parentUser = get(user.getParentid());
                 if (parentUser != null) {
                     xpath = parentUser.getXpath();
                     user.setParentAccount(parentUser.getAccount());
                     user.setParentName(parentUser.getUserName());
+
                     if (user.getUsertype() > UserTypeEnum.DaGudong.ordinal()) {//股东
-                        user.setDagudongAccount(parentUser.getAccount());
-                        user.setDagudongId(parentUser.getId());
-                        user.setDagudongName(parentUser.getAccount());
+                        if(parentUser.getUsertype() ==UserTypeEnum.DaGudong.ordinal()){
+                            user.setDagudongAccount(parentUser.getAccount());
+                            user.setDagudongId(parentUser.getId());
+                            user.setDagudongName(parentUser.getUserName());
+                        }
+                        else{
+                            user.setDagudongAccount(parentUser.getDagudongAccount());
+                            user.setDagudongId(parentUser.getDagudongId());
+                            user.setDagudongName(parentUser.getDagudongName());
+                        }
+
                     }
                     if (user.getUsertype() > UserTypeEnum.XiaoGudong.ordinal()) {//总代理
                         user.setGudongId(parentUser.getGudongId());
@@ -160,12 +170,10 @@ public class UserService implements IUserService {
         } else {
             if (StringUtils.isNotBlank(user.getPassword())) {
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+                user.setNeedToChangePwd(true);
             }
-
             userMapper.update(user);
-
         }
-
         limitSetService.insert(user.getId(), limitSetDto);
         return 1;
     }
@@ -188,6 +196,7 @@ public class UserService implements IUserService {
     @Override
     public int updateLoginStatus(User user) {
         MemcacheUtil.set(memcached_sessionkey+ user.getId(),user.getSessionId());
+
         return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
     }
 
@@ -211,7 +220,7 @@ public class UserService implements IUserService {
     public int changeStatus(Integer level, String pid, String id, Integer status) {
         User user = userMapper.get(id);
         if (user == null) return 10086;
-        if(user.getStatus()==StatusEnum.TingYong.ordinal()){
+        if(user.getStatus()==StatusEnum.Deleted.ordinal()){
             return -5;
         }
         if(status == StatusEnum.QiYong.ordinal()){
@@ -228,9 +237,6 @@ public class UserService implements IUserService {
             if(exists>0)
                 return -300;
         }
-
-
-
 
         userMapper.changeStatus(id, status);
 

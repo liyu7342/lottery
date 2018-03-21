@@ -7,7 +7,7 @@
         try{if(domain){document.domain = domain;}}catch(x){domainOK = 0;}
     </script>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>A28</title>
+    <title>X6</title>
     <style>
         body {font: 13px/1.231 Verdana,Arial,Helvetica,sans-serif;text-align:center;}
         body,div,h2,form,input{margin:0;padding:0;}

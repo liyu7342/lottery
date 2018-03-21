@@ -5,10 +5,7 @@ import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.IUserService;
-import com.fr.lottery.utils.MD5Util;
-import com.fr.lottery.utils.SessionContext;
-import com.fr.lottery.utils.UserHelper;
-import com.fr.lottery.utils.VerifyCodeUtils;
+import com.fr.lottery.utils.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/11/22.
@@ -114,7 +112,12 @@ public class LoginController {
                     else{
                         result.setSuccess(true);
                         UserHelper.setCurrentUser(user);
+                        request.getSession().setAttribute("first_login","1");
+
                         userService.updateLoginStatus(user);
+                        if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
+                            request.getSession().setAttribute("needToChangPwd","1");
+                        }
                     }
 
                 }
@@ -177,7 +180,12 @@ public class LoginController {
                    else{
                        result.setSuccess(true);
                        UserHelper.setCurrentUser(user);
-                      userService.updateLoginStatus(user);
+//                      request.getSession().setAttribute("first_login","1");
+//                      if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
+//                          request.getSession().setAttribute("needToChangPwd","1");
+//                      }
+//                      userService.updateLoginStatus(user);
+
                    }
                }
             }

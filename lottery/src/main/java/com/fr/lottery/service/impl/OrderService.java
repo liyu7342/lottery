@@ -63,7 +63,7 @@ public class OrderService implements IOrderService {
     }
 
     public Integer save(OrderDto orderDto) {
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(orderDto.getOdds_set().length()>1);
         if (!isOpen) {
             return -1001;
         }
@@ -519,7 +519,7 @@ public class OrderService implements IOrderService {
             ordersList = orderMapper.getOrdersByDaili(riqi, riqi2, userId, gameType, numner, start, Global.pageSize);
             total = orderMapper.countOrdersByDaili(riqi, riqi2, userId, gameType, numner);
         } else if (UserTypeEnum.ZongDaili.ordinal() == userType) {
-            ordersList = orderMapper.getOrdersByZongDai(riqi, riqi2, userId, gameType, numner, start, Global.pageSize);
+            ordersList = orderMapper.getOrdersByTest(riqi, riqi2, userId, gameType, numner, start, Global.pageSize);
             total = orderMapper.countOrdersByZongdai(riqi, riqi2, userId, gameType, numner);
         } else if (UserTypeEnum.XiaoGudong.ordinal() == userType) {
             ordersList = orderMapper.getOrdersByGudong(riqi, riqi2, userId, gameType, numner, start, Global.pageSize);

@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>aj022 - A28</title>
+    <title>${title_userAccount!''} - X6</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css?${JSVersion!''}" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?${JSVersion!''}" type="text/css">
     <link rel="stylesheet" href="/chat/webchat/css/kefu.css?ms2.4.7_3106" type="text/css">
@@ -26,12 +26,12 @@
                 <div class="bd">
                     <div class="ga">
                         <h3><div class="l"></div><strong>最新公告</strong><div class="r"></div></h3>
-                        <h4 class="tit">2018-03-04 06:00:09</h4>
+                        <h4 class="tit">2018-03-18 06:00:09</h4>
                         <p class="txt">
                         <ol>
-                            <li>
-                                六合彩近期開盤日期：</li><li> 2018-03-01(星期四) | 開獎時間：21:30</li><li> 2018-03-04(星期天) | 開獎時間：21:30</li><li> 2018-03-06(星期二) | 開獎時間：21:30</li><li> 2018-03-08(星期四) | 開獎時間：21:30</li><li> 2018-03-10(星期六) | 開獎時間：21:30</li><li> 2018-03-13(星期二) | 開獎時間：21:30</li><li> 2018-03-15(星期四) | 開獎時間：21:30</li><li> 2018-03-17(星期六) | 開獎時間：21:30
-                        </li>
+                        <li>
+                            六合彩近期開盤日期：</li><li> 2018-03-15(星期四) | 開獎時間：21:30</li><li> 2018-03-17(星期六) | 開獎時間：21:30</li><li> 2018-03-20(星期二) | 開獎時間：21:30</li><li> 2018-03-22(星期四) | 開獎時間：21:30</li><li> 2018-03-24(星期六) | 開獎時間：21:30</li><li> 2018-03-27(星期二) | 開獎時間：21:30</li><li> 2018-03-29(星期四) | 開獎時間：21:30</li><li> 2018-03-31(星期六) | 開獎時間：21:30
+                    </li>
                         </ol>
                         </p>
                         <h4 class="tit">2018-02-14 13:28:02</h4>

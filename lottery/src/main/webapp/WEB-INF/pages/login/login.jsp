@@ -8,7 +8,7 @@
 		Remove this if you use the .htaccess -->
     <meta http-equiv="Pragma" content="no-cache" />
     <title>
-        A28
+        X6
     </title>
     <style type="text/css">
         body, div, form, input, img, p {

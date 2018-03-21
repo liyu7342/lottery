@@ -40,7 +40,7 @@ public class PlaysController {
     @RequestMapping("/tema")
     public ModelAndView tema() {
         ModelAndView mv = new ModelAndView("/plays/tema");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(true);
         Map<String,Integer> statusMap = new HashMap<String, Integer>();
         Integer status = isOpen ?1:0;
         statusMap.put(OddsTypeEnum.tema.getValue(),status);
@@ -60,7 +60,7 @@ public class PlaysController {
     @RequestMapping("/zhengma")
     public ModelAndView zhengma() {
         ModelAndView mv = new ModelAndView("/plays/zhengma");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengma.getValue(),OddsTypeEnum.lmzhma.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -78,7 +78,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate")
     public ModelAndView zhengmate() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate1.getValue(),OddsTypeEnum.lmzhmate1.getValue(),OddsTypeEnum.sebozhmate1.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -96,7 +96,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate2")
     public ModelAndView zhengmate2() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate2");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate2.getValue(),OddsTypeEnum.lmzhmate2.getValue(),OddsTypeEnum.sebozhmate2.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -114,7 +114,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate3")
     public ModelAndView zhengmate3() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate3");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate3.getValue(),OddsTypeEnum.lmzhmate3.getValue(),OddsTypeEnum.sebozhmate3.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -132,7 +132,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate4")
     public ModelAndView zhengmate4() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate4");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate4.getValue(),OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.sebozhmate4.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -150,7 +150,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate5")
     public ModelAndView zhengmate5() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate5");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate5.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.sebozhmate5.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -168,7 +168,7 @@ public class PlaysController {
     @RequestMapping("/zhengmate6")
     public ModelAndView zhengmate6() {
         ModelAndView mv = new ModelAndView("/plays/zhengmate6");
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         String[] oddsTypes= {OddsTypeEnum.zhengmate6.getValue(),OddsTypeEnum.lmzhmate6.getValue(),OddsTypeEnum.sebozhmate6.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
@@ -191,7 +191,7 @@ public class PlaysController {
                 OddsTypeEnum.lmzhmate4.getValue(),OddsTypeEnum.lmzhmate5.getValue(),OddsTypeEnum.lmzhmate6.getValue()};
         Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
 
         mv.addObject("isOpen",isOpen);
         Map<String,Integer> map1 = new HashMap<String, Integer>();
@@ -228,7 +228,7 @@ public class PlaysController {
             }
         }
 
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         Map<String,Integer> statusMap = new HashMap<String, Integer>();
         for(String oddsType : oddsTypes1){
@@ -252,7 +252,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.guoguan.getValue()};
        Map<String,String> map  =  oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -266,7 +266,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.shxiao.getValue()};
        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -280,7 +280,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.shengxiaobuzhong.getValue()};
         Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -291,7 +291,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.weishu.getValue()};
        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -302,7 +302,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.banbo.getValue()};
        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -315,7 +315,7 @@ public class PlaysController {
         mv.addObject("entity",map1);
         Map<String,String> map=  shengxiaoService.findMapByYear();
          mv.addObject("shengxiao",map);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -328,7 +328,7 @@ public class PlaysController {
         String[] oddsTypes= {OddsTypeEnum.texiao.getValue()};
        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         return mv;
     }
@@ -340,7 +340,7 @@ public class PlaysController {
         String handicapStr  =UserHelper.getCurrentUser().getHandicap();
         Map<String,String> map1 =oddsService.getOddsChangeMap(handicapStr,oddsTypes);
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
@@ -371,7 +371,7 @@ public class PlaysController {
        Map<String,String> map1 =oddsService.getOddsChangeMap(handicapStr,oddsTypes);
 
         mv.addObject("entity",map1);
-        boolean isOpen = handicapService.IsOpenHandicap();
+        boolean isOpen = handicapService.IsOpenHandicap(false);
         mv.addObject("isOpen",isOpen);
 
         Map<String,Object> map = new HashMap<String ,Object>();
@@ -402,7 +402,7 @@ public class PlaysController {
         mv.addObject("entity",map1);
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
-        boolean isOpen=handicapService.IsOpenHandicap();
+        boolean isOpen=handicapService.IsOpenHandicap(false);
         Map<String,String> oddsMap = new HashMap<String, String>();
         if(isOpen){
             for(Odds odds : oddsList){

@@ -173,6 +173,20 @@ public class ReportController {
         modelAndView.addObject("page",ordersPage.toString());
         modelAndView.addObject("userType", user.getUsertype());
         modelAndView.addObject("entity",entity);
+        String url ="";
+        if(StringUtils.isNotBlank(game_id) && StringUtils.isNotBlank(number)){//到下注明细
+            url="/report/reportwanfa?draw_date="+draw_date+"&draw_date2="+draw_date2+"&game_id="+game_id
+                    +"&number=&type=1&category_id="+category_id+"&tn=1";
+        }
+        else if(StringUtils.isBlank(number) && StringUtils.isNotBlank(game_id)){
+            url="/report/game_report?draw_date="+draw_date+"&draw_date2="+draw_date2+"&game_id="+""
+                    +"&number=&type=1&category_id="+category_id+"&tn=1";
+        }
+        else if(StringUtils.isNotBlank(category_id)){
+            url="/report/game_report?draw_date="+draw_date+"&draw_date2="+draw_date2+"&game_id="+""
+                    +"&number=&type=1&category_id="+category_id+"&tn=1";
+        }
+        modelAndView.addObject("url",url);
         return modelAndView;
     }
 

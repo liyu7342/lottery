@@ -59,12 +59,14 @@ public class OddsService implements IOddsService{
 
     @Override
     public List<Odds> getOddsChange(String oddSet, String[] oddsType) {
-        if(oddSet.length()==2){
 
-        }
         List<Odds> oddsList=getOddsList(oddSet,oddsType);
-        boolean isOpen =handicapService.IsOpenHandicap();
-        if(!isOpen){
+        Handicap handicap = handicapService.getNotOpenHandicap();
+        if(handicap==null) return new ArrayList<Odds>();
+        if(handicapService.IsOpenHandicap(oddSet.length()>1)){
+            return oddsList;
+        }
+        else{
             for(Odds odds :oddsList){
                 odds.setNumvalue(null);
             }
@@ -85,7 +87,7 @@ public class OddsService implements IOddsService{
      */
     @Override
     public Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType) {
-        boolean isOpen =handicapService.IsOpenHandicap();
+        boolean isOpen =handicapService.IsOpenHandicap(oddSet.length()>1);
         Map<String,String> map = new HashedMap();
         if(isOpen) {
             List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType ,false);

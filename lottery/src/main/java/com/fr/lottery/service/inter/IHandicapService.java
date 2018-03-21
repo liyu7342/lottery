@@ -38,7 +38,7 @@ public interface IHandicapService {
      * 是否开盘
      * @return
      */
-    boolean IsOpenHandicap();
+    boolean IsOpenHandicap(boolean isTema);
 
     Handicap getHandicap(String handicapId);
 

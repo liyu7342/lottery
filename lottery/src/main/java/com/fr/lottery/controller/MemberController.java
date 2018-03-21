@@ -91,7 +91,9 @@ public class MemberController {
         modelAndView.addObject("info", user);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("shareUpList", shareUpArr);
-        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap(false));
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("user",user1);
         return modelAndView;
     }
 
@@ -133,8 +135,9 @@ public class MemberController {
         }
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("childsumcredit", childsumcredit);
-//        modelAndView.addObject("parentUser",parentUser);
-        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("user",user1);
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap(false));
         return modelAndView;
 
     }
@@ -190,7 +193,9 @@ public class MemberController {
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
-        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap(false));
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("user",user1);
         return modelAndView;
     }
 
@@ -245,7 +250,9 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap(false));
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("user",user1);
         return modelAndView;
     }
 
@@ -301,7 +308,10 @@ public class MemberController {
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
         modelAndView.addObject("currentuser", UserHelper.getCurrentUser());
-        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap());
+        modelAndView.addObject("isopen",StringUtils.isNotBlank(id) && handicapService.IsOpenHandicap(false));
+
+        User user1 = userService.getUserCount(false);
+        modelAndView.addObject("user",user1);
         return modelAndView;
     }
 

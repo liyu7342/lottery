@@ -212,13 +212,17 @@ public class HandicapService implements IHandicapService {
     }
 
     @Override
-    public boolean IsOpenHandicap(){
+    public boolean IsOpenHandicap(boolean isTema){
         Handicap handicap =getNotOpenHandicap();
         if(handicap==null) return false;
         String dtStr =DateTimeUtils.Date2StringLong( new Date());
-        boolean isOpen =handicap!=null && DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0
-                && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>0;
-        return isOpen;
+        if(isTema){
+           return DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0
+                   &&  DateTimeUtils.Date2StringLong(handicap.getTemaclosetime()).compareTo( dtStr)>=0;
+        }
+        else{
+           return DateTimeUtils.Date2StringLong(handicap.getOpentime()).compareTo( dtStr)<=0 && DateTimeUtils.Date2StringLong(handicap.getZhengmaclosetime()).compareTo( dtStr)>=0;
+        }
     }
 
     public String get6hbd(String url){

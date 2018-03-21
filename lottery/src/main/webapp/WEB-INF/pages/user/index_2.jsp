@@ -135,7 +135,7 @@
     <div id="ft">
         <div id="footer" class="module">
             <div class="hd rh"></div>
-            <div class="bd rb">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
+            <div class="bd rb">Copyright 2008-2018 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
         </div>    </div>
 </div>

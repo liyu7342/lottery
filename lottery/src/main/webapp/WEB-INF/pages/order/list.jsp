@@ -14,7 +14,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    <title>${user.account} - A28</title>
+    <title>${user.account} - X6</title>
     <link rel="stylesheet" href="../../resources/css/new/common.css" type="text/css">
     <link rel="stylesheet" href="../../resources/css/new/mike.chen.css?${JSVersion!''}" type="text/css">
 </head>
@@ -142,7 +142,7 @@
     <div id="ft">
         <div id="footer" class="module" style="display:none">
             <div class="hd"></div>
-            <div class="bd">Copyright 2008-2017 ©SixPlay Online Casino. All rights reserved.</div>
+            <div class="bd">Copyright 2008-2018 ©SixPlay Online Casino. All rights reserved.</div>
             <div class="ft"></div>
         </div>
     </div>
