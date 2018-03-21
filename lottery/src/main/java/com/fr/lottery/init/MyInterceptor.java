@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class MyInterceptor extends HandlerInterceptorAdapter {
     private long beginTime;
-    private  static final String  dailiHome= "/home/index1";
+    private static final String dailiHome = "/home/index1";
 
     private List<String> notAllocUrls;
 
@@ -55,14 +55,18 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         beginTime = new Date().getTime();//请求开始时间
-        String request_Url = request.getRequestURL().toString();//请求的链接
-        String reg = ".*\\.(?i)(jpg|js|png|css|gif|dwr)";
-        //静态资源不进行验证
-        if (request_Url.matches(reg)) {
-            return true;
+        //String request_Url = request.getRequestURL().toString();//请求的链接
+
+//        String reg = ".*\\.(?i)(jpg|js|png|css|gif|dwr)";
+//        //静态资源不进行验证
+//        if (request_Url.matches(reg)) {
+//            return true;
+//        }
+        String request_Url = request.getServletPath();
+        if("/".equals(request_Url)){
+            request.getRequestDispatcher("/login/index").forward(request, response);
+            return false;
         }
-
-
 
         //判断是否为ajax请求，默认不是
         boolean isajax = false;
@@ -79,41 +83,41 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
             return false;
         } else {
 
-            //判斷session是否相同，不同則使session失效
-            String sessionId = userService.getUserSessionId(user.getId());
-            HttpSession session = request.getSession();
-            if (!session.getId().equals(sessionId)) {
-                session.invalidate();
-                if (isajax) {
-                    response.getWriter().write("Duplicate session");
-                }
-                return false;
+
+//            if (user.getUsertype() != 0) {
+//
+//                //判斷session是否相同，不同則使session失效
+//                String sessionId = userService.getUserSessionId(user.getId());
+//                HttpSession session = request.getSession();
+//                if (!session.getId().equals(sessionId)) {
+//                    session.invalidate();
+//                    if (isajax) {
+//                        response.getWriter().write("Duplicate session");
+//                    } else {
+//                        request.getRequestDispatcher("/login/index").forward(request, response);
+//                    }
+//                    return false;
+//                }
+//            }
+            if (!isajax) {
+                request.setAttribute("title_userAccount", user.getAccount());
             }
-            else {
-                if (!isajax) {
-                    request.setAttribute("title_userAccount", user.getAccount());
-                }
-            }
-            if(user.getUsertype() == 5){
+            if (user.getUsertype() == 5) {
                 for (String url : notAllocUrls) {
-                    if (request_Url.indexOf(url) > -1) {
+                    if (request_Url.equals(url) ) {
                         return false;
                     }
                 }
-            }
-            else if(user.getUsertype() >0 && user.getUsertype()<5){
+            } else if (user.getUsertype() > 0 && user.getUsertype() < 5) {
                 for (String url : dailiNotAllowUrls) {
-                    if (request_Url.indexOf(url) > -1) {
-                        if("/home/index".equals( url) &&request_Url.indexOf(dailiHome) >-1){
-                                return true;
-                        }
+                    if (request_Url.equals(url) ) {
                         return false;
                     }
                 }
             }
-
-
         }
+
+
         return super.preHandle(request, response, handler);
     }
 

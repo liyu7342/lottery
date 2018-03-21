@@ -7,6 +7,7 @@ import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.INoticeService;
 import com.fr.lottery.service.inter.IOrderService;
 import com.fr.lottery.utils.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,10 @@ public class HomeController  {
      */
     @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request) {
-
+        if(request.getSession().getAttribute("needToChangPwd") !=null){
+            ModelAndView modelAndView = new ModelAndView("redirect:changepwdindex");
+            return modelAndView;
+        }
         ModelAndView mv = new ModelAndView("index");
         User user= UserHelper.getCurrentUser();
         Map<String,Object> map = new HashedMap();
@@ -134,7 +138,11 @@ public class HomeController  {
      */
     @RequestMapping("/index1")
     public ModelAndView index1() {
-
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        if(request.getSession().getAttribute("needToChangPwd") !=null){
+            ModelAndView modelAndView = new ModelAndView("redirect:changepwdindex");
+            return modelAndView;
+        }
         ModelAndView mv = new ModelAndView("index1");
         //{"status":2,"calc_status":-1,"marquee":"欢迎进入A28 ! 2017年香港六合彩第080期開獎時間為：2017年7月11日（星期2）21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解","lines":["http:\/\/pm10.x.mmm33.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm11.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.a.mmm55.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.x.mmm44.us\/msdid63242a_8955\/lines.htm","http:\/\/pm10.mmm22.us\/msdid63242a_8955\/lines.htm"],"time_stamp":"20170712084830"};
         Map<String ,Object> map = new HashMap<String, Object>();
@@ -144,9 +152,8 @@ public class HomeController  {
         map.put("marquee",notice.getContent());
         map.put("lines",new ArrayList<String>());
         mv.addObject("header_info",JsonUtil.toJson(map));
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Object first_login= request.getSession().getAttribute("first_login");
 
+        Object first_login= request.getSession().getAttribute("first_login");
         if(first_login!=null){
             request.getSession().removeAttribute("first_login");
             mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
@@ -189,5 +196,19 @@ public class HomeController  {
         return "redirect:"+request.getParameter("url");
     }
 
-
+    @RequestMapping(value="changepwdindex")
+    public ModelAndView changepwdindex ()
+    {
+        ModelAndView modelAndView = new ModelAndView("changepwdindex");
+        User user = UserHelper.getCurrentUser();
+        modelAndView.addObject("user",user);
+        Map<String ,Object> map = new HashMap<String, Object>();
+        map.put("status",2);
+        map.put("calc_status",-1);
+        Notice notice = noticeService.getLatestDailyNotice();
+        map.put("marquee",notice.getContent());
+        map.put("lines",new ArrayList<String>());
+        modelAndView.addObject("header_info",JsonUtil.toJson(map));
+        return modelAndView;
+    }
 }
