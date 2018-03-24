@@ -327,7 +327,7 @@
                     </div>
                     <div class="outer_su">
                         <table class="su">
-                            <tr pro="002">
+                            <tr pro="003">
                                 <td colspan="2"><input type="text" class="t1 dis" disabled="disabled" id="right_amount"/></td>
                             </tr>
                             <tr>

@@ -149,6 +149,9 @@
         UPDATE USER SET Status=#{status,jdbcType=VARCHAR} WHERE Id =#{id,jdbcType=VARCHAR}
     </update>
 
+    <update id="tingyongOrTingYaChild" >
+        UPDATE USER SET Status=#{status,jdbcType=INTEGER} WHERE xpath LIKE #{xpath,jdbcType=VARCHAR}
+    </update>
     <select id="getUsers" resultMap="userResult">
         select
         <include refid="Columns"/>
@@ -233,4 +236,7 @@
         </if>
     </select>
 
+    <select id="getChildMaxShareUp" resultType="java.lang.Integer">
+        select max(shareup+sharetotal) as shareUp from USER  where parentId =#{id ,jdbcType=VARCHAR} and status !=4
+    </select>
 </mapper>

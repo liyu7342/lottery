@@ -151,4 +151,24 @@ public class DateTimeUtils {
         return returnTime;
     }
 
+    public static String getTimeByCalendar(String riqi,String format){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt( riqi.substring(0,4)),Integer.parseInt(riqi.substring(5,7))-1,Integer.parseInt(riqi.substring(8,10)));
+        //一周第一天是否为星期天
+        boolean isFirstSunday = (cal.getFirstDayOfWeek() == Calendar.SUNDAY);
+        //获取周几
+        int weekDay = cal.get(Calendar.DAY_OF_WEEK);//一周的第几天
+        //若一周第一天为星期天，则-1
+        if (isFirstSunday) {
+            weekDay = weekDay - 1;
+            if (weekDay == 0) {
+                weekDay = 7;
+            }
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                format);
+        String returnTime = dateFormat.format(cal.getTime());
+        return  returnTime+ "（星期"+weekDay+"）";
+
+    }
 }

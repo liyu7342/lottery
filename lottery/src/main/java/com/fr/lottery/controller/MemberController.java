@@ -325,8 +325,15 @@ public class MemberController {
 //            return;
 //        }
 //        else
-            userService.Save(user, limitSetDto);
-        response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
+          Integer result =  userService.Save(user, limitSetDto);
+          if(result==-1){
+              response.setContentType("text/html;charset=UTF-8");
+              response.getWriter().write("<script type=\"text/javascript\"> alert(\"下级占成和大于本级占成，请先调整下级占成！\");location.href =\"" + requestUrl + "\";</script>");
+          }
+          else{
+              response.setContentType("text/html;charset=UTF-8");
+              response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"" + requestUrl + "\";</script>");
+          }
+
     }
 }

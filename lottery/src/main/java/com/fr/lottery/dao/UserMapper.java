@@ -39,7 +39,13 @@ public interface UserMapper {
 
     Integer getChildSumCredit(@Param("id") String id);
 
+    /**
+     * 获取子级最大占成
+     * @param id
+     * @return
+     */
+    Integer getChildMaxShareUp(@Param("id") String id);
     Integer hasChild(@Param("id") String id);
 
-
+    int tingyongOrTingYaChild(@Param("xpath") String xpath,@Param("status") Integer status);
 }

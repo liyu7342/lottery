@@ -122,6 +122,7 @@ public class VerifyCodeUtils{
      * @throws IOException
      */
     public static void outputImage(int w, int h, OutputStream os, String code) throws IOException{
+
         int verifySize = code.length();
         BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
         Random rand = new Random();
@@ -141,7 +142,7 @@ public class VerifyCodeUtils{
         g2.setColor(Color.GRAY);// 设置边框色
         g2.fillRect(0, 0, w, h);
 
-        Color c = getRandColor(180, 230);
+        Color c = getRandColor(200, 230);
         g2.setColor(c);// 设置背景色
         g2.fillRect(0, 2, w, h-4);
 
@@ -174,10 +175,10 @@ public class VerifyCodeUtils{
         g2.setFont(font);
                 char[] chars = code.toCharArray();
         for(int i = 0; i < verifySize; i++){
-            AffineTransform affine = new AffineTransform();
-            affine.setToRotation(Math.PI / 8 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize/2, h/2);
-            g2.setTransform(affine);
-            g2.drawChars(chars, i, 1, ((w-10) / verifySize) * i + 5, h/2 + fontSize/2 - 10);
+//            AffineTransform affine = new AffineTransform();
+//            affine.setToRotation(Math.PI / 8 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize/2, h/2);
+//            g2.setTransform(affine);
+            g2.drawChars(chars, i, 1, ((w-10) / verifySize) * i + 5, h/2 + fontSize/2 - 5);
         }
 
         g2.dispose();

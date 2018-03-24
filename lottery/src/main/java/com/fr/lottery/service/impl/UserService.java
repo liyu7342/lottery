@@ -97,6 +97,7 @@ public class UserService implements IUserService {
             user.setShareUp(user.getMember_shareUp());
         }
 
+
         if (StringUtils.isBlank(user.getId())) {
             user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             user.setId(StringUtil.getUUID());
@@ -168,9 +169,14 @@ public class UserService implements IUserService {
             userMapper.insert(user);
             getUserCount(true);
         } else {
+
             if (StringUtils.isNotBlank(user.getPassword())) {
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
                 user.setNeedToChangePwd(true);
+            }
+            Integer childMaxShareUp = userMapper.getChildMaxShareUp(user.getId());
+            if(user.getShareUp()<childMaxShareUp){
+                return -1;
             }
             userMapper.update(user);
         }
@@ -225,21 +231,26 @@ public class UserService implements IUserService {
         }
         if(status == StatusEnum.QiYong.ordinal()){
             User pUser = userMapper.get(pid);
-            if(pUser.getStatus()== StatusEnum.TingYa.ordinal()){//必須先啟用上級賬號
+            if(pUser!=null && pUser.getStatus()== StatusEnum.TingYa.ordinal()){//必須先啟用上級賬號
                 return -2;
             }
-            if(pUser.getStatus()== StatusEnum.TingYong.ordinal()){//上級賬號已停用
+            if(pUser != null && pUser.getStatus()== StatusEnum.TingYong.ordinal()){//上級賬號已停用
                 return -3;
             }
+            userMapper.changeStatus(id, status);
         }
-        if(status == StatusEnum.Deleted.ordinal()){
+       else if(status == StatusEnum.Deleted.ordinal()){
             int exists= userMapper.hasChild(id);
             if(exists>0)
                 return -300;
+            userMapper.changeStatus(id, status);
         }
-
-        userMapper.changeStatus(id, status);
-
+        else if(status == StatusEnum.TingYa.ordinal() || status == StatusEnum.TingYong.ordinal())
+        {
+            userMapper.tingyongOrTingYaChild(user.getXpath()+"%",status);
+        }
+        else
+            userMapper.changeStatus(id, status);
         return 0;
     }
 

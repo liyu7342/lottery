@@ -6,6 +6,7 @@ import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.INoticeService;
 import com.fr.lottery.service.inter.IOrderService;
+import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.*;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.collections.map.HashedMap;
@@ -36,6 +37,8 @@ public class HomeController  {
     private ILimitSetService limitSetService;
     @Autowired
     private INoticeService noticeService;
+    @Autowired
+    private IUserService userService;
 
     /**
      * 会员首页
@@ -49,16 +52,17 @@ public class HomeController  {
         }
         ModelAndView mv = new ModelAndView("index");
         User user= UserHelper.getCurrentUser();
+        User currentUser = userService.get(user.getId());
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
         Integer amount =orderService.getOrderAmount();
         amount =amount==null?0:amount;
         userInfo.put("memberId",user.getId());
-        userInfo.put("credit",user.getCredits());
-        userInfo.put("name",user.getUserName());
-        userInfo.put("account",user.getAccount());
+        userInfo.put("credit",currentUser.getCredits());
+        userInfo.put("name",currentUser.getUserName());
+        userInfo.put("account",currentUser.getAccount());
         userInfo.put("sum",amount);
-        userInfo.put("odds_set",user.getHandicap());
+        userInfo.put("odds_set",currentUser.getHandicap());
         userInfo.put("status",1);
         if(amount !=user.getAmount()){
             user.setAmount(amount);
@@ -108,12 +112,13 @@ public class HomeController  {
         amount =amount==null?0:amount;
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
+        User currentUser = userService.get(user.getId());
         userInfo.put("memberId",user.getId());
-        userInfo.put("credits",user.getCredits());
-        userInfo.put("name",user.getUserName());
-        userInfo.put("account",user.getAccount());
+        userInfo.put("credits",currentUser.getCredits());
+        userInfo.put("name",currentUser.getUserName());
+        userInfo.put("account",currentUser.getAccount());
         userInfo.put("sum",amount);
-        userInfo.put("odds_set",user.getHandicap());
+        userInfo.put("odds_set",currentUser.getHandicap());
         userInfo.put("status",1);
         if(amount !=user.getAmount()){
             user.setAmount(amount);

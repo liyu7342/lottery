@@ -3,9 +3,12 @@ package com.fr.lottery.service.impl;
 import com.fr.lottery.dao.HandicapMapper;
 import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.Handicap;
+import com.fr.lottery.entity.Notice;
 import com.fr.lottery.entity.ShengXiao;
+import com.fr.lottery.enums.NoticeEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
+import com.fr.lottery.service.inter.INoticeService;
 import com.fr.lottery.service.inter.IShengxiaoService;
 import com.fr.lottery.service.inter.ISysCodeService;
 import com.fr.lottery.utils.DateTimeUtils;
@@ -34,6 +37,10 @@ public class HandicapService implements IHandicapService {
     private IShengxiaoService shengxiaoService;
     @Autowired
     private ISysCodeService sysCodeService;
+
+    @Autowired
+    private INoticeService noticeService;
+
     @Override
     public boolean save(Handicap entity) {
         if(StringUtils.isBlank( entity.getId()) || entity.getId() ==null){
@@ -41,9 +48,17 @@ public class HandicapService implements IHandicapService {
             entity.setStatus(0);
             entity.setQishu(sysCodeService.getQiShuAutoCode(entity.getRiqi()));
             entity.setId(StringUtil.getUUID());
-            return handicapMapper.insert(entity)>0;
+             handicapMapper.insert(entity);
+            Notice notice = new Notice();
+
+            notice.setContent("欢迎进入X6 ! "+entity.getRiqi().substring(0,4)+
+                "年香港六合彩第"+entity.getQishu()+"期開獎時間為："
+                    +DateTimeUtils.getTimeByCalendar(entity.getRiqi(),"yyyy年MM月dd日")+"21:30，本公司於開獎日17:00至17:40開盤，21:30開獎前收盤。如有異動以香港馬會公佈為準!! 敬告：投注後請查看下注明細，確認注單是否交易成功，以免重複下注，所有注單恕不更改，本公司對開獎後的投注均視無效,不便之處敬請諒解");
+            notice.setType(NoticeEnum.daily.ordinal());
+           return noticeService.save(notice)>0;
         }
-        return handicapMapper.updateByPrimaryKey(entity)>0;
+        else
+            return handicapMapper.updateByPrimaryKey(entity)>0;
     }
 
     @Override
@@ -196,7 +211,7 @@ public class HandicapService implements IHandicapService {
 
     public  Handicap getNotOpenHandicap(){
        Handicap handicap =  getLastestHandicap();
-       if(handicap.getStatus()==0)
+       if( 0 ==handicap.getStatus())
            return handicap;
        return null;
     }

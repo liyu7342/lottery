@@ -116,14 +116,12 @@
   </delete>
   <insert id="insert" parameterType="com.fr.lottery.entity.Handicap">
     insert into handicap (Id, QiShu, RiQi,Status,
-      No1, No2, No3, No4, 
-      No5, No6, Tema, OpenTime, 
+      OpenTime,
       AutoOpen, TemaStatus, ZhengmaStatus, 
       TemaCloseTime, ZhengmaCloseTime, IsSettlement
       )
     values (#{id,jdbcType=VARCHAR}, #{qishu,jdbcType=VARCHAR}, #{riqi,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
-      #{no1,jdbcType=VARCHAR}, #{no2,jdbcType=VARCHAR}, #{no3,jdbcType=VARCHAR}, #{no4,jdbcType=VARCHAR}, 
-      #{no5,jdbcType=VARCHAR}, #{no6,jdbcType=VARCHAR}, #{tema,jdbcType=VARCHAR}, #{opentime,jdbcType=TIMESTAMP}, 
+       #{opentime,jdbcType=TIMESTAMP},
       #{autoopen,jdbcType=BIT}, #{temastatus,jdbcType=BIT}, #{zhengmastatus,jdbcType=BIT}, 
       #{temaclosetime,jdbcType=TIMESTAMP}, #{zhengmaclosetime,jdbcType=TIMESTAMP}, #{issettlement,jdbcType=BIT}
       )
@@ -135,42 +133,11 @@
 
   <update id="updateByPrimaryKey" parameterType="com.fr.lottery.entity.Handicap">
     update handicap
-    set QiShu = #{qishu,jdbcType=VARCHAR},
-      Status = #{status,jdbcType=INTEGER},
-      No1 = #{no1,jdbcType=VARCHAR},
-      No2 = #{no2,jdbcType=VARCHAR},
-      No3 = #{no3,jdbcType=VARCHAR},
-      No4 = #{no4,jdbcType=VARCHAR},
-      No5 = #{no5,jdbcType=VARCHAR},
-      No6 = #{no6,jdbcType=VARCHAR},
-      Tema = #{tema,jdbcType=VARCHAR},
-      OpenTime = #{opentime,jdbcType=TIMESTAMP},
-      AutoOpen = #{autoopen,jdbcType=BIT},
-      TemaStatus = #{temastatus,jdbcType=BIT},
-      ZhengmaStatus = #{zhengmastatus,jdbcType=BIT},
+    set
+      riqi=#{riqi,jdbcType=VARCHAR},
       TemaCloseTime = #{temaclosetime,jdbcType=TIMESTAMP},
       ZhengmaCloseTime = #{zhengmaclosetime,jdbcType=TIMESTAMP},
-      IsSettlement = #{issettlement,jdbcType=BIT},
-      zongfen= #{zongfen,jdbcType=INTEGER},
-      teDanshuang= #{teDanshuang,jdbcType=VARCHAR},
-      teDaxiao= #{teDaxiao,jdbcType=VARCHAR},
-      zongDanshuang= #{zongDanshuang,jdbcType=VARCHAR},
-      heDanshuang= #{heDanshuang,jdbcType=VARCHAR},
-      zongDaxiao= #{zongDaxiao,jdbcType=VARCHAR},
-      xiao1= #{xiao1,jdbcType=VARCHAR},
-      xiao2= #{xiao2,jdbcType=VARCHAR},
-      xiao3= #{xiao3,jdbcType=VARCHAR},
-      xiao4= #{xiao4,jdbcType=VARCHAR},
-      xiao5= #{xiao5,jdbcType=VARCHAR},
-      xiao6= #{xiao6,jdbcType=VARCHAR},
-      xiaoName1= #{xiaoName1,jdbcType=VARCHAR},
-      xiaoName2= #{xiaoName2,jdbcType=VARCHAR},
-      xiaoName3= #{xiaoName3,jdbcType=VARCHAR},
-      xiaoName4= #{xiaoName4,jdbcType=VARCHAR},
-      xiaoName5= #{xiaoName5,jdbcType=VARCHAR},
-      xiaoName6= #{xiaoName6,jdbcType=VARCHAR},
-      TexiaoName= #{texiaoName,jdbcType=VARCHAR},
-      texiaono= #{texiaono,jdbcType=VARCHAR}
+      OpenTime = #{opentime,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=VARCHAR}
   </update>
 
@@ -184,12 +151,6 @@
       No5 = #{no5,jdbcType=VARCHAR},
       No6 = #{no6,jdbcType=VARCHAR},
       Tema = #{tema,jdbcType=VARCHAR},
-      OpenTime = #{opentime,jdbcType=TIMESTAMP},
-      AutoOpen = #{autoopen,jdbcType=BIT},
-      TemaStatus = #{temastatus,jdbcType=BIT},
-      ZhengmaStatus = #{zhengmastatus,jdbcType=BIT},
-      TemaCloseTime = #{temaclosetime,jdbcType=TIMESTAMP},
-      ZhengmaCloseTime = #{zhengmaclosetime,jdbcType=TIMESTAMP},
       IsSettlement = #{issettlement,jdbcType=BIT},
       zongfen= #{zongfen,jdbcType=INTEGER},
       teDanshuang= #{teDanshuang,jdbcType=VARCHAR},

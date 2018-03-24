@@ -113,7 +113,7 @@ public class LoginController {
                         result.setSuccess(true);
                         UserHelper.setCurrentUser(user);
                         request.getSession().setAttribute("first_login","1");
-
+                        request.getSession().removeAttribute("verCode");
                         userService.updateLoginStatus(user);
                         if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
                             request.getSession().setAttribute("needToChangPwd","1");
@@ -180,6 +180,7 @@ public class LoginController {
                    else{
                        result.setSuccess(true);
                        UserHelper.setCurrentUser(user);
+                      request.getSession().removeAttribute("verCode");
 //                      request.getSession().setAttribute("first_login","1");
 //                      if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
 //                          request.getSession().setAttribute("needToChangPwd","1");
@@ -224,6 +225,7 @@ public class LoginController {
                 result.setSuccess(true);
                 UserHelper.setCurrentUser(user);
                 userService.updateLoginStatus(user);
+                request.getSession().removeAttribute("verCode");
             }
             else{
                 result.setSuccess(false);
