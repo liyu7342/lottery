@@ -3,6 +3,8 @@ package com.fr.lottery.controller;
 import com.fr.lottery.entity.LimitSet;
 import com.fr.lottery.entity.Notice;
 import com.fr.lottery.entity.User;
+import com.fr.lottery.enums.StatusEnum;
+import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.INoticeService;
 import com.fr.lottery.service.inter.IOrderService;
@@ -63,7 +65,7 @@ public class HomeController  {
         userInfo.put("account",currentUser.getAccount());
         userInfo.put("sum",amount);
         userInfo.put("odds_set",currentUser.getHandicap());
-        userInfo.put("status",1);
+        userInfo.put("status", user.getStatus());
         if(amount !=user.getAmount()){
             user.setAmount(amount);
             UserHelper.setCurrentUser(user);

@@ -11,6 +11,7 @@ import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.StringUtil;
 import com.fr.lottery.utils.UserHelper;
+import javafx.animation.Animation;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,8 @@ public class OddsService implements IOddsService{
     public Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType) {
         boolean isOpen =handicapService.IsOpenHandicap(oddSet.length()>1);
         Map<String,String> map = new HashedMap();
-        if(isOpen) {
+        User user = UserHelper.getCurrentUser();
+        if(isOpen && user.getUsertype() == StatusEnum.QiYong.ordinal()) {
             List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType ,false);
             for (Odds odds : oddsList) {
                 map.put("pro_" + odds.getNumkey(),odds.getNumvalue()==null?"": odds.getNumvalue().toString());
@@ -105,13 +107,8 @@ public class OddsService implements IOddsService{
     }
     @Override
     public List<Odds> getOddsList(String oddSet, String[] oddsType) {
-        User user = UserHelper.getCurrentUser();
-        if(user.getStatus() == StatusEnum.TingYong.ordinal()
-                || user.getStatus() == StatusEnum.TingYa.ordinal()
-                || user.getStatus() ==StatusEnum.Deleted.ordinal()){
-            return new ArrayList<Odds>();
-        }
-        return oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType,false);
+        return oddsList;
     }
 
     @Override

@@ -2,7 +2,9 @@ package com.fr.lottery.controller;
 
 import com.fr.lottery.entity.Odds;
 import com.fr.lottery.entity.ShengXiao;
+import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.OddsTypeEnum;
+import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IOddsService;
 import com.fr.lottery.service.inter.IShengxiaoService;
@@ -210,9 +212,14 @@ public class PlaysController {
         String[] oddsTypes1={OddsTypeEnum.erquanzh.getValue(),OddsTypeEnum.erzhongte.getValue(),OddsTypeEnum.techuan.getValue(),OddsTypeEnum.sanquanzh.getValue(),OddsTypeEnum.sanzher.getValue()};
        Map<String,String> map1 =oddsService.getOddsChangeMap(UserHelper.getCurrentUser().getHandicap(),oddsTypes);
         mv.addObject("entity",map1);
+        boolean isOpen = handicapService.IsOpenHandicap(false);
+        User user = UserHelper.getCurrentUser();
         List<Odds> oddsList = oddsService.getOddsList(UserHelper.getCurrentUser().getHandicap(),oddsTypes1);
         Map<String,String> oddsMap = new HashMap<String, String>();
         for(Odds odds : oddsList){
+            if(!isOpen || user.getStatus() != StatusEnum.QiYong.ordinal()){
+                odds.setNumvalue(null);
+            }
             if(!odds.getNumkey().contains("_")){
                 oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
             }
@@ -228,7 +235,7 @@ public class PlaysController {
             }
         }
 
-        boolean isOpen = handicapService.IsOpenHandicap(false);
+
         mv.addObject("isOpen",isOpen);
         Map<String,Integer> statusMap = new HashMap<String, Integer>();
         for(String oddsType : oddsTypes1){
@@ -345,7 +352,11 @@ public class PlaysController {
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
         Map<String,String> oddsMap = new HashMap<String, String>();
+        User user = UserHelper.getCurrentUser();
         for(Odds odds : oddsList){
+            if(!isOpen || user.getStatus() != StatusEnum.QiYong.ordinal()){
+                odds.setNumvalue(null);
+            }
             oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
         }
         map.put("odds",oddsMap);
@@ -377,7 +388,11 @@ public class PlaysController {
         Map<String,Object> map = new HashMap<String ,Object>();
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
         Map<String,String> oddsMap = new HashMap<String, String>();
+        User user = UserHelper.getCurrentUser();
         for(Odds odds : oddsList){
+            if(!isOpen || user.getStatus() != StatusEnum.QiYong.ordinal()){
+                odds.setNumvalue(null);
+            }
             oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
         }
         map.put("odds",oddsMap);
@@ -404,7 +419,8 @@ public class PlaysController {
         List<Odds> oddsList= oddsService.getOddsList(handicapStr,oddsTypes);
         boolean isOpen=handicapService.IsOpenHandicap(false);
         Map<String,String> oddsMap = new HashMap<String, String>();
-        if(isOpen){
+        User user = UserHelper.getCurrentUser();
+        if(isOpen && user.getStatus() == StatusEnum.QiYong.ordinal()){
             for(Odds odds : oddsList){
                 oddsMap.put(odds.getNumkey(),odds.getNumvalue()==null?"":odds.getNumvalue().toString());
             }
