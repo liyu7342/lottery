@@ -36,6 +36,9 @@ public class OddsController {
     @Autowired
     private INoticeService noticeService;
 
+    @Autowired
+    private IUserService userService;
+
     @RequestMapping("/temaa")
     public ModelAndView temaa(Boolean isDefault, String handicap) {
         if (isDefault == null) isDefault = false;
@@ -426,7 +429,9 @@ public class OddsController {
         Handicap handicap = handicapService.getCurrentHandicap();
         header.put("draws",handicap !=null?handicap.getRiqi():"" );
         header.put("sum", user.getAmount());
-        header.put("credit", user.getCredits());
+        User currentUser = userService.get(user.getId());
+
+        header.put("credit", currentUser.getCredits());
         header.put("fail_count", 0);
         header.put("calc_status", 20);
         Page<Orders> orderDetails = orderService.getOrders(handicap !=null?handicap.getId():"",1,"",user.getId(), Global.pageSizeOfTen);

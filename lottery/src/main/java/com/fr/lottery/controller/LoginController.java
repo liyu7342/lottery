@@ -181,11 +181,11 @@ public class LoginController {
                        result.setSuccess(true);
                        UserHelper.setCurrentUser(user);
                       request.getSession().removeAttribute("verCode");
-//                      request.getSession().setAttribute("first_login","1");
-//                      if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
-//                          request.getSession().setAttribute("needToChangPwd","1");
-//                      }
-//                      userService.updateLoginStatus(user);
+                      request.getSession().setAttribute("first_login","1");
+                      if(user.getNeedToChangePwd() || (user.getLastChangeDate()!=null && new Date().compareTo(DateTimeUtils.addMonths( user.getLastChangeDate(),3))>0)){
+                          request.getSession().setAttribute("needToChangPwd","1");
+                      }
+                      userService.updateLoginStatus(user);
 
                    }
                }

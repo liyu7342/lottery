@@ -6978,6 +6978,8 @@ $.extend({
             f.member_shareUp&&(f.member_shareUp.disabled=true);
             f.shareTotal && (f.shareTotal.disabled=true);
             f.shareUp && (f.shareUp.disabled=true);
+            f.shortCovering && (f.shortCovering.disabled=true);
+            f.shareFlag && (f.shareFlag.disabled=true);
             c.attr("disabled",true);
             h.attr("disabled",true);
             k.attr("disabled",true);

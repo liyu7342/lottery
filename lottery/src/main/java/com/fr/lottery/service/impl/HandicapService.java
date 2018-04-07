@@ -5,7 +5,9 @@ import com.fr.lottery.dto.Page;
 import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.Notice;
 import com.fr.lottery.entity.ShengXiao;
+import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.NoticeEnum;
+import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.INoticeService;
@@ -14,6 +16,7 @@ import com.fr.lottery.service.inter.ISysCodeService;
 import com.fr.lottery.utils.DateTimeUtils;
 import com.fr.lottery.utils.HttpClientUtils;
 import com.fr.lottery.utils.StringUtil;
+import com.fr.lottery.utils.UserHelper;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.opensaml.xml.signature.G;
@@ -228,6 +231,10 @@ public class HandicapService implements IHandicapService {
 
     @Override
     public boolean IsOpenHandicap(boolean isTema){
+        User user = UserHelper.getCurrentUser();
+        if(user.getStatus() != StatusEnum.QiYong.ordinal()){
+            return false;
+        }
         Handicap handicap =getNotOpenHandicap();
         if(handicap==null) return false;
         String dtStr =DateTimeUtils.Date2StringLong( new Date());

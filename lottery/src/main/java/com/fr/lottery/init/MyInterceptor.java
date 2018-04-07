@@ -84,21 +84,21 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
         } else {
 
 
-//            if (user.getUsertype() != 0) {
-//
-//                //判斷session是否相同，不同則使session失效
-//                String sessionId = userService.getUserSessionId(user.getId());
-//                HttpSession session = request.getSession();
-//                if (!session.getId().equals(sessionId)) {
-//                    session.invalidate();
-//                    if (isajax) {
-//                        response.getWriter().write("Duplicate session");
-//                    } else {
-//                        request.getRequestDispatcher("/login/index").forward(request, response);
-//                    }
-//                    return false;
-//                }
-//            }
+            if (user.getUsertype() != 0) {
+
+                //判斷session是否相同，不同則使session失效
+                String sessionId = userService.getUserSessionId(user.getId());
+                HttpSession session = request.getSession();
+                if (!session.getId().equals(sessionId)) {
+                    session.invalidate();
+                    if (isajax) {
+                        response.getWriter().write("Duplicate session");
+                    } else {
+                        request.getRequestDispatcher("/login/index").forward(request, response);
+                    }
+                    return false;
+                }
+            }
             if (!isajax) {
                 request.setAttribute("title_userAccount", user.getAccount());
             }

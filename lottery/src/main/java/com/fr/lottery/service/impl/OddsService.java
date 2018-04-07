@@ -90,8 +90,7 @@ public class OddsService implements IOddsService{
     public Map<String, String> getOddsChangeMap(String oddSet,String[] oddsType) {
         boolean isOpen =handicapService.IsOpenHandicap(oddSet.length()>1);
         Map<String,String> map = new HashedMap();
-        User user = UserHelper.getCurrentUser();
-        if(isOpen && user.getUsertype() == StatusEnum.QiYong.ordinal()) {
+        if(isOpen ) {
             List<Odds> oddsList = oddsMapper.getTypeOddsList(oddSet,oddsType ,false);
             for (Odds odds : oddsList) {
                 map.put("pro_" + odds.getNumkey(),odds.getNumvalue()==null?"": odds.getNumvalue().toString());

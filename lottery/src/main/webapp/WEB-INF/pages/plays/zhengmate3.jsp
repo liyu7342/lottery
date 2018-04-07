@@ -257,7 +257,7 @@
                                  <td class="hand borderLeftNone borderRightNone">${(entity.pro_02305)!''}</td>
                                 <td class="borderLeftNone"><input   disabled="disabled" class="dis" type="text"  name="pro_02305"/></td>
                             </tr>
-                            <tr pro="021">
+                            <tr pro="023">
                                 <td class="borderRightNone"><strong>雙</strong></td>
                                  <td class="hand borderLeftNone borderRightNone">${(entity.pro_02302)!''}</td>
                                 <td class="borderLeftNone"><input   disabled="disabled" class="dis" type="text"  name="pro_02302"/></td>

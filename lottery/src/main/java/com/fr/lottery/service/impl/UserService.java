@@ -174,9 +174,11 @@ public class UserService implements IUserService {
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
                 user.setNeedToChangePwd(true);
             }
-            Integer childMaxShareUp = userMapper.getChildMaxShareUp(user.getId());
-            if(user.getShareUp()<childMaxShareUp){
-                return -1;
+            if(user.getUsertype() != UserTypeEnum.Member.ordinal()){
+                Integer childMaxShareUp = userMapper.getChildMaxShareUp(user.getId());
+                if(childMaxShareUp==null || user.getShareTotal() <childMaxShareUp){
+                    return -1;
+                }
             }
             userMapper.update(user);
         }
@@ -202,7 +204,6 @@ public class UserService implements IUserService {
     @Override
     public int updateLoginStatus(User user) {
         MemcacheUtil.set(memcached_sessionkey+ user.getId(),user.getSessionId());
-
         return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
     }
 
