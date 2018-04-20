@@ -197,6 +197,24 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping("/admin_list")
+    public ModelAndView adminlist(Integer pageId, Integer keywordstatus, String keyword){
+        if(pageId==null)
+            pageId=1;
+        ModelAndView modelAndView = new ModelAndView("/user/index_4");
+        User user = UserHelper.getCurrentUser();
+        String userId = user.getId();
+
+        Page<User> users = userService.getUsers(userId,"", UserTypeEnum.Daili.ordinal(), keyword, keywordstatus, pageId);
+        modelAndView.addObject("currentUserId", userId);
+        modelAndView.addObject("users", users.getList());
+        modelAndView.addObject("page", users.toString());
+        modelAndView.addObject("keyword",keyword);
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("currentPage",5);
+        return modelAndView;
+    }
+
     @RequestMapping("/logout")
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = UserHelper.getCurrentUser();

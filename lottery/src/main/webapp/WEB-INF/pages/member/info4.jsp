@@ -316,6 +316,9 @@
                 </div>
                 <div class="bd">
                     <ul class="g-hover">
+                        <#if user.usertype gt 0 && user.usertype lt 5>
+                            <li>curl='0' href='/user/admin_list'>管理員</a><cite>0</cite></li>
+                        </#if>
                         <#if user.usertype lt 1>
                             <li><a curl='5' href='/user/index1'>大股東</a><cite>0</cite></li>
                         </#if>

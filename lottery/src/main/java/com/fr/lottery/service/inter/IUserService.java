@@ -18,6 +18,7 @@ public interface IUserService {
 
     int Save(User entity, LimitSetDto limitSetDto);
 
+    int saveAdmin(User entity, String menunos);
 
     int delete(String id);
 

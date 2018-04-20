@@ -240,7 +240,7 @@ public class Page<T> {
 
         for (int i = begin; i <= end; i++) {
             if (i == pageNo) {
-                sb.append("<li class=\"active\"><a href=\"javascript:\">" + (i + 1 - first)
+                sb.append("<li class=\"active \"><a class=\"red\" href=\"javascript:\">" + (i + 1 - first)
                         + "</a></li>\n");
             } else {
                 sb.append("<li><a href=\"javascript:\" onclick=\""+funcName+"("+i+","+pageSize+",'"+funcParam+"');\">"

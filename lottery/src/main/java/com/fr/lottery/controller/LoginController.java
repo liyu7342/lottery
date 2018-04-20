@@ -257,5 +257,4 @@ public class LoginController {
         VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
     }
 
-
 }

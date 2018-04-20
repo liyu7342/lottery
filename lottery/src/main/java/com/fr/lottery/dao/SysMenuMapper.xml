@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fr.lottery.dao.SysMenuMapper">
+    <!-- 查询所有 -->
+    <select id="getMenues" resultType="com.fr.lottery.entity.SysMenu">
+        select um.Id,me.MenuNo,me.MenuName,me.`url` ,um.userId
+        from Sys_menu me
+          inner join Sys_userMenu um on me.menuno = un.menuno
+        WHERE userId=#{userId,jdbcType=VARCHAR}
+          and me.Status =1
+    </select>
+
+    <!-- 插入用户菜单 -->
+    <insert id="insert" >
+      delete from sys_usermenu where userId =#{userId,jdbcType=VARCHAR};
+      insert into sys_usermenu() values
+    <foreach collection="menuNos" item="menuNo" separator="," open="(" close=")">
+        uuid(),#{userId,jdbcType=VARCHAR},#{menuNo,jdbcType=VARCHAR}
+    </foreach>
+
+    </insert>
+
+</mapper>

@@ -119,8 +119,12 @@
         <if test="needToChangePwd!=null and needToChangePwd!=''">
             needToChangePwd = #{needToChangePwd,jdbcType=VARCHAR},
         </if>
-      Status = #{status,jdbcType=TINYINT},
-      UserType = #{usertype,jdbcType=TINYINT},
+        <if test="status !=null">
+            Status = #{status,jdbcType=TINYINT},
+        </if>
+        <if test="usertype!=null">
+            UserType = #{usertype,jdbcType=TINYINT},
+        </if>
       Credits = #{credits,jdbcType=BIGINT},
       shortCovering = #{shortCovering,jdbcType=TINYINT},
       shareTotal = #{shareTotal,jdbcType=INTEGER},
@@ -222,9 +226,11 @@
     <select id="getChildSumCredit" resultType="java.lang.Integer">
         SELECT IFNULL(sum(Credits),0) from USER
         WHERE
+        status !=4
         <if test="id !=null and id != ''">
             parentId =#{id ,jdbcType=VARCHAR}
         </if>
+
     </select>
 
     <select id="hasChild" resultType="java.lang.Integer">

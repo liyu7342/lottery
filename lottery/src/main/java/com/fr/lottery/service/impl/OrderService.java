@@ -68,10 +68,10 @@ public class OrderService implements IOrderService {
             return -1001;
         }
         Handicap handicap = handicapService.getCurrentHandicap();
-        User user = UserHelper.getCurrentUser();
-        if (orderDto.getOrder_allamount() + user.getAmount() > user.getCredits())
+        User user = userService.get(UserHelper.getCurrentUser().getId());
+        if (orderDto.getOrder_allamount() + (user.getAmount()==null?0:user.getAmount()) > user.getCredits())
             return -1124;
-        user.setAmount(orderDto.getOrder_allamount() + user.getAmount());
+        user.setAmount(orderDto.getOrder_allamount() + (user.getAmount()==null?0:user.getAmount()));
         UserHelper.setCurrentUser(user);
 //        List<LimitSet> limitSetList = limitSetService.findAllFromCache(user.getId());
 //
@@ -79,7 +79,7 @@ public class OrderService implements IOrderService {
 //        for (LimitSet limitSet : limitSetList) {
 //            map.put( limitSet.getLimitType(), ("A".equals( user.getHandicap())? limitSet.getaRetreat():("B".equals(user.getHandicap())?limitSet.getbRetreat():limitSet.getcRetreat())));
 //        }
-
+;
 
         String[] orderDatas = orderDto.getOrderData().split(";");
         User daili = userService.getUserFromCache(user.getDailiId());

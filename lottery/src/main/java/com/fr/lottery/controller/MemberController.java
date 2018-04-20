@@ -32,12 +32,12 @@ public class MemberController {
 
     @Autowired
     private IUserService userService;
-    @Autowired
-    private IOddsService oddsService;
+
     @Autowired
     private ILimitSetService limitSetService;
     @Autowired
     private  IHandicapService handicapService;
+
 
     @RequestMapping("/index")
     public ModelAndView index(Integer pageId) {
@@ -161,7 +161,6 @@ public class MemberController {
         } else {
             user = new User();
             user.setSys_user_oddsSet(parentUser.getHandicap());
-
             limitSets = plimitSets;
         }
         Integer credits = userService.getChildSumCredit(parentId);
@@ -250,7 +249,7 @@ public class MemberController {
         modelAndView.addObject("shareTotalList", shareArr);
         modelAndView.addObject("shareUpList", shareUpArr);
         modelAndView.addObject("parentUser", parentUser);
-        modelAndView.addObject("isopen",true);
+        modelAndView.addObject("isopen",handicapService.IsOpenHandicap(false));
         User user1 = userService.getUserCount(false);
         modelAndView.addObject("user",user1);
         return modelAndView;
@@ -313,6 +312,24 @@ public class MemberController {
         User user1 = userService.getUserCount(false);
         modelAndView.addObject("user",user1);
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping("/admin_create")
+    public ModelAndView admin_create(String adminid){
+        if(StringUtils.isBlank(adminid)){
+            User user = userService.get(adminid);
+        }
+        User currentUser = UserHelper.getCurrentUser();
+
+        ModelAndView modelAndView = new ModelAndView("/member/admin_create");
+        return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping("/saveAdmin")
+    public void saveAdmin(User user,String menunos){
+        userService.saveAdmin(user,menunos);
     }
 
     @ResponseBody

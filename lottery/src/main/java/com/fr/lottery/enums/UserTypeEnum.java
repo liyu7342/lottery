@@ -27,5 +27,9 @@ public enum UserTypeEnum {
     /**
      * 会员
      */
-    Member
+    Member,
+    /**
+     * 管理员（代理）
+     */
+    UserAdmin
 }

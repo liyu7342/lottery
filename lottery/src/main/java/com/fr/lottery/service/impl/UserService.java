@@ -8,6 +8,7 @@ import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.enums.UserTypeEnum;
 import com.fr.lottery.init.Global;
 import com.fr.lottery.service.inter.ILimitSetService;
+import com.fr.lottery.service.inter.ISysMenuService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.MemcacheUtil;
@@ -33,6 +34,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private ILimitSetService limitSetService;
+    @Autowired
+    private ISysMenuService sysMenuService;
 
     private static final String memcached_key = "user_user_";
     private static final String memcached_sessionkey="user_sessionid_";
@@ -186,6 +189,25 @@ public class UserService implements IUserService {
         return 1;
     }
 
+    @Override
+    public int saveAdmin(User user,String menunos){
+        if (StringUtils.isBlank(user.getId())) {
+            user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+            user.setId(StringUtil.getUUID());
+            user.setNeedToChangePwd(true);
+            user.setUsertype(UserTypeEnum.UserAdmin.ordinal());
+            user.setCreatedate(new Date());
+            userMapper.insert(user);
+        } else {
+            if (StringUtils.isNotBlank(user.getPassword())) {
+                user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
+                user.setNeedToChangePwd(true);
+            }
+            userMapper.update(user);
+        }
+        sysMenuService.save(user.getId(),menunos);
+        return 1;
+    }
     @Override
     public int delete(String id) {
         int exists= userMapper.hasChild(id);
