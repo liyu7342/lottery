@@ -41,6 +41,8 @@ public interface IUserService {
 
     User getUserFromCache(String id);
 
+    void setUserCache(User user);
+
     User getUserCount(boolean needToReload);
 
 }

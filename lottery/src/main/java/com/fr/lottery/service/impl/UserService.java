@@ -37,8 +37,8 @@ public class UserService implements IUserService {
     @Autowired
     private ISysMenuService sysMenuService;
 
-    private static final String memcached_key = "user_user_";
-    private static final String memcached_sessionkey="user_sessionid_";
+    private static final String memcached_user_key = "user_user_";
+    private static final String memcached_user_sessionid_key="user_sessionid_";
 
     public User getByAccount(String loginName) {
         User result = userMapper.getByAccount(loginName);
@@ -184,6 +184,7 @@ public class UserService implements IUserService {
                 }
             }
             userMapper.update(user);
+            MemcacheUtil.set(memcached_user_key+user.getId(),user);
         }
         limitSetService.insert(user.getId(), limitSetDto);
         return 1;
@@ -225,7 +226,7 @@ public class UserService implements IUserService {
 
     @Override
     public int updateLoginStatus(User user) {
-        MemcacheUtil.set(memcached_sessionkey+ user.getId(),user.getSessionId());
+        MemcacheUtil.set(memcached_user_sessionid_key+ user.getId(),user.getSessionId());
         return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
     }
 
@@ -234,16 +235,16 @@ public class UserService implements IUserService {
      * @param userId
      * @return
      */
-    @Override
-    public String getUserSessionId(String userId){
-        Object object= MemcacheUtil.get(memcached_sessionkey+ userId);
-        if(object==null){
-            User user =userMapper.get(userId);
-            MemcacheUtil.set(memcached_sessionkey+ userId,user.getSessionId());
-            return user.getSessionId();
+        @Override
+        public String getUserSessionId(String userId){
+            Object object= MemcacheUtil.get(memcached_user_sessionid_key+ userId);
+            if(object==null){
+                User user =userMapper.get(userId);
+                MemcacheUtil.set(memcached_user_sessionid_key+ userId,user);
+                return user.getSessionId();
+            }
+            return object.toString();
         }
-        return object.toString();
-    }
 
     @Override
     public int changeStatus(Integer level, String pid, String id, Integer status) {
@@ -321,20 +322,28 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserFromCache(String id) {
-        Object object = MemcacheUtil.get(memcached_key + id);
+        Object object = MemcacheUtil.get(memcached_user_key + id);
         if (object != null)
             return (User) object;
         User user = userMapper.get(id);
         if (user != null) {
-            MemcacheUtil.add(memcached_key + id, user);
+            MemcacheUtil.set(memcached_user_key + id, user);
         }
         return user;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
+    public void setUserCache(User user){
+        MemcacheUtil.set(memcached_user_key+user.getId(),user);
+    }
     @Override
     public User getUserCount(boolean needToReload) {
         User currentUser = UserHelper.getCurrentUser();
-        User user =  userMapper.getUserCount(currentUser.getId());;
+        User user =  userMapper.getUserCount(currentUser.getId());
         /*User currentUser = UserHelper.getCurrentUser();
         if (!needToReload) {//不需要重新加载
             Object object = MemcacheUtil.get(memcached_key + currentUser.getId() + "_count");

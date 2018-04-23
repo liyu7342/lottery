@@ -228,7 +228,7 @@
         WHERE
         status !=4
         <if test="id !=null and id != ''">
-            parentId =#{id ,jdbcType=VARCHAR}
+           AND parentId =#{id ,jdbcType=VARCHAR}
         </if>
 
     </select>
