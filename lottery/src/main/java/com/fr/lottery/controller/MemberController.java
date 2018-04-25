@@ -316,13 +316,18 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping("/admin_create")
-    public ModelAndView admin_create(String adminid){
-        if(StringUtils.isBlank(adminid)){
-            User user = userService.get(adminid);
+    public ModelAndView admin_create(String id,String parentId){
+        User user;
+        if(StringUtils.isNotBlank(id)){
+             user = userService.get(parentId);
+        }
+        else{
+             user =new User();
         }
         User currentUser = UserHelper.getCurrentUser();
 
         ModelAndView modelAndView = new ModelAndView("/member/admin_create");
+        modelAndView.addObject("info",user);
         return modelAndView;
     }
 

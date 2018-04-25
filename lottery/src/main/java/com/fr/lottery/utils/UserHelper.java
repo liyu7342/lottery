@@ -37,15 +37,7 @@ public class UserHelper {
 //        userInfoApiDto.setCredits(user.getCredits());
 //
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-
         HttpSession session = request.getSession();
-        if(StringUtils.isNotBlank(user.getSessionId()) && !session.getId().equals(user.getSessionId())){
-            HttpSession absession= SessionContext.getSession(user.getSessionId());
-            if(absession!=null){
-                SessionContext.DelSession(absession);
-                absession.setAttribute("dupSession","Duplicate session");
-            }
-        }
         user.setSessionId(session.getId());
         session.setAttribute(session_user,user);
     }

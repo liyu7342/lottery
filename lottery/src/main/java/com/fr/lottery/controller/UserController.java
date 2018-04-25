@@ -201,11 +201,11 @@ public class UserController {
     public ModelAndView adminlist(Integer pageId, Integer keywordstatus, String keyword){
         if(pageId==null)
             pageId=1;
-        ModelAndView modelAndView = new ModelAndView("/user/index_4");
+        ModelAndView modelAndView = new ModelAndView("/user/admin_list");
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
 
-        Page<User> users = userService.getUsers(userId,"", UserTypeEnum.Daili.ordinal(), keyword, keywordstatus, pageId);
+        Page<User> users = userService.getUsers(userId,"", UserTypeEnum.UserAdmin.ordinal(), keyword, keywordstatus, pageId);
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());

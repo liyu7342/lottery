@@ -29,19 +29,19 @@
                             <input type="button" class="btn1 cs" onclick="location.href='/user/admin_list'" value="返回"/></h2></div>
                         <div class="bd g-new">
                             <div class="g-tif"><h3>基本資料設定 </h3></div>
-                            <form id="create" method="post" action="/user/saveAdmin">
+                            <form id="create" method="post" action="/member/saveAdmin">
                                 <table class="g-t1 g-t2 t1">
                                     <tbody nomovod><tr>
                                         <td>名稱</td>
                                         <td id="c_username">
-                                            <input type="text" valid='name' maxlength="16" name="__sys_user_userName" value=""
+                                            <input type="text" valid='name' maxlength="16" name="userName" value="${info.userName!''}"
                                             />
                                         </td>
                                         <td>賬號</td>
-                                        <td><input type="text" valid='account' maxlength="12" name="__sys_user_userAccount" value=""
+                                        <td><input type="text" valid='account' maxlength="12" name="account" value="${info.account!''}"
                                         /> 1-12個數字或字母字符</td>
                                         <td> 狀態</td>
-                                        <td><select class="w4" name="sys_user_status"  >
+                                        <td><select class="w4" name="status"  >
                                             <option value='1'  selected="selected">啟用</option>
                                             <option value='0' >停用</option>
                                             <option value='2' >停押</option>
@@ -49,7 +49,7 @@
                                     </tr>
                                     <tr>
                                         <td> 密碼</td>
-                                        <td><input type="password" valid="password' " maxlength="12" name="sys_user_password" value=""/></td>
+                                        <td><input type="password" valid="password' " maxlength="12" name="password" value=""/></td>
                                         <td>確認密碼</td>
                                         <td colspan="3"><input type="password" valid="password' " maxlength="12" name="sys_user_repassword2" value=""/> 6-12位數字和字母組成</td>
                                     </tr>
@@ -84,8 +84,10 @@
 
                                 <div class="g-tn"><input type="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/admin_list'"/>
-                                    <input type="hidden" name="id" value='9691'/>
+                                    <input type="hidden" name="id" value='${id!''}'/>
+                                    <input type="hidden" name="op" value='create'/>
                                     <input type="hidden" name="save" value="1"/>
+                                    <input type="hidden" name="sys_user_permission"/>
                                     <input type="hidden" name="requestUrl" value='/user/admin_list'/>
 
                                 </div>

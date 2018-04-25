@@ -26,7 +26,7 @@
                     <div id="admcreate" class="module">
                         <div class="hd"><h2 class="g-tit">
                             新增管理員
-                            <input type="button" class="btn1 cs" onclick="location.href='../account/admin_list.htm'" value="返回"/></h2></div>
+                            <input type="button" class="btn1 cs" onclick="location.href="/user/admin_list'" value="返回"/></h2></div>
                         <div class="bd g-new">
                             <div class="g-tif"><h3>基本資料設定 </h3></div>
                             <form id="create" method="post" action="admin_create.htm">
