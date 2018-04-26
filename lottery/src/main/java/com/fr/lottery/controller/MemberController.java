@@ -333,8 +333,13 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping("/saveAdmin")
-    public void saveAdmin(User user,String menunos){
-        userService.saveAdmin(user,menunos);
+    public void saveAdmin(User user,String sys_user_permission){
+        if(StringUtils.isBlank(user.getParentid())){
+            User parentUser =UserHelper.getCurrentUser();
+            user.setParentid(parentUser.getId());
+            user.setXpath(parentUser.getXpath());
+        }
+        userService.saveAdmin(user,sys_user_permission);
     }
 
     @ResponseBody

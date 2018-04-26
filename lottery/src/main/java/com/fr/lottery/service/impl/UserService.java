@@ -196,6 +196,9 @@ public class UserService implements IUserService {
             user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             user.setId(StringUtil.getUUID());
             user.setNeedToChangePwd(true);
+            Integer seq = userMapper.getSeq(user.getParentid());
+             user.setXpath(user.getXpath()+String.format("%03d", seq));
+             user.setXseq(seq);
             user.setUsertype(UserTypeEnum.UserAdmin.ordinal());
             user.setCreatedate(new Date());
             userMapper.insert(user);

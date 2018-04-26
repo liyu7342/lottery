@@ -54,9 +54,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("/user/index");
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
-
         Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
-
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
