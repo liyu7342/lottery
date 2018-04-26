@@ -242,7 +242,16 @@ public class UserController {
             result = true;
         }
         response.setContentType("text/html;charset=UTF-8");
-        String url = user.getUsertype() ==0 ?"/home/index2":user.getUsertype()>0 && user.getUsertype()<5?"/home/index1":"/home/index";
+        String url="";
+        if(user.getUsertype() ==UserTypeEnum.Admin.ordinal()){
+            url = "/home/index2";
+        }
+        else if(user.getUsertype() ==UserTypeEnum.Member.ordinal()){
+            url="/home/index";
+        }
+        else {
+            url="/home/index1";
+        }
         if(result){
             response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");parent.location.href =\""+url+"\"</script>");
         }

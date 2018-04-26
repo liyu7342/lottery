@@ -37,7 +37,7 @@
                 <div class="ps"><div class="h o">
                     <marquee onmouseout="this.start()" onmouseover="this.stop()" scrollamount="3" behavior="scroll" id="marquee" title="點擊查看更多公告"></marquee>
                 </div>
-                    <div class="rt">賬號:${user.account!''}, <#if user.usertype==1>大股東<#elseif  user.usertype==2>小股東<#elseif user.usertype==3>總代理<#elseif user.usertype==4>代理<#elseif user.usertype==5>会员<#elseif user.usertype==0>管理员<#else>&nbsp;</#if></div>
+                    <div class="rt">賬號:${user.account!''}, <#if user.usertype==1>大股東<#elseif  user.usertype==2>小股東<#elseif user.usertype==3>總代理<#elseif user.usertype==4>代理<#elseif user.usertype==6>管理员<#else>&nbsp;</#if></div>
                     <a act="logout" href="/user/logout" class="ico">退 出</a>
                 </div>
 

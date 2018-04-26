@@ -101,24 +101,24 @@
                                         </td>
                                         <td><#if obj.status==0>
                                             <a class='a_btm_line' act='qiyong'   pid="${obj.parentid !''}"
-                                               tid='${obj.id}' page='1' href='admin_list'>启用</a>/&nbsp;<a class='a_btm_line' act='tingya'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='admin_list'>停押</a>/&nbsp;<a class='a_btm_line' act='shanchu'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='admin_list'>删除</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/info1?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                               tid='${obj.id}' page='1' href='admin_list'>启用</a>/&nbsp;<a class='a_btm_line' act='tingya'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='admin_list'>停押</a>/&nbsp;<a class='a_btm_line' act='shanchu'   pid="${obj.parentid !''}" tid='${obj.id}' page='1' href='admin_list'>删除</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/info1?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=6&parentId=${obj.parentid!''}'>修改</a>
                                         </#if>
                                             <#if obj.status==1>
                                                 <a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
                                                    tid='${obj.id}' page='1' href='admin_list'>停用</a>/&nbsp;<a class='a_btm_line' act='tingya'   pid="${obj.parentid !''}"
-                                                                                                                   tid='${obj.id}' page='1' href='admin_list'>停押</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/info1?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                                                                                                   tid='${obj.id}' page='1' href='admin_list'>停押</a>/&nbsp;<a class='a_btm_line'   pid="${obj.parentid !''}" href='/member/admin_create?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=6&parentId=${obj.parentid!''}'>修改</a>
                                             </#if>
                                             <#if obj.status==2>
                                                 <a class='a_btm_line' act='qiyong'   pid="${obj.parentid !''}"
                                                    tid='${obj.id}' page='1' href='admin_list'>启用</a>/&nbsp;<a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
                                                                                                                    tid='${obj.id}' page='1' href='admin_list'>停用</a>/&nbsp;<a class ='a_btm_line' tid="${obj.id}"   pid="${obj.parentid !''}"
-                                                                                                                                                                                   href='/member/info1?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                                                                                                                                                                   href='/member/admin_create?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=6&parentId=${obj.parentid!''}'>修改</a>
                                             </#if>
                                             <#if obj.status==3>
                                                 <a class='a_btm_line' act='qiyong'  pid="${obj.parentid !''}"
                                                    tid='${obj.id}' page='1' href='admin_list'>启用</a>/&nbsp;<a class='a_btm_line' act='tingyong'   pid="${obj.parentid !''}"
                                                                                                                    tid='${obj.id}' page='1' href='admin_list'>停用</a>/&nbsp;<a class='a_btm_line'
-                                                                                                                                                                                   pid="${obj.parentid !''}" href='/member/info1?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=5&parentId=${obj.parentid!''}'>修改</a>
+                                                                                                                                                                                   pid="${obj.parentid !''}" href='/member/admin_create?op=upd&id=${obj.id}&pageId=1&keywordstatus=1&keyword=&level=6&parentId=${obj.parentid!''}'>修改</a>
                                             </#if>
                                         </td>
                                     </tr>

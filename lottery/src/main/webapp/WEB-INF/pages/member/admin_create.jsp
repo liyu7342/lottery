@@ -84,7 +84,7 @@
 
                                 <div class="g-tn"><input type="submit" class="btn2" value="確 定"/>
                                     <input value="取 消" class="btn2" type="reset" onclick="location.href='/user/admin_list'"/>
-                                    <input type="hidden" name="id" value='${id!''}'/>
+                                    <input type="hidden" name="id" value='${info.id!""}'/>
                                     <input type="hidden" name="op" value='create'/>
                                     <input type="hidden" name="save" value="1"/>
                                     <input type="hidden" name="sys_user_permission"/>
