@@ -229,8 +229,8 @@ public class UserService implements IUserService {
 
     @Override
     public int updateLoginStatus(User user) {
-        MemcacheUtil.set(memcached_user_sessionid_key+ user.getId(),user.getSessionId());
-        return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
+        MemcacheUtil.set(memcached_user_sessionid_key+ user.getRealId(),user.getSessionId());
+        return userMapper.updateLoginSessionId(user.getRealId(), user.getSessionId());
     }
 
     /**R

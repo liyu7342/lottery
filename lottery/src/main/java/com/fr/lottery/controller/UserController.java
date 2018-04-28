@@ -74,7 +74,7 @@ public class UserController {
         String url = "";
         User user = UserHelper.getCurrentUser();
 
-        if(UserTypeEnum.Admin.ordinal() == user.getUsertype()){
+        if(UserTypeEnum.Admin.ordinal() == user.getUsertype() ){
             url="redirect:/user/index1";
         }
         else if(UserTypeEnum.DaGudong.ordinal() == user.getUsertype()){
@@ -233,7 +233,7 @@ public class UserController {
     @RequestMapping("/changepwd")
     public void changepwd(String oldpwd, String newpwd1, HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = UserHelper.getCurrentUser();
-         user = userService.get(user.getId());
+         user = userService.get(user.getRealId());
         MD5Util md5Util = new MD5Util();
         boolean result = false;
         if (user.getPassword().equals(md5Util.getMD5ofStr(oldpwd))) {
