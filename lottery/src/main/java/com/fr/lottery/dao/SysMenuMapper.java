@@ -13,7 +13,7 @@ import java.util.List;
 public interface SysMenuMapper {
     List<SysMenu> getMenues(@Param("userId") String userId);
 
-    Integer insert(@Param("menunos") String[] menuNos, @Param("userId") String userId);
+    Integer insert(@Param("menuNos") String[] menuNos, @Param("userId") String userId);
 
 
 }

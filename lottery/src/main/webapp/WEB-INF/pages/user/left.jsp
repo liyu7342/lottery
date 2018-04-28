@@ -5,7 +5,7 @@
         </div>
         <div class="bd">
             <ul class="g-hover">
-                <#if user.usertype gt 0 && user.usertype lt 5>
+                <#if user.usertype gt 0 && user.usertype lt 5 &&user.realUserType !=6>
                     <li><a curl='0' href='/user/admin_list'>管理員</a><cite>0</cite></li>
                 </#if>
                 <#if user.usertype lt 1>

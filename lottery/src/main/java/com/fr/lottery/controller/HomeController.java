@@ -165,7 +165,9 @@ public class HomeController  {
             request.getSession().removeAttribute("first_login");
             mv.addObject("show_ip","<div class=\"show_ip\" id=\"show_ip\" popup=\"1\" style=\"display: none;\"></div>");
         }
-        mv.addObject("user",UserHelper.getCurrentUser());
+        User user =UserHelper.getCurrentUser();
+
+        mv.addObject("user",user);
         return mv;
     }
 

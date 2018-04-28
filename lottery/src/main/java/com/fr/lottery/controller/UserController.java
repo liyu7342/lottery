@@ -53,9 +53,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("/user/index");
         User user = UserHelper.getCurrentUser();
         String userId = user.getId();
-
         Page<User> users = userService.getUsers(userId,parentid, UserTypeEnum.Member.ordinal(), keyword, keywordstatus, pageId);
-
         modelAndView.addObject("currentUserId", userId);
         modelAndView.addObject("users", users.getList());
         modelAndView.addObject("page", users.toString());
@@ -75,7 +73,7 @@ public class UserController {
         String url = "";
         User user = UserHelper.getCurrentUser();
 
-        if(UserTypeEnum.Admin.ordinal() == user.getUsertype()){
+        if(UserTypeEnum.Admin.ordinal() == user.getUsertype() ){
             url="redirect:/user/index1";
         }
         else if(UserTypeEnum.DaGudong.ordinal() == user.getUsertype()){
@@ -234,7 +232,7 @@ public class UserController {
     @RequestMapping("/changepwd")
     public void changepwd(String oldpwd, String newpwd1, HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = UserHelper.getCurrentUser();
-         user = userService.get(user.getId());
+         user = userService.get(user.getRealId());
         MD5Util md5Util = new MD5Util();
         boolean result = false;
         if (user.getPassword().equals(md5Util.getMD5ofStr(oldpwd))) {
@@ -243,7 +241,16 @@ public class UserController {
             result = true;
         }
         response.setContentType("text/html;charset=UTF-8");
-        String url = user.getUsertype() ==0 ?"/home/index2":user.getUsertype()>0 && user.getUsertype()<5?"/home/index1":"/home/index";
+        String url="";
+        if(user.getUsertype() ==UserTypeEnum.Admin.ordinal()){
+            url = "/home/index2";
+        }
+        else if(user.getUsertype() ==UserTypeEnum.Member.ordinal()){
+            url="/home/index";
+        }
+        else {
+            url="/home/index1";
+        }
         if(result){
             response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");parent.location.href =\""+url+"\"</script>");
         }

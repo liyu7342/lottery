@@ -14,8 +14,8 @@
     <insert id="insert" >
       delete from sys_usermenu where userId =#{userId,jdbcType=VARCHAR};
       insert into sys_usermenu() values
-    <foreach collection="menuNos" item="menuNo" separator="," open="(" close=")">
-        uuid(),#{userId,jdbcType=VARCHAR},#{menuNo,jdbcType=VARCHAR}
+    <foreach collection="menuNos" item="menuNo" separator="," open="" close="">
+        (uuid(),#{userId,jdbcType=VARCHAR},#{menuNo,jdbcType=VARCHAR})
     </foreach>
 
     </insert>

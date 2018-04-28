@@ -319,7 +319,7 @@ public class MemberController {
     public ModelAndView admin_create(String id,String parentId){
         User user;
         if(StringUtils.isNotBlank(id)){
-             user = userService.get(parentId);
+             user = userService.get(id);
         }
         else{
              user =new User();
@@ -333,8 +333,15 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping("/saveAdmin")
-    public void saveAdmin(User user,String menunos){
-        userService.saveAdmin(user,menunos);
+    public void saveAdmin(User user,String sys_user_permission,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        if(StringUtils.isBlank(user.getId())){
+            User parentUser =UserHelper.getCurrentUser();
+            user.setParentid(parentUser.getId());
+            user.setXpath(parentUser.getXpath());
+        }
+        userService.saveAdmin(user,sys_user_permission);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().write("<script type=\"text/javascript\"> alert(\"保存成功！\");location.href =\"/user/admin_list\";</script>");
     }
 
     @ResponseBody

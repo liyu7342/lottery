@@ -82,14 +82,12 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
             }
             return false;
         } else {
-
-
             if (user.getUsertype() != 0) {
 
                 //判斷session是否相同，不同則使session失效
-                String sessionId = userService.getUserSessionId(user.getId());
+                String sessionId = userService.getUserSessionId(user.getRealId());//未获取到sessionId
                 HttpSession session = request.getSession();
-                if (!session.getId().equals(sessionId)) {
+                if (StringUtils.isNotBlank(sessionId) && !session.getId().equals(sessionId)) {
                     session.invalidate();
                     if (isajax) {
                         response.getWriter().write("Duplicate session");

@@ -77,11 +77,21 @@ public class User implements Serializable{
 
     private Integer member_shareUp;
 
-    private boolean needToChangePwd;
+    private Boolean needToChangePwd;
 
     private Date lastChangeDate;
 
     private String sessionId;
+
+    private Integer realUserType;
+
+    /**
+     * 真实Id
+     */
+    private String realId;
+
+    private String virtualName;
+
 
 
     /**
@@ -432,5 +442,19 @@ public class User implements Serializable{
         this.memberNumber = memberNumber;
     }
 
+    public String getRealId() {
+        return realId;
+    }
 
+    public void setRealId(String realId) {
+        this.realId = realId;
+    }
+
+    public Integer getRealUserType() {
+        return realUserType;
+    }
+
+    public void setRealUserType(Integer realUserType) {
+        this.realUserType = realUserType;
+    }
 }

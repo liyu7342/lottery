@@ -196,6 +196,9 @@ public class UserService implements IUserService {
             user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
             user.setId(StringUtil.getUUID());
             user.setNeedToChangePwd(true);
+            Integer seq = userMapper.getSeq(user.getParentid());
+             user.setXpath(user.getXpath()+String.format("%03d", seq));
+             user.setXseq(seq);
             user.setUsertype(UserTypeEnum.UserAdmin.ordinal());
             user.setCreatedate(new Date());
             userMapper.insert(user);
@@ -226,8 +229,8 @@ public class UserService implements IUserService {
 
     @Override
     public int updateLoginStatus(User user) {
-        MemcacheUtil.set(memcached_user_sessionid_key+ user.getId(),user.getSessionId());
-        return userMapper.updateLoginSessionId(user.getId(), user.getSessionId());
+        MemcacheUtil.set(memcached_user_sessionid_key+ user.getRealId(),user.getSessionId());
+        return userMapper.updateLoginSessionId(user.getRealId(), user.getSessionId());
     }
 
     /**R
