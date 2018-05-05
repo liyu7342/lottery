@@ -600,7 +600,7 @@ public class ReportController {
             banners.add("<a href=\"/report/z_gudong?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=2&__account=" + gudong.getAccount() + " &__name=" + gudong.getUserName() + "&id=" + gudong.getId() + "\">股東</a> -> ");
             banners.add("<a href=\"/report/z_zongdaili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=3&__account=" + zongdai.getAccount() + " &__name=" + zongdai.getUserName() + "&id=" + zongdai.getId() + "\">總代</a> -> ");
             banners.add("<a href=\"/report/z_daili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=4&__account=" + daili.getAccount() + " &__name=" + daili.getUserName() + "&id=" + daili.getId() + "\">代理商</a> -> ");
-        } else if (user.getUsertype() == 1) {
+        } else if (user.getUsertype() == 1) {//大股东
             User daili = userService.get(member.getDailiId());
             User zongdai = userService.get(member.getZongdailiId());
             User gudong = userService.get(member.getGudongId());
@@ -608,19 +608,19 @@ public class ReportController {
             banners.add("<a href=\"/report/z_gudong?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=2&__account=" + gudong.getAccount() + " &__name=" + gudong.getUserName() + "&id=" + gudong.getId() + "\">股東</a> -> ");
             banners.add("<a href=\"/report/z_zongdaili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=3&__account=" + zongdai.getAccount() + " &__name=" + zongdai.getUserName() + "&id=" + zongdai.getId() + "\">總代</a> -> ");
             banners.add("<a href=\"/report/z_daili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=4&__account=" + daili.getAccount() + " &__name=" + daili.getUserName() + "&id=" + daili.getId() + "\">代理商</a> -> ");
-        } else if (user.getUsertype() == 2) {
+        } else if (user.getUsertype() == 2) {//股东
             User daili = userService.get(member.getDailiId());
             User zongdai = userService.get(member.getZongdailiId());
             banners.add("<a href=\"/report/user_report?gameType=1&draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&kind=user_report\">股東</a> -> ");
             banners.add("<a href=\"/report/z_zongdaili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=3&__account=" + zongdai.getAccount() + " &__name=" + zongdai.getUserName() + "&id=" + zongdai.getId() + "\">總代</a> -> ");
             banners.add("<a href=\"/report/z_daili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=4&__account=" + daili.getAccount() + " &__name=" + daili.getUserName() + "&id=" + daili.getId() + "\">代理商</a> -> ");
-        } else if (user.getUsertype() == 3) {
+        } else if (user.getUsertype() == 3) {//总代
             User daili = userService.get(member.getDailiId());
             banners.add("<a href=\"/report/user_report?gameType=1&draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&kind=user_report\">總代</a> -> ");
             banners.add("<a href=\"/report/z_daili?draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&type=1&p_level=4&__account=" + daili.getAccount() + " &__name=" + daili.getUserName() + "&id=" + daili.getId() + "\">代理商</a> -> ");
         } else if (user.getUsertype() == 4) {
             banners.add("<a href=\"/report/user_report?gameType=1&draw_date=" + draw_date0 + "&draw_date2=" + draw_date0 + "&kind=user_report\">代理商</a> -> ");
-        } else {
+        } else {//代理
             banners.add("<a href=\"/report/report\">上一頁</a>");
         }
         modelAndView.addObject("banners", StringUtils.join(banners, " "));
@@ -629,7 +629,7 @@ public class ReportController {
         Float winAmount=0f;
         for(Orders orders: orderDetails.getList()){
             amount += orders.getAmount();
-            winAmount += orders.getWinAmount()+orders.getRetreatAmt();
+            winAmount += (orders.getWinAmount()==null?0:orders.getWinAmount())+orders.getRetreatAmt();
         }
         modelAndView.addObject("page", orderDetails.toString());
         modelAndView.addObject("amount",amount);

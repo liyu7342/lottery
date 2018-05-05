@@ -143,7 +143,7 @@ public class OrderService implements IOrderService {
 
             orders.setGametype(orderStrs[0]);
             if (GameTypeEnum.連碼二.getValue().equals(category) || GameTypeEnum.尾數連.getValue().equals(category)
-                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue() == category) {
+                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue() == category || GameTypeEnum.不中.getValue() == category) {
                 orders.setIsMuti(true);
             } else {
                 orders.setIsMuti(false);
@@ -670,11 +670,11 @@ public class OrderService implements IOrderService {
         User user = UserHelper.getCurrentUser();
         String xpath = user.getXpath() + "%";
         Handicap handicap = handicapService.getLastestHandicap();
-        if (game_id.equals(OddsTypeEnum.erquanzh.getValue()) || game_id.equals(OddsTypeEnum.erzhongte.getValue()) || game_id.equals(OddsTypeEnum.sanquanzh.getValue())
-                || game_id.equals(OddsTypeEnum.sanzher.getValue()) || game_id.equals(OddsTypeEnum.techuan.getValue())) {
-
-
-        }
+//        if (game_id.equals(OddsTypeEnum.erquanzh.getValue()) || game_id.equals(OddsTypeEnum.erzhongte.getValue()) || game_id.equals(OddsTypeEnum.sanquanzh.getValue())
+//                || game_id.equals(OddsTypeEnum.sanzher.getValue()) || game_id.equals(OddsTypeEnum.techuan.getValue())) {
+//
+//
+//        }
         List<OrderDetailDto> detailDtos = orderDetailMapper.getOrderDetailsByDaili(handicap.getId(), user.getId(), user.getUsertype(), game_id, number, (pageId - 1) * Global.pageSizeOfTen, Global.pageSizeOfTen);
 
         long total = orderDetailMapper.getDetailsTotalByDaili(handicap.getId(), user.getId(), user.getUsertype(), game_id, number);

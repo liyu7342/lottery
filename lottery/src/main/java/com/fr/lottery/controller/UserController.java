@@ -8,7 +8,6 @@ import com.fr.lottery.service.inter.ILimitSetService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.MD5Util;
 import com.fr.lottery.utils.UserHelper;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

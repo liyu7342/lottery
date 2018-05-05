@@ -37,6 +37,8 @@ public class UserHelper {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
         user.setSessionId(session.getId());
+        user.setRealId(user.getId());
+        user.setRealUserType(user.getUsertype());
         session.setAttribute(session_user,user);
     }
 

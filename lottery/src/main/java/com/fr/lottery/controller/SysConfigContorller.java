@@ -5,7 +5,6 @@ import com.fr.lottery.entity.BucangConfig;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.service.inter.IBucangConfigService;
 import com.fr.lottery.utils.JsonUtil;
-import com.fr.lottery.utils.RequestDataUtils;
 import com.fr.lottery.utils.UserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -227,7 +227,7 @@ public class StatisTable {
             bodyList.add("<td>" + StringUtil.ToInteger(t.getYongJin().toString()) + "</td>");
             bodyList.add("<td>" + StringUtil.ToInteger(t.getCaiJin().toString()) + "</td>");
             bodyList.add("<td>" + t.getAveOdds() + "</td>");
-            bodyList.add("<td>" +StringUtil.ToInteger(t.getWinAmount().toString())  + "</td>");
+            bodyList.add("<td>" +(t.getWinAmount() ==null?0: t.getWinAmount().intValue())  + "</td>");
             bodyList.add("<td><a href=\"javascript:void(0);\" to=\"/statis/short_covering?number="+t.getNo()+"&amp;game_id="+t.getGameType()
                     +"\" class=\"red gms_a\">"+ (t.getBuhuo()==null?0:StringUtil.ToInteger(t.getBuhuo().toString())) +"</a></td>");
             bodyList.add("<td><span oddsSet='A'>"+t.getAaOdds()+"</span><span oddsSet='B'  class=\"hid\">"+t.getBaOdds()
