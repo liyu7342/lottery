@@ -1,9 +1,12 @@
 package com.fr.lottery.controller;
 
+import com.fr.lottery.dto.Page;
 import com.fr.lottery.dto.ResultInfo;
+import com.fr.lottery.entity.Handicap;
 import com.fr.lottery.entity.User;
 import com.fr.lottery.enums.StatusEnum;
 import com.fr.lottery.enums.UserTypeEnum;
+import com.fr.lottery.service.inter.IHandicapService;
 import com.fr.lottery.service.inter.IUserService;
 import com.fr.lottery.utils.*;
 import org.apache.commons.lang.StringUtils;
@@ -16,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.Console;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/11/22.
@@ -261,6 +266,63 @@ public class LoginController {
         //生成图片
         int w = 120, h = 32;
         VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
+    }
+
+
+    @Autowired
+    IHandicapService handicapService;
+    @RequestMapping("/calc")
+    public void calc(HttpServletRequest request,HttpServletResponse response){
+        Page<Handicap> page = handicapService.getHandicaps(1,10000);
+
+        int totalMoney=0;
+        for( int i=0, len =page.getList().size();i<(len-1);i++){
+            Handicap prev = page.getList().get(i);
+            Handicap next = page.getList().get(i+1);
+            int total =0;
+            int currentMoney=0;
+            if( (prev.getNo1().equals(next.getNo1() )|| prev.getNo1().equals(next.getNo2() )|| prev.getNo1().equals(next.getNo3()
+                    )|| prev.getNo1().equals(next.getNo4())|| prev.getNo1().equals(next.getNo5())|| prev.getNo1().equals(next.getNo6()
+                        )|| prev.getNo1().equals(next.getTema()))){
+                total++;
+            }
+            if(prev.getNo2().equals(next.getNo1() )|| prev.getNo2().equals(next.getNo2() )|| prev.getNo2().equals(next.getNo3()
+                    )|| prev.getNo2().equals(next.getNo4())|| prev.getNo2().equals(next.getNo5())|| prev.getNo2().equals(next.getNo6()
+                    )|| prev.getNo2().equals(next.getTema())){
+                total++;
+            }
+            if(prev.getNo3().equals(next.getNo1() )|| prev.getNo3().equals(next.getNo2() )|| prev.getNo3().equals(next.getNo3()
+                    )|| prev.getNo3().equals(next.getNo4())|| prev.getNo3().equals(next.getNo5())|| prev.getNo3().equals(next.getNo6()
+                    )|| prev.getNo3().equals(next.getTema())){
+                total++;
+            }
+            if(prev.getNo4().equals(next.getNo1() )|| prev.getNo4().equals(next.getNo2() )|| prev.getNo4().equals(next.getNo3()
+                    )|| prev.getNo4().equals(next.getNo4())|| prev.getNo4().equals(next.getNo5())|| prev.getNo4().equals(next.getNo6()
+                    )|| prev.getNo4().equals(next.getTema())){
+                total++;
+            }
+            if(prev.getNo5().equals(next.getNo1() )|| prev.getNo5().equals(next.getNo2() )|| prev.getNo5().equals(next.getNo3()
+                    )|| prev.getNo5().equals(next.getNo4())|| prev.getNo5().equals(next.getNo5())|| prev.getNo5().equals(next.getNo6()
+                    )|| prev.getNo5().equals(next.getTema())){
+                total++;
+            }
+            if(prev.getNo6().equals(next.getNo1() )|| prev.getNo6().equals(next.getNo2() )|| prev.getNo6().equals(next.getNo3()
+                    )|| prev.getNo6().equals(next.getNo4())|| prev.getNo6().equals(next.getNo5())|| prev.getNo6().equals(next.getNo6()
+                    )|| prev.getNo6().equals(next.getTema())){
+                total++;
+            }
+//            if(prev.getTema().equals(next.getNo1() )|| prev.getTema().equals(next.getNo2() )|| prev.getTema().equals(next.getNo3()
+//                    )|| prev.getTema().equals(next.getNo4())|| prev.getTema().equals(next.getNo5())|| prev.getTema().equals(next.getNo6()
+//                    )|| prev.getTema().equals(next.getTema())){
+//                total++;
+//            }
+
+            currentMoney=(total==0?700:total==1?-765:total==2?-1877:-2100);
+            Integer liuMoney =(total ==0);
+            totalMoney+=currentMoney;
+            System.out.println( i+"、"+next.getRiqi()+":出了"+total+"个数，"+"输赢："+currentMoney+",累计输赢："+totalMoney);
+            System.out.println( i+"、"+next.getRiqi()+":出了"+total+"个数，"+"输赢："+currentMoney+",累计输赢："+totalMoney);
+        }
     }
 
 }

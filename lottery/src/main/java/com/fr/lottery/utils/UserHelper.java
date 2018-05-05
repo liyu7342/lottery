@@ -32,12 +32,8 @@ public class UserHelper {
         }
     }
     public static void setCurrentUser(User user){
-//        User userInfoApiDto = new User();
-//        userInfoApiDto.setAccount(user.getAccount());
-//        userInfoApiDto.setName(user.getName());
-//        userInfoApiDto.setId(user.getId());
-//        userInfoApiDto.setCredits(user.getCredits());
-//
+        user.setRealId(user.getId());
+        user.setRealUserType(user.getUsertype());
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
         user.setSessionId(session.getId());
