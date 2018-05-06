@@ -70,7 +70,7 @@ public class BucangService implements IBucangService {
         String category = GameCfg.getGameCategory(bucang.getGame_id());
         Float retreat = limitSetService.findRetreatFromCache(user.getId(), bucang.getOdds_set(), category, user.getHandicap());
         if (GameTypeEnum.連碼二.getValue().equals(category) || GameTypeEnum.尾數連.getValue().equals(category)
-                || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue() == category || GameTypeEnum.不中.getValue() == category) {
+                || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue().equals( category) || GameTypeEnum.不中.getValue().equals( category)) {
             orders.setIsMuti(true);
         } else {
             orders.setIsMuti(false);

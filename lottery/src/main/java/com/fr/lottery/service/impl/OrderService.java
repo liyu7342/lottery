@@ -143,7 +143,7 @@ public class OrderService implements IOrderService {
 
             orders.setGametype(orderStrs[0]);
             if (GameTypeEnum.連碼二.getValue().equals(category) || GameTypeEnum.尾數連.getValue().equals(category)
-                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue() == category || GameTypeEnum.不中.getValue() == category) {
+                    || GameTypeEnum.連碼三.getValue().equals(category) || GameTypeEnum.生肖連.getValue().equals( category) || GameTypeEnum.不中.getValue().equals( category)) {
                 orders.setIsMuti(true);
             } else {
                 orders.setIsMuti(false);
