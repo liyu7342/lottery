@@ -37,7 +37,6 @@ public class UserService implements IUserService {
     @Autowired
     private ISysMenuService sysMenuService;
 
-    private static final String memcached_user_key = "user_user_";
     private static final String memcached_user_sessionid_key="user_sessionid_";
 
     public User getByAccount(String loginName) {
@@ -184,7 +183,7 @@ public class UserService implements IUserService {
                 }
             }
             userMapper.update(user);
-            MemcacheUtil.set(memcached_user_key+user.getId(),user);
+            MemcacheUtil.set(Global.memcached_user_key+user.getId(),user);
         }
         limitSetService.insert(user.getId(), limitSetDto);
         return 1;
@@ -325,12 +324,12 @@ public class UserService implements IUserService {
 
     @Override
     public User getUserFromCache(String id) {
-        Object object = MemcacheUtil.get(memcached_user_key + id);
+        Object object = MemcacheUtil.get(Global.memcached_user_key + id);
         if (object != null)
             return (User) object;
         User user = userMapper.get(id);
         if (user != null) {
-            MemcacheUtil.set(memcached_user_key + id, user);
+            MemcacheUtil.set(Global.memcached_user_key + id, user);
         }
         return user;
     }
@@ -341,7 +340,7 @@ public class UserService implements IUserService {
      * @return
      */
     public void setUserCache(User user){
-        MemcacheUtil.set(memcached_user_key+user.getId(),user);
+        MemcacheUtil.set(Global.memcached_user_key+user.getId(),user);
     }
     @Override
     public User getUserCount(boolean needToReload) {

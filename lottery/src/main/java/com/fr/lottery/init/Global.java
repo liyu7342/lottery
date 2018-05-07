@@ -65,6 +65,8 @@ public class Global {
     public static final Integer userStatus_jinzhidenglu=3;
     public static final Integer userStatus_delete=4;
 
+    public static final String memcached_user_key="user_user_";
+
     public static final Map<String,LotConfig> lotConfigDic =new HashMap<String, LotConfig>();
 
     public static final Map<String,ShengXiao> shengxiaoDic = new HashMap<String, ShengXiao>();
