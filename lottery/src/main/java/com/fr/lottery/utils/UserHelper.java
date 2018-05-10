@@ -72,6 +72,14 @@ public class UserHelper {
        return user;
     }
 
+    /**
+     * 设置用户信息到缓存
+     * @param user
+     */
+    public static void setCurrentUserToCache(User user){
+        MemcacheUtil.set(Global.memcached_user_key+user.getRealId(),user);
+    }
+
 
     public static void logout(HttpServletRequest request){
         if(request.getSession() !=null)

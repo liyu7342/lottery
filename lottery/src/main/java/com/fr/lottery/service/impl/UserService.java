@@ -81,6 +81,17 @@ public class UserService implements IUserService {
         return userMapper.get(id);
     }
 
+    public User getStatisUser(String id){
+        User user = userMapper.get(id);
+        if(user.getUsertype() == UserTypeEnum.Member.ordinal()){
+
+        }
+        return user;
+        //        if(user.getUsertype() == UserTypeEnum.Member.ordinal()){
+//            user.setAmount();
+//        }
+        //else if(user.getUsertype() ==UserTypeEnum.UserAdmin.ordinal())
+    }
 
     public int insert(User entity) {
         entity.setId(StringUtil.getUUID());
@@ -118,11 +129,13 @@ public class UserService implements IUserService {
                             user.setDagudongAccount(parentUser.getAccount());
                             user.setDagudongId(parentUser.getId());
                             user.setDagudongName(parentUser.getUserName());
+                            user.setDagudongShare(parentUser.getShareUp());
                         }
                         else{
                             user.setDagudongAccount(parentUser.getDagudongAccount());
                             user.setDagudongId(parentUser.getDagudongId());
                             user.setDagudongName(parentUser.getDagudongName());
+                            user.setDagudongShare(parentUser.getDagudongShare());
                         }
 
                     }
@@ -130,16 +143,19 @@ public class UserService implements IUserService {
                         user.setGudongId(parentUser.getGudongId());
                         user.setGudongAccount(parentUser.getGudongAccount());
                         user.setGudongName(parentUser.getGudongName());
+                        user.setGudongShare(parentUser.getGudongShare());
                     }
                     if (user.getUsertype() > UserTypeEnum.ZongDaili.ordinal()) {
                         user.setZongdailiId(parentUser.getZongdailiId());
                         user.setZongdaiAccount(parentUser.getZongdaiAccount());
                         user.setZongdailiName(parentUser.getZongdailiName());
+                        user.setZongdaiShare(parentUser.getZongdaiShare());
                     }
                     if (user.getUsertype() > UserTypeEnum.Daili.ordinal()) {
                         user.setDailiId(parentUser.getDailiId());
                         user.setDailiAccount(parentUser.getDailiAccount());
                         user.setDailiName(parentUser.getDailiName());
+                        user.setDailiShare(parentUser.getDailiShare());
                     }
                 }
             }
@@ -148,18 +164,22 @@ public class UserService implements IUserService {
                 user.setDagudongAccount(user.getAccount());
                 user.setDagudongId(user.getId());
                 user.setDagudongName(user.getUserName());
+                user.setDagudongShare(user.getShareUp());
             } else if (user.getUsertype() == UserTypeEnum.XiaoGudong.ordinal()) {
                 user.setGudongAccount(user.getAccount());
                 user.setGudongId(user.getId());
                 user.setGudongName(user.getUserName());
+                user.setGudongShare(user.getShareUp());
             } else if (user.getUsertype() == UserTypeEnum.ZongDaili.ordinal()) {
                 user.setZongdaiAccount(user.getAccount());
                 user.setZongdailiId(user.getId());
                 user.setZongdailiName(user.getUserName());
+                user.setZongdaiShare(user.getShareUp());
             } else if (user.getUsertype() == UserTypeEnum.Daili.ordinal()) {
                 user.setDailiAccount(user.getAccount());
                 user.setDailiId(user.getId());
                 user.setDailiName(user.getUserName());
+                user.setDailiShare(user.getShareUp());
             }
 
             xpath += String.format("%03d", seq);
@@ -176,6 +196,9 @@ public class UserService implements IUserService {
                 user.setPassword(new MD5Util().getMD5ofStr(user.getPassword()));
                 user.setNeedToChangePwd(true);
             }
+//            else{
+//                user.setNeedToChangePwd(false);
+//            }
             if(user.getUsertype() != UserTypeEnum.Member.ordinal()){
                 Integer childMaxShareUp = userMapper.getChildMaxShareUp(user.getId());
                 if(childMaxShareUp==null || user.getShareTotal() <childMaxShareUp){

@@ -108,17 +108,16 @@
       )
     </insert>
 
-    <update id="update">
+    <update id="update" parameterType="com.fr.lottery.entity.User">
          update user set
       ParentId = #{parentid,jdbcType=VARCHAR},
       Account = #{account,jdbcType=VARCHAR},
       UserName = #{userName,jdbcType=VARCHAR},
       <if test="password!=null and password!=''">
           Password = #{password,jdbcType=VARCHAR},
+          needToChangePwd =1,
       </if>
-        <if test="needToChangePwd!=null and needToChangePwd!=''">
-            needToChangePwd = #{needToChangePwd,jdbcType=VARCHAR},
-        </if>
+
         <if test="status !=null">
             Status = #{status,jdbcType=TINYINT},
         </if>

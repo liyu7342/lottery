@@ -54,7 +54,7 @@ public class HomeController  {
         }
         ModelAndView mv = new ModelAndView("index");
         User user= UserHelper.getCurrentUser();
-        User currentUser = userService.get(user.getId());
+        User currentUser =userService.get(user.getRealId());
         Map<String,Object> map = new HashedMap();
         Map<String,Object> userInfo=new HashedMap();
         Integer amount =orderService.getOrderAmount();

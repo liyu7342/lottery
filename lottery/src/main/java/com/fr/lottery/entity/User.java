@@ -7,16 +7,17 @@ import java.util.Date;
  * Created by Administrator on 2017/6/16.
  */
 
-public class User implements Serializable{
-    public User(){
-        this.status=1;
-        this.shortCovering=1;
-        this.shareUp=0;
-        this.shareTotal=0;
-        this.shareFlag=0;
-        this.credits=0L;
-        this.id="";
+public class User implements Serializable {
+    public User() {
+        this.status = 1;
+        this.shortCovering = 1;
+        this.shareUp = 0;
+        this.shareTotal = 0;
+        this.shareFlag = 0;
+        this.credits = 0L;
+        this.id = "";
     }
+
     private static final long serialVersionUID = 1L;
 
     private String id;
@@ -34,16 +35,19 @@ public class User implements Serializable{
     private String dagudongId;
     private String dagudongAccount;
     private String dagudongName;
+    private Integer dagudongShare;
     private String gudongId;
     private String gudongAccount;
     private String gudongName;
+    private Integer gudongShare;
     private String zongdailiId;
     private String zongdaiAccount;
     private String zongdailiName;
+    private Integer zongdaiShare;
     private String dailiId;
     private String dailiAccount;
     private String dailiName;
-
+    private Integer dailiShare;
 
     private String password;
 
@@ -93,10 +97,8 @@ public class User implements Serializable{
     private String virtualName;
 
 
-
     /**
-     *小股东数量
-     *
+     * 小股东数量
      */
     private Integer gudongNumber;
     /**
@@ -112,6 +114,7 @@ public class User implements Serializable{
      */
     private Integer memberNumber;
 
+    private Integer userAdminNumber;
 
     public String getId() {
         return id;
@@ -426,6 +429,7 @@ public class User implements Serializable{
         this.zongdaiNumber = zongdaiNumber;
     }
 
+
     public Integer getDailiNumber() {
         return dailiNumber;
     }
@@ -456,5 +460,57 @@ public class User implements Serializable{
 
     public void setRealUserType(Integer realUserType) {
         this.realUserType = realUserType;
+    }
+
+    public Integer getDagudongShare() {
+        return dagudongShare;
+    }
+
+    public void setDagudongShare(Integer dagudongShare) {
+        this.dagudongShare = dagudongShare;
+    }
+
+    public Integer getGudongShare() {
+        return gudongShare;
+    }
+
+    public void setGudongShare(Integer gudongShare) {
+        this.gudongShare = gudongShare;
+    }
+
+    public Integer getZongdaiShare() {
+        return zongdaiShare;
+    }
+
+    public void setZongdaiShare(Integer zongdaiShare) {
+        this.zongdaiShare = zongdaiShare;
+    }
+
+    public Integer getDailiShare() {
+        return dailiShare;
+    }
+
+    public void setDailiShare(Integer dailiShare) {
+        this.dailiShare = dailiShare;
+    }
+
+    public void setNeedToChangePwd(Boolean needToChangePwd) {
+        this.needToChangePwd = needToChangePwd;
+    }
+
+    public String getVirtualName() {
+        return virtualName;
+    }
+
+    public void setVirtualName(String virtualName) {
+        this.virtualName = virtualName;
+    }
+
+    public Integer getUserAdminNumber() {
+        return userAdminNumber;
+    }
+
+    public void setUserAdminNumber(Integer userAdminNumber) {
+        this.userAdminNumber = userAdminNumber;
     }
 }
